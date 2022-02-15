@@ -1,0 +1,45 @@
+{
+  "name": "aurum-web",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "rimraf dist && run-p builds:* && npm run postcss",
+    "dev": "run-p devs:*",
+    "devs:esbuild": "esbuild src/js/main.js src/sw.js --outdir=dist --bundle --watch",
+    "devs:sassy": "sass --watch --update src/scss/style.scss dist/css/style.css",
+    "devs:elee": "eleventy --watch --serve",
+    "builds:esbuild": "esbuild src/js/main.js src/sw.js --outdir=dist --bundle --minify",
+    "builds:elee": "eleventy",
+    "builds:sassy": "sass --no-source-map --style=compressed src/scss/style.scss dist/css/style.css",
+    "postcss": "postcss dist/css/style.css --replace",
+    "debug": "set DEBUG=Eleventy* & eleventy"
+  },
+  "keywords": [],
+  "author": "Siddharth",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "@sanity/asset-utils": "^1.2.3",
+    "@sanity/block-content-to-markdown": "0.0.5",
+    "@sanity/client": "^3.0.6",
+    "@sanity/image-url": "^1.0.1",
+    "cssnano": "^5.0.17",
+    "dotenv": "^16.0.0",
+    "esbuild": "^0.14.21",
+    "groq": "^2.15.0",
+    "html-minifier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.6",
+    "postcss-cli": "^9.1.0",
+    "postcss-combine-media-query": "^1.0.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.7",
+    "string": "^3.3.3"
+  },
+  "dependencies": {
+    "ogl": "^0.0.85"
+  }
+}

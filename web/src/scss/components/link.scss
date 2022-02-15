@@ -1,0 +1,34 @@
+.link {
+  position: relative;
+  display: inline;
+  transition: opacity 0.4s $ease-out-expo;
+  cursor: pointer;
+}
+
+.link:after {
+  position: absolute;
+  content: "";
+  bottom: 0.01em;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #d1cbc4;
+  transition: transform 1s $ease-out-expo;
+}
+
+.link-dark:after {
+  border-bottom: 2px solid #5c3f2d;
+}
+
+.link:after {
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.link:hover:after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.link:hover {
+  opacity: 0.6;
+}

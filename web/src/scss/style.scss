@@ -1,0 +1,36 @@
+@import "./type.scss";
+
+@import "./variables.scss";
+@import "./utils.scss";
+@import "./cotton";
+
+@import "./components";
+
+canvas.gl {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#svg {
+  width: 0;
+  height: 0;
+}
+
+#text-preload,
+#img-preload {
+  height: 0;
+  width: 0;
+}
+
+[data-scroll-content] {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+[data-scroll-section]:not(.no-contain) {
+  contain: content;
+}
+
+@import "./pages/home.scss";

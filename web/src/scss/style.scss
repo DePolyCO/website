@@ -33,4 +33,14 @@ canvas.gl {
   contain: content;
 }
 
+body {
+  background-color: $lightbeige;
+  color: $darkblue;
+}
+
+.restrict {
+  width: fluid(1830, $lg);
+  margin: 0 auto;
+}
+
 @import "./pages/home.scss";

@@ -13,7 +13,7 @@ specifiers:
   groq: ^2.15.0
   html-minifier: ^4.0.0
   npm-run-all: ^4.1.5
-  ogl: ^0.0.85
+  ogl: ^0.0.86
   postcss: ^8.4.6
   postcss-cli: ^9.1.0
   postcss-combine-media-query: ^1.0.1
@@ -22,7 +22,7 @@ specifiers:
   string: ^3.3.3
 
 dependencies:
-  ogl: 0.0.85
+  ogl: 0.0.86
 
 devDependencies:
   '@11ty/eleventy': 1.0.0
@@ -2483,8 +2483,8 @@ packages:
       object-keys: 1.1.1
     dev: true
 
-  /ogl/0.0.85:
-    resolution: {integrity: sha512-FnflgZpxWFkBGGuIBoCLzRCyFLa0hFntPLfAbmScPdLckk1z11veMAZxWU7WzRUWb5jFXoBegWpz143mWsfJmg==}
+  /ogl/0.0.86:
+    resolution: {integrity: sha512-p4n8dURvkcIG3ISECNX7DU2Vp9w2S58CwnwesnP6ar2VtXai6IzXSM99Ej5/VIzpkT7ZCpB/24DIqQjAC+Yfjw==}
     dev: false
 
   /on-finished/2.3.0:

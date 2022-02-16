@@ -1,10 +1,10 @@
 {% include '_header.njk' %}
 
-<body class="sans c-black">
-  <div id="loader" class="pf top left right bottom z9 df fc jcc aic bg-white c-black">
+<body class="sans">
+  <div id="loader" class="pf top left right bottom z9 df fc jcc aic bg-white">
     <span id="loader-percent">0</span>
   </div>
-  <noscript id="no-js" class="pf top left right bottom z10 df jcc aic bg-white c-black">
+  <noscript id="no-js" class="pf top left right bottom z10 df jcc aic bg-white">
     <span>Please enable JS to view this site</span>
   </noscript>
 
@@ -12,7 +12,6 @@
   <div id="scroll-cover" class="pf top left right bottom z8 df fc jcc aic pen"></div>
 
   <div data-scroll-content>
-
     <div id="app" data-hydra-root>
       {{ content | safe }}
     </div>

@@ -4,3 +4,78 @@
 //   font-weight: 400;
 //   font-display: swap;
 // }
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-Thin.woff2") format("woff2");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-ThinItalic.woff2") format("woff2");
+  font-weight: 200;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-BoldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-Bold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-BlackItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fk";
+  src: url("/static/fonts/FKGrotesk-Black.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}

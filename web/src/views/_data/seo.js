@@ -17,6 +17,8 @@
 // );
 
 module.exports = {
-  title: "Aurum",
+  title: "DePoly",
   description: "Placeholder",
+  keywords: "",
+  baseURL: "",
 };

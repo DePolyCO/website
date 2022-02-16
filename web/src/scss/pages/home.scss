@@ -3,8 +3,8 @@
     padding-top: fluid(430, $lg);
   }
 
-  #hero-title--wrapper {
-  }
+  // #hero-title--wrapper {
+  // }
 
   #hero-title {
     width: fluid(1639, $lg);
@@ -30,9 +30,6 @@
 
   #plastic-problem,
   #solution-text {
-    font-size: fluid(300, $lg);
-    line-height: 85%;
-    letter-spacing: -0.05em;
     padding-bottom: fluid(125, $lg);
   }
 
@@ -91,7 +88,7 @@
     padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
 
     width: fit-content;
-    margin-bottom: fluid(66, $lg);
+    margin-bottom: fluid(3, $lg);
   }
 
   .stat-desc--wrapper {
@@ -119,6 +116,61 @@
   .stat-visual {
     height: fluid(729, $lg);
   }
+
+  #goals-title {
+    margin-bottom: fluid(50, $lg);
+  }
+
+  #goals-desc {
+    width: fluid((430 * 3) + (40 * 2), $lg);
+    font-size: fluid(110, $lg);
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    margin-left: auto;
+    margin-bottom: fluid(150, $lg);
+  }
+
+  #icons {
+    width: fluid((430 * 3) + (40 * 2), $lg);
+    margin-left: auto;
+    margin-bottom: fluid(180, $lg);
+  }
+
+  .icon-col {
+    width: fluid(430, $lg);
+
+    &:not(:last-of-type) {
+      border-right: 1px solid rgba(2, 45, 66, 0.2);
+    }
+  }
+
+  .icon-item {
+    width: fluid(400, $lg);
+    border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+  }
+
+  .icon {
+    width: fluid(140, $lg);
+    height: fluid(140, $lg);
+    margin-bottom: fluid(124, $lg);
+  }
+
+  .icon-label {
+    font-size: fluid(37, $lg);
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    margin-bottom: fluid(90, $lg);
+  }
+}
+
+.underline {
+  text-decoration: underline $green;
+}
+
+.big-title {
+  font-size: fluid(300, $lg);
+  line-height: 85%;
+  letter-spacing: -0.05em;
 }
 
 .border-bottom {

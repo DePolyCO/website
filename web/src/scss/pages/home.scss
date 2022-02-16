@@ -27,4 +27,123 @@
     height: fluid(700, $lg);
     margin-bottom: fluid(125, $lg);
   }
+
+  #plastic-problem,
+  #solution-text {
+    font-size: fluid(300, $lg);
+    line-height: 85%;
+    letter-spacing: -0.05em;
+    padding-bottom: fluid(125, $lg);
+  }
+
+  .stat-section {
+    padding-top: fluid(133, $lg);
+    display: flex;
+    justify-content: space-between;
+    gap: fluid(40, $lg);
+    padding-bottom: fluid(87, $lg);
+  }
+
+  .stat-col {
+    width: fluid(430, $lg);
+  }
+
+  .stat-col--md {
+    width: fluid(2 * 430 + 40, $lg);
+    border-right: 1px solid rgba(2, 45, 66, 0.2);
+  }
+
+  .stat-tag {
+    font-size: fluid(18, $lg);
+    line-height: 110%;
+    letter-spacing: 0.04em;
+    font-weight: bold;
+    position: relative;
+    padding-left: fluid(33, $lg);
+
+    &::before {
+      content: "";
+      width: fluid(20, $lg);
+      height: fluid(20, $lg);
+      border-radius: 50%;
+      background-color: currentColor;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+  }
+
+  .stat-title {
+    font-size: fluid(120, $lg);
+    line-height: 100%;
+    letter-spacing: -0.06em;
+    margin-bottom: fluid(25, $lg);
+  }
+
+  .stat-title--tag {
+    font-size: fluid(16, $lg);
+    line-height: 130%;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+
+    background: $darkbeige;
+    border-radius: fluid(8, $lg);
+    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+
+    width: fit-content;
+    margin-bottom: fluid(66, $lg);
+  }
+
+  .stat-desc--wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: fluid(60, $lg);
+  }
+
+  .stat-desc {
+    margin-top: auto;
+  }
+
+  .stat-desc--title {
+    font-size: fluid(50, $lg);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    margin-bottom: fluid(15, $lg);
+  }
+
+  .stat-desc--content {
+    font-size: fluid(22, $lg);
+    line-height: 140%;
+  }
+
+  .stat-visual {
+    height: fluid(729, $lg);
+  }
+}
+
+.border-bottom {
+  border-bottom: 2px solid $darkblue;
+}
+
+.text-underlay {
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: attr(data-content);
+    position: absolute;
+    inset: 0;
+    bottom: 10%;
+    font: inherit;
+    color: $darkblue;
+    z-index: 1;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.75s $ease-out-expo;
+  }
+}
+
+.text-underlay--active {
+  &::after {
+    clip-path: inset(0);
+  }
 }

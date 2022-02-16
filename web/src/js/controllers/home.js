@@ -1,6 +1,7 @@
 import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
+import { iris, qs } from "../hermes";
 
 /**
  *
@@ -15,6 +16,13 @@ export const homeController = new Controller({
 
   show: ({ done }) => {
     sail.in();
+
+    const el = qs(".text-underlay");
+    iris.add(document, "keydown", (e) => {
+      if (e.key === "t") {
+        el.classList.toggle("text-underlay--active");
+      }
+    });
 
     done();
   },

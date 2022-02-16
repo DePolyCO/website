@@ -12,3 +12,10 @@ $darkgray: #aab6b6;
 
 $green: #f2ffbd;
 $white: #fff;
+
+//
+// grid
+//
+
+// fluid(($lg - ((4 + 1) * 40)) * math.div(1, 4), $lg);
+$colwidth: fluid(430, $lg);

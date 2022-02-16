@@ -7,6 +7,8 @@ import { intro } from "./intro";
 import { homeController } from "./controllers/home";
 import { noController } from "./controllers/404";
 
+import { Grid } from "./grid";
+
 /**
  *
  * Instantiate
@@ -31,6 +33,11 @@ iris.add(
   "load",
   () => {
     console.log("Site by: Siddharth — https://siddharthsham.com");
+
+    new Grid({
+      cols: 4,
+    });
+
     if (
       "serviceWorker" in navigator &&
       window.location.hostname !== "localhost"

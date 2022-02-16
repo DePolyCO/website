@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "./type.scss";
 
 @import "./variables.scss";
@@ -41,6 +43,25 @@ body {
 .restrict {
   width: fluid(1830, $lg);
   margin: 0 auto;
+}
+
+#grid {
+  justify-content: space-evenly;
+  gap: fluid(40, $lg);
+  opacity: 0;
+
+  width: fluid(1830, $lg);
+  margin: 0 auto;
+
+  div {
+    width: fluid(($lg - ((4 + 1) * 40)) * math.div(1, 4), $lg);
+    background-color: red;
+    opacity: 0.2;
+  }
+}
+
+#grid.active {
+  opacity: 1;
 }
 
 @import "./pages/home.scss";

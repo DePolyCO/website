@@ -134,6 +134,10 @@
     width: fluid((430 * 3) + (40 * 2), $lg);
     margin-left: auto;
     margin-bottom: fluid(180, $lg);
+    gap: fluid(40, $lg);
+
+    position: relative;
+    left: fluid(20, $lg);
   }
 
   .icon-col {
@@ -146,7 +150,17 @@
 
   .icon-item {
     width: fluid(400, $lg);
-    border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+    position: relative;
+
+    &::after {
+      content: "";
+      border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+
+      position: absolute;
+      bottom: 0;
+      left: fluid(-35, $lg);
+      right: fluid(5, $lg);
+    }
   }
 
   .icon {
@@ -177,25 +191,27 @@
   border-bottom: 2px solid $darkblue;
 }
 
-.text-underlay {
-  position: relative;
-  z-index: 0;
+// .text-underlay {
+  // position: relative;
+  // z-index: 0;
 
-  &::after {
-    content: attr(data-content);
-    position: absolute;
-    inset: 0;
-    bottom: 10%;
-    font: inherit;
-    color: $darkblue;
-    z-index: 1;
-    clip-path: inset(0 0 100% 0);
-    transition: clip-path 1.75s $ease-out-expo;
-  }
-}
+  // &::after {
+  //   content: attr(data-content);
+  //   position: absolute;
+  //   inset: 0;
+  //   bottom: 10%;
+  //   font: inherit;
+  //   color: $darkblue;
+  //   z-index: 1;
+  //   clip-path: inset(0 0 100% 0);
+  //   transition: clip-path 1.75s $ease-out-expo;
+  // }
+// }
 
 .text-underlay--active {
-  &::after {
-    clip-path: inset(0);
-  }
+  color: $darkblue;
+
+  // &::after {
+  //   clip-path: inset(0);
+  // }
 }

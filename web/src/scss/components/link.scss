@@ -11,12 +11,13 @@
   bottom: 0.01em;
   left: 0;
   width: 100%;
-  border-bottom: 2px solid #d1cbc4;
+  // border-bottom: 2px solid #d1cbc4;
+  border-bottom: 2px solid $darkbeige;
   transition: transform 1s $ease-out-expo;
 }
 
 .link-dark:after {
-  border-bottom: 2px solid #5c3f2d;
+  border-bottom: 2px solid $darkblue;
 }
 
 .link:after {

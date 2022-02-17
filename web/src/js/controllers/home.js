@@ -18,6 +18,7 @@ export const homeController = new Controller({
     sail.in();
 
     const el = qs(".text-underlay");
+
     iris.add(document, "keydown", (e) => {
       if (e.key === "t") {
         el.classList.toggle("text-underlay--active");

@@ -8,6 +8,16 @@
     <span>Please enable JS to view this site</span>
   </noscript>
 
+  <aside id="aside" class="z9 pf inset z0 pen">
+    <div id="aside-overlay" class="aside-close pa inset zn1"></div>
+    <div id="test-panel" class="aside-panel"></div>
+    <button id="aside-close" class=" aside-close df jcc aic">
+      <svg fill="none" viewBox="0 0 14 14">
+        <path d="M13 2.213 11.787 1 7 5.787 2.213 1 1 2.213 5.787 7 1 11.787 2.213 13 7 8.213 11.787 13 13 11.787 8.213 7 13 2.213Z" fill="#022D42" stroke="#022D42" stroke-width=".5"/>
+      </svg>
+    </button>
+  </aside>
+
   {% include "_components/_nav.njk" %}
 
   <div id="scroll-cover" class="pf inset z8 df fc jcc aic pen"></div>
@@ -18,6 +28,9 @@
     <div id="app" data-hydra-root>
       {{ content | safe }}
     </div>
+
+    {% include "_components/_footer.njk" %}
+
   </div>
 
   {# <canvas id="gl" class="pf zn1 gl"></canvas> #}

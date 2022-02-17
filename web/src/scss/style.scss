@@ -64,13 +64,6 @@ body {
   opacity: 1;
 }
 
-.temp-title {
-  font-size: fluid(150, $lg);
-  position: absolute;
-  top: 75vh;
-  left: fluid(40, $lg);
-}
-
 #loader,
 #sail {
   background-color: $lightbeige;

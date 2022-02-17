@@ -1,0 +1,56 @@
+// #aside {
+// }
+
+#aside-overlay {
+  background: #022d42;
+  opacity: 0;
+  transition: opacity 1.25s $ease-out-expo;
+}
+
+.aside-panel {
+  width: fluid(1070, $lg);
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  background-color: $lightbeige;
+
+  transition: transform 1.5s $ease-out-expo;
+  transform: translateX(100%);
+}
+
+#aside.active {
+  pointer-events: all;
+
+  #aside-overlay {
+    opacity: 0.3;
+    pointer-events: all;
+  }
+
+  #aside-close {
+    transform: translateX(0);
+  }
+}
+
+.aside-panel.active {
+  transform: translateX(0);
+}
+
+#aside-close {
+  background: $darkbeige;
+  border-radius: fluid(11, $lg);
+  padding: fluid(13, $lg) fluid(41, $lg);
+
+  position: fixed;
+  top: fluid(40, $lg);
+  right: fluid(40, $lg);
+
+  transition: transform 1.5s $ease-out-expo;
+  transform: translateX(#{fluid(1070, $lg)});
+
+  svg {
+    width: fluid(12, $lg);
+    height: fluid(12, $lg);
+  }
+}

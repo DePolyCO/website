@@ -1,0 +1,146 @@
+@use "sass:math";
+
+#footer {
+  background-color: $darkgray;
+
+  font-size: fluid(22, $lg);
+  line-height: 130%;
+  letter-spacing: 0.01em;
+
+  margin-top: fluid(200, $lg);
+}
+
+.footer-row {
+  gap: fluid(40, $lg);
+  padding-bottom: fluid(85, $lg);
+  padding-top: fluid(85, $lg);
+  border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+}
+
+.footer-list {
+  gap: fluid(60, $lg);
+  width: fluid(430, $lg);
+}
+
+.footer-col {
+  width: fluid(430, $lg);
+}
+
+.footer-col--xl {
+  width: fluid(430 * 2 + 40, $lg);
+}
+
+.footer-tag {
+  font-size: fluid(13, $lg);
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  right: 0;
+  top: 50%;
+  background: $darkblue;
+  border-radius: fluid(7, $lg);
+  padding: fluid(3, $lg) fluid(8, $lg);
+
+  transition: opacity 0.4s $ease-out-expo;
+  transform: translate(calc(100% - #{fluid(-8, $lg)}), -50%);
+  white-space: nowrap;
+
+  opacity: 0;
+}
+
+.tag-wrapper.active {
+  .footer-tag {
+    opacity: 1;
+  }
+}
+
+.tag-wrapper:hover {
+  .footer-tag {
+    opacity: 1;
+  }
+}
+
+#footer-cta--title {
+  font-size: fluid(37, $lg);
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  margin-bottom: fluid(8, $lg);
+  width: fluid(754, $lg);
+  font-weight: 500;
+}
+
+#footer-cta--desc {
+  font-size: fluid(22, $lg);
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  margin-bottom: fluid(46, $lg);
+}
+
+.footer-cta--input {
+  gap: fluid(10, $lg);
+  margin-bottom: fluid(30, $lg);
+}
+
+#footer {
+  input {
+    border: 1px solid $darkblue;
+    border-radius: fluid(15, $lg);
+    background: none;
+    padding: fluid(16, $lg) fluid(20, $lg);
+
+    &::placeholder {
+      font-size: fluid(18, $lg);
+      line-height: 140%;
+      color: $darkblue;
+    }
+  }
+}
+
+.footer-cta--btn {
+  background: #022d42;
+  border-radius: fluid(15, $lg);
+
+  font-weight: bold;
+  font-size: fluid(16, $lg);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+
+  padding: fluid(21, $lg) fluid(50, $lg);
+}
+
+#footer-cta--check {
+  margin-right: fluid(15, $lg);
+}
+
+.footer-cta--check {
+  font-size: fluid(16, $lg);
+  line-height: 140%;
+}
+
+.fit {
+  width: fit-content;
+}
+
+.footer-col--title {
+  font-weight: bold;
+  font-size: fluid(16, $lg);
+  line-height: 110%;
+  letter-spacing: 0.05em;
+  margin-bottom: fluid(5, $lg);
+}
+
+.footer-col--data {
+  font-size: fluid(22, $lg);
+  line-height: 150%;
+  letter-spacing: 0.01em;
+}
+
+#footer-logo {
+  width: 100%;
+  height: fluid(math.div(1840 * 32, 201), $lg);
+}
+
+#footer-copy {
+  padding: 40px 0;
+}

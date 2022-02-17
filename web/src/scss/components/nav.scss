@@ -1,9 +1,12 @@
 #nav {
-  padding: fluid(40, $lg) 0;
+  background: #ecece2;
+}
+
+#nav-inner {
   width: fluid(1840, $lg);
   margin: 0 auto;
+  padding: fluid(40, $lg) 0;
   border-bottom: 1px solid #dadaca;
-  background: #ecece2;
 }
 
 #nav-left {

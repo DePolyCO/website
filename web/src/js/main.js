@@ -8,6 +8,7 @@ import { homeController } from "./controllers/home";
 import { noController } from "./controllers/404";
 
 import { Grid } from "./grid";
+import { asideController } from "./components/aside";
 
 /**
  *
@@ -32,11 +33,13 @@ iris.add(
   window,
   "load",
   () => {
-    console.log("Site by: Siddharth — https://siddharthsham.com");
+    console.log("Design by: FiftySeven® — https://fiftyseven.co/");
+    console.log("Dev by: Siddharth S. — https://siddharthsham.com");
 
     new Grid({
       cols: 4,
     });
+    asideController.test();
 
     if (
       "serviceWorker" in navigator &&

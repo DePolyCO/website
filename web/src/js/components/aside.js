@@ -24,9 +24,7 @@ class AsideController {
   };
 
   listen = () => {
-    this.unlisten = iris.add(".aside-close", "click", () => {
-      this.close();
-    });
+    this.unlisten = iris.add(".aside-close", "click", this.close);
   };
 
   open = (panelId) => {

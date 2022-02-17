@@ -1,33 +1,4 @@
 #home {
-  #hero {
-    padding-top: fluid(430, $lg);
-  }
-
-  // #hero-title--wrapper {
-  // }
-
-  #hero-title {
-    width: fluid(1639, $lg);
-    font-size: fluid(120, $lg);
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    margin-bottom: fluid(24, $lg);
-  }
-
-  #hero-welcome {
-    font-size: fluid(20, $lg);
-    line-height: 100%;
-    text-align: right;
-    letter-spacing: 0.05em;
-    margin-bottom: fluid(24, $lg);
-  }
-
-  #hero-picture {
-    width: fluid(1840, $lg);
-    height: fluid(700, $lg);
-    margin-bottom: fluid(125, $lg);
-  }
-
   #plastic-problem,
   #solution-text {
     padding-bottom: fluid(125, $lg);
@@ -50,25 +21,25 @@
     border-right: 1px solid rgba(2, 45, 66, 0.2);
   }
 
-  .stat-tag {
-    font-size: fluid(18, $lg);
-    line-height: 110%;
-    letter-spacing: 0.04em;
-    font-weight: bold;
-    position: relative;
-    padding-left: fluid(33, $lg);
+  // .stat-tag {
+  //   font-size: fluid(18, $lg);
+  //   line-height: 110%;
+  //   letter-spacing: 0.04em;
+  //   font-weight: bold;
+  //   position: relative;
+  //   padding-left: fluid(33, $lg);
 
-    &::before {
-      content: "";
-      width: fluid(20, $lg);
-      height: fluid(20, $lg);
-      border-radius: 50%;
-      background-color: currentColor;
-      position: absolute;
-      left: 0;
-      top: -2px;
-    }
-  }
+  //   &::before {
+  //     content: "";
+  //     width: fluid(20, $lg);
+  //     height: fluid(20, $lg);
+  //     border-radius: 50%;
+  //     background-color: currentColor;
+  //     position: absolute;
+  //     left: 0;
+  //     top: -2px;
+  //   }
+  // }
 
   .stat-title {
     font-size: fluid(120, $lg);
@@ -192,20 +163,20 @@
 }
 
 // .text-underlay {
-  // position: relative;
-  // z-index: 0;
+// position: relative;
+// z-index: 0;
 
-  // &::after {
-  //   content: attr(data-content);
-  //   position: absolute;
-  //   inset: 0;
-  //   bottom: 10%;
-  //   font: inherit;
-  //   color: $darkblue;
-  //   z-index: 1;
-  //   clip-path: inset(0 0 100% 0);
-  //   transition: clip-path 1.75s $ease-out-expo;
-  // }
+// &::after {
+//   content: attr(data-content);
+//   position: absolute;
+//   inset: 0;
+//   bottom: 10%;
+//   font: inherit;
+//   color: $darkblue;
+//   z-index: 1;
+//   clip-path: inset(0 0 100% 0);
+//   transition: clip-path 1.75s $ease-out-expo;
+// }
 // }
 
 .text-underlay--active {

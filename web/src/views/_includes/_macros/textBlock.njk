@@ -1,0 +1,10 @@
+{% macro textBlock(tag, text = [], id=false) %}
+    <section class="restrict text-block df jcb" {% if id %} id="{{ id }}" {% endif %} data-scroll-section>
+        <div class="tag ttu mono">{{ tag }}</div>
+        <div class="df fc text-block--content">
+            {% for item in text %}
+                <p class="text-block--text">{{ item }}</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endmacro %}

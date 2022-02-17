@@ -1,0 +1,38 @@
+.text-block {
+  padding-top: 1px;
+
+  .text-block--content {
+    font-size: fluid(50, $lg);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    width: fluid(1370, $lg);
+    margin-left: auto;
+  }
+
+  .text-block--text {
+    // &:not(:last-of-type) {
+    margin-bottom: fluid(40, $lg);
+    // }
+  }
+}
+
+.tag {
+  font-size: fluid(18, $lg);
+  font-weight: bold;
+  line-height: 110%;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding-left: fluid(33, $lg);
+
+  &::before {
+    content: "";
+    width: fluid(20, $lg);
+    height: fluid(20, $lg);
+    border-radius: 50%;
+    background-color: $darkblue;
+
+    position: absolute;
+    left: 0;
+    top: -1px;
+  }
+}

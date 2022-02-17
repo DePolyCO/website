@@ -3,17 +3,18 @@ layout: _layout.njk
 title: Home
 ---
 
+{% from '_macros/header.njk' import header %}
+
 <main data-hydra-content="home" id="home">
-    <header id="hero" class="restrict" data-scroll-section>
-        <div id="hero-welcome" class="mono">Welcome /</div>
-        <div id="hero-title--wrapper" class="pr z0">
-            <h1 id="hero-title" class="z1 big-title">Rethink Recycling: Creating a Sustainable Circular Economy for Plastics</h1>
-            <svg class="pa inset zn1" fill="none" viewBox="0 0 1841 358">
-                <path stroke="#DADACA" d="M1 .5h1840M1 51.5h1840M1 102.5h1840M1 153.5h1840M1 204.5h1840M1 255.5h1840M1 306.5h1840M1 357.5h1840M.5 358V0m74 358V0m73 358V0m74 358V0m73 358V0m74 358V0m74 358V0m588 358V0m74 358V0m74 358V0m73 358V0m74 358V0m73 358V0m74 358V0m-957 358V0m74 358V0m73 358V0m74 358V0m74 358V0m73 358V0m74 358V0m589 358V0m73 358V0m74 358V0m73 358V0m74 358V0"/>
-            </svg>
-        </div>
-        <picture id="hero-picture"><img src="/static/home/hero.jpg" alt="hero img"/></picture>
-    </header>
+
+    {{ 
+        header(
+            'Welcome', 
+            "Rethink Recycling: Creating a Sustainable Circular Economy for Plastics", 
+            "/static/home/hero.jpg", 
+            "hero img"
+        ) 
+    }}
 
     <section class="restrict" data-scroll-section>
         <div class="pr z0">
@@ -36,7 +37,7 @@ title: Home
 
     <section data-scroll-section id="pet" class="restrict stat-section border-bottom">
         <div class="stat-col">
-            <div class="stat-tag ttu">PET products</div>
+            <div class="tag ttu">PET products</div>
         </div>
         <div class="stat-col stat-col--md">
             <div class="stat-title">&lt;50% – 500B</div>
@@ -60,7 +61,7 @@ title: Home
 
     <section data-scroll-section id="landfill" class="restrict stat-section border-bottom">
         <div class="stat-col">
-            <div class="stat-tag ttu">Landfill & Environment</div>
+            <div class="tag ttu">Landfill & Environment</div>
         </div>
         <div class="stat-col stat-col--md">
             <div class="stat-title">91% </div>
@@ -84,7 +85,7 @@ title: Home
 
     <section data-scroll-section id="incineration" class="restrict stat-section border-bottom">
         <div class="stat-col">
-            <div class="stat-tag ttu">Incineration</div>
+            <div class="tag ttu">Incineration</div>
         </div>
         <div class="stat-col stat-col--md">
             <div class="stat-title">9 Million Tons</div>
@@ -108,7 +109,7 @@ title: Home
 
     <section data-scroll-section id="oil" class="restrict stat-section">
         <div class="stat-col">
-            <div class="stat-tag ttu">Oil Required</div>
+            <div class="tag ttu">Oil Required</div>
         </div>
         <div class="stat-col stat-col--md">
             <div class="stat-title">20% of all oil</div>

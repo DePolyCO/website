@@ -1,0 +1,77 @@
+#about {
+  #who {
+    padding-bottom: fluid(210, $lg);
+    margin-bottom: fluid(169, $lg);
+    border-bottom: 1px solid $darkblue;
+  }
+
+  #team {
+    padding-bottom: fluid(90, $lg);
+    margin-bottom: fluid(125, $lg);
+  }
+
+  .grid-list {
+    width: fluid(430 * 3 + 40 * 2, $lg);
+    margin-left: auto;
+
+    margin-bottom: fluid(180, $lg);
+    gap: fluid(40, $lg);
+
+    position: relative;
+    left: fluid(20, $lg);
+  }
+
+  .team-col {
+    width: fluid(430, $lg);
+
+    &:not(.no-border) {
+      &:not(:last-of-type) {
+        border-right: 1px solid rgba(2, 45, 66, 0.2);
+      }
+    }
+  }
+
+  .team-item {
+    width: fluid(400, $lg);
+    position: relative;
+    padding-top: fluid(90, $lg);
+    left: fluid(-20, $lg);
+
+    &:not(.no-border) {
+      &::after {
+        content: "";
+        border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+
+        position: absolute;
+        bottom: 0;
+        left: fluid(-35 + 20, $lg);
+        right: fluid(5 - 20, $lg);
+      }
+    }
+  }
+
+  .team-photo {
+    width: fluid(400, $lg);
+    height: fluid(400, $lg);
+    border-radius: 50%;
+    margin-bottom: fluid(36, $lg);
+    background: #f6f6ee;
+  }
+
+  .team-name {
+    font-size: fluid(30, $lg);
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    margin-bottom: fluid(12, $lg);
+  }
+
+  .team-role {
+    opacity: 0.4;
+    font-size: fluid(15, $lg);
+    line-height: 110%;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-bottom: fluid(90, $lg);
+  }
+}

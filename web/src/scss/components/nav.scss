@@ -4,48 +4,6 @@
   margin: 0 auto;
   border-bottom: 1px solid #dadaca;
   background: #ecece2;
-
-  #nav-cta {
-    background: $green;
-    border-radius: fluid(15, $lg);
-
-    font-weight: bold;
-    font-size: fluid(16, $lg);
-    line-height: 110%;
-    letter-spacing: 0.01em;
-
-    padding: fluid(21, $lg) fluid(34, $lg);
-
-    transition: background-color 0.75s $ease-out-expo;
-
-    .btn-inner::after {
-      color: $green;
-    }
-
-    &:hover {
-      background: $darkblue;
-
-      .btn-inner {
-        transform: translateY(-100%);
-
-        &::after {
-          transform: translateY(-20%);
-        }
-      }
-    }
-  }
-
-  .btn-inner {
-    transition: transform 1.25s $ease-out-expo;
-
-    &::after {
-      content: attr(data-content);
-      position: absolute;
-      bottom: -120%;
-      left: 0;
-      transition: transform 1.25s $ease-out-expo;
-    }
-  }
 }
 
 #nav-left {
@@ -86,5 +44,50 @@
         transform: translateY(-20%);
       }
     }
+  }
+}
+
+// CTA button
+
+.cta-btn {
+  background: $green;
+  border-radius: fluid(15, $lg);
+  width: fit-content;
+
+  font-weight: bold;
+  font-size: fluid(16, $lg);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+
+  padding: fluid(21, $lg) fluid(34, $lg);
+
+  transition: background-color 0.75s $ease-out-expo;
+
+  .btn-inner::after {
+    color: $green;
+  }
+
+  &:hover {
+    background: $darkblue;
+
+    .btn-inner {
+      transform: translateY(-100%);
+
+      &::after {
+        transform: translateY(-20%);
+      }
+    }
+  }
+}
+
+.btn-inner {
+  transition: transform 1.25s $ease-out-expo;
+
+  &::after {
+    content: attr(data-content);
+    position: absolute;
+    bottom: -120%;
+    left: 0;
+    transition: transform 1.25s $ease-out-expo;
   }
 }

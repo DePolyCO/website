@@ -3,6 +3,99 @@ layout: _layout.njk
 title: Technology
 ---
 
+{% from '_macros/header.njk' import header %}
+{% from '_macros/textBlock.njk' import textBlock %}
+
 <main data-hydra-content="home" id="technology">
-    <h1 class="temp-title">Technology</h1>
+    {{ 
+        header(
+            'Mission', 
+            "Enhanced Recycling Using Simple, Sustainable Technology", 
+            "/static/technology/hero.jpg", 
+            "hero img"
+        ) 
+    }}
+
+    {{ 
+        textBlock(
+            "Value Chain",
+            [
+                "From complex waste to premium quality raw materials, our patented technology makes the true circular economy of PET plastics possible "
+            ]
+        ) 
+    }}
+
+    <section data-scroll-section id="pta" class="border-bottom restrict">
+        <h2 class="big-title c-white ttu">
+            <div class="text-underlay text-underlay--active">Our PTA</div>
+            <div>and</div>
+            <div>meg magic</div>
+        </h2>
+    </section>
+
+    {{ 
+        textBlock(
+            "magic happens",
+            [
+                "To produce PET plastic resin, a material that is extremely durable and light weight but can be turned into many shapes and forms at the same time."
+            ]
+        ) 
+    }}
+
+    <section data-scroll-section id="results" class="border-bottom restrict">
+        <h2 class="big-title c-white ttu">
+            <div class="text-underlay text-underlay--active">End</div>
+            <div>results in</div>
+            <div>the world</div>
+            <div>we know</div>
+        </h2>
+    </section>
+
+    <section class="restrict border-bottom df jcb" data-scroll-section id="granules">
+        <div class="tag ttu mono">Pet Granules</div>
+        <div class="border-left section-content">
+            <div class="section-title">What is Pet resin used for?</div>
+            <div class="section-desc df jcb">
+                <p class="section-desc--item">Everything! PET resins can be molded into almost any shape and any color. It’s unique characteristics such as higher strength, low weight, thermal and electrical insulation allow PET to be used in many products and </p>
+                <p class="section-desc--item">applications from packaging for food, beverages and sanitary products to flame retardant, high flow materials, heat resistant, reinforced glass and many other industrial applications.</p>
+            </div>
+            <div class="section-slider"></div>
+        </div>
+    </section>
+
+    <section class="restrict border-bottom df jcb" data-scroll-section id="fibre">
+        <div class="tag ttu mono">Polyester Fibre</div>
+        <div class="border-left section-content">
+            <div class="section-title">Here’s Why Polyester Fibre are is usefull</div>
+            <div class="section-desc df jcb">
+                <p class="section-desc--item">Polyester fabrics are used extensively in apparel and home furnishings, from everyday clothing to bed sheets, blankets, and computer mouse mats. Polyester fiber can be found in pillows and comforters.</p>
+                <p class="section-desc--item">Industrial polyester fibers are mostly used in car tire reinforcements, conveyor belts, safety or seat belts, coated fabrics and plastic reinforcements for high-energy absorption applications.</p>
+            </div>
+            <div class="section-slider"></div>
+        </div>
+    </section>
+
+    <section class="restrict border-bottom df jcb" data-scroll-section id="films">
+        <div class="tag ttu mono">Pet Films</div>
+        <div class="border-left section-content">
+            <div class="section-title">What are PET films used for?</div>
+            <div class="section-desc df jcb">
+                <p class="section-desc--item">PET film is often used in applications where, items need to have a high tensile and/or temperature strength, chemical and/or thermal resistance, flatness, clarity, or electrical insulation properties. </p>
+                <p class="section-desc--item">These PET films can be combined with other components  such as glass, or other fibers, allowing it becomes much more durable and stiffer. It can also be used in 3D printing as well. </p>
+            </div>
+            <div class="section-slider"></div>
+        </div>
+    </section>
+
+    <section id="callout" class="restrict" data-scroll-section>
+        <div id="callout-content" class="df fc">
+            <div id="callout-title">All this is done without the addition of heat, or pressure.</div>
+            <div id="callout-desc">Learn more about our technology by ordering a sample.</div>
+            <button class="cta-btn" id="callout-cta">
+                <div class="pr oh btn-wrapper">
+                    <div class="btn-inner" data-content="Request Sample">Request Sample</div>
+                </div>
+            </button>
+        </div>
+    </section>
 </main>

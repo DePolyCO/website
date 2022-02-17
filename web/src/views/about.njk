@@ -3,6 +3,120 @@ layout: _layout.njk
 title: About Us
 ---
 
+{% from '_macros/header.njk' import header %}
+{% from '_macros/textBlock.njk' import textBlock %}
+
 <main data-hydra-content="home" id="about">
-    <h1 class="temp-title">About Us</h1>
+    {{ 
+        header(
+            'Nice to meet you', 
+            "Rethinking Recycling From the Ground Up", 
+            "/static/about/hero.jpg", 
+            "hero img"
+        ) 
+    }}
+
+    {{ 
+        textBlock(
+            "Who is DePoly?",
+            [
+                "'Swiss technology from the heart of Valais' – DePoly SA was developed and founded in 2020 with a goal to create a cleaner world for future generations.",
+                "Our ambitious and dedicated team is made up of people looking to change the world, and leave it a cleaner place for the next generations."
+            ],
+            "who"
+        ) 
+    }}
+
+    <section id="team" class="restrict df border-bottom" data-scroll-section>
+        <div id="team-tag" class="tag">Our Team</div>
+        <div id="team-list" class="grid-list df">
+            <div class="team-col df fc aic">
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item no-border cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+            </div>
+            <div class="team-col df fc aic">
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item no-border cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+            </div>
+            <div class="team-col df fc aic">
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+                <div class="team-item no-border cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="restrict" data-scroll-section>
+        <div class="tag">Advisors</div>
+        <div id="advisor-list" class="grid-list df">
+            <div class="team-col df fc aic">
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+            </div>
+            <div class="team-col df fc aic no-border">
+                <div class="team-item cp">
+                    <div class="team-photo"></div>
+                    <div class="team-name">Dr. Samantha Anderson</div>
+                    <div class="team-role">CEO and Co-founder</div>
+                </div>
+            </div>
+            <div class="team-col df fc aic"></div>
+        </div>
+    </section>
 </main>

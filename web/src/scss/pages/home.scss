@@ -42,6 +42,7 @@
   // }
 
   .stat-title {
+    font-weight: 300;
     font-size: fluid(120, $lg);
     line-height: 100%;
     letter-spacing: -0.06em;
@@ -49,6 +50,7 @@
   }
 
   .stat-title--tag {
+    font-weight: 500;
     font-size: fluid(16, $lg);
     line-height: 130%;
     letter-spacing: 0.01em;
@@ -153,13 +155,15 @@
 }
 
 .big-title {
+  font-weight: 200;
   font-size: fluid(300, $lg);
   line-height: 85%;
   letter-spacing: -0.05em;
+  color: #f6f6ee;
 }
 
 .border-bottom {
-  border-bottom: 2px solid $darkblue;
+  border-bottom: 1px solid $darkblue;
 }
 
 // .text-underlay {

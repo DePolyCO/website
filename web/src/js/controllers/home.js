@@ -2,7 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { iris, qs } from "../hermes";
-// import { TextHighlight } from "../components/textHighlight";
+import { TextHighlight } from "../components/textHighlight";
 
 /**
  *
@@ -26,9 +26,9 @@ export const homeController = new Controller({
       }
     });
 
-    // window.highlight = new TextHighlight({
-    //   targets: "[data-text-highlight]",
-    // });
+    window.highlight = new TextHighlight({
+      targets: "[data-text-highlight]",
+    });
 
     done();
   },

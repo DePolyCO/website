@@ -51,6 +51,7 @@ export class Smooth extends Conductor {
         height: 0,
         width: 0,
       },
+      locked: false,
     };
     this.lerp = {
       x: new LerpController(this.state.scroll.x),
@@ -75,12 +76,16 @@ export class Smooth extends Conductor {
   listen = () => {};
 
   setScroll = ({ deltaX, deltaY }) => {
+    if (this.state.locked) return;
+
     const { x, y } = this.state.scroll;
     x.cur = this.clampX(x.cur + deltaX);
     y.cur = this.clampY(y.cur + deltaY);
   };
 
   update = () => {
+    // if (this.state.locked) return;
+
     const { scroll } = this.state;
     const { x, y } = scroll;
 
@@ -132,6 +137,14 @@ export class Smooth extends Conductor {
     tracker.resize();
 
     this.render();
+  };
+
+  lock = () => {
+    this.state.locked = true;
+  };
+
+  unlock = () => {
+    this.state.locked = false;
   };
 }
 

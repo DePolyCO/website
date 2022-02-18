@@ -36,6 +36,11 @@
 .nav-link {
   padding: fluid(20, $lg);
   display: flex;
+
+  font-weight: 600;
+  font-size: fluid(16, $lg);
+  line-height: 110%;
+  letter-spacing: 0.01em;
 }
 
 .nav-item {
@@ -57,7 +62,7 @@
   border-radius: fluid(15, $lg);
   width: fit-content;
 
-  font-weight: bold;
+  font-weight: 600;
   font-size: fluid(16, $lg);
   line-height: 110%;
   letter-spacing: 0.01em;

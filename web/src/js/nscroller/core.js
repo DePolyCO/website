@@ -1,4 +1,4 @@
-import { Conductor } from "../hermes";
+import { Conductor, Sniff } from "../hermes";
 
 const keyCodes = {
   LEFT: 37,
@@ -18,7 +18,6 @@ const getSupport = () => {
     hasTouchWin: navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1,
     hasPointer: !!window.navigator.msPointerEnabled,
     hasKeyDown: "onkeydown" in document,
-    isFirefox: navigator.userAgent.indexOf("Firefox") > -1,
   };
 };
 
@@ -99,7 +98,7 @@ export class CoreScroll extends Conductor {
 
     // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
     // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Delta_modes
-    if (support.isFirefox && e.deltaMode === 1) {
+    if (Sniff.firefox && e.deltaMode === 1) {
       evt.deltaX *= options.firefoxMultiplier;
       evt.deltaY *= options.firefoxMultiplier;
     }

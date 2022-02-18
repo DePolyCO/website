@@ -1,10 +1,20 @@
-import { LerpController, qs, clamp } from "../hermes";
+import {
+  LerpController,
+  qs,
+  clamp,
+  bounds,
+  ticker,
+  ro,
+  Ease,
+  lerp,
+} from "../hermes";
 import { corescroller, smoothscroller } from "../nscroller";
 
 class Footer {
   constructor() {
     this.dom = qs("#footer");
-    this.scrollContent = qs("[data-scroll-footer]", this.dom);
+    this.scrollWindow = qs("[data-scroll-window]", this.dom);
+    this.scrollContent = qs("[data-scroll-item]", this.dom);
 
     this.state = {
       scroll: {
@@ -16,11 +26,16 @@ class Footer {
         width: 0,
       },
     };
+    this.ease = Ease["bezier"](0.17, 0.67, 0.83, 0.67);
     this.lerp = new LerpController(this.state.scroll);
   }
 
   init = () => {
+    this.resize();
+
+    ro.add({ update: this.resize });
     corescroller.add({ update: this.onScroll });
+    ticker.add({ update: this.update });
   };
 
   clamp = (y) => {
@@ -31,24 +46,42 @@ class Footer {
     );
   };
 
-  onScroll = ({ y }) => {
-    this.state.scroll.cur = this.clamp(y);
+  onScroll = ({ deltaY }) => {
+    this.state.scroll.cur = this.clamp(this.state.scroll.cur + deltaY);
   };
 
   update = () => {
-    const { scroll } = this.state;
+    const { scroll, page } = this.state;
+    const { height } = smoothscroller.state.page;
 
     if (!this.lerp.needsUpdate()) return;
     this.lerp.update();
 
-    if (this.state.scroll.target > smoothscroller.state.page.height) {
-      // lerp footer
+    const y = -scroll.target;
+
+    // overflow scroll active
+    if (y > height) {
+      // lock scroller
+      if (!smoothscroller.state.locked) {
+        smoothscroller.lock();
+      }
+
+      // calculate eased lerp
+      const lerpY = lerp(0, -page.width, this.ease((y - height) / page.width));
+
+      // apply transform
+      this.scrollContent.style.transform = `translate3d(${lerpY}px, 0, 0)`;
+    } else if (smoothscroller.state.locked) {
+      // unlock if not necessary
+      smoothscroller.unlock();
     }
   };
 
   resize = () => {
     const { page } = this.state;
     const { width } = bounds(this.scrollContent);
-    page.width = Math.max(width, vw) - vw;
+    page.width = width - bounds(this.scrollWindow).width;
   };
 }
+
+export const footer = new Footer();

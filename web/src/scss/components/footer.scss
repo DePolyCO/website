@@ -29,6 +29,7 @@
 }
 
 .footer-tag {
+  font-weight: 400;
   font-size: fluid(13, $lg);
   line-height: 130%;
   letter-spacing: 0.05em;
@@ -98,7 +99,7 @@
   background: #022d42;
   border-radius: fluid(15, $lg);
 
-  font-weight: bold;
+  font-weight: 600;
   font-size: fluid(16, $lg);
   line-height: 110%;
   letter-spacing: 0.01em;
@@ -121,7 +122,7 @@
 }
 
 .footer-col--title {
-  font-weight: bold;
+  font-weight: 600;
   font-size: fluid(16, $lg);
   line-height: 110%;
   letter-spacing: 0.05em;
@@ -135,10 +136,23 @@
 }
 
 #footer-logo {
-  width: 100%;
-  height: fluid(math.div(1840 * 32, 201), $lg);
+  min-width: fit-content;
 }
 
 #footer-copy {
   padding: 40px 0;
+}
+
+#footer-logo--svg {
+  min-width: fluid(1840, $lg);
+  height: fluid(math.div(1840 * 32, 201), $lg);
+}
+
+#footer-big--txt {
+  font-size: fluid(274, $lg);
+  line-height: 110%;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  min-width: fit-content;
+  display: inline-block;
 }

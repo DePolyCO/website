@@ -10,10 +10,10 @@ import { noController } from "./controllers/404";
 import { Grid } from "./grid";
 import { asideController } from "./components/aside";
 
-// import { corescroller } from "./nscroller/core";
 // import { tracker } from "./nscroller/modular";
 // import { corescroller } from "./nscroller/core";
-// import { smoothscroller } from "./nscroller/smooth";
+import { smoothscroller } from "./nscroller/smooth";
+import { footer } from "./components/footer";
 
 /**
  *
@@ -53,7 +53,9 @@ iris.add(
     // qsa("section").forEach((el) => tracker.add({ dom: el }));
     // window.tracker = tracker;
     // window.corescroller = corescroller;
-    // window.smoothscroller = smoothscroller;
+    window.smooth = smoothscroller;
+    window.footer = footer;
+    footer.init();
 
     if (
       "serviceWorker" in navigator &&

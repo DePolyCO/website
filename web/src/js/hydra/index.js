@@ -1,6 +1,6 @@
 import { qs, qsa, iris, unique, lazyloader } from "../hermes";
-import { scroller } from "../scroller";
-import { corescroller } from "../scroller/core";
+// import { scroller } from "../scroller";
+// import { corescroller } from "../scroller/core";
 import { Store } from "../store";
 
 const PARSER = new DOMParser();
@@ -199,8 +199,8 @@ export class Hydra {
       done: () => {
         this.isRunning = false;
 
-        if (!node) return;
-        scroller.scrollByAnchor(node, true);
+        // if (!node) return;
+        // scroller.scrollByAnchor(node, true);
       },
     });
   }
@@ -235,7 +235,7 @@ export class Hydra {
 export class Controller {
   constructor({ hide, show }) {
     this.hide = ({ done, to }) => {
-      scroller.lock();
+      // scroller.lock();
       hide({
         done,
         to,
@@ -245,13 +245,13 @@ export class Controller {
     this.show = ({ done, from }) => {
       window.scrollTo(0, 0);
       // init so that page components get initial values correctly
-      scroller.init();
+      // scroller.init();
       show({
         from,
         done: () => {
           // resize to catch any changes made by page components
-          corescroller.resize();
-          scroller.resize();
+          // corescroller.resize();
+          // scroller.resize();
           // done();
           lazyloader.load();
           setTimeout(done, 0);

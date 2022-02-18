@@ -60,6 +60,14 @@ body {
   }
 }
 
+#grid-line {
+  height: 2px;
+  width: 100vw !important;
+  background: blue !important;
+  bottom: calc(33vh - 1px);
+  left: 0;
+}
+
 #grid.active {
   opacity: 1;
 }

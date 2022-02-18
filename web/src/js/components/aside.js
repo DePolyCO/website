@@ -1,5 +1,5 @@
 import { iris, qs } from "../hermes";
-import { scroller } from "../scroller";
+// import { scroller } from "../scroller";
 
 class AsideController {
   constructor() {
@@ -24,14 +24,24 @@ class AsideController {
   };
 
   listen = () => {
-    this.unlisten = iris.add(".aside-close", "click", this.close);
+    this.unlistenClick = iris.add(".aside-close", "click", this.close);
+    this.unlistenEsc = iris.add(document, "keydown", (e) => {
+      if (e.key === "Escape" && this.state.open) {
+        this.close();
+      }
+    });
+  };
+
+  unlisten = () => {
+    this.unlistenClick();
+    this.unlistenEsc();
   };
 
   open = (panelId) => {
     if (!this.state.open) {
       this.listen();
       this.state.open = true;
-      scroller.lock();
+      // scroller.lock();
 
       this.state.current = qs(panelId);
 
@@ -44,7 +54,7 @@ class AsideController {
     if (this.state.open) {
       this.unlisten();
       this.state.open = false;
-      scroller.unlock();
+      // scroller.unlock();
 
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");

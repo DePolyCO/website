@@ -130,8 +130,8 @@ export const Ease = {
     }
 
     const getTForX = (aX) => {
-      const intervalStart = 0.0;
-      const currentSample = 1;
+      let intervalStart = 0.0;
+      let currentSample = 1;
       const lastSample = kSplineTableSize - 1;
 
       for (

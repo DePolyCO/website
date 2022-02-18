@@ -26,7 +26,7 @@ class Footer {
         width: 0,
       },
     };
-    this.ease = Ease["bezier"](0.17, 0.67, 0.83, 0.67);
+    this.ease = Ease["io1"];
     this.lerp = new LerpController(this.state.scroll);
   }
 

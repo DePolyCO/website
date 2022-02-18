@@ -56,6 +56,7 @@ iris.add(
     window.smooth = smoothscroller;
     window.footer = footer;
     footer.init();
+    smoothscroller.resize();
 
     if (
       "serviceWorker" in navigator &&

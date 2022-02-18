@@ -11,9 +11,9 @@ import { Grid } from "./grid";
 import { asideController } from "./components/aside";
 
 // import { corescroller } from "./nscroller/core";
-import { tracker } from "./nscroller/modular";
-import { corescroller } from "./nscroller/core";
-import { smoothscroller } from "./nscroller/smooth";
+// import { tracker } from "./nscroller/modular";
+// import { corescroller } from "./nscroller/core";
+// import { smoothscroller } from "./nscroller/smooth";
 
 /**
  *
@@ -51,9 +51,9 @@ iris.add(
     //     console.log({ x, y, deltaX, deltaY, originalEvent }),
     // });
     // qsa("section").forEach((el) => tracker.add({ dom: el }));
-    window.tracker = tracker;
-    window.corescroller = corescroller;
-    window.smoothscroller = smoothscroller;
+    // window.tracker = tracker;
+    // window.corescroller = corescroller;
+    // window.smoothscroller = smoothscroller;
 
     if (
       "serviceWorker" in navigator &&

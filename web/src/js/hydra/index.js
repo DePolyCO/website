@@ -1,19 +1,19 @@
-import { qs, qsa, iris, unique, lazyloader } from "../hermes";
-// import { scroller } from "../scroller";
-// import { corescroller } from "../scroller/core";
+import { footer } from "../components/footer";
+import { qs, qsa, iris, unique, lazyloader, ro } from "../hermes";
+import { smoothscroller } from "../scroller";
 import { Store } from "../store";
 
 const PARSER = new DOMParser();
 
 /**
- * 
+ *
  * TODO:
  * =====
- * 
+ *
  *  - Use append instead of replace
- *    in order to allow parallel rendering of 
+ *    in order to allow parallel rendering of
  *    old and new screens
- * 
+ *
  */
 
 export class Hydra {
@@ -235,7 +235,7 @@ export class Hydra {
 export class Controller {
   constructor({ hide, show }) {
     this.hide = ({ done, to }) => {
-      // scroller.lock();
+      smoothscroller.lock();
       hide({
         done,
         to,
@@ -245,14 +245,13 @@ export class Controller {
     this.show = ({ done, from }) => {
       window.scrollTo(0, 0);
       // init so that page components get initial values correctly
-      // scroller.init();
+      smoothscroller.init();
+      footer.init();
       show({
         from,
         done: () => {
-          // resize to catch any changes made by page components
-          // corescroller.resize();
-          // scroller.resize();
-          // done();
+          // resize everything on ro
+          ro.update();
           lazyloader.load();
           setTimeout(done, 0);
         },

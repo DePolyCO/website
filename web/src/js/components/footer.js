@@ -8,7 +8,7 @@ import {
   Ease,
   lerp,
 } from "../hermes";
-import { corescroller, smoothscroller } from "../nscroller";
+import { corescroller, smoothscroller } from "../scroller";
 
 class Footer {
   constructor() {
@@ -16,26 +16,36 @@ class Footer {
     this.scrollWindow = qs("[data-scroll-window]", this.dom);
     this.scrollContent = qs("[data-scroll-item]", this.dom);
 
+    this.init();
+    this.common();
+  }
+
+  init = () => {
+    this.clearState();
+    this.resize();
+  };
+
+  common = () => {
+    this.ease = Ease["io1"];
+
+    ro.add({ update: this.resize });
+    corescroller.add({ update: this.onScroll });
+    ticker.add({ update: this.update });
+  };
+
+  clearState = () => {
     this.state = {
       scroll: {
         inertia: 0.075,
         target: 0,
         cur: 0.001,
       },
+      lock: false,
       page: {
         width: 0,
       },
     };
-    this.ease = Ease["io1"];
     this.lerp = new LerpController(this.state.scroll);
-  }
-
-  init = () => {
-    this.resize();
-
-    ro.add({ update: this.resize });
-    corescroller.add({ update: this.onScroll });
-    ticker.add({ update: this.update });
   };
 
   clamp = (y) => {
@@ -47,6 +57,7 @@ class Footer {
   };
 
   onScroll = ({ deltaY }) => {
+    if (smoothscroller.hasLock("aside")) return;
     this.state.scroll.cur = this.clamp(this.state.scroll.cur + deltaY);
   };
 
@@ -54,6 +65,7 @@ class Footer {
     const { scroll, page } = this.state;
     const { height } = smoothscroller.state.page;
 
+    // console.log(this.lerp.obj);
     if (!this.lerp.needsUpdate()) return;
     this.lerp.update();
 
@@ -62,8 +74,9 @@ class Footer {
     // overflow scroll active
     if (y > height) {
       // lock scroller
-      if (!smoothscroller.state.locked) {
-        smoothscroller.lock();
+      if (!this.state.lock) {
+        this.state.lock = true;
+        smoothscroller.lock("footer");
       }
 
       // calculate eased lerp
@@ -71,9 +84,10 @@ class Footer {
 
       // apply transform
       this.scrollContent.style.transform = `translate3d(${lerpY}px, 0, 0)`;
-    } else if (smoothscroller.state.locked) {
+    } else if (this.state.lock) {
       // unlock if not necessary
-      smoothscroller.unlock();
+      this.state.lock = false;
+      smoothscroller.unlock("footer");
     }
   };
 

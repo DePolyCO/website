@@ -1,373 +1,181 @@
 import {
-  bindAll,
-  Conductor,
+  ro,
+  LerpController,
+  ticker,
   qs,
   qsa,
-  iris,
-  clamp,
-  LerpController,
   Sniff,
-  round,
-  ro,
+  clamp,
   bounds,
-  Tween,
-  map,
+  Conductor,
 } from "../hermes";
 import { corescroller } from "./core";
+import { tracker } from "./tracker";
 
-const DELTA = 0.002;
+const DELTA = 0.001002;
 
-class Smooth extends Conductor {
-  constructor(settings) {
+export class Smooth extends Conductor {
+  constructor() {
     super();
-
-    this.settings = settings;
-
-    // Stub these to avoid init
-    // init should be called on page transition
-    this.clearState();
-    this.scrollSections = [];
-    this.scrollCover = qs("#scroll-cover");
-    this.lerp = { needsUpdate: () => {} };
-
+    this.settings = {
+      delta: Sniff.touchDevice ? 0.125 : 0.075,
+    };
+    this.common();
+    this.init();
+    this.resize();
     this.style();
-    this.listen();
+  }
 
-    bindAll(this, ["update", "resize"]);
-    corescroller.add({ update: this.update });
+  common() {
+    this.scrollContent = document.documentElement;
+    this.scrollCover = qs("#scroll-cover");
+
+    corescroller.add({ update: this.setScroll });
+    ticker.add({ update: this.update });
     ro.add({ update: this.resize });
   }
 
-  clearState() {
-    this.state = {
-      scroll: {
-        inertia: this.settings.inertia,
-        target: DELTA, // small offset to force update on init
-        cur: 0,
-      },
-      drag: {
-        isDragging: false,
-        snap: {
-          x: 0,
-          y: 0,
-        },
-        cur: {
-          x: 0,
-          y: 0,
-        },
-        last: {
-          x: 0,
-          y: 0,
-        },
-        inertia: 0.01,
-        speed: this.settings.dragSpeed,
-      },
-      locked: false,
-    };
-  }
+  init() {
+    this.clearState();
 
-  init({ linearGuarantee = true } = {}) {
-    this.scrollContent = corescroller.scrollContent;
     this.scrollSections = qsa(`[data-scroll-section]`, this.scrollContent);
     this.scrollSections =
       this.scrollSections.length === 0
         ? [this.scrollContent]
         : this.scrollSections;
 
-    this.clearState();
-
-    // if all sections in a page are linearly organised
-    // then we don't need to check every element to render
-    // as soon as the first element fails
-    // we are guaranteed that all elements
-    // after that will fail too
-
-    // TODO: Handle with scroll direction
-    this.linearGuarantee = linearGuarantee;
-
-    corescroller.unlock();
-    corescroller.setScroll({ x: 0, y: 0 });
-    corescroller.resize();
-
-    this.lerp = new LerpController(this.state.scroll);
-
-    this.anchors();
-
-    // prevent image drag for bad browsers
-    if (Sniff.firefox || Sniff.safari) {
-      this.badBrowsers && this.badBrowsers.forEach((i) => i());
-      this.badBrowsers = [];
-      qsa("a").forEach((el) => {
-        if (qs("img", el)) {
-          const u = iris.add(
-            el,
-            "dragstart",
-            (e) => {
-              e.preventDefault();
-            },
-            { passive: false }
-          );
-          this.badBrowsers.push(u);
-        }
-      });
-    }
-    this.resize();
+    this.scrollSections.forEach((el) => tracker.add({ dom: el }));
   }
+
+  clearState = () => {
+    this.state = {
+      scroll: {
+        x: { inertia: this.settings.delta, target: DELTA, cur: 0 },
+        y: { inertia: this.settings.delta, target: DELTA, cur: 0 },
+      },
+      page: {
+        height: 0,
+        width: 0,
+      },
+      locks: [],
+    };
+    this.lerp = {
+      x: new LerpController(this.state.scroll.x),
+      y: new LerpController(this.state.scroll.y),
+    };
+  };
 
   style() {
     if (Sniff.touchDevice) return;
     document.body.style.overscrollBehavior = `none`;
-    corescroller.scrollContent.style.position = `fixed`;
-    if (Sniff.firefox) {
-      iris.add(
-        "img",
-        "dragstart",
-        (e) => {
-          e.preventDefault();
-        },
-        { passive: false }
-      );
-    }
+    document.documentElement.style.position = `fixed`;
   }
 
-  clamp(y) {
-    return clamp(y, 0, this.scrollHeight);
-  }
+  clampY = (y) => {
+    return clamp(y, -this.state.page.height, 0);
+  };
 
-  getXY(e) {
-    const x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-    const y = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+  clampX = (x) => {
+    return clamp(x, 0, this.state.page.width);
+  };
 
-    return { x, y };
-  }
+  listen = () => {};
 
-  listen() {
-    if (Sniff.touchDevice) return;
+  setScroll = ({ deltaX, deltaY }) => {
+    if (this.isLocked) return;
 
-    const state = this.state.drag;
+    const { x, y } = this.state.scroll;
+    x.cur = this.clampX(x.cur + deltaX);
+    y.cur = this.clampY(y.cur + deltaY);
+  };
 
-    iris.add(window, `pointerdown`, (e) => {
-      if (this.state.locked) return;
-      state.isDragging = true;
-      state.snap = this.getXY(e);
-      //   copy to take a snapshot
-      state.last = { ...corescroller.state };
-    });
+  update = () => {
+    const { scroll } = this.state;
+    const { x, y } = scroll;
 
-    iris.add(window, `pointermove`, (e) => {
-      if (!state.isDragging || this.state.locked) return;
-      state.cur = this.getXY(e);
+    if (!this.lerp.x.needsUpdate() && !this.lerp.y.needsUpdate()) return;
 
-      const diffY = (state.cur.y - state.snap.y) * state.speed;
-      if (Math.abs(diffY) < 15) return;
+    this.lerp.x.update();
+    this.lerp.y.update();
 
-      corescroller.setScroll({ y: state.last.y - diffY });
-    });
+    tracker.setScroll(x.target, -y.target);
 
-    iris.add(window, `pointerup`, (e) => {
-      if (!state.isDragging) return;
-      state.isDragging = false;
-    });
-  }
+    this.sail();
+    this.render();
 
-  anchors() {
-    this.unlistenAnchors && this.unlistenAnchors();
-
-    this.unlistenAnchors = iris.add(`[data-scroll-to]`, `click`, (e) => {
-      const anchor = e.target.closest("[data-scroll-to]");
-      this.scrollByAnchor(anchor);
-    });
-  }
-
-  resize() {
-    if (Sniff.touchDevice) return;
-
-    this.cache = [];
-    for (const section of this.scrollSections) {
-      // reset transforms to get correct bounds
-      section.style.transform = `none`;
-    }
-    for (const section of this.scrollSections) {
-      const b = bounds(section);
-
-      const bottom = b.bottom;
-      const top = b.top - corescroller.vh;
-
-      const { progress, visible } = this.getIntersection({ top, bottom });
-
-      const dataset = section.dataset;
-      const speed =
-        dataset.scrollSpeed !== undefined ? parseFloat(dataset.scrollSpeed) : 1;
-      const track = dataset.scrollTrack;
-      const hide = dataset.hide !== undefined;
-
-      this.cache.push({
-        dom: section,
-        top,
-        bottom,
-        visible,
-        progress,
-        speed,
-        track,
-        hide,
-        freeze: false,
-      });
-    }
-
-    this.state.scroll.target += DELTA;
-    this.update();
-  }
-
-  scrollByAnchor(anchor, snap = false) {
-    if (!anchor) return;
-    const t = anchor.dataset.scrollTo;
-    const o = parseFloat(anchor.dataset.scrollOffset) || 0;
-    const tel = qs(t);
-
-    // element not it dom,
-    // handled by router, possibly
-    if (!tel) return;
-    const ny = tel.offsetTop;
-    const y = this.state.scroll.target;
-
-    const delta = Math.abs(y - ny);
-
-    // map the scroll delta to the scrollheight easing levels
-    const m = map(delta, 0, corescroller.scrollHeight, 2, 6);
-    const easing = `io${clamp(Math.round(m), 2, 6)}`;
-
-    this.scrollToTween?.destroy();
-
-    if (!snap) {
-      this.scrollToTween = Tween({
-        val: [y, ny + o],
-        duration: m * 100,
-        easing,
-        update: ({ cur }) => {
-          this.scrollTo({ y: cur });
-        },
-      });
-    } else {
-      this.snapTo({ y: ny + o });
-    }
-  }
-
-  scrollTo({ x, y }) {
-    if (Sniff.touchDevice) {
-      window.scrollTo({
-        left: x,
-        top: y,
-        behavior: "smooth",
-      });
-    } else {
-      corescroller.setScroll({ x, y });
-    }
-  }
-
-  snapTo({ x, y }) {
-    if (Sniff.touchDevice) {
-      window.scrollTo({
-        left: x,
-        top: y,
-        behavior: "auto",
-      });
-    } else {
-      corescroller.setScroll({ x, y });
-      this.state.scroll.cur = y;
-      this.state.scroll.target = y + DELTA; // small offset to bypass lerp threshold
-    }
-  }
-
-  getIntersection({ top, bottom, y = this.state.scroll.target }) {
-    const state = {
-      progress: 0,
-      visible: false,
-    };
-    if (y > top && y < bottom) {
-      state.visible = true;
-      state.progress = (y - top) / (bottom - top + corescroller.vh);
-    }
-
-    return state;
-  }
-
-  update(o = corescroller.state) {
-    if (this.state.locked || Sniff.touchDevice) {
-      return;
-    }
-    //   perform lerp
-    const state = this.state;
-    state.scroll.cur = o.y;
-
-    // control pointer events when scrolling
-    this.scrollCover.style.pointerEvents = this.lerp.delta > 1 ? "all" : "none";
-
-    if (!this.lerp.needsUpdate()) return;
-
-    this.lerp.update();
-
-    for (const item of this.cache) {
-      const y = round(state.scroll.target) * item.speed;
-      const i = this.getIntersection({
-        top: item.top,
-        bottom: item.bottom,
-        y,
-      });
-      item.visible = i.visible;
-      item.progress = i.progress;
-      this.render(item, y);
-    }
-
+    const data = { x: x.target, y: y.target };
     for (const fn of this.train) {
-      fn.update(state, this.cache);
+      fn.update(data);
     }
-  }
+  };
 
-  render(item, y) {
-    const s = item.dom.style;
+  sail = () => {
+    this.scrollCover.style.pointerEvents =
+      this.lerp.y.delta + this.lerp.x.delta > 10 ? "all" : "none";
+  };
 
-    if (item.visible) {
-      item.freeze = false;
-      Object.assign(s, {
-        transform: `translate3d(0, ${-y}px, 0)`,
-        pointerEvents: `all`,
-        opacity: 1,
-      });
-    } else {
-      // if (el.id === "case-reel--wrapper") {
-      //   console.log(hide, el.dataset);
-      // }
-      if (!item.hide) {
-        Object.assign(s, {
-          transform: `none`,
-          pointerEvents: `none`,
-          opacity: 0,
-        });
-      } else if (!item.freeze) {
-        item.freeze = true;
-        Object.assign(s, {
-          transform: `translateY(${-y}px)`,
-          pointerEvents: `none`,
-          opacity: 0,
-        });
+  render = () => {
+    tracker.detectElements();
+
+    const { scroll } = this.state;
+    const { x, y } = scroll;
+
+    tracker.train.forEach((item, i) => {
+      if (item.visible) {
+        this.setVisible(item, i, x, y);
+      } else {
+        this.setInvisible(item, i, x, y);
       }
+    });
+  };
+
+  setVisible = (item, i, x, y) => {
+    Object.assign(item.dom.style, {
+      transform: `translate3d(0, ${y.target}px, 0)`,
+      pointerEvents: `all`,
+      opacity: 1,
+    });
+  };
+
+  setInvisible = (item, i, x, y) => {
+    Object.assign(item.dom.style, {
+      transform: `none`,
+      pointerEvents: `none`,
+      opacity: 0,
+    });
+  };
+
+  resize = ({ vw, vh } = { vw: window.innerWidth, vh: window.innerHeight }) => {
+    const { height, width } = bounds(this.scrollContent);
+    const { page } = this.state;
+    page.height = Math.max(height, vh) - vh;
+    page.width = Math.max(width, vw) - vw;
+
+    tracker.train.forEach((item) => (item.dom.style.transform = "none"));
+    this.setScroll({ deltaX: DELTA, deltaY: DELTA });
+    tracker.resize();
+
+    this.render();
+  };
+
+  lock = (name = "default") => {
+    this.state.locks.push(name);
+  };
+
+  unlock = (name = "default") => {
+    const idx = this.state.locks.indexOf(name);
+    if (idx > -1) {
+      this.state.locks.splice(idx, 1);
     }
+  };
+
+  hasLock(name = "default") {
+    return this.state.locks.includes(name);
   }
 
-  lock() {
-    this.state.locked = true;
-    corescroller.lock();
-  }
-
-  unlock() {
-    this.state.locked = false;
-    corescroller.unlock();
+  get isLocked() {
+    return this.state.locks.length > 0;
   }
 }
 
-export const smooth = new Smooth({
-  inertia: Sniff.touchDevice ? 0.125 : 0.075,
-  dragSpeed: 3,
-});
-
-// window.smooth = smooth;
+export const smoothscroller = new Smooth();

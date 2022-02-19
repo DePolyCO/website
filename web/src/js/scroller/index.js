@@ -1,3 +1,3 @@
-import { smooth } from "./smooth";
-
-export const scroller = smooth;
+export { smoothscroller } from "./smooth";
+export { CoreScroll, corescroller } from "./core";
+export { Tracker, tracker } from "./tracker";

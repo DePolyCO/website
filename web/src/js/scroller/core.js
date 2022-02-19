@@ -1,112 +1,263 @@
-import {
-  Sniff,
-  bindAll,
-  iris,
-  ticker,
-  ro,
-  Conductor,
-  bounds,
-  clamp,
-  qs,
-} from "../hermes";
+import { Conductor, Sniff } from "../hermes";
 
-class Scroller extends Conductor {
-  constructor() {
+const keyCodes = {
+  LEFT: 37,
+  UP: 38,
+  RIGHT: 39,
+  DOWN: 40,
+  SPACE: 32,
+  PAGEUP: 33,
+  PAGEDOWN: 34,
+};
+
+const getSupport = () => {
+  return {
+    hasWheelEvent: "onwheel" in document,
+    hasMouseWheelEvent: "onmousewheel" in document,
+    hasTouch: "ontouchstart" in document,
+    hasTouchWin: navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1,
+    hasPointer: !!window.navigator.msPointerEnabled,
+    hasKeyDown: "onkeydown" in document,
+  };
+};
+
+const support = getSupport();
+
+export class CoreScroll extends Conductor {
+  // {
+  //   el
+  //   emitter
+  //   event
+  //   touchStart
+  //   bodyTouchAction
+  // }
+
+  constructor(options) {
     super();
 
-    this.scrollContent = qs(`[data-scroll-content]`);
-    this.state = this.getScroll();
-    this.vw = window.innerWidth;
-    this.vh = window.innerHeight;
+    this.dom = window;
 
-    bindAll(this, ["update", "resize", "lock", "unlock"]);
-
-    this.resize();
-    this.listen();
-
-    this.locked = false;
-
-    ticker.add({ update: this.update });
-    ro.add({ update: this.resize });
-  }
-
-  getScroll() {
-    return { x: window.pageXOffset, y: window.pageYOffset };
-  }
-
-  setScroll({ x = this.state.x, y = this.state.y } = {}) {
-    if (this.locked) return;
-    this.state.y = clamp(y, 0, this.scrollHeight);
-    this.state.x = 0;
-  }
-
-  listen() {
-    this.wheel();
-    this.key();
-  }
-
-  lock() {
-    this.locked = true;
-  }
-
-  unlock() {
-    this.locked = false;
-  }
-
-  wheel() {
-    iris.add(window, "wheel", (e) => {
-      let x = e.deltaX;
-      let y = e.deltaY;
-      if (Sniff.firefox && e.deltaMode === 1) {
-        x *= 60;
-        y *= 60;
-      }
-      this.setScroll({ x: this.state.x + x, y: this.state.y + y });
-    });
-  }
-
-  key() {
-    iris.add(document, "keydown", (e) => {
-      switch (e.key) {
-        case "ArrowDown":
-          this.setScroll({ y: this.state.y + 100 });
-          break;
-
-        case "ArrowUp":
-          this.setScroll({ y: this.state.y - 100 });
-          break;
-
-        case "PageDown":
-          this.setScroll({ y: this.state.y + this.vh });
-          break;
-
-        case "PageUp":
-          this.setScroll({ y: this.state.y - this.vh });
-          break;
-
-        case " ":
-          if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA")
-            return;
-          this.setScroll({
-            y: this.state.y + (this.vh - 40) * (e.shiftKey ? -1 : 1),
-          });
-      }
-    });
-  }
-
-  resize({ vw, vh } = { vw: window.innerWidth, vh: window.innerHeight }) {
-    this.vh = vh;
-    this.vw = vw;
-    this.scrollHeight = Math.max(bounds(this.scrollContent).height, vh) - vh;
-    this.setScroll();
-  }
-
-  update() {
-    for (let i = 0, n = this.train.length; i < n; i++) {
-      this.train[i].update(this.state);
+    if (options && options.dom) {
+      this.dom = options.dom;
     }
+
+    this.options = {
+      mouseMultiplier: 1,
+      touchMultiplier: 2,
+      firefoxMultiplier: 15,
+      keyStep: 120,
+      preventTouch: false,
+      unpreventTouchClass: "vs-touchmove-allowed",
+      useKeyboard: true,
+      useTouch: true,
+      ...options,
+    };
+
+    this.current = {
+      x: 0,
+      y: 0,
+      deltaX: 0,
+      deltaY: 0,
+    };
+
+    this.touchStart = {
+      x: null,
+      y: null,
+    };
+
+    this.bodyTouchAction = null;
+
+    this._listen();
+  }
+
+  notify(e) {
+    const evt = this.current;
+    evt.x += evt.deltaX;
+    evt.y += evt.deltaY;
+
+    const data = {
+      x: evt.x,
+      y: evt.y,
+      deltaX: evt.deltaX,
+      deltaY: evt.deltaY,
+      originalEvent: e,
+    };
+
+    this.train.forEach((item) => {
+      item.update && item.update(data);
+    });
+  }
+
+  _onWheel = (e) => {
+    const options = this.options;
+    const evt = this.current;
+
+    // In Chrome and in Firefox (at least the new one)
+    evt.deltaX = e.wheelDeltaX || e.deltaX * -1;
+    evt.deltaY = e.wheelDeltaY || e.deltaY * -1;
+
+    // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
+    // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Delta_modes
+    if (Sniff.firefox && e.deltaMode === 1) {
+      evt.deltaX *= options.firefoxMultiplier;
+      evt.deltaY *= options.firefoxMultiplier;
+    }
+
+    evt.deltaX *= options.mouseMultiplier;
+    evt.deltaY *= options.mouseMultiplier;
+
+    this.notify(e);
+  };
+
+  _onMouseWheel = (e) => {
+    const evt = this.current;
+
+    // In Safari, IE and in Chrome if 'wheel' isn't defined
+    evt.deltaX = e.wheelDeltaX ? e.wheelDeltaX : 0;
+    evt.deltaY = e.wheelDeltaY ? e.wheelDeltaY : e.wheelDelta;
+
+    this.notify(e);
+  };
+
+  _onTouchStart = (e) => {
+    const t = e.targetTouches ? e.targetTouches[0] : e;
+    this.touchStart.x = t.pageX;
+    this.touchStart.y = t.pageY;
+  };
+
+  _onTouchMove = (e) => {
+    const options = this.options;
+    if (
+      options.preventTouch &&
+      !e.target.classList.contains(options.unpreventTouchClass)
+    ) {
+      e.preventDefault();
+    }
+
+    const evt = this.current;
+
+    const t = e.targetTouches ? e.targetTouches[0] : e;
+
+    evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
+    evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
+
+    this.touchStart.x = t.pageX;
+    this.touchStart.y = t.pageY;
+
+    this.notify(e);
+  };
+
+  _onKeyDown = (e) => {
+    const evt = this.current;
+    evt.deltaX = evt.deltaY = 0;
+    let windowHeight;
+
+    switch (e.keyCode) {
+      case keyCodes.LEFT:
+      case keyCodes.UP:
+        windowHeight = window.innerHeight - 40;
+        evt.deltaY = this.options.keyStep;
+        this.notify(e);
+        break;
+
+      case keyCodes.RIGHT:
+      case keyCodes.DOWN:
+        windowHeight = window.innerHeight - 40;
+        evt.deltaY = -this.options.keyStep;
+        this.notify(e);
+        break;
+
+      case keyCodes.SPACE:
+        if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA")
+          return;
+        windowHeight = window.innerHeight - 40;
+        evt.deltaY = windowHeight * (e.shiftKey ? 1 : -1);
+        this.notify(e);
+        break;
+
+      case keyCodes.PAGEDOWN:
+        windowHeight = window.innerHeight - 40;
+        evt.deltaY = -windowHeight;
+        this.notify(e);
+        break;
+
+      case keyCodes.PAGEUP:
+        windowHeight = window.innerHeight - 40;
+        evt.deltaY = windowHeight;
+        this.notify(e);
+        break;
+
+      default:
+        return;
+    }
+  };
+
+  _listen() {
+    if (support.hasWheelEvent) {
+      this.dom.addEventListener("wheel", this._onWheel, this.listenerOptions);
+    }
+
+    if (support.hasMouseWheelEvent) {
+      this.dom.addEventListener(
+        "mousewheel",
+        this._onMouseWheel,
+        this.listenerOptions
+      );
+    }
+
+    if (support.hasTouch && this.options.useTouch) {
+      this.dom.addEventListener(
+        "touchstart",
+        this._onTouchStart,
+        this.listenerOptions
+      );
+      this.dom.addEventListener(
+        "touchmove",
+        this._onTouchMove,
+        this.listenerOptions
+      );
+    }
+
+    if (support.hasPointer && support.hasTouchWin) {
+      this.bodyTouchAction = document.body.style.msTouchAction;
+      document.body.style.msTouchAction = "none";
+      this.dom.addEventListener("MSPointerDown", this._onTouchStart, true);
+      this.dom.addEventListener("MSPointerMove", this._onTouchMove, true);
+    }
+
+    if (support.hasKeyDown && this.options.useKeyboard) {
+      document.addEventListener("keydown", this._onKeyDown);
+    }
+  }
+
+  _unlisten() {
+    if (support.hasWheelEvent) {
+      this.dom.removeEventListener("wheel", this._onWheel);
+    }
+
+    if (support.hasMouseWheelEvent) {
+      this.dom.removeEventListener("mousewheel", this._onMouseWheel);
+    }
+
+    if (support.hasTouch) {
+      this.dom.removeEventListener("touchstart", this._onTouchStart);
+      this.dom.removeEventListener("touchmove", this._onTouchMove);
+    }
+
+    if (support.hasPointer && support.hasTouchWin) {
+      document.body.style.msTouchAction = this.bodyTouchAction;
+      this.dom.removeEventListener("MSPointerDown", this._onTouchStart, true);
+      this.dom.removeEventListener("MSPointerMove", this._onTouchMove, true);
+    }
+
+    if (support.hasKeyDown && this.options.useKeyboard) {
+      document.removeEventListener("keydown", this._onKeyDown);
+    }
+  }
+
+  destroy() {
+    this._unlisten();
   }
 }
 
-export const corescroller = new Scroller();
-// window.core = corescroller;
+export const corescroller = new CoreScroll();

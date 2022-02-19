@@ -1,7 +1,7 @@
 import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
-import { iris, qs } from "../hermes";
+import { iris, qs, qsa } from "../hermes";
 import { TextHighlight } from "../components/textHighlight";
 
 /**
@@ -10,25 +10,22 @@ import { TextHighlight } from "../components/textHighlight";
  *
  */
 
+let highlightFx;
 export const homeController = new Controller({
   hide: ({ done }) => {
+    highlightFx && highlightFx.destroy();
     sail.out(done);
   },
 
   show: ({ done }) => {
     sail.in();
 
-    const el = qs(".text-underlay");
-
-    iris.add(document, "keydown", (e) => {
-      if (e.key === "t") {
-        el.classList.toggle("text-underlay--active");
-      }
-    });
-
-    window.highlight = new TextHighlight({
-      targets: "[data-text-highlight]",
-    });
+    const highlights = qsa("[data-text-highlight");
+    if (highlights.length) {
+      highlightFx = new TextHighlight({
+        targets: highlights,
+      });
+    }
 
     done();
   },

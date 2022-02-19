@@ -1,5 +1,5 @@
 import { iris, qs } from "../hermes";
-// import { scroller } from "../scroller";
+import { smoothscroller } from "../scroller";
 
 class AsideController {
   constructor() {
@@ -41,7 +41,7 @@ class AsideController {
     if (!this.state.open) {
       this.listen();
       this.state.open = true;
-      // scroller.lock();
+      smoothscroller.lock("aside");
 
       this.state.current = qs(panelId);
 
@@ -54,7 +54,7 @@ class AsideController {
     if (this.state.open) {
       this.unlisten();
       this.state.open = false;
-      // scroller.unlock();
+      smoothscroller.unlock("aside");
 
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");

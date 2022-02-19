@@ -1,5 +1,5 @@
-import { qsa, ro } from "../hermes";
-import { Tracker, smoothscroller } from "../nscroller";
+import { qsa, ro, select } from "../hermes";
+import { Tracker, smoothscroller } from "../scroller";
 
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
@@ -13,7 +13,7 @@ export class TextHighlight {
       intersectionPoints: this.intersectionPoints,
     });
 
-    qsa(targets).forEach((el) => {
+    select(targets).forEach((el) => {
       this.build(el);
     });
 
@@ -63,10 +63,10 @@ export class TextHighlight {
 
   resize = () => {
     this.tracker.resize();
-    // requestAnimationFrame(() => {});
   };
 
   destroy = () => {
+    this.tracker.destroy();
     ro.remove(this.roID);
   };
 }

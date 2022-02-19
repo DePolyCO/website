@@ -12,7 +12,7 @@ import { asideController } from "./components/aside";
 
 // import { tracker } from "./nscroller/modular";
 // import { corescroller } from "./nscroller/core";
-import { smoothscroller } from "./nscroller/smooth";
+import { smoothscroller } from "./scroller";
 import { footer } from "./components/footer";
 
 /**
@@ -46,17 +46,11 @@ iris.add(
     });
     asideController.test();
 
-    // corescroller.add({
-    //   update: ({ x, y, deltaX, deltaY, originalEvent }) =>
-    //     console.log({ x, y, deltaX, deltaY, originalEvent }),
-    // });
-    // qsa("section").forEach((el) => tracker.add({ dom: el }));
-    // window.tracker = tracker;
     // window.corescroller = corescroller;
     window.smooth = smoothscroller;
     window.footer = footer;
     footer.init();
-    smoothscroller.resize();
+    // smoothscroller.resize();
 
     if (
       "serviceWorker" in navigator &&

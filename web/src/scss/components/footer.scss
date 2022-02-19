@@ -156,3 +156,38 @@
   min-width: fit-content;
   display: inline-block;
 }
+
+#footer-copy--logo {
+  font-weight: 500;
+  font-size: fluid(16, $lg);
+  line-height: 140%;
+}
+
+.footer-terms {
+  font-size: fluid(16, $lg);
+  line-height: 140%;
+}
+
+#footer-copy--credits {
+  font-size: fluid(15, $lg);
+  line-height: 140%;
+  letter-spacing: 0.03em;
+}
+
+#footer-copy--design {
+  color: #7a858a;
+}
+
+#footer-copy--studio {
+  font-weight: 500;
+}
+
+#footer-terms--col {
+  gap: fluid(25, $lg);
+}
+
+#footer-sep {
+  border: 1px solid #022d42;
+  width: 1px;
+  height: fluid(11, $lg);
+}

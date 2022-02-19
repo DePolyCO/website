@@ -33,20 +33,21 @@ export const homeController = new Controller({
     if (prlx.length) {
       new Parallax({
         dom: prlx[0],
-        speed: 1.1,
+        speed: 0.1,
       });
       new Parallax({
         dom: prlx[1],
-        speed: 1.2,
+        speed: 0.2,
         down: true,
       });
       new Parallax({
         dom: prlx[2],
-        speed: 1.2,
+        speed: 0.5,
       });
       new Parallax({
         dom: prlx[3],
         down: true,
+        speed: 0.75,
       });
     }
 

@@ -67,7 +67,7 @@ export class Parallax {
             scale.y.start !== scale.y.end ||
             scale.y.start !== 0 ||
             scale.y.end !== 0,
-          x:
+          y:
             scale.y.start !== scale.y.end ||
             scale.y.start !== 0 ||
             scale.y.end !== 0,

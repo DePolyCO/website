@@ -79,10 +79,8 @@ export class Smooth extends Conductor {
     return clamp(x, 0, this.state.page.width);
   };
 
-  listen = () => {};
-
-  setScroll = ({ deltaX, deltaY }) => {
-    if (this.isLocked) return;
+  setScroll = ({ deltaX, deltaY, force = false }) => {
+    if (this.isLocked && !force) return;
 
     const { x, y } = this.state.scroll;
     x.cur = this.clampX(x.cur + deltaX);
@@ -90,13 +88,15 @@ export class Smooth extends Conductor {
   };
 
   update = () => {
-    const { scroll } = this.state;
-    const { x, y } = scroll;
+    const { x, y } = this.state.scroll;
 
     if (!this.lerp.x.needsUpdate() && !this.lerp.y.needsUpdate()) return;
 
     this.lerp.x.update();
     this.lerp.y.update();
+
+    x.target = this.clampX(x.target);
+    y.target = this.clampY(y.target);
 
     tracker.setScroll(x.target, -y.target);
 
@@ -117,19 +117,19 @@ export class Smooth extends Conductor {
   render = () => {
     tracker.detectElements();
 
-    const { scroll } = this.state;
-    const { x, y } = scroll;
+    const { x, y } = this.state.scroll;
 
     tracker.train.forEach((item, i) => {
       if (item.visible) {
         this.setVisible(item, i, x, y);
-      } else {
+      } else if (item.isVisible) {
         this.setInvisible(item, i, x, y);
       }
     });
   };
 
   setVisible = (item, i, x, y) => {
+    item.isVisible = true;
     Object.assign(item.dom.style, {
       transform: `translate3d(0, ${y.target}px, 0)`,
       pointerEvents: `all`,
@@ -138,6 +138,7 @@ export class Smooth extends Conductor {
   };
 
   setInvisible = (item, i, x, y) => {
+    item.isVisible = false;
     Object.assign(item.dom.style, {
       transform: `none`,
       pointerEvents: `none`,
@@ -146,16 +147,25 @@ export class Smooth extends Conductor {
   };
 
   resize = ({ vw, vh } = { vw: window.innerWidth, vh: window.innerHeight }) => {
+    // recalculate page height
     const { height, width } = bounds(this.scrollContent);
     const { page } = this.state;
     page.height = Math.max(height, vh) - vh;
     page.width = Math.max(width, vw) - vw;
 
-    tracker.train.forEach((item) => (item.dom.style.transform = "none"));
-    this.setScroll({ deltaX: DELTA, deltaY: DELTA });
+    // undo transforms to get accurate bounds in tracker
+    // tracker.train.forEach((item) => (item.dom.style.transform = "none"));
+
+    // set cur
+    this.setScroll({ deltaX: 1, deltaY: 1, force: true });
+    // set target
+    // const { x, y } = this.state.scroll;
+    // x.target = this.clampX(x.cur + DELTA);
+    // y.target = this.clampY(y.cur + DELTA);
+
     tracker.resize();
 
-    this.render();
+    this.update();
   };
 
   lock = (name = "default") => {

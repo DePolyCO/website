@@ -1,7 +1,7 @@
 import "./polyfills";
 
 import { Hydra } from "./hydra";
-import { iris, qsa } from "./hermes";
+import { iris, qsa, ro } from "./hermes";
 import { intro } from "./intro";
 
 import { homeController } from "./controllers/home";
@@ -10,8 +10,7 @@ import { noController } from "./controllers/404";
 import { Grid } from "./grid";
 import { asideController } from "./components/aside";
 
-// import { tracker } from "./nscroller/modular";
-// import { corescroller } from "./nscroller/core";
+// import { corescroller } from "./scroller";
 import { smoothscroller } from "./scroller";
 import { footer } from "./components/footer";
 
@@ -44,13 +43,17 @@ iris.add(
     new Grid({
       cols: 4,
     });
-    asideController.test();
 
     // window.corescroller = corescroller;
     window.smooth = smoothscroller;
     window.footer = footer;
+    window.aside = asideController;
+
+    asideController.test();
     footer.init();
     // smoothscroller.resize();
+
+    ro.update();
 
     if (
       "serviceWorker" in navigator &&

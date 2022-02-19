@@ -1,4 +1,4 @@
-import { Conductor, ro } from "../hermes";
+import { Conductor, ro, getOffsetTop } from "../hermes";
 
 /**
  *
@@ -8,19 +8,10 @@ import { Conductor, ro } from "../hermes";
  *
  */
 
-const getOffsetTop = (el) => {
-  let top = 0;
-  let clone = el;
-  while (clone.offsetParent) {
-    top += clone.offsetTop;
-    clone = clone.offsetParent;
-  }
-  return top;
-};
-
 export class Tracker extends Conductor {
   constructor({
     useDetectionPlane = true,
+    useIntersection = false,
     needsResize = false,
     intersectionPoints = {},
   } = {}) {
@@ -30,6 +21,7 @@ export class Tracker extends Conductor {
     this.windowWidth = window.innerWidth;
 
     this.useDetectionPlane = useDetectionPlane;
+    this.useIntersection = useIntersection;
     this.intersectionPoints = {
       top: 0,
       bottom: 0,
@@ -114,6 +106,12 @@ export class Tracker extends Conductor {
 
   setVisible(el, i) {
     el.visible = true;
+    if (this.useIntersection) {
+      el.intersection = this.getIntersection({
+        top: el.top,
+        bottom: el.bottom,
+      });
+    }
   }
 
   setInvisible(el, i) {
@@ -123,21 +121,12 @@ export class Tracker extends Conductor {
   getIntersection({
     top,
     bottom,
-    left,
-    right,
-    x = this.scroll.x,
+    // left,
+    // right,
+    // x = this.scroll.x,
     y = this.scroll.y,
   }) {
-    const state = {
-      progress: 0,
-      visible: false,
-    };
-    if (y > top && y < bottom) {
-      state.visible = true;
-      state.progress = (y - top) / (bottom - top + this.windowHeight);
-    }
-
-    return state;
+    return (y - top) / (bottom - top + this.windowHeight);
   }
 
   add(item) {

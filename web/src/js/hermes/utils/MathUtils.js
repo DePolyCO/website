@@ -8,7 +8,7 @@ export const clamp = (val, min, max) => Math.min(Math.max(min, val), max);
 
 export const round = (val, p = 1e3) => Math.round(val * p) / p;
 
-export const invlerp = (a, b, n) => clamp(0, (n - a) / (b - a), 1);
+export const invlerp = (a, b, n) => clamp((n - a) / (b - a), 0, 1);
 
 // frame delta aware verion of lerp
 // lambda = Math.log(1 - r/15) ~approx

@@ -65,7 +65,6 @@ class Footer {
     const { scroll, page } = this.state;
     const { height } = smoothscroller.state.page;
 
-    // console.log(this.lerp.obj);
     if (!this.lerp.needsUpdate()) return;
     this.lerp.update();
 

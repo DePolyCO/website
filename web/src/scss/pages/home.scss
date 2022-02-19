@@ -149,10 +149,64 @@
     letter-spacing: -0.02em;
     margin-bottom: fluid(90, $lg);
   }
+
+  .prlx-item {
+    width: fluid(300, $lg);
+    height: fluid(300, $lg);
+    border-radius: 50%;
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-size: fluid(300, $lg) fluid(300, $lg);
+    clip-path: url("#cutout");
+  }
+
+  #prlx-item {
+    &--one {
+      top: fluid(133, $lg);
+      right: fluid(88, $lg);
+      background-image: url("/static/home/prlx/1.jpg");
+    }
+
+    &--two {
+      top: fluid(406, $lg);
+      left: fluid(544, $lg);
+      background-image: url("/static/home/prlx/2.jpg");
+    }
+
+    &--three {
+      top: fluid(1109, $lg);
+      left: fluid(234, $lg);
+      background-image: url("/static/home/prlx/3.jpg");
+    }
+
+    &--four {
+      top: fluid(1646, $lg);
+      left: fluid(984, $lg);
+      background-image: url("/static/home/prlx/4.jpg");
+    }
+  }
 }
 
+// common
+
 .underline {
-  text-decoration: underline $green;
+  // text-decoration: underline $green;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: fluid(25, $lg);
+    width: 100%;
+    height: fluid(15, $lg);
+    background: $green;
+    z-index: -1;
+  }
 }
 
 .big-title {
@@ -167,30 +221,30 @@
   border-bottom: 1px solid $darkblue;
 }
 
-// .text-underlay {
-//   position: relative;
-//   z-index: 0;
+.text-underlay {
+  position: relative;
+  z-index: 0;
 
-//   // outline: solid 1px black;
+  // outline: solid 1px black;
 
-//   &::after {
-//     content: attr(data-content);
-//     position: absolute;
-//     inset: 0;
-//     bottom: 10%;
-//     font: inherit;
-//     color: $darkblue;
-//     z-index: 1;
-//     clip-path: inset(0 0 100% 0);
-//     transition: clip-path 1s $ease-out-expo;
-//   }
-// }
+  &::after {
+    content: attr(data-content);
+    position: absolute;
+    inset: 0;
+    bottom: 10%;
+    font: inherit;
+    color: $darkblue;
+    z-index: 1;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1s $ease-out-expo;
+  }
+}
 
 .text-underlay--active,
 .text-underlay--always {
-  color: $darkblue;
+  // color: $darkblue;
 
-  // &::after {
-  //   clip-path: inset(0 0 0 0);
-  // }
+  &::after {
+    clip-path: inset(0 0 0 0);
+  }
 }

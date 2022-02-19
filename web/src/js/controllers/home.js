@@ -3,6 +3,7 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { iris, qs, qsa } from "../hermes";
 import { TextHighlight } from "../components/textHighlight";
+import { Parallax } from "../scroller";
 
 /**
  *
@@ -21,9 +22,31 @@ export const homeController = new Controller({
     sail.in();
 
     const highlights = qsa("[data-text-highlight");
+
     if (highlights.length) {
       highlightFx = new TextHighlight({
         targets: highlights,
+      });
+    }
+
+    const prlx = qsa("[data-parallax]");
+    if (prlx.length) {
+      new Parallax({
+        dom: prlx[0],
+        speed: 1.1,
+      });
+      new Parallax({
+        dom: prlx[1],
+        speed: 1.2,
+        down: true,
+      });
+      new Parallax({
+        dom: prlx[2],
+        speed: 1.2,
+      });
+      new Parallax({
+        dom: prlx[3],
+        down: true,
       });
     }
 

@@ -20,6 +20,7 @@ export {
   qsa,
   bounds,
   select,
+  getOffsetTop,
   isUndefined,
   isArray,
   unique,

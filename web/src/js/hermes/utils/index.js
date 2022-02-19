@@ -1,4 +1,4 @@
-export { qs, qsa, bounds, select } from "./Dom";
+export { qs, qsa, bounds, select, getOffsetTop } from "./Dom";
 export { isUndefined, isArray, unique } from "./Check";
 export { lerp, slerp, round, clamp, invlerp, map, damp } from "./MathUtils";
 export { bindAll } from "./BindAll";

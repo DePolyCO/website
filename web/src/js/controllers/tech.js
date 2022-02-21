@@ -2,6 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
+import { Compare } from "../components/compare";
 
 import { qsa } from "../hermes";
 
@@ -27,6 +28,7 @@ export const techController = new Controller({
       targets: highlights,
     });
 
+    qsa("[data-compare-slider").forEach((item) => new Compare({ dom: item }));
     done();
   },
 });

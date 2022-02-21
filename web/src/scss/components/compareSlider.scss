@@ -1,0 +1,47 @@
+.compare-slider {
+  width: fluid(1249, $lg);
+  height: fluid(681, $lg);
+}
+
+.compare-slide--before {
+  background-color: $darkblue;
+}
+
+.compare-slide--after {
+  background-color: $darkgray;
+  will-change: clip-path;
+}
+
+.compare-slider--line {
+  height: 100%;
+  width: 1px;
+  left: 0;
+  background-color: $lightbeige
+}
+
+.compare-slider--handle {
+  width: fluid(264, $lg);
+  height: fluid(36, $lg);
+  top: 0;
+  left: 0;
+  //   left: fluid(-264 * 0.5, $lg);
+
+  background: $green;
+  border-radius: fluid(10, $lg);
+  cursor: grab;
+
+  font-weight: bold;
+  font-size: fluid(12, $lg);
+  line-height: 90%;
+
+  padding: 0 fluid(16, $lg);
+
+  &.active {
+    cursor: grabbing;
+  }
+}
+
+.compare-arr {
+  width: 13px;
+  height: 8px;
+}

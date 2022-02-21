@@ -42,10 +42,21 @@
                 <div class="df footer-cta--input">
                     <input required placeholder="First Name" type="text">
                     <input required placeholder="Email Address" type="email">
-                    <button class="footer-cta--btn df aic jcc" type="submit">Subscribe</button>
+                    <button id="footer-cta--btn" class="cta-btn df aic jcc" type="submit">
+                        <div class="pr oh btn-wrapper">
+                            <div class="btn-inner" data-content="Subscribe">Subscribe</div>
+                        </div>
+                    </button>
                 </div>
                 <div class="df aic">
-                    <input type="checkbox" class="cp" id="footer-cta--check" name="footer-cta--check">
+                    <div id="footer-check--wrapper" class="pr df aic">
+                        <input type="checkbox" class="cp" id="footer-cta--check" name="footer-cta--check">
+                        <div id="footer-check--tick" class="pa">
+                            <svg fill="none" viewBox="0 0 14 10">
+                                <path d="M1 5.132 4.911 9 13 1" stroke="#022D42" stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                    </div>
                     <label for="footer-cta--check" class="footer-cta--check cp">
                 By subscribing you accept our <a href="" target="_blank" rel="noreferrer noopener" class="link link-dark">Privacy Policy</a> &  <a href="" target="_blank" rel="noreferrer noopener" class="link link-dark">Terms of Service</a>
                     </label>
@@ -54,7 +65,7 @@
         </div>
     </div>
     <div class="footer-row restrict df">
-        <div class="footer-col">
+        <div class="footer-col" data-footer-hover="contact@depoly.ch">
             <div class="footer-col--title">
                 <div class="pr fit tag-wrapper">
                     <div class="ttu">Email</div>
@@ -65,7 +76,7 @@
                 <div class="link link-dark link-solid">contact@depoly.ch</div>
             </div>
         </div>
-        <div class="footer-col">
+        <div class="footer-col" data-footer-hover="+41 76 814 38 36">
             <div class="footer-col--title">
                 <div class="pr fit tag-wrapper">
                     <div class="ttu">Phone</div>
@@ -76,7 +87,7 @@
                 <div class="link link-dark link-solid">+41 76 814 38 36</div>
             </div>
         </div>
-        <div class="footer-col--xl">
+        <div class="footer-col--xl" data-footer-hover="Rue de l'Industrie 17 1950 Sion, Valais Switzerland">
             <div class="footer-col--title">
                 <div class="pr fit tag-wrapper">
                     <div class="ttu">Location</div>

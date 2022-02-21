@@ -1,10 +1,12 @@
 import "./polyfills";
 
 import { Hydra } from "./hydra";
-import { iris, qsa, ro } from "./hermes";
+import { iris, ro } from "./hermes";
 import { intro } from "./intro";
 
 import { homeController } from "./controllers/home";
+import { aboutController } from "./controllers/about";
+import { techController } from "./controllers/tech";
 import { noController } from "./controllers/404";
 
 import { Grid } from "./grid";
@@ -29,6 +31,8 @@ new Hydra({
   },
   controllers: {
     home: homeController,
+    about: aboutController,
+    tech: techController,
     404: noController,
   },
 });
@@ -46,8 +50,8 @@ iris.add(
 
     // window.corescroller = corescroller;
     window.smooth = smoothscroller;
-    window.footer = footer;
-    window.aside = asideController;
+    // window.footer = footer;
+    // window.aside = asideController;
 
     asideController.test();
     footer.init();

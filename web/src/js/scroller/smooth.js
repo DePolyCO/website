@@ -183,6 +183,16 @@ export class Smooth extends Conductor {
     return this.state.locks.includes(name);
   }
 
+  hasOtherLock(name = "default") {
+    for (let i = 0, n = this.state.locks.length; i < n; i++) {
+      const lock = this.state.locks[i];
+      if (lock !== name) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   get isLocked() {
     return this.state.locks.length > 0;
   }

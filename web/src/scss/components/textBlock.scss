@@ -23,6 +23,7 @@
   letter-spacing: 0.04em;
   position: relative;
   padding-left: fluid(33, $lg);
+  white-space: nowrap;
 
   &::before {
     content: "";

@@ -49,7 +49,7 @@ export class Parallax {
     this.state = {
       scroll: 0,
       bounds: {},
-      boundRange: [],
+      boundRange: new Float32Array(2),
       needs: {
         rotate: {
           x:
@@ -126,7 +126,6 @@ export class Parallax {
     const top = getOffsetTop(this.dom);
     const bottom = top + bounds(this.dom).height;
 
-    const { options } = this.state;
     this.state.boundRange[0] =
       top - this.options.range - window.innerHeight + this.options.offset.start;
     this.state.boundRange[1] =

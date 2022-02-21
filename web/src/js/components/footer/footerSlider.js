@@ -7,12 +7,12 @@ import {
   ro,
   Ease,
   lerp,
-} from "../hermes";
-import { corescroller, smoothscroller } from "../scroller";
+} from "../../hermes";
+import { corescroller, smoothscroller } from "../../scroller";
 
-class Footer {
-  constructor() {
-    this.dom = qs("#footer");
+export class FooterSlider {
+  constructor({ dom }) {
+    this.dom = dom;
     this.scrollWindow = qs("[data-scroll-window]", this.dom);
     this.scrollContent = qs("[data-scroll-item]", this.dom);
 
@@ -57,7 +57,7 @@ class Footer {
   };
 
   onScroll = ({ deltaY }) => {
-    if (smoothscroller.hasLock("aside")) return;
+    if (smoothscroller.hasOtherLock("footer")) return;
     this.state.scroll.cur = this.clamp(this.state.scroll.cur + deltaY);
   };
 
@@ -97,4 +97,3 @@ class Footer {
   };
 }
 
-export const footer = new Footer();

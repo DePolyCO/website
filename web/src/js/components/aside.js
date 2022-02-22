@@ -1,9 +1,15 @@
 import { iris, qs } from "../hermes";
-import { smoothscroller } from "../scroller";
+import { Smooth, smoothscroller } from "../scroller";
 
 class AsideController {
   constructor() {
     this.dom = qs("#aside");
+    // const scrollContent =
+    this.scroller = new Smooth({
+      dom: qs(".aside-panel", this.dom),
+      isWindow: false,
+      window: qs("#aside-inner", this.dom),
+    });
 
     this.state = {
       open: false,
@@ -17,7 +23,7 @@ class AsideController {
         if (this.state.open) {
           this.close();
         } else {
-          this.open("#test-panel");
+          this.open("#bio-panel");
         }
       }
     });
@@ -41,6 +47,9 @@ class AsideController {
     if (!this.state.open) {
       this.listen();
       this.state.open = true;
+
+      this.scroller.init();
+      this.scroller.resize();
       smoothscroller.lock("aside");
 
       this.state.current = qs(panelId);

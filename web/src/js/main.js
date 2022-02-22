@@ -15,6 +15,7 @@ import { asideController } from "./components/aside";
 // import { corescroller } from "./scroller";
 import { smoothscroller } from "./scroller";
 import { footer } from "./components/footer";
+import { nav } from "./components/nav";
 
 /**
  *
@@ -55,6 +56,8 @@ iris.add(
 
     asideController.test();
     footer.init();
+    nav.init();
+    window.nav = nav;
     // smoothscroller.resize();
 
     ro.update();

@@ -10,16 +10,26 @@ import {
   Conductor,
 } from "../hermes";
 import { corescroller } from "./core";
-import { tracker } from "./tracker";
+import { Tracker } from "./tracker";
 
 const DELTA = 0.001002;
 
 export class Smooth extends Conductor {
-  constructor() {
+  constructor({
+    inertia = Sniff.touchDevice ? 0.125 : 0.075,
+    dom = document.documentElement,
+    isWindow = true,
+    window,
+  } = {}) {
     super();
+
     this.settings = {
-      delta: Sniff.touchDevice ? 0.125 : 0.075,
+      inertia,
+      dom,
+      isWindow,
+      window,
     };
+
     this.common();
     this.init();
     this.resize();
@@ -27,9 +37,10 @@ export class Smooth extends Conductor {
   }
 
   common() {
-    this.scrollContent = document.documentElement;
+    this.scrollContent = this.settings.dom;
     this.scrollCover = qs("#scroll-cover");
 
+    this.tracker = new Tracker();
     corescroller.add({ update: this.setScroll });
     ticker.add({ update: this.update });
     ro.add({ update: this.resize });
@@ -44,14 +55,14 @@ export class Smooth extends Conductor {
         ? [this.scrollContent]
         : this.scrollSections;
 
-    this.scrollSections.forEach((el) => tracker.add({ dom: el }));
+    this.scrollSections.forEach((el) => this.tracker.add({ dom: el }));
   }
 
   clearState = () => {
     this.state = {
       scroll: {
-        x: { inertia: this.settings.delta, target: DELTA, cur: 0 },
-        y: { inertia: this.settings.delta, target: DELTA, cur: 0 },
+        x: { inertia: this.settings.inertia, target: DELTA, cur: 0 },
+        y: { inertia: this.settings.inertia, target: DELTA, cur: 0 },
       },
       page: {
         height: 0,
@@ -67,8 +78,7 @@ export class Smooth extends Conductor {
 
   style() {
     if (Sniff.touchDevice) return;
-    document.body.style.overscrollBehavior = `none`;
-    document.documentElement.style.position = `fixed`;
+    this.scrollContent.style.position = `fixed`;
   }
 
   clampY = (y) => {
@@ -98,12 +108,17 @@ export class Smooth extends Conductor {
     x.target = this.clampX(x.target);
     y.target = this.clampY(y.target);
 
-    tracker.setScroll(x.target, -y.target);
+    this.tracker.setScroll(x.target, -y.target);
 
     this.sail();
     this.render();
 
-    const data = { x: x.target, y: y.target };
+    const data = {
+      x: x.target,
+      y: y.target,
+      deltaX: x.target - x.cur,
+      deltaY: y.target - y.cur,
+    };
     for (const fn of this.train) {
       fn.update(data);
     }
@@ -115,11 +130,11 @@ export class Smooth extends Conductor {
   };
 
   render = () => {
-    tracker.detectElements();
+    this.tracker.detectElements();
 
     const { x, y } = this.state.scroll;
 
-    tracker.train.forEach((item, i) => {
+    this.tracker.train.forEach((item, i) => {
       if (item.visible) {
         this.setVisible(item, i, x, y);
       } else if (item.isVisible) {
@@ -150,11 +165,17 @@ export class Smooth extends Conductor {
     // recalculate page height
     const { height, width } = bounds(this.scrollContent);
     const { page } = this.state;
-    page.height = Math.max(height, vh) - vh;
-    page.width = Math.max(width, vw) - vw;
+    if (this.settings.isWindow) {
+      page.height = Math.max(height, vh) - vh;
+      page.width = Math.max(width, vw) - vw;
+    } else {
+      const windowBounds = bounds(this.settings.window);
+      page.height = Math.max(height, windowBounds.height) - windowBounds.height;
+      page.width = Math.max(width, windowBounds.width) - windowBounds.width;
+    }
 
-    // undo transforms to get accurate bounds in tracker
-    // tracker.train.forEach((item) => (item.dom.style.transform = "none"));
+    // undo transforms to get accurate bounds in this.tracker
+    // this.tracker.train.forEach((item) => (item.dom.style.transform = "none"));
 
     // set cur
     this.setScroll({ deltaX: 1, deltaY: 1, force: true });
@@ -163,7 +184,7 @@ export class Smooth extends Conductor {
     // x.target = this.clampX(x.cur + DELTA);
     // y.target = this.clampY(y.cur + DELTA);
 
-    tracker.resize();
+    this.tracker.resize();
 
     this.update();
   };

@@ -1,5 +1,10 @@
 #nav {
   background: #ecece2;
+  transition: transform 1.25s $ease-out-expo;
+
+  &.hidden {
+    transform: translateY(-100%);
+  }
 }
 
 #nav-inner {

@@ -12,10 +12,11 @@ import { qsa } from "../hermes";
  *
  */
 
-let highlightFx;
+let highlightFx, compares;
 export const techController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
+    compares.forEach((compare) => compare.destroy());
     sail.out(done);
   },
 
@@ -28,7 +29,9 @@ export const techController = new Controller({
       targets: highlights,
     });
 
-    qsa("[data-compare-slider").forEach((item) => new Compare({ dom: item }));
+    compares = qsa("[data-compare-slider").map(
+      (item) => new Compare({ dom: item })
+    );
     done();
   },
 });

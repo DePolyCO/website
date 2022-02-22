@@ -7,14 +7,21 @@
   transition: opacity 1.25s $ease-out-expo;
 }
 
-.aside-panel {
+#aside-inner {
   width: fluid(1070, $lg);
   height: 100vh;
-  position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.aside-panel {
+  width: fluid(1070, $lg);
+  position: absolute;
+  right: 0;
+  top: 0;
   overflow-y: auto;
   background-color: $lightbeige;
+  overflow: hidden;
 
   transition: transform 1.5s $ease-out-expo;
   transform: translateX(100%);
@@ -53,4 +60,48 @@
     width: fluid(12, $lg);
     height: fluid(12, $lg);
   }
+}
+
+// bio panel
+
+.bio-left {
+  width: fluid(428, $lg);
+  left: fluid(54, $lg);
+  top: fluid(199, $lg);
+}
+
+.bio-name {
+  font-weight: 500;
+  font-size: fluid(68, $lg);
+  margin-bottom: fluid(24, $lg);
+  line-height: 100%;
+}
+
+.bio-role {
+  margin-bottom: fluid(69, $lg);
+}
+
+.bio-social--title {
+  font-weight: 500;
+  font-size: fluid(17, $lg);
+  line-height: 110%;
+  margin-bottom: fluid(16, $lg);
+}
+
+.bio-social--list {
+  gap: fluid(8, $lg);
+}
+
+.bio-social--item {
+  background: $green;
+  border-radius: fluid(12, $lg);
+  padding: fluid(9, $lg) fluid(15, $lg) fluid(7, $lg);
+}
+
+.placeholder {
+  height: fluid(400, $lg);
+  width: fluid(500, $lg);
+  margin-bottom: fluid(48, $lg);
+  background-color: $darkblue;
+  margin-left: fluid(530, $lg);
 }

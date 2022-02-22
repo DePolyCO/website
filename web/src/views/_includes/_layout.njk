@@ -8,9 +8,37 @@
     <span>Please enable JS to view this site</span>
   </noscript>
 
-  <aside id="aside" class="z9 pf inset z0 pen">
+  <aside id="aside" class="z9 pf inset z0 pen of">
     <div id="aside-overlay" class="aside-close pa inset zn1"></div>
-    <div id="test-panel" class="aside-panel"></div>
+
+    <div id="aside-inner" class="pf">
+      {# panels here #}
+
+      {# bio #}
+      <div id="bio-panel" class="aside-panel">
+        <div class="df bio-panel--inner">
+          <div class="pf df fc bio-left">
+            <div class="bio-name">Dr. Samantha Anderson</div>
+            <div class="bio-role tag ttu fv-mono">CEO and Co-founder</div>
+            <div>
+              <div class="bio-social--title">Social:</div>
+              <ul class=" df fw bio-social--list">
+                <li class="bio-social--item fv-mono ttu">Li</li>
+                <li class="bio-social--item fv-mono ttu">Tw</li>
+              </ul>
+            </div>
+          </div>
+          <div class="df fc" data-scroll-section>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button id="aside-close" class=" aside-close df jcc aic">
       <svg fill="none" viewBox="0 0 14 14">
         <path d="M13 2.213 11.787 1 7 5.787 2.213 1 1 2.213 5.787 7 1 11.787 2.213 13 7 8.213 11.787 13 13 11.787 8.213 7 13 2.213Z" fill="#022D42" stroke="#022D42" stroke-width=".5"/>

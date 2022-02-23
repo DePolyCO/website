@@ -15,8 +15,8 @@ export class Nav {
     smoothscroller.add({ update: this.onScroll });
   };
 
-  onScroll = ({ deltaY }) => {
-    if (this.state.isVisible && deltaY > 0) {
+  onScroll = ({ deltaY, y }) => {
+    if (this.state.isVisible && deltaY > 0 && y < -15) {
       this.hide();
     } else if (!this.state.isVisible && deltaY < 0) {
       this.show();

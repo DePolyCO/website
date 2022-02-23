@@ -8,6 +8,7 @@ import {
   ro,
   clamp,
   Observer,
+  Sniff,
 } from "../hermes";
 import { smoothscroller } from "../scroller";
 
@@ -54,6 +55,8 @@ export class Compare {
     };
 
     this.resize();
+
+    this.detect();
     this.initStyle();
 
     this.observer.observe(this.dom);
@@ -87,10 +90,28 @@ export class Compare {
     };
   };
 
+  detect = () => {
+    let type = "pointer";
+    let down = "down";
+    let up = "up";
+
+    if (Sniff.touchDevice) {
+      type = "touch";
+      down = "start";
+      up = "end";
+    }
+
+    this.events = {
+      down: `${type}${down}`,
+      up: `${type}${up}`,
+      move: `${type}move`,
+    };
+  };
+
   listen = () => {
-    this.undown = iris.add(this.handle, "pointerdown", this.handleDown);
-    this.unmove = iris.add(window, "pointermove", this.handleMove);
-    this.unup = iris.add(window, "pointerup", this.handleUp);
+    this.undown = iris.add(this.handle, this.events.down, this.handleDown);
+    this.unmove = iris.add(window, this.events.move, this.handleMove);
+    this.unup = iris.add(window, this.events.up, this.handleUp);
   };
 
   handleDown = (e) => {

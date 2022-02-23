@@ -70,6 +70,50 @@
   transition: opacity 0.6s $ease-out-expo;
 }
 
+// nav language switcher
+#langs-select {
+  background: #ecece2;
+  border: 1px solid rgba(2, 45, 66, 0.1);
+  border-radius: fluid(9, $lg);
+  padding: fluid(4, $lg) fluid(28, $lg) 0 fluid(8, $lg);
+
+  font-weight: 500;
+  font-size: fluid(16, $lg);
+  line-height: 110%;
+  outline: none;
+
+  &.active {
+    #langs-items {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #langs-select--chevron {
+      transform: translate3d(0, -50%, 0) rotate(180deg);
+    }
+  }
+}
+
+#langs-select--chevron {
+  width: fluid(12, $lg);
+  height: fluid(8, $lg);
+
+  top: calc(50% - #{fluid(4, $lg)});
+  right: fluid(8, $lg);
+}
+
+#langs-items {
+  bottom: fluid(-30, $lg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.langs-select--item {
+  background: #dadaca;
+  border-radius: fluid(9, $lg);
+  padding: fluid(4, $lg) fluid(8, $lg) 0 fluid(8, $lg);
+}
+
 // CTA button
 
 .cta-btn {

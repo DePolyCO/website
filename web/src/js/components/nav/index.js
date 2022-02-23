@@ -1,5 +1,6 @@
 import { qs } from "../../hermes";
 import { smoothscroller } from "../../scroller";
+import { Select } from "../select";
 
 export class Nav {
   constructor() {
@@ -10,6 +11,7 @@ export class Nav {
   }
 
   init = () => {
+    this.select = new Select({ callback: this.onLangSwitch });
     smoothscroller.add({ update: this.onScroll });
   };
 
@@ -29,6 +31,10 @@ export class Nav {
   hide = () => {
     this.state.isVisible = false;
     this.dom.classList.add("hidden");
+  };
+
+  onLangSwitch = (value, isOpen) => {
+    console.log("lang switched to:", value);
   };
 }
 

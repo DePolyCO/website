@@ -98,10 +98,38 @@
   padding: fluid(9, $lg) fluid(15, $lg) fluid(7, $lg);
 }
 
-.placeholder {
-  height: fluid(400, $lg);
-  width: fluid(500, $lg);
-  margin-bottom: fluid(48, $lg);
-  background-color: $darkblue;
+.bio-profile--content {
   margin-left: fluid(530, $lg);
+  padding-top: fluid(179, $lg);
+  width: fluid(500, $lg);
+}
+
+.bio-profile--picture {
+  height: fluid(500, $lg);
+  width: fluid(500, $lg);
+  border-radius: 50%;
+  background-color: $darkblue;
+  margin-bottom: fluid(61, $lg);
+}
+
+.bio-detail--para {
+  margin-bottom: fluid(40, $lg);
+  font-size: fluid(22, $lg);
+  line-height: 140%;
+}
+
+.bio-panel--header {
+  height: fluid(119, $lg);
+  background: #ecece2;
+  border-bottom: 1px solid $darkblue;
+  width: fluid(976, $lg);
+  left: fluid(54, $lg);
+}
+
+.bio-panel--title {
+  font-weight: bold;
+  font-size: fluid(16, $lg);
+  line-height: 110%;
+  top: fluid(50, $lg);
+  left: fluid(54, $lg);
 }

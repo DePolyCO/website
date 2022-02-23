@@ -1,6 +1,7 @@
 import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
+import { ErrorScroll } from "../components/error";
 
 /**
  *
@@ -8,13 +9,16 @@ import { sail } from "../components/sails";
  *
  */
 
+let errScroller;
 export const noController = new Controller({
   hide: ({ done }) => {
+    errScroller.destroy();
     sail.out(done);
   },
 
   show: ({ done }) => {
     sail.in();
+    errScroller = new ErrorScroll();
     done();
   },
 });

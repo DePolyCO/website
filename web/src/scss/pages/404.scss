@@ -1,0 +1,44 @@
+#err {
+  min-height: 100vh;
+  padding-top: fluid(257, $lg);
+
+  .hero-title--wrapper {
+    width: fluid($lg - 40, $lg);
+    margin-bottom: fluid(73, $lg);
+    padding-left: fluid(40, $lg);
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: fluid(300, $lg);
+    line-height: 85%;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    width: fluid(2227, $lg);
+  }
+
+  #err-content {
+    margin-left: fluid(980, $lg);
+  }
+
+  p {
+    width: fluid(430, $lg);
+    font-size: fluid(50, $lg);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    margin-bottom: fluid(70, $lg);
+  }
+
+  .close {
+    letter-spacing: -0.2em;
+  }
+
+  .cta-btn {
+    background-color: $darkblue;
+    color: #ecece2;
+  }
+
+  .btn-inner::after {
+    color: #ecece2;
+  }
+}

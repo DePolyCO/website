@@ -7,6 +7,7 @@ export class Nav {
     this.dom = qs("#nav");
     this.state = {
       isVisible: true,
+      hasLine: false,
     };
   }
 
@@ -16,11 +17,29 @@ export class Nav {
   };
 
   onScroll = ({ deltaY, y }) => {
-    if (this.state.isVisible && deltaY > 0 && y < -15) {
+    const hasScrolled = y < -15;
+
+    // if (hasScrolled && !this.state.hasLine) {
+    //   this.addLine();
+    // } else if (!hasScrolled && this.state.hasLine) {
+    //   this.removeLine();
+    // }
+
+    if (this.state.isVisible && deltaY > 0 && hasScrolled) {
       this.hide();
     } else if (!this.state.isVisible && deltaY < 0) {
       this.show();
     }
+  };
+
+  addLine = () => {
+    this.state.hasLine = true;
+    this.dom.classList.add("has-line");
+  };
+
+  removeLine = () => {
+    this.state.hasLine = false;
+    this.dom.classList.remove("has-line");
   };
 
   show = () => {

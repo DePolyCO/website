@@ -11,12 +11,20 @@ import {
 import { smoothscroller, corescroller } from "../scroller";
 
 export class Capture {
-  constructor({ window, dom, namespace, callback, stickyPoint = 0.25 } = {}) {
+  constructor({
+    window,
+    dom,
+    namespace,
+    callback,
+    stickyPoint = 0.25,
+    useWindow = false,
+  } = {}) {
     this.window = window;
     this.dom = dom;
     this.namespace = namespace;
     this.callback = callback;
     this.stickyPoint = stickyPoint;
+    this.useWindow = useWindow;
 
     this.state = {
       ease: Ease["io2"],
@@ -34,7 +42,6 @@ export class Capture {
     this.lerp = new LerpController(this.state.scroll);
 
     this.init();
-
     this.resize();
   }
 
@@ -84,7 +91,9 @@ export class Capture {
 
   resize = () => {
     const top = getOffsetTop(this.dom);
-    this.state.page.width = bounds(this.dom).width - bounds(this.window).width;
+    this.state.page.width =
+      bounds(this.dom).width -
+      (this.useWindow ? window.innerWidth : bounds(this.window).width);
 
     const stickyPoint = window.innerHeight * this.stickyPoint; // vh from top
 

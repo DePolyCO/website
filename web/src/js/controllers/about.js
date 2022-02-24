@@ -4,6 +4,7 @@ import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
 
 import { qsa } from "../hermes";
+import { CaptureReveal } from "../components/captureReveal";
 
 /**
  *
@@ -11,11 +12,12 @@ import { qsa } from "../hermes";
  *
  */
 
-let highlightFx;
+let highlightFx, numbers;
 
 export const aboutController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
+    numbers.destroy();
     sail.out(done);
   },
 
@@ -28,6 +30,7 @@ export const aboutController = new Controller({
       targets: highlights,
     });
 
+    numbers = new CaptureReveal();
     done();
   },
 });

@@ -52,7 +52,7 @@ export class Nav {
     this.dom.classList.add("hidden");
   };
 
-  onLangSwitch = (value, isOpen) => {
+  onLangSwitch = (value) => {
     console.log("lang switched to:", value);
   };
 }

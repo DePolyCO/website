@@ -7,6 +7,7 @@ import { intro } from "./intro";
 import { homeController } from "./controllers/home";
 import { aboutController } from "./controllers/about";
 import { techController } from "./controllers/tech";
+import { careerController } from "./controllers/career";
 import { noController } from "./controllers/404";
 
 import { Grid } from "./grid";
@@ -34,6 +35,7 @@ new Hydra({
     home: homeController,
     about: aboutController,
     tech: techController,
+    career: careerController,
     404: noController,
   },
 });

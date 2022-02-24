@@ -3,6 +3,30 @@ layout: _layout.njk
 title: Careers
 ---
 
-<main data-hydra-content="home" id="careers">
-    <h1 class="temp-title">Careers</h1>
+{% from '_macros/header.njk' import header %}
+{% from '_macros/textBlock.njk' import textBlock %}
+
+<main data-hydra-content="career" id="careers">
+    {{ 
+        header(
+            'Join Us', 
+            "Make Your Mark In Shaping The Future", 
+            "/static/home/hero.jpg", 
+            "careers"
+        ) 
+    }}
+
+      {{ 
+        textBlock(
+            "Why join us?",
+            [
+                "We are a fast-growing company based in Switzerland. As a part of DePoly you will work in a multicultural atmosphere, whilst being part of an exciting new award-winning emerging company.",
+                "When you start working at DePoly, you’ll have a chance to be a part of a new fast growing green industry. Our employees are the very core of our unique and specialist technology and, as such, we value each and every member of our DePoly team.",
+                "What else can we offer? Diversity! Our company is comprised of people with various national backgrounds, and we are inclusive of all genders and identities!",
+                "We offer you a opportunity to shape a more sustainable and green future."
+            ],
+            "why-join"
+        ) 
+    }}
+
 </main>

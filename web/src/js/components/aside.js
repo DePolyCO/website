@@ -18,8 +18,8 @@ class AsideController {
   }
 
   init = () => {
-    this.triggers = qsa("[data-trigger-aside]").map((item) => {
-      iris.add(item, "click", () => {
+    this.untriggers = qsa("[data-trigger-aside]").map((item) => {
+      return iris.add(item, "click", () => {
         this.open(item.dataset.triggerAside);
       });
     });

@@ -5,6 +5,7 @@ import { TextHighlight } from "../components/textHighlight";
 import { Compare } from "../components/compare";
 
 import { qsa } from "../hermes";
+import { Parallax } from "../scroller";
 
 /**
  *
@@ -12,11 +13,12 @@ import { qsa } from "../hermes";
  *
  */
 
-let highlightFx, compares;
+let highlightFx, compares, p1, p2, p3, p4, ps;
 export const techController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     compares.forEach((compare) => compare.destroy());
+    ps.forEach((p) => p.destroy());
     sail.out(done);
   },
 
@@ -32,6 +34,11 @@ export const techController = new Controller({
     compares = qsa("[data-compare-slider").map(
       (item) => new Compare({ dom: item })
     );
+
+    ps = qsa(".explain-item").map(
+      (item) => new Parallax({ dom: item, ease: "io2" })
+    );
+
     done();
   },
 });

@@ -123,6 +123,46 @@
     line-height: 140%;
     width: fluid(395, $lg);
   }
+
+  #explain {
+    margin-bottom: fluid(213, $lg);
+  }
+
+  #explain-visual {
+    height: fluid(2416, $lg);
+    min-width: fluid(430 * 3 + 40 * 2, $lg);
+    border-right: 1px solid $darkblue;
+  }
+
+  #explain-content {
+    padding-left: fluid(40, $lg);
+  }
+
+  .explain-item {
+    &:nth-of-type(1) {
+      margin-bottom: fluid(298, $lg);
+    }
+
+    &:nth-of-type(2) {
+      margin-bottom: fluid(463, $lg);
+    }
+
+    &:nth-of-type(3) {
+      margin-bottom: fluid(249, $lg);
+    }
+  }
+
+  .explain-item--title {
+    font-size: fluid(50, $lg);
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    margin-bottom: fluid(15, $lg);
+  }
+
+  .explain-item--dsc {
+    font-size: fluid(22, $lg);
+    line-height: 140%;
+  }
 }
 
 .border-left {

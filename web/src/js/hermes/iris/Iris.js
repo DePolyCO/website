@@ -54,5 +54,4 @@ class Iris {
  *
  */
 
-const iris = new Iris();
-export { iris };
+export const iris = new Iris();

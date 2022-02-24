@@ -5,6 +5,7 @@ import { TextHighlight } from "../components/textHighlight";
 
 import { qsa } from "../hermes";
 import { CaptureReveal } from "../components/captureReveal";
+import { asideController } from "../components/aside";
 
 /**
  *
@@ -18,6 +19,8 @@ export const aboutController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     numbers.destroy();
+    asideController.destroy();
+
     sail.out(done);
   },
 
@@ -31,6 +34,9 @@ export const aboutController = new Controller({
     });
 
     numbers = new CaptureReveal();
+
+    asideController.init();
+
     done();
   },
 });

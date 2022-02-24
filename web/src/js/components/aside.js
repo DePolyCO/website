@@ -1,4 +1,4 @@
-import { iris, qs } from "../hermes";
+import { iris, qs, qsa } from "../hermes";
 import { Smooth, smoothscroller } from "../scroller";
 
 class AsideController {
@@ -16,6 +16,14 @@ class AsideController {
       current: null,
     };
   }
+
+  init = () => {
+    this.triggers = qsa("[data-trigger-aside]").map((item) => {
+      iris.add(item, "click", () => {
+        this.open(item.dataset.triggerAside);
+      });
+    });
+  };
 
   test = () => {
     iris.add(document, "keydown", (e) => {
@@ -52,7 +60,7 @@ class AsideController {
       this.scroller.resize();
       smoothscroller.lock("aside");
 
-      this.state.current = qs(panelId);
+      this.state.current = qs(panelId, this.dom);
 
       this.dom.classList.add("active");
       this.state.current.classList.add("active");
@@ -68,6 +76,10 @@ class AsideController {
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");
     }
+  };
+
+  destroy = () => {
+    this.untriggers.forEach((untrigger) => untrigger());
   };
 }
 

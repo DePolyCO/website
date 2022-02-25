@@ -6,6 +6,7 @@ import { TextHighlight } from "../components/textHighlight";
 import { qsa } from "../hermes";
 import { CaptureReveal } from "../components/captureReveal";
 import { asideController } from "../components/aside";
+import { nav } from "../components/nav";
 
 /**
  *
@@ -36,6 +37,8 @@ export const aboutController = new Controller({
     numbers = new CaptureReveal();
 
     asideController.init();
+
+    nav.setLinkActive("about");
 
     done();
   },

@@ -1,13 +1,20 @@
-import { qs } from "../../hermes";
+import { qs, qsa } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 import { Select } from "../select";
 
 export class Nav {
   constructor() {
     this.dom = qs("#nav");
+
+    this.links = {};
+    qsa(".nav-item", this.dom).forEach((link) => {
+      this.links[link.dataset.page] = link;
+    });
+
     this.state = {
       isVisible: true,
       hasLine: false,
+      activeLink: false,
     };
   }
 
@@ -54,6 +61,21 @@ export class Nav {
 
   onLangSwitch = (value) => {
     console.log("lang switched to:", value);
+  };
+
+  setLinkActive = (pageName) => {
+    if (this.state.activeLink) {
+      this.links[this.state.activeLink].classList.remove("active");
+    }
+    this.links[pageName].classList.add("active");
+    this.state.activeLink = pageName;
+  };
+
+  unsetLinkActive = () => {
+    if (this.state.activeLink) {
+      this.links[this.state.activeLink].classList.remove("active");
+    }
+    this.state.activeLink = false;
   };
 }
 

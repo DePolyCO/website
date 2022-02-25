@@ -6,6 +6,7 @@ import { Parallax } from "../scroller";
 
 import { qsa } from "../hermes";
 import { Collapse } from "../components/collapse";
+import { nav } from "../components/nav";
 
 /**
  *
@@ -56,6 +57,8 @@ export const homeController = new Controller({
     });
 
     c1 = new Collapse();
+
+    nav.unsetLinkActive();
 
     done();
   },

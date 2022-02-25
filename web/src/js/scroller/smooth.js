@@ -41,9 +41,9 @@ export class Smooth extends Conductor {
     this.scrollCover = qs("#scroll-cover");
 
     this.tracker = new Tracker();
-    corescroller.add({ update: this.setScroll });
-    ticker.add({ update: this.update });
-    ro.add({ update: this.resize });
+    this.scrollID = corescroller.add({ update: this.setScroll });
+    this.tickID = ticker.add({ update: this.update });
+    this.roID = ro.add({ update: this.resize });
   }
 
   init() {
@@ -187,6 +187,13 @@ export class Smooth extends Conductor {
     this.tracker.resize();
 
     this.update();
+  };
+
+  destroy = () => {
+    this.tracker.destroy();
+    corescroller.remove(this.scrollID);
+    ticker.remove(this.tickID);
+    ro.remove(this.roID);
   };
 
   lock = (name = "default") => {

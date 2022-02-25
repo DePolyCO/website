@@ -1,6 +1,7 @@
 import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
+import { nav } from "../components/nav";
 
 /**
  *
@@ -15,6 +16,7 @@ export const careerController = new Controller({
 
   show: ({ done }) => {
     sail.in();
+    nav.setLinkActive("careers");
     done();
   },
 });

@@ -4,12 +4,7 @@ import { Smooth, smoothscroller } from "../scroller";
 class AsideController {
   constructor() {
     this.dom = qs("#aside");
-    // const scrollContent =
-    this.scroller = new Smooth({
-      dom: qs(".aside-panel", this.dom),
-      isWindow: false,
-      window: qs("#aside-inner", this.dom),
-    });
+    this.window = qs("#aside-inner", this.dom);
 
     this.state = {
       open: false,
@@ -56,11 +51,15 @@ class AsideController {
       this.listen();
       this.state.open = true;
 
-      this.scroller.init();
-      this.scroller.resize();
       smoothscroller.lock("aside");
 
       this.state.current = qs(panelId, this.dom);
+
+      this.scroller = new Smooth({
+        dom: this.state.current,
+        isWindow: false,
+        window: this.window,
+      });
 
       this.dom.classList.add("active");
       this.state.current.classList.add("active");
@@ -73,6 +72,7 @@ class AsideController {
       this.state.open = false;
       smoothscroller.unlock("aside");
 
+      this.scroller.destroy();
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");
     }

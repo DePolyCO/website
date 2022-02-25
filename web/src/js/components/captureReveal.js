@@ -128,7 +128,7 @@ export class CaptureReveal {
   resize = () => {
     const top = getOffsetTop(this.dom);
     this.state.page.height = 0.5 * window.innerHeight * 4; // 5 items
-    const stickyPoint = window.innerHeight * 0.1; // 20vh from top
+    const stickyPoint = window.innerHeight * 0.125; // 12.5vh from top
 
     this.state.boundRange[0] = top - stickyPoint;
     this.state.boundRange[1] = top - stickyPoint + this.state.page.height;

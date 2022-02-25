@@ -1,7 +1,6 @@
 import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
-import { ErrorScroll } from "../components/error";
 import { nav } from "../components/nav";
 
 /**
@@ -10,19 +9,14 @@ import { nav } from "../components/nav";
  *
  */
 
-let errScroller;
-export const noController = new Controller({
+export const newsController = new Controller({
   hide: ({ done }) => {
-    errScroller.destroy();
     sail.out(done);
   },
 
   show: ({ done }) => {
     sail.in();
-
-    errScroller = new ErrorScroll();
-    nav.unsetLinkActive();
-
+    nav.setLinkActive("news");
     done();
   },
 });

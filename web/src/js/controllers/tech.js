@@ -6,6 +6,7 @@ import { Compare } from "../components/compare";
 
 import { qsa } from "../hermes";
 import { Parallax } from "../scroller";
+import { nav } from "../components/nav";
 
 /**
  *
@@ -38,6 +39,8 @@ export const techController = new Controller({
     ps = qsa(".explain-item").map(
       (item) => new Parallax({ dom: item, ease: "io2" })
     );
+
+    nav.setLinkActive("technology");
 
     done();
   },

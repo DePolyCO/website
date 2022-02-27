@@ -9,6 +9,7 @@ import {
   ticker,
   Ease,
   bounds,
+  iris,
 } from "../hermes";
 import { Reveal } from "../reveal";
 import { corescroller, smoothscroller } from "../scroller";
@@ -37,6 +38,7 @@ export class CaptureReveal {
 
     this.resize();
     this.init();
+    this.listen();
   }
 
   clamp = (y) => {
@@ -62,6 +64,16 @@ export class CaptureReveal {
     this.roID = ro.add({ update: this.resize });
 
     this.setActive(0);
+  };
+
+  listen = () => {
+    this.unlisten = qsa(".number-no").map((item, i) =>
+      iris.add(item, "click", () => {
+        this.setInactive(this.state.slides.active);
+        this.setActive(i);
+        this.state.slides.active = i;
+      })
+    );
   };
 
   onScroll = ({ deltaY = 0 }) => {
@@ -130,10 +142,8 @@ export class CaptureReveal {
     const top = getOffsetTop(this.dom);
     const { height } = bounds(this.dom);
 
-    const stickyPoint = (window.innerHeight - height) / 2;
-
     this.state.page.height = 0.5 * window.innerHeight * 4; // 5 items - scroll offset for each item
-    // const stickyPoint = window.innerHeight * 0.125; // 12.5vh from top
+    const stickyPoint = (window.innerHeight - height) / 2; // middle of page
 
     this.state.boundRange[0] = top - stickyPoint;
     this.state.boundRange[1] = top - stickyPoint + this.state.page.height;
@@ -145,5 +155,6 @@ export class CaptureReveal {
     ticker.remove(this.tickID);
 
     this.reveals.forEach((reveal) => reveal.destroy());
+    this.unlisten.forEach((unlisten) => unlisten());
   };
 }

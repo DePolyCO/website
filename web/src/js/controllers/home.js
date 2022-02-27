@@ -14,10 +14,11 @@ import { nav } from "../components/nav";
  *
  */
 
-let highlightFx, p1, p2, p3, p4, c1;
+let highlightFx, p1, p2, p3, p4, c1, ps;
 export const homeController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
+    ps.forEach((p) => p.destroy());
     p1.destroy();
     p2.destroy();
     p3.destroy();
@@ -57,6 +58,15 @@ export const homeController = new Controller({
     });
 
     c1 = new Collapse();
+
+    ps = qsa(".stat-desc").map(
+      (item) =>
+        new Parallax({
+          dom: item,
+          ease: "io2",
+          speed: 2,
+        })
+    );
 
     nav.unsetLinkActive();
 

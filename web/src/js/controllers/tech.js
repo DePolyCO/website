@@ -14,7 +14,7 @@ import { nav } from "../components/nav";
  *
  */
 
-let highlightFx, compares, p1, p2, p3, p4, ps;
+let highlightFx, compares, ps;
 export const techController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();

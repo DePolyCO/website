@@ -24,6 +24,7 @@
   position: relative;
   padding-left: fluid(33, $lg);
   white-space: nowrap;
+  padding-top: 1.5px;
 
   &::before {
     content: "";
@@ -34,6 +35,6 @@
 
     position: absolute;
     left: 0;
-    top: -1px;
+    top: 0px;
   }
 }

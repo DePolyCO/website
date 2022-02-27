@@ -13,6 +13,7 @@
   padding-bottom: fluid(85, $lg);
   padding-top: fluid(85, $lg);
   border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+  max-width: 100vw;
 }
 
 .footer-list {
@@ -165,6 +166,8 @@
 
 #footer-logo {
   min-width: fit-content;
+  padding-left: fluid(40, $lg);
+  padding-right: fluid(40, $lg);
 }
 
 #footer-copy {
@@ -215,7 +218,15 @@
 }
 
 #footer-sep {
-  border: 1px solid #022d42;
+  border-right: 1px solid #022d42;
   width: 1px;
   height: fluid(11, $lg);
+}
+
+#footer-sep--xl {
+  border-right: 4px solid #022d42;
+  width: 1px;
+  height: fluid(199, $lg);
+  margin-right: fluid(100, $lg);
+  margin-left: fluid(100, $lg);
 }

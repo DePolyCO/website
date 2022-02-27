@@ -69,6 +69,8 @@
   width: fluid(428, $lg);
   left: fluid(54, $lg);
   top: fluid(199, $lg);
+  padding-bottom: fluid(50, $lg);
+  border-bottom: 1px solid $darkblue;
 }
 
 .bio-name {
@@ -97,6 +99,10 @@
   background: $green;
   border-radius: fluid(12, $lg);
   padding: fluid(9, $lg) fluid(15, $lg) fluid(7, $lg);
+
+  font-weight: 500;
+  font-size: fluid(18, $lg);
+  line-height: 130%;
 }
 
 .bio-profile--content {

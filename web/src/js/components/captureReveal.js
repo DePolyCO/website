@@ -8,6 +8,7 @@ import {
   ro,
   ticker,
   Ease,
+  bounds,
 } from "../hermes";
 import { Reveal } from "../reveal";
 import { corescroller, smoothscroller } from "../scroller";
@@ -127,8 +128,12 @@ export class CaptureReveal {
 
   resize = () => {
     const top = getOffsetTop(this.dom);
-    this.state.page.height = 0.5 * window.innerHeight * 4; // 5 items
-    const stickyPoint = window.innerHeight * 0.125; // 12.5vh from top
+    const { height } = bounds(this.dom);
+
+    const stickyPoint = (window.innerHeight - height) / 2;
+
+    this.state.page.height = 0.5 * window.innerHeight * 4; // 5 items - scroll offset for each item
+    // const stickyPoint = window.innerHeight * 0.125; // 12.5vh from top
 
     this.state.boundRange[0] = top - stickyPoint;
     this.state.boundRange[1] = top - stickyPoint + this.state.page.height;

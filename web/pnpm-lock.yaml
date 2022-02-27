@@ -20,9 +20,11 @@ specifiers:
   rimraf: ^3.0.2
   sass: ^1.49.7
   string: ^3.3.3
+  tweakpane: ^3.0.7
 
 dependencies:
   ogl: 0.0.86
+  tweakpane: 3.0.7
 
 devDependencies:
   '@11ty/eleventy': 1.0.0
@@ -3794,6 +3796,10 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
     dev: true
+
+  /tweakpane/3.0.7:
+    resolution: {integrity: sha512-rgxqoo6T10atYoKHVif6aYlAMIAlHJ84hi5LXqi6ZgVEPcmnzPI34C88y6HquarBY0ZKE/ZCXVaZm8NibhQRtA==}
+    dev: false
 
   /ua-parser-js/1.0.2:
     resolution: {integrity: sha512-00y/AXhx0/SsnI51fTc0rLRmafiGOM4/O+ny10Ps7f+j/b8p/ZY11ytMgznXkOVo4GQ+KwQG5UQLkLGirsACRg==}

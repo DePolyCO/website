@@ -40,6 +40,7 @@
     "string": "^3.3.3"
   },
   "dependencies": {
-    "ogl": "^0.0.86"
+    "ogl": "^0.0.86",
+    "tweakpane": "^3.0.7"
   }
 }

@@ -77,6 +77,10 @@ body {
   background-color: $lightbeige;
 }
 
+.tp-dfwv {
+  z-index: 9999;
+}
+
 @import "./pages/404.scss";
 @import "./pages/home.scss";
 @import "./pages/technology.scss";

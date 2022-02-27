@@ -8,9 +8,12 @@ import {
   clamp,
   bounds,
   Conductor,
+  iris,
 } from "../hermes";
 import { corescroller } from "./core";
 import { Tracker } from "./tracker";
+
+import { Pane } from "tweakpane";
 
 const DELTA = 0.001002;
 
@@ -44,6 +47,8 @@ export class Smooth extends Conductor {
     this.scrollID = corescroller.add({ update: this.setScroll });
     this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
+
+    this.testMode();
   }
 
   init() {
@@ -57,6 +62,22 @@ export class Smooth extends Conductor {
 
     this.scrollSections.forEach((el) => this.tracker.add({ dom: el }));
   }
+
+  testMode = () => {
+    const pane = new Pane();
+    const sense = pane.addInput(
+      {
+        sensitivity: 75,
+      },
+      "sensitivity",
+      { min: 1, max: 100, step: 1 }
+    );
+
+    sense.on("change", (e) => {
+      const val = e.value / 1000;
+      this.state.scroll.y.inertia = val;
+    });
+  };
 
   clearState = () => {
     this.state = {

@@ -96,7 +96,7 @@
     }
 
     #langs-select--chevron {
-      transform: translate3d(0, -50%, 0) rotate(180deg);
+      transform: rotate(180deg);
     }
   }
 }
@@ -106,7 +106,9 @@
   height: fluid(8, $lg);
 
   top: calc(50% - #{fluid(4, $lg)});
+  // top: 50%;
   right: fluid(8, $lg);
+  transition: transform 0.5s $ease-out-expo;
 }
 
 #langs-items {
@@ -118,7 +120,7 @@
 .langs-select--item {
   background: #dadaca;
   border-radius: fluid(9, $lg);
-  padding: fluid(4, $lg) fluid(8, $lg) 0 fluid(8, $lg);
+  padding: fluid(6, $lg) fluid(10, $lg) fluid(2, $lg) fluid(10, $lg);
 }
 
 // CTA button

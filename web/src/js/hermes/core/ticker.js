@@ -23,13 +23,12 @@ class Ticker extends Conductor {
     this.maxDelta = this.targetDelta * 2;
 
     this.listeners();
-    bindAll(this, ["run"]);
     this.paused = true;
 
     this.play();
   }
 
-  run(elapsedTime = 0) {
+  run = (elapsedTime = 0) => {
     this.delta = elapsedTime - (this.instance.lastFrameTime || 0);
     this.instance.nextFrame = requestAnimationFrame(this.run);
     this.instance.lastFrameTime = elapsedTime;
@@ -39,7 +38,7 @@ class Ticker extends Conductor {
     for (let i = 0, n = this.train.length; i < n; i++) {
       this.train[i]?.update(this.delta, elapsedTime);
     }
-  }
+  };
 
   pause() {
     if (this.paused) return;

@@ -35,6 +35,7 @@ export const aboutController = new Controller({
     });
 
     numbers = new CaptureReveal();
+    window.numbers = numbers;
 
     asideController.init();
 

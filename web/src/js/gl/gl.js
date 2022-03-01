@@ -12,8 +12,6 @@ class GL extends Athena {
 
     this.createGeometry();
 
-    bindAll(this, ["update", "resize"]);
-
     ticker.add({
       update: this.update,
     });
@@ -47,7 +45,7 @@ class GL extends Athena {
     this.update();
   }
 
-  resize({ vw, vh } = { vw: window.innerWidth, vh: window.innerHeight }) {
+  resize = ({ vw, vh } = { vw: window.innerWidth, vh: window.innerHeight }) => {
     super.resize();
 
     if (!this.media) return;
@@ -59,9 +57,9 @@ class GL extends Athena {
         viewport: this.viewport,
       });
     });
-  }
+  };
 
-  update() {
+  update = () => {
     if (!this.media) return;
 
     this.media.forEach((media, i) => {
@@ -69,7 +67,7 @@ class GL extends Athena {
     });
 
     super.update();
-  }
+  };
 }
 
 export const gl = new GL();

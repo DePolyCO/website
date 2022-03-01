@@ -12,7 +12,7 @@ import {
   round,
   Sniff,
 } from "../../hermes";
-import { scroller } from "../../scroller";
+import { smoothscroller } from "../../scroller";
 
 //
 // Slider
@@ -28,34 +28,22 @@ export class Slider {
     slides = ".carousel-slide",
     inertia = 0.1,
     dragSpeed = 1.5,
-    arrows,
-    active = 0,
-  }) {
+  } = {}) {
     this.container = select(container)[0];
     this.slider = qs(slider, this.container);
-    this.counter = qs("#carousel-active");
-    if (arrows) {
-      this.arrows = {};
-      arrows.left && (this.arrows.left = select(arrows.left));
-      arrows.right && (this.arrows.right = select(arrows.right));
-    }
-    this.slides = [];
 
-    qsa(slides, this.slider).forEach((dom, i) => {
-      this.slides[i] = {
-        dom,
-        visible: true,
-        x: 0,
-      };
-    });
+    this.slides = qsa(slides, this.slider).map((dom, i) => ({
+      dom,
+      visible: true,
+      x: 0,
+    }));
+
     Object.assign(this, {
       inertia,
       dragSpeed,
     });
 
     this.state = {
-      active: active,
-      oldActive: 0,
       dragging: false,
       sx: 0, // start
       cx: 0, // current
@@ -71,9 +59,6 @@ export class Slider {
       threshold: 0,
       progress: 0,
     };
-    this.syncTrain = [];
-
-    bindAll(this, ["resize", "update"]);
 
     this.resize();
     this.detect();
@@ -88,7 +73,7 @@ export class Slider {
     });
   }
 
-  detect() {
+  detect = () => {
     let type = "pointer";
     let down = "down";
     let up = "up";
@@ -104,23 +89,23 @@ export class Slider {
       up,
       down,
     };
-  }
+  };
 
-  clamp(val = 0) {
+  clamp = (val = 0) => {
     return clamp(val, this.state.min, this.state.max);
-  }
+  };
 
   // TODO:
   // + Return the appropriate function, instead of checking each time.
   // + Do this in Iris?
-  getXY(e) {
+  getXY = (e) => {
     const x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
     const y = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
 
     return { x, y };
-  }
+  };
 
-  listeners() {
+  listeners = () => {
     let { type, up, down } = this.events;
     let state = this.state;
 
@@ -129,7 +114,7 @@ export class Slider {
       state.dragging = true;
       state.sx = this.getXY(e).x;
       state.lx = state.tx;
-      scroller.lock();
+      smoothscroller.lock("carousel");
     });
 
     this.removeWheel = iris.add(this.container, `wheel`, (e) => {
@@ -137,7 +122,6 @@ export class Slider {
       state.direction = delta > 0 ? 1 : -1;
       state.cx += delta * this.dragSpeed;
       state.cx = this.clamp(state.cx);
-      state.active = Math.floor(state.cx / state.slideWidth + 0.5);
     });
 
     this.removeMove = iris.add(window, `${type}move`, (e) => {
@@ -146,31 +130,16 @@ export class Slider {
       state.direction = delta > 0 ? 1 : -1;
       state.cx = state.lx + delta * this.dragSpeed;
       state.cx = this.clamp(state.cx);
-      state.active = Math.floor(state.cx / state.slideWidth + 0.5);
     });
 
     this.removeUp = iris.add(window, `${type}${up}`, (e) => {
       state.dragging = false;
-      state.cx = this.clamp(state.active * state.slideWidth);
-      // state.cx = state.active * state.slideWidth;
-      scroller.unlock();
+      smoothscroller.unlock("carousel");
       this.container.classList.remove("active");
     });
+  };
 
-    if (this.arrows && this.arrows.left) {
-      iris.add(this.arrows.left, "click", () => {
-        this.arrow("left");
-      });
-    }
-
-    if (this.arrows && this.arrows.right) {
-      iris.add(this.arrows.right, "click", () => {
-        this.arrow("right");
-      });
-    }
-  }
-
-  resize(o = { vw: window.innerWidth, vh: window.innerHeight }) {
+  resize = (o = { vw: window.innerWidth, vh: window.innerHeight }) => {
     this.bounds = o;
     let state = this.state;
 
@@ -178,77 +147,25 @@ export class Slider {
     state.sliderWidth = this.slider.offsetWidth;
     state.containerWidth = this.container.offsetWidth;
 
-    state.max = 0;
-    this.slides.forEach((slide, i) => {
-      state.max += slide.dom.offsetWidth;
-      const { left } = bounds(slide.dom);
-      slide.left = left;
-      // slide.dom.style.transform = `translate3d(${state.slideWidth}px, 0, 0)`;
-    });
-    state.max -= state.sliderWidth;
-
-    state.cx = state.active * state.slideWidth;
+    state.max = bounds(this.slider).width - state.containerWidth;
     state.cx = this.clamp(state.active * state.slideWidth);
-    // state.cx = 0;
-    // state.tx = 0.5;
-    state.active = Math.floor(state.cx / state.slideWidth + 0.5);
-
-    if (this.state.oldActive != this.state.active) {
-      this.state.oldActive = this.state.active;
-      this.syncTrain.forEach((fn) => {
-        fn(this.state.active);
-      });
-    }
-
-    // this.update();
-  }
+  };
 
   get shouldAnimate() {
     return Math.abs(this.state.tx - this.state.cx) > 0.01;
   }
 
-  sync(fn) {
-    this.syncTrain.push(fn);
-  }
-
-  arrow(dir) {
-    if (dir === "right") {
-      this.state.active += 1;
-      this.state.active %= this.slides.length;
-    } else {
-      this.state.active -= 1;
-      if (this.state.active == -1) {
-        this.state.active = this.slides.length - 1;
-      }
-    }
-    this.state.cx = this.state.slideWidth * this.state.active;
-  }
-
-  update(t, ct) {
+  update = (t, ct) => {
     if (!this.shouldAnimate) return;
 
     this.state.tx = lerp(this.state.tx, this.state.cx, this.inertia);
-    // this.state.tx = round(this.state.tx);
 
     this.slider.style.transform = `translate3d(${round(
       -this.state.tx
     )}px, 0, 0)`;
+  };
 
-    // this.slides.forEach((slide, i) => {
-    //   slide.dom.style.transform = `translate3d(${-this.state.tx}px, 0, 0)`;
-    // });
-
-    if (this.state.oldActive != this.state.active) {
-      this.state.oldActive = this.state.active;
-      this.syncTrain.forEach((fn) => {
-        fn(this.state.active);
-      });
-    }
-
-    // this.counter.innerText = this.state.active + 1;
-  }
-
-  destroy() {
+  destroy = () => {
     this.removeDown();
     this.removeUp();
     this.removeMove();
@@ -256,5 +173,5 @@ export class Slider {
 
     ticker.remove(this.tickID);
     ro.remove(this.roID);
-  }
+  };
 }

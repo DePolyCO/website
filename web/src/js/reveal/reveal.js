@@ -1,4 +1,4 @@
-import { select, bindAll, Observer, ro, Timeline, qs } from "../hermes";
+import { select, Observer, ro, Timeline, qs } from "../hermes";
 
 // const canvasEl = document.createElement("canvas");
 // const ghost =
@@ -82,9 +82,6 @@ export class Reveal {
     });
     this.triggered = false;
 
-    // attach resize listener
-    bindAll(this, ["resize", "play", "destroy"]);
-
     this.bounds = { vw: window.innerWidth, vh: window.innerHeight };
     ro.add({
       update: this.resize,
@@ -101,7 +98,7 @@ export class Reveal {
   // TODO:
   // Use a more efficient algorithm
   // Too many DOM reflows here
-  resize(bounds = { vw: window.innerWidth, vh: window.innerHeight }) {
+  resize = (bounds = { vw: window.innerWidth, vh: window.innerHeight }) => {
     this.bounds = bounds;
     this.destroy();
 
@@ -302,9 +299,9 @@ export class Reveal {
     }
 
     this.isResizing = false;
-  }
+  };
 
-  getTargets(node) {
+  getTargets = (node) => {
     let arr = [];
     node = select(node);
     node.forEach((target) => {
@@ -317,9 +314,9 @@ export class Reveal {
       });
     });
     return arr;
-  }
+  };
 
-  play({
+  play = ({
     targets = this.targetLines,
     delay = this.delay,
     to = this.to,
@@ -331,7 +328,7 @@ export class Reveal {
     reverseDelay = 0,
     visible = true,
     autoplay = true,
-  } = {}) {
+  } = {}) => {
     if (reverse && this.tween) {
       this.tween.do("reverse", {
         targets,
@@ -364,16 +361,16 @@ export class Reveal {
         });
       }
     }
-  }
+  };
 
-  playTo({
+  playTo = ({
     delay = this.delay,
     to = this.to,
     duration = this.duration,
     easing = this.easing,
     stagger = this.stagger,
     visible = true,
-  } = {}) {
+  } = {}) => {
     this.visible = visible;
     if (!this.tween.train.length) {
       // early stopping
@@ -417,7 +414,7 @@ export class Reveal {
     }
 
     return this.tween;
-  }
+  };
 
   /**
    *
@@ -426,7 +423,7 @@ export class Reveal {
    *
    */
 
-  observe() {
+  observe = () => {
     //   create observer
     this.observer?.disconnect();
     this.observer = Observer().create({
@@ -439,19 +436,19 @@ export class Reveal {
       },
       threshold: this.threshold,
     });
-  }
+  };
 
   observeTargets() {
     // set observer to observe targets
     this.observer.observe(this.targets);
   }
 
-  destroy() {
+  destroy = () => {
     // cleanup listeners and restore text to the initial state
     this.observer && this.observer.disconnect();
     this.tween?.do("destroy");
     // this.targets.forEach((target, i) => {
     //   target.textContent = this.cache.get(i);
     // });
-  }
+  };
 }

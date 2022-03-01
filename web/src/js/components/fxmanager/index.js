@@ -2,14 +2,12 @@ import { bindAll, Observer } from "../../hermes";
 
 class FXManager {
   constructor() {
-    bindAll(this, ["change"]);
-
     this.o = Observer().create({
       callback: this.change,
     });
   }
 
-  change(node, isIntersecting, unobserve) {
+  change = (node, isIntersecting, unobserve) => {
     requestAnimationFrame(() => {
       if (isIntersecting) {
         node.classList.add("fx-on");
@@ -20,7 +18,7 @@ class FXManager {
         node.classList.remove("fx-on");
       }
     });
-  }
+  };
 
   add(target = ".fx") {
     this.o.observe(target);
@@ -30,9 +28,9 @@ class FXManager {
     this.o.unobserve(target);
   }
 
-  destroy() {
+  destroy = () => {
     this.o.disconnect();
-  }
+  };
 }
 
 export const fx = new FXManager();

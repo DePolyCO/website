@@ -1,10 +1,10 @@
 import {
   qs,
   qsa,
-  LerpController,
   clamp,
   getOffsetTop,
   invlerp,
+  LerpController,
   ro,
   ticker,
   Ease,
@@ -30,15 +30,16 @@ export class CaptureReveal {
         target: 0,
         cur: 0.001,
       },
-      page: { height: 0 },
+      page: { height: 0, offset: 0 },
       lock: false,
       boundRange: new Float32Array(2),
     };
     this.lerp = new LerpController(this.state.scroll);
 
-    this.resize();
     this.init();
-    this.listen();
+    this.resize();
+
+    this.setActive(0);
   }
 
   clamp = (y) => {
@@ -62,16 +63,15 @@ export class CaptureReveal {
     this.scrollID = corescroller.add({ update: this.onScroll });
     this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
-
-    this.setActive(0);
   };
 
   listen = () => {
+    const { scroll, boundRange, page } = this.state;
+
     this.unlisten = qsa(".number-no").map((item, i) =>
       iris.add(item, "click", () => {
-        this.setInactive(this.state.slides.active);
-        this.setActive(i);
-        this.state.slides.active = i;
+        scroll.cur = -boundRange[0] - i * page.offset - 0.002;
+        scroll.target = scroll.cur + 0.002;
       })
     );
   };
@@ -82,47 +82,64 @@ export class CaptureReveal {
   };
 
   setActive = (i) => {
+    if (i < 0) return;
     this.targets[i].classList.add("active");
 
     // handle reveal
     const r = this.reveals[i];
     const t = r.tween.train;
-    if (t.length && t[0].anim.tweens.progress > 0.75) {
-      r.play({ from: 110, to: 0, stagger: 75, delay: 250 });
+    if (t.length && t[0].anim.tweens.progress > 0.25) {
+      r.play({
+        from: 110,
+        to: 0,
+        stagger: 75,
+        delay: 250,
+        visible: true,
+        easing: "o6",
+        duration: 1750,
+      });
     } else {
-      r.playTo({ from: 110, to: 0, stagger: 75, delay: 250 });
+      r.playTo({ to: 0, stagger: 75, delay: 250, visible: true, easing: "o6" });
     }
   };
 
   setInactive = (i = this.state.active) => {
+    if (i < 0) return;
     this.targets[i].classList.remove("active");
-    const r = this.reveals[i];
-    const t = r.tween.train;
-    if (t.length && t[0].anim.tweens.progress > 0.75) {
-      r.play({ from: 0, to: -110, stagger: 0, delay: 0 });
-    } else {
-      r.playTo({ from: 0, to: -110, stagger: 0, delay: 0 });
-    }
+    this.reveals[i].playTo({
+      to: -110,
+      stagger: 0,
+      delay: 0,
+      visible: false,
+      easing: "o6",
+      duration: 1250,
+    });
   };
 
   update = () => {
-    const { scroll, boundRange, slides } = this.state;
+    const { scroll, boundRange, slides, page } = this.state;
+
+    if (!this.lerp.needsUpdate()) return;
+    this.lerp.update();
 
     const ycur = -scroll.cur;
+    const y = -scroll.target;
 
     if (ycur > boundRange[0] && ycur < boundRange[1]) {
-      if (!this.lerp.needsUpdate()) return;
-      this.lerp.update();
-      const y = -scroll.target;
-
       // engage lock
       if (!this.state.lock) {
         this.state.lock = true;
         smoothscroller.lock("capture-reveal");
+        this.listen();
       }
 
-      const progress = invlerp(boundRange[0], boundRange[1], y);
-      const activeSlide = Math.floor(this.state.ease(progress) * slides.no);
+      const progress = (y - boundRange[0]) / page.height;
+      // const progress = invlerp(boundRange[0], boundRange[1], y);
+      const activeSlide = clamp(
+        Math.floor(progress * slides.no),
+        0,
+        this.state.slides.no - 1
+      );
 
       if (slides.active !== activeSlide) {
         //   deactivate current slide
@@ -134,6 +151,7 @@ export class CaptureReveal {
     } else if (this.state.lock) {
       // unlock if not necessary
       this.state.lock = false;
+      this.unlisten.forEach((unlisten) => unlisten());
       smoothscroller.unlock("capture-reveal");
     }
   };
@@ -142,11 +160,14 @@ export class CaptureReveal {
     const top = getOffsetTop(this.dom);
     const { height } = bounds(this.dom);
 
-    this.state.page.height = 0.5 * window.innerHeight * 4; // 5 items - scroll offset for each item
-    const stickyPoint = (window.innerHeight - height) / 2; // middle of page
+    const { page, slides, boundRange } = this.state;
 
-    this.state.boundRange[0] = top - stickyPoint;
-    this.state.boundRange[1] = top - stickyPoint + this.state.page.height;
+    page.offset = 1 * window.innerHeight;
+    page.height = page.offset * slides.no; // 5 items -> scroll offset for each item
+    const stickyPoint = (window.innerHeight - height) / 2 + 25; // middle of page
+
+    boundRange[0] = top - stickyPoint;
+    boundRange[1] = top - stickyPoint + page.height;
   };
 
   destroy = () => {
@@ -155,6 +176,6 @@ export class CaptureReveal {
     ticker.remove(this.tickID);
 
     this.reveals.forEach((reveal) => reveal.destroy());
-    this.unlisten.forEach((unlisten) => unlisten());
+    this.state.lock && this.unlisten.forEach((unlisten) => unlisten());
   };
 }

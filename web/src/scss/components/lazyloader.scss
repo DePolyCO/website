@@ -1,6 +1,7 @@
 img[data-lazy-src] {
   opacity: 0;
   transition: opacity 0.75s $ease-out-expo;
+  background-color: $darkbeige;
 
   &.media-ready {
     opacity: 1;

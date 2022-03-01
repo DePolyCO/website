@@ -20,18 +20,6 @@ class AsideController {
     });
   };
 
-  test = () => {
-    iris.add(document, "keydown", (e) => {
-      if (e.key === "a" || e.key === "A") {
-        if (this.state.open) {
-          this.close();
-        } else {
-          this.open("#bio-panel");
-        }
-      }
-    });
-  };
-
   listen = () => {
     this.unlistenClick = iris.add(".aside-close", "click", this.close);
     this.unlistenEsc = iris.add(document, "keydown", (e) => {

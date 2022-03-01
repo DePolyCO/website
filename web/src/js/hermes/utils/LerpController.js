@@ -17,16 +17,14 @@ export class LerpController {
   constructor(obj, threshold = 0.001) {
     this.obj = obj;
     this.threshold = threshold;
-
-    bindAll(this, ["update"]);
   }
 
-  needsUpdate() {
+  needsUpdate = () => {
     this.delta = Math.abs(this.obj.cur - this.obj.target);
     return this.delta > this.threshold;
-  }
+  };
 
-  update() {
+  update = () => {
     this.obj.target = lerp(this.obj.target, this.obj.cur, this.obj.inertia);
-  }
+  };
 }

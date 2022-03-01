@@ -200,12 +200,10 @@ export class Vau {
       o: !!opacity,
     };
 
-    bindAll(this, ["run", "restart", "pause", "play", "reverse", "destroy"]);
-
     this.init();
   }
 
-  init() {
+  init = () => {
     const c = this.config;
 
     if (this.flags.t) {
@@ -227,18 +225,18 @@ export class Vau {
     this.setupProps();
     this.setTargets();
     this.start();
-  }
+  };
 
-  setTargets(targets = this.config.targets) {
+  setTargets = (targets = this.config.targets) => {
     targets = select(targets);
     this.configure({
       targets,
       targetsLength: targets.length,
       targetsStyles: targets.map((t) => t.style),
     });
-  }
+  };
 
-  setupProps() {
+  setupProps = () => {
     // convert to hashmap object?
     this.keys = [];
     this.vals = [];
@@ -299,9 +297,9 @@ export class Vau {
     this.vals.forEach((val, i) => {
       this.cur[i] = val[0];
     });
-  }
+  };
 
-  start(options = {}) {
+  start = (options = {}) => {
     this.configure(options);
     const c = this.config;
 
@@ -327,9 +325,9 @@ export class Vau {
     if (!c.autoplay) {
       this.delay.pause();
     }
-  }
+  };
 
-  run({ progress, progressEase, cur }) {
+  run = ({ progress, progressEase, cur }) => {
     this.cur = cur;
 
     for (let i = 0, n = this.keys.length; i < n; i++) {
@@ -354,16 +352,16 @@ export class Vau {
         props: this.props,
         config: this.config,
       });
-  }
+  };
 
-  unset3d() {
+  unset3d = () => {
     if (!this.flags.t) return;
     // Convert 3d transform to 2d to save GPU memory
     this.t3d.convert2d();
     for (const target of this.config.targets) {
       target.style.transform = this.t3d.transform;
     }
-  }
+  };
 
   // =======================
   // =======================
@@ -373,27 +371,27 @@ export class Vau {
   // =======================
   // =======================
 
-  restart(options = {}) {
+  restart = (options = {}) => {
     this.delay.destroy();
     this.tweens.destroy();
     this.start(options);
-  }
+  };
 
-  pause() {
+  pause = () => {
     this.delay.pause();
     this.tweens.pause();
-  }
+  };
 
-  play() {
+  play = () => {
     this.delay.play();
     this.delay.completed && this.tweens.play();
-  }
+  };
 
-  configure(options = {}) {
+  configure = (options = {}) => {
     Object.assign(this.config, options);
-  }
+  };
 
-  reverse(options = {}) {
+  reverse = (options = {}) => {
     this.tweens.destroy();
     this.configure(options);
 
@@ -408,16 +406,14 @@ export class Vau {
     }
 
     this.start({ vals });
-  }
+  };
 
-  destroy() {
+  destroy = () => {
     this.delay.destroy();
     this.tweens.destroy();
-    idly(() => {
-      this.unset3d();
-      this.t3d && this.t3d.destroy();
-    });
-  }
+    this.unset3d();
+    this.t3d?.destroy();
+  };
 }
 
 //
@@ -468,11 +464,11 @@ export class Timeline extends GenericTimeline {
     return { anim, id };
   }
 
-  play() {
+  play = () => {
     this.do("play");
-  }
+  };
 
-  pause() {
+  pause = () => {
     this.do("pause");
-  }
+  };
 }

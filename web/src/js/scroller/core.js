@@ -1,4 +1,5 @@
 import { Conductor, Sniff } from "../hermes";
+import { config } from "../components/configPane";
 
 const keyCodes = {
   LEFT: 37,
@@ -42,9 +43,9 @@ export class CoreScroll extends Conductor {
     }
 
     this.options = {
-      mouseMultiplier: 1,
+      mouseMultiplier: Sniff.windows ? 1 : 0.4,
       touchMultiplier: 2,
-      firefoxMultiplier: 15,
+      firefoxMultiplier: 50,
       keyStep: 120,
       preventTouch: false,
       unpreventTouchClass: "vs-touchmove-allowed",
@@ -67,10 +68,43 @@ export class CoreScroll extends Conductor {
 
     this.bodyTouchAction = null;
 
-    this._listen();
+    this.listen();
+    this.testMode();
   }
 
-  notify(e) {
+  testMode = () => {
+    config
+      .addInput(
+        {
+          mouseMultiplier: this.options.mouseMultiplier,
+        },
+        "mouseMultiplier",
+        { min: 0.1, max: 10, step: 0.1 }
+      )
+      .on("change", (e) => (this.options.mouseMultiplier = e.value));
+
+    config
+      .addInput(
+        {
+          touchMultiplier: this.options.touchMultiplier,
+        },
+        "touchMultiplier",
+        { min: 0.1, max: 10, step: 0.1 }
+      )
+      .on("change", (e) => (this.options.touchMultiplier = e.value));
+
+    config
+      .addInput(
+        {
+          firefoxMultiplier: this.options.firefoxMultiplier,
+        },
+        "firefoxMultiplier",
+        { min: 0.1, max: 100, step: 1 }
+      )
+      .on("change", (e) => (this.options.firefoxMultiplier = e.value));
+  };
+
+  notify = (e) => {
     const evt = this.current;
     evt.x += evt.deltaX;
     evt.y += evt.deltaY;
@@ -86,9 +120,9 @@ export class CoreScroll extends Conductor {
     this.train.forEach((item) => {
       item.update && item.update(data);
     });
-  }
+  };
 
-  _onWheel = (e) => {
+  onWheel = (e) => {
     const options = this.options;
     const evt = this.current;
 
@@ -97,7 +131,7 @@ export class CoreScroll extends Conductor {
     evt.deltaY = e.wheelDeltaY || e.deltaY * -1;
 
     // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
-    // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Delta_modes
+    // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Deltamodes
     if (Sniff.firefox && e.deltaMode === 1) {
       evt.deltaX *= options.firefoxMultiplier;
       evt.deltaY *= options.firefoxMultiplier;
@@ -109,7 +143,7 @@ export class CoreScroll extends Conductor {
     this.notify(e);
   };
 
-  _onMouseWheel = (e) => {
+  onMouseWheel = (e) => {
     const evt = this.current;
 
     // In Safari, IE and in Chrome if 'wheel' isn't defined
@@ -119,13 +153,13 @@ export class CoreScroll extends Conductor {
     this.notify(e);
   };
 
-  _onTouchStart = (e) => {
+  onTouchStart = (e) => {
     const t = e.targetTouches ? e.targetTouches[0] : e;
     this.touchStart.x = t.pageX;
     this.touchStart.y = t.pageY;
   };
 
-  _onTouchMove = (e) => {
+  onTouchMove = (e) => {
     const options = this.options;
     if (
       options.preventTouch &&
@@ -147,7 +181,7 @@ export class CoreScroll extends Conductor {
     this.notify(e);
   };
 
-  _onKeyDown = (e) => {
+  onKeyDown = (e) => {
     const evt = this.current;
     evt.deltaX = evt.deltaY = 0;
     let windowHeight;
@@ -192,15 +226,15 @@ export class CoreScroll extends Conductor {
     }
   };
 
-  _listen() {
+  listen = () => {
     if (support.hasWheelEvent) {
-      this.dom.addEventListener("wheel", this._onWheel, this.listenerOptions);
+      this.dom.addEventListener("wheel", this.onWheel, this.listenerOptions);
     }
 
     if (support.hasMouseWheelEvent) {
       this.dom.addEventListener(
         "mousewheel",
-        this._onMouseWheel,
+        this.onMouseWheel,
         this.listenerOptions
       );
     }
@@ -208,12 +242,12 @@ export class CoreScroll extends Conductor {
     if (support.hasTouch && this.options.useTouch) {
       this.dom.addEventListener(
         "touchstart",
-        this._onTouchStart,
+        this.onTouchStart,
         this.listenerOptions
       );
       this.dom.addEventListener(
         "touchmove",
-        this._onTouchMove,
+        this.onTouchMove,
         this.listenerOptions
       );
     }
@@ -221,43 +255,43 @@ export class CoreScroll extends Conductor {
     if (support.hasPointer && support.hasTouchWin) {
       this.bodyTouchAction = document.body.style.msTouchAction;
       document.body.style.msTouchAction = "none";
-      this.dom.addEventListener("MSPointerDown", this._onTouchStart, true);
-      this.dom.addEventListener("MSPointerMove", this._onTouchMove, true);
+      this.dom.addEventListener("MSPointerDown", this.onTouchStart, true);
+      this.dom.addEventListener("MSPointerMove", this.onTouchMove, true);
     }
 
     if (support.hasKeyDown && this.options.useKeyboard) {
-      document.addEventListener("keydown", this._onKeyDown);
+      document.addEventListener("keydown", this.onKeyDown);
     }
-  }
+  };
 
-  _unlisten() {
+  unlisten = () => {
     if (support.hasWheelEvent) {
-      this.dom.removeEventListener("wheel", this._onWheel);
+      this.dom.removeEventListener("wheel", this.onWheel);
     }
 
     if (support.hasMouseWheelEvent) {
-      this.dom.removeEventListener("mousewheel", this._onMouseWheel);
+      this.dom.removeEventListener("mousewheel", this.onMouseWheel);
     }
 
     if (support.hasTouch) {
-      this.dom.removeEventListener("touchstart", this._onTouchStart);
-      this.dom.removeEventListener("touchmove", this._onTouchMove);
+      this.dom.removeEventListener("touchstart", this.onTouchStart);
+      this.dom.removeEventListener("touchmove", this.onTouchMove);
     }
 
     if (support.hasPointer && support.hasTouchWin) {
       document.body.style.msTouchAction = this.bodyTouchAction;
-      this.dom.removeEventListener("MSPointerDown", this._onTouchStart, true);
-      this.dom.removeEventListener("MSPointerMove", this._onTouchMove, true);
+      this.dom.removeEventListener("MSPointerDown", this.onTouchStart, true);
+      this.dom.removeEventListener("MSPointerMove", this.onTouchMove, true);
     }
 
     if (support.hasKeyDown && this.options.useKeyboard) {
-      document.removeEventListener("keydown", this._onKeyDown);
+      document.removeEventListener("keydown", this.onKeyDown);
     }
-  }
+  };
 
-  destroy() {
-    this._unlisten();
-  }
+  destroy = () => {
+    this.unlisten();
+  };
 }
 
 export const corescroller = new CoreScroll();

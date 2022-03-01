@@ -13,7 +13,7 @@ import {
 import { corescroller } from "./core";
 import { Tracker } from "./tracker";
 
-import { Pane } from "tweakpane";
+import { config } from "../components/configPane";
 
 const DELTA = 0.001002;
 
@@ -64,8 +64,7 @@ export class Smooth extends Conductor {
   }
 
   testMode = () => {
-    const pane = new Pane();
-    const sense = pane.addInput(
+    const sense = config.addInput(
       {
         sensitivity: 75,
       },

@@ -40,6 +40,11 @@ body {
   color: $darkblue;
 }
 
+#loader,
+#sail {
+  background-color: $lightbeige;
+}
+
 .restrict {
   width: fluid(1840, $lg);
   margin: 0 auto;
@@ -72,11 +77,6 @@ body {
   opacity: 1;
 }
 
-#loader,
-#sail {
-  background-color: $lightbeige;
-}
-
 .tp-dfwv {
   z-index: 9999;
 }
@@ -85,3 +85,5 @@ body {
 @import "./pages/home.scss";
 @import "./pages/technology.scss";
 @import "./pages/about.scss";
+@import "./pages/careers.scss";
+@import "./pages/careerInner.scss";

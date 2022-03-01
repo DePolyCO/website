@@ -1,4 +1,4 @@
-import { bindAll, iris, qs } from "./hermes";
+import { iris, qs } from "./hermes";
 
 export class Grid {
   constructor({ cols = 4 }) {
@@ -8,30 +8,28 @@ export class Grid {
       cols,
     };
 
-    bindAll(this, ["toggle"]);
-
     this.build();
     this.listen();
   }
 
-  build() {
+  build = () => {
     const fragment = document.createDocumentFragment();
     for (let i = 0; i < this.state.cols; i++) {
       const div = document.createElement("div");
       fragment.appendChild(div);
     }
     this.dom.appendChild(fragment);
-  }
+  };
 
-  listen() {
+  listen = () => {
     iris.add(document, "keydown", (e) => {
       if (e.key === "g" || e.key === "G") {
         this.toggle();
       }
     });
-  }
+  };
 
-  toggle() {
+  toggle = () => {
     this.dom.classList.toggle("active");
-  }
+  };
 }

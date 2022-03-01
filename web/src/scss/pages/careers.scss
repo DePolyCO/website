@@ -1,0 +1,113 @@
+#careers {
+  #why-join {
+    padding-bottom: fluid(160, $lg);
+    margin-bottom: fluid(125, $lg);
+    border-bottom: 1px solid $darkblue;
+  }
+
+  #meet {
+    padding-left: fluid(40, $lg);
+    padding-bottom: fluid(160, $lg);
+  }
+
+  #meet-slider {
+    width: fluid(1410, $lg);
+    margin-left: auto;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    cursor: grab;
+
+    &.active {
+      cursor: grabbing;
+    }
+  }
+
+  .carousel-slider {
+    overflow: hidden;
+    min-width: fit-content;
+    display: flex;
+    padding-right: fluid(40, $lg);
+    gap: fluid(40, $lg);
+
+    height: fluid(900, $lg);
+  }
+
+  .carousel-slide {
+    min-width: fluid(1349, $lg);
+  }
+
+  .carousel-slide--stack {
+    min-width: fluid(645, $lg);
+    gap: fluid(40, $lg);
+  }
+
+  #quotes {
+    border-top: 1px solid $darkblue;
+    padding-top: fluid(125, $lg);
+    padding-bottom: fluid(160, $lg);
+    margin-bottom: fluid(125, $lg);
+    border-bottom: 1px solid $darkblue;
+  }
+
+  #position-content {
+    width: fluid(1370, $lg);
+    margin-left: auto;
+  }
+
+  #position-list {
+    margin-bottom: fluid(120 - 51, $lg);
+  }
+
+  .position-item {
+    padding-bottom: fluid(60, $lg);
+    margin-bottom: fluid(51, $lg);
+    border-bottom: 1px solid $darkbeige;
+  }
+
+  .cta-btn {
+    background: $darkbeige;
+    white-space: nowrap;
+
+    .btn-inner::after {
+      color: $darkbeige;
+    }
+
+    &:hover {
+      background: $darkblue;
+    }
+  }
+
+  .position-role {
+    font-weight: 500;
+    font-size: fluid(30, $lg);
+    line-height: 130%;
+    letter-spacing: 0.01em;
+  }
+
+  .position-location,
+  .position-level {
+    font-size: fluid(18, $lg);
+    line-height: 140%;
+    border-left: 1px solid $darkbeige;
+    padding-left: fluid(24, $lg);
+  }
+
+  #not-found {
+    margin-bottom: fluid(220, $lg);
+  }
+
+  #not-found--title {
+    font-size: fluid(68, $lg);
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    width: fluid(445, $lg);
+  }
+
+  #not-found--desc {
+    font-size: fluid(18, $lg);
+    line-height: 140%;
+    width: fluid(499, $lg);
+  }
+}

@@ -19,21 +19,20 @@ export class Duration {
       reverse,
     };
 
-    bindAll(this, ["run", "play", "pause", "restart"]);
     this.destroy = this.pause;
 
     this.init();
   }
 
-  init() {
+  init = () => {
     this.completed = false;
     this.elapsed = this.config.reverse ? this.config.duration : 0;
     this.progress = this.config.reverse ? 1 : 0;
     this.paused = true;
     this.play();
-  }
+  };
 
-  run(delta = ticker.delta) {
+  run = (delta = ticker.delta) => {
     const c = this.config;
 
     if (
@@ -53,9 +52,9 @@ export class Duration {
         c.update({ progress: this.progress, elapsed: this.elapsed });
       }
     }
-  }
+  };
 
-  play() {
+  play = () => {
     // extra check to avoid accidentally
     // adding to ticker multiple times
     if (!this.paused) return;
@@ -63,22 +62,22 @@ export class Duration {
     this.id = ticker.add({
       update: this.run,
     });
-  }
+  };
 
-  pause() {
+  pause = () => {
     // extra check to avoid accidentally
     // removing the incorrect ID
     if (this.paused) return;
     this.paused = true;
     ticker.remove(this.id);
-  }
+  };
 
-  restart() {
+  restart = () => {
     this.pause();
     this.init();
-  }
+  };
 
-  reverse() {
+  reverse = () => {
     this.config.reverse = !this.config.reverse;
-  }
+  };
 }

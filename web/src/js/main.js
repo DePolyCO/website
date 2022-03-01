@@ -8,6 +8,7 @@ import { homeController } from "./controllers/home";
 import { aboutController } from "./controllers/about";
 import { techController } from "./controllers/tech";
 import { careerController } from "./controllers/career";
+import { careerInnerController } from "./controllers/careerInner";
 import { newsController } from "./controllers/news";
 import { contactController } from "./controllers/contact";
 import { noController } from "./controllers/404";
@@ -15,7 +16,6 @@ import { noController } from "./controllers/404";
 import { Grid } from "./grid";
 import { asideController } from "./components/aside";
 
-// import { corescroller } from "./scroller";
 import { smoothscroller } from "./scroller";
 import { footer } from "./components/footer";
 import { nav } from "./components/nav";
@@ -40,6 +40,7 @@ new Hydra({
     career: careerController,
     news: newsController,
     contact: contactController,
+    careerInner: careerInnerController,
     404: noController,
   },
 });
@@ -55,16 +56,8 @@ iris.add(
       cols: 4,
     });
 
-    // window.corescroller = corescroller;
-    window.smooth = smoothscroller;
-    // window.footer = footer;
-    // window.aside = asideController;
-
-    asideController.test();
     footer.init();
     nav.init();
-    window.nav = nav;
-    // smoothscroller.resize();
 
     ro.update();
 

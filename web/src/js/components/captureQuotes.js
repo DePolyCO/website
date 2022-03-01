@@ -13,10 +13,10 @@ import {
 import { Reveal } from "../reveal";
 import { corescroller, smoothscroller } from "../scroller";
 
-export class CaptureReveal {
+export class CaptureQuotes {
   constructor() {
-    this.dom = qs("#numbers-content");
-    this.targets = qsa(".number-item", this.dom);
+    this.dom = qs("#quotes-list");
+    this.targets = qsa(".quote", this.dom);
 
     this.state = {
       ease: Ease["io2"],
@@ -53,7 +53,7 @@ export class CaptureReveal {
     this.reveals = this.targets.map(
       (item) =>
         new Reveal({
-          targets: qs(".number-detail", item),
+          targets: qsa(".quote-reveal", item),
           stagger: 50,
           delay: 150,
         })
@@ -64,19 +64,8 @@ export class CaptureReveal {
     this.roID = ro.add({ update: this.resize });
   };
 
-  listen = () => {
-    const { scroll, boundRange, page } = this.state;
-
-    this.unlisten = qsa(".number-no").map((item, i) =>
-      iris.add(item, "click", () => {
-        scroll.cur = -boundRange[0] - i * page.offset - 0.002;
-        scroll.target = scroll.cur + 0.002;
-      })
-    );
-  };
-
   onScroll = ({ deltaY = 0 }) => {
-    if (smoothscroller.hasOtherLock("capture-reveal")) return;
+    if (smoothscroller.hasOtherLock("capture-quotes")) return;
     this.state.scroll.cur = this.clamp(this.state.scroll.cur + deltaY);
   };
 
@@ -91,14 +80,21 @@ export class CaptureReveal {
       r.play({
         from: 110,
         to: 0,
-        stagger: 75,
+        stagger: 150,
         delay: 250,
         visible: true,
         easing: "o6",
         duration: 1750,
       });
     } else {
-      r.playTo({ to: 0, stagger: 75, delay: 250, visible: true, easing: "o6" });
+      r.playTo({
+        to: 0,
+        stagger: 150,
+        delay: 250,
+        visible: true,
+        easing: "o6",
+        duration: 1750,
+      });
     }
   };
 
@@ -110,7 +106,7 @@ export class CaptureReveal {
       stagger: 0,
       delay: 0,
       visible: false,
-      easing: "o6",
+      easing: "o4",
       duration: 1250,
     });
   };
@@ -128,8 +124,7 @@ export class CaptureReveal {
       // engage lock
       if (!this.state.lock) {
         this.state.lock = true;
-        smoothscroller.lock("capture-reveal");
-        this.listen();
+        smoothscroller.lock("capture-quotes");
       }
 
       const progress = (y - boundRange[0]) / page.height;
@@ -150,8 +145,7 @@ export class CaptureReveal {
     } else if (this.state.lock) {
       // unlock if not necessary
       this.state.lock = false;
-      this.unlisten.forEach((unlisten) => unlisten());
-      smoothscroller.unlock("capture-reveal");
+      smoothscroller.unlock("capture-quotes");
     }
   };
 

@@ -64,6 +64,7 @@ export const homeController = new Controller({
         new Parallax({
           dom: item,
           ease: "io2",
+          limitBounds: true,
           speed: 2,
         })
     );

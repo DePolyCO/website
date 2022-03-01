@@ -3,6 +3,7 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 import { Slider } from "../components/slider";
+import { CaptureQuotes } from "../components/captureQuotes";
 
 /**
  *
@@ -10,6 +11,7 @@ import { Slider } from "../components/slider";
  *
  */
 
+let slider, capture;
 export const careerController = new Controller({
   hide: ({ done }) => {
     slider.destroy();
@@ -21,6 +23,7 @@ export const careerController = new Controller({
     nav.setLinkActive("careers");
 
     slider = new Slider();
+    capture = new CaptureQuotes();
 
     done();
   },

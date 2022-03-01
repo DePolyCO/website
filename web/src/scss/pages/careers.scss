@@ -51,6 +51,84 @@
     border-bottom: 1px solid $darkblue;
   }
 
+  #quotes-list {
+    width: fluid(430 * 3 + 40 * 2, $lg);
+    margin-left: auto;
+  }
+
+  .quote {
+    &.active {
+      .quote-picture img {
+        opacity: 1;
+      }
+    }
+  }
+
+  .quote-sno {
+    font-weight: bold;
+    font-size: fluid(14, $lg);
+    line-height: 110%;
+    letter-spacing: 0.07em;
+  }
+
+  .quote-picture {
+    width: fluid(400, $lg);
+    height: fluid(400, $lg);
+    border-radius: 50%;
+    // background: #dadaca;
+
+    img {
+      transition: opacity 0.8s;
+      opacity: 0;
+    }
+  }
+
+  .quote-content {
+    margin-left: fluid(70, $lg);
+  }
+
+  .quote-cite {
+    font-style: normal;
+  }
+
+  .quote-apo {
+    background: #022d42;
+    width: 77px;
+    height: 77px;
+    border-radius: 50%;
+    z-index: 2;
+    left: fluid(319, $lg);
+
+    svg {
+      width: fluid(25, $lg);
+      height: fluid(22, $lg);
+    }
+  }
+
+  .quote-item {
+    font-size: fluid(68, $lg);
+    line-height: 105%;
+    letter-spacing: -0.02em;
+    width: fluid(900, $lg);
+    margin-bottom: fluid(52, $lg);
+  }
+
+  .quote-name {
+    font-weight: 500;
+    font-size: fluid(30, $lg);
+    line-height: 100%;
+    letter-spacing: 0.01em;
+    margin-bottom: fluid(12, $lg);
+  }
+
+  .quote-role {
+    font-weight: 500;
+    font-size: fluid(15, $lg);
+    line-height: 110%;
+    letter-spacing: 0.05em;
+    opacity: 0.4;
+  }
+
   #position-content {
     width: fluid(1370, $lg);
     margin-left: auto;

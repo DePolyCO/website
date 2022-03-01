@@ -32,6 +32,7 @@ export class Parallax {
       end: 0,
     },
     ease = "io1",
+    limitBounds = false,
   }) {
     this.dom = select(dom)[0];
 
@@ -44,11 +45,12 @@ export class Parallax {
       rotate,
       offset,
       range: (speed - 1) * 100,
+      limitBounds,
     };
 
     this.state = {
       scroll: 0,
-      bounds: {},
+      bounds: { y: 0, maxRange: 0 },
       boundRange: new Float32Array(2),
       needs: {
         rotate: {
@@ -112,24 +114,41 @@ export class Parallax {
         r = 0;
 
       const progress = invlerp(boundRange[0], boundRange[1], scroll);
-      const y =
-        this.options.ease(this.options.down ? 1 - progress : progress) * 100;
+      const y = this.options.ease(this.options.down ? 1 - progress : progress); // 0 -> 1
 
-      // if (needs.rotate.x) {
-      // }
-
-      this.dom.style.transform = `translate3d(${x}%, ${y}%, 0) rotate(${r}deg)`;
+      let ypx;
+      if (this.options.limitBounds) {
+        ypx = lerp(0, this.state.bounds.maxRange, y);
+      } else {
+        ypx = y * this.state.bounds.y;
+      }
+      this.dom.style.transform = `translate3d(${x}%, ${ypx}px, 0) rotate(${r}deg)`;
     }
   };
 
   resize = () => {
-    const top = getOffsetTop(this.dom);
-    const bottom = top + bounds(this.dom).height;
+    const offsetTop = getOffsetTop(this.dom);
+    const { height } = bounds(this.dom);
+
+    const bottom = offsetTop + height;
+
+    if (this.options.limitBounds) {
+      const parentRect = bounds(this.dom.parentNode);
+      this.state.bounds.maxRange =
+        parentRect.height - height - this.dom.offsetTop / 2; // hack /2 to increase rangez
+    }
+
+    this.state.bounds.y = height;
 
     this.state.boundRange[0] =
-      top - this.options.range - window.innerHeight + this.options.offset.start;
+      offsetTop -
+      this.options.range -
+      window.innerHeight +
+      this.options.offset.start -
+      height;
+
     this.state.boundRange[1] =
-      bottom + this.options.range + this.options.offset.end;
+      bottom + this.options.range + this.options.offset.end + height;
 
     this.update();
   };

@@ -56,7 +56,6 @@ export class Compare {
 
     this.resize();
 
-    this.detect();
     this.initStyle();
 
     this.observer.observe(this.dom);
@@ -83,35 +82,12 @@ export class Compare {
     return clamp(x, 0, this.state.bounds.x);
   };
 
-  getXY = (e) => {
-    return {
-      x: e.changedTouches ? e.changedTouches[0].clientX : e.clientX,
-      y: e.changedTouches ? e.changedTouches[0].clientY : e.clientY,
-    };
-  };
-
-  detect = () => {
-    let type = "pointer";
-    let down = "down";
-    let up = "up";
-
-    if (Sniff.touchDevice) {
-      type = "touch";
-      down = "start";
-      up = "end";
-    }
-
-    this.events = {
-      down: `${type}${down}`,
-      up: `${type}${up}`,
-      move: `${type}move`,
-    };
-  };
-
   listen = () => {
-    this.undown = iris.add(this.handle, this.events.down, this.handleDown);
-    this.unmove = iris.add(window, this.events.move, this.handleMove);
-    this.unup = iris.add(window, this.events.up, this.handleUp);
+    const { down, up, move } = iris.events;
+
+    this.undown = iris.add(this.handle, down, this.handleDown);
+    this.unmove = iris.add(window, move, this.handleMove);
+    this.unup = iris.add(window, up, this.handleUp);
   };
 
   handleDown = (e) => {
@@ -120,7 +96,7 @@ export class Compare {
     const { drag, pos } = this.state;
 
     drag.isDragging = true;
-    drag.start = this.getXY(e);
+    drag.start = iris.getXY(e);
 
     // copy
     drag.last.x = pos.x.cur;
@@ -134,7 +110,7 @@ export class Compare {
 
     if (!drag.isDragging) return;
 
-    const { x, y } = this.getXY(e);
+    const { x, y } = iris.getXY(e);
     const diffX = x - drag.start.x;
     const diffY = y - drag.start.y;
 

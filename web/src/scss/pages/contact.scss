@@ -1,0 +1,46 @@
+#contact {
+  #form {
+    padding-bottom: fluid(333, $lg);
+    margin-bottom: fluid(125, $lg);
+  }
+
+  #location {
+    margin-bottom: fluid(48, $lg);
+  }
+
+  #map {
+    width: fluid(430 * 3 + 40 * 2, $lg);
+    margin-left: auto;
+  }
+
+  #map-overlay {
+    background-color: #fff;
+
+    bottom: fluid(60, $lg);
+    left: fluid(60, $lg);
+
+    padding: fluid(50, $lg);
+  }
+
+  #map-overlay--text {
+    width: fluid(478, $lg);
+    font-size: fluid(35, $lg);
+    line-height: 110%;
+    margin-bottom: fluid(32, $lg);
+    letter-spacing: 0.01em;
+  }
+
+  .cta-btn {
+    background: $darkblue;
+    white-space: nowrap;
+    color: #fff;
+
+    .btn-inner::after {
+      color: $darkblue;
+    }
+
+    &:hover {
+      background: $darkbeige;
+    }
+  }
+}

@@ -3,6 +3,16 @@ layout: _layout.njk
 title: Contact
 ---
 
+{% from '_macros/header.njk' import header %}
+{% from '_macros/textBlock.njk' import textBlock %}
+
 <main data-hydra-content="contact" id="contact">
-    <h1 class="temp-title">Contact</h1>
+    {{ 
+        header(
+            'Contact Us', 
+            "We're always happy to host and talk to with you", 
+            "/static/about/hero.jpg", 
+            "hero img"
+        ) 
+    }}
 </main>

@@ -71,7 +71,7 @@ export class Tracker extends Conductor {
       if (!item.visible) {
         if (item.direction === "horizontal") {
           if (scrollRight >= item.left && scrollLeft < item.right) {
-            this.setInView(item, i);
+            this.setVisible(item, i);
           }
         } else {
           if (this.useDetectionPlane) {
@@ -87,7 +87,7 @@ export class Tracker extends Conductor {
       } else {
         if (item.direction === "horizontal") {
           if (scrollRight < item.left || scrollLeft > item.right) {
-            this.setOutOfView(item, i);
+            this.setInvisble(item, i);
           }
         } else {
           if (this.useDetectionPlane) {

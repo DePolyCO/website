@@ -75,6 +75,7 @@ export class Smooth extends Conductor {
     sense.on("change", (e) => {
       const val = e.value / 1000;
       this.state.scroll.y.inertia = val;
+      this.lerp.y.setInertia(val);
     });
   };
 
@@ -156,8 +157,11 @@ export class Smooth extends Conductor {
 
     this.tracker.train.forEach((item, i) => {
       if (item.visible) {
+        // item,visible -> should be rendered
         this.setVisible(item, i, x, y);
       } else if (item.isVisible) {
+        // isVisible -> actually visible on screen
+        // thus we skip the elements already marked invisible
         this.setInvisible(item, i, x, y);
       }
     });

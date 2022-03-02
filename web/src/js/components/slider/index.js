@@ -11,6 +11,7 @@ import {
   lerp,
   round,
   Sniff,
+  damp,
 } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 
@@ -39,7 +40,7 @@ export class Slider {
     }));
 
     Object.assign(this, {
-      inertia,
+      inertia: Math.log(1 - inertia / 15),
       dragSpeed,
     });
 
@@ -158,7 +159,12 @@ export class Slider {
   update = (t, ct) => {
     if (!this.shouldAnimate) return;
 
-    this.state.tx = lerp(this.state.tx, this.state.cx, this.inertia);
+    this.state.tx = damp(
+      this.state.tx,
+      this.state.cx,
+      this.inertia,
+      ticker.delta
+    );
 
     this.slider.style.transform = `translate3d(${round(
       -this.state.tx

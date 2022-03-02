@@ -189,7 +189,10 @@ export class Smooth extends Conductor {
     // recalculate page height
     const { height, width } = bounds(this.scrollContent);
     const { page } = this.state;
+
     if (this.settings.isWindow) {
+      vh = vh ? vh : window.innerHeight;
+      vw = vw ? vw : window.innerWidth;
       page.height = Math.max(height, vh) - vh;
       page.width = Math.max(width, vw) - vw;
     } else {

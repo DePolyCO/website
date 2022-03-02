@@ -186,6 +186,9 @@ export class CoreScroll extends Conductor {
     evt.deltaX = evt.deltaY = 0;
     let windowHeight;
 
+    if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA")
+      return;
+
     switch (e.keyCode) {
       case keyCodes.LEFT:
       case keyCodes.UP:
@@ -202,8 +205,6 @@ export class CoreScroll extends Conductor {
         break;
 
       case keyCodes.SPACE:
-        if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA")
-          return;
         windowHeight = window.innerHeight - 40;
         evt.deltaY = windowHeight * (e.shiftKey ? 1 : -1);
         this.notify(e);

@@ -156,8 +156,14 @@
   }
 }
 
+.btn-wrapper {
+  display: grid;
+  place-items: center;
+}
+
 .btn-inner {
   transition: transform 1.25s $ease-out-expo;
+  width: fit-content;
 
   &::after {
     content: attr(data-content);

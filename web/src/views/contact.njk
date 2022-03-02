@@ -17,7 +17,176 @@ title: Contact
     }}
 
     <section id="form" class="restrict df border-bottom" data-scroll-section>
-    
+        <div id="prefer-mail">
+            <div id="prefer-mail--title">Prefer sending a direct email over contact forms?</div>
+            <ul id="contact-list" class="df fc">
+                <li class="contact-item df fc">
+                    <div class="contact-title ttu">General</div>
+                    <div>
+                        <a target="_blank" rel="noreferrer noopener" class="contact-link link link-solid link-dark">contact@depoly.ch</a>
+                    </div>
+                </li>
+                <li class="contact-item df fc">
+                    <div class="contact-title ttu">Submit your CV</div>
+                    <div>
+                        <a target="_blank" rel="noreferrer noopener" class="contact-link link link-solid link-dark">careers@depoly.ch</a>
+                    </div>
+                </li>
+                <li class="contact-item df fc">
+                    <div class="contact-title ttu">Curious about a sample?</div>
+                    <div>
+                        <a target="_blank" rel="noreferrer noopener" class="contact-link link link-solid link-dark">sales@depoly.ch</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="form-list" class="df fc pr">
+            {# General Information #}
+            <div class="pr">
+                <div class="pa top right">Toggle</div>
+                <details class="form-details pr" id="general-form">
+                    <summary class="form-title">General Information</summary>
+                    <form novalidate data-netlify="true" name="general-info" method="POST" class="form-content">
+                        <div class="df">
+                            <div class="df fc field-col">
+                                <div class="field pr">
+                                    <input class="field-input" id="general-firstname" placeholder="First Name" required type="text">
+                                    <label class="pen field-label pa" for="general-firstname">First Name</label>
+                                    <label class="pen field-label--active ttu pa" for="general-firstname">First Name</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="general-lastname" placeholder="Last Name" required type="text">
+                                    <label class="pen field-label pa" for="general-lastname">Last Name</label>
+                                    <label class="pen field-label--active ttu pa" for="general-lastname">Last Name</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="general-email" placeholder="Email Address" required type="email">
+                                    <label class="pen field-label pa" for="general-email">Email Address</label>
+                                    <label class="pen field-label--active ttu pa" for="general-email">Email Address</label>
+                                </div>
+                            </div>
+                            <div class="df">
+                                <div class="field pr">
+                                    <textarea class="field-input field-input--textarea" placeholder="Your Message" name="general-message" id="general-message" cols="30" rows="10"></textarea>
+                                    <label class="pen field-label pa" for="general-message">Your Message</label>
+                                    <label class="pen field-label--active ttu pa" for="general-message">Your Message</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="cta-btn" id="general-submit">
+                            <div class="pr oh btn-wrapper">
+                                <div class="btn-inner" data-content="Send Message">Send Message</div>
+                            </div>
+                        </button>
+                    </form>
+                </details>
+            </div>
+
+            {# Submit CV #}
+            <div class="pr">
+                <div class="pa top right">Toggle</div>
+                <details class="form-details pr" id="cv-form" open>
+                    <summary class="form-title">Submit your CV</summary>
+                    <form novalidate data-netlify="true" name="cv-info" method="POST" class="form-content">
+                        <div class="df">
+                            <div class="df fc field-col">
+                                <div class="field pr">
+                                    <input class="field-input" id="cv-firstname" placeholder="First Name" required type="text">
+                                    <label class="pen field-label pa" for="cv-firstname">First Name</label>
+                                    <label class="pen field-label--active ttu pa" for="cv-firstname">First Name</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="cv-lastname" placeholder="Last Name" required type="text">
+                                    <label class="pen field-label pa" for="cv-lastname">Last Name</label>
+                                    <label class="pen field-label--active ttu pa" for="cv-lastname">Last Name</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="cv-email" placeholder="Email Address" required type="email">
+                                    <label class="pen field-label pa" for="cv-email">Email Address</label>
+                                    <label class="pen field-label--active ttu pa" for="cv-email">Email Address</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="cv-linkedin" placeholder="Linkedin Profile (Optional)" type="url">
+                                    <label class="pen field-label pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
+                                    <label class="pen field-label--active ttu pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
+                                </div>
+                                <div class="field pr">
+                                    <label class="field-label--file df" for="cv-cvfile">
+                                        <input class="cp field-input--file" id="cv-cvfile" placeholder="Upload your CV" required type="file">
+                                        <div class="field-label field-label--file-inner pa">Upload your CV</div>
+                                    </label>
+                                </div>
+                                <div class="field pr">
+                                    <label class="field-label--file df" for="cv-coverletterfile">
+                                        <input class="cp field-input--file" id="cv-coverletterfile" placeholder="Upload your Cover Letter" required type="file">
+                                        <div class="field-label field-label--file-inner pa">Upload your Cover Letter</div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="df">
+                                <div class="field pr">
+                                    <textarea class="field-input field-input--textarea" placeholder="Your Message" name="cv-message" id="cv-message" cols="30" rows="10"></textarea>
+                                    <label class="pen field-label pa" for="cv-message">Your Message</label>
+                                    <label class="pen field-label--active ttu pa" for="cv-message">Your Message</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="cta-btn" id="cv-submit">
+                            <div class="pr oh btn-wrapper">
+                                <div class="btn-inner" data-content="Send Message">Send Message</div>
+                            </div>
+                        </button>
+                    </form>
+                </details>
+            </div>
+
+            {# Sample & Quote #}
+            <div class="pr">
+                <div class="pa top right">Toggle</div>
+                <details class="form-details pr" id="sample-form" open>
+                    <summary class="form-title margin-sm">Sample & Quote</summary>
+                    <form novalidate data-netlify="true" name="sample-info" method="POST" class="form-content">
+                        <div class="form-subtitle">Only registered laboratories can order a sample.</div>
+                        <div class="df">
+                            <div class="df fc field-col">
+                                <div class="field pr">
+                                    <input class="field-input" id="sample-firstname" placeholder="First Name" required type="text">
+                                    <label class="pen field-label pa" for="sample-firstname">First Name</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-firstname">First Name</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="sample-lastname" placeholder="Last Name" required type="text">
+                                    <label class="pen field-label pa" for="sample-lastname">Last Name</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-lastname">Last Name</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="sample-email" placeholder="Email Address" required type="email">
+                                    <label class="pen field-label pa" for="sample-email">Email Address</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-email">Email Address</label>
+                                </div>
+                                <div class="field pr">
+                                    <input class="field-input" id="sample-company" placeholder="Company Name" required type="text">
+                                    <label class="pen field-label pa" for="sample-company">Company Name</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-company">Company Name</label>
+                                </div>
+                            </div>
+                            <div class="df">
+                                <div class="field pr">
+                                    <textarea class="field-input field-input--textarea" placeholder="Your Message" name="sample-message" id="sample-message" cols="30" rows="10"></textarea>
+                                    <label class="pen field-label pa" for="sample-message">Your Message</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-message">Your Message</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="cta-btn" id="sample-submit">
+                            <div class="pr oh btn-wrapper">
+                                <div class="btn-inner" data-content="Send Message">Send Message</div>
+                            </div>
+                        </button>
+                    </form>
+                </details>
+            </div>
+        </div>
     </section>
 
     <section data-scroll-section id="location" class="df restrict pr">

@@ -224,7 +224,9 @@ export class Smooth extends Conductor {
   };
 
   lock = (name = "default") => {
-    this.state.locks.push(name);
+    if (!this.hasLock(name)) {
+      this.state.locks.push(name);
+    }
   };
 
   unlock = (name = "default") => {

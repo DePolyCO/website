@@ -5,13 +5,32 @@
   &.hidden {
     transform: translateY(-100%);
   }
+
+  &.has-line {
+    #nav-inner {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 #nav-inner {
   width: fluid(1840, $lg);
   margin: 0 auto;
   padding: fluid(40, $lg) 0;
-  border-bottom: 1px solid #dadaca;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #dadaca;
+    transition: opacity 0.75s;
+    opacity: 0;
+  }
 }
 
 #nav-left {

@@ -26,11 +26,11 @@ export class Nav {
   onScroll = ({ deltaY, y }) => {
     const hasScrolled = y < -15;
 
-    // if (hasScrolled && !this.state.hasLine) {
-    //   this.addLine();
-    // } else if (!hasScrolled && this.state.hasLine) {
-    //   this.removeLine();
-    // }
+    if (hasScrolled && !this.state.hasLine) {
+      this.addLine();
+    } else if (!hasScrolled && this.state.hasLine) {
+      this.removeLine();
+    }
 
     if (this.state.isVisible && deltaY > 0 && hasScrolled) {
       this.hide();

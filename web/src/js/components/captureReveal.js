@@ -176,5 +176,6 @@ export class CaptureReveal {
 
     this.reveals.forEach((reveal) => reveal.destroy());
     this.state.lock && this.unlisten.forEach((unlisten) => unlisten());
+    smoothscroller.unlock("capture-reveal");
   };
 }

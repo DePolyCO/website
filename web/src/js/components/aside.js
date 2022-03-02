@@ -68,6 +68,7 @@ class AsideController {
 
   destroy = () => {
     this.untriggers.forEach((untrigger) => untrigger());
+    smoothscroller.unlock("aside");
   };
 }
 

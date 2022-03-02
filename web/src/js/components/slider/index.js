@@ -177,6 +177,7 @@ export class Slider {
     this.removeMove();
     this.removeWheel();
 
+    smoothscroller.unlock("carousel");
     ticker.remove(this.tickID);
     ro.remove(this.roID);
   };

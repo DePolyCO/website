@@ -171,5 +171,6 @@ export class Collapse {
     corescroller.remove(this.scrollID);
     ro.remove(this.roID);
     ticker.remove(this.tickID);
+    smoothscroller.unlock("collapse");
   };
 }

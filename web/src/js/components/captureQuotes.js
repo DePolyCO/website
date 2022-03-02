@@ -170,5 +170,6 @@ export class CaptureQuotes {
 
     this.reveals.forEach((reveal) => reveal.destroy());
     this.state.lock && this.unlisten.forEach((unlisten) => unlisten());
+    smoothscroller.unlock("capture-quotes");
   };
 }

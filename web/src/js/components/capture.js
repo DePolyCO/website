@@ -104,6 +104,7 @@ export class Capture {
   };
 
   destroy = () => {
+    smoothscroller.unlock(this.namespace);
     corescroller.remove(this.scrollID);
     ro.remove(this.roID);
     ticker.remove(this.tickID);

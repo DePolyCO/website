@@ -4,7 +4,7 @@ import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
 import { Parallax } from "../scroller";
 
-import { qsa } from "../hermes";
+import { Draw, Observer, qsa } from "../hermes";
 import { Collapse } from "../components/collapse";
 import { nav } from "../components/nav";
 
@@ -14,7 +14,7 @@ import { nav } from "../components/nav";
  *
  */
 
-let highlightFx, p1, p2, p3, p4, c1, ps;
+let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o;
 export const homeController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
@@ -24,6 +24,8 @@ export const homeController = new Controller({
     p3.destroy();
     p4.destroy();
     c1.destroy();
+    o.disconnect();
+    iconDraws.forEach((d) => d.destroy());
     sail.out(done);
   },
 
@@ -70,6 +72,30 @@ export const homeController = new Controller({
     );
 
     nav.unsetLinkActive();
+
+    const icons = qsa(".icon");
+    iconDraws = icons.map((el) =>
+      Draw({ targets: el, duration: 1750, easing: "o5" })
+    );
+    iconDraws.forEach((d) => d.pause());
+
+    o = Observer().create({
+      callback: (node, isIntersecting, unobserve) => {
+        if (isIntersecting) {
+          for (let i = 0, n = icons.length; i < n; i++) {
+            const el = icons[i];
+            if (node === el) {
+              iconDraws[i].play();
+              unobserve(node);
+              break;
+            }
+          }
+        }
+      },
+      threshold: 1,
+    });
+
+    o.observe(icons);
 
     done();
   },

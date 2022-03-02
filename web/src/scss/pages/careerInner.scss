@@ -1,3 +1,108 @@
 #career-inner {
-    
+  header {
+    margin-bottom: fluid(138, $lg);
+  }
+
+  .restrict-xtra {
+    width: fluid(430 * 3 + 80, $lg);
+    margin-left: fluid(510, $lg);
+  }
+
+  #details,
+  #offer {
+    margin-bottom: fluid(160, $lg);
+  }
+
+  .detail-item {
+    &:first-of-type {
+      min-width: fluid(450, $lg);
+    }
+
+    &:not(:last-of-type) {
+      width: fluid(430, $lg);
+      border-right: fluid(1, $lg) solid $darkblue;
+      margin-right: fluid(40, $lg);
+    }
+  }
+
+  .detail-value {
+    font-size: fluid(35, $lg);
+    line-height: 110%;
+    letter-spacing: 0.01em;
+    margin-bottom: fluid(8, $lg);
+  }
+
+  .chip {
+    font-weight: 500;
+    font-size: fluid(16, $lg);
+    line-height: 130%;
+    letter-spacing: 0.01em;
+    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+    background: #dadaca;
+    border-radius: fluid(8, $lg);
+    width: fit-content;
+  }
+
+  .mb-md {
+    margin-bottom: fluid(120, $lg);
+  }
+
+  .section-title {
+    font-size: fluid(50, $lg);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    margin-bottom: fluid(41, $lg);
+  }
+
+  .section-list {
+    list-style-type: disc;
+    gap: fluid(25, $lg);
+    padding-left: fluid(30, $lg);
+  }
+
+  .section-list--item {
+    font-size: fluid(18, $lg);
+    line-height: 110%;
+    letter-spacing: 0.04em;
+  }
+
+  #form-wrapper {
+    width: fluid(430 * 3 + 80 + 40, $lg);
+    margin-left: auto;
+  }
+
+  .cta-btn {
+    background: $darkblue;
+    white-space: nowrap;
+    color: #fff;
+
+    .btn-inner::after {
+      color: $darkblue;
+    }
+
+    &:hover {
+      background: $darkbeige;
+    }
+  }
+
+  #cv-form {
+    padding-left: fluid(40, $lg);
+    border-left: 1px solid #aab6b6;
+  }
+
+  #cv-submit {
+    width: 100%;
+  }
+
+  #cv-message {
+    width: fluid(830, $lg);
+    height: fluid(430, $lg);
+  }
+
+  #see-more--title {
+    font-size: fluid(22, $lg);
+    line-height: 110%;
+    letter-spacing: 0.01em;
+    margin-bottom: fluid(10, $lg);
+  }
 }

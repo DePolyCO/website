@@ -3,6 +3,144 @@ layout: _layout.njk
 title: Career Inner
 ---
 
+{% from '_macros/textBlock.njk' import textBlock %}
+
 <main data-hydra-content="careerInner" id="career-inner">
-    <h1 class="temp-title">Career Inner</h1>
+    <header id="hero" class="restrict hero" data-scroll-section>
+        <div id="hero-welcome" class="hero-tag fv-mono">Senior Level /</div>
+        <div id="hero-title--wrapper" class="pr z0 hero-title--wrapper oh">
+            <h1 id="hero-title" class="hero-title z1">
+                <div>We’re Hiring:</div>
+                <div>Quality Assurance Chemist</div>
+            </h1>
+            <svg class="hero-grid pa inset zn1" fill="none" viewBox="0 0 1841 358">
+                <path stroke="#DADACA" d="M1 .5h1840M1 51.5h1840M1 102.5h1840M1 153.5h1840M1 204.5h1840M1 255.5h1840M1 306.5h1840M1 357.5h1840M.5 358V0m74 358V0m73 358V0m74 358V0m73 358V0m74 358V0m74 358V0m588 358V0m74 358V0m74 358V0m73 358V0m74 358V0m73 358V0m74 358V0m-957 358V0m74 358V0m73 358V0m74 358V0m74 358V0m73 358V0m74 358V0m589 358V0m73 358V0m74 358V0m73 358V0m74 358V0"/>
+            </svg>
+        </div>
+    </header>
+
+    {{ 
+        textBlock(
+            "About position",
+            [
+                "As a Process Engineer, you will be responsible for the Process design and development and optimisation of chemical recycling systems from inception through to start up, designing, running, testing and upscaling systems and processes, and upscaling the newly developed DePoly pilot plant."
+            ],
+            "about-pos"
+        ) 
+    }}
+
+    <section id="details" class="restrict-xtra" data-scroll-section>
+        <div class="df aic">
+            <div class="detail-dept detail-item df fc">
+                <div class="detail-value">Value</div>
+                <div class="detail-title chip ttu">Label</div>
+            </div>
+            <div class="detail-hours detail-item df fc">
+                <div class="detail-value">Value</div>
+                <div class="detail-title chip ttu">Label</div>
+            </div>
+            <div class="detail-location detail-item df fc">
+                <div class="detail-value">Value</div>
+                <div class="detail-title chip ttu">Label</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="responsibility" class="restrict-xtra mb-md" data-scroll-section>
+        <div class="section-title">Responsibilities you'll be handling: </div>
+        <ul class="section-list df fc">
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up. Process design and development and optimisation of chemical recycling systems from inception through to start up. Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+        </ul>
+    </section>
+
+    <section id="skills" class="restrict-xtra mb-md" data-scroll-section>
+        <div class="section-title">We expect you to have these skills:</div>
+        <ul class="section-list df fc">
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up. Process design and development and optimisation of chemical recycling systems from inception through to start up. Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+        </ul>
+    </section>
+
+    <section id="offer" class="restrict-xtra mb-md" data-scroll-section>
+        <div class="section-title">Here's what we can offer:</div>
+        <ul class="section-list df fc">
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up. Process design and development and optimisation of chemical recycling systems from inception through to start up. Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+            <li class="section-list--item">Process design and development and optimisation of chemical recycling systems from inception through to start up.</li>
+        </ul>
+    </section>
+
+    <section id="apply" class="restrict df pr mb-md" data-scroll-section>
+        <div class="df fc">
+            <div class="tag ttu fv-mono">Apply for this position</div>
+            <div class="pa bottom left" id="see-more">
+                <div id="see-more--title">Want to see more?</div>
+                <a href="/careers/" class="chip ttu">Back to careers</a>
+            </div>
+        </div>
+        <div class="pr" id="form-wrapper">
+            <div class="form-details pr" id="cv-form">
+                <div class="form-title">Submit your CV</div>
+                <form novalidate data-netlify="true" name="cv-info" method="POST" class="form-content">
+                    <div class="df">
+                        <div class="df fc field-col">
+                            <div class="field pr">
+                                <input class="field-input" id="cv-firstname" placeholder="First Name" required type="text">
+                                <label class="pen field-label pa" for="cv-firstname">First Name</label>
+                                <label class="pen field-label--active ttu pa" for="cv-firstname">First Name</label>
+                            </div>
+                            <div class="field pr">
+                                <input class="field-input" id="cv-lastname" placeholder="Last Name" required type="text">
+                                <label class="pen field-label pa" for="cv-lastname">Last Name</label>
+                                <label class="pen field-label--active ttu pa" for="cv-lastname">Last Name</label>
+                            </div>
+                            <div class="field pr">
+                                <input class="field-input" id="cv-email" placeholder="Email Address" required type="email">
+                                <label class="pen field-label pa" for="cv-email">Email Address</label>
+                                <label class="pen field-label--active ttu pa" for="cv-email">Email Address</label>
+                            </div>
+                            <div class="field pr">
+                                <input class="field-input" id="cv-linkedin" placeholder="Linkedin Profile (Optional)" type="url">
+                                <label class="pen field-label pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
+                                <label class="pen field-label--active ttu pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
+                            </div>
+                            <div class="field pr">
+                                <label class="field-label--file df" for="cv-cvfile">
+                                    <input class="cp field-input--file" id="cv-cvfile" placeholder="Upload your CV" required type="file">
+                                    <div class="field-label field-label--file-inner pa">Upload your CV</div>
+                                </label>
+                            </div>
+                            <div class="field pr">
+                                <label class="field-label--file df" for="cv-coverletterfile">
+                                    <input class="cp field-input--file" id="cv-coverletterfile" placeholder="Upload your Cover Letter" required type="file">
+                                    <div class="field-label field-label--file-inner pa">Upload your Cover Letter</div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="df">
+                            <div class="field pr">
+                                <textarea class="field-input field-input--textarea" placeholder="Your Message" name="cv-message" id="cv-message" cols="30" rows="10"></textarea>
+                                <label class="pen field-label pa" for="cv-message">Your Message</label>
+                                <label class="pen field-label--active ttu pa" for="cv-message">Your Message</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="cta-btn" id="cv-submit">
+                        <div class="pr oh btn-wrapper">
+                            <div class="btn-inner" data-content="Send Message">Send Message</div>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 </main>

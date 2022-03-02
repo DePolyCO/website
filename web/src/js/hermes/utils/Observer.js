@@ -28,9 +28,16 @@ import { select } from "./Dom";
 export const Observer = () => {
   const create = (options) => {
     const change = (entries, observer) => {
-      entries.forEach((entry) => {
-        const unobserve = (node) => observer.unobserve(node);
-        options.callback(entry.target, entry.isIntersecting, unobserve, entry);
+      const unobserve = (node) => observer.unobserve(node);
+
+      entries.forEach((entry, idx) => {
+        options.callback(
+          entry.target,
+          entry.isIntersecting,
+          unobserve,
+          entry,
+          idx
+        );
       });
     };
 

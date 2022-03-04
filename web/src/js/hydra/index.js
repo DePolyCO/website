@@ -253,7 +253,6 @@ export class Controller {
           // resize everything on ro
           ro.update();
           lazyloader.load();
-          smoothscroller.resize();
           setTimeout(done, 0);
         },
       });

@@ -15,6 +15,7 @@ let slider, capture;
 export const careerController = new Controller({
   hide: ({ done }) => {
     slider.destroy();
+    capture.destroy();
     sail.out(done);
   },
 

@@ -37,6 +37,7 @@ export class Smooth extends Conductor {
     this.init();
     this.resize();
     this.style();
+    this.testMode();
   }
 
   common() {
@@ -47,8 +48,6 @@ export class Smooth extends Conductor {
     this.scrollID = corescroller.add({ update: this.setScroll });
     this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
-
-    this.testMode();
   }
 
   init() {
@@ -66,7 +65,7 @@ export class Smooth extends Conductor {
   testMode = () => {
     const sense = config.addInput(
       {
-        sensitivity: 75,
+        sensitivity: this.settings.inertia * 1000,
       },
       "sensitivity",
       { min: 1, max: 100, step: 1 }
@@ -255,4 +254,4 @@ export class Smooth extends Conductor {
   }
 }
 
-export const smoothscroller = new Smooth();
+export const smoothscroller = new Smooth({ inertia: 0.08 });

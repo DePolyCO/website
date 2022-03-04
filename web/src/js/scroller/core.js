@@ -43,14 +43,15 @@ export class CoreScroll extends Conductor {
     }
 
     this.options = {
-      mouseMultiplier: Sniff.windows ? 1 : 0.4,
-      touchMultiplier: 2,
+      // mouseMultiplier: Sniff.windows ? 1 : 0.4,
+      mouseMultiplier: 1,
+      // touchMultiplier: 2,
       firefoxMultiplier: 50,
       keyStep: 120,
-      preventTouch: false,
-      unpreventTouchClass: "vs-touchmove-allowed",
+      // preventTouch: false,
+      // unpreventTouchClass: "vs-touchmove-allowed",
       useKeyboard: true,
-      useTouch: true,
+      // useTouch: true,
       ...options,
     };
 
@@ -66,7 +67,7 @@ export class CoreScroll extends Conductor {
       y: null,
     };
 
-    this.bodyTouchAction = null;
+    // this.bodyTouchAction = null;
 
     this.listen();
     this.testMode();
@@ -79,19 +80,9 @@ export class CoreScroll extends Conductor {
           mouseMultiplier: this.options.mouseMultiplier,
         },
         "mouseMultiplier",
-        { min: 0.1, max: 10, step: 0.1 }
+        { min: 0.1, max: 2, step: 0.1 }
       )
       .on("change", (e) => (this.options.mouseMultiplier = e.value));
-
-    config
-      .addInput(
-        {
-          touchMultiplier: this.options.touchMultiplier,
-        },
-        "touchMultiplier",
-        { min: 0.1, max: 10, step: 0.1 }
-      )
-      .on("change", (e) => (this.options.touchMultiplier = e.value));
 
     config
       .addInput(
@@ -127,8 +118,8 @@ export class CoreScroll extends Conductor {
     const evt = this.current;
 
     // In Chrome and in Firefox (at least the new one)
-    evt.deltaX = e.wheelDeltaX || e.deltaX * -1;
-    evt.deltaY = e.wheelDeltaY || e.deltaY * -1;
+    evt.deltaX = -e.deltaX;
+    evt.deltaY = -e.deltaY;
 
     // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
     // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Deltamodes
@@ -137,49 +128,49 @@ export class CoreScroll extends Conductor {
       evt.deltaY *= options.firefoxMultiplier;
     }
 
-    evt.deltaX *= options.mouseMultiplier;
-    evt.deltaY *= options.mouseMultiplier;
+    // evt.deltaX *= options.mouseMultiplier;
+    // evt.deltaY *= options.mouseMultiplier;
 
     this.notify(e);
   };
 
-  onMouseWheel = (e) => {
-    const evt = this.current;
+  // onMouseWheel = (e) => {
+  //   const evt = this.current;
 
-    // In Safari, IE and in Chrome if 'wheel' isn't defined
-    evt.deltaX = e.wheelDeltaX ? e.wheelDeltaX : 0;
-    evt.deltaY = e.wheelDeltaY ? e.wheelDeltaY : e.wheelDelta;
+  //   // In Safari, IE and in Chrome if 'wheel' isn't defined
+  //   evt.deltaX = e.wheelDeltaX ? e.wheelDeltaX : 0;
+  //   evt.deltaY = e.wheelDeltaY ? e.wheelDeltaY : e.wheelDelta;
 
-    this.notify(e);
-  };
+  //   this.notify(e);
+  // };
 
-  onTouchStart = (e) => {
-    const t = e.targetTouches ? e.targetTouches[0] : e;
-    this.touchStart.x = t.pageX;
-    this.touchStart.y = t.pageY;
-  };
+  // onTouchStart = (e) => {
+  //   const t = e.targetTouches ? e.targetTouches[0] : e;
+  //   this.touchStart.x = t.pageX;
+  //   this.touchStart.y = t.pageY;
+  // };
 
-  onTouchMove = (e) => {
-    const options = this.options;
-    if (
-      options.preventTouch &&
-      !e.target.classList.contains(options.unpreventTouchClass)
-    ) {
-      e.preventDefault();
-    }
+  // onTouchMove = (e) => {
+  //   const options = this.options;
+  //   if (
+  //     options.preventTouch &&
+  //     !e.target.classList.contains(options.unpreventTouchClass)
+  //   ) {
+  //     e.preventDefault();
+  //   }
 
-    const evt = this.current;
+  //   const evt = this.current;
 
-    const t = e.targetTouches ? e.targetTouches[0] : e;
+  //   const t = e.targetTouches ? e.targetTouches[0] : e;
 
-    evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
-    evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
+  //   evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
+  //   evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
 
-    this.touchStart.x = t.pageX;
-    this.touchStart.y = t.pageY;
+  //   this.touchStart.x = t.pageX;
+  //   this.touchStart.y = t.pageY;
 
-    this.notify(e);
-  };
+  //   this.notify(e);
+  // };
 
   onKeyDown = (e) => {
     const evt = this.current;
@@ -228,66 +219,58 @@ export class CoreScroll extends Conductor {
   };
 
   listen = () => {
-    if (support.hasWheelEvent) {
-      this.dom.addEventListener("wheel", this.onWheel, this.listenerOptions);
-    }
+    this.dom.addEventListener("wheel", this.onWheel, this.listenerOptions);
 
-    if (support.hasMouseWheelEvent) {
-      this.dom.addEventListener(
-        "mousewheel",
-        this.onMouseWheel,
-        this.listenerOptions
-      );
-    }
+    // if (support.hasMouseWheelEvent) {
+    //   this.dom.addEventListener(
+    //     "mousewheel",
+    //     this.onMouseWheel,
+    //     this.listenerOptions
+    //   );
+    // }
 
-    if (support.hasTouch && this.options.useTouch) {
-      this.dom.addEventListener(
-        "touchstart",
-        this.onTouchStart,
-        this.listenerOptions
-      );
-      this.dom.addEventListener(
-        "touchmove",
-        this.onTouchMove,
-        this.listenerOptions
-      );
-    }
+    // if (support.hasTouch && this.options.useTouch) {
+    //   this.dom.addEventListener(
+    //     "touchstart",
+    //     this.onTouchStart,
+    //     this.listenerOptions
+    //   );
+    //   this.dom.addEventListener(
+    //     "touchmove",
+    //     this.onTouchMove,
+    //     this.listenerOptions
+    //   );
+    // }
 
-    if (support.hasPointer && support.hasTouchWin) {
-      this.bodyTouchAction = document.body.style.msTouchAction;
-      document.body.style.msTouchAction = "none";
-      this.dom.addEventListener("MSPointerDown", this.onTouchStart, true);
-      this.dom.addEventListener("MSPointerMove", this.onTouchMove, true);
-    }
+    // if (support.hasPointer && support.hasTouchWin) {
+    //   this.bodyTouchAction = document.body.style.msTouchAction;
+    //   document.body.style.msTouchAction = "none";
+    //   this.dom.addEventListener("MSPointerDown", this.onTouchStart, true);
+    //   this.dom.addEventListener("MSPointerMove", this.onTouchMove, true);
+    // }
 
-    if (support.hasKeyDown && this.options.useKeyboard) {
-      document.addEventListener("keydown", this.onKeyDown);
-    }
+    document.addEventListener("keydown", this.onKeyDown);
   };
 
   unlisten = () => {
-    if (support.hasWheelEvent) {
-      this.dom.removeEventListener("wheel", this.onWheel);
-    }
+    this.dom.removeEventListener("wheel", this.onWheel);
 
-    if (support.hasMouseWheelEvent) {
-      this.dom.removeEventListener("mousewheel", this.onMouseWheel);
-    }
+    // if (support.hasMouseWheelEvent) {
+    //   this.dom.removeEventListener("mousewheel", this.onMouseWheel);
+    // }
 
-    if (support.hasTouch) {
-      this.dom.removeEventListener("touchstart", this.onTouchStart);
-      this.dom.removeEventListener("touchmove", this.onTouchMove);
-    }
+    // if (support.hasTouch) {
+    //   this.dom.removeEventListener("touchstart", this.onTouchStart);
+    //   this.dom.removeEventListener("touchmove", this.onTouchMove);
+    // }
 
-    if (support.hasPointer && support.hasTouchWin) {
-      document.body.style.msTouchAction = this.bodyTouchAction;
-      this.dom.removeEventListener("MSPointerDown", this.onTouchStart, true);
-      this.dom.removeEventListener("MSPointerMove", this.onTouchMove, true);
-    }
+    // if (support.hasPointer && support.hasTouchWin) {
+    //   document.body.style.msTouchAction = this.bodyTouchAction;
+    //   this.dom.removeEventListener("MSPointerDown", this.onTouchStart, true);
+    //   this.dom.removeEventListener("MSPointerMove", this.onTouchMove, true);
+    // }
 
-    if (support.hasKeyDown && this.options.useKeyboard) {
-      document.removeEventListener("keydown", this.onKeyDown);
-    }
+    document.removeEventListener("keydown", this.onKeyDown);
   };
 
   destroy = () => {

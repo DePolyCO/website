@@ -18,7 +18,7 @@ class Sail {
   }
 
   inD() {
-    this.tl && this.tl.do("destroy");
+    this.tl?.do("destroy");
     this.tl = new Timeline();
     this.tl.add({
       targets: this.sail,

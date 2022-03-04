@@ -19,13 +19,13 @@ export const contactController = new Controller({
   },
 
   show: ({ done }) => {
-    sail.in();
     nav.setLinkActive("contact");
 
     undetail = iris.add("details", "click", () => {
       setTimeout(smoothscroller.resize, 0);
     });
 
+    sail.in();
     done();
   },
 });

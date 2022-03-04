@@ -45,6 +45,7 @@ export class Duration {
       c.complete && c.complete();
     } else {
       // Duration in progress
+
       this.elapsed += c.reverse ? -delta : delta;
       this.progress = clamp(this.elapsed / c.duration, 0, 1);
 

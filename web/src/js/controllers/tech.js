@@ -24,8 +24,6 @@ export const techController = new Controller({
   },
 
   show: ({ done }) => {
-    sail.in();
-
     const highlights = qsa("[data-text-highlight");
 
     highlightFx = new TextHighlight({
@@ -42,6 +40,7 @@ export const techController = new Controller({
 
     nav.setLinkActive("technology");
 
+    sail.in();
     done();
   },
 });

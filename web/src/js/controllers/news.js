@@ -15,8 +15,8 @@ export const newsController = new Controller({
   },
 
   show: ({ done }) => {
-    sail.in();
     nav.setLinkActive("news");
+    sail.in();
     done();
   },
 });

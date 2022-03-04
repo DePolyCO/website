@@ -18,11 +18,10 @@ export const noController = new Controller({
   },
 
   show: ({ done }) => {
-    sail.in();
-
     errScroller = new ErrorScroll();
     nav.unsetLinkActive();
 
+    sail.in();
     done();
   },
 });

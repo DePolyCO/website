@@ -26,8 +26,6 @@ export const aboutController = new Controller({
   },
 
   show: ({ done }) => {
-    sail.in();
-
     const highlights = qsa("[data-text-highlight");
 
     highlightFx = new TextHighlight({
@@ -41,6 +39,7 @@ export const aboutController = new Controller({
 
     nav.setLinkActive("about");
 
+    sail.in();
     done();
   },
 });

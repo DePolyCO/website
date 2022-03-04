@@ -7,6 +7,7 @@ import { Parallax } from "../scroller";
 import { Draw, Observer, qsa } from "../hermes";
 import { Collapse } from "../components/collapse";
 import { nav } from "../components/nav";
+import { monoShuffle } from "../components/monoShuffle";
 
 /**
  *
@@ -26,12 +27,11 @@ export const homeController = new Controller({
     c1.destroy();
     o.disconnect();
     iconDraws.forEach((d) => d.destroy());
+    monoShuffle.destroy();
     sail.out(done);
   },
 
   show: ({ done }) => {
-    sail.in();
-
     const highlights = qsa("[data-text-highlight");
 
     highlightFx = new TextHighlight({
@@ -97,6 +97,9 @@ export const homeController = new Controller({
 
     o.observe(icons);
 
+    monoShuffle.init();
+
+    sail.in();
     done();
   },
 });

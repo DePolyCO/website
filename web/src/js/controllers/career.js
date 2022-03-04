@@ -20,12 +20,12 @@ export const careerController = new Controller({
   },
 
   show: ({ done }) => {
-    sail.in();
     nav.setLinkActive("careers");
 
     slider = new Slider();
     capture = new CaptureQuotes();
 
+    sail.in();
     done();
   },
 });

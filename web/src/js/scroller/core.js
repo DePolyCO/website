@@ -128,8 +128,8 @@ export class CoreScroll extends Conductor {
       evt.deltaY *= options.firefoxMultiplier;
     }
 
-    // evt.deltaX *= options.mouseMultiplier;
-    // evt.deltaY *= options.mouseMultiplier;
+    evt.deltaX *= options.mouseMultiplier;
+    evt.deltaY *= options.mouseMultiplier;
 
     this.notify(e);
   };

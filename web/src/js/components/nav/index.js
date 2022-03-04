@@ -21,6 +21,8 @@ export class Nav {
   init = () => {
     this.select = new Select({ callback: this.onLangSwitch });
     smoothscroller.add({ update: this.onScroll });
+
+    this.setInitialLang();
   };
 
   onScroll = ({ deltaY, y }) => {
@@ -60,7 +62,19 @@ export class Nav {
   };
 
   onLangSwitch = (value) => {
+    const newLocation =
+      value === "ENG" ? "https://depoly.ch" : "https://fra.depoly.ch";
+    // window.location.href = newLocation;
     console.log("lang switched to:", value);
+    console.log("Point to:", newLocation);
+  };
+
+  setInitialLang = () => {
+    const currentLocation = window.location;
+    const currentSubdomain = currentLocation.host.split(".")[0];
+    const lang = currentSubdomain === "fra" ? "FRA" : "ENG";
+
+    this.select.setActiveValue(lang);
   };
 
   setLinkActive = (pageName) => {

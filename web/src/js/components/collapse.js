@@ -122,8 +122,8 @@ export class Collapse {
 
   setActive(dom, i) {
     dom?.classList.add("active");
-    this.reveal.arr[i].tween.do("destroy");
-    this.reveal.arr[i].play({
+    this.reveal.arr[i]?.tween.do("destroy");
+    this.reveal.arr[i]?.play({
       from: 100,
       to: 0,
       stagger: 50,
@@ -135,8 +135,8 @@ export class Collapse {
 
   setInactive(dom, i) {
     dom?.classList.remove("active");
-    this.reveal.arr[i].tween.do("destroy");
-    this.reveal.arr[i].playTo({
+    this.reveal.arr[i]?.tween.do("destroy");
+    this.reveal.arr[i]?.playTo({
       to: -100,
       stagger: 0,
       delay: 0,

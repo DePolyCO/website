@@ -45,6 +45,11 @@ export class Select extends Conductor {
     this.callback && this.callback(this.value, this.isOpen);
   };
 
+  setActiveValue = (value) => {
+    if (value === this.value) return;
+    this.click({ target: qs(`[data-value="${value}"]`, this.dom) });
+  };
+
   destroy() {
     this.unclickToggle();
     this.unclickOptions();

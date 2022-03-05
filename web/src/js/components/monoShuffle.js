@@ -25,7 +25,7 @@ class MonoShuffle {
   prepare = (node) => {
     const txt = node.innerText;
     node.dataset.text = txt;
-    node.innerHtml = "&nbsp;";
+    node.innerHTML = "";
   };
 
   reveal = (node, isIntersecting, unobserve) => {

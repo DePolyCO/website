@@ -1,3 +1,3 @@
-import { Pane } from "tweakpane";
+// import { Pane } from "tweakpane";
 
-export const config = new Pane();
+// export const config = new Pane();

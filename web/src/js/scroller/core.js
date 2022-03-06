@@ -1,5 +1,5 @@
 import { Conductor, Sniff } from "../hermes";
-import { config } from "../components/configPane";
+// import { config } from "../components/configPane";
 
 const keyCodes = {
   LEFT: 37,
@@ -70,7 +70,7 @@ export class CoreScroll extends Conductor {
     // this.bodyTouchAction = null;
 
     this.listen();
-    this.testMode();
+    // this.testMode();
   }
 
   testMode = () => {

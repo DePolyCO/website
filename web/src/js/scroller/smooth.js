@@ -13,7 +13,7 @@ import {
 import { corescroller } from "./core";
 import { Tracker } from "./tracker";
 
-import { config } from "../components/configPane";
+// import { config } from "../components/configPane";
 
 const DELTA = 0.001002;
 
@@ -37,7 +37,7 @@ export class Smooth extends Conductor {
     this.init();
     this.resize();
     this.style();
-    this.testMode();
+    // this.testMode();
   }
 
   common() {

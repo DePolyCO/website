@@ -42,9 +42,8 @@ title: Contact
         </div>
         <div id="form-list" class="df fc pr">
             {# General Information #}
-            <div class="pr">
-                <div class="pa top right">Toggle</div>
-                <details class="form-details pr" id="general-form">
+            <div class="pr" id="general-form--wrapper">
+                <details class="form-details pr" id="general-form" open>
                     <summary class="form-title">General Information</summary>
                     <form novalidate data-netlify="true" name="general-info" method="POST" class="form-content">
                         <div class="df">
@@ -80,12 +79,16 @@ title: Contact
                         </button>
                     </form>
                 </details>
+                <button class="pa top right form-toggle pen df aic jcc">
+                    <svg>
+                        <use xlink:href="#cross-icon"></use>
+                    </svg>
+                </button>
             </div>
 
             {# Submit CV #}
             <div class="pr">
-                <div class="pa top right">Toggle</div>
-                <details class="form-details pr" id="cv-form" open>
+                <details class="form-details pr" id="cv-form">
                     <summary class="form-title">Submit your CV</summary>
                     <form novalidate data-netlify="true" name="cv-info" method="POST" class="form-content">
                         <div class="df">
@@ -138,12 +141,16 @@ title: Contact
                         </button>
                     </form>
                 </details>
+                <button class="pa top right form-toggle pen df aic jcc">
+                    <svg>
+                        <use xlink:href="#cross-icon"></use>
+                    </svg>
+                </button>
             </div>
 
             {# Sample & Quote #}
             <div class="pr">
-                <div class="pa top right">Toggle</div>
-                <details class="form-details pr" id="sample-form" open>
+                <details class="form-details pr" id="sample-form">
                     <summary class="form-title margin-sm">Sample & Quote</summary>
                     <form novalidate data-netlify="true" name="sample-info" method="POST" class="form-content">
                         <div class="form-subtitle">Only registered laboratories can order a sample.</div>
@@ -185,6 +192,11 @@ title: Contact
                         </button>
                     </form>
                 </details>
+                <button class="pa top right form-toggle pen df aic jcc">
+                    <svg>
+                        <use xlink:href="#cross-icon"></use>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>

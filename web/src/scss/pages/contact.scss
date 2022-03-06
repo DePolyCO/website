@@ -38,8 +38,18 @@
     border-left: 1px solid #aab6b6;
   }
 
+  #general-form--wrapper {
+    .form-toggle {
+      top: 0;
+    }
+  }
+
   #general-form {
     padding-top: 0;
+
+    .form-title {
+      padding-top: 0;
+    }
   }
 
   #general-message {

@@ -61,7 +61,8 @@ details summary {
 }
 
 input,
-textarea {
+textarea,
+select {
   outline: none;
   background: none;
   border: none;
@@ -74,21 +75,31 @@ textarea {
 .field {
   border-radius: fluid(15, $lg);
   border: 1px solid #aab6b6;
+  min-width: fluid(516, $lg);
   margin-bottom: fluid(14, $lg);
+  overflow: auto;
 }
 
-.field {
-  min-width: fluid(516, $lg);
+.field-dash {
+  border: 1px dashed #aab6b6;
 }
 
 textarea {
   padding: fluid(15, $lg) fluid(20, $lg);
+  height: 100%;
 }
 
 .field {
   &:focus-within {
     border: 1px solid $darkblue;
   }
+}
+
+// error
+.field.err {
+  border: 1px solid #ff6666;
+  background: rgba(255, 102, 102, 0.1);
+  border-radius: fluid(15, $lg);
 }
 
 input {
@@ -127,6 +138,7 @@ input {
   opacity: 0.5;
   top: fluid(19, $lg);
   left: fluid(20, $lg);
+  white-space: nowrap;
 }
 
 .field-label--active {
@@ -149,9 +161,30 @@ input {
 
 .field-input--file {
   opacity: 0;
+  // padding: fluid(26, $lg) fluid(20, $lg) fluid(9, $lg);
+
   &::-webkit-file-upload-button {
     visibility: hidden;
   }
+}
+
+.field-label--file-inner {
+  // top: fluid(16, $lg);
+
+  svg {
+    width: fluid(22, $lg);
+    height: fluid(28, $lg);
+    margin-right: fluid(8, $lg);
+  }
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.field-label--filename {
+  opacity: 1;
+  left: fluid(50, $lg);
 }
 
 .form-toggle {
@@ -172,5 +205,75 @@ input {
 details[open] ~ .form-toggle {
   svg {
     transform: none;
+  }
+}
+
+.form-status {
+  background: #e5e6db;
+  inset: fluid(125 + 20, $lg) 0 fluid(55, $lg) fluid(40, $lg);
+
+  opacity: 0;
+  pointer-events: none;
+
+  details[open] ~ &.active {
+    transition: opacity 0.75s $ease-out-expo;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.form-status--tick {
+  width: fluid(100, $lg);
+  height: fluid(100, $lg);
+  background: #f2ffbd;
+  border-radius: 50%;
+  margin-bottom: fluid(30, $lg);
+
+  svg {
+    width: fluid(29, $lg);
+    height: fluid(21, $lg);
+  }
+}
+
+.form-status--thank {
+  font-size: fluid(50, $lg);
+  line-height: 100%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: fluid(12, $lg);
+}
+
+.form-status--desc {
+  font-size: fluid(22, $lg);
+  line-height: 140%;
+  text-align: center;
+  width: fluid(441, $lg);
+}
+
+select {
+  width: 100%;
+  height: 100%;
+  padding: fluid(19, $lg) fluid(19, $lg) fluid(16, $lg) fluid(20, $lg);
+  appearance: none;
+
+  &:focus-within:hover ~ .select-dropdown {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+option[value="placeholder"] {
+  display: none;
+}
+
+.select-dropdown {
+  top: fluid(19, $lg);
+  right: fluid(19, $lg);
+
+  svg {
+    width: fluid(16, $lg);
+    height: fluid(10, $lg);
+    transition: transform 0.75s $ease-out-expo;
   }
 }

@@ -88,10 +88,10 @@ export class Hydra {
         e.preventDefault();
         if (this.isRunning) return;
 
-        let node = e.target;
-        while (node.tagName !== "A") {
-          node = node.parentNode;
-        }
+        const node = e.target.closest("a");
+        // while (node.tagName !== "A") {
+        //   node = node.parentNode;
+        // }
 
         const url = node.href;
         if (url === this.state.url) return;

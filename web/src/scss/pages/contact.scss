@@ -42,6 +42,10 @@
     .form-toggle {
       top: 0;
     }
+
+    .form-status {
+      inset: fluid(65, $lg) 0 fluid(40, $lg) fluid(40, $lg);
+    }
   }
 
   #general-form {
@@ -60,7 +64,7 @@
   #cv-message,
   #sample-message {
     width: fluid(830, $lg);
-    height: fluid(430, $lg);
+    min-height: fluid(430, $lg);
   }
 
   #general-submit,

@@ -43,6 +43,10 @@ class Iris {
     }
   }
 
+  // signal = () => {
+  //   return AbortController();
+  // };
+
   detect = () => {
     let type = "pointer";
     let down = "down";

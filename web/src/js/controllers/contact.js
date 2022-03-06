@@ -2,6 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
+import { FormManager } from "../components/forms";
 import { iris } from "../hermes";
 import { smoothscroller } from "../scroller";
 
@@ -21,9 +22,11 @@ export const contactController = new Controller({
   show: ({ done }) => {
     nav.setLinkActive("contact");
 
-    undetail = iris.add("details", "click", () => {
+    undetail = iris.add("summary", "click", () => {
       setTimeout(smoothscroller.resize, 0);
     });
+
+    new FormManager();
 
     sail.in();
     done();

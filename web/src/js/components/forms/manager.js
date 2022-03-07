@@ -49,7 +49,8 @@ const humanFileSize = (bytes, si = true, dp = 1) => {
 export class FormManager {
   constructor() {
     this.config = {
-      url: "https://depoly.netlify.app",
+      // url: "https://depoly.netlify.app",
+      url: "",
       route: "/",
       text: {
         success: {
@@ -117,10 +118,11 @@ export class FormManager {
   post = async (form) => {
     this.running(form);
     const formData = new FormData(form);
+    console.log("data", formData);
     try {
       const res = await fetch(`${this.config.url}${this.config.route}`, {
         method: "POST",
-        body: new URLSearchParams(formData).toString(),
+        body: formData,
       });
 
       if (res.ok) {

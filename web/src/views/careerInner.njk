@@ -87,42 +87,48 @@ title: Career Inner
                 <a href="/careers/" class="chip ttu">Back to careers</a>
             </div>
         </div>
-        <div class="pr" id="form-wrapper">
+        <div class="pr form-wrapper">
             <div class="form-details pr" id="cv-form">
                 <div class="form-title">Submit your CV</div>
                 <form novalidate data-netlify="true" name="cv-info" method="POST" class="form-content">
                     <div class="df">
                         <div class="df fc field-col">
                             <div class="field pr">
-                                <input class="field-input" id="cv-firstname" placeholder="First Name" required type="text">
+                                <input class="field-input" id="cv-firstname" placeholder="First Name" required type="text" data-type="name">
                                 <label class="pen field-label pa" for="cv-firstname">First Name</label>
                                 <label class="pen field-label--active ttu pa" for="cv-firstname">First Name</label>
                             </div>
                             <div class="field pr">
-                                <input class="field-input" id="cv-lastname" placeholder="Last Name" required type="text">
+                                <input class="field-input" id="cv-lastname" placeholder="Last Name" required type="text" data-type="name">
                                 <label class="pen field-label pa" for="cv-lastname">Last Name</label>
                                 <label class="pen field-label--active ttu pa" for="cv-lastname">Last Name</label>
                             </div>
                             <div class="field pr">
-                                <input class="field-input" id="cv-email" placeholder="Email Address" required type="email">
+                                <input class="field-input" id="cv-email" placeholder="Email Address" required type="email" data-type="email">
                                 <label class="pen field-label pa" for="cv-email">Email Address</label>
                                 <label class="pen field-label--active ttu pa" for="cv-email">Email Address</label>
                             </div>
                             <div class="field pr">
-                                <input class="field-input" id="cv-linkedin" placeholder="Linkedin Profile (Optional)" type="url">
+                                <input class="field-input" id="cv-linkedin" placeholder="Linkedin Profile (Optional)" type="url" data-type="url">
                                 <label class="pen field-label pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
                                 <label class="pen field-label--active ttu pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
                             </div>
-                            <div class="field pr">
-                                <label class="field-label--file df" for="cv-cvfile">
-                                    <input class="cp field-input--file" id="cv-cvfile" placeholder="Upload your CV" required type="file">
-                                    <div class="field-label field-label--file-inner pa">Upload your CV</div>
+                            <div class="field field-dash pr">
+                                <input class="cp field-input--file" id="cv-cvfile" placeholder="Upload your CV" required type="file">
+                                <label class="field-label field-label--file-inner pen pa df aic">
+                                    <svg>
+                                        <use xlink:href="#file-icon"></use>
+                                    </svg>
+                                    <div class="field-label--filename">Upload your CV</div>
                                 </label>
                             </div>
-                            <div class="field pr">
-                                <label class="field-label--file df" for="cv-coverletterfile">
-                                    <input class="cp field-input--file" id="cv-coverletterfile" placeholder="Upload your Cover Letter" required type="file">
-                                    <div class="field-label field-label--file-inner pa">Upload your Cover Letter</div>
+                            <div class="field field-dash pr">
+                                <input class="cp field-input--file" id="cv-coverletterfile" placeholder="Upload your Cover Letter" required type="file">
+                                <label class="field-label field-label--file-inner pen pa df aic">
+                                    <svg>
+                                        <use xlink:href="#file-icon"></use>
+                                    </svg>
+                                    <div class="field-label--filename">Upload your Cover Letter</div>
                                 </label>
                             </div>
                         </div>
@@ -139,16 +145,16 @@ title: Career Inner
                             <div class="btn-inner" data-content="Send Message">Send Message</div>
                         </div>
                     </button>
-                    <div class="form-status pa inset df fc aic jcc">
-                        <div class="form-status--tick df aic jcc">
-                            <svg>
-                                <use xlink:href="#tick-icon"></use>
-                            </svg>
-                        </div>
-                        <div class="form-status--thank ttu">Thank you, </div>
-                        <p class="form-status--desc">Your message is sent sucessfully and it will be answered soon</p>
-                    </div>
                 </form>
+            </div>
+            <div class="form-status pa inset df fc aic jcc">
+                <div class="form-status--tick df aic jcc">
+                    <svg>
+                        <use xlink:href="#tick-icon"></use>
+                    </svg>
+                </div>
+                <div class="form-status--thank ttu">Thank you, </div>
+                <p class="form-status--desc">Your message is sent sucessfully and it will be answered soon</p>
             </div>
         </div>
     </section>

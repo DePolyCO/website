@@ -277,3 +277,8 @@ option[value="placeholder"] {
     transition: transform 0.75s $ease-out-expo;
   }
 }
+
+.cta-btn.running {
+  opacity: 0.5;
+  pointer-events: none;
+}

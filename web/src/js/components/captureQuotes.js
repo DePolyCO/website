@@ -25,15 +25,22 @@ export class CaptureQuotes {
         no: this.targets.length,
       },
       scroll: {
-        inertia: 0.075,
-        target: 0,
         cur: 0.001,
+        target: 0,
+        inertia: 0.075,
+      },
+      move: {
+        cur: 0,
+        target: 0,
+        inertia: 0.075,
       },
       page: { height: 0, offset: 0 },
       lock: false,
       boundRange: new Float32Array(2),
     };
+
     this.lerp = new LerpController(this.state.scroll);
+    this.moveLerp = new LerpController(this.state.move);
 
     this.init();
     this.resize();
@@ -96,6 +103,8 @@ export class CaptureQuotes {
         duration: 1750,
       });
     }
+
+    this.state.move.cur = i * this.state.page.offset;
   };
 
   setInactive = (i = this.state.active) => {
@@ -147,6 +156,11 @@ export class CaptureQuotes {
       this.state.lock = false;
       smoothscroller.unlock("capture-quotes");
     }
+
+    if (!this.moveLerp.needsUpdate()) return;
+    this.moveLerp.update();
+
+    this.dom.style.transform = `translateY(-${this.state.move.target}px)`;
   };
 
   resize = () => {
@@ -155,9 +169,9 @@ export class CaptureQuotes {
 
     const { page, slides, boundRange } = this.state;
 
-    page.offset = 0.5 * window.innerHeight;
+    page.offset = height / slides.no;
     page.height = page.offset * slides.no; // n items -> scroll offset for each item
-    const stickyPoint = (window.innerHeight - height) / 2 + 25; // middle of page
+    const stickyPoint = window.innerHeight * 0.2; // middle of page
 
     boundRange[0] = top - stickyPoint;
     boundRange[1] = top - stickyPoint + page.height;

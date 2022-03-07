@@ -27,8 +27,6 @@ export class GallerySlider {
     this.resize();
     this.listen();
     this.init();
-
-    window.slider = this;
   }
 
   init = () => {

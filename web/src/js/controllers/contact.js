@@ -12,10 +12,11 @@ import { smoothscroller } from "../scroller";
  *
  */
 
-let undetail;
+let undetail, forms;
 export const contactController = new Controller({
   hide: ({ done }) => {
     undetail();
+    forms.destroy();
     sail.out(done);
   },
 
@@ -26,7 +27,7 @@ export const contactController = new Controller({
       setTimeout(smoothscroller.resize, 0);
     });
 
-    new FormManager();
+    forms = new FormManager();
 
     sail.in();
     done();

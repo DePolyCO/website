@@ -62,6 +62,7 @@
     list-style-type: disc;
     gap: fluid(25, $lg);
     padding-left: fluid(30, $lg);
+    width: fluid(900, $lg);
   }
 
   .section-list--item {
@@ -70,7 +71,7 @@
     letter-spacing: 0.04em;
   }
 
-  #form-wrapper {
+  .form-wrapper {
     width: fluid(430 * 3 + 80 + 40, $lg);
     margin-left: auto;
   }
@@ -108,5 +109,16 @@
     line-height: 110%;
     letter-spacing: 0.01em;
     margin-bottom: fluid(10, $lg);
+  }
+
+  .form-status {
+    inset: fluid(80, $lg) 0 0 fluid(40, $lg);
+    // opacity: 1;
+
+    &.active {
+      transition: opacity 0.75s $ease-out-expo;
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 }

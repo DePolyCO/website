@@ -48,26 +48,51 @@ const humanFileSize = (bytes, si = true, dp = 1) => {
 
 export class FormManager {
   constructor() {
+    this.config = {
+      url: "https://depoly.netlify.app",
+      route: "/",
+      text: {
+        success: {
+          bg: " #F2FFBD",
+          icon: "#tick-icon",
+          title: "Thank you,",
+          desc: "Your message is sent sucessfully and it will be answered soon",
+        },
+        failure: {
+          bg: "#FF6666",
+          icon: "#cross-icon",
+          title: "Something went wrong",
+          desc: "For some reason, sending the message failed. Please <button class='retry link link-dark link-solid'> try again</button>.",
+        },
+      },
+    };
     this.forms = qsa("form", qs("main"));
     this.inputs = this.forms.map((form) => qsa("input", form));
     this.listen();
+
+    window.forms = this;
   }
 
   listen = () => {
     this.unlisten = iris.add(this.forms, "submit", this.handleSubmit, {
       passive: false,
     });
-    this.unvalidate = this.inputs.map((inputs) => {
+
+    this.unvalidate = [];
+    this.unfile = [];
+
+    this.inputs.map((inputs) => {
       inputs.forEach((input) => {
         if (input.type !== "file") {
-          return iris.add(input, "input", this.handleValidate);
+          this.unvalidate.push(iris.add(input, "input", this.handleValidate));
         }
       });
     });
-    this.unfile = this.inputs.map((inputs) => {
+
+    this.inputs.map((inputs) => {
       inputs.forEach((input) => {
         if (input.type === "file") {
-          return iris.add(input, "change", this.handleFile);
+          this.unfile.push(iris.add(input, "change", this.handleFile));
         }
       });
     });
@@ -90,9 +115,10 @@ export class FormManager {
   };
 
   post = async (form) => {
+    this.running(form);
     const formData = new FormData(form);
     try {
-      const res = await fetch("/", {
+      const res = await fetch(`${this.config.url}${this.config.route}`, {
         method: "POST",
         body: new URLSearchParams(formData).toString(),
       });
@@ -104,17 +130,27 @@ export class FormManager {
       }
     } catch (e) {
       this.failure(form);
+    } finally {
+      this.resolved(form);
     }
   };
 
+  running = (form) => {
+    qs(".cta-btn", form).classList.add("running");
+  };
+
+  resolved = (form) => {
+    qs(".cta-btn", form).classList.remove("running");
+  };
+
   success = (form) => {
-    console.log("submitted");
+    // console.log("submitted");
     this.setStatus("success", form);
   };
 
   failure = (form) => {
-    console.log("failed");
-    this.setStatus("failed", form);
+    // console.log("failed");
+    this.setStatus("failure", form);
   };
 
   handleValidate = (e) => {
@@ -160,11 +196,27 @@ export class FormManager {
     const wrapper = form.closest(".form-wrapper");
     const panel = qs(".form-status", wrapper);
 
-    if (status === "success") {
-    } else {
+    const txt = this.config.text[status];
+
+    qs(".form-status--tick", panel).style.backgroundColor = txt.bg;
+    qs("svg use", panel).setAttribute("href", txt.icon);
+    qs(".form-status--thank", panel).innerText = txt.title;
+    qs(".form-status--desc", panel).innerHTML = txt.desc;
+
+    if (status === "failure") {
+      iris.add(qs(".retry"), "click", () => this.removeStatus(form), {
+        once: true,
+      });
     }
 
     panel.classList.add("active");
+  };
+
+  removeStatus = (form) => {
+    const wrapper = form.closest(".form-wrapper");
+    const panel = qs(".form-status", wrapper);
+
+    panel.classList.remove("active");
   };
 
   destroy = () => {

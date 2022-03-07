@@ -155,8 +155,8 @@ export class CaptureQuotes {
 
     const { page, slides, boundRange } = this.state;
 
-    page.offset = 1 * window.innerHeight;
-    page.height = page.offset * slides.no; // 5 items -> scroll offset for each item
+    page.offset = 0.5 * window.innerHeight;
+    page.height = page.offset * slides.no; // n items -> scroll offset for each item
     const stickyPoint = (window.innerHeight - height) / 2 + 25; // middle of page
 
     boundRange[0] = top - stickyPoint;

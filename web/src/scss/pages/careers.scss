@@ -47,7 +47,7 @@
     border-top: 1px solid $darkblue;
     padding-top: fluid(125, $lg);
     padding-bottom: fluid(160, $lg);
-    margin-bottom: fluid(125, $lg);
+    margin-bottom: fluid(70, $lg);
     border-bottom: 1px solid $darkblue;
   }
 
@@ -58,7 +58,7 @@
 
   .quote {
     &.active {
-      .quote-picture img {
+      .quote-apo {
         opacity: 1;
       }
     }
@@ -76,11 +76,6 @@
     height: fluid(400, $lg);
     border-radius: 50%;
     // background: #dadaca;
-
-    img {
-      transition: opacity 0.8s;
-      opacity: 0;
-    }
   }
 
   .quote-content {
@@ -98,6 +93,8 @@
     border-radius: 50%;
     z-index: 2;
     left: fluid(319, $lg);
+    transition: opacity 0.8s;
+    opacity: 0;
 
     svg {
       width: fluid(25, $lg);

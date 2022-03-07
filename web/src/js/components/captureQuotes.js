@@ -81,7 +81,7 @@ export class CaptureQuotes {
         from: 110,
         to: 0,
         stagger: 150,
-        delay: 250,
+        delay: 0,
         visible: true,
         easing: "o6",
         duration: 1750,
@@ -90,7 +90,7 @@ export class CaptureQuotes {
       r.playTo({
         to: 0,
         stagger: 150,
-        delay: 250,
+        delay: 0,
         visible: true,
         easing: "o6",
         duration: 1750,

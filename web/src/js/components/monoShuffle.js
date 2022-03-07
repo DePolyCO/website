@@ -45,7 +45,10 @@ class MonoShuffle {
           if (curIdx === idx) {
             //   change letter
             node.innerText = curText + this.getRandomChar();
-          } else if (true) {
+            // for (let i = 0; i <= idx; i++) {
+            //   const element = array[i];
+            // }
+          } else {
             //   add letter
             curText += finalValue[idx];
             curIdx = idx;

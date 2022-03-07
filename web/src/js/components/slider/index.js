@@ -45,130 +45,109 @@ export class Slider {
     });
 
     this.state = {
+      pos: {
+        sx: 0, // start
+        cx: 0, // current
+        tx: 0, // target
+        lx: 0, // last
+      },
+      rects: {
+        max: 0,
+        min: 0,
+        slideWidth: 0,
+        sliderWidth: 0,
+        containerWidth: 0,
+      },
       dragging: false,
-      sx: 0, // start
-      cx: 0, // current
-      tx: 0, // target
-      lx: 0, // last
-      fx: 0, // final
-      max: 0,
-      min: 0,
       direction: 1, // +ve is right
-      slideWidth: 0,
-      sliderWidth: 0,
-      containerWidth: 0,
-      threshold: 0,
-      progress: 0,
     };
 
     this.resize();
-    this.detect();
     this.listeners();
-
-    this.roID = ro.add({
-      update: this.resize,
-    });
-
-    this.tickID = ticker.add({
-      update: this.update,
-    });
+    this.init();
   }
 
-  detect = () => {
-    let type = "pointer";
-    let down = "down";
-    let up = "up";
-
-    if (Sniff.touchDevice) {
-      type = "touch";
-      down = "start";
-      up = "end";
-    }
-
-    this.events = {
-      type,
-      up,
-      down,
-    };
+  init = () => {
+    this.roID = ro.add({ update: this.resize });
+    this.tickID = ticker.add({ update: this.update });
   };
 
   clamp = (val = 0) => {
-    return clamp(val, this.state.min, this.state.max);
-  };
-
-  // TODO:
-  // + Return the appropriate function, instead of checking each time.
-  // + Do this in Iris?
-  getXY = (e) => {
-    const x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-    const y = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
-
-    return { x, y };
+    const { min, max } = this.state.rects;
+    return clamp(val, min, max);
   };
 
   listeners = () => {
-    let { type, up, down } = this.events;
-    let state = this.state;
+    const { move, up, down } = iris.events;
 
-    this.removeDown = iris.add(this.container, `${type}${down}`, (e) => {
-      this.container.classList.add("active");
-      state.dragging = true;
-      state.sx = this.getXY(e).x;
-      state.lx = state.tx;
-      smoothscroller.lock("carousel");
-    });
+    this.removeDown = iris.add(this.container, down, this.handleDown);
+    this.removeWheel = iris.add(this.container, `wheel`, this.handleWheel);
+    this.removeMove = iris.add(window, move, this.handleMove);
+    this.removeUp = iris.add(window, up, this.handleUp);
+  };
 
-    this.removeWheel = iris.add(this.container, `wheel`, (e) => {
-      let delta = e.deltaX;
-      state.direction = delta > 0 ? 1 : -1;
-      state.cx += delta * this.dragSpeed;
-      state.cx = this.clamp(state.cx);
-    });
+  handleDown = (e) => {
+    const { pos } = this.state;
 
-    this.removeMove = iris.add(window, `${type}move`, (e) => {
-      if (!state.dragging) return;
-      let delta = state.sx - this.getXY(e).x;
-      state.direction = delta > 0 ? 1 : -1;
-      state.cx = state.lx + delta * this.dragSpeed;
-      state.cx = this.clamp(state.cx);
-    });
+    this.container.classList.add("active");
+    this.state.dragging = true;
 
-    this.removeUp = iris.add(window, `${type}${up}`, (e) => {
-      state.dragging = false;
-      smoothscroller.unlock("carousel");
-      this.container.classList.remove("active");
-    });
+    pos.sx = iris.getXY(e).x;
+    pos.lx = pos.tx;
+
+    smoothscroller.lock("carousel");
+  };
+
+  handleWheel = (e) => {
+    const { pos } = this.state;
+    const delta = e.deltaX;
+
+    this.state.direction = delta > 0 ? 1 : -1;
+
+    pos.cx += delta * this.dragSpeed;
+    pos.cx = this.clamp(pos.cx);
+  };
+
+  handleMove = (e) => {
+    const { pos } = this.state;
+    if (!this.state.dragging) return;
+
+    const delta = pos.sx - iris.getXY(e).x;
+    this.state.direction = delta > 0 ? 1 : -1;
+
+    pos.cx = pos.lx + delta * this.dragSpeed;
+    pos.cx = this.clamp(pos.cx);
+  };
+
+  handleUp = () => {
+    this.state.dragging = false;
+    smoothscroller.unlock("carousel");
+    this.container.classList.remove("active");
   };
 
   resize = (o = { vw: window.innerWidth, vh: window.innerHeight }) => {
     this.bounds = o;
-    let state = this.state;
+    const { rects } = this.state;
 
-    state.slideWidth = this.slides[0].dom.offsetWidth;
-    state.sliderWidth = this.slider.offsetWidth;
-    state.containerWidth = this.container.offsetWidth;
+    rects.slideWidth = this.slides[0].dom.offsetWidth;
+    rects.sliderWidth = this.slider.offsetWidth;
+    rects.containerWidth = this.container.offsetWidth;
 
-    state.max = bounds(this.slider).width - state.containerWidth;
-    state.cx = this.clamp(state.active * state.slideWidth);
+    rects.max = bounds(this.slider).width - rects.containerWidth;
   };
 
   get shouldAnimate() {
-    return Math.abs(this.state.tx - this.state.cx) > 0.01;
+    const { tx, cx } = this.state.pos;
+    return Math.abs(tx - cx) > 0.01;
   }
 
   update = (t, ct) => {
     if (!this.shouldAnimate) return;
+    const { pos } = this.state;
 
-    this.state.tx = damp(
-      this.state.tx,
-      this.state.cx,
-      this.inertia,
-      ticker.delta
-    );
+    pos.tx = damp(pos.tx, pos.cx, this.inertia, ticker.delta);
 
-    this.slider.style.transform = `translate3d(${round(
-      -this.state.tx
-    )}px, 0, 0)`;
+    this.slider.style.transform = `translate3d(${round(-pos.tx)}px, 0, 0)`;
   };
 
   destroy = () => {

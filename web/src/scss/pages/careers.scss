@@ -26,6 +26,12 @@
     &.active {
       cursor: grabbing;
     }
+
+    &:hover {
+      #meet-slider--handle {
+        opacity: 1;
+      }
+    }
   }
 
   .carousel-slider {
@@ -36,6 +42,11 @@
     gap: fluid(40, $lg);
 
     height: fluid(900, $lg);
+  }
+
+  #meet-slider--handle {
+    opacity: 0;
+    transition: opacity 0.5s $ease-out-expo;
   }
 
   .carousel-slide {

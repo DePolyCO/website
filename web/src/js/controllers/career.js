@@ -2,7 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
-import { Slider } from "../components/slider";
+import { GallerySlider } from "../components/gallerySlider";
 import { CaptureQuotes } from "../components/captureQuotes";
 
 /**
@@ -22,7 +22,7 @@ export const careerController = new Controller({
   show: ({ done }) => {
     nav.setLinkActive("careers");
 
-    slider = new Slider();
+    slider = new GallerySlider();
     capture = new CaptureQuotes();
 
     sail.in();

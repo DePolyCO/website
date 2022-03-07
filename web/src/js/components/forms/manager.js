@@ -195,15 +195,18 @@ export class FormManager {
   setStatus = (status, form) => {
     const wrapper = form.closest(".form-wrapper");
     const panel = qs(".form-status", wrapper);
+    const isFailure = status === "failure";
 
     const txt = this.config.text[status];
 
     qs(".form-status--tick", panel).style.backgroundColor = txt.bg;
     qs("svg use", panel).setAttribute("href", txt.icon);
-    qs(".form-status--thank", panel).innerText = txt.title;
+    qs(".form-status--thank", panel).innerText = isFailure
+      ? txt.title
+      : txt.title + " " + qs(".first-name", form).value;
     qs(".form-status--desc", panel).innerHTML = txt.desc;
 
-    if (status === "failure") {
+    if (isFailure) {
       iris.add(qs(".retry"), "click", () => this.removeStatus(form), {
         once: true,
       });

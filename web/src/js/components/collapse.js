@@ -112,6 +112,12 @@ export class Collapse {
         //   activate new slide
         this.setActive(slides.dom[activeSlide], activeSlide);
         slides.active = activeSlide;
+
+        if (activeSlide === slides.no - 1) {
+          this.setSummary();
+        } else {
+          this.removeSummary();
+        }
       }
     } else if (this.state.lock) {
       // unlock if not necessary
@@ -145,21 +151,24 @@ export class Collapse {
     });
   }
 
-  setSummary() {}
+  setSummary() {
+    this.dom.classList.add("summary");
+  }
 
-  setNotSummary() {}
+  removeSummary() {
+    this.dom.classList.remove("summary");
+  }
 
   resize = () => {
     const top = getOffsetTop(this.dom);
-    const { slides } = this.state;
-    this.state.page.width =
-      bounds(slides.dom[slides.active]).width * (slides.no - 1) -
-      bounds(this.window).width;
+    const { slides, page, boundRange } = this.state;
+    page.offset = window.innerHeight;
+    page.width = page.offset * (slides.no - 1) - bounds(this.window).width;
 
     const stickyPoint = window.innerHeight * 0.25; // 20vh from top
 
-    this.state.boundRange[0] = top - stickyPoint;
-    this.state.boundRange[1] = top - stickyPoint + this.state.page.width;
+    boundRange[0] = top - stickyPoint;
+    boundRange[1] = top - stickyPoint + page.width;
 
     // scrollable width
     // console.log(this.state.page.width);

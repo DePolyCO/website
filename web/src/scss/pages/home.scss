@@ -1,3 +1,5 @@
+@use "sass:math";
+
 #home {
   #plastic-problem,
   #solution-text {
@@ -207,6 +209,46 @@
 
   #enhanced-slides {
     min-width: fit-content;
+
+    // summary-mode
+    &.summary {
+      .enhanced-slide {
+        // inactive slides
+        &:not(.active) {
+          min-width: fluid(90, $lg);
+          width: fluid(90, $lg);
+
+          .enhanced-picture {
+            transition: transform 1.25s $ease-out-expo;
+            transform: scale(math.div(66, 403), math.div(60, 330))
+              translate3d(#{fluid(-1201, $lg)}, #{fluid(757, $lg)}, 0);
+          }
+
+          .enhanced-title {
+            opacity: 0;
+          }
+
+          .enhanced-sno {
+            transform: translateX(#{fluid(6, $lg)});
+          }
+
+          .enhanced-title--vert {
+            transition: opacity 1.25s $ease-out-expo;
+            opacity: 1;
+            pointer-events: all;
+          }
+
+          // hover over inactive slide while in summary mode
+          &:hover {
+            background: rgba(218, 218, 202, 1);
+
+            .enhanced-sno {
+              transform: translate3d(#{fluid(6, $lg)}, #{fluid(17, $lg)}, 0);
+            }
+          }
+        }
+      }
+    }
   }
 
   .enhanced-slide {
@@ -215,18 +257,20 @@
     height: fluid(600, $lg);
     border-left: 1px solid rgba(2, 45, 66, 0.2);
     padding-left: fluid(33, $lg);
+    overflow: hidden;
 
     transition: all 1.25s $ease-out-expo;
 
     &:not(.active) {
-      min-width: fluid(144, $lg);
-      width: fluid(144, $lg);
+      min-width: fluid(157, $lg);
+      width: fluid(157, $lg);
       padding-left: fluid(24, $lg);
 
-      // .enhanced-desc {
-      //   opacity: 0;
-      //   transition: opacity 0.2s $ease-out-expo, transform 1.25s $ease-out-expo;
-      // }
+      .enhanced-picture {
+        transition: transform 1.25s $ease-out-expo;
+        transform: scale(math.div(135, 403), math.div(139, 330))
+          translate3d(#{fluid(-490, $lg)}, #{fluid(220, $lg)}, 0);
+      }
 
       .enhanced-sno {
         font-size: fluid(14, $lg);
@@ -236,6 +280,14 @@
       .enhanced-title {
         font-size: fluid(14, $lg);
         font-weight: 700;
+      }
+    }
+
+    &.summary-slide {
+      .enhanced-picture {
+        min-width: fluid(997, $lg);
+        width: fluid(997, $lg);
+        height: fluid(478, $lg);
       }
     }
   }
@@ -259,7 +311,7 @@
     margin-bottom: fluid(8, $lg);
 
     transition: opacity 1.25s $ease-out-expo, margin-bottom 1.25s $ease-out-expo,
-      font-size 1.25s $ease-out-expo;
+      font-size 1.25s $ease-out-expo, transform 1.25s $ease-out-expo;
   }
 
   .enhanced-title {
@@ -272,14 +324,41 @@
   }
 
   .enhanced-picture {
+    min-width: fluid(403, $lg);
     width: fluid(403, $lg);
     height: fluid(330, $lg);
     background: $green;
+    transition: transform 1.25s $ease-out-expo;
   }
 
   .enhanced-slide--content {
     gap: fluid(17, $lg);
     align-items: flex-end;
+  }
+
+  .enhanced-title--vert {
+    opacity: 0;
+    transition: opacity 0.5s $ease-out-expo;
+    pointer-events: none;
+
+    bottom: fluid(155 + 54, $lg);
+    left: fluid(33, $lg);
+
+    > div {
+      font-weight: bold;
+      font-size: fluid(14, $lg);
+      line-height: 110%;
+      letter-spacing: 0.07em;
+      transform: rotate(-90deg);
+      transform-origin: 0 -12.5%;
+      white-space: nowrap;
+    }
+
+    svg {
+      width: fluid(20, $lg);
+      height: fluid(20, $lg);
+      opacity: 0.4;
+    }
   }
 }
 

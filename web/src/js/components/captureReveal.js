@@ -25,9 +25,9 @@ export class CaptureReveal {
         no: this.targets.length,
       },
       scroll: {
-        inertia: 0.075,
         target: 0,
         cur: 0.001,
+        inertia: smoothscroller.state.scroll.y.inertia,
       },
       page: { height: 0, offset: 0 },
       lock: false,

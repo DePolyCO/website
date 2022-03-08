@@ -27,7 +27,7 @@ export class CaptureQuotes {
       scroll: {
         cur: 0.001,
         target: 0,
-        inertia: 0.075,
+        inertia: smoothscroller.state.scroll.y.inertia,
       },
       move: {
         cur: 0,

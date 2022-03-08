@@ -22,11 +22,13 @@ export class Grid {
   };
 
   listen = () => {
-    iris.add(document, "keydown", (e) => {
-      if (e.key === "g" || e.key === "G") {
-        this.toggle();
-      }
-    });
+    iris.add(document, "keydown", this.handleKey);
+  };
+
+  handleKey = (e) => {
+    if (e.key === "g" || e.key === "G") {
+      this.toggle();
+    }
   };
 
   toggle = () => {

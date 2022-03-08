@@ -180,9 +180,11 @@ export class FormManager {
     const { type } = dataset;
     const parent = node.parentNode;
 
-    if (required && validate.empty(value)) {
-      this.setError(parent, "empty");
-      return false;
+    if (validate.empty(value)) {
+      if (required) {
+        this.setError(parent, "empty");
+        return false;
+      }
     } else if (type === "email" && !validate.email(value)) {
       this.setError(parent, "email");
       return false;
@@ -192,10 +194,10 @@ export class FormManager {
     } else if (type === "url" && !validate.url(value)) {
       this.setError(parent, "url");
       return false;
-    } else {
-      this.removeError(parent);
-      return true;
     }
+
+    this.removeError(parent);
+    return true;
   };
 
   hasError = (node) => {

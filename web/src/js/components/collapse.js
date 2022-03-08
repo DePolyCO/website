@@ -11,6 +11,7 @@ import {
   lerp,
   qsa,
   iris,
+  Duration,
 } from "../hermes";
 import { smoothscroller, corescroller } from "../scroller";
 
@@ -26,7 +27,7 @@ export class Collapse {
     this.state = {
       ease: Ease["io1"],
       scroll: {
-        inertia: 0.075,
+        inertia: smoothscroller.state.scroll.y.inertia,
         target: 0,
         cur: 0.001,
       },
@@ -34,6 +35,7 @@ export class Collapse {
         width: 0,
       },
       lock: false,
+      selfLock: false,
       boundRange: new Float32Array(2),
       slides: {
         dom: slides,
@@ -43,6 +45,7 @@ export class Collapse {
       summary: {
         slides: qsa(".enhanced-slide--summary", this.dom),
         active: false,
+        hover: 0,
       },
     };
     this.lerp = new LerpController(this.state.scroll);
@@ -58,6 +61,7 @@ export class Collapse {
     };
 
     this.init();
+    // window.collapse = this;
   }
 
   init = () => {
@@ -81,7 +85,7 @@ export class Collapse {
   };
 
   onScroll = ({ deltaY }) => {
-    if (smoothscroller.hasOtherLock("collapse")) return;
+    if (smoothscroller.hasOtherLock("collapse") || this.state.selfLock) return;
     this.state.scroll.cur = this.clamp(this.state.scroll.cur + deltaY);
   };
 
@@ -94,6 +98,8 @@ export class Collapse {
   };
 
   update = () => {
+    if (this.state.selfLock) return;
+
     const { scroll, boundRange, slides, summary } = this.state;
 
     const ycur = -scroll.cur;
@@ -119,12 +125,12 @@ export class Collapse {
         this.setActive(slides.dom[activeSlide], activeSlide);
         slides.active = activeSlide;
 
-        if (activeSlide === slides.no - 1) {
-          summary.active = activeSlide;
+        if (activeSlide === slides.no - 1 && !summary.active) {
+          summary.active = true;
           this.setSummary();
         } else if (summary.active) {
-          summary.active = 0;
           this.removeSummary();
+          summary.active = false;
         }
       }
     } else if (this.state.lock) {
@@ -136,15 +142,28 @@ export class Collapse {
 
   setActive(dom, i) {
     dom?.classList.add("active");
-    this.reveal.arr[i]?.tween.do("destroy");
-    this.reveal.arr[i]?.play({
-      from: 100,
-      to: 0,
-      stagger: 50,
-      delay: 250,
-      duration: 1750,
-      easing: "o6",
-    });
+
+    const r = this.reveal.arr[i];
+    if (r) {
+      r.tween.do("destroy");
+      r.play({
+        from: 100,
+        to: 0,
+        stagger: 50,
+        delay: 250,
+        duration: 1750,
+        easing: "o6",
+      });
+
+      // briefly lock slide
+      this.state.selfLock = true;
+      new Duration({
+        duration: 1250,
+        complete: () => {
+          this.state.selfLock = false;
+        },
+      });
+    }
   }
 
   setInactive(dom, i) {
@@ -166,7 +185,7 @@ export class Collapse {
 
   removeSummary() {
     this.unlisten();
-    this.handleLeave(this.state.summary.active);
+    this.handleLeave(this.state.summary.hover);
     this.dom.classList.remove("summary");
   }
 
@@ -187,6 +206,7 @@ export class Collapse {
   };
 
   handleEnter = (i) => {
+    this.state.summary.hover = i;
     this.state.summary.slides[i]?.classList.add("active");
   };
 

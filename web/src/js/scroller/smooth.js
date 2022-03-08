@@ -41,6 +41,7 @@ export class Smooth extends Conductor {
   }
 
   common() {
+
     this.scrollContent = this.settings.dom;
     this.scrollCover = qs("#scroll-cover");
 
@@ -62,21 +63,21 @@ export class Smooth extends Conductor {
     this.scrollSections.forEach((el) => this.tracker.add({ dom: el }));
   }
 
-  testMode = () => {
-    const sense = config.addInput(
-      {
-        sensitivity: this.settings.inertia * 1000,
-      },
-      "sensitivity",
-      { min: 1, max: 100, step: 1 }
-    );
+  // testMode = () => {
+  //   const sense = config.addInput(
+  //     {
+  //       sensitivity: this.settings.inertia * 1000,
+  //     },
+  //     "sensitivity",
+  //     { min: 1, max: 100, step: 1 }
+  //   );
 
-    sense.on("change", (e) => {
-      const val = e.value / 1000;
-      this.state.scroll.y.inertia = val;
-      this.lerp.y.setInertia(val);
-    });
-  };
+  //   sense.on("change", (e) => {
+  //     const val = e.value / 1000;
+  //     this.state.scroll.y.inertia = val;
+  //     this.lerp.y.setInertia(val);
+  //   });
+  // };
 
   clearState = () => {
     this.state = {

@@ -198,6 +198,7 @@
         &:not(.active) {
           min-width: fluid(90, $lg);
           width: fluid(90, $lg);
+          cursor: pointer;
 
           .enhanced-picture {
             transition: transform 1.25s $ease-out-expo;
@@ -228,6 +229,11 @@
             }
           }
         }
+      }
+
+      .enhanced-slide--summary.active {
+        pointer-events: all;
+        opacity: 1;
       }
     }
   }
@@ -301,7 +307,8 @@
     letter-spacing: -0.02em;
     font-weight: 400;
 
-    transition: opacity 1.25s $ease-out-expo, font-size 1.25s $ease-out-expo;
+    transition: opacity 1.25s $ease-out-expo, font-size 1.25s $ease-out-expo,
+      font-weight 1.25s $ease-out-expo;
   }
 
   .enhanced-picture {
@@ -361,11 +368,6 @@
 
   p {
     width: fluid(450, $lg);
-  }
-
-  &.active {
-    pointer-events: all;
-    opacity: 1;
   }
 
   &:nth-of-type(1) {

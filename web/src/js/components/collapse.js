@@ -10,6 +10,7 @@ import {
   invlerp,
   lerp,
   qsa,
+  iris,
 } from "../hermes";
 import { smoothscroller, corescroller } from "../scroller";
 
@@ -39,10 +40,15 @@ export class Collapse {
         no: slides.length,
         active: 0,
       },
+      summary: {
+        slides: qsa(".enhanced-slide--summary", this.dom),
+        active: false,
+      },
     };
     this.lerp = new LerpController(this.state.scroll);
+
     this.reveal = {
-      arr: qsa(".enhanced-desc > div", this.dom).map(
+      arr: qsa(".enhanced-desc > p", this.dom).map(
         (item) =>
           new Reveal({
             targets: item,
@@ -88,7 +94,7 @@ export class Collapse {
   };
 
   update = () => {
-    const { scroll, boundRange, slides } = this.state;
+    const { scroll, boundRange, slides, summary } = this.state;
 
     const ycur = -scroll.cur;
 
@@ -114,8 +120,10 @@ export class Collapse {
         slides.active = activeSlide;
 
         if (activeSlide === slides.no - 1) {
+          summary.active = activeSlide;
           this.setSummary();
-        } else {
+        } else if (summary.active) {
+          summary.active = 0;
           this.removeSummary();
         }
       }
@@ -152,12 +160,39 @@ export class Collapse {
   }
 
   setSummary() {
+    this.listen();
     this.dom.classList.add("summary");
   }
 
   removeSummary() {
+    this.unlisten();
+    this.handleLeave(this.state.summary.active);
     this.dom.classList.remove("summary");
   }
+
+  listen = () => {
+    this.unlisteners = [];
+    this.state.slides.dom.forEach((el, i) => {
+      this.unlisteners.push(
+        iris.add(el, iris.events.enter, (e) => this.handleEnter(i, e))
+      );
+      this.unlisteners.push(
+        iris.add(el, iris.events.leave, (e) => this.handleLeave(i, e))
+      );
+    });
+  };
+
+  unlisten = () => {
+    this.unlisteners.forEach((e) => e());
+  };
+
+  handleEnter = (i) => {
+    this.state.summary.slides[i]?.classList.add("active");
+  };
+
+  handleLeave = (i) => {
+    this.state.summary.slides[i]?.classList.remove("active");
+  };
 
   resize = () => {
     const top = getOffsetTop(this.dom);

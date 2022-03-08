@@ -3,10 +3,11 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
 import { Compare } from "../components/compare";
+import { nav } from "../components/nav";
 
 import { qsa } from "../hermes";
 import { Parallax } from "../scroller";
-import { nav } from "../components/nav";
+import { Reveal } from "../reveal";
 
 /**
  *
@@ -14,12 +15,14 @@ import { nav } from "../components/nav";
  *
  */
 
-let highlightFx, compares, ps;
+let highlightFx, compares, ps, r0;
 export const techController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     compares.forEach((compare) => compare.destroy());
     ps.forEach((p) => p.destroy());
+    r0.destroy();
+
     sail.out(done);
   },
 
@@ -39,6 +42,12 @@ export const techController = new Controller({
     );
 
     nav.setLinkActive("technology");
+
+    r0 = new Reveal({
+      targets: "#hero-title",
+      stagger: 150,
+    });
+    r0.play();
 
     sail.in();
     done();

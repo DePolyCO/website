@@ -2,11 +2,12 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
-
-import { qsa } from "../hermes";
 import { CaptureReveal } from "../components/captureReveal";
 import { asideController } from "../components/aside";
 import { nav } from "../components/nav";
+
+import { qsa } from "../hermes";
+import { Reveal } from "../reveal";
 
 /**
  *
@@ -14,13 +15,14 @@ import { nav } from "../components/nav";
  *
  */
 
-let highlightFx, numbers;
+let highlightFx, numbers, r0;
 
 export const aboutController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     numbers.destroy();
     asideController.destroy();
+    r0.destroy();
 
     sail.out(done);
   },
@@ -37,6 +39,12 @@ export const aboutController = new Controller({
     asideController.init();
 
     nav.setLinkActive("about");
+
+    r0 = new Reveal({
+      targets: "#hero-title",
+      stagger: 150,
+    });
+    r0.play();
 
     sail.in();
     done();

@@ -1,10 +1,12 @@
 import { Controller } from "../hydra";
 
+import { Draw, Observer, qsa } from "../hermes";
+
+import { Parallax } from "../scroller";
+import { Reveal } from "../reveal";
+
 import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
-import { Parallax } from "../scroller";
-
-import { Draw, Observer, qsa } from "../hermes";
 import { Collapse } from "../components/collapse";
 import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
@@ -15,7 +17,7 @@ import { monoShuffle } from "../components/monoShuffle";
  *
  */
 
-let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o;
+let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o, r0;
 export const homeController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
@@ -25,6 +27,7 @@ export const homeController = new Controller({
     p3.destroy();
     p4.destroy();
     c1.destroy();
+    r0.destroy();
     o.disconnect();
     iconDraws.forEach((d) => d.destroy());
     monoShuffle.destroy();
@@ -32,11 +35,16 @@ export const homeController = new Controller({
   },
 
   show: ({ done }) => {
-    const highlights = qsa("[data-text-highlight");
-
     highlightFx = new TextHighlight({
-      targets: highlights,
+      targets: "[data-text-highlight",
     });
+
+    r0 = new Reveal({
+      targets: "#hero-title",
+      stagger: 150,
+    });
+
+    r0.play();
 
     const prlx = qsa("[data-parallax]");
 

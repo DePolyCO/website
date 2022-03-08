@@ -3,8 +3,10 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 import { FormManager } from "../components/forms";
+
 import { iris } from "../hermes";
 import { smoothscroller } from "../scroller";
+import { Reveal } from "../reveal";
 
 /**
  *
@@ -17,6 +19,8 @@ export const contactController = new Controller({
   hide: ({ done }) => {
     undetail();
     forms.destroy();
+    r0.destroy();
+
     sail.out(done);
   },
 
@@ -28,6 +32,12 @@ export const contactController = new Controller({
     });
 
     forms = new FormManager();
+
+    r0 = new Reveal({
+      targets: "#hero-title",
+      stagger: 150,
+    });
+    r0.play();
 
     sail.in();
     done();

@@ -35,7 +35,7 @@ class MonoShuffle {
       let idx = 0,
         curIdx = -1,
         curText = "";
-      const duration = textL * 100;
+      const duration = textL * 75;
 
       new Duration({
         duration,

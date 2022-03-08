@@ -1,4 +1,5 @@
 import { footer } from "../components/footer";
+import { nav } from "../components/nav";
 import { qs, qsa, iris, unique, lazyloader, ro } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Store } from "../store";
@@ -247,11 +248,13 @@ export class Controller {
       // init so that page components get initial values correctly
       smoothscroller.init();
       footer.init();
+      nav.show();
       show({
         from,
         done: () => {
           // resize everything on ro
-          ro.update();
+          // ro.update();
+          smoothscroller.resize();
           lazyloader.load();
           setTimeout(done, 0);
         },

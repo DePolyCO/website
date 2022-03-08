@@ -88,6 +88,7 @@ export class Parallax {
       },
     };
 
+    this.resize();
     this.init();
   }
 

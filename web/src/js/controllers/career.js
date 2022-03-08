@@ -4,6 +4,7 @@ import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 import { GallerySlider } from "../components/gallerySlider";
 import { CaptureQuotes } from "../components/captureQuotes";
+import { Reveal } from "../reveal";
 
 /**
  *
@@ -16,6 +17,8 @@ export const careerController = new Controller({
   hide: ({ done }) => {
     slider.destroy();
     capture.destroy();
+    r0.destroy();
+
     sail.out(done);
   },
 
@@ -24,6 +27,12 @@ export const careerController = new Controller({
 
     slider = new GallerySlider();
     capture = new CaptureQuotes();
+
+    r0 = new Reveal({
+      targets: "#hero-title",
+      stagger: 150,
+    });
+    r0.play();
 
     sail.in();
     done();

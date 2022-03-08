@@ -11,6 +11,7 @@ import { careerController } from "./controllers/career";
 import { careerInnerController } from "./controllers/careerInner";
 import { newsController } from "./controllers/news";
 import { contactController } from "./controllers/contact";
+import { privacyController } from "./controllers/privacy";
 import { noController } from "./controllers/404";
 
 import { Grid } from "./grid";
@@ -41,6 +42,7 @@ new Hydra({
     news: newsController,
     contact: contactController,
     careerInner: careerInnerController,
+    privacy: privacyController,
     404: noController,
   },
 });

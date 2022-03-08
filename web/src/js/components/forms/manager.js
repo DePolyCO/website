@@ -99,7 +99,26 @@ export class FormManager {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.post(e.target);
+
+    const form = e.target;
+
+    const inputs = [...form.elements].filter((tag) =>
+      ["select", "textarea", "input"].includes(tag.tagName.toLowerCase())
+    );
+
+    let hasError = false;
+    for (let i = 0; i < inputs.length; i++) {
+      const input = inputs[i];
+      const isValid = this.validate(input);
+
+      if (!isValid) {
+        hasError = true;
+      }
+    }
+
+    if (hasError) return;
+
+    this.post(form);
   };
 
   handleFile = (e) => {
@@ -116,7 +135,6 @@ export class FormManager {
   post = async (form) => {
     this.running(form);
     const formData = new FormData(form);
-    console.log("data", formData);
     try {
       const res = await fetch(`${this.config.url}${this.config.route}`, {
         method: "POST",
@@ -157,21 +175,26 @@ export class FormManager {
     this.validate(e.target);
   };
 
-  validate = (form) => {
-    const { value, dataset, required } = form;
+  validate = (node) => {
+    const { value, dataset, required } = node;
     const { type } = dataset;
-    const parent = form.parentNode;
+    const parent = node.parentNode;
 
     if (required && validate.empty(value)) {
       this.setError(parent, "empty");
+      return false;
     } else if (type === "email" && !validate.email(value)) {
       this.setError(parent, "email");
+      return false;
     } else if (type === "name" && !validate.name(value)) {
       this.setError(parent, "name");
+      return false;
     } else if (type === "url" && !validate.url(value)) {
       this.setError(parent, "url");
+      return false;
     } else {
       this.removeError(parent);
+      return true;
     }
   };
 

@@ -77,7 +77,7 @@ select {
   border: 1px solid #aab6b6;
   min-width: fluid(516, $lg);
   margin-bottom: fluid(14, $lg);
-  overflow: auto;
+  // overflow: auto;
 }
 
 .field-dash {
@@ -278,7 +278,54 @@ option[value="placeholder"] {
   }
 }
 
-.cta-btn.running {
+.cta-btn.running,
+.cta-btn.disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.field {
+  &.err {
+    .error-icon {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  .error-icon {
+    pointer-events: none;
+    opacity: 0;
+
+    width: fluid(20, $lg);
+    height: fluid(20, $lg);
+
+    top: fluid(20, $lg);
+    right: fluid(20, $lg);
+
+    &:hover {
+      .error-overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  .error-overlay {
+    white-space: nowrap;
+    background: #ff6666;
+    border-radius: fluid(8, $lg);
+    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+    z-index: 2;
+
+    font-weight: 500;
+    font-size: fluid(16, $lg);
+    line-height: 130%;
+    letter-spacing: 0.02em;
+
+    top: fluid(-48 - 6, $lg);
+    left: 0;
+
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+  }
 }

@@ -255,6 +255,8 @@ select {
   height: 100%;
   padding: fluid(19, $lg) fluid(19, $lg) fluid(16, $lg) fluid(20, $lg);
   appearance: none;
+  background: #ecece2;
+  border-radius: fluid(15, $lg);
 
   &:focus-within:hover ~ .select-dropdown {
     svg {

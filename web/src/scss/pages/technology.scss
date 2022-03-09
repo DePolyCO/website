@@ -131,6 +131,7 @@
     width: fluid(335, $sm);
 
     @include md {
+      flex-direction: row;
       width: fluid(430 * 3 + 40 * 2, $lg);
       margin-left: auto;
     }
@@ -216,6 +217,10 @@
 
   #callout-cta {
     width: 100%;
+    
+    @include md {
+      width: fit-content;
+    }
   }
 }
 

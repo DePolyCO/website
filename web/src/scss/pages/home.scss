@@ -222,7 +222,7 @@
 
           // hover over inactive slide while in summary mode
           &:hover {
-            background: rgba(218, 218, 202, 1);
+            background: rgba(218, 218, 202, 0.2);
 
             .enhanced-sno {
               transform: translate3d(#{fluid(6, $lg)}, #{fluid(17, $lg)}, 0);
@@ -408,11 +408,17 @@
 }
 
 .big-title {
-  font-weight: 200;
-  font-size: fluid(300, $lg);
-  line-height: 85%;
+  font-weight: 400;
+  font-size: fluid(56, $sm);
+  line-height: 100%;
   letter-spacing: -0.05em;
   color: #f6f6ee;
+
+  @include md {
+    font-weight: 200;
+    line-height: 85%;
+    font-size: fluid(300, $lg);
+  }
 }
 
 .border-bottom {

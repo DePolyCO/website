@@ -19,7 +19,7 @@ const DELTA = 0.001002;
 
 export class Smooth extends Conductor {
   constructor({
-    inertia = Sniff.touchDevice ? 0.125 : 0.075,
+    inertia = Sniff.touchDevice ? 1 : 0.075,
     dom = document.documentElement,
     isWindow = true,
     window,
@@ -33,6 +33,8 @@ export class Smooth extends Conductor {
       window,
     };
 
+    // if (Sniff.touchDevice) return;
+
     this.common();
     this.init();
     this.resize();
@@ -41,7 +43,6 @@ export class Smooth extends Conductor {
   }
 
   common() {
-
     this.scrollContent = this.settings.dom;
     this.scrollCover = qs("#scroll-cover");
 
@@ -119,6 +120,7 @@ export class Smooth extends Conductor {
   };
 
   update = () => {
+    if (Sniff.touchDevice) return;
     const { x, y } = this.state.scroll;
 
     if (!this.lerp.x.needsUpdate() && !this.lerp.y.needsUpdate()) return;
@@ -151,6 +153,7 @@ export class Smooth extends Conductor {
   };
 
   render = () => {
+    if (Sniff.touchDevice) return;
     this.tracker.detectElements();
 
     const { x, y } = this.state.scroll;

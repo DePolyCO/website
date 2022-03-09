@@ -1,40 +1,65 @@
 .text-block {
   padding-top: 1px;
 
+  @include md {
+    flex-direction: row;
+  }
+
   .text-block--content {
-    font-size: fluid(50, $lg);
-    line-height: 130%;
+    font-size: fluid(50, $sm);
+    width: fluid(335, $sm);
+
+    line-height: 110%;
     letter-spacing: -0.02em;
-    width: fluid(1370, $lg);
     margin-left: auto;
+
+    @include md {
+      line-height: 130%;
+      font-size: fluid(50, $lg);
+      width: fluid(1370, $lg);
+    }
   }
 
   .text-block--text {
-    // &:not(:last-of-type) {
-    margin-bottom: fluid(40, $lg);
-    // }
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      margin-bottom: fluid(40, $lg);
+    }
   }
 }
 
 .tag {
-  font-size: fluid(18, $lg);
+  font-size: fluid(14, $sm);
+  padding-left: fluid(17 + 6, $sm);
   font-weight: 600;
   line-height: 110%;
   letter-spacing: 0.04em;
   position: relative;
-  padding-left: fluid(33, $lg);
   white-space: nowrap;
   padding-top: 1.5px;
+  margin-bottom: fluid(40, $sm);
 
   &::before {
     content: "";
-    width: fluid(20, $lg);
-    height: fluid(20, $lg);
+    width: fluid(17, $sm);
+    height: fluid(17, $sm);
     border-radius: 50%;
     background-color: $darkblue;
 
     position: absolute;
     left: 0;
     top: 0px;
+  }
+
+  @include md {
+    font-size: fluid(18, $lg);
+    padding-left: fluid(33, $lg);
+    margin-bottom: 0;
+
+    &::before {
+      width: fluid(20, $lg);
+      height: fluid(20, $lg);
+    }
   }
 }

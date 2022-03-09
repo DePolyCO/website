@@ -23,7 +23,7 @@ export const careerInnerController = new Controller({
     forms = new FormManager();
 
     r0 = new Reveal({
-      targets: "#hero-title",
+      targets: ".hero-title",
       stagger: 150,
     });
     r0.play();

@@ -15,8 +15,10 @@
   }
 
   #numbers {
-    padding-bottom: fluid(224, $lg);
-    margin-bottom: fluid(280, $lg);
+    @include md {
+      padding-bottom: fluid(224, $lg);
+      margin-bottom: fluid(125, $lg);
+    }
   }
 
   #numbers-content {
@@ -52,32 +54,43 @@
     // transition: color 0.75s $ease-out-expo;
   }
 
+  #team {
+    @include md {
+      flex-direction: row;
+    }
+  }
+
   .grid-list {
-    width: fluid(430 * 3 + 40 * 2, $lg);
-    margin-left: auto;
-
-    // margin-bottom: fluid(180, $lg);
-    gap: fluid(40, $lg);
-
     position: relative;
-    left: fluid(20, $lg);
+
+    gap: fluid(40, $sm);
+
+    @include md {
+      flex-direction: row;
+      margin-left: auto;
+
+      width: fluid(430 * 3 + 40 * 2, $lg);
+      gap: fluid(40, $lg);
+      left: fluid(20, $lg);
+    }
   }
 
   .team-col {
-    width: fluid(430, $lg);
+    @include md {
+      width: fluid(430, $lg);
 
-    &:not(.no-border) {
-      &:not(:last-of-type) {
-        border-right: 1px solid rgba(2, 45, 66, 0.2);
+      &:not(.no-border) {
+        &:not(:last-of-type) {
+          border-right: 1px solid rgba(2, 45, 66, 0.2);
+        }
       }
     }
   }
 
   .team-item {
-    width: fluid(400, $lg);
     position: relative;
-    padding-top: fluid(90, $lg);
-    left: fluid(-20, $lg);
+
+    padding-top: fluid(60, $sm);
 
     &:not(.no-border) {
       &::after {
@@ -90,31 +103,56 @@
         right: fluid(5 - 20, $lg);
       }
     }
+
+    @include md {
+      width: fluid(400, $lg);
+      padding-top: fluid(90, $lg);
+      left: fluid(-20, $lg);
+    }
   }
 
   .team-photo {
-    width: fluid(400, $lg);
-    height: fluid(400, $lg);
+    width: fluid(335, $sm);
+    height: fluid(335, $sm);
+    margin-bottom: fluid(26, $sm);
+
     border-radius: 50%;
-    margin-bottom: fluid(36, $lg);
     background: #f6f6ee;
+
+    @include md {
+      width: fluid(400, $lg);
+      height: fluid(400, $lg);
+      margin-bottom: fluid(36, $lg);
+    }
   }
 
   .team-name {
-    font-size: fluid(30, $lg);
+    font-size: fluid(30, $sm);
+    margin-bottom: fluid(12, $sm);
+
     line-height: 100%;
     text-align: center;
     letter-spacing: 0.01em;
-    margin-bottom: fluid(12, $lg);
+
+    @include md {
+      font-size: fluid(30, $lg);
+      margin-bottom: fluid(12, $lg);
+    }
   }
 
   .team-role {
     opacity: 0.4;
-    font-size: fluid(15, $lg);
+    font-weight: 500;
+    font-size: fluid(13, $sm);
+    margin-bottom: fluid(60, $sm);
     line-height: 110%;
     letter-spacing: 0.05em;
     text-align: center;
-    margin-bottom: fluid(90, $lg);
+
+    @include md {
+      font-size: fluid(15, $lg);
+      margin-bottom: fluid(90, $lg);
+    }
   }
 
   #advisor-list {

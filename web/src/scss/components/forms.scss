@@ -72,12 +72,21 @@ select {
   }
 }
 
+textarea {
+  resize: vertical;
+}
+
 .field {
   border-radius: fluid(15, $lg);
   border: 1px solid #aab6b6;
   min-width: fluid(516, $lg);
   margin-bottom: fluid(14, $lg);
+  height: fluid(60, $lg);
   // overflow: auto;
+
+  &.textarea {
+    height: min-content;
+  }
 }
 
 .field-dash {
@@ -258,6 +267,7 @@ select {
   appearance: none;
   background: #ecece2;
   border-radius: fluid(15, $lg);
+  font-size: fluid(18, $lg);
 
   &:focus-within:hover ~ .select-dropdown {
     svg {

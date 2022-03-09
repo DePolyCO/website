@@ -1,6 +1,13 @@
 .compare-slider {
-  width: fluid(1249, $lg);
-  height: fluid(681, $lg);
+  touch-action: manipulation;
+
+  width: fluid(335, $sm);
+  height: fluid(220, $sm);
+
+  @include md {
+    width: fluid(1249, $lg);
+    height: fluid(681, $lg);
+  }
 }
 
 .compare-slide--before {
@@ -16,32 +23,49 @@
   height: 100%;
   width: 1px;
   left: 0;
-  background-color: $lightbeige
+  background-color: $lightbeige;
+
+  @include md {
+  }
 }
 
 .compare-slider--handle {
-  width: fluid(264, $lg);
-  height: fluid(36, $lg);
+  touch-action: manipulation;
+
+  width: fluid(100, $sm);
+  height: fluid(28, $sm);
   top: 0;
   left: 0;
-  //   left: fluid(-264 * 0.5, $lg);
 
   background: $green;
-  border-radius: fluid(10, $lg);
+  border-radius: fluid(10, $sm);
   cursor: grab;
 
   font-weight: bold;
-  font-size: fluid(12, $lg);
+  font-size: fluid(12, $sm);
   line-height: 90%;
 
-  padding: 0 fluid(16, $lg);
+  padding: fluid(6, $sm) fluid(10, $sm);
 
   &.active {
     cursor: grabbing;
   }
+
+  @include md {
+    width: fluid(264, $lg);
+    height: fluid(36, $lg);
+    border-radius: fluid(10, $lg);
+    padding: 0 fluid(16, $lg);
+    font-size: fluid(14, $lg);
+  }
 }
 
 .compare-arr {
-  width: 13px;
-  height: 8px;
+  width: fluid(13, $sm);
+  height: fluid(8, $sm);
+
+  @include md {
+    width: fluid(13, $lg);
+    height: fluid(8, $lg);
+  }
 }

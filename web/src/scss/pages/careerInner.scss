@@ -8,8 +8,13 @@
   }
 
   .restrict-xtra {
-    width: fluid(430 * 3 + 80, $lg);
-    margin-left: fluid(510, $lg);
+    width: fluid(335, $sm);
+    margin-left: fluid(20, $sm);
+
+    @include md {
+      width: fluid(430 * 3 + 80, $lg);
+      margin-left: fluid(510, $lg);
+    }
   }
 
   #details,
@@ -17,63 +22,124 @@
     margin-bottom: fluid(160, $lg);
   }
 
+  #details-inner {
+    @include md {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
   .detail-item {
+    margin-bottom: fluid(40, $sm);
+    padding-bottom: fluid(40, $sm);
+
+    @include md {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
     &:first-of-type {
-      min-width: fluid(450, $lg);
+      @include md {
+        min-width: fluid(450, $lg);
+      }
     }
 
     &:not(:last-of-type) {
-      width: fluid(430, $lg);
-      border-right: fluid(1, $lg) solid $darkblue;
-      margin-right: fluid(40, $lg);
+      border-bottom: 1px solid $darkblue;
+
+      @include md {
+        border-right: 1px solid $darkblue;
+        margin-right: fluid(40, $lg);
+        width: fluid(430, $lg);
+      }
     }
   }
 
   .detail-value {
-    font-size: fluid(35, $lg);
+    font-size: fluid(28, $sm);
+    margin-bottom: fluid(4, $sm);
     line-height: 110%;
     letter-spacing: 0.01em;
-    margin-bottom: fluid(8, $lg);
+
+    @include md {
+      font-size: fluid(35, $lg);
+      margin-bottom: fluid(8, $lg);
+    }
   }
 
   .chip {
     font-weight: 500;
-    font-size: fluid(16, $lg);
     line-height: 130%;
     letter-spacing: 0.01em;
-    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+
     background: #dadaca;
-    border-radius: fluid(8, $lg);
     width: fit-content;
+
+    font-size: fluid(14, $sm);
+    padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
+    border-radius: fluid(8, $sm);
+
+    @include md {
+      font-size: fluid(16, $lg);
+      padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+      border-radius: fluid(8, $lg);
+    }
   }
 
   .mb-md {
-    margin-bottom: fluid(120, $lg);
+    margin-bottom: fluid(100, $sm);
+
+    @include md {
+      margin-bottom: fluid(120, $lg);
+    }
   }
 
   .section-title {
-    font-size: fluid(50, $lg);
+    font-size: fluid(36, $sm);
+    margin-bottom: fluid(40, $sm);
+
     line-height: 130%;
     letter-spacing: -0.02em;
-    margin-bottom: fluid(41, $lg);
+
+    @include md {
+      font-size: fluid(50, $lg);
+      margin-bottom: fluid(41, $lg);
+    }
   }
 
   .section-list {
     list-style-type: disc;
-    gap: fluid(25, $lg);
-    padding-left: fluid(30, $lg);
-    width: fluid(900, $lg);
+    gap: fluid(20, $sm);
+    padding-left: fluid(24, $sm);
+
+    @include md {
+      gap: fluid(25, $lg);
+      padding-left: fluid(30, $lg);
+      width: fluid(900, $lg);
+    }
   }
 
   .section-list--item {
-    font-size: fluid(18, $lg);
+    font-size: fluid(16, $sm);
     line-height: 110%;
     letter-spacing: 0.04em;
+
+    @include md {
+      font-size: fluid(18, $lg);
+    }
+  }
+
+  #apply {
+    @include md {
+      flex-direction: row;
+    }
   }
 
   .form-wrapper {
-    width: fluid(430 * 3 + 80 + 40, $lg);
-    margin-left: auto;
+    @include md {
+      width: fluid(430 * 3 + 80 + 40, $lg);
+      margin-left: auto;
+    }
   }
 
   .cta-btn {
@@ -91,8 +157,10 @@
   }
 
   #cv-form {
-    padding-left: fluid(40, $lg);
-    border-left: 1px solid #aab6b6;
+    @include md {
+      padding-left: fluid(40, $lg);
+      border-left: 1px solid #aab6b6;
+    }
   }
 
   #cv-submit {

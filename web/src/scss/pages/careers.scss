@@ -10,13 +10,23 @@
   }
 
   #meet {
-    padding-left: fluid(40, $lg);
-    padding-bottom: fluid(160, $lg);
+    padding-left: fluid(20, $sm);
+    padding-bottom: fluid(120, $sm);
+
+    @include md {
+      padding-left: fluid(40, $lg);
+      padding-bottom: fluid(160, $lg);
+      flex-direction: column;
+    }
   }
 
   #meet-slider {
-    width: fluid(1410, $lg);
-    margin-left: auto;
+    width: fluid($sm - 20, $sm);
+
+    @include md {
+      width: fluid(1410, $lg);
+      margin-left: auto;
+    }
   }
 
   .carousel-container {
@@ -38,10 +48,17 @@
     overflow: hidden;
     min-width: fit-content;
     display: flex;
-    padding-right: fluid(40, $lg);
-    gap: fluid(40, $lg);
 
-    height: fluid(900, $lg);
+    // space to leave after slider ends
+    padding-right: fluid(20, $sm);
+    gap: fluid(20, $sm);
+    height: fluid(300, $sm);
+
+    @include md {
+      padding-right: fluid(40, $lg);
+      gap: fluid(40, $lg);
+      height: fluid(900, $lg);
+    }
   }
 
   #meet-slider--handle {
@@ -50,12 +67,21 @@
   }
 
   .carousel-slide {
-    min-width: fluid(1349, $lg);
+    min-width: fluid(450, $sm);
+
+    @include md {
+      min-width: fluid(1349, $lg);
+    }
   }
 
   .carousel-slide--stack {
-    min-width: fluid(645, $lg);
-    gap: fluid(40, $lg);
+    min-width: fluid(215, $sm);
+    gap: fluid(20, $sm);
+
+    @include md {
+      min-width: fluid(645, $lg);
+      gap: fluid(40, $lg);
+    }
   }
 
   #quotes {
@@ -64,11 +90,17 @@
     padding-bottom: fluid(160, $lg);
     margin-bottom: fluid(70, $lg);
     border-bottom: 1px solid $darkblue;
+
+    @include md {
+      flex-direction: row;
+    }
   }
 
   #quotes-list {
-    width: fluid(430 * 3 + 40 * 2, $lg);
-    margin-left: auto;
+    @include md {
+      width: fluid(430 * 3 + 40 * 2, $lg);
+      margin-left: auto;
+    }
   }
 
   .quote {
@@ -102,14 +134,16 @@
   }
 
   .quote-apo {
+    width: fluid(77, $lg);
+    height: fluid(77, $lg);
+    left: fluid(319, $lg);
+
     background: #022d42;
-    width: 77px;
-    height: 77px;
     border-radius: 50%;
     z-index: 2;
-    left: fluid(319, $lg);
-    transition: opacity 0.8s;
     opacity: 0;
+
+    transition: opacity 0.8s;
 
     svg {
       width: fluid(25, $lg);
@@ -141,19 +175,39 @@
     opacity: 0.4;
   }
 
+  #position {
+    @include md {
+      flex-direction: row;
+    }
+  }
+
   #position-content {
-    width: fluid(1370, $lg);
-    margin-left: auto;
+    @include md {
+      width: fluid(1370, $lg);
+      margin-left: auto;
+    }
   }
 
   #position-list {
     margin-bottom: fluid(120 - 51, $lg);
+
+    @include md {
+      margin-bottom: fluid(120 - 51, $lg);
+    }
   }
 
   .position-item {
-    padding-bottom: fluid(60, $lg);
-    margin-bottom: fluid(51, $lg);
     border-bottom: 1px solid $darkbeige;
+
+    padding-bottom: fluid(40, $sm);
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      flex-direction: row;
+      align-items: center;
+      padding-bottom: fluid(60, $lg);
+      margin-bottom: fluid(51, $lg);
+    }
   }
 
   .cta-btn {
@@ -171,33 +225,83 @@
 
   .position-role {
     font-weight: 500;
-    font-size: fluid(30, $lg);
+    font-size: fluid(36, $sm);
     line-height: 130%;
     letter-spacing: 0.01em;
+    margin-bottom: fluid(32, $sm);
+
+    @include md {
+      margin-bottom: 0;
+      font-size: fluid(30, $lg);
+    }
   }
 
   .position-location,
   .position-level {
-    font-size: fluid(18, $lg);
     line-height: 140%;
     border-left: 1px solid $darkbeige;
-    padding-left: fluid(24, $lg);
+    padding-left: fluid(24, $sm);
+    font-size: fluid(16, $sm);
+    margin-bottom: fluid(24, $sm);
+
+    @include md {
+      margin-bottom: 0;
+      padding-left: fluid(24, $lg);
+      font-size: fluid(18, $lg);
+    }
+  }
+
+  .position-level {
+    margin-bottom: fluid(32, $sm);
+
+    @include md {
+      margin-bottom: 0;
+    }
   }
 
   #not-found {
-    margin-bottom: fluid(220, $lg);
+    margin-bottom: fluid(120, $sm);
+
+    .cta-btn {
+      width: 100%;
+    }
+
+    @include md {
+      flex-direction: row;
+      align-items: flex-end;
+      margin-bottom: fluid(220, $lg);
+
+      .cta-btn {
+        width: fit-content;
+      }
+    }
   }
 
   #not-found--title {
-    font-size: fluid(68, $lg);
+    font-weight: 500;
+    font-size: fluid(40, $sm);
+    width: fluid(445, $sm);
     line-height: 100%;
     letter-spacing: -0.02em;
-    width: fluid(445, $lg);
+    margin-bottom: fluid(20, $sm);
+
+    @include md {
+      font-weight: 400;
+      margin-bottom: 0;
+      font-size: fluid(68, $lg);
+      width: fluid(445, $lg);
+    }
   }
 
   #not-found--desc {
-    font-size: fluid(18, $lg);
+    font-size: fluid(16, $sm);
     line-height: 140%;
-    width: fluid(499, $lg);
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      margin-bottom: 0;
+      font-size: fluid(18, $lg);
+      width: fluid(499, $lg);
+    }
   }
 }

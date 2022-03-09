@@ -1,34 +1,69 @@
 .hero {
-  padding-top: fluid(430, $lg);
+  padding-top: fluid(247, $sm);
+
+  @include md {
+    padding-top: fluid(430, $lg);
+  }
 }
 
 .hero-title--wrapper {
-  margin-bottom: fluid(43, $lg);
-  padding-top: fluid(12, $lg);
+  margin-bottom: fluid(26, $sm);
+  padding-top: fluid(12, $sm);
+
+  @include md {
+    margin-bottom: fluid(43, $lg);
+    padding-top: fluid(12, $lg);
+  }
 }
 
 .hero-title {
-  width: fluid(1639, $lg);
-  font-size: fluid(120, $lg);
+  font-size: fluid(61, $sm);
+  width: fluid(335, $sm);
+
   line-height: 100%;
   letter-spacing: -0.03em;
-  padding-bottom: fluid(16, $lg);
+
+  @include md {
+    width: fluid(1639, $lg);
+    font-size: fluid(120, $lg);
+    padding-bottom: fluid(16, $lg);
+  }
+
+  .l-line {
+    padding-bottom: 0.1em;
+  }
 }
 
 .hero-tag {
-  font-size: fluid(20, $lg);
+  font-size: fluid(14, $sm);
+  margin-bottom: fluid(15, $sm);
+
   line-height: 100%;
   text-align: right;
   letter-spacing: 0.05em;
-  margin-bottom: fluid(24, $lg);
+
+  @include md {
+    font-size: fluid(20, $lg);
+    margin-bottom: fluid(24, $lg);
+  }
 }
 
 .hero-picture {
-  width: fluid(1840, $lg);
-  height: fluid(700, $lg);
-  margin-bottom: fluid(125, $lg);
+  width: fluid(335, $sm);
+  height: fluid(200, $sm);
+  margin-bottom: fluid(80, $sm);
+
+  @include md {
+    width: fluid(1840, $lg);
+    height: fluid(700, $lg);
+    margin-bottom: fluid(125, $lg);
+  }
 }
 
 .hero-grid {
   min-height: fluid(358, $lg);
+
+  @include md {
+    min-height: fluid(358, $lg);
+  }
 }

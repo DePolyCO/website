@@ -46,22 +46,49 @@ body {
 }
 
 .restrict {
-  width: fluid(1840, $lg);
+  width: fluid(335, $sm);
   margin: 0 auto;
+
+  @include md {
+    width: fluid(1840, $lg);
+  }
+}
+
+.m-hide {
+  display: none;
+
+  @include md {
+    display: inherit;
+  }
+}
+
+.d-hide {
+  @include md {
+    display: none;
+  }
 }
 
 #grid {
-  justify-content: space-evenly;
-  gap: fluid(40, $lg);
+  // justify-content: space-evenly;
+  gap: fluid(8, $sm);
   opacity: 0;
 
-  width: fluid(1840, $lg);
+  width: fluid(335, $sm);
   margin: 0 auto;
 
   div {
-    width: fluid(($lg - ((4 + 1) * 40)) * math.div(1, 4), $lg);
+    width: fluid(($sm - ((4 + 1) * 8)) * math.div(1, 4), $sm);
     background-color: red;
     opacity: 0.2;
+  }
+
+  @include md {
+    gap: fluid(40, $lg);
+    width: fluid(1840, $lg);
+
+    div {
+      width: fluid(($lg - ((4 + 1) * 40)) * math.div(1, 4), $lg);
+    }
   }
 }
 

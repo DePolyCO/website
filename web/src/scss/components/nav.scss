@@ -145,18 +145,27 @@
 // CTA button
 
 .cta-btn {
-  background: $green;
-  border-radius: fluid(15, $lg);
+  border-radius: fluid(15, $sm);
+  font-size: fluid(16, $sm);
+  padding: fluid(21, $sm) fluid(34, $sm);
+
+  display: grid;
+  place-items: center;
+
   width: fit-content;
+  background: $green;
 
   font-weight: 600;
-  font-size: fluid(16, $lg);
   line-height: 110%;
   letter-spacing: 0.01em;
 
-  padding: fluid(21, $lg) fluid(34, $lg);
-
   transition: background-color 0.75s $ease-out-expo;
+
+  @include md {
+    border-radius: fluid(15, $lg);
+    font-size: fluid(16, $lg);
+    padding: fluid(21, $lg) fluid(34, $lg);
+  }
 
   .btn-inner::after {
     color: $green;

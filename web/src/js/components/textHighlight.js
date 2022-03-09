@@ -29,13 +29,13 @@ export class TextHighlight {
       item.dataset.content = item.innerHTML;
 
       //   skip first element
-      if (i > 0) {
-        this.tracker.add({ dom: item });
-      }
+      // if (i > 0) {
+      this.tracker.add({ dom: item });
+      // }
     });
 
     // first one is permanently active
-    children[0].classList.add("text-underlay--always");
+    // children[0].classList.add("text-underlay--always");
   };
 
   update = ({ x, y }) => {

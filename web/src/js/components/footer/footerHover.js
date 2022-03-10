@@ -20,6 +20,7 @@ export class FooterHover {
 
   listen = () => {
     this.targets.forEach((item, i) => {
+      if (!item.hover) return;
       iris.add(item.hover, "pointerenter", () => this.in(i));
       iris.add(item.hover, "pointerleave", () => this.out(i));
       iris.add(item.hover, "click", () => this.click(i));

@@ -7,14 +7,17 @@ import {
   ro,
   Ease,
   lerp,
+  Sniff,
 } from "../../hermes";
 import { corescroller, smoothscroller } from "../../scroller";
 
 export class FooterSlider {
   constructor({ dom }) {
+    if (Sniff.touchDevice) return;
     this.dom = dom;
     this.scrollWindow = qs("[data-scroll-window]", this.dom);
     this.scrollContent = qs("[data-scroll-item]", this.dom);
+
 
     this.init();
     this.common();
@@ -96,4 +99,3 @@ export class FooterSlider {
     page.width = width - bounds(this.scrollWindow).width;
   };
 }
-

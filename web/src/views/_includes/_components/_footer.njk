@@ -1,5 +1,5 @@
 <footer id="footer" data-scroll-section>
-    <div class="footer-row restrict df">
+    <div class="footer-row restrict df fc">
         <ul class="footer-list df fc">
             <li class="footer-item">
                 <a class="link link-dark" href="/">Home</a>
@@ -38,9 +38,25 @@
             <div id="footer-cta--title">Our newsletters are a concentrated blast of all the latest insights from DePoly. </div>
             <div id="footer-cta--desc">No spam – Unsubscribe anytime.</div>
             <form action="POST">
-                <div class="df footer-cta--input">
-                    <input required placeholder="First Name" type="text">
-                    <input required placeholder="Email Address" type="email">
+                <div class="df fc footer-cta--input">
+                    <div class="field dark pr">
+                        <input name="First Name" class="field-input first-name" id="general-firstname" placeholder="First Name" required type="text" data-type="name">
+                        <div class="cp pa error-icon">
+                            <svg>
+                                <use xlink:href="#err-icon"></use>
+                            </svg>
+                            <div class="error-overlay ttu pa">Please enter valid name</div>
+                        </div>
+                    </div>
+                    <div class="field dark pr">
+                        <input name="Email ID" class="field-input" id="general-email" placeholder="Email Address" required type="email" data-type="email">
+                        <div class="cp pa error-icon">
+                            <svg>
+                                <use xlink:href="#err-icon"></use>
+                            </svg>
+                            <div class="error-overlay ttu pa">Please enter valid email address</div>
+                        </div>
+                    </div>
                     <button id="footer-cta--btn" class="cta-btn df aic jcc" type="submit">
                         <div class="pr oh btn-wrapper">
                             <div class="btn-inner" data-content="Subscribe">Subscribe</div>
@@ -57,13 +73,13 @@
                         </div>
                     </div>
                     <label for="footer-cta--check" class="footer-cta--check cp">
-                        By subscribing you accept our <a href="" target="_blank" rel="noreferrer noopener" class="link link-solid link-dark"> Privacy Policy </a> &  <a href="" target="_blank" rel="noreferrer noopener" class="link link-solid link-dark"> Terms of Service </a>
+                        By subscribing you accept our <a href="" target="_blank" rel="noreferrer noopener" class="text-underline"> Privacy Policy </a> &  <a href="" target="_blank" rel="noreferrer noopener" class="text-underline"> Terms of Service </a>
                     </label>
                 </div>
             </form>
         </div>
     </div>
-    <div class="footer-row restrict df">
+    <div class="footer-row restrict df fc">
         <div class="footer-col" data-footer-hover="contact@depoly.ch">
             <div class="footer-col--title">
                 <div class="pr fit tag-wrapper">
@@ -94,7 +110,7 @@
                 </div>
             </div>
             <div class="footer-col--data">
-                <div class="link link-dark link-solid">Rue de l'Industrie 17 1950 Sion, Valais Switzerland</div>
+                <a href="" target="_blank" rel="noreferrer noopener">Rue de l'Industrie 17 1950 Sion, Valais Switzerland</a>
             </div>
         </div>
     </div>

@@ -1,38 +1,49 @@
 details {
-  padding-left: fluid(40, $lg);
   position: relative;
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: fluid(0, $lg);
-    left: fluid(40, $lg);
-    right: 0;
-    border-bottom: 1px solid #aab6b6;
+  @include md {
+    padding-left: fluid(40, $lg);
+
+    // border bottom
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: fluid(0, $lg);
+      left: fluid(40, $lg);
+      right: 0;
+      border-bottom: 1px solid #aab6b6;
+    }
   }
 }
 
 details[open] {
-  &::before {
-    content: "";
-    border-left: 1px solid #022d42;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  &::after {
-    border-bottom: 1px solid $darkblue;
-  }
-
   padding-bottom: fluid(60, $lg);
 
   .form-title {
-    margin-bottom: fluid(38, $lg);
+    margin-bottom: fluid(40, $sm);
 
-    &.margin-sm {
-      margin-bottom: fluid(14, $lg);
+    @include md {
+      margin-bottom: fluid(38, $lg);
+
+      &.margin-sm {
+        margin-bottom: fluid(14, $lg);
+      }
+    }
+  }
+
+  @include md {
+    // border left
+    &::before {
+      content: "";
+      border-left: 1px solid #022d42;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &::after {
+      border-bottom: 1px solid $darkblue;
     }
   }
 }
@@ -48,16 +59,32 @@ details summary {
 }
 
 .form-title {
-  font-size: fluid(50, $lg);
+  font-size: fluid(36, $sm);
+  margin-bottom: fluid(40, $sm);
   line-height: 130%;
   letter-spacing: -0.02em;
-  margin-bottom: fluid(60, $lg);
+
+  @include md {
+    font-size: fluid(50, $lg);
+    margin-bottom: fluid(60, $lg);
+  }
 }
 
 .form-subtitle {
-  font-size: 18px;
+  font-size: fluid(16, $sm);
+  margin-bottom: fluid(40, $sm);
   line-height: 140%;
-  margin-bottom: fluid(40, $lg);
+
+  @include md {
+    font-size: fluid(18, $lg);
+    margin-bottom: fluid(40, $lg);
+  }
+}
+
+.form-inner {
+  @include md {
+    flex-direction: row;
+  }
 }
 
 input,
@@ -77,25 +104,46 @@ textarea {
 }
 
 .field {
-  border-radius: fluid(15, $lg);
-  border: 1px solid #aab6b6;
-  min-width: fluid(516, $lg);
-  margin-bottom: fluid(14, $lg);
-  height: fluid(60, $lg);
+  border-radius: fluid(15, $sm);
+  margin-bottom: fluid(12, $sm);
+  width: 100%;
+  height: fluid(60, $sm);
   // overflow: auto;
+  border: 1px solid #aab6b6;
 
   &.textarea {
-    height: min-content;
+    height: fluid(180, $sm);
+  }
+
+  &.dark {
+    border: 1px solid $darkblue;
+  }
+
+  @include md {
+    border-radius: fluid(15, $lg);
+    border: 1px solid #aab6b6;
+    min-width: fluid(516, $lg);
+    margin-bottom: fluid(14, $lg);
+    height: fluid(60, $lg);
+
+    &.textarea {
+      height: min-content;
+    }
   }
 }
 
 .field-dash {
   border: 1px dashed #aab6b6;
+  overflow: auto;
 }
 
 textarea {
-  padding: fluid(15, $lg) fluid(20, $lg);
+  padding: fluid(20, $sm);
   height: 100%;
+
+  @include md {
+    padding: fluid(15, $lg) fluid(20, $lg);
+  }
 }
 
 .field {
@@ -108,13 +156,21 @@ textarea {
 .field.err {
   border: 1px solid #ff6666;
   background: rgba(255, 102, 102, 0.1);
-  border-radius: fluid(15, $lg);
+  border-radius: fluid(15, $sm);
+
+  @include md {
+    border-radius: fluid(15, $lg);
+  }
 }
 
 input {
-  padding: fluid(26, $lg) fluid(20, $lg) fluid(9, $lg);
+  padding: fluid(20, $sm);
   width: 100%;
   height: 100%;
+
+  @include md {
+    padding: fluid(26, $lg) fluid(20, $lg) fluid(9, $lg);
+  }
 }
 
 // focus exists
@@ -142,12 +198,18 @@ input {
 }
 
 .field-label {
-  font-size: fluid(18, $lg);
   line-height: 140%;
   opacity: 0.5;
-  top: fluid(19, $lg);
-  left: fluid(20, $lg);
   white-space: nowrap;
+  font-size: fluid(16, $sm);
+  top: fluid(20, $sm);
+  left: fluid(20, $sm);
+
+  @include md {
+    font-size: fluid(18, $lg);
+    top: fluid(19, $lg);
+    left: fluid(20, $lg);
+  }
 }
 
 .field-label--active {
@@ -161,11 +223,17 @@ input {
 }
 
 .field-col {
-  margin-right: fluid(20, $lg);
+  @include md {
+    margin-right: fluid(20, $lg);
+  }
 }
 
 .field-input--textarea {
-  padding: fluid(26, $lg) fluid(20, $lg) fluid(9, $lg);
+  padding: fluid(20, $sm);
+
+  @include md {
+    padding: fluid(26, $lg) fluid(20, $lg) fluid(9, $lg);
+  }
 }
 
 .field-input--file {
@@ -209,6 +277,12 @@ input {
     transform: rotate(-45deg);
     transition: transform 0.75s $ease-out-expo;
   }
+
+  display: none;
+
+  @include md {
+    display: unset;
+  }
 }
 
 details[open] ~ .form-toggle {
@@ -219,7 +293,7 @@ details[open] ~ .form-toggle {
 
 .form-status {
   background: #e5e6db;
-  inset: fluid(125 + 20, $lg) 0 fluid(55, $lg) fluid(40, $lg);
+  inset: fluid(70, $sm) 0 0 0;
 
   opacity: 0;
   pointer-events: none;
@@ -229,50 +303,82 @@ details[open] ~ .form-toggle {
     opacity: 1;
     pointer-events: all;
   }
+
+  @include md {
+    inset: fluid(125 + 20, $lg) 0 fluid(55, $lg) fluid(40, $lg);
+  }
 }
 
 .form-status--tick {
-  width: fluid(100, $lg);
-  height: fluid(100, $lg);
+  width: fluid(75, $sm);
+  height: fluid(75, $sm);
   background: #f2ffbd;
   border-radius: 50%;
-  margin-bottom: fluid(30, $lg);
+  margin-bottom: fluid(30, $sm);
 
   svg {
-    width: fluid(29, $lg);
-    height: fluid(21, $lg);
+    width: fluid(29 * 0.75, $sm);
+    height: fluid(21 * 0.75, $sm);
+  }
+
+  @include md {
+    width: fluid(100, $lg);
+    height: fluid(100, $lg);
+    margin-bottom: fluid(30, $lg);
+
+    svg {
+      width: fluid(29, $lg);
+      height: fluid(21, $lg);
+    }
   }
 }
 
 .form-status--thank {
-  font-size: fluid(50, $lg);
+  font-size: fluid(28, $sm);
   line-height: 100%;
   text-align: center;
   letter-spacing: -0.02em;
-  margin-bottom: fluid(12, $lg);
-  width: fluid(441, $lg);
+  margin-bottom: fluid(12, $sm);
+  width: fluid(251, $sm);
+
+  @include md {
+    font-size: fluid(50, $lg);
+    margin-bottom: fluid(12, $lg);
+    width: fluid(441, $lg);
+  }
 }
 
 .form-status--desc {
-  font-size: fluid(22, $lg);
+  font-size: fluid(16, $sm);
   line-height: 140%;
   text-align: center;
-  width: fluid(441, $lg);
+  width: fluid(251, $sm);
+
+  @include md {
+    width: fluid(441, $lg);
+    font-size: fluid(22, $lg);
+  }
 }
 
 select {
   width: 100%;
   height: 100%;
-  padding: fluid(19, $lg) fluid(19, $lg) fluid(16, $lg) fluid(20, $lg);
   appearance: none;
   background: #ecece2;
-  border-radius: fluid(15, $lg);
-  font-size: fluid(18, $lg);
+  padding: fluid(20, $sm);
+  border-radius: fluid(15, $sm);
+  font-size: fluid(16, $sm);
 
   &:focus-within:hover ~ .select-dropdown {
     svg {
       transform: rotate(180deg);
     }
+  }
+
+  @include md {
+    padding: fluid(19, $lg) fluid(19, $lg) fluid(16, $lg) fluid(20, $lg);
+    border-radius: fluid(15, $lg);
+    font-size: fluid(18, $lg);
   }
 }
 
@@ -281,13 +387,23 @@ option[value="placeholder"] {
 }
 
 .select-dropdown {
-  top: fluid(19, $lg);
-  right: fluid(19, $lg);
+  top: fluid(20, $sm);
+  right: fluid(20, $sm);
 
   svg {
-    width: fluid(16, $lg);
-    height: fluid(10, $lg);
+    width: fluid(16, $sm);
+    height: fluid(10, $sm);
     transition: transform 0.75s $ease-out-expo;
+  }
+
+  @include md {
+    top: fluid(19, $lg);
+    right: fluid(19, $lg);
+
+    svg {
+      width: fluid(16, $lg);
+      height: fluid(10, $lg);
+    }
   }
 }
 
@@ -309,36 +425,53 @@ option[value="placeholder"] {
     pointer-events: none;
     opacity: 0;
 
-    width: fluid(20, $lg);
-    height: fluid(20, $lg);
+    width: fluid(20, $sm);
+    height: fluid(20, $sm);
 
-    top: fluid(20, $lg);
-    right: fluid(20, $lg);
+    top: fluid(20, $sm);
+    right: fluid(20, $sm);
 
     &:hover {
       .error-overlay {
         opacity: 1;
       }
     }
+
+    @include md {
+      width: fluid(20, $lg);
+      height: fluid(20, $lg);
+
+      top: fluid(20, $lg);
+      right: fluid(20, $lg);
+    }
   }
 
   .error-overlay {
     white-space: nowrap;
     background: #ff6666;
-    border-radius: fluid(8, $lg);
-    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+    border-radius: fluid(8, $sm);
+    padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
     z-index: 2;
 
     font-weight: 500;
-    font-size: fluid(16, $lg);
+    font-size: fluid(14, $sm);
     line-height: 130%;
     letter-spacing: 0.02em;
 
-    top: fluid(-48 - 6, $lg);
+    top: fluid(-48, $sm);
     left: 0;
 
-    transform: translateX(-50%);
+    transform: translateX(-90%);
     opacity: 0;
     pointer-events: none;
+
+    @include md {
+      top: fluid(-48 - 6, $lg);
+      font-size: fluid(16, $lg);
+
+      border-radius: fluid(8, $lg);
+      padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+      transform: translateX(-50%);
+    }
   }
 }

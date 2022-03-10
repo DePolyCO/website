@@ -108,6 +108,10 @@ body {
   z-index: 9999;
 }
 
+.temp-title {
+  height: 20vh;
+}
+
 @import "./pages/404.scss";
 @import "./pages/home.scss";
 @import "./pages/technology.scss";

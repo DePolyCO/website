@@ -6,40 +6,70 @@
   #form {
     padding-bottom: fluid(69, $lg);
     margin-bottom: fluid(125, $lg);
+    flex-direction: column-reverse;
+
+    @include md {
+      flex-direction: row;
+    }
   }
 
   #prefer-mail {
-    width: fluid(430, $lg);
+    @include md {
+      width: fluid(430, $lg);
+    }
   }
 
   #prefer-mail--title {
-    width: fluid(297, $lg);
-    font-size: fluid(22, $lg);
+    font-size: fluid(16, $sm);
+    margin-bottom: fluid(32, $sm);
     line-height: 140%;
-    margin-bottom: fluid(478, $lg);
+
+    @include md {
+      width: fluid(297, $lg);
+      font-size: fluid(22, $lg);
+      margin-bottom: fluid(478, $lg);
+    }
   }
 
   .contact-title {
+    font-size: fluid(14, $sm);
+    margin-bottom: fluid(5, $sm);
+
     font-weight: bold;
-    font-size: fluid(16, $lg);
     line-height: 110%;
     letter-spacing: 0.05em;
-    margin-bottom: fluid(5, $lg);
+
+    @include md {
+      font-size: fluid(16, $lg);
+      margin-bottom: fluid(5, $lg);
+    }
   }
 
   .contact-item:not(:last-of-type) {
-    margin-bottom: fluid(65, $lg);
+    margin-bottom: fluid(32 - 5, $sm);
+
+    @include md {
+      margin-bottom: fluid(65 - 14, $lg);
+    }
   }
 
   .contact-link {
-    font-size: fluid(22, $lg);
+    font-size: fluid(18, $sm);
     line-height: 150%;
     letter-spacing: 0.01em;
+    margin-bottom: fluid(5, $sm);
+
+    @include md {
+      font-size: fluid(22, $lg);
+      margin-bottom: fluid(14, $lg);
+    }
   }
 
   #form-list {
-    width: fluid(430 * 3 + 40 * 3, $lg);
-    border-left: 1px solid #aab6b6;
+    @include md {
+      width: fluid(430 * 3 + 40 * 3, $lg);
+      border-left: 1px solid #aab6b6;
+    }
   }
 
   #general-form--wrapper {
@@ -48,7 +78,13 @@
     }
 
     .form-status {
-      inset: fluid(65, $lg) 0 fluid(40, $lg) fluid(40, $lg);
+      inset: fluid(65, $sm) 0 0 0;
+    }
+
+    @include md {
+      .form-status {
+        inset: fluid(65, $lg) 0 fluid(40, $lg) fluid(40, $lg);
+      }
     }
   }
 
@@ -61,14 +97,19 @@
   }
 
   #general-message {
-    width: fluid(830, $lg);
-    height: fluid(208, $lg);
+    width: 100%;
+    @include md {
+      width: fluid(830, $lg);
+      height: fluid(208, $lg);
+    }
   }
 
   #cv-message,
   #sample-message {
-    width: fluid(830, $lg);
-    min-height: fluid(430, $lg);
+    @include md {
+      width: fluid(830, $lg);
+      min-height: fluid(430, $lg);
+    }
   }
 
   #general-submit,
@@ -79,35 +120,65 @@
 
   #location {
     margin-bottom: fluid(48, $lg);
+
+    @include md {
+      flex-direction: row;
+    }
   }
 
   #map {
-    width: fluid(430 * 3 + 40 * 2, $lg);
-    height: fluid(600, $lg);
-    margin-left: auto;
+    width: fluid(335, $sm);
+    height: fluid(454, $sm);
+
+    @include md {
+      width: fluid(430 * 3 + 40 * 2, $lg);
+      height: fluid(600, $lg);
+      margin-left: auto;
+    }
   }
 
   #map-overlay {
     background-color: #fff;
 
-    bottom: fluid(60, $lg);
-    left: fluid(60, $lg);
+    bottom: fluid(14, $sm);
+    left: fluid(14, $sm);
+    padding: fluid(28, $sm);
 
-    padding: fluid(50, $lg);
+    @include md {
+      bottom: fluid(60, $lg);
+      left: fluid(60, $lg);
+      padding: fluid(50, $lg);
+    }
   }
 
   #map-overlay--text {
-    width: fluid(478, $lg);
-    font-size: fluid(35, $lg);
+    width: fluid(251, $sm);
+    font-size: fluid(28, $sm);
+    margin-bottom: fluid(20, $sm);
+
     line-height: 110%;
-    margin-bottom: fluid(32, $lg);
     letter-spacing: 0.01em;
+
+    @include md {
+      width: fluid(478, $lg);
+      font-size: fluid(35, $lg);
+      margin-bottom: fluid(32, $lg);
+    }
+  }
+
+  .mb-extra {
+    margin-bottom: fluid(7, $sm);
+
+    @include md {
+      margin-bottom: fluid(10, $lg);
+    }
   }
 
   .cta-btn {
     background: $darkblue;
     white-space: nowrap;
     color: #fff;
+    width: 100%;
 
     .btn-inner::after {
       color: $darkblue;
@@ -115,6 +186,10 @@
 
     &:hover {
       background: $darkbeige;
+    }
+
+    @include md {
+      width: fit-content;
     }
   }
 }

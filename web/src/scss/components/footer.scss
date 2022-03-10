@@ -3,49 +3,77 @@
 #footer {
   background-color: $darkgray;
 
-  font-size: fluid(22, $lg);
+  font-size: fluid(22, $sm);
   line-height: 130%;
   letter-spacing: 0.01em;
+
+  @include md {
+    font-size: fluid(22, $lg);
+  }
 }
 
 .footer-row {
-  gap: fluid(40, $lg);
-  padding-bottom: fluid(85, $lg);
-  padding-top: fluid(85, $lg);
+  gap: fluid(40, $sm);
+  padding-bottom: fluid(60, $sm);
+  padding-top: fluid(80, $sm);
+
   border-bottom: 1px solid rgba(2, 45, 66, 0.2);
   max-width: 100vw;
+
+  @include md {
+    flex-direction: row;
+    gap: fluid(40, $lg);
+    padding-bottom: fluid(85, $lg);
+    padding-top: fluid(85, $lg);
+  }
 }
 
 .footer-list {
-  gap: fluid(60, $lg);
-  width: fluid(430, $lg);
+  gap: fluid(60, $sm);
+
+  @include md {
+    gap: fluid(60, $lg);
+    width: fluid(430, $lg);
+  }
 }
 
 .footer-col {
-  width: fluid(430, $lg);
+  @include md {
+    width: fluid(430, $lg);
+  }
 }
 
 .footer-col--xl {
-  width: fluid(430 * 2 + 40, $lg);
+  @include md {
+    width: fluid(430 * 2 + 40, $lg);
+  }
 }
 
 .footer-tag {
+  font-size: fluid(13, $sm);
+  border-radius: fluid(7, $sm);
+  padding: fluid(3, $sm) fluid(8, $sm);
+  transform: translate(calc(100% - #{fluid(-8, $sm)}), -50%);
+
   font-weight: 400;
-  font-size: fluid(13, $lg);
   line-height: 130%;
   letter-spacing: 0.05em;
   color: #ffffff;
   right: 0;
   top: 50%;
   background: $darkblue;
-  border-radius: fluid(7, $lg);
-  padding: fluid(3, $lg) fluid(8, $lg);
 
   transition: opacity 0.4s $ease-out-expo;
-  transform: translate(calc(100% - #{fluid(-8, $lg)}), -50%);
   white-space: nowrap;
 
   opacity: 0;
+
+  @include md {
+    font-size: fluid(13, $lg);
+    border-radius: fluid(7, $lg);
+    padding: fluid(3, $lg) fluid(8, $lg);
+    transform: translate(calc(100% - #{fluid(-8, $lg)}), -50%);
+  }
 }
 
 .tag-wrapper.active {
@@ -54,59 +82,61 @@
   }
 }
 
-// .tag-wrapper:hover {
-//   .footer-tag {
-//     opacity: 1;
-//   }
-// }
-
 #footer-cta--title {
-  font-size: fluid(37, $lg);
   line-height: 129%;
   letter-spacing: -0.02em;
-  margin-bottom: fluid(8, $lg);
-  width: fluid(754, $lg);
   font-weight: 500;
+
+  font-size: fluid(28, $sm);
+  margin-bottom: fluid(12, $sm);
+
+  @include md {
+    font-size: fluid(37, $lg);
+    margin-bottom: fluid(8, $lg);
+    width: fluid(754, $lg);
+  }
 }
 
 #footer-cta--desc {
-  font-size: fluid(22, $lg);
+  font-size: fluid(14, $sm);
+  margin-bottom: fluid(22, $sm);
   line-height: 150%;
   letter-spacing: 0.01em;
-  margin-bottom: fluid(46, $lg);
+
+  @include md {
+    margin-bottom: fluid(46, $lg);
+    font-size: fluid(22, $lg);
+  }
 }
 
 .footer-cta--input {
-  gap: fluid(10, $lg);
-  margin-bottom: fluid(30, $lg);
-}
+  gap: fluid(8, $sm);
+  margin-bottom: fluid(60, $sm);
 
-#footer {
-  input {
-    border: 1px solid $darkblue;
-    border-radius: fluid(15, $lg);
-    background: none;
-    padding: fluid(16, $lg) fluid(20, $lg);
+  @include md {
+    flex-direction: row;
+    gap: fluid(10, $lg);
+    margin-bottom: fluid(30, $lg);
 
-    &::placeholder {
-      font-size: fluid(18, $lg);
-      line-height: 140%;
-      color: $darkblue;
+    .field {
+      min-width: fluid(188, $lg);
+      width: fluid(188, $lg);
+
+      &:nth-of-type(2) {
+        width: fluid(420, $lg);
+      }
+    }
+
+    .field-label {
+      opacity: 1;
     }
   }
 }
 
 #footer-cta--btn {
   background: $darkblue;
-  border-radius: fluid(15, $lg);
-
-  font-weight: 600;
-  font-size: fluid(16, $lg);
-  line-height: 110%;
-  letter-spacing: 0.01em;
-  color: #ffffff;
-
-  padding: fluid(21, $lg) fluid(50, $lg);
+  color: #fff;
+  width: 100%;
 
   &:hover {
     background: $green;
@@ -114,6 +144,12 @@
 
   .btn-inner::after {
     color: $darkblue;
+  }
+
+  @include md {
+    width: fit-content;
+    padding: fluid(21, $lg) fluid(50, $lg);
+    height: fluid(60, $lg);
   }
 }
 
@@ -125,14 +161,26 @@
   opacity: 0;
 
   transition: opacity 0.4s $ease-out-expo;
+
   svg {
     display: block;
+  }
+}
+
+#footer input {
+  padding: fluid(20, $lg);
+  font-size: fluid(18, $lg);
+
+  &::placeholder {
+    font-size: fluid(18, $lg);
+    color: $darkblue;
   }
 }
 
 #footer #footer-cta--check {
   font-size: fluid(16, $lg);
   line-height: 140%;
+  border: 1px solid #022d42;
 
   margin-right: fluid(15, $lg);
   -webkit-appearance: none;
@@ -143,11 +191,18 @@
 }
 
 .footer-cta--check {
-  display: flex;
   align-items: baseline;
+  user-select: none;
+  padding-top: 2px;
 
   a {
     margin: 0 0.3em;
+  }
+
+  display: none;
+
+  @include md {
+    display: flex;
   }
 }
 
@@ -161,16 +216,26 @@
 
 .footer-col--title {
   font-weight: 600;
-  font-size: fluid(16, $lg);
   line-height: 110%;
   letter-spacing: 0.05em;
-  margin-bottom: fluid(5, $lg);
+
+  margin-bottom: fluid(5, $sm);
+  font-size: fluid(16, $sm);
+
+  @include md {
+    margin-bottom: fluid(5, $lg);
+    font-size: fluid(16, $lg);
+  }
 }
 
 .footer-col--data {
-  font-size: fluid(22, $lg);
+  font-size: fluid(22, $sm);
   line-height: 150%;
   letter-spacing: 0.01em;
+
+  @include md {
+    font-size: fluid(22, $lg);
+  }
 }
 
 #footer-logo {
@@ -180,7 +245,7 @@
 }
 
 #footer-copy {
-  padding: 40px 0;
+  padding: fluid(40, $lg) 0;
 }
 
 #footer-logo--svg {
@@ -238,4 +303,8 @@
   height: fluid(199, $lg);
   margin-right: fluid(100, $lg);
   margin-left: fluid(100, $lg);
+}
+
+.text-underline {
+  text-decoration: underline;
 }

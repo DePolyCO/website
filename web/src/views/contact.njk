@@ -16,7 +16,7 @@ title: Contact
         ) 
     }}
 
-    <section id="form" class="restrict df border-bottom" data-scroll-section>
+    <section id="form" class="restrict df fc border-bottom" data-scroll-section>
         <div id="prefer-mail">
             <div id="prefer-mail--title">Prefer sending a direct email over contact forms?</div>
             <ul id="contact-list" class="df fc">
@@ -47,7 +47,7 @@ title: Contact
                 <details class="form-details pr" id="general-form" open>
                     <summary class="form-title">General Information</summary>
                     <form novalidate data-netlify="true" name="General Information" method="POST" class="form-content">
-                        <div class="df">
+                        <div class="df fc form-inner">
                             <div class="df fc field-col">
                                 <div class="field pr">
                                     <input name="First Name" class="field-input first-name" id="general-firstname" placeholder="First Name" required type="text" data-type="name">
@@ -119,7 +119,7 @@ title: Contact
                 <details class="form-details pr" id="cv-form">
                     <summary class="form-title">Submit your CV</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Submit CV" method="POST" class="form-content">
-                        <div class="df">
+                        <div class="df fc form-inner">
                             <div class="df fc field-col">
                                 <div class="field pr">
                                     <input name="First Name" class="field-input first-name" id="cv-firstname" placeholder="First Name" required type="text" data-type="name">
@@ -221,7 +221,7 @@ title: Contact
                     <summary class="form-title margin-sm">Sample & Quote</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Sample & Quote" method="POST" class="form-content">
                         <div class="form-subtitle">Only registered laboratories can order a sample.</div>
-                        <div class="df">
+                        <div class="df fc form-inner">
                             <div class="df fc field-col">
                                 <div class="field pr">
                                     <input name="First Name" class="field-input first-name" id="sample-firstname" placeholder="First Name" required type="text" data-type="name">
@@ -329,7 +329,7 @@ title: Contact
         </div>
     </section>
 
-    <section data-scroll-section id="location" class="df restrict pr">
+    <section data-scroll-section id="location" class="df fc restrict pr">
         <div class="tag ttu fv-mono">Location</div>
         <div id="map" class="oh pr">
             <picture class="pr" id="map-picture">
@@ -343,6 +343,20 @@ title: Contact
                     </div>
                 </a>
             </div>
+        </div>
+        <div class="pa bottom left">
+            <div class="contact-title mb-extra ttu">Social Links</div>
+            <ul>
+                <li>
+                    <a target="_blank" rel="noreferrer noopener" class="contact-link link link-solid link-dark">Twitter</a>
+                </li>
+                <li>
+                    <a target="_blank" rel="noreferrer noopener" class="contact-link link link-solid link-dark">Facebook</a>
+                </li>
+                <li>
+                    <a target="_blank" rel="noreferrer noopener" class="contact-link link link-solid link-dark">Linkedin</a>
+                </li>
+            </ul>
         </div>
     </section>
 </main>

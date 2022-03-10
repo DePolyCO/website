@@ -164,7 +164,7 @@ textarea {
 }
 
 input {
-  padding: fluid(20, $sm);
+  padding: fluid(17, $sm) fluid(20, $sm) fluid(7, $sm);
   width: 100%;
   height: 100%;
 
@@ -214,12 +214,18 @@ input {
 
 .field-label--active {
   font-weight: bold;
-  font-size: fluid(9, $lg);
+  font-size: fluid(9, $sm);
   line-height: 110%;
   letter-spacing: 0.08em;
   opacity: 0;
-  top: fluid(15, $lg);
-  left: fluid(20, $lg);
+  top: fluid(10, $sm);
+  left: fluid(20, $sm);
+
+  @include md {
+    top: fluid(15, $lg);
+    left: fluid(20, $lg);
+    font-size: fluid(9, $lg);
+  }
 }
 
 .field-col {

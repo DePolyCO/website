@@ -1,6 +1,22 @@
 #nav {
-  background: #ecece2;
   transition: transform 1.25s $ease-out-expo;
+  pointer-events: none;
+  height: auto;
+  background: #ecece2;
+
+  &.active {
+    height: 100%;
+
+    #nav-right {
+      opacity: 1;
+      pointer-events: all;
+      transition: opacity 0.75s $ease-out-expo;
+    }
+
+    .nav-item {
+      pointer-events: all;
+    }
+  }
 
   &.hidden {
     transform: translateY(-100%);
@@ -13,12 +29,18 @@
       }
     }
   }
+
+  @include md {
+    height: auto;
+    pointer-events: all;
+  }
 }
 
 #nav-inner {
-  width: fluid(1840, $lg);
+  width: fluid(335, $sm);
+  padding: fluid(20, $sm) 0;
   margin: 0 auto;
-  padding: fluid(40, $lg) 0;
+  pointer-events: none;
 
   &::after {
     content: "";
@@ -31,38 +53,80 @@
     transition: opacity 0.75s;
     opacity: 0;
   }
+
+  @include md {
+    width: fluid(1840, $lg);
+    padding: fluid(40, $lg) 0;
+  }
 }
 
 #nav-left {
-  gap: fluid(50, $lg);
+  gap: fluid(20, $sm);
+
+  @include md {
+    gap: fluid(50, $lg);
+  }
 }
 
 #nav-sep {
   width: 0px;
-  height: 18px;
+  height: fluid(18, $sm);
   border-right: 1px solid #022d42;
   opacity: 0.2;
+
+  @include md {
+    height: fluid(18, $lg);
+  }
 }
 
 #nav-logo {
-  width: fluid(200, $lg);
-  height: fluid(32, $lg);
+  width: fluid(138, $sm);
+  height: fluid(22, $sm);
+
+  @include md {
+    width: fluid(200, $lg);
+    height: fluid(32, $lg);
+  }
 }
 
 #nav-right {
   gap: fluid(72, $lg);
+
+  height: 100%;
+  width: 100vw;
+  background-color: #ecece4;
+  z-index: -1;
+
+  opacity: 0;
+  pointer-events: none;
+
+  @include md {
+    position: static;
+    opacity: 1;
+    pointer-events: all;
+    width: auto;
+  }
 }
 
 #nav-links {
-  gap: fluid(52, $lg);
+  gap: fluid(50, $sm);
+  top: fluid(72 + 45, $sm);
+  position: relative;
+
+  @include md {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: fluid(52, $lg);
+  }
 }
 
 .nav-link {
-  padding: fluid(20, $lg);
+  padding: 0 0 0 fluid(20 + 13, $sm);
   display: flex;
 
   font-weight: 600;
-  font-size: fluid(16, $lg);
+  font-size: fluid(28, $sm);
   line-height: 110%;
   letter-spacing: 0.01em;
 
@@ -71,9 +135,34 @@
       opacity: 1;
     }
   }
+
+  @include md {
+    padding: fluid(20, $lg);
+    font-size: fluid(16, $lg);
+  }
+}
+
+.nav-item {
+  width: fluid(335 + 20, $sm);
+  opacity: 0.3;
+
+  @include md {
+    opacity: 1;
+    width: auto;
+  }
+}
+
+.nav-link--inner {
+  width: 100%;
+
+  @include md {
+    width: auto;
+  }
 }
 
 .nav-item.active {
+  opacity: 1;
+
   .nav-link--inner::after {
     background: $darkblue;
     opacity: 1;
@@ -84,29 +173,40 @@
   content: "";
   display: block;
   position: absolute;
-  left: 50%;
-  bottom: fluid(-8, $lg);
+  right: fluid(19, $sm);
+  top: calc(50% - #{fluid(3.5, $sm)});
 
-  height: fluid(5, $lg);
-  width: fluid(5, $lg);
+  height: fluid(7, $sm);
+  width: fluid(7, $sm);
   background: $darkgray;
   border-radius: 50%;
   opacity: 0;
 
   transition: all 0.6s $ease-out-expo;
+
+  @include md {
+    top: unset;
+    bottom: fluid(-8, $lg);
+    left: 50%;
+    right: fluid(8, $sm);
+
+    height: fluid(5, $lg);
+    width: fluid(5, $lg);
+  }
 }
 
 // nav language switcher
 #langs-select {
   background: #ecece2;
   border: 1px solid rgba(2, 45, 66, 0.1);
-  border-radius: fluid(9, $lg);
-  padding: fluid(4, $lg) fluid(28, $lg) 0 fluid(8, $lg);
+  border-radius: fluid(9, $sm);
+  padding: fluid(4, $sm) fluid(28, $sm) 0 fluid(8, $sm);
 
   font-weight: 500;
-  font-size: fluid(16, $lg);
+  font-size: fluid(16, $sm);
   line-height: 110%;
   outline: none;
+  pointer-events: all;
 
   &.active {
     #langs-items {
@@ -118,28 +218,77 @@
       transform: rotate(180deg);
     }
   }
+
+  @include md {
+    font-size: fluid(16, $lg);
+    border-radius: fluid(9, $lg);
+    padding: fluid(4, $lg) fluid(28, $lg) 0 fluid(8, $lg);
+  }
 }
 
 #langs-select--chevron {
-  width: fluid(12, $lg);
-  height: fluid(8, $lg);
+  width: fluid(12, $sm);
+  height: fluid(8, $sm);
 
-  top: calc(50% - #{fluid(4, $lg)});
-  // top: 50%;
-  right: fluid(8, $lg);
+  top: calc(50% - #{fluid(4, $sm)});
+  right: fluid(8, $sm);
   transition: transform 0.5s $ease-out-expo;
+
+  @include md {
+    width: fluid(12, $lg);
+    height: fluid(8, $lg);
+
+    top: calc(50% - #{fluid(4, $lg)});
+    right: fluid(8, $lg);
+  }
 }
 
 #langs-items {
-  bottom: fluid(-30, $lg);
+  bottom: fluid(-30, $sm);
   opacity: 0;
   pointer-events: none;
+
+  @include md {
+    bottom: fluid(-30, $lg);
+  }
 }
 
 .langs-select--item {
   background: #dadaca;
-  border-radius: fluid(9, $lg);
-  padding: fluid(6, $lg) fluid(10, $lg) fluid(2, $lg) fluid(10, $lg);
+  border-radius: fluid(9, $sm);
+  padding: fluid(6, $sm) fluid(10, $sm) fluid(2, $sm) fluid(10, $sm);
+
+  @include md {
+    border-radius: fluid(9, $lg);
+    padding: fluid(6, $lg) fluid(10, $lg) fluid(2, $lg) fluid(10, $lg);
+  }
+}
+
+#nav-cta {
+  position: absolute;
+  bottom: fluid(14, $sm);
+  left: fluid(20, $sm);
+  width: calc(100% - #{fluid(40, $sm)});
+
+  @include md {
+    position: static;
+    width: fit-content;
+  }
+}
+
+#m-bg--grid-wrapper {
+  left: fluid(20, $sm);
+  right: fluid(20, $sm);
+  top: fluid(72, $sm);
+
+  height: fluid(507, 667, 1%);
+  width: fluid(335, $sm);
+}
+
+#m-bg--grid {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 // CTA button
@@ -154,6 +303,7 @@
 
   width: fit-content;
   background: $green;
+  height: fluid(60, $sm);
 
   font-weight: 600;
   line-height: 110%;
@@ -165,6 +315,7 @@
     border-radius: fluid(15, $lg);
     font-size: fluid(16, $lg);
     padding: fluid(21, $lg) fluid(34, $lg);
+    height: fluid(60, $lg);
   }
 
   .btn-inner::after {
@@ -199,5 +350,46 @@
     bottom: -120%;
     left: 0;
     transition: transform 1.25s $ease-out-expo;
+  }
+}
+
+#nav-trigger {
+  width: fluid(32, $sm);
+  height: fluid(32, $sm);
+
+  right: fluid(20, $sm);
+  top: fluid(15, $sm);
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    height: fluid(2.5, $sm);
+    width: fluid(24, $sm);
+    background: #454545;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: transform 0.7s $ease-out-expo;
+  }
+
+  &::before {
+    transform: translate3d(-50%, -150%, 0);
+  }
+  &::after {
+    transform: translate3d(-50%, 150%, 0);
+  }
+
+  &.active {
+    &::before {
+      transform: translate3d(-50%, 0%, 0) rotate(45deg);
+    }
+    &::after {
+      transform: translate3d(-50%, 0%, 0) rotate(-45deg);
+    }
+  }
+
+  @include md {
+    display: none;
   }
 }

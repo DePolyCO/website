@@ -79,7 +79,7 @@ export const homeController = new Controller({
         })
     );
 
-    nav.unsetLinkActive();
+    nav.setLinkActive("home");
 
     const icons = qsa(".icon");
     iconDraws = icons.map((el) =>

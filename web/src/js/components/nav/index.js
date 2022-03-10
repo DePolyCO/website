@@ -1,13 +1,15 @@
-import { qs, qsa } from "../../hermes";
+import { iris, qs, qsa, Sniff } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 import { Select } from "../select";
 
 export class Nav {
   constructor() {
     this.dom = qs("#nav");
+    this.btn = qs("#nav-trigger", this.dom);
+    this.linkItems = qsa(".nav-item", this.dom);
 
     this.links = {};
-    qsa(".nav-item", this.dom).forEach((link) => {
+    this.linkItems.forEach((link) => {
       this.links[link.dataset.page] = link;
     });
 
@@ -16,13 +18,20 @@ export class Nav {
       hasLine: false,
       activeLink: false,
     };
+
+    window.nav = this;
   }
 
   init = () => {
     this.select = new Select({ callback: this.onLangSwitch });
-    smoothscroller.add({ update: this.onScroll });
-
     this.setInitialLang();
+
+    if (Sniff.touchDevice) {
+      iris.add(this.linkItems, "click", this.toggle);
+      iris.add(this.btn, "click", this.toggle);
+    } else {
+      smoothscroller.add({ update: this.onScroll });
+    }
   };
 
   onScroll = ({ deltaY, y }) => {
@@ -90,6 +99,12 @@ export class Nav {
       this.links[this.state.activeLink].classList.remove("active");
     }
     this.state.activeLink = false;
+  };
+
+  toggle = () => {
+    this.dom.classList.toggle("active");
+    this.btn.classList.toggle("active");
+    document.body.classList.toggle("oh");
   };
 }
 

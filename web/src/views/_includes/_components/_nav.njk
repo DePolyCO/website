@@ -1,5 +1,6 @@
 <nav id="nav" class="nav z8 pf top left right">
     <div id="nav-inner" class="df jcb aic">
+        {# visible #}
         <div id="nav-left" class="df aic">
             <a href="/">
                 <div id="nav-logo">
@@ -21,9 +22,18 @@
                 </svg>
             </div>
 
+            <button id="nav-trigger" class="pa pea d-hide top right"></button>
         </div>
-        <div id="nav-right" class="df">
-            <ul id="nav-links" class="df aic">
+
+        {# overflow #}
+        <div id="nav-right" class="df pa inset">
+            <ul id="nav-links" class="df fc">
+                <li class="nav-item d-hide" data-page="home">
+                    <a class="nav-link pr" href="/">
+                        <div class="nav-link--inner">Home</div>
+                    </a>
+                </li>
+
                 <li class="nav-item" data-page="technology">
                     <a class="nav-link pr" href="/technology/">
                         <div class="nav-link--inner">Technology</div>
@@ -55,6 +65,12 @@
                     <div class="btn-inner" data-content="Request Sample">Request Sample</div>
                 </div>
             </button>
+            <div id="m-bg--grid-wrapper" class="oh inset pa zn2 d-hide">
+                <svg id="m-bg--grid" class="pa inset" fill="none" viewBox="0 0 335 508">
+                    <path stroke="#DADACA" d="M334.5 1v507m-48-507v507m-47-507v507m-48-507v507m-48-507v507M95.5 1v507M48.5 1v507M.5 1v507M0 429.5h335m-335 39h335m-335 39h335M0 39.5h335M0 78.5h335m-335 39h335m-335 39h335m-335 39h335m-335 39h335m-335 39h335m-335 39h335m-335 39h335m-335 39h335M0 .516h335"/>
+                </svg>
+            </div>
+
         </div>
     </div>
 </nav>

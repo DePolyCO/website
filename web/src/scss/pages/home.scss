@@ -7,50 +7,85 @@
   }
 
   .stat-section {
-    padding-top: fluid(133, $lg);
+    padding-top: fluid(40, $sm);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    gap: fluid(40, $lg);
-    padding-bottom: fluid(87, $lg);
+    gap: fluid(40, $sm);
+    padding-bottom: fluid(70, $sm);
+
+    @include md {
+      flex-direction: row;
+      padding-bottom: fluid(87, $lg);
+      gap: fluid(40, $lg);
+      padding-top: fluid(133, $lg);
+    }
   }
 
   .stat-col {
-    width: fluid(430, $lg);
+    .tag {
+      margin-bottom: 0;
+    }
+
+    @include md {
+      width: fluid(430, $lg);
+    }
   }
 
   .stat-col--md {
-    width: fluid(2 * 430 + 40, $lg);
-    border-right: 1px solid rgba(2, 45, 66, 0.2);
+    @include md {
+      width: fluid(2 * 430 + 40, $lg);
+      border-right: 1px solid rgba(2, 45, 66, 0.2);
+    }
   }
 
   .stat-title {
     font-weight: 300;
-    font-size: fluid(120, $lg);
+    font-size: fluid(48, $sm);
+    margin-bottom: fluid(12, $sm);
     line-height: 100%;
     letter-spacing: -0.06em;
-    margin-bottom: fluid(25, $lg);
     margin-top: -0.06em;
+
+    @include md {
+      font-size: fluid(120, $lg);
+      margin-bottom: fluid(25, $lg);
+    }
   }
 
   .stat-title--tag {
     font-weight: 500;
-    font-size: fluid(16, $lg);
-    line-height: 110%;
+    font-size: fluid(14, $sm);
+    line-height: 2;
     letter-spacing: 0.01em;
     text-transform: uppercase;
 
     background: $darkbeige;
-    border-radius: fluid(8, $lg);
-    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+    border-radius: fluid(8, $sm);
+    padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
 
     width: fit-content;
-    margin-bottom: fluid(3, $lg);
+    margin-bottom: fluid(3, $sm);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    display: inline;
+
+    @include md {
+      font-size: fluid(16, $lg);
+      border-radius: fluid(8, $lg);
+      padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+      margin-bottom: fluid(3, $lg);
+      line-height: 110%;
+    }
   }
 
   .stat-desc--wrapper {
     display: flex;
     flex-direction: column;
-    padding-bottom: fluid(60, $lg);
+
+    @include md {
+      padding-bottom: fluid(60, $lg);
+    }
   }
 
   // .stat-desc {
@@ -58,15 +93,24 @@
   // }
 
   .stat-desc--title {
-    font-size: fluid(50, $lg);
+    font-size: fluid(36, $sm);
     line-height: 110%;
     letter-spacing: -0.02em;
-    margin-bottom: fluid(15, $lg);
+    margin-bottom: fluid(15, $sm);
+
+    @include md {
+      margin-bottom: fluid(15, $lg);
+      font-size: fluid(50, $lg);
+    }
   }
 
   .stat-desc--content {
-    font-size: fluid(22, $lg);
+    font-size: fluid(16, $sm);
     line-height: 140%;
+
+    @include md {
+      font-size: fluid(22, $lg);
+    }
   }
 
   .stat-visual {
@@ -74,38 +118,57 @@
   }
 
   #goals-title {
-    margin-bottom: fluid(50, $lg);
+    margin-bottom: fluid(24, $sm);
+
+    @include md {
+      margin-bottom: fluid(50, $lg);
+    }
   }
 
   #goals-desc {
-    width: fluid((430 * 3) + (40 * 2), $lg);
-    font-size: fluid(110, $lg);
+    font-size: fluid(34, $sm);
     line-height: 100%;
     letter-spacing: -0.02em;
     margin-left: auto;
-    margin-bottom: fluid(150, $lg);
+    margin-bottom: fluid(80, $sm);
+
+    @include md {
+      margin-bottom: fluid(150, $lg);
+      width: fluid((430 * 3) + (40 * 2), $lg);
+      font-size: fluid(110, $lg);
+    }
   }
 
   #icons {
-    width: fluid((430 * 3) + (40 * 2), $lg);
-    margin-left: auto;
-    margin-bottom: fluid(180, $lg);
-    gap: fluid(40, $lg);
+    margin-bottom: fluid(120, $sm);
+    gap: fluid(40, $sm);
 
     position: relative;
-    left: fluid(20, $lg);
+
+    @include md {
+      width: fluid((430 * 3) + (40 * 2), $lg);
+      margin-left: auto;
+
+      margin-bottom: fluid(180, $lg);
+      gap: fluid(40, $lg);
+      left: fluid(20, $lg);
+
+      flex-direction: row;
+    }
   }
 
   .icon-col {
-    width: fluid(430, $lg);
+    @include md {
+      width: fluid(430, $lg);
+      align-items: center;
 
-    &:not(:last-of-type) {
-      border-right: 1px solid rgba(2, 45, 66, 0.2);
+      &:not(:last-of-type) {
+        border-right: 1px solid rgba(2, 45, 66, 0.2);
+      }
     }
   }
 
   .icon-item {
-    width: fluid(400, $lg);
     position: relative;
 
     &::after {
@@ -114,39 +177,74 @@
 
       position: absolute;
       bottom: 0;
-      left: fluid(-35, $lg);
-      right: fluid(5, $lg);
+      left: 0;
+      right: 0;
     }
 
     &:not(.first) {
-      padding-top: fluid(100, $lg);
+      padding-top: fluid(60, $sm);
+    }
+
+    @include md {
+      width: fluid(400, $lg);
+
+      &::after {
+        content: "";
+        border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+
+        position: absolute;
+        bottom: 0;
+        left: fluid(-35, $lg);
+        right: fluid(5, $lg);
+      }
+
+      &:not(.first) {
+        padding-top: fluid(100, $lg);
+      }
     }
   }
 
   .icon {
-    width: fluid(140, $lg);
-    height: fluid(140, $lg);
-    margin-bottom: fluid(124, $lg);
+    width: fluid(120, $sm);
+    height: fluid(120, $sm);
+    margin-bottom: fluid(64, $sm);
+
+    @include md {
+      width: fluid(140, $lg);
+      height: fluid(140, $lg);
+      margin-bottom: fluid(124, $lg);
+    }
   }
 
   .icon-label {
     font-weight: 500;
-    font-size: fluid(37, $lg);
+    font-size: fluid(28, $sm);
+    margin-bottom: fluid(60, $sm);
     line-height: 129%;
     letter-spacing: -0.02em;
-    margin-bottom: fluid(90, $lg);
+
+    @include md {
+      font-size: fluid(37, $lg);
+      margin-bottom: fluid(90, $lg);
+    }
   }
 
   .prlx-item {
-    width: fluid(300, $lg);
-    height: fluid(300, $lg);
+    width: fluid(70, $sm);
+    height: fluid(70, $sm);
     border-radius: 50%;
     background-color: $green;
     background-repeat: no-repeat;
     background-position: center;
 
-    background-size: fluid(300, $lg) fluid(300, $lg);
+    background-size: fluid(70, $sm) fluid(70, $sm);
     clip-path: url("#cutout");
+
+    @include md {
+      width: fluid(300, $lg);
+      height: fluid(300, $lg);
+      background-size: fluid(300, $lg) fluid(300, $lg);
+    }
   }
 
   #prlx-item {
@@ -180,6 +278,10 @@
   #enhanced {
     // margin-top: 300px;
     margin-bottom: fluid(159, $lg);
+
+    @include md {
+      flex-direction: row;
+    }
   }
 
   #enhanced-slides--wrapper,

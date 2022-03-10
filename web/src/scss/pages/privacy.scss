@@ -1,3 +1,34 @@
 #privacy {
-    
+  #hero {
+    margin-bottom: fluid(90, $sm);
+
+    @include md {
+      margin-bottom: fluid(138, $lg);
+    }
+  }
+
+  #privacy-gist {
+    margin-bottom: fluid(120, $sm);
+
+    @include md {
+      margin-bottom: fluid(120, $lg);
+    }
+  }
+
+  #privacy-content {
+    font-weight: 400;
+    font-size: fluid(16, $sm);
+    line-height: 160%;
+
+    gap: fluid(20, $sm);
+    margin-bottom: fluid(120, $sm);
+
+    @include md {
+      font-size: fluid(22, $lg);
+      gap: fluid(48, $lg);
+      margin-bottom: fluid(220, $lg);
+      width: fluid(900, $lg);
+      margin-left: auto;
+    }
+  }
 }

@@ -259,7 +259,8 @@
   letter-spacing: -0.04em;
   white-space: nowrap;
   min-width: fit-content;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 #footer-copy--logo {
@@ -303,6 +304,17 @@
   height: fluid(199, $lg);
   margin-right: fluid(100, $lg);
   margin-left: fluid(100, $lg);
+  margin-top: fluid(-24, $lg);
+  opacity: 0.2;
+}
+
+#footer-sep--vert {
+  height: fluid(20, $lg);
+  width: fluid(286, $lg);
+  margin-right: fluid(25, $lg);
+  margin-left: fluid(17, $lg);
+
+  background-color: $darkblue;
 }
 
 .text-underline {

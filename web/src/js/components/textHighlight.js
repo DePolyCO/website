@@ -1,10 +1,10 @@
-import { qsa, ro, select } from "../hermes";
-import { Tracker, smoothscroller } from "../scroller";
+import { qsa, ro, select, Sniff, ticker } from "../hermes";
+import { Tracker, smoothscroller, corescroller } from "../scroller";
 
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
     this.intersectionPoints = {
-      bottom: 0.33,
+      bottom: Sniff.touchDevice ? 0.5 : 0.33,
       ...intersectionPoints,
     };
 
@@ -17,8 +17,13 @@ export class TextHighlight {
       this.build(el);
     });
 
-    smoothscroller.add({ update: this.update });
+    if (Sniff.touchDevice) {
+      this.scrollID = corescroller.add({ update: this.update });
+    } else {
+      this.scrollID = smoothscroller.add({ update: this.update });
+    }
     this.roID = ro.add({ update: this.resize });
+    this.tickID = ticker.add({ update: this.render });
   }
 
   build = (el) => {
@@ -40,8 +45,10 @@ export class TextHighlight {
 
   update = ({ x, y }) => {
     this.tracker.setScroll(x, -y);
-    this.tracker.detectElements();
+  };
 
+  render = () => {
+    this.tracker.detectElements();
     this.tracker.train.forEach((item, i) => {
       if (item.visible && !item.active) {
         item.active = true;
@@ -68,5 +75,10 @@ export class TextHighlight {
   destroy = () => {
     this.tracker.destroy();
     ro.remove(this.roID);
+    if (Sniff.touchDevice) {
+      corescroller.remove(this.scrollID);
+    } else {
+      smoothscroller.remove(this.scrollID);
+    }
   };
 }

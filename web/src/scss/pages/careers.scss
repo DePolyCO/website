@@ -22,6 +22,7 @@
 
   #meet-slider {
     width: fluid($sm - 20, $sm);
+    touch-action: none;
 
     @include md {
       width: fluid(1410, $lg);

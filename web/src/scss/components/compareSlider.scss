@@ -30,7 +30,7 @@
 }
 
 .compare-slider--handle {
-  touch-action: manipulation;
+  touch-action: none;
 
   width: fluid(100, $sm);
   height: fluid(28, $sm);

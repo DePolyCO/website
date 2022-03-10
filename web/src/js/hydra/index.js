@@ -3,6 +3,7 @@ import { nav } from "../components/nav";
 import { qs, qsa, iris, unique, lazyloader, ro } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Store } from "../store";
+import { asideController } from "../components/aside";
 
 const PARSER = new DOMParser();
 
@@ -237,6 +238,8 @@ export class Controller {
   constructor({ hide, show }) {
     this.hide = ({ done, to }) => {
       smoothscroller.lock();
+      asideController.destroy();
+
       hide({
         done,
         to,
@@ -256,6 +259,7 @@ export class Controller {
           // ro.update();
           smoothscroller.resize();
           lazyloader.load();
+          asideController.init();
           setTimeout(done, 0);
         },
       });

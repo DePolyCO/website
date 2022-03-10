@@ -135,7 +135,6 @@
 
 .bio-panel--header {
   height: fluid(119, $lg);
-  background: #ecece2;
   border-bottom: 1px solid $darkblue;
   width: fluid(976, $lg);
   left: fluid(54, $lg);
@@ -147,4 +146,73 @@
   line-height: 110%;
   top: fluid(50, $lg);
   left: fluid(54, $lg);
+}
+
+// cta panel
+#cta-panel {
+  background-color: #f2ffbd;
+}
+
+#cta-picture {
+  width: fluid(976, $lg);
+  height: fluid(207, $lg);
+  background: #a6ae8e;
+  margin-bottom: fluid(60, $lg);
+}
+
+#cta-content {
+  margin-left: fluid(54, $lg);
+  margin-top: fluid(151, $lg);
+  width: fluid(976, $lg);
+}
+
+#cta-info {
+  margin-bottom: fluid(60, $lg);
+}
+
+#cta-icon {
+  width: fluid(24, $lg);
+  height: fluid(24, $lg);
+  margin-bottom: fluid(5, $lg);
+}
+
+#cta-desc {
+  font-weight: 400;
+  font-size: fluid(18, $lg);
+  line-height: 140%;
+  text-align: center;
+  width: fluid(241, $lg);
+}
+
+#cta-panel {
+  .bio-panel--header {
+    background-color: #f2ffbd;
+  }
+  .field {
+    min-width: fluid(478, $lg);
+  }
+
+  select {
+    background-color: transparent;
+  }
+
+  textarea {
+    width: 100%;
+    height: fluid(150, $lg);
+  }
+
+  .cta-btn {
+    margin-bottom: fluid(54, $lg);
+    background: $darkblue;
+    color: #fff;
+    width: 100%;
+
+    .btn-inner::after {
+      color: $darkblue;
+    }
+
+    &:hover {
+      background: $darkbeige;
+    }
+  }
 }

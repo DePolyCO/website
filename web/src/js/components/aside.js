@@ -10,6 +10,13 @@ class AsideController {
       open: false,
       current: null,
     };
+
+    // test
+    iris.add(document, "keydown", (e) => {
+      if (e.key === "a") {
+        this.open("#cta-panel");
+      }
+    });
   }
 
   init = () => {
@@ -23,7 +30,7 @@ class AsideController {
   listen = () => {
     this.unlistenClick = iris.add(".aside-close", "click", this.close);
     this.unlistenEsc = iris.add(document, "keydown", (e) => {
-      if (e.key === "Escape" && this.state.open) {
+      if (e.key === "Escape") {
         this.close();
       }
     });

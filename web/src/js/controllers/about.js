@@ -21,7 +21,6 @@ export const aboutController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     numbers.destroy();
-    asideController.destroy();
     r0.destroy();
 
     sail.out(done);
@@ -35,8 +34,6 @@ export const aboutController = new Controller({
     });
 
     numbers = new CaptureReveal();
-
-    asideController.init();
 
     nav.setLinkActive("about");
 

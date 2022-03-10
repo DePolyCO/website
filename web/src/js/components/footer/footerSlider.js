@@ -13,11 +13,11 @@ import { corescroller, smoothscroller } from "../../scroller";
 
 export class FooterSlider {
   constructor({ dom }) {
-    if (Sniff.touchDevice) return;
     this.dom = dom;
     this.scrollWindow = qs("[data-scroll-window]", this.dom);
     this.scrollContent = qs("[data-scroll-item]", this.dom);
 
+    if (Sniff.touchDevice) return;
 
     this.init();
     this.common();
@@ -65,6 +65,7 @@ export class FooterSlider {
   };
 
   update = () => {
+    if (Sniff.touchDevice) return;
     const { scroll, page } = this.state;
     const { height } = smoothscroller.state.page;
 
@@ -94,6 +95,7 @@ export class FooterSlider {
   };
 
   resize = () => {
+    if (Sniff.touchDevice) return;
     const { page } = this.state;
     const { width } = bounds(this.scrollContent);
     page.width = width - bounds(this.scrollWindow).width;

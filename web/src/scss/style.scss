@@ -58,7 +58,7 @@ body {
   display: none;
 
   @include md {
-    display: inherit;
+    display: unset;
   }
 }
 

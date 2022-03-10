@@ -168,12 +168,22 @@
 }
 
 #footer input {
-  padding: fluid(20, $lg);
-  font-size: fluid(18, $lg);
+  padding: fluid(20, $sm);
+  font-size: fluid(16, $sm);
 
   &::placeholder {
-    font-size: fluid(18, $lg);
+    font-size: fluid(16, $sm);
     color: $darkblue;
+  }
+
+  @include md {
+    padding: fluid(20, $lg);
+    font-size: fluid(18, $lg);
+
+    &::placeholder {
+      font-size: fluid(18, $lg);
+      color: $darkblue;
+    }
   }
 }
 
@@ -238,19 +248,42 @@
   }
 }
 
+#footer-logo--wrapper {
+  padding: fluid(60, $sm) 0;
+
+  @include md {
+    padding-bottom: fluid(60, $lg);
+    padding-top: fluid(80, $lg);
+  }
+}
+
 #footer-logo {
   min-width: fit-content;
-  padding-left: fluid(40, $lg);
-  padding-right: fluid(40, $lg);
+  padding-left: fluid(20, $sm);
+  padding-right: fluid(20, $sm);
+
+  @include md {
+    padding-left: fluid(40, $lg);
+    padding-right: fluid(40, $lg);
+  }
 }
 
 #footer-copy {
-  padding: fluid(40, $lg) 0;
+  padding: fluid(40, $sm) 0 fluid(26, $sm) 0;
+
+  @include md {
+    padding: fluid(40, $lg) 0;
+  }
 }
 
 #footer-logo--svg {
-  min-width: fluid(1840, $lg);
-  height: fluid(math.div(1840 * 32, 201), $lg);
+  min-width: fluid(335, $sm);
+  height: fluid(math.div(335 * 32, 201), $sm);
+
+  @include md {
+    min-width: fluid(1840, $lg);
+    height: fluid(math.div(1840 * 32, 201), $lg);
+  }
 }
 
 #footer-big--txt {
@@ -259,25 +292,48 @@
   letter-spacing: -0.04em;
   white-space: nowrap;
   min-width: fit-content;
-  display: flex;
-  align-items: center;
+
+  @include md {
+    display: flex;
+    align-items: center;
+  }
+}
+
+#footer-copy {
+  @include md {
+    flex-direction: row;
+    align-items: initial;
+  }
 }
 
 #footer-copy--logo {
   font-weight: 500;
-  font-size: fluid(16, $lg);
+  font-size: fluid(16, $sm);
   line-height: 140%;
+
+  @include md {
+    font-size: fluid(16, $lg);
+  }
 }
 
 .footer-terms {
-  font-size: fluid(16, $lg);
+  font-size: fluid(16, $sm);
   line-height: 140%;
+
+  @include md {
+    font-size: fluid(16, $lg);
+  }
 }
 
 #footer-copy--credits {
-  font-size: fluid(15, $lg);
+  font-size: fluid(13, $sm);
   line-height: 140%;
   letter-spacing: 0.03em;
+  white-space: nowrap;
+
+  @include md {
+    font-size: fluid(15, $lg);
+  }
 }
 
 #footer-copy--design {
@@ -289,13 +345,21 @@
 }
 
 #footer-terms--col {
-  gap: fluid(25, $lg);
+  gap: fluid(25, $sm);
+
+  @include md {
+    gap: fluid(25, $lg);
+  }
 }
 
 #footer-sep {
   border-right: 1px solid #022d42;
   width: 1px;
-  height: fluid(11, $lg);
+  height: fluid(11, $sm);
+
+  @include md {
+    height: fluid(11, $lg);
+  }
 }
 
 #footer-sep--xl {

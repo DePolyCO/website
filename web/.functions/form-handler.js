@@ -65,7 +65,7 @@ exports.handler = (event, context, callback) => {
       password: mailChimpAPI,
     },
   })
-    .then(function (response) {
+    .then((response) => {
       console.log(`status:${response.status}`);
       console.log(`data:${response.data}`);
       console.log(`headers:${response.headers}`);
@@ -90,7 +90,7 @@ exports.handler = (event, context, callback) => {
         body: JSON.stringify({ emailAdded: true }),
       });
     })
-    .catch(function (error) {
+    .catch((error) => {
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx

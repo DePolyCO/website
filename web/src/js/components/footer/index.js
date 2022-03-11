@@ -37,10 +37,27 @@ export class Footer {
       }),
     });
 
-    const data = await res.json();
-
-    console.log("data from function", data);
+    let data;
+    if (res.status !== 200) {
+      data = {
+        status: "500",
+        message: "Unknown Error",
+      };
+    } else {
+      try {
+        data = await res.json();
+      } catch (e) {
+        data = {
+          status: "500",
+          message: "Unknown Error",
+        };
+      }
+    }
   };
+
+  handleError = () => {};
+
+  handleSuccess = () => {};
 }
 
 export const footer = new Footer();

@@ -34,7 +34,9 @@
   }
 
   #contact-list {
-    margin-top: 100%;
+    @include md {
+      margin-top: 100%;
+    }
   }
 
   .contact-title {

@@ -4,7 +4,7 @@
   }
 
   header {
-    margin-bottom: fluid(138, $lg);
+    margin-bottom: fluid(137 - 26, $lg);
   }
 
   .restrict-xtra {
@@ -144,13 +144,16 @@
     margin-bottom: fluid(174, $sm);
 
     @include md {
-      flex-direction: row;
-      padding-top: 0;
-      border-top: 0;
       contain: content;
-      margin-bottom: fluid(120, $lg);
-      border-bottom: none;
+      flex-direction: row;
+
+      padding-top: fluid(125, $lg);
       padding-bottom: 0;
+
+      border-bottom: none;
+      border-top: 1px solid #aab6b6;
+
+      margin-bottom: fluid(120, $lg);
     }
   }
 

@@ -22,7 +22,7 @@ title: Careers
             [
                 "We are a fast-growing company based in Switzerland. As a part of DePoly you will work in a multicultural atmosphere, whilst being part of an exciting new award-winning emerging company.",
                 "When you start working at DePoly, you’ll have a chance to be a part of a new fast growing green industry. Our employees are the very core of our unique and specialist technology and, as such, we value each and every member of our DePoly team.",
-                "What else can we offer? Diversity! Our company is comprised of people with various national backgrounds, and we are inclusive of all genders and identities!",
+                "Diversity is in the heart of DePoly's sustainable strategy. We are an international team coming from different corners of the world . Our social policy is simple, the 'human' comes first. We are continuously ensuring equal chances for everyone regardless of their race, gender, sexual orientation or disabilities. We believe that our uniqueness and differences define our strength.",
                 "We offer you a opportunity to shape a more sustainable and green future."
             ],
             "why-join"
@@ -145,57 +145,59 @@ title: Careers
         </div>
         <div id="position-content">
             <ul class="df fc" id="position-list">
-                <li class="df fc jcb position-item">
-                    <div class="position-role">Project Manager</div>
-                    <div class="position-location">Sion, Switzerland</div>
-                    <div class="position-level">Senior Level</div>
-                    <div class="position-cta">
-                        <a href="/careerInner/" class="cta-btn df">
-                            <div class="pr oh btn-wrapper">
-                                <div class="btn-inner" data-content="Show Details">Show Details</div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
+                {% for position in careers.positions %}
+                    <li class="df fc jcb position-item">
+                        <div class="position-role">{{ position.role }}</div>
+                        <div class="position-location">{{ position.location }}</div>
+                        <div class="position-level">{{ position.level }}</div>
+                        <div class="position-cta">
+                            <a href="/careers/{{ position.slug }}" class="cta-btn df">
+                                <div class="pr oh btn-wrapper">
+                                    <div class="btn-inner" data-content="Show Details">Show Details</div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
 
-                <li class="df fc jcb position-item">
-                    <div class="position-role">Project Manager</div>
-                    <div class="position-location">Sion, Switzerland</div>
-                    <div class="position-level">Senior Level</div>
-                    <div class="position-cta">
-                        <a href="/careerInner/" class="cta-btn df">
-                            <div class="pr oh btn-wrapper">
-                                <div class="btn-inner" data-content="Show Details">Show Details</div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
+                    {# <li class="df fc jcb position-item">
+                        <div class="position-role">Project Manager</div>
+                        <div class="position-location">Sion, Switzerland</div>
+                        <div class="position-level">Senior Level</div>
+                        <div class="position-cta">
+                            <a href="/careerInner/" class="cta-btn df">
+                                <div class="pr oh btn-wrapper">
+                                    <div class="btn-inner" data-content="Show Details">Show Details</div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
 
-                <li class="df fc jcb position-item">
-                    <div class="position-role">Project Manager</div>
-                    <div class="position-location">Sion, Switzerland</div>
-                    <div class="position-level">Senior Level</div>
-                    <div class="position-cta">
-                        <a href="/careerInner/" class="cta-btn df">
-                            <div class="pr oh btn-wrapper">
-                                <div class="btn-inner" data-content="Show Details">Show Details</div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
+                    <li class="df fc jcb position-item">
+                        <div class="position-role">Project Manager</div>
+                        <div class="position-location">Sion, Switzerland</div>
+                        <div class="position-level">Senior Level</div>
+                        <div class="position-cta">
+                            <a href="/careerInner/" class="cta-btn df">
+                                <div class="pr oh btn-wrapper">
+                                    <div class="btn-inner" data-content="Show Details">Show Details</div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
 
-                <li class="df fc jcb position-item">
-                    <div class="position-role">Project Manager</div>
-                    <div class="position-location">Sion, Switzerland</div>
-                    <div class="position-level">Senior Level</div>
-                    <div class="position-cta">
-                        <a href="/careerInner/" class="df cta-btn">
-                            <div class="pr oh btn-wrapper">
-                                <div class="btn-inner" data-content="Show Details">Show Details</div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
+                    <li class="df fc jcb position-item">
+                        <div class="position-role">Project Manager</div>
+                        <div class="position-location">Sion, Switzerland</div>
+                        <div class="position-level">Senior Level</div>
+                        <div class="position-cta">
+                            <a href="/careerInner/" class="df cta-btn">
+                                <div class="pr oh btn-wrapper">
+                                    <div class="btn-inner" data-content="Show Details">Show Details</div>
+                                </div>
+                            </a>
+                        </div>
+                    </li> #}
+                {% endfor %}
             </ul>
 
             <div id="not-found" class="df jcb fc">

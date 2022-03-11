@@ -63,8 +63,6 @@ iris.add(
 
     ro.update();
 
-    window.smooth = smoothscroller;
-
     if (
       "serviceWorker" in navigator &&
       window.location.hostname !== "localhost"

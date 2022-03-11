@@ -86,72 +86,19 @@ title: About Us
     <section id="team" class="restrict df fc border-bottom" data-scroll-section>
         <div id="team-tag" class="tag fv-mono ttu">Our Team</div>
         <div id="team-list" class="grid-list df fc">
-            <div class="team-col df fc aic">
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
+            {% for col in team.members | batch(4) %}
+                <div class="team-col df fc aic">
+                    {% for member in col %}
+                        <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
+                            <picture class="team-photo">
+                                <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                            </picture>
+                            <div class="team-name">{{ member.name }}</div>
+                            <div class="team-role ttu">{{ member.role }}</div>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item no-border cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-            </div>
-            <div class="team-col df fc aic">
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item no-border cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-            </div>
-            <div class="team-col df fc aic">
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-                <div class="team-item no-border cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 

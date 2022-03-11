@@ -15,6 +15,47 @@
       {# panels here #}
 
       {# bio #}
+      {% for member in team.members %}
+        {% if member.bio %}
+          <div id="bio-panel--{{ member.id }}" class="aside-panel z1">
+
+            <div class="bio-panel--header pf top right left z2"></div>
+            <div class="bio-panel--title pf ttu fv-mono z3">BIOGRAPHY</div>
+
+            <div class="df bio-panel--inner">
+              <div class="pf df fc bio-left">
+                <div class="bio-name">{{ member.name }}</div>
+                <div class="bio-role tag ttu fv-mono">{{ member.role }}</div>
+                <div>
+                  <div class="bio-social--title">Social:</div>
+                  <ul class=" df fw bio-social--list">
+                    {% for link in member.social %}
+                      <li class="bio-social--item fv-mono ttu">
+                        <a target="_blank" rel="noreferrer noopener" href="{{ link.url }}">{{ link.label }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bio-profile--content df fc" data-scroll-section>
+                <picture class="bio-profile--picture">
+                  <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                </picture>
+                <div class="bio-profile--details">
+                  {% for item in member.bio %}
+                    {% if item.type === "text" %}
+                      <p class="bio-detail--para">{{ item.content }}</p>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
       <div id="bio-panel" class="aside-panel z1">
 
         <div class="bio-panel--header pf top right left z2"></div>
@@ -34,11 +75,10 @@
           </div>
 
           <div class="bio-profile--content df fc" data-scroll-section>
-            <picture class="bio-profile--picture"></picture>
+            <picture class="bio-profile--picture">
+              <img src="/static/about/team/1.jpg" alt="">
+            </picture>
             <div class="bio-profile--details">
-              <p class="bio-detail--para">Process and Environmental Engineer with international experience in sustainable processes and technologies. He has experience varying from sustainable product design (Water treatment, Spain) to biomolecules extraction using supercritical CO2 (Process Engineering, Tunisia) to process design and optimization (Plastic Waste Treatment, Switzerland).</p>
-              <p class="bio-detail--para">Process and Environmental Engineer with international experience in sustainable processes and technologies. He has experience varying from sustainable product design (Water treatment, Spain) to biomolecules extraction using supercritical CO2 (Process Engineering, Tunisia) to process design and optimization (Plastic Waste Treatment, Switzerland).</p>
-              <p class="bio-detail--para">Process and Environmental Engineer with international experience in sustainable processes and technologies. He has experience varying from sustainable product design (Water treatment, Spain) to biomolecules extraction using supercritical CO2 (Process Engineering, Tunisia) to process design and optimization (Plastic Waste Treatment, Switzerland).</p>
               <p class="bio-detail--para">Process and Environmental Engineer with international experience in sustainable processes and technologies. He has experience varying from sustainable product design (Water treatment, Spain) to biomolecules extraction using supercritical CO2 (Process Engineering, Tunisia) to process design and optimization (Plastic Waste Treatment, Switzerland).</p>
             </div>
           </div>

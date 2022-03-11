@@ -12,14 +12,6 @@
       padding-bottom: fluid(210, $lg);
       margin-bottom: fluid(169, $lg);
     }
-
-    .text-block--content {
-      font-size: fluid(36, $sm);
-
-      @include md {
-        font-size: fluid(50, $lg);
-      }
-    }
   }
 
   #numbers {
@@ -197,6 +189,7 @@
     line-height: 100%;
     text-align: center;
     letter-spacing: 0.01em;
+    font-weight: 500;
 
     @include md {
       font-size: fluid(30, $lg);

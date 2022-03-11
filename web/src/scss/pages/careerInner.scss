@@ -20,7 +20,11 @@
   #details,
   #offer,
   #about-pos {
-    margin-bottom: fluid(160, $lg);
+    margin-bottom: fluid(100, $sm);
+
+    @include md {
+      margin-bottom: fluid(160, $lg);
+    }
   }
 
   #details-inner {
@@ -31,14 +35,6 @@
   }
 
   .detail-item {
-    margin-bottom: fluid(40, $sm);
-    padding-bottom: fluid(40, $sm);
-
-    @include md {
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
     &:first-of-type {
       @include md {
         min-width: fluid(450, $lg);
@@ -47,12 +43,16 @@
 
     &:not(:last-of-type) {
       border-bottom: 1px solid $darkblue;
+      margin-bottom: fluid(40, $sm);
+      padding-bottom: fluid(40, $sm);
 
       @include md {
         border-right: 1px solid $darkblue;
         margin-right: fluid(40, $lg);
         width: fluid(430, $lg);
         border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
     }
   }
@@ -76,6 +76,7 @@
 
     background: #dadaca;
     width: fit-content;
+    height: fit-content;
 
     font-size: fluid(14, $sm);
     padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
@@ -100,10 +101,11 @@
     font-size: fluid(36, $sm);
     margin-bottom: fluid(40, $sm);
 
-    line-height: 130%;
+    line-height: 110%;
     letter-spacing: -0.02em;
 
     @include md {
+      line-height: 130%;
       font-size: fluid(50, $lg);
       margin-bottom: fluid(41, $lg);
     }
@@ -123,17 +125,32 @@
 
   .section-list--item {
     font-size: fluid(16, $sm);
-    line-height: 110%;
+    line-height: 140%;
     letter-spacing: 0.04em;
 
     @include md {
+      line-height: 110%;
       font-size: fluid(18, $lg);
     }
   }
 
   #apply {
+    padding-top: fluid(42, $sm);
+    padding-bottom: fluid(42, $sm);
+
+    border-top: 1px solid #aab6b6;
+    border-bottom: 1px solid $darkblue;
+
+    margin-bottom: fluid(174, $sm);
+
     @include md {
       flex-direction: row;
+      padding-top: 0;
+      border-top: 0;
+      contain: content;
+      margin-bottom: fluid(120, $lg);
+      border-bottom: none;
+      padding-bottom: 0;
     }
   }
 
@@ -174,11 +191,30 @@
     height: fluid(430, $lg);
   }
 
+  #see-more {
+    top: calc(100% + #{fluid(28, $sm)});
+    width: fluid(335, $sm);
+    height: fit-content;
+    align-items: baseline;
+
+    @include md {
+      top: unset;
+      width: auto;
+      display: block;
+    }
+  }
+
   #see-more--title {
-    font-size: fluid(22, $lg);
+    font-size: fluid(16, $sm);
     line-height: 110%;
     letter-spacing: 0.01em;
-    margin-bottom: fluid(10, $lg);
+    margin-bottom: fluid(10, $sm);
+    font-weight: 500;
+
+    @include md {
+      margin-bottom: fluid(10, $lg);
+      font-size: fluid(22, $lg);
+    }
   }
 
   .form-status {

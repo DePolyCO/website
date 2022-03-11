@@ -61,9 +61,18 @@
 }
 
 .hero-grid {
-  min-height: fluid(358, $lg);
+  // mobile version
+  &.d-hide {
+    min-width: fluid(335, $sm);
+    min-height: fluid(335 * 1.516, $sm); // 508 / 335
+  }
+
+  // desktop version
+  // &.m-hide {
+  // }
 
   @include md {
     min-height: fluid(358, $lg);
+    min-width: auto;
   }
 }

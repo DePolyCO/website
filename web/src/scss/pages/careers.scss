@@ -12,14 +12,6 @@
       padding-bottom: fluid(160, $lg);
       margin-bottom: fluid(125, $lg);
     }
-
-    .text-block--content {
-      font-size: fluid(36, $sm);
-
-      @include md {
-        font-size: fluid(50, $lg);
-      }
-    }
   }
 
   #meet {

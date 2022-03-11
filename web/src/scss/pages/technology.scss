@@ -125,14 +125,6 @@
       margin-bottom: fluid(159 - 40, $lg);
       font-size: fluid(50, $lg);
     }
-
-    .text-block--content {
-      font-size: fluid(36, $sm);
-
-      @include md {
-        font-size: fluid(50, $lg);
-      }
-    }
   }
 
   #meg-magic {

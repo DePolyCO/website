@@ -264,9 +264,17 @@ label {
   // top: fluid(16, $lg);
 
   svg {
-    width: fluid(22, $lg);
-    height: fluid(28, $lg);
-    margin-right: fluid(8, $lg);
+    width: fluid(16, $sm);
+    height: fluid(22, $sm);
+    margin-right: fluid(8, $sm);
+  }
+
+  @include md {
+    svg {
+      width: fluid(22, $lg);
+      height: fluid(28, $lg);
+      margin-right: fluid(8, $lg);
+    }
   }
 
   &.active {

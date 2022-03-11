@@ -17,6 +17,7 @@ export class Nav {
       isVisible: true,
       hasLine: false,
       activeLink: false,
+      mobileOpen: false,
     };
 
     window.nav = this;
@@ -32,8 +33,9 @@ export class Nav {
   };
 
   onScroll = ({ deltaY, y }) => {
+    if (this.state.mobileOpen) return;
+
     const hasScrolled = y < -15;
-    console.log(y, deltaY, hasScrolled);
 
     if (hasScrolled && !this.state.hasLine) {
       this.addLine();
@@ -100,6 +102,7 @@ export class Nav {
   };
 
   toggle = () => {
+    this.state.mobileOpen = !this.state.mobileOpen;
     this.dom.classList.toggle("active");
     this.btn.classList.toggle("active");
     document.body.classList.toggle("oh");

@@ -129,7 +129,7 @@
     letter-spacing: 0.04em;
 
     @include md {
-      line-height: 110%;
+      line-height: 140%;
       font-size: fluid(18, $lg);
     }
   }

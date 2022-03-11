@@ -6,7 +6,7 @@ export class FooterHover {
     this.targets = qsa("[data-footer-hover]").map((item, i) => {
       const wrapper = qs(".tag-wrapper", item);
       const tag = qs(".footer-tag", wrapper);
-      const hover = qs(".link", item);
+      const hover = qs(".hover-item", item);
       return {
         wrapper,
         hover,
@@ -23,7 +23,9 @@ export class FooterHover {
       if (!item.hover) return;
       iris.add(item.hover, "pointerenter", () => this.in(i));
       iris.add(item.hover, "pointerleave", () => this.out(i));
-      iris.add(item.hover, "click", () => this.click(i));
+      if (!item.hover.dataset.noCopy) {
+        iris.add(item.hover, "click", () => this.click(i));
+      }
     });
   };
 

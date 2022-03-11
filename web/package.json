@@ -14,7 +14,9 @@
     "builds:elee": "eleventy",
     "builds:sassy": "sass --no-source-map --style=compressed src/scss/style.scss dist/css/style.css",
     "postcss": "postcss dist/css/style.css --replace",
-    "debug": "set DEBUG=Eleventy* & eleventy"
+    "debug": "set DEBUG=Eleventy* & eleventy",
+    "lambda-serve": "netlify-lambda serve .functions",
+    "lambda-build": "netlify-lambda build .functions"
   },
   "keywords": [],
   "author": "Siddharth",
@@ -40,6 +42,8 @@
     "string": "^3.3.3"
   },
   "dependencies": {
+    "axios": "^0.26.1",
+    "netlify-lambda": "^2.0.15",
     "ogl": "^0.0.86",
     "tweakpane": "^3.0.7"
   }

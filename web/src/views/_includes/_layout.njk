@@ -93,14 +93,16 @@
         <div class="bio-panel--title pf ttu fv-mono z3">Request Sample</div>
 
         <div id="cta-content" class="df fc" data-scroll-section>
-          <picture id="cta-picture"></picture>
+          <picture id="cta-picture">
+            <img src="/static/request-sample.jpg" alt="Request sample">
+          </picture>
           <div id="cta-info" class="df fc aic jcc">
             <svg id="cta-icon" fill="none" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z" fill="#022D42"/>
             </svg>
             <div id="cta-desc">Only registered laboratories can order a sample.</div>
           </div>
-          <form action="POST" data-netlify novalidate>
+          <form action="POST" data-netlify="true" novalidate name="Request Sample">
             <div class="df fc form-inner">
 
               <div class="df fc field-col">

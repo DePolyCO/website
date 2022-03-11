@@ -162,15 +162,18 @@
 
 #cta-picture {
   width: fluid(976, $lg);
-  height: fluid(207, $lg);
+  min-height: fluid(207, $lg);
+  height: 100%;
   background: #a6ae8e;
   margin-bottom: fluid(60, $lg);
+  flex-grow: 1;
 }
 
 #cta-content {
   margin-left: fluid(54, $lg);
   margin-top: fluid(151, $lg);
   width: fluid(976, $lg);
+  min-height: calc(100vh - #{fluid(150, $lg)});
 }
 
 #cta-info {

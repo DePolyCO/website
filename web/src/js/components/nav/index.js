@@ -27,9 +27,12 @@ export class Nav {
     this.select = new Select({ callback: this.onLangSwitch });
     this.setInitialLang();
 
-    iris.add(this.linkItems, "click", this.toggle);
-    iris.add(this.btn, "click", this.toggle);
     smoothscroller.add({ update: this.onScroll });
+
+    if (Sniff.touchDevice) {
+      iris.add(this.btn, "click", this.toggle);
+      iris.add(this.linkItems, "click", this.toggle);
+    }
   };
 
   onScroll = ({ deltaY, y }) => {

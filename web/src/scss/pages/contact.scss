@@ -293,8 +293,10 @@
     width: fluid(20, $sm);
     height: fluid(20, $sm);
 
-    margin-top: fluid(-2, $sm);
     margin-right: fluid(7, $sm);
+
+    position: relative;
+    top: 3px;
 
     @include md {
       width: fluid(20, $lg);

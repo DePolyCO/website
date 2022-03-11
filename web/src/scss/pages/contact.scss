@@ -4,18 +4,21 @@
   }
 
   #form {
-    padding-bottom: fluid(69, $lg);
-    margin-bottom: fluid(125, $lg);
+    padding-bottom: fluid(40, $sm);
+    margin-bottom: fluid(40, $sm);
     flex-direction: column-reverse;
 
     @include md {
       flex-direction: row;
+      padding-bottom: fluid(69, $lg);
+      margin-bottom: fluid(125, $lg);
     }
   }
 
   #prefer-mail {
     @include md {
       width: fluid(430, $lg);
+      margin-bottom: 0;
     }
   }
 
@@ -66,10 +69,84 @@
   }
 
   #form-list {
+    margin-bottom: fluid(40, $sm);
+    padding-bottom: fluid(40, $sm);
+    border-bottom: 1px solid #aab6b6;
+
     @include md {
       width: fluid(430 * 3 + 40 * 3, $lg);
       border-left: 1px solid #aab6b6;
+
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
+  }
+
+  #dropdown-m--wrapper {
+    margin-bottom: fluid(40, $sm);
+    padding-bottom: fluid(40, $sm);
+
+    &.active {
+      #dropdown-m {
+        opacity: 1;
+        pointer-events: all;
+        transition: opacity 1s $ease-out-expo 0.1s;
+
+        &--chevron {
+          transform: rotate(180deg);
+        }
+      }
+
+      .dropdown-bg {
+        transform: scaleY(1);
+      }
+    }
+  }
+
+  #dropdown-m {
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s $ease-out-expo;
+
+    &--chevron {
+      width: fluid(16, $sm);
+      height: fluid(16, $sm);
+
+      top: fluid(6, $sm);
+      right: fluid(10, $sm);
+
+      transition: transform 0.75s $ease-out-expo;
+    }
+  }
+
+  .dropdown-bg {
+    background: #ecece4;
+    height: fluid(320, $sm);
+    transform: scaleY(0);
+
+    transition: transform 0.75s $ease-out-expo;
+    transform-origin: 0 0;
+  }
+
+  .dropdown-m--item,
+  #dropdown-m--active {
+    font-weight: 400;
+    font-size: fluid(36, $sm);
+    line-height: 110%;
+    letter-spacing: -0.02em;
+  }
+
+  #dropdown-m--active {
+    padding-bottom: fluid(40, $sm);
+    border-bottom: 1px solid #aab6b6;
+  }
+
+  .dropdown-m--item {
+    padding: fluid(40, $sm) 0;
+    width: fluid(335, $sm);
+    border-bottom: 1px solid #aab6b6;
   }
 
   #general-form--wrapper {
@@ -119,9 +196,10 @@
   }
 
   #location {
-    margin-bottom: fluid(48, $lg);
+    margin-bottom: fluid(293, $sm);
 
     @include md {
+      margin-bottom: fluid(48, $lg);
       flex-direction: row;
     }
   }
@@ -191,5 +269,9 @@
     @include md {
       width: fit-content;
     }
+  }
+
+  #social-links {
+    top: calc(100% + #{fluid(60, $sm)});
   }
 }

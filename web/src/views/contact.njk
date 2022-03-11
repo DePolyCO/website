@@ -42,10 +42,24 @@ title: Contact
         </div>
         <div id="form-list" class="df fc pr">
 
+            <div id="dropdown-m--wrapper" class="pr top left right d-hide z1">
+                <div id="dropdown-m--active" class="z1 pr">
+                    <div data-value="0">General Info</div>
+                    <svg class="pa top right" id="dropdown-m--chevron" viewBox="0 0 13 8" fill="none">
+                        <path d="M2.41.84 7 5.42 11.59.84 13 2.25l-6 6-6-6L2.41.84Z" fill="#022D42" stroke="#ECECE2" stroke-width=".3"/>
+                    </svg>
+                </div>
+                <ul id="dropdown-m" class="pa z1">
+                    <li data-value="1" class="dropdown-m--item">Submit your CV</li>
+                    <li data-value="2" class="dropdown-m--item">Sample & Quote</li>
+                </ul>
+                <div class="pa inset dropdown-bg zn1"></div>
+            </div>
+
             {# General Information #}
-            <div class="pr form-wrapper" id="general-form--wrapper">
+            <div class="pr form-wrapper z0" id="general-form--wrapper">
                 <details class="form-details pr" id="general-form" open>
-                    <summary class="form-title">General Information</summary>
+                    <summary class="form-title m-hide">General Information</summary>
                     <form novalidate data-netlify="true" name="General Information" method="POST" class="form-content">
                         <div class="df fc form-inner">
                             <div class="df fc field-col">
@@ -117,7 +131,7 @@ title: Contact
             {# Submit CV #}
             <div class="pr form-wrapper">
                 <details class="form-details pr" id="cv-form">
-                    <summary class="form-title">Submit your CV</summary>
+                    <summary class="form-title m-hide">Submit your CV</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Submit CV" method="POST" class="form-content">
                         <div class="df fc form-inner">
                             <div class="df fc field-col">
@@ -218,7 +232,7 @@ title: Contact
             {# Sample & Quote #}
             <div class="pr form-wrapper">
                 <details class="form-details pr" id="sample-form">
-                    <summary class="form-title margin-sm">Sample & Quote</summary>
+                    <summary class="form-title margin-sm m-hide">Sample & Quote</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Sample & Quote" method="POST" class="form-content">
                         <div class="form-subtitle">Only registered laboratories can order a sample.</div>
                         <div class="df fc form-inner">
@@ -329,11 +343,12 @@ title: Contact
         </div>
     </section>
 
-    <section data-scroll-section id="location" class="df fc restrict pr">
+    <section data-scroll-section id="location" class="df fc restrict pr no-contain">
         <div class="tag ttu fv-mono">Location</div>
         <div id="map" class="oh pr">
             <picture class="pr" id="map-picture">
-                <img src="/static/contact/map.jpg" alt="map">
+                <img class="m-hide" src="/static/contact/map.jpg" alt="map">
+                <img class="d-hide" src="/static/contact/map-m.jpg" alt="map">
             </picture>
             <div id="map-overlay" class="df fc pa z2">
                 <div id="map-overlay--text">Rue de l'Industrie 17 1950 Sion, Valais Switzerland</div>
@@ -344,7 +359,7 @@ title: Contact
                 </a>
             </div>
         </div>
-        <div class="pa bottom left">
+        <div class="pa bottom left" id="social-links">
             <div class="contact-title mb-extra ttu">Social Links</div>
             <ul>
                 <li>

@@ -4,9 +4,22 @@
   }
 
   #why-join {
-    padding-bottom: fluid(160, $lg);
-    margin-bottom: fluid(125, $lg);
+    padding-bottom: fluid(120, $sm);
+    margin-bottom: fluid(42, $sm);
     border-bottom: 1px solid $darkblue;
+
+    @include md {
+      padding-bottom: fluid(160, $lg);
+      margin-bottom: fluid(125, $lg);
+    }
+
+    .text-block--content {
+      font-size: fluid(36, $sm);
+
+      @include md {
+        font-size: fluid(50, $lg);
+      }
+    }
   }
 
   #meet {
@@ -65,7 +78,7 @@
   #meet-slider--handle {
     user-select: none;
     touch-action: none;
-    
+
     opacity: 0;
     transition: opacity 0.5s $ease-out-expo;
   }
@@ -90,13 +103,17 @@
 
   #quotes {
     border-top: 1px solid $darkblue;
-    padding-top: fluid(125, $lg);
-    padding-bottom: fluid(160, $lg);
-    margin-bottom: fluid(70, $lg);
-    border-bottom: 1px solid $darkblue;
+    padding-top: fluid(42, $sm);
 
     @include md {
       flex-direction: row;
+    }
+
+    @include md {
+      padding-top: fluid(125, $lg);
+      padding-bottom: fluid(160, $lg);
+      margin-bottom: fluid(70, $lg);
+      border-bottom: 1px solid $darkblue;
     }
   }
 
@@ -108,29 +125,50 @@
   }
 
   .quote {
-    &.active {
-      .quote-apo {
-        opacity: 1;
+    align-items: center;
+    margin-bottom: fluid(120, $sm);
+
+    @include md {
+      flex-direction: row;
+      align-items: unset;
+      margin-bottom: 0;
+
+      &.active {
+        .quote-apo {
+          opacity: 1;
+        }
       }
     }
   }
 
   .quote-sno {
     font-weight: bold;
-    font-size: fluid(14, $lg);
+    font-size: fluid(14, $sm);
     line-height: 110%;
     letter-spacing: 0.07em;
+
+    @include md {
+      font-size: fluid(14, $lg);
+    }
   }
 
   .quote-picture {
-    width: fluid(400, $lg);
-    height: fluid(400, $lg);
+    width: fluid(335, $sm);
+    height: fluid(335, $sm);
     border-radius: 50%;
-    // background: #dadaca;
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      width: fluid(400, $lg);
+      height: fluid(400, $lg);
+      margin-bottom: 0;
+    }
   }
 
   .quote-content {
-    margin-left: fluid(70, $lg);
+    @include md {
+      margin-left: fluid(70, $lg);
+    }
   }
 
   .quote-cite {
@@ -138,50 +176,91 @@
   }
 
   .quote-apo {
-    width: fluid(77, $lg);
-    height: fluid(77, $lg);
-    left: fluid(319, $lg);
+    width: fluid(77, $sm);
+    height: fluid(77, $sm);
+    right: 0;
 
     background: #022d42;
     border-radius: 50%;
     z-index: 2;
-    opacity: 0;
-
-    transition: opacity 0.8s;
 
     svg {
-      width: fluid(25, $lg);
-      height: fluid(22, $lg);
+      width: fluid(25, $sm);
+      height: fluid(22, $sm);
+    }
+
+    @include md {
+      width: fluid(77, $lg);
+      height: fluid(77, $lg);
+      left: fluid(319, $lg);
+      right: unset;
+      opacity: 0;
+      transition: opacity 0.8s;
+
+      svg {
+        width: fluid(25, $lg);
+        height: fluid(22, $lg);
+      }
     }
   }
 
   .quote-item {
-    font-size: fluid(68, $lg);
+    font-size: fluid(40, $sm);
     line-height: 105%;
     letter-spacing: -0.02em;
-    width: fluid(900, $lg);
-    margin-bottom: fluid(52, $lg);
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      font-size: fluid(68, $lg);
+      width: fluid(900, $lg);
+      margin-bottom: fluid(52, $lg);
+    }
   }
 
   .quote-name {
     font-weight: 500;
-    font-size: fluid(30, $lg);
+    font-size: fluid(24, $sm);
     line-height: 100%;
     letter-spacing: 0.01em;
-    margin-bottom: fluid(12, $lg);
+    margin-bottom: fluid(12, $sm);
+
+    @include md {
+      font-size: fluid(30, $lg);
+      margin-bottom: fluid(12, $lg);
+    }
   }
 
   .quote-role {
     font-weight: 500;
-    font-size: fluid(15, $lg);
+    font-size: fluid(13, $sm);
     line-height: 110%;
     letter-spacing: 0.05em;
     opacity: 0.4;
+
+    @include md {
+      font-size: fluid(15, $lg);
+    }
   }
 
   #position {
     @include md {
       flex-direction: row;
+    }
+  }
+
+  #position-tag--wrapper {
+    padding-bottom: fluid(40, $sm);
+    margin-bottom: fluid(40, $sm);
+    border-bottom: 1px solid #022d42;
+
+    .tag {
+      margin-bottom: 0;
+    }
+
+    @include md {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
     }
   }
 
@@ -201,7 +280,7 @@
   }
 
   .position-item {
-    border-bottom: 1px solid $darkbeige;
+    border-bottom: 1px solid $darkblue;
 
     padding-bottom: fluid(40, $sm);
     margin-bottom: fluid(40, $sm);

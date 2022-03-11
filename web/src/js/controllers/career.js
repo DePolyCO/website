@@ -6,6 +6,7 @@ import { GallerySlider } from "../components/gallerySlider";
 import { CaptureQuotes } from "../components/captureQuotes";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
+import { Sniff } from "../hermes";
 
 /**
  *
@@ -17,7 +18,7 @@ let slider, capture;
 export const careerController = new Controller({
   hide: ({ done }) => {
     slider.destroy();
-    capture.destroy();
+    capture?.destroy();
     r0.destroy();
     monoShuffle.destroy();
 
@@ -25,10 +26,12 @@ export const careerController = new Controller({
   },
 
   show: ({ done }) => {
-    nav.setLinkActive("careers");
-
     slider = new GallerySlider();
-    capture = new CaptureQuotes();
+
+    if (Sniff.touchDevice) {
+    } else {
+      capture = new CaptureQuotes();
+    }
 
     r0 = new Reveal({
       targets: "#hero-title",
@@ -36,6 +39,7 @@ export const careerController = new Controller({
     });
     r0.play();
     monoShuffle.init();
+    nav.setLinkActive("careers");
 
     sail.in();
     done();

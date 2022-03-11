@@ -3,8 +3,9 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 import { FormManager } from "../components/forms";
+import { MobileForms } from "../components/forms/mobile";
 
-import { iris } from "../hermes";
+import { iris, Sniff } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
@@ -33,7 +34,11 @@ export const contactController = new Controller({
       setTimeout(smoothscroller.resize, 0);
     });
 
-    forms = new FormManager();
+    if (Sniff.touchDevice) {
+      forms = new MobileForms();
+    } else {
+      forms = new FormManager();
+    }
 
     r0 = new Reveal({
       targets: "#hero-title",

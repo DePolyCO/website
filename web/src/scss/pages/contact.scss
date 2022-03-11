@@ -273,5 +273,10 @@
 
   #social-links {
     top: calc(100% + #{fluid(60, $sm)});
+
+    @include md {
+      contain: content;
+      top: unset;
+    }
   }
 }

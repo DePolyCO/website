@@ -30,8 +30,11 @@
     @include md {
       width: fluid(297, $lg);
       font-size: fluid(22, $lg);
-      margin-bottom: fluid(478, $lg);
     }
+  }
+
+  #contact-list {
+    margin-top: 100%;
   }
 
   .contact-title {
@@ -53,6 +56,12 @@
 
     @include md {
       margin-bottom: fluid(65 - 14, $lg);
+    }
+  }
+
+  .contact-item:last-of-type {
+    a {
+      margin-bottom: 0;
     }
   }
 
@@ -263,7 +272,7 @@
     }
 
     &:hover {
-      background: $darkbeige;
+      background: $green;
     }
 
     @include md {
@@ -277,6 +286,21 @@
     @include md {
       contain: content;
       top: unset;
+    }
+  }
+
+  .info-icon {
+    width: fluid(20, $sm);
+    height: fluid(20, $sm);
+
+    margin-top: fluid(-2, $sm);
+    margin-right: fluid(7, $sm);
+
+    @include md {
+      width: fluid(20, $lg);
+      height: fluid(20, $lg);
+      margin-top: fluid(-2, $lg);
+      margin-right: fluid(7, $lg);
     }
   }
 }

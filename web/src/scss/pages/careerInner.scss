@@ -18,7 +18,8 @@
   }
 
   #details,
-  #offer {
+  #offer,
+  #about-pos {
     margin-bottom: fluid(160, $lg);
   }
 
@@ -51,6 +52,7 @@
         border-right: 1px solid $darkblue;
         margin-right: fluid(40, $lg);
         width: fluid(430, $lg);
+        border-bottom: none;
       }
     }
   }

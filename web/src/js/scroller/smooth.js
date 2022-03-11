@@ -144,7 +144,7 @@ export class Smooth extends Conductor {
       x: x.target,
       y: y.target,
       deltaX: Sniff.touchDevice ? x.delta : x.target - x.cur,
-      deltaY: Sniff.touchDevice ? y.delta : y.target - y.cur,
+      deltaY: Sniff.touchDevice ? -y.delta : y.target - y.cur,
     };
     for (const fn of this.train) {
       fn.update(data);

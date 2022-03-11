@@ -46,8 +46,8 @@
     content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: fluid(20, $sm);
+    right: fluid(20, $sm);
     height: 1px;
     background-color: #dadaca;
     transition: opacity 0.75s;
@@ -57,6 +57,11 @@
   @include md {
     width: fluid(1840, $lg);
     padding: fluid(40, $lg) 0;
+
+    &::after {
+      left: fluid(40, $lg);
+      right: fluid(40, $lg);
+    }
   }
 }
 

@@ -60,6 +60,13 @@
   svg {
     width: fluid(12, $lg);
     height: fluid(12, $lg);
+    transition: transform 0.75s $ease-out-expo;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(90deg);
+    }
   }
 }
 
@@ -109,7 +116,7 @@
 
   &:hover {
     background-color: $darkblue;
-    color: $green;
+    color: #fff;
   }
 }
 

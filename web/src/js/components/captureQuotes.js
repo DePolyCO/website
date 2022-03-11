@@ -40,7 +40,7 @@ export class CaptureQuotes {
     };
 
     this.lerp = new LerpController(this.state.scroll);
-    this.moveLerp = new LerpController(this.state.move);
+    // this.moveLerp = new LerpController(this.state.move);
 
     this.init();
     this.resize();
@@ -157,10 +157,10 @@ export class CaptureQuotes {
       smoothscroller.unlock("capture-quotes");
     }
 
-    if (!this.moveLerp.needsUpdate()) return;
-    this.moveLerp.update();
+    // if (!this.moveLerp.needsUpdate()) return;
+    // this.moveLerp.update();
 
-    this.dom.style.transform = `translateY(-${this.state.move.target}px)`;
+    // this.dom.style.transform = `translateY(-${this.state.move.target}px)`;
   };
 
   resize = () => {

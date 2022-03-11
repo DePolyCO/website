@@ -96,6 +96,7 @@ select {
 
   &::placeholder {
     color: transparent;
+    user-select: none;
   }
 }
 
@@ -110,6 +111,7 @@ textarea {
   height: fluid(60, $sm);
   // overflow: auto;
   border: 1px solid #aab6b6;
+  transition: border 0.5s $ease-out-expo;
 
   &.textarea {
     height: fluid(180, $sm);
@@ -119,9 +121,12 @@ textarea {
     border: 1px solid $darkblue;
   }
 
+  &:hover {
+    border: 1px solid rgba(2, 45, 66, 0.5);
+  }
+
   @include md {
     border-radius: fluid(15, $lg);
-    border: 1px solid #aab6b6;
     min-width: fluid(516, $lg);
     margin-bottom: fluid(14, $lg);
     height: fluid(60, $lg);
@@ -171,6 +176,10 @@ input {
   @include md {
     padding: fluid(26, $lg) fluid(20, $lg) fluid(9, $lg);
   }
+}
+
+label {
+  user-select: none;
 }
 
 // focus exists
@@ -294,6 +303,12 @@ input {
 details[open] ~ .form-toggle {
   svg {
     transform: none;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(-90deg) !important;
+    }
   }
 }
 

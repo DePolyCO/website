@@ -26,16 +26,14 @@ export class Nav {
     this.select = new Select({ callback: this.onLangSwitch });
     this.setInitialLang();
 
-    if (Sniff.touchDevice) {
-      iris.add(this.linkItems, "click", this.toggle);
-      iris.add(this.btn, "click", this.toggle);
-    } else {
-      smoothscroller.add({ update: this.onScroll });
-    }
+    iris.add(this.linkItems, "click", this.toggle);
+    iris.add(this.btn, "click", this.toggle);
+    smoothscroller.add({ update: this.onScroll });
   };
 
   onScroll = ({ deltaY, y }) => {
     const hasScrolled = y < -15;
+    console.log(y, deltaY, hasScrolled);
 
     if (hasScrolled && !this.state.hasLine) {
       this.addLine();

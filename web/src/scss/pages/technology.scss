@@ -206,8 +206,8 @@
     margin-bottom: fluid(120, $sm);
 
     @include md {
-      padding-top: fluid(125, $lg);
-      margin-bottom: fluid(216, $lg);
+      padding-top: fluid(260 - 125, $lg);
+      margin-bottom: fluid(260, $lg);
     }
   }
 

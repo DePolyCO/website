@@ -173,7 +173,7 @@
       width: fluid((430 * 3) + (40 * 2), $lg);
       margin-left: auto;
 
-      margin-bottom: fluid(180, $lg);
+      margin-bottom: fluid(300, $lg);
       gap: fluid(40, $lg);
       left: fluid(20, $lg);
 
@@ -421,7 +421,7 @@
 
   .enhanced-sno {
     font-weight: 800;
-    margin-bottom: fluid(8, $lg);
+    margin-bottom: fluid(4, $lg);
 
     transition: opacity 1.25s $ease-out-expo, margin-bottom 1.25s $ease-out-expo,
       font-size 1.25s $ease-out-expo, transform 1.25s $ease-out-expo;
@@ -477,7 +477,7 @@
 }
 
 .enhanced-slide--summary {
-  background: #dadaca;
+  background: $green;
   border-radius: fluid(13, $lg);
   padding: fluid(40, $lg) fluid(33, $lg) fluid(47, $lg) fluid(52, $lg);
   bottom: 0;

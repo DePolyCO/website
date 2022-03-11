@@ -4,26 +4,40 @@
   }
 
   #who {
-    padding-bottom: fluid(210, $lg);
-    margin-bottom: fluid(169, $lg);
+    padding-bottom: fluid(120, $sm);
+    margin-bottom: fluid(42, $sm);
     border-bottom: 1px solid $darkblue;
-  }
 
-  #team {
-    padding-bottom: fluid(75, $lg);
-    margin-bottom: fluid(125, $lg);
+    @include md {
+      padding-bottom: fluid(210, $lg);
+      margin-bottom: fluid(169, $lg);
+    }
+
+    .text-block--content {
+      font-size: fluid(36, $sm);
+
+      @include md {
+        font-size: fluid(50, $lg);
+      }
+    }
   }
 
   #numbers {
+    padding-bottom: fluid(100, $sm);
+    margin-bottom: fluid(42, $sm);
+
     @include md {
       padding-bottom: fluid(224, $lg);
       margin-bottom: fluid(125, $lg);
+      flex-direction: row;
     }
   }
 
   #numbers-content {
-    width: fluid(430 * 3 + 40 * 2, $lg);
-    margin-left: auto;
+    @include md {
+      width: fluid(430 * 3 + 40 * 2, $lg);
+      margin-left: auto;
+    }
   }
 
   .number-item {
@@ -54,10 +68,60 @@
     // transition: color 0.75s $ease-out-expo;
   }
 
+  #numbers-m {
+    padding-bottom: fluid(20, $sm);
+    margin-bottom: fluid(42, $sm);
+    border-bottom: 1px solid $darkblue;
+
+    &--snos {
+      gap: fluid(40, $sm);
+      margin-bottom: fluid(28, $sm);
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    &--tag {
+      margin-bottom: fluid(100, $sm);
+    }
+  }
+
+  .number-m {
+    &--no {
+      font-weight: 400;
+      font-size: 62px;
+      line-height: 100%;
+      letter-spacing: -0.05em;
+      color: #fff;
+
+      transition: color 0.5s $ease-out-expo;
+
+      &.active {
+        color: $darkblue;
+      }
+    }
+
+    &--detail {
+      font-weight: 400;
+      font-size: 62px;
+      line-height: 100%;
+      letter-spacing: -0.05em;
+    }
+  }
+
   #team {
+    // padding-bottom: fluid(42, $sm);
+    margin-bottom: fluid(42, $sm);
+
     @include md {
       flex-direction: row;
+      padding-bottom: fluid(75, $lg);
+      margin-bottom: fluid(125, $lg);
     }
+  }
+
+  #team-tag,
+  #advisors-tag {
+    margin-bottom: 0;
   }
 
   .grid-list {

@@ -5,8 +5,9 @@ import { TextHighlight } from "../components/textHighlight";
 import { CaptureReveal } from "../components/captureReveal";
 import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
+import { Numbers } from "../components/revealNumbers";
 
-import { qsa } from "../hermes";
+import { qsa, Sniff } from "../hermes";
 import { Reveal } from "../reveal";
 
 /**
@@ -34,7 +35,11 @@ export const aboutController = new Controller({
       targets: highlights,
     });
 
-    numbers = new CaptureReveal();
+    if (Sniff.mobile) {
+      numbers = new Numbers();
+    } else {
+      numbers = new CaptureReveal();
+    }
 
     nav.setLinkActive("about");
 

@@ -265,14 +265,14 @@
 
 #footer-logo--wrapper {
   padding: fluid(60, $sm) 0;
-  max-width: fluid(335, $sm);
+  width: fluid(335, $sm);
   margin: 0 auto;
 
   @include md {
     padding-bottom: fluid(60, $lg);
     padding-top: fluid(80, $lg);
 
-    max-width: auto;
+    width: auto;
     margin: 0;
   }
 }

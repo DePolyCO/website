@@ -6,6 +6,10 @@
     padding-bottom: fluid(125, $lg);
   }
 
+  #oil {
+    margin-bottom: fluid(169, $lg);
+  }
+
   .stat-section {
     padding-top: fluid(40, $sm);
     display: flex;
@@ -19,6 +23,7 @@
       padding-bottom: fluid(87, $lg);
       gap: fluid(40, $lg);
       padding-top: fluid(133, $lg);
+      contain: content;
     }
   }
 
@@ -40,7 +45,7 @@
   }
 
   .stat-title {
-    font-weight: 300;
+    font-weight: 400;
     font-size: fluid(48, $sm);
     margin-bottom: fluid(12, $sm);
     line-height: 100%;
@@ -48,6 +53,7 @@
     margin-top: -0.06em;
 
     @include md {
+      font-weight: 300;
       font-size: fluid(120, $lg);
       margin-bottom: fluid(25, $lg);
     }
@@ -65,7 +71,6 @@
     padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
 
     width: fit-content;
-    margin-bottom: fluid(3, $sm);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
     display: inline;
@@ -86,6 +91,11 @@
     @include md {
       padding-bottom: fluid(60, $lg);
     }
+  }
+
+  .stat-desc--m {
+    padding-top: fluid(64, $sm);
+    margin-bottom: fluid(13, $sm);
   }
 
   // .stat-desc {
@@ -114,7 +124,21 @@
   }
 
   .stat-visual {
-    height: fluid(729, $lg);
+    height: fluid(500, $sm);
+    width: 100vw;
+    left: fluid(-20, $sm);
+    position: relative;
+
+    // background-color: #a6b2a3;
+
+    @include md {
+      height: fluid(729, $lg);
+      width: auto;
+      margin-left: 0;
+
+      left: fluid(-40, $lg);
+      top: fluid(70, $lg);
+    }
   }
 
   #goals-title {
@@ -486,6 +510,60 @@
 
   &:nth-of-type(4) {
     left: fluid((90) * 4 + 11, $lg);
+  }
+}
+
+// enhanced mobile
+
+#enhanced-m {
+  &--wrapper {
+    padding: fluid(30, $sm) 0;
+    border: 1px solid rgba(2, 45, 66, 0.1);
+    border-left: none;
+    border-right: none;
+
+    margin-bottom: fluid(40, $sm);
+
+    .tag {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.enhanced-m {
+  &--sno {
+    font-weight: 700;
+    font-size: fluid(12, $sm);
+    line-height: 110%;
+    letter-spacing: 0.07em;
+    margin-bottom: fluid(8, $sm);
+  }
+
+  &--title {
+    font-size: fluid(28, $sm);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    margin-bottom: fluid(8, $sm);
+  }
+
+  &--visual {
+    height: fluid(272, $sm);
+    background-color: #c7cdb9;
+    margin-bottom: fluid(22, $sm);
+    width: 100vw;
+    position: relative;
+    left: fluid(-20, $sm);
+  }
+
+  &--desc {
+    font-size: fluid(16, $sm);
+    line-height: 140%;
+  }
+
+  &--list-item {
+    padding-bottom: fluid(40, $sm);
+    margin-bottom: fluid(40, $sm);
+    border-bottom: 1px solid rgba(2, 45, 66, 0.1);
   }
 }
 

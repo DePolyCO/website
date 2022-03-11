@@ -56,13 +56,13 @@ body {
 
 @media (max-width: #{$m}) {
   .m-hide {
-    display: none;
+    display: none !important;
   }
 }
 
 .d-hide {
   @include md {
-    display: none;
+    display: none !important;
   }
 }
 

@@ -4,7 +4,7 @@ import { Tracker, smoothscroller, corescroller } from "../scroller";
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
     this.intersectionPoints = {
-      bottom: Sniff.touchDevice ? 0.5 : 0.33,
+      bottom: Sniff.touchDevice ? 1 : 0.33,
       ...intersectionPoints,
     };
 
@@ -17,11 +17,7 @@ export class TextHighlight {
       this.build(el);
     });
 
-    if (Sniff.touchDevice) {
-      this.scrollID = corescroller.add({ update: this.update });
-    } else {
-      this.scrollID = smoothscroller.add({ update: this.update });
-    }
+    this.scrollID = smoothscroller.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
     this.tickID = ticker.add({ update: this.render });
   }
@@ -75,10 +71,6 @@ export class TextHighlight {
   destroy = () => {
     this.tracker.destroy();
     ro.remove(this.roID);
-    if (Sniff.touchDevice) {
-      corescroller.remove(this.scrollID);
-    } else {
-      smoothscroller.remove(this.scrollID);
-    }
+    smoothscroller.remove(this.scrollID);
   };
 }

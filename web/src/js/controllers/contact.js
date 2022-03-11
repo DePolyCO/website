@@ -7,6 +7,7 @@ import { FormManager } from "../components/forms";
 import { iris } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Reveal } from "../reveal";
+import { monoShuffle } from "../components/monoShuffle";
 
 /**
  *
@@ -20,6 +21,7 @@ export const contactController = new Controller({
     undetail();
     forms.destroy();
     r0.destroy();
+    monoShuffle.destroy();
 
     sail.out(done);
   },
@@ -38,6 +40,7 @@ export const contactController = new Controller({
       stagger: 150,
     });
     r0.play();
+    monoShuffle.init();
 
     sail.in();
     done();

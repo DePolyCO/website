@@ -3,8 +3,8 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { TextHighlight } from "../components/textHighlight";
 import { CaptureReveal } from "../components/captureReveal";
-import { asideController } from "../components/aside";
 import { nav } from "../components/nav";
+import { monoShuffle } from "../components/monoShuffle";
 
 import { qsa } from "../hermes";
 import { Reveal } from "../reveal";
@@ -22,6 +22,7 @@ export const aboutController = new Controller({
     highlightFx.destroy();
     numbers.destroy();
     r0.destroy();
+    monoShuffle.destroy();
 
     sail.out(done);
   },
@@ -42,6 +43,8 @@ export const aboutController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    monoShuffle.init();
 
     sail.in();
     done();

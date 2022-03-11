@@ -14,7 +14,6 @@
 
 .footer-row {
   gap: fluid(40, $sm);
-  padding-bottom: fluid(60, $sm);
   padding-top: fluid(80, $sm);
 
   border-bottom: 1px solid rgba(2, 45, 66, 0.2);
@@ -31,9 +30,17 @@
 .footer-list {
   gap: fluid(60, $sm);
 
+  padding-bottom: fluid(60, $sm);
+  margin-bottom: fluid(20, $sm);
+  border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+
   @include md {
     gap: fluid(60, $lg);
     width: fluid(430, $lg);
+
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
   }
 }
 
@@ -46,6 +53,14 @@
 .footer-col--xl {
   @include md {
     width: fluid(430 * 2 + 40, $lg);
+  }
+}
+
+#footer-location {
+  margin-bottom: fluid(60, $sm);
+
+  @include md {
+    margin-bottom: 0;
   }
 }
 
@@ -250,17 +265,20 @@
 
 #footer-logo--wrapper {
   padding: fluid(60, $sm) 0;
+  max-width: fluid(335, $sm);
+  margin: 0 auto;
 
   @include md {
     padding-bottom: fluid(60, $lg);
     padding-top: fluid(80, $lg);
+
+    max-width: auto;
+    margin: 0;
   }
 }
 
 #footer-logo {
   min-width: fit-content;
-  padding-left: fluid(20, $sm);
-  padding-right: fluid(20, $sm);
 
   @include md {
     padding-left: fluid(40, $lg);
@@ -306,6 +324,14 @@
   }
 }
 
+#footer-divider {
+  width: fluid(335, $sm);
+  height: 1px;
+
+  opacity: 0.2;
+  border: 1px solid #022d42;
+}
+
 #footer-copy--logo {
   font-weight: 500;
   font-size: fluid(16, $sm);
@@ -346,9 +372,11 @@
 
 #footer-terms--col {
   gap: fluid(25, $sm);
+  margin-bottom: fluid(15, $sm);
 
   @include md {
     gap: fluid(25, $lg);
+    margin-bottom: 0;
   }
 }
 

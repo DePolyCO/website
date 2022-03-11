@@ -8,6 +8,7 @@ import { nav } from "../components/nav";
 import { qsa } from "../hermes";
 import { Parallax } from "../scroller";
 import { Reveal } from "../reveal";
+import { monoShuffle } from "../components/monoShuffle";
 
 /**
  *
@@ -23,6 +24,7 @@ export const techController = new Controller({
     ps.forEach((p) => p.destroy());
     r0.destroy();
 
+    monoShuffle.destroy();
     sail.out(done);
   },
 
@@ -32,6 +34,7 @@ export const techController = new Controller({
     highlightFx = new TextHighlight({
       targets: highlights,
     });
+    window.highlight = highlightFx;
 
     compares = qsa("[data-compare-slider").map(
       (item) => new Compare({ dom: item })
@@ -49,6 +52,7 @@ export const techController = new Controller({
     });
     r0.play();
 
+    monoShuffle.init();
     sail.in();
     done();
   },

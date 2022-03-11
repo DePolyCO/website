@@ -33,8 +33,6 @@ export class Smooth extends Conductor {
       window,
     };
 
-    // if (Sniff.touchDevice) return;
-
     this.common();
     this.init();
     this.resize();
@@ -48,8 +46,8 @@ export class Smooth extends Conductor {
 
     this.tracker = new Tracker();
     this.scrollID = corescroller.add({ update: this.setScroll });
-    this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
+    this.tickID = ticker.add({ update: this.update });
   }
 
   init() {
@@ -83,8 +81,8 @@ export class Smooth extends Conductor {
   clearState = () => {
     this.state = {
       scroll: {
-        x: { inertia: this.settings.inertia, target: DELTA, cur: 0 },
-        y: { inertia: this.settings.inertia, target: DELTA, cur: 0 },
+        x: { inertia: this.settings.inertia, target: DELTA, cur: 0, delta: 0 },
+        y: { inertia: this.settings.inertia, target: DELTA, cur: 0, delta: 0 },
       },
       page: {
         height: 0,
@@ -115,32 +113,38 @@ export class Smooth extends Conductor {
     if (this.isLocked && !force) return;
 
     const { x, y } = this.state.scroll;
+    x.delta = deltaX;
+    y.delta = deltaY;
     x.cur = this.clampX(x.cur + deltaX);
     y.cur = this.clampY(y.cur + deltaY);
   };
 
   update = () => {
-    if (Sniff.touchDevice) return;
     const { x, y } = this.state.scroll;
 
-    if (!this.lerp.x.needsUpdate() && !this.lerp.y.needsUpdate()) return;
+    if (!Sniff.touchDevice) {
+      if (!this.lerp.x.needsUpdate() && !this.lerp.y.needsUpdate()) return;
 
-    this.lerp.x.update();
-    this.lerp.y.update();
+      this.lerp.x.update();
+      this.lerp.y.update();
 
-    x.target = this.clampX(x.target);
-    y.target = this.clampY(y.target);
+      x.target = this.clampX(x.target);
+      y.target = this.clampY(y.target);
 
-    this.tracker.setScroll(x.target, -y.target);
+      this.tracker.setScroll(x.target, -y.target);
 
-    this.sail();
-    this.render();
+      this.sail();
+      this.render();
+    } else {
+      x.target = x.cur;
+      y.target = y.cur;
+    }
 
     const data = {
       x: x.target,
       y: y.target,
-      deltaX: x.target - x.cur,
-      deltaY: y.target - y.cur,
+      deltaX: Sniff.touchDevice ? x.delta : x.target - x.cur,
+      deltaY: Sniff.touchDevice ? y.delta : y.target - y.cur,
     };
     for (const fn of this.train) {
       fn.update(data);
@@ -153,7 +157,6 @@ export class Smooth extends Conductor {
   };
 
   render = () => {
-    if (Sniff.touchDevice) return;
     this.tracker.detectElements();
 
     const { x, y } = this.state.scroll;

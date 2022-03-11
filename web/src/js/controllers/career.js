@@ -5,6 +5,7 @@ import { nav } from "../components/nav";
 import { GallerySlider } from "../components/gallerySlider";
 import { CaptureQuotes } from "../components/captureQuotes";
 import { Reveal } from "../reveal";
+import { monoShuffle } from "../components/monoShuffle";
 
 /**
  *
@@ -18,6 +19,7 @@ export const careerController = new Controller({
     slider.destroy();
     capture.destroy();
     r0.destroy();
+    monoShuffle.destroy();
 
     sail.out(done);
   },
@@ -33,6 +35,7 @@ export const careerController = new Controller({
       stagger: 150,
     });
     r0.play();
+    monoShuffle.init();
 
     sail.in();
     done();

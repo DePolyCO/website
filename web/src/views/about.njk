@@ -106,20 +106,23 @@ title: About Us
         <div id="advisor-tag" class="tag">Advisors</div>
         <div id="advisor-list" class="grid-list df fc">
             <div class="team-col df fc aic">
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
+                <div class="team-item">
+                    <picture class="team-photo">
+                        <img src="{{ team.advisors[0].img }}" alt="Photo of {{ team.advisors[0].name }}">
+                    </picture>
+                    <div class="team-name">{{ team.advisors[0].name }}</div>
+                    <div class="team-role ttu">{{ team.advisors[0].role }}</div>
                 </div>
             </div>
             <div class="team-col df fc aic no-border">
-                <div class="team-item cp" data-trigger-aside="#bio-panel">
-                    <div class="team-photo"></div>
-                    <div class="team-name">Dr. Samantha Anderson</div>
-                    <div class="team-role ttu">CEO and Co-founder</div>
+                <div class="team-item">
+                    <picture class="team-photo">
+                        <img src="{{ team.advisors[1].img }}" alt="Photo of {{ team.advisors[1].name }}">
+                    </picture>
+                    <div class="team-name">{{ team.advisors[1].name }}</div>
+                    <div class="team-role ttu">{{ team.advisors[1].role }}</div>
                 </div>
             </div>
-            <div class="team-col df fc aic"></div>
         </div>
     </section>
 </main>

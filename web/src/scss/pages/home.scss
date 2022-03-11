@@ -128,15 +128,16 @@
     width: 100vw;
     left: fluid(-20, $sm);
     position: relative;
+    z-index: -1;
 
     // background-color: #a6b2a3;
 
     @include md {
-      height: fluid(729, $lg);
-      width: auto;
+      height: fluid(800, $lg);
+      width: fluid(1200, $lg);
       margin-left: 0;
 
-      left: fluid(-40, $lg);
+      left: fluid(-282, $lg);
       top: fluid(70, $lg);
     }
   }

@@ -26,9 +26,28 @@
   }
 
   #explain-visual {
-    height: fluid(2416, $lg);
+    height: fluid(2600, $lg);
     min-width: fluid(430 * 3 + 40 * 2, $lg);
     border-right: 1px solid rgba(2, 45, 66, 0.2);
+  }
+
+  .explain-visual--circle {
+    width: fluid(300, $lg);
+    height: fluid(300, $lg);
+    border-radius: 50%;
+    background: #f6f6ee;
+    display: grid;
+    place-items: center;
+
+    &:nth-of-type(2) {
+      right: fluid(119, $lg);
+      top: fluid(1517, $lg);
+    }
+
+    &:nth-of-type(3) {
+      right: fluid(720, $lg);
+      top: fluid(2007, $lg);
+    }
   }
 
   #explain-content {

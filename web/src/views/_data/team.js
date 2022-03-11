@@ -292,5 +292,20 @@ module.exports = {
   ],
 
   //   advisors
-  advisors: [],
+  advisors: [
+    //   1
+    {
+      id: "stockl",
+      img: "/static/about/advisors/1.jpg",
+      name: "Alex Stockl",
+      role: "Wingman Ventures",
+    },
+    //   2
+    {
+      id: "mcardle",
+      img: "/static/about/advisors/2.jpg",
+      name: "Chris Mcardle",
+      role: "Borealis",
+    },
+  ],
 };

@@ -1,7 +1,15 @@
-{% macro compareSlider(img1Src, img1alt, img2src, img2alt) %}
+{% macro compareSlider(img1src, img1alt, img2src, img2alt) %}
     <div class="compare-slider pr z0 oh" data-compare-slider>
-        <div class="compare-slider--slide compare-slide--before pa inset z1"></div>
-        <div class="compare-slider--slide compare-slide--after pa inset z2" data-clip></div>
+        <div class="compare-slider--slide compare-slide--before pa inset z1">
+            <picture>
+                <img src="{{ img1src }}" alt="{{ img1alt }}">
+            </picture>
+        </div>
+        <div class="compare-slider--slide compare-slide--after pa inset z2" data-clip>
+            <picture>
+                <img src="{{ img2src }}" alt="{{ img2alt }}">
+            </picture>
+        </div>
 
         <div class="compare-slider--line pa z3">
             <div class="compare-slider--handle df aic jcb pa">

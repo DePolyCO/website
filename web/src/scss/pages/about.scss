@@ -103,7 +103,7 @@
   #team {
     // padding-bottom: fluid(42, $sm);
     margin-bottom: fluid(42, $sm);
-
+    border-bottom: 1px solid rgba(2, 45, 66, 0.2);
     @include md {
       flex-direction: row;
       padding-bottom: fluid(75, $lg);

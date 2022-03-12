@@ -4,7 +4,7 @@ import { Tracker, smoothscroller, corescroller } from "../scroller";
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
     this.intersectionPoints = {
-      bottom: Sniff.touchDevice ? 1 : 0.33,
+      bottom: 0.33,
       ...intersectionPoints,
     };
 

@@ -11,18 +11,18 @@ const keyCodes = {
   PAGEDOWN: 34,
 };
 
-const getSupport = () => {
-  return {
-    hasWheelEvent: "onwheel" in document,
-    hasMouseWheelEvent: "onmousewheel" in document,
-    hasTouch: "ontouchstart" in document,
-    hasTouchWin: navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1,
-    hasPointer: !!window.navigator.msPointerEnabled,
-    hasKeyDown: "onkeydown" in document,
-  };
-};
+// const getSupport = () => {
+//   return {
+//     hasWheelEvent: "onwheel" in document,
+//     hasMouseWheelEvent: "onmousewheel" in document,
+//     hasTouch: "ontouchstart" in document,
+//     hasTouchWin: navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1,
+//     hasPointer: !!window.navigator.msPointerEnabled,
+//     hasKeyDown: "onkeydown" in document,
+//   };
+// };
 
-const support = getSupport();
+// const support = getSupport();
 
 export class CoreScroll extends Conductor {
   // {
@@ -63,6 +63,11 @@ export class CoreScroll extends Conductor {
     };
 
     this.touchStart = {
+      x: 0,
+      y: 0,
+    };
+
+    this.scroll = {
       x: 0,
       y: 0,
     };
@@ -144,33 +149,45 @@ export class CoreScroll extends Conductor {
   //   this.notify(e);
   // };
 
-  onTouchStart = (e) => {
-    const t = e.targetTouches ? e.targetTouches[0] : e;
-    this.touchStart.x = t.pageX;
-    this.touchStart.y = t.pageY;
-  };
-
-  onTouchMove = (e) => {
-    const options = this.options;
-    if (
-      options.preventTouch &&
-      !e.target.classList.contains(options.unpreventTouchClass)
-    ) {
-      e.preventDefault();
-    }
-
+  onScroll = (e) => {
     const evt = this.current;
 
-    const t = e.targetTouches ? e.targetTouches[0] : e;
+    evt.deltaX = window.scrollX - this.scroll.x;
+    evt.deltaY = -window.scrollY + this.scroll.y;
 
-    evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
-    evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
-
-    this.touchStart.x = t.pageX;
-    this.touchStart.y = t.pageY;
+    this.scroll.x = window.scrollX;
+    this.scroll.y = window.scrollY;
 
     this.notify(e);
   };
+
+  // onTouchStart = (e) => {
+  //   const t = e.targetTouches ? e.targetTouches[0] : e;
+  //   this.touchStart.x = t.pageX;
+  //   this.touchStart.y = t.pageY;
+  // };
+
+  // onTouchMove = (e) => {
+  //   const options = this.options;
+  //   // if (
+  //   //   options.preventTouch &&
+  //   //   !e.target.classList.contains(options.unpreventTouchClass)
+  //   // ) {
+  //   //   e.preventDefault();
+  //   // }
+
+  //   const evt = this.current;
+
+  //   const t = e.targetTouches ? e.targetTouches[0] : e;
+
+  //   evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
+  //   evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
+
+  //   this.touchStart.x = t.pageX;
+  //   this.touchStart.y = t.pageY;
+
+  //   this.notify(e);
+  // };
 
   onKeyDown = (e) => {
     const evt = this.current;
@@ -219,29 +236,25 @@ export class CoreScroll extends Conductor {
   };
 
   listen = () => {
-    this.dom.addEventListener("wheel", this.onWheel, this.listenerOptions);
-
     if (Sniff.touchDevice) {
-      this.dom.addEventListener(
-        "touchstart",
-        this.onTouchStart,
-        this.listenerOptions
-      );
-      this.dom.addEventListener(
-        "touchmove",
-        this.onTouchMove,
-        this.listenerOptions
-      );
+      document.addEventListener("scroll", this.onScroll, {
+        passive: true,
+      });
+      // this.dom.addEventListener("touchstart", this.onTouchStart, {
+      //   passive: true,
+      // });
+      // this.dom.addEventListener("touchmove", this.onTouchMove, {
+      //   passive: true,
+      // });
     } else {
+      this.dom.addEventListener("wheel", this.onWheel, { passive: true });
       document.addEventListener("keydown", this.onKeyDown);
     }
 
     // if (support.hasMouseWheelEvent) {
-    //   this.dom.addEventListener(
-    //     "mousewheel",
-    //     this.onMouseWheel,
-    //     this.listenerOptions
-    //   );
+    // this.dom.addEventListener("mousewheel", this.onMouseWheel, {
+    //   passive: true,
+    // });
     // }
 
     // if (support.hasPointer && support.hasTouchWin) {
@@ -253,16 +266,16 @@ export class CoreScroll extends Conductor {
   };
 
   unlisten = () => {
-    this.dom.removeEventListener("wheel", this.onWheel);
-
     // if (support.hasMouseWheelEvent) {
-    //   this.dom.removeEventListener("mousewheel", this.onMouseWheel);
+    // this.dom.removeEventListener("mousewheel", this.onMouseWheel);
     // }
 
     if (Sniff.touchDevice) {
-      this.dom.removeEventListener("touchstart", this.onTouchStart);
-      this.dom.removeEventListener("touchmove", this.onTouchMove);
+      // this.dom.removeEventListener("touchstart", this.onTouchStart);
+      // this.dom.removeEventListener("touchmove", this.onTouchMove);
+      document.removeEventListener("scroll", this.onScroll);
     } else {
+      this.dom.removeEventListener("wheel", this.onWheel);
       document.removeEventListener("keydown", this.onKeyDown);
     }
 

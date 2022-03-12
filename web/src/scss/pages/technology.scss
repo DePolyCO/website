@@ -262,6 +262,23 @@
       width: fit-content;
     }
   }
+
+  #callout-icon {
+    width: fluid(140, $lg);
+    height: 1rem;
+    display: inline-block;
+
+    transform: translate3d(-5%, 25%, 0);
+    position: relative;
+
+    svg {
+      position: absolute;
+      bottom: fluid(-30, $lg);
+      left: 0;
+      width: fluid(140, $lg);
+      height: fluid(140, $lg);
+    }
+  }
 }
 
 .border-left {

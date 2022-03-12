@@ -230,13 +230,13 @@
   }
 
   .icon {
-    width: fluid(120, $sm);
-    height: fluid(120, $sm);
+    width: fluid(150, $sm);
+    height: fluid(150, $sm);
     margin-bottom: fluid(64, $sm);
 
     @include md {
-      width: fluid(140, $lg);
-      height: fluid(140, $lg);
+      width: fluid(150, $lg);
+      height: fluid(150, $lg);
       margin-bottom: fluid(124, $lg);
     }
   }

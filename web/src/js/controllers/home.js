@@ -80,7 +80,7 @@ export const homeController = new Controller({
     });
 
     if (!Sniff.touchDevice) {
-      c1 = new Collapse();
+      // c1 = new Collapse();
 
       ps = qsa(".stat-desc").map(
         (item) =>

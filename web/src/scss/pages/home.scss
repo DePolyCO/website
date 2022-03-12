@@ -425,7 +425,9 @@
 
   .enhanced-sno {
     font-weight: 800;
-    margin-bottom: fluid(4, $lg);
+    margin-bottom: fluid(2, $lg);
+    font-size: fluid(16, $lg);
+    line-height: 110%;
 
     transition: opacity 1.25s $ease-out-expo, margin-bottom 1.25s $ease-out-expo,
       font-size 1.25s $ease-out-expo, transform 1.25s $ease-out-expo;

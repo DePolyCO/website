@@ -96,7 +96,7 @@ export class Hydra {
         // }
 
         const url = node.href;
-        if (url === this.state.url) return;
+        // if (url === this.state.url) return;
 
         this.goto(url, false, node);
       },

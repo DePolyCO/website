@@ -226,6 +226,10 @@ export class Hydra {
  * + Manage show/hide animations
  * + Manage app logic
  * + Change cursor style to show waiting
+ * 
+ * Todo:
+ * ======
+ * + Split into build and play phases
  *
  *
  *

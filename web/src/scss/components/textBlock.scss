@@ -39,6 +39,7 @@
   white-space: nowrap;
   padding-top: 1.5px;
   margin-bottom: fluid(40, $sm);
+  height: fit-content;
 
   &::before {
     content: "";

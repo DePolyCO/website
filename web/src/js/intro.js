@@ -1,4 +1,4 @@
-import { ImageLoader, qs, qsa, Vau, unique } from "./hermes";
+import { ImageLoader, qs, qsa, Vau, unique, Duration } from "./hermes";
 import { assets } from "./preload";
 export class Intro {
   constructor({ begin = () => {}, update, complete = () => {} } = {}) {
@@ -57,14 +57,53 @@ export class Intro {
  */
 
 const loadEl = qs("#loader");
-const loadProgress = qs("#loader-percent", loadEl);
+const loadProgress = qs("#loader-percent");
+const appWrapper = qs("#app-wrapper");
 
 export const intro = new Intro({
   begin: () => {},
   update: (progress) => {
     loadProgress.innerText = Math.floor(progress);
   },
-  complete: () => {
-    loadEl.remove();
+  complete: async () => {
+    new Vau({
+      targets: loadProgress,
+      duration: 1000,
+      easing: "i3",
+      transform: {
+        y: [0, -110],
+        yu: "%",
+      },
+    });
+
+    new Vau({
+      targets: loadEl,
+      duration: 1250,
+      easing: "i4",
+      transform: {
+        y: [0, -100],
+        yu: "%",
+      },
+    });
+
+    appWrapper.style.transform = `translateY(${window.innerHeight}px)`;
+
+    new Vau({
+      targets: "[data-scroll-content]",
+      duration: 1250,
+      delay: 900,
+      easing: "o6",
+      transform: {
+        y: [window.innerHeight, 0],
+      },
+    });
+
+    await new Promise(
+      (resolve) =>
+        new Duration({
+          duration: 1000,
+          complete: resolve,
+        })
+    );
   },
 });

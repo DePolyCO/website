@@ -1,6 +1,6 @@
 {% macro textBlock(tag, text = [], id=false) %}
     <section class="restrict text-block df fc" {% if id %} id="{{ id }}" {% endif %} data-scroll-section>
-        <div class="tag ttu fv-mono">{{ tag }}</div>
+        <div class="tag ttu fv-mono" data-shuffle>{{ tag }}</div>
         <div class="df fc text-block--content">
             {% for item in text %}
                 <p class="text-block--text">{{ item }}</p>

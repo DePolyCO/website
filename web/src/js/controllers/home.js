@@ -22,6 +22,7 @@ export const homeController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     if (!Sniff.touchDevice) {
+      c1.destroy();
       ps.forEach((p) => p.destroy());
     }
 
@@ -29,7 +30,6 @@ export const homeController = new Controller({
     p2.destroy();
     p3.destroy();
     p4.destroy();
-    c1.destroy();
 
     r0.destroy();
     rst.destroy();

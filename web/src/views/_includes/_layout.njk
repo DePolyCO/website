@@ -22,7 +22,10 @@
             <div class="bio-panel--header pf top right left z2"></div>
             <div class="bio-panel--title pf ttu fv-mono z3">BIOGRAPHY</div>
 
-            <div class="df bio-panel--inner">
+            <div class="df fc bio-panel--inner">
+              <picture class="bio-profile--picture d-hide">
+                <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+              </picture>
               <div class="pf df fc bio-left">
                 <div class="bio-name">{{ member.name }}</div>
                 <div class="bio-role tag ttu fv-mono">{{ member.role }}</div>
@@ -39,7 +42,7 @@
               </div>
 
               <div class="bio-profile--content df fc" data-scroll-section>
-                <picture class="bio-profile--picture">
+                <picture class="bio-profile--picture m-hide">
                   <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
                 </picture>
                 <div class="bio-profile--details">
@@ -56,150 +59,122 @@
         {% endif %}
       {% endfor %}
 
-      <div id="bio-panel" class="aside-panel z1">
-
-        <div class="bio-panel--header pf top right left z2"></div>
-        <div class="bio-panel--title pf ttu fv-mono z3">BIOGRAPHY</div>
-
-        <div class="df bio-panel--inner">
-          <div class="pf df fc bio-left">
-            <div class="bio-name">Dr. Samantha Anderson</div>
-            <div class="bio-role tag ttu fv-mono">CEO and Co-founder</div>
-            <div>
-              <div class="bio-social--title">Social:</div>
-              <ul class=" df fw bio-social--list">
-                <li class="bio-social--item fv-mono ttu">Li</li>
-                <li class="bio-social--item fv-mono ttu">Tw</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="bio-profile--content df fc" data-scroll-section>
-            <picture class="bio-profile--picture">
-              <img src="/static/about/team/1.jpg" alt="">
-            </picture>
-            <div class="bio-profile--details">
-              <p class="bio-detail--para">Process and Environmental Engineer with international experience in sustainable processes and technologies. He has experience varying from sustainable product design (Water treatment, Spain) to biomolecules extraction using supercritical CO2 (Process Engineering, Tunisia) to process design and optimization (Plastic Waste Treatment, Switzerland).</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
       {# request sample cta #}
       <div id="cta-panel" class="aside-panel z1">
 
         <div class="bio-panel--header pf top right left z2"></div>
         <div class="bio-panel--title pf ttu fv-mono z3">Request Sample</div>
 
-        <div id="cta-content" class="df fc" data-scroll-section>
-          <picture id="cta-picture">
-            <img src="/static/request-sample.jpg" alt="Request sample">
-          </picture>
-          <div id="cta-info" class="df fc aic jcc">
-            <svg id="cta-icon" fill="none" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z" fill="#022D42"/>
-            </svg>
-            <div id="cta-desc">Only registered laboratories can order a sample.</div>
+        <div id="cta-content--wrapper">
+          <div id="cta-content" class="df fc" data-scroll-section>
+            <picture id="cta-picture">
+              <img src="/static/request-sample.jpg" alt="Request sample">
+            </picture>
+            <div id="cta-info" class="df fc aic jcc">
+              <svg id="cta-icon" fill="none" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z" fill="#022D42"/>
+              </svg>
+              <div id="cta-desc">Only registered laboratories can order a sample.</div>
+            </div>
+            <form action="POST" data-netlify="true" novalidate name="Request Sample">
+              <div class="df fc form-inner">
+
+                <div class="df fc field-col">
+                  <div class="field pr">
+                    <input name="First Name" class="field-input first-name" id="cta-sample-firstname" placeholder="First Name" required type="text" data-type="name">
+                    <label class="pen field-label pa" for="sample-firstname">First Name</label>
+                    <label class="pen field-label--active ttu pa" for="sample-firstname">First Name</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid name</div>
+                    </div>
+                  </div>
+                  <div class="field pr">
+                    <input name="Last Name" class="field-input" id="cta-sample-lastname" placeholder="Last Name" required type="text" data-type="name">
+                    <label class="pen field-label pa" for="sample-lastname">Last Name</label>
+                    <label class="pen field-label--active ttu pa" for="sample-lastname">Last Name</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid name</div>
+                    </div>
+                  </div>
+                  <div class="field pr">
+                    <input name="Email ID" class="field-input" id="cta-sample-email" placeholder="Email Address" required type="email" data-type="email">
+                    <label class="pen field-label pa" for="sample-email">Email Address</label>
+                    <label class="pen field-label--active ttu pa" for="sample-email">Email Address</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid email address</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="df fc field-col">
+                  <div class="field pr">
+                    <input name="Company Name" class="field-input" id="cta-sample-company" placeholder="Company Name" required type="text">
+                    <label class="pen field-label pa" for="sample-company">Company Name</label>
+                    <label class="pen field-label--active ttu pa" for="sample-company">Company Name</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid company name</div>
+                    </div>
+                  </div>
+                  <div class="field pr">
+                    <select class="field-input" name="Industry" id="cta-sample-industry">
+                      <option value="placeholder">Industry</option>
+                      <option value="Medical">Medical</option>
+                      <option value="Biotechnology">Biotechnology</option>
+                      <option value="Ecology">Ecology</option>
+                      <option value="Recycling">Recycling</option>
+                    </select>
+                    <div class="select-dropdown pa pen">
+                      <svg>
+                        <use xlink:href="#dropdown-arr"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="field pr">
+                    <select class="field-input" name="Purpose" id="cta-sample-purpose">
+                      <option value="placeholder">Purpose</option>
+                      <option value="Medical">Medical</option>
+                      <option value="Biotechnology">Biotechnology</option>
+                      <option value="Ecology">Ecology</option>
+                      <option value="Recycling">Recycling</option>
+                    </select>
+                    <div class="select-dropdown pa pen">
+                      <svg>
+                        <use xlink:href="#dropdown-arr"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="df">
+                <div class="field pr textarea">
+                  <textarea class="field-input field-input--textarea" placeholder="Your Message" name="Message" id="cta-sample-message" cols="30" rows="10"></textarea>
+                  <label class="pen field-label pa" for="sample-message">Your Message</label>
+                  <label class="pen field-label--active ttu pa" for="sample-message">Your Message</label>
+                </div>
+              </div>
+
+              <button class="cta-btn" id="cta-sample-submit">
+                <div class="pr oh btn-wrapper">
+                  <div class="btn-inner" data-content="Request Sample">Request Sample</div>
+                </div>
+              </button>
+
+            </form>
           </div>
-          <form action="POST" data-netlify="true" novalidate name="Request Sample">
-            <div class="df fc form-inner">
-
-              <div class="df fc field-col">
-                <div class="field pr">
-                  <input name="First Name" class="field-input first-name" id="cta-sample-firstname" placeholder="First Name" required type="text" data-type="name">
-                  <label class="pen field-label pa" for="sample-firstname">First Name</label>
-                  <label class="pen field-label--active ttu pa" for="sample-firstname">First Name</label>
-                  <div class="cp pa error-icon">
-                    <svg>
-                      <use xlink:href="#err-icon"></use>
-                    </svg>
-                    <div class="error-overlay ttu pa">Please enter valid name</div>
-                  </div>
-                </div>
-                <div class="field pr">
-                  <input name="Last Name" class="field-input" id="cta-sample-lastname" placeholder="Last Name" required type="text" data-type="name">
-                  <label class="pen field-label pa" for="sample-lastname">Last Name</label>
-                  <label class="pen field-label--active ttu pa" for="sample-lastname">Last Name</label>
-                  <div class="cp pa error-icon">
-                    <svg>
-                      <use xlink:href="#err-icon"></use>
-                    </svg>
-                    <div class="error-overlay ttu pa">Please enter valid name</div>
-                  </div>
-                </div>
-                <div class="field pr">
-                  <input name="Email ID" class="field-input" id="cta-sample-email" placeholder="Email Address" required type="email" data-type="email">
-                  <label class="pen field-label pa" for="sample-email">Email Address</label>
-                  <label class="pen field-label--active ttu pa" for="sample-email">Email Address</label>
-                  <div class="cp pa error-icon">
-                    <svg>
-                      <use xlink:href="#err-icon"></use>
-                    </svg>
-                    <div class="error-overlay ttu pa">Please enter valid email address</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="df fc field-col">
-                <div class="field pr">
-                  <input name="Company Name" class="field-input" id="cta-sample-company" placeholder="Company Name" required type="text">
-                  <label class="pen field-label pa" for="sample-company">Company Name</label>
-                  <label class="pen field-label--active ttu pa" for="sample-company">Company Name</label>
-                  <div class="cp pa error-icon">
-                    <svg>
-                      <use xlink:href="#err-icon"></use>
-                    </svg>
-                    <div class="error-overlay ttu pa">Please enter valid company name</div>
-                  </div>
-                </div>
-                <div class="field pr">
-                  <select class="field-input" name="Industry" id="cta-sample-industry">
-                    <option value="placeholder">Industry</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Biotechnology">Biotechnology</option>
-                    <option value="Ecology">Ecology</option>
-                    <option value="Recycling">Recycling</option>
-                  </select>
-                  <div class="select-dropdown pa pen">
-                    <svg>
-                      <use xlink:href="#dropdown-arr"></use>
-                    </svg>
-                  </div>
-                </div>
-                <div class="field pr">
-                  <select class="field-input" name="Purpose" id="cta-sample-purpose">
-                    <option value="placeholder">Purpose</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Biotechnology">Biotechnology</option>
-                    <option value="Ecology">Ecology</option>
-                    <option value="Recycling">Recycling</option>
-                  </select>
-                  <div class="select-dropdown pa pen">
-                    <svg>
-                      <use xlink:href="#dropdown-arr"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="df">
-              <div class="field pr textarea">
-                <textarea class="field-input field-input--textarea" placeholder="Your Message" name="Message" id="cta-sample-message" cols="30" rows="10"></textarea>
-                <label class="pen field-label pa" for="sample-message">Your Message</label>
-                <label class="pen field-label--active ttu pa" for="sample-message">Your Message</label>
-              </div>
-            </div>
-
-            <button class="cta-btn" id="cta-sample-submit">
-              <div class="pr oh btn-wrapper">
-                <div class="btn-inner" data-content="Request Sample">Request Sample</div>
-              </div>
-            </button>
-
-          </form>
         </div>
       </div>
 

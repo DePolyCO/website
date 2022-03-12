@@ -106,9 +106,10 @@ export class Nav {
 
   toggle = () => {
     this.state.mobileOpen = !this.state.mobileOpen;
-    this.dom.classList.toggle("active");
-    this.btn.classList.toggle("active");
-    document.body.classList.toggle("oh");
+    const action = this.state.mobileOpen ? "add" : "remove";
+    this.dom.classList[action]("active");
+    this.btn.classList[action]("active");
+    document.body.classList[action]("oh");
   };
 }
 

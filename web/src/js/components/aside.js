@@ -1,4 +1,4 @@
-import { iris, qs, qsa } from "../hermes";
+import { iris, qs, qsa, Sniff } from "../hermes";
 import { Smooth, smoothscroller } from "../scroller";
 
 class AsideController {
@@ -11,19 +11,20 @@ class AsideController {
       current: null,
     };
 
+    this.scroller = false;
+
     // test
-    iris.add(document, "keydown", (e) => {
-      if (e.key === "a") {
-        this.open("#cta-panel");
-      }
-    });
+    // iris.add(document, "keydown", (e) => {
+    //   if (e.key === "a") {
+    //     this.open("#cta-panel");
+    //   }
+    // });
   }
 
   init = () => {
     this.untriggers = qsa("[data-trigger-aside]").map((item) => {
-      return iris.add(item, "click", () => {
-        this.open(item.dataset.triggerAside);
-      });
+      const trigger = item.dataset.triggerAside;
+      return iris.add(item, "click", () => this.open(trigger));
     });
   };
 
@@ -46,15 +47,18 @@ class AsideController {
       this.listen();
       this.state.open = true;
 
-      smoothscroller.lock("aside");
-
       this.state.current = qs(panelId, this.dom);
 
-      this.scroller = new Smooth({
-        dom: this.state.current,
-        isWindow: false,
-        window: this.window,
-      });
+      this.preventOverscroll();
+      if (Sniff.touchDevice) {
+      } else {
+        this.scroller = new Smooth({
+          dom: this.state.current,
+          isWindow: false,
+          window: this.window,
+        });
+        window.scroller = this.scroller;
+      }
 
       this.dom.classList.add("active");
       this.state.current.classList.add("active");
@@ -65,17 +69,34 @@ class AsideController {
     if (this.state.open) {
       this.unlisten();
       this.state.open = false;
-      smoothscroller.unlock("aside");
 
-      this.scroller.destroy();
+      this.allowOverscroll();
+
+      this.scroller && this.scroller.destroy();
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");
     }
   };
 
+  preventOverscroll = () => {
+    if (Sniff.touchDevice) {
+      document.body.classList.add("oh");
+    } else {
+      smoothscroller.lock("aside");
+    }
+  };
+
+  allowOverscroll = () => {
+    if (Sniff.touchDevice) {
+      document.body.classList.remove("oh");
+    } else {
+      smoothscroller.unlock("aside");
+    }
+  };
+
   destroy = () => {
     this.untriggers.forEach((untrigger) => untrigger());
-    smoothscroller.unlock("aside");
+    this.allowOverscroll();
   };
 }
 

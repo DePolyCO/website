@@ -4,28 +4,48 @@
 #aside-overlay {
   background: #022d42;
   opacity: 0;
-  transition: opacity 1.25s $ease-out-expo;
+  pointer-events: none;
+  transition: opacity 1s $ease-out-expo;
 }
 
 #aside-inner {
-  width: fluid(1070, $lg);
-  height: 100vh;
-  right: 0;
-  bottom: 0;
+  width: fluid(335, $sm);
+  right: fluid(20, $sm);
+  top: fluid(20, $sm);
+  height: calc(100vh - #{fluid(20, $sm)});
+  overscroll-behavior: contain;
+  overflow: hidden;
+
+  @include md {
+    width: fluid(1070, $lg);
+    top: 0;
+    right: 0;
+    height: 100vh;
+  }
 }
 
 .aside-panel {
-  width: fluid(1070, $lg);
-  min-height: 100vh;
+  width: fluid(335, $sm);
+  // min-height: 100;
+  height: calc(100vh - #{fluid(20, $sm)});
+
   position: absolute;
   right: 0;
   top: 0;
-  overflow-y: auto;
-  background-color: $lightbeige;
   overflow: hidden;
+  background-color: $lightbeige;
 
-  transition: transform 1.5s $ease-out-expo;
-  transform: translateX(100%);
+  transition: transform 1.5s $ease-out-expo, opacity 1.5s $ease-out-expo;
+  transform: translateY(100%);
+
+  @include md {
+    position: absolute;
+
+    width: fluid(1070, $lg);
+    min-height: 100vh;
+    height: fit-content;
+    transform: translate3d(100%, 0, 0);
+  }
 }
 
 #aside.active {
@@ -37,29 +57,32 @@
   }
 
   #aside-close {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .aside-panel.active {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  pointer-events: all;
 }
 
 #aside-close {
   background: $darkbeige;
-  border-radius: fluid(11, $lg);
-  padding: fluid(13, $lg) fluid(41, $lg);
-
   position: fixed;
-  top: fluid(40, $lg);
-  right: fluid(40, $lg);
 
-  transition: transform 1.5s $ease-out-expo;
-  transform: translateX(#{fluid(1070, $lg)});
+  border-radius: fluid(11, $sm);
+  padding: fluid(13, $sm) fluid(41, $sm);
+
+  top: fluid(40, $sm);
+  right: fluid(40, $sm);
+
+  transition: transform 1.5s $ease-out-expo, opacity 1.5s $ease-out-expo;
+  transform: translate3d(0, calc(100vh + #{fluid(40, $sm)}), 0);
 
   svg {
-    width: fluid(12, $lg);
-    height: fluid(12, $lg);
+    width: fluid(12, $sm);
+    height: fluid(12, $sm);
     transition: transform 0.75s $ease-out-expo;
   }
 
@@ -68,51 +91,121 @@
       transform: rotate(90deg);
     }
   }
+
+  @include md {
+    border-radius: fluid(11, $lg);
+    padding: fluid(13, $lg) fluid(41, $lg);
+
+    top: fluid(40, $lg);
+    right: fluid(40, $lg);
+
+    transform: translate3d(#{fluid(1070, $lg)}, 0, 0);
+
+    svg {
+      width: fluid(12, $lg);
+      height: fluid(12, $lg);
+    }
+  }
 }
 
 // bio panel
 
 .bio-left {
-  width: fluid(428, $lg);
-  left: fluid(54, $lg);
-  top: fluid(199, $lg);
-  padding-bottom: fluid(50, $lg);
+  // left: fluid(54, $sm);
+  // top: fluid(199, $sm);
+  padding-bottom: fluid(40, $sm);
   border-bottom: 1px solid $darkblue;
+  position: relative;
+
+  @include md {
+    position: fixed;
+    width: fluid(428, $lg);
+    left: fluid(54, $lg);
+    top: fluid(199, $lg);
+    padding-bottom: fluid(50, $lg);
+  }
+}
+
+.bio-panel--inner {
+  padding: fluid(113, $sm) fluid(20, $sm) 0;
+  overflow-y: auto;
+  min-height: 100%;
+  height: 100%;
+
+  @include md {
+    padding: 0;
+    flex-direction: row;
+    min-height: unset;
+    height: unset;
+  }
+}
+
+#cta-content--wrapper {
+  overflow-y: auto;
+  min-height: 100%;
+  height: 100%;
+
+  @include md {
+    min-height: unset;
+    height: unset;
+  }
 }
 
 .bio-name {
   font-weight: 500;
-  font-size: fluid(68, $lg);
-  margin-bottom: fluid(24, $lg);
+  font-size: fluid(40, $sm);
+  margin-bottom: fluid(20, $sm);
   line-height: 100%;
+
+  @include md {
+    font-size: fluid(68, $lg);
+    margin-bottom: fluid(24, $lg);
+  }
 }
 
 .bio-role {
-  margin-bottom: fluid(69, $lg);
+  margin-bottom: fluid(40, $sm);
+
+  @include md {
+    margin-bottom: fluid(69, $lg);
+  }
 }
 
 .bio-social--title {
-  font-weight: 500;
-  font-size: fluid(17, $lg);
+  font-size: fluid(14, $sm);
   line-height: 110%;
-  margin-bottom: fluid(16, $lg);
+  margin-bottom: fluid(8, $sm);
+
+  @include md {
+    font-weight: 500;
+    font-size: fluid(17, $lg);
+    margin-bottom: fluid(16, $lg);
+  }
 }
 
 .bio-social--list {
-  gap: fluid(8, $lg);
+  gap: fluid(8, $sm);
+
+  @include md {
+    gap: fluid(8, $lg);
+  }
 }
 
 .bio-social--item {
   background: $green;
-  border-radius: fluid(12, $lg);
-  padding: fluid(9, $lg) fluid(15, $lg) fluid(7, $lg);
+  border-radius: fluid(12, $sm);
+  padding: fluid(9, $sm) fluid(15, $sm) fluid(7, $sm);
 
   font-weight: 500;
-  font-size: fluid(18, $lg);
+  font-size: fluid(14, $sm);
   line-height: 130%;
 
   cursor: pointer;
   transition: all 0.5s;
+
+  a {
+    color: $darkblue;
+  }
 
   &:hover {
     background-color: $darkblue;
@@ -121,42 +214,81 @@
       color: #fff !important;
     }
   }
+
+  @include md {
+    font-size: fluid(18, $lg);
+    border-radius: fluid(12, $lg);
+    padding: fluid(9, $lg) fluid(15, $lg) fluid(7, $lg);
+  }
 }
 
 .bio-profile--content {
-  margin-left: fluid(530, $lg);
-  padding-top: fluid(179, $lg);
-  width: fluid(500, $lg);
+  padding-top: fluid(40, $sm);
+
+  @include md {
+    margin-left: fluid(530, $lg);
+    padding-top: fluid(179, $lg);
+    width: fluid(500, $lg);
+  }
 }
 
 .bio-profile--picture {
-  height: fluid(500, $lg);
-  width: fluid(500, $lg);
+  height: fluid(295, $sm);
+  width: fluid(295, $sm);
+
   border-radius: 50%;
   background-color: $darkblue;
-  margin-bottom: fluid(61, $lg);
+  margin-bottom: fluid(40, $sm);
+  overflow: initial;
+
+  @include md {
+    overflow: hidden;
+    height: fluid(500, $lg);
+    width: fluid(500, $lg);
+    margin-bottom: fluid(61, $lg);
+  }
 }
 
 .bio-detail--para {
-  margin-bottom: fluid(40, $lg);
-  font-size: fluid(22, $lg);
+  margin-bottom: fluid(40, $sm);
+  font-size: fluid(16, $sm);
   line-height: 140%;
+
+  @include md {
+    margin-bottom: fluid(40, $lg);
+    font-size: fluid(22, $lg);
+  }
 }
 
 .bio-panel--header {
-  height: fluid(119, $lg);
-  border-bottom: 1px solid $darkblue;
-  width: fluid(976, $lg);
-  left: fluid(54, $lg);
+  height: fluid(73, $sm);
+  width: fluid(295, $sm);
+  left: fluid(20, $sm);
+  top: fluid(0, $sm);
   background-color: $lightbeige;
+  border-bottom: 1px solid $darkblue;
+
+  @include md {
+    height: fluid(119, $lg);
+    width: fluid(976, $lg);
+    left: fluid(54, $lg);
+    top: 0;
+    border-bottom: 1px solid $darkblue;
+  }
 }
 
 .bio-panel--title {
   font-weight: bold;
-  font-size: fluid(16, $lg);
   line-height: 110%;
-  top: fluid(50, $lg);
-  left: fluid(54, $lg);
+  font-size: fluid(14, $sm);
+  top: fluid(29, $sm);
+  left: fluid(20, $sm);
+
+  @include md {
+    font-size: fluid(16, $lg);
+    top: fluid(50, $lg);
+    left: fluid(54, $lg);
+  }
 }
 
 // cta panel
@@ -165,36 +297,64 @@
 }
 
 #cta-picture {
-  width: fluid(976, $lg);
-  height: fluid(207, $lg);
+  width: fluid(295, $sm);
+  height: fluid(100, $sm);
   background: #a6ae8e;
-  margin-bottom: fluid(60, $lg);
+  margin-bottom: fluid(28, $sm);
   flex-grow: 1;
+
+  @include md {
+    width: fluid(976, $lg);
+    height: fluid(207, $lg);
+    margin-bottom: fluid(60, $lg);
+  }
 }
 
 #cta-content {
-  margin-left: fluid(54, $lg);
-  margin-top: fluid(151, $lg);
-  width: fluid(976, $lg);
-  min-height: calc(100vh - #{fluid(150, $lg)});
+  margin-left: fluid(20, $sm);
+  margin-top: fluid(113, $sm);
+  width: fluid(295, $sm);
+  // min-height: calc(100vh - #{fluid(150, $sm)});
+
+  @include md {
+    margin-left: fluid(54, $lg);
+    margin-top: fluid(151, $lg);
+    width: fluid(976, $lg);
+    min-height: calc(100vh - #{fluid(150, $lg)});
+  }
 }
 
 #cta-info {
-  margin-bottom: fluid(60, $lg);
+  margin-bottom: fluid(28, $sm);
+
+  @include md {
+    margin-bottom: fluid(60, $lg);
+  }
 }
 
 #cta-icon {
-  width: fluid(24, $lg);
-  height: fluid(24, $lg);
-  margin-bottom: fluid(5, $lg);
+  width: fluid(17, $sm);
+  height: fluid(17, $sm);
+  margin-bottom: fluid(7, $sm);
+
+  @include md {
+    width: fluid(24, $lg);
+    height: fluid(24, $lg);
+    margin-bottom: fluid(5, $lg);
+  }
 }
 
 #cta-desc {
   font-weight: 400;
-  font-size: fluid(18, $lg);
+  font-size: fluid(16, $sm);
   line-height: 140%;
   text-align: center;
-  width: fluid(241, $lg);
+  width: fluid(217, $sm);
+
+  @include md {
+    font-size: fluid(18, $lg);
+    width: fluid(241, $lg);
+  }
 }
 
 #cta-panel {

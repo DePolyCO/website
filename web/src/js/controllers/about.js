@@ -21,7 +21,7 @@ let highlightFx, numbers, r0;
 export const aboutController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
-    numbers.destroy();
+    // numbers.destroy();
     r0.destroy();
     monoShuffle.destroy();
 
@@ -38,7 +38,7 @@ export const aboutController = new Controller({
     if (Sniff.mobile) {
       numbers = new Numbers();
     } else {
-      numbers = new CaptureReveal();
+      // numbers = new CaptureReveal();
     }
 
     nav.setLinkActive("about");

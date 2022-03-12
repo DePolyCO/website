@@ -68,8 +68,9 @@
 }
 
 #aside-close {
-  background: $darkbeige;
+  background: rgba(2, 45, 66, 0.08);
   position: fixed;
+  
 
   border-radius: fluid(11, $sm);
   padding: fluid(13, $sm) fluid(41, $sm);

@@ -60,19 +60,17 @@
   }
 }
 
-.hero-grid {
-  // mobile version
-  &.d-hide {
-    min-width: fluid(335, $sm);
-    min-height: fluid(335 * 1.516, $sm); // 508 / 335
-  }
+.hero-grid,
+#m-bg--grid {
+  border: 1px solid #dadaca;
+  border-top: none;
+  border-left: none;
+  background-image: linear-gradient(to right, #dadaca 1px, transparent 1px),
+    linear-gradient(to bottom, #dadaca 1px, transparent 1px);
 
-  // desktop version
-  // &.m-hide {
-  // }
+  background-size: fluid(48, $sm) fluid(39, $sm);
 
   @include md {
-    min-height: fluid(358, $lg);
-    min-width: auto;
+    background-size: fluid(74, $lg) fluid(48.4, $lg);
   }
 }

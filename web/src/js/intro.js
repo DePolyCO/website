@@ -5,7 +5,7 @@ export class Intro {
     Object.assign(this, { begin, update, complete });
   }
 
-  async init() {
+  async init(bucketKey) {
     // complete preloading
     // and intro loader animation
     await Promise.all([
@@ -27,10 +27,10 @@ export class Intro {
   images() {
     // preload cover images
 
-    const preload = qs("#img-preload");
-    const urls = qsa("img", preload).map((el) => el.dataset.lazySrc);
-    const uniqueUrls = urls.filter(unique);
-    assets.essential.push(...uniqueUrls);
+    // const preload = qs("#img-preload");
+    // const urls = qsa("img", preload).map((el) => el.dataset.lazySrc);
+    // const uniqueUrls = urls.filter(unique);
+    // assets.essential.push(...uniqueUrls);
 
     return new Promise((resolve) => {
       ImageLoader({
@@ -40,7 +40,7 @@ export class Intro {
         },
         complete: () => {
           resolve();
-          preload.remove();
+          // preload.remove();
         },
       });
     });

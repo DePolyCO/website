@@ -114,7 +114,7 @@
 }
 
 #nav-links {
-  gap: fluid(50, $sm);
+  gap: fluid(47, $sm);
   top: fluid(72 + 45, $sm);
   position: relative;
 
@@ -281,19 +281,11 @@
   }
 }
 
-#m-bg--grid-wrapper {
+#m-bg--grid {
   left: fluid(20, $sm);
   right: fluid(20, $sm);
   top: fluid(72, $sm);
-
-  height: fluid(507, $sm);
-  width: fluid(335, $sm);
-}
-
-#m-bg--grid {
-  min-height: 100%;
-  height: 100%;
-  width: 100%;
+  bottom: fluid(88, $sm);
 }
 
 // CTA button

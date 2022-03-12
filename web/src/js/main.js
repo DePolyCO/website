@@ -30,8 +30,8 @@ import { nav } from "./components/nav";
  */
 
 new Hydra({
-  loader: async (done) => {
-    await intro.init();
+  loader: async (done, currentPage) => {
+    await intro.init(currentPage);
     done();
   },
   controllers: {
@@ -60,8 +60,6 @@ iris.add(
 
     footer.init();
     nav.init();
-
-    ro.update();
 
     if (
       "serviceWorker" in navigator &&

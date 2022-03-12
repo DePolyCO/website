@@ -14,13 +14,11 @@ export class Nav {
     });
 
     this.state = {
-      isVisible: true,
+      isVisible: false,
       hasLine: false,
       activeLink: false,
       mobileOpen: false,
     };
-
-    window.nav = this;
   }
 
   init = () => {

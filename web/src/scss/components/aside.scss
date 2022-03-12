@@ -26,25 +26,27 @@
 
 .aside-panel {
   width: fluid(335, $sm);
-  // min-height: 100;
   height: calc(100vh - #{fluid(20, $sm)});
 
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: -100%;
   overflow: hidden;
   background-color: $lightbeige;
 
-  transition: transform 1.5s $ease-out-expo, opacity 1.5s $ease-out-expo;
-  transform: translateY(100%);
+  transform: translate3d(0, 1%, 0);
+  transition: transform 1.5s $ease-out-expo;
 
   @include md {
     position: absolute;
+    right: fluid(-1070, $lg);
+    bottom: unset;
+    top: 0;
 
     width: fluid(1070, $lg);
     min-height: 100vh;
     height: fit-content;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(1%, 0, 0);
   }
 }
 
@@ -62,15 +64,18 @@
 }
 
 .aside-panel.active {
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, -100%, 0);
   opacity: 1;
   pointer-events: all;
+
+  @include md {
+    transform: translate3d(#{fluid(-1070, $lg)}, 0, 0);
+  }
 }
 
 #aside-close {
   background: rgba(2, 45, 66, 0.08);
   position: fixed;
-  
 
   border-radius: fluid(11, $sm);
   padding: fluid(13, $sm) fluid(41, $sm);

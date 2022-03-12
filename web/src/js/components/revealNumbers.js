@@ -36,14 +36,27 @@ export class Numbers {
     this.inactive(this.current);
 
     this.nos[i].classList.add("active");
-    this.reveals[i].play({ from: 100, to: 0, visible: true, delay: 250 });
+    this.reveals[i].play({
+      from: 100,
+      to: 0,
+      visible: true,
+      delay: 250,
+      stagger: 75,
+      duration: 1750,
+    });
 
     this.current = i;
   };
 
   inactive = (i) => {
     this.nos[i].classList.remove("active");
-    this.reveals[i].playTo({ to: -110, visible: false, delay: 0 });
+    this.reveals[i].playTo({
+      to: -110,
+      visible: false,
+      delay: 0,
+      stagger: 0,
+      duration: 1250,
+    });
   };
 
   destroy = () => {

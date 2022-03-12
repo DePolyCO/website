@@ -3,7 +3,7 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 import { GallerySlider } from "../components/gallerySlider";
-import { CaptureReveal } from "../components/CaptureReveal";
+import { CaptureReveal } from "../components/captureReveal";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
 import { Sniff } from "../hermes";

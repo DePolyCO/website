@@ -60,22 +60,20 @@ export class Hydra {
         from: "intro",
         done: () => {
           this.isRunning = false;
-          idly(() => {
-            this.runPreload(this.preload);
-          });
+          idly(() => this.runPreload(this.preload));
         },
       });
     };
-    this.loader(resolve);
+    this.loader(resolve, this.state.name);
   }
 
-  runPreload(urls = []) {
+  runPreload = (urls = []) => {
     urls.forEach((url) => {
       if (!this.cache.has(url)) {
         this.network(url);
       }
     });
-  }
+  };
 
   listeners(addPop = false) {
     this.links = qsa(`a[href^="/"]:not([target]):not([data-hydra-disabled])`);
@@ -252,11 +250,10 @@ export class Controller {
       smoothscroller.init();
       footer.init();
       nav.show();
+
       show({
         from,
         done: () => {
-          // resize everything on ro
-          // ro.update();
           smoothscroller.resize();
           lazyloader.load();
           asideController.init();

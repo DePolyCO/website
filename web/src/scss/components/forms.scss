@@ -302,6 +302,7 @@ label {
   border-radius: fluid(11, $lg);
   border: 1px solid #dadaca;
   top: fluid(73, $lg);
+  transition: background-color 1.25s $ease-out-expo;
 
   svg {
     width: fluid(12, $lg);
@@ -325,6 +326,17 @@ details[open] ~ .form-toggle {
   &:hover {
     svg {
       transform: rotate(-90deg) !important;
+    }
+  }
+}
+
+.form-wrapper {
+  &:hover {
+    details:not([open]) ~ .form-toggle {
+      background-color: #dadaca;
+      svg {
+        transform: rotate(45deg) !important;
+      }
     }
   }
 }

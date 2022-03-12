@@ -43,7 +43,7 @@
 
     &.active {
       pointer-events: none;
-      
+
       .number-no {
         color: $darkblue;
       }
@@ -157,22 +157,26 @@
 
     padding-top: fluid(60, $sm);
 
-    &:not(.no-border) {
-      &::after {
-        content: "";
-        border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+    &::after {
+      content: "";
+      border-bottom: 1px solid rgba(2, 45, 66, 0.2);
 
-        position: absolute;
-        bottom: 0;
-        left: fluid(-35 + 20, $lg);
-        right: fluid(5 - 20, $lg);
-      }
+      position: absolute;
+      bottom: 0;
+      left: fluid(-35 + 20, $lg);
+      right: fluid(5 - 20, $lg);
     }
 
     @include md {
       width: fluid(400, $lg);
       padding-top: fluid(90, $lg);
       left: fluid(-20, $lg);
+
+      &:not(.no-border) {
+        &::after {
+          display: none;
+        }
+      }
     }
 
     &:first-of-type {

@@ -5,7 +5,7 @@ module.exports = {
       id: "samantha",
       img: "/static/about/team/2.jpg",
       name: "Dr. Samantha Anderson",
-      role: "CEO and Co-founder",
+      role: "CEO & Co-founder",
       bio: [
         {
           type: "text",
@@ -100,7 +100,7 @@ module.exports = {
       id: "valizadeh",
       img: "/static/about/team/5.jpg",
       name: "Dr. Bardiya Valizadeh",
-      role: "CTO and Co-founder",
+      role: "CTO & Co-founder",
       bio: [
         {
           type: "text",
@@ -205,7 +205,7 @@ module.exports = {
       id: "ireland",
       img: "/static/about/team/7.jpg",
       name: "Dr. Christopher Ireland",
-      role: "CSO and co-founder",
+      role: "CSO & co-founder",
       bio: [
         {
           type: "text",

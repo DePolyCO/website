@@ -171,9 +171,11 @@
 
 .bio-role {
   margin-bottom: fluid(40, $sm);
+  white-space: normal;
 
   @include md {
-    margin-bottom: fluid(69, $lg);
+  white-space: nowrap;
+  margin-bottom: fluid(69, $lg);
   }
 }
 

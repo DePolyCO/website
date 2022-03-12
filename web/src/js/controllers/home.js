@@ -55,7 +55,8 @@ export const homeController = new Controller({
       targets: ".stat-title",
       auto: true,
       char: true,
-      stagger: 50,
+      stagger: 35,
+      threshold: Sniff.touchDevice ? 0.5 : 1,
     });
 
     const prlx = qsa("[data-parallax]");
@@ -80,7 +81,7 @@ export const homeController = new Controller({
     });
 
     if (!Sniff.touchDevice) {
-      // c1 = new Collapse();
+      c1 = new Collapse();
 
       ps = qsa(".stat-desc").map(
         (item) =>

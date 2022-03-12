@@ -48,6 +48,9 @@ export class Smooth extends Conductor {
     this.scrollID = corescroller.add({ update: this.setScroll });
     this.roID = ro.add({ update: this.resize });
     this.tickID = ticker.add({ update: this.update });
+
+    this.ro = new ResizeObserver(this.resize);
+    this.ro.observe(this.scrollContent);
   }
 
   init() {
@@ -227,6 +230,7 @@ export class Smooth extends Conductor {
     corescroller.remove(this.scrollID);
     ticker.remove(this.tickID);
     ro.remove(this.roID);
+    this.ro.disconnect();
   };
 
   lock = (name = "default") => {

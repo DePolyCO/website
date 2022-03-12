@@ -27,7 +27,8 @@
 
   #meet-slider {
     width: fluid($sm - 20, $sm);
-    touch-action: none;
+    // touch-action: none;
+    touch-action: pan-y;
 
     @include md {
       width: fluid(1410, $lg);
@@ -252,17 +253,19 @@
 
   #position-tag--wrapper {
     padding-bottom: fluid(40, $sm);
+    padding-top: fluid(40, $sm);
     margin-bottom: fluid(40, $sm);
     border-bottom: 1px solid #022d42;
+    border-top: 1px solid #022d42;
 
     .tag {
       margin-bottom: 0;
     }
 
     @include md {
-      padding-bottom: 0;
+      padding: 0;
       margin-bottom: 0;
-      border-bottom: none;
+      border-none: none;
     }
   }
 

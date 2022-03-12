@@ -95,7 +95,7 @@
   }
 
   #dropdown-m--wrapper {
-    margin-bottom: fluid(40, $sm);
+    // margin-bottom: fluid(40, $sm);
     padding-bottom: fluid(40, $sm);
 
     &.active {
@@ -292,19 +292,20 @@
   }
 
   .info-icon {
-    width: fluid(20, $sm);
-    height: fluid(20, $sm);
+    width: fluid(24, $sm);
+    height: fluid(24, $sm);
 
     margin-right: fluid(7, $sm);
 
     position: relative;
-    top: 3px;
+    top: fluid(4, $sm);
 
     @include md {
-      width: fluid(20, $lg);
-      height: fluid(20, $lg);
+      width: fluid(24, $lg);
+      height: fluid(24, $lg);
       margin-top: fluid(-2, $lg);
       margin-right: fluid(7, $lg);
+      top: fluid(4.25, $lg);
     }
   }
 }

@@ -89,6 +89,15 @@
     }
   }
 
+  #see-more--back {
+    transition: all 0.75s $ease-out-expo;
+
+    &:hover {
+      color: #dadaca;
+      background-color: $darkblue;
+    }
+  }
+
   .mb-md {
     margin-bottom: fluid(100, $sm);
 
@@ -130,7 +139,7 @@
 
     @include md {
       line-height: 140%;
-      font-size: fluid(18, $lg);
+      font-size: fluid(22, $lg);
     }
   }
 
@@ -174,7 +183,7 @@
     }
 
     &:hover {
-      background: $darkbeige;
+      background: $green;
     }
   }
 

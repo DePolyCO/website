@@ -1,4 +1,4 @@
-import { bindAll, Observer } from "../../hermes";
+import { Observer } from "../../hermes";
 
 class FXManager {
   constructor() {

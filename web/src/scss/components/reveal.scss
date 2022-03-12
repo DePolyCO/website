@@ -12,9 +12,11 @@
 }
 
 .l-char--wrapper {
-  display: inline;
+  display: inline-block;
   overflow: hidden;
   contain: content;
+  padding-right: 0.1em;
+  padding-bottom: 0.1em;
 }
 
 .l-char {
@@ -23,7 +25,7 @@
 }
 
 .l-space {
-  width: 3.6805555556vw;
+  width: 0.2em;
   height: 100%;
 }
 

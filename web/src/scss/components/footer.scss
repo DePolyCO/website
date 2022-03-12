@@ -68,7 +68,7 @@
   font-size: fluid(13, $sm);
   border-radius: fluid(7, $sm);
   padding: fluid(3, $sm) fluid(8, $sm);
-  transform: translate(calc(100% - #{fluid(-8, $sm)}), -50%);
+  transform: translate(calc(100% - #{fluid(-8, $sm)}), calc(-50% + 2px));
 
   font-weight: 400;
   line-height: 130%;

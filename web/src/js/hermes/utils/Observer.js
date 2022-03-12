@@ -50,11 +50,12 @@ export const Observer = () => {
     return {
       observe: (targets) => {
         const nodes = select(targets);
-        nodes.forEach((node) => {
-          observer.observe(node);
-        });
+        nodes.forEach((node) => observer.observe(node));
       },
-      unobserve: () => observer.unobserve(target),
+      unobserve: (targets) => {
+        const nodes = select(targets);
+        nodes.forEach((node) => observer.unobserve(node));
+      },
       disconnect: () => observer.disconnect(),
     };
   };

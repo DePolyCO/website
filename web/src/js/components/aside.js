@@ -57,7 +57,6 @@ class AsideController {
           isWindow: false,
           window: this.window,
         });
-        window.scroller = this.scroller;
       }
 
       this.dom.classList.add("active");

@@ -1,5 +1,6 @@
 .compare-slider {
   touch-action: manipulation;
+  contain: content;
 
   width: fluid(335, $sm);
   height: fluid(220, $sm);
@@ -10,12 +11,12 @@
   }
 }
 
-.compare-slide--before {
-  background-color: $darkblue;
-}
+// .compare-slide--before {
+// background-color: $darkblue;
+// }
 
 .compare-slide--after {
-  background-color: $darkgray;
+  // background-color: $darkgray;
   will-change: clip-path;
 }
 

@@ -24,7 +24,7 @@
 
             <div class="df fc bio-panel--inner">
               <picture class="bio-profile--picture d-hide">
-                <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}">
               </picture>
               <div class="pf df fc bio-left">
                 <div class="bio-name">{{ member.name }}</div>
@@ -43,7 +43,7 @@
 
               <div class="bio-profile--content df fc" data-scroll-section>
                 <picture class="bio-profile--picture m-hide">
-                  <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                  <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}">
                 </picture>
                 <div class="bio-profile--details">
                   {% for item in member.bio %}
@@ -59,6 +59,81 @@
         {% endif %}
       {% endfor %}
 
+      {# explain visuals #}
+      <div id="explain-visual--1" class="aside-panel z1 d-hide">
+
+        <div class="bio-panel--header pf top right left z2"></div>
+        <div class="bio-panel--title pf ttu fv-mono z3">INFO</div>
+
+        <div class="df fc bio-panel--inner">
+          <picture class="explain--picture">
+            <img data-lazy-src="/technology/explain/1.jpg" alt="">
+          </picture>
+          <div class="pf df fc bio-left">
+            <div class="bio-name">Plastic Pandemic</div>
+            <p class="bio-detail--para">
+              PET plastic is everywhere - its in your clothing, bottles and packaging, shoes, and boats! However most of this cannot be recycled by traditional methods due to contamination of food, chemicals, other plastics, or dyes and additives. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {# explain visuals #}
+      <div id="explain-visual--2" class="aside-panel z1 d-hide">
+
+        <div class="bio-panel--header pf top right left z2"></div>
+        <div class="bio-panel--title pf ttu fv-mono z3">INFO</div>
+
+        <div class="df fc bio-panel--inner">
+          <picture class="explain--picture">
+            <img data-lazy-src="/technology/explain/2.jpg" alt="">
+          </picture>
+          <div class="pf df fc bio-left">
+            <div class="bio-name">Revolutionary Technology</div>
+            <p class="bio-detail--para">
+           Using simple sustainable chemicals and technology, DePoly has developed a process to recycle all PET plastics without the need to prewash, pre-sort, or separate out other plastics. we can save time, money and PET resources that would be otherwise thrown into landfills or incinerated.  </p>
+          </div>
+        </div>
+      </div>
+
+      {# explain visuals #}
+      <div id="explain-visual--3" class="aside-panel z1 d-hide">
+
+        <div class="bio-panel--header pf top right left z2"></div>
+        <div class="bio-panel--title pf ttu fv-mono z3">INFO</div>
+
+        <div class="df fc bio-panel--inner">
+          <picture class="explain--picture">
+            <img data-lazy-src="/technology/explain/3.jpg" alt="">
+          </picture>
+          <div class="pf df fc bio-left">
+            <div class="bio-name">What’s PTA?</div>
+            <p class="bio-detail--para">
+              PTA - aka purified terephthalic acid is a white powder used in the PET resin industry during the polycondensation process to produce new PET plastic. Originally It’s produced from oil. Other usages: pharmaceuticals...  
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {# explain visuals #}
+      <div id="explain-visual--4" class="aside-panel z1 d-hide">
+
+        <div class="bio-panel--header pf top right left z2"></div>
+        <div class="bio-panel--title pf ttu fv-mono z3">INFO</div>
+
+        <div class="df fc bio-panel--inner">
+          <picture class="explain--picture">
+            <img data-lazy-src="/technology/explain/4.jpg" alt="">
+          </picture>
+          <div class="pf df fc bio-left">
+            <div class="bio-name">What’s MEG?</div>
+            <p class="bio-detail--para">
+              MEG - aka mono-ethylene glycol is a clear liquid used in the PET resin industry to produce new PET plastic items via the polycondensation process. Another derivative from oil/fossil fuel.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {# request sample cta #}
       <div id="cta-panel" class="aside-panel z1">
 
@@ -68,7 +143,7 @@
         <div id="cta-content--wrapper">
           <div id="cta-content" class="df fc" data-scroll-section>
             <picture id="cta-picture">
-              <img src="/static/request-sample.jpg" alt="Request sample">
+              <img data-lazy-src="/static/request-sample.jpg" alt="Request sample">
             </picture>
             <div id="cta-info" class="df fc aic jcc">
               <svg id="cta-icon" fill="none" viewBox="0 0 24 24">
@@ -260,6 +335,11 @@
       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z" fill="#022D42"/>
     </symbol>
 
+    {# info icon filled #}
+    <symbol id="info-icon--filled" fill="none" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z" fill="#022D42"/>
+    </symbol>
+
     {# error icon #}
     <symbol id="err-icon" fill="none" viewBox="0 0 20 20">
       <path d="M10 20c5.52 0 10-4.48 10-10S15.52 0 10 0 0 4.48 0 10s4.48 10 10 10ZM9 5h2v6H9V5Zm0 8h2v2H9v-2Z" fill="#F66"/>
@@ -284,6 +364,11 @@
     {# dropdown arr #}
     <symbol id="dropdown-arr" fill="none" viewBox="0 0 18 11">
       <path opacity=".5" d="M2.88.453 9 6.56 15.12.453 17 2.333l-8 8-8-8L2.88.453Z" fill="#022D42" stroke="#ECECE2" stroke-width=".6"/>
+    </symbol>
+
+    {# plus icon #}
+    <symbol id="plus-icon" fill="none" viewBox="0 0 24 24">
+      <path d="M18.73 12.296v-1.42h-5.602V5.273h-1.42v5.603H6.105v1.42h5.603v5.602h1.42v-5.602h5.602Z" fill="#022D42" stroke="#022D42" stroke-width=".8"/>
     </symbol>
 
   </svg>

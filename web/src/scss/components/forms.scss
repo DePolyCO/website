@@ -216,8 +216,17 @@ label {
 
   @include md {
     font-size: fluid(18, $lg);
-    top: fluid(19, $lg);
+    // top: fluid(19, $lg);
     left: fluid(20, $lg);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.textarea.field .field-label {
+  @include md {
+    top: fluid(19, $lg);
+    transform: none;
   }
 }
 

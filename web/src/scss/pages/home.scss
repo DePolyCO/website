@@ -382,8 +382,8 @@
 
       .enhanced-picture {
         transition: transform 1.25s $ease-out-expo;
-        transform: scale(math.div(135, 403), math.div(139, 330))
-          translate3d(#{fluid(-490, $lg)}, #{fluid(220, $lg)}, 0);
+        transform: scale(math.div(135, 470), math.div(139, 388))
+          translate3d(#{fluid(-590, $lg)}, #{fluid(360, $lg)}, 0);
       }
 
       .enhanced-sno {
@@ -402,9 +402,16 @@
       width: fluid(968, $lg);
 
       .enhanced-picture {
-        min-width: fluid(968, $lg);
-        width: fluid(968, $lg);
+        min-width: fluid(1034, $lg);
+        width: fluid(1034, $lg);
         height: fluid(462, $lg);
+        position: relative;
+
+        img {
+          position: absolute;
+          left: fluid(-50, $lg);
+          top: 0;
+        }
       }
     }
   }
@@ -460,8 +467,8 @@
 
   .enhanced-picture {
     min-width: fluid(403, $lg);
-    width: fluid(403, $lg);
-    height: fluid(330, $lg);
+    width: fluid(470, $lg);
+    height: fluid(388, $lg);
     background: $green;
     transition: transform 1.25s $ease-out-expo;
   }

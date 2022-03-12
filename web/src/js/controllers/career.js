@@ -3,7 +3,7 @@ import { Controller } from "../hydra";
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 import { GallerySlider } from "../components/gallerySlider";
-import { CaptureQuotes } from "../components/captureQuotes";
+import { CaptureReveal } from "../components/CaptureReveal";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
 import { Sniff } from "../hermes";
@@ -30,7 +30,31 @@ export const careerController = new Controller({
 
     if (Sniff.touchDevice) {
     } else {
-      capture = new CaptureQuotes();
+      capture = new CaptureReveal({
+        dom: "#quotes-list",
+        targets: ".quote",
+        revealTargets: ".quote-reveal",
+        nestedTarget: true,
+        revealOptions: {
+          show: {
+            from: 110,
+            to: 0,
+            stagger: 150,
+            delay: 0,
+            visible: true,
+            easing: "o6",
+            duration: 1750,
+          },
+          hide: {
+            to: -110,
+            stagger: 0,
+            delay: 0,
+            visible: false,
+            easing: "o4",
+            duration: 1250,
+          },
+        },
+      });
     }
 
     r0 = new Reveal({

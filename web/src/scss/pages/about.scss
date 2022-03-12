@@ -35,7 +35,15 @@
   .number-item {
     align-items: baseline;
 
+    &:hover {
+      .number-no {
+        color: $darkbeige;
+      }
+    }
+
     &.active {
+      pointer-events: none;
+      
       .number-no {
         color: $darkblue;
       }
@@ -49,7 +57,7 @@
     font-size: fluid(154, $lg);
     line-height: 110%;
     transition: color 0.75s $ease-out-expo;
-    color: $darkbeige;
+    color: rgba(246, 246, 238, 1);
   }
 
   .number-detail {
@@ -58,6 +66,7 @@
     letter-spacing: -0.01em;
     left: fluid(40 + 430, $lg);
     // transition: color 0.75s $ease-out-expo;
+    pointer-events: none;
   }
 
   #numbers-m {

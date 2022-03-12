@@ -38,7 +38,7 @@ export const aboutController = new Controller({
     if (Sniff.mobile) {
       numbers = new Numbers();
     } else {
-      // numbers = new CaptureReveal();
+      numbers = new CaptureReveal();
     }
 
     nav.setLinkActive("about");

@@ -131,7 +131,7 @@
   @include md {
     flex-direction: row;
     gap: fluid(10, $lg);
-    margin-bottom: fluid(30, $lg);
+    margin-bottom: fluid(20, $lg);
 
     .field {
       min-width: fluid(188, $lg);
@@ -168,17 +168,24 @@
   }
 }
 
-#footer-check--tick {
-  width: fluid(12, $lg);
-  height: fluid(8, $lg);
-  top: fluid(6, $lg);
-  left: fluid(4, $lg);
+.footer-check--tick {
+  width: fluid(12, $sm);
+  height: fluid(8, $sm);
+  top: fluid(6 + 6, $sm);
+  left: fluid(4, $sm);
   opacity: 0;
 
   transition: opacity 0.4s $ease-out-expo;
 
   svg {
     display: block;
+  }
+
+  @include md {
+    width: fluid(12, $lg);
+    height: fluid(8, $lg);
+    top: fluid(6, $lg);
+    left: fluid(4, $lg);
   }
 }
 
@@ -202,36 +209,52 @@
   }
 }
 
-#footer #footer-cta--check {
-  font-size: fluid(16, $lg);
-  line-height: 140%;
+#footer .footer-cta--check {
   border: 1px solid #022d42;
 
-  margin-right: fluid(15, $lg);
+  margin-right: fluid(10, $sm);
   -webkit-appearance: none;
-  border-radius: fluid(6, $lg);
-  width: fluid(20, $lg);
-  height: fluid(20, $lg);
+  border-radius: fluid(6, $sm);
+  width: fluid(20, $sm);
+  height: fluid(20, $sm);
   padding: 0;
+
+  position: relative;
+  top: 7px;
+
+  @include md {
+    align-items: center;
+    top: 3px;
+    // position: static;
+
+    border-radius: fluid(6, $lg);
+    width: fluid(20, $lg);
+    height: fluid(20, $lg);
+    margin-right: fluid(15, $lg);
+  }
 }
 
-.footer-cta--check {
+#footer-check--wrapper-m {
+  margin-bottom: fluid(18, $sm);
+}
+
+.footer-cta--check-label {
   align-items: baseline;
   user-select: none;
   padding-top: 2px;
+  font-size: fluid(14, $sm);
+  line-height: 140%;
 
   a {
-    margin: 0 0.3em;
+    margin: 0 0.1em;
   }
 
-  display: none;
-
   @include md {
-    display: flex;
+    font-size: fluid(16, $lg);
   }
 }
 
-#footer-cta--check:checked + #footer-check--tick {
+.footer-cta--check:checked + .footer-check--tick {
   opacity: 1;
 }
 

@@ -30,30 +30,23 @@ export class Nav {
 
     if (Sniff.touchDevice) {
       iris.add(this.btn, "click", this.toggle);
-      // iris.add(this.linkItems, "click", this.toggle);
 
       this.reveals = this.linkItems.map(
         (item) =>
           new Reveal({
             targets: qs(".nav-link--inner", item),
             from: 105,
-            // char: true,
-            // stagger: 25,
             delay: 1 * 50,
             duration: 1750,
-            // rotate: true,
           })
       );
 
       const grid = qs("#m-bg--grid");
       const right = qs("#nav-right");
 
-      // right.style.transform = `translateY(20%)`;
-
       this.bg = new Vau({
         targets: grid,
         duration: 2500,
-        // opacity: [1, 0],
         easing: "o6",
         transform: {
           y: [1, 50],
@@ -69,11 +62,6 @@ export class Nav {
           yu: "%",
         },
       });
-
-      // this.bg.pause();
-      // this.navt.pause();
-
-      window.nav = this;
     }
   };
 

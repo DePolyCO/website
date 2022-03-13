@@ -98,7 +98,13 @@ export const homeController = new Controller({
 
     const icons = qsa(".icon");
     iconDraws = icons.map((el) =>
-      Draw({ targets: el, duration: 1750, easing: "o5", reverse: Sniff.safari })
+      Draw({
+        targets: el,
+        duration: 1750,
+        easing: Sniff.safari ? "i2" : "o6",
+        invert: Sniff.safari,
+        reverse: Sniff.safari,
+      })
     );
     iconDraws.forEach((d) => d.pause());
 

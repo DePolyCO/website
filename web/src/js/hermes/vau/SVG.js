@@ -1,5 +1,5 @@
 import { Tweens } from "./vau";
-import { round, select, qsa } from "../utils";
+import { round, select, qsa, Sniff } from "../utils";
 
 /**
  *
@@ -46,25 +46,23 @@ export const Draw = ({
   reverse,
 }) => {
   let els = select(targets);
-  let nels = [];
-  els.forEach((el) => {
-    nels.push(...qsa("path", el));
-  });
+  const nels = [];
+  els.forEach((el) => nels.push(...qsa("path", el)));
   els = nels;
 
-  let n = els.length;
-  let lengths = new Float32Array(n);
-  let vals = [];
+  const n = els.length;
+  const lengths = new Float32Array(n);
+  const vals = [];
 
   for (let i = 0; i < n; i++) {
-    let el = els[i];
-    let l = el.getTotalLength();
+    const el = els[i];
+    const l = el.getTotalLength();
     lengths[i] = l;
     el.style.strokeDasharray = l;
     el.style.strokeDashoffset = l;
     // if invert is truthy, run backwards
     // Note: This is different from reverse
-    !invert ? vals.push([-l, 0]) : vals.push([0, l]);
+    invert ? vals.push([0, l]) : vals.push([-l, 0]);
   }
 
   begin && begin();

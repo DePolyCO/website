@@ -40,6 +40,18 @@ class Sniffer {
     this.touchDevice = "ontouchstart" in window;
 
     this.mutationObserver = "MutationObserver" in window;
+
+    if (this.safari) {
+      document.body.classList.add("safari");
+    }
+
+    if (this.firefox) {
+      document.body.classList.add("firefox");
+    }
+
+    if (this.mac) {
+      document.body.classList.add("mac");
+    }
   }
 }
 

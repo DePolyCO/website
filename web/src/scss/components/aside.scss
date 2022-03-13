@@ -303,6 +303,7 @@ strong {
   top: 0;
   background-color: $lightbeige;
   border-bottom: 1px solid $darkblue;
+  transform: translateZ(0);
 
   @include md {
     height: fluid(119, $lg);

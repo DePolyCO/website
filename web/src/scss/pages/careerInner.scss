@@ -69,29 +69,6 @@
     }
   }
 
-  .chip {
-    font-weight: 500;
-    line-height: 130%;
-    letter-spacing: 0.01em;
-
-    background: #dadaca;
-    height: -moz-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    height: fit-content;
-    display: inline-block;
-
-    font-size: fluid(14, $sm);
-    padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
-    border-radius: fluid(8, $sm);
-
-    @include md {
-      font-size: fluid(16, $lg);
-      padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
-      border-radius: fluid(8, $lg);
-    }
-  }
-
   #see-more--back {
     transition: all 0.75s $ease-out-expo;
 
@@ -242,5 +219,30 @@
       opacity: 1;
       pointer-events: all;
     }
+  }
+}
+
+.chip {
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0.01em;
+
+  background: #dadaca;
+  height: -moz-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+
+  margin-bottom: 2px;
+
+  font-size: fluid(14, $sm);
+  padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
+  border-radius: fluid(8, $sm);
+
+  @include md {
+    font-size: fluid(16, $lg);
+    padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
+    border-radius: fluid(8, $lg);
   }
 }

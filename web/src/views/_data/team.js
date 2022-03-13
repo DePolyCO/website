@@ -14,7 +14,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – she is a great runner!",
+          content: "she is a great runner!",
           tags: ["frequently running in the", "Lausanne marathon"],
         },
         {
@@ -42,7 +42,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – he is a language geek who speaks:",
+          content: "he is a language geek who speaks:",
           tags: ["English", "French", "Tunisian", "Spanish"],
         },
         {
@@ -70,7 +70,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – he is a piano player!",
+          content: "he is a piano player!",
           tags: ["10 year at the geneva", "music conservatory"],
         },
         {
@@ -109,7 +109,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – he is a piano player.",
+          content: "he is a piano player.",
           tags: ["self-taught beginner pianist"],
         },
         {
@@ -142,7 +142,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – Speaks multiple languages:",
+          content: "Speaks multiple languages:",
           tags: ["english", "turkish", "french in progress"],
         },
         {
@@ -170,7 +170,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – main ambition:",
+          content: "main ambition:",
           tags: ["to write a book before", "getting 60 years old!"],
         },
         {
@@ -214,7 +214,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – Chris is a typical Brit:",
+          content: "Chris is a typical Brit:",
           tags: ["8 tea cups / day"],
         },
         {
@@ -247,7 +247,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – he has the knowledge!",
+          content: "he has the knowledge!",
           tags: ["20 years of experience"],
         },
         {
@@ -275,7 +275,7 @@ module.exports = {
         },
         {
           type: "fact",
-          content: "Interesting fact – he is the rail travel!",
+          content: "he is the rail travel!",
           tags: ["currently working towards a", "railway driving license"],
         },
         {

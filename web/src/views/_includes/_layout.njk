@@ -51,6 +51,20 @@
                     {% if item.type === "text" %}
                       <p class="bio-detail--para">{{ item.content }}</p>
                     {% endif %}
+                    {% if item.type === "fact" %}
+                      <div class="bio-detail--fact">
+                        <div class="fact-inner">
+                          <strong>Interesting fact</strong> - {{ item.content }}
+                        </div>
+
+                        <div class="fact-tags">
+                          {% for tag in item.tags %}
+                            <span class="chip ttu ">{{ tag }}</span>
+                          {% endfor %}
+                        </div>
+
+                      </div>
+                    {% endif %}
                   {% endfor %}
                 </div>
               </div>

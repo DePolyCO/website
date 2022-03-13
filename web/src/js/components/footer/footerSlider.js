@@ -24,8 +24,10 @@ export class FooterSlider {
   }
 
   init = () => {
+    smoothscroller.unlock("footer");
     this.clearState();
     this.resize();
+    this.scrollContent.style.transform = `none`;
   };
 
   common = () => {
@@ -99,5 +101,6 @@ export class FooterSlider {
     const { page } = this.state;
     const { width } = bounds(this.scrollContent);
     page.width = width - bounds(this.scrollWindow).width;
+    this.update();
   };
 }

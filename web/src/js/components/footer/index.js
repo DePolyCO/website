@@ -13,16 +13,20 @@ export class Footer {
     this.hover = new FooterHover({ dom: this.dom });
 
     this.form = qs("form", this.dom);
+
+    this.common();
   }
 
-  init = () => {
-    this.slider.init();
-
+  common = () => {
     iris.add(this.form, "submit", this.handleSubmit, { passive: false });
 
     this.unvalidate = qsa("input", this.form).map((input) =>
       iris.add(input, "input", this.handleValidate)
     );
+  };
+
+  init = () => {
+    this.slider.init();
   };
 
   handleSubmit = (e) => {

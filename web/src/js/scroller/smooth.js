@@ -51,6 +51,8 @@ export class Smooth extends Conductor {
 
     this.ro = new ResizeObserver(this.resize);
     this.ro.observe(this.scrollContent);
+
+    window.smooth = this;
   }
 
   init() {
@@ -121,6 +123,12 @@ export class Smooth extends Conductor {
     x.cur = this.clampX(x.cur + deltaX);
     y.cur = this.clampY(y.cur + deltaY);
   };
+
+  // setAbsScroll = ({ x, y }) => {
+  //   const { scroll } = this.state;
+  //   scroll.x.cur = this.clampX(x);
+  //   scroll.y.cur = this.clampY(y);
+  // };
 
   update = () => {
     const { x, y } = this.state.scroll;
@@ -214,7 +222,7 @@ export class Smooth extends Conductor {
     // this.tracker.train.forEach((item) => (item.dom.style.transform = "none"));
 
     // set cur
-    this.setScroll({ deltaX: 1, deltaY: 1, force: true });
+    this.setScroll({ deltaX: 0.002, deltaY: 0.002, force: true });
     // set target
     // const { x, y } = this.state.scroll;
     // x.target = this.clampX(x.cur + DELTA);

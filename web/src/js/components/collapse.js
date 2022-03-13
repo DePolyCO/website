@@ -13,7 +13,6 @@ import {
   Duration,
 } from "../hermes";
 import { smoothscroller, corescroller } from "../scroller";
-
 import { Reveal } from "../reveal";
 
 export class Collapse {
@@ -60,7 +59,8 @@ export class Collapse {
     };
 
     this.init();
-    // window.collapse = this;
+
+    window.collapse = this;
   }
 
   init = () => {
@@ -99,13 +99,14 @@ export class Collapse {
   update = () => {
     if (this.state.selfLock) return;
 
-    const { scroll, boundRange, slides, summary } = this.state;
+    const { scroll, boundRange, slides, summary, page } = this.state;
 
     const ycur = -scroll.cur;
 
     if (ycur > boundRange[0] && ycur < boundRange[1]) {
       if (!this.lerp.needsUpdate()) return;
       this.lerp.update();
+
       const y = -scroll.target;
 
       // engage lock
@@ -132,10 +133,17 @@ export class Collapse {
           summary.active = false;
         }
       }
-    } else if (this.state.lock) {
-      // unlock if not necessary
-      this.state.lock = false;
-      smoothscroller.unlock("collapse");
+    } else {
+      if (this.state.lock) {
+        // unlock if not necessary
+        this.state.lock = false;
+        smoothscroller.unlock("collapse");
+      }
+
+      const offset = ycur > boundRange[1] ? page.width : 0;
+      // sync values to smooth
+      scroll.cur = smoothscroller.state.scroll.y.cur - offset;
+      scroll.target = smoothscroller.state.scroll.y.target - offset;
     }
   };
 
@@ -152,6 +160,7 @@ export class Collapse {
         delay: 250,
         duration: 1750,
         easing: "o6",
+        visible: true,
       });
 
       // briefly lock slide
@@ -174,6 +183,7 @@ export class Collapse {
       delay: 0,
       duration: 1000,
       easing: "o6",
+      visible: false,
     });
   }
 

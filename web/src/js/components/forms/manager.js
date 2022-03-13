@@ -95,6 +95,9 @@ export class FormManager {
         }
       });
     });
+
+    iris.add(".form-wrapper summary", "pointerenter", (e) => e.target.parentNode.parentNode.classList.toggle("hover-toggle"));
+    iris.add(".form-wrapper summary", "pointerleave", (e) => e.target.parentNode.parentNode.classList.toggle("hover-toggle"));
   };
 
   handleSubmit = (e) => {

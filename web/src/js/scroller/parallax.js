@@ -1,4 +1,3 @@
-import { Tracker, tracker } from "./tracker";
 import { smoothscroller } from "./smooth";
 import {
   Ease,
@@ -8,6 +7,7 @@ import {
   bounds,
   invlerp,
   getOffsetTop,
+  Sniff,
 } from "../hermes";
 
 export class Parallax {
@@ -34,6 +34,8 @@ export class Parallax {
     ease = "io1",
     limitBounds = false,
   }) {
+    if (Sniff.safari) return;
+
     this.dom = select(dom)[0];
 
     this.options = {
@@ -155,6 +157,8 @@ export class Parallax {
   };
 
   destroy = () => {
+    if (Sniff.safari) return;
+
     smoothscroller.remove(this.scrollID);
     ro.remove(this.roID);
   };

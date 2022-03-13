@@ -165,7 +165,6 @@
 
   .team-item {
     position: relative;
-
     padding-top: fluid(60, $sm);
 
     &::after {
@@ -174,8 +173,8 @@
 
       position: absolute;
       bottom: 0;
-      left: fluid(-35 + 20, $lg);
-      right: fluid(5 - 20, $lg);
+      left: fluid(-35 + 20, $sm);
+      right: fluid(5 - 20, $sm);
     }
 
     @include md {
@@ -183,7 +182,12 @@
       padding-top: fluid(90, $lg);
       left: fluid(-20, $lg);
 
-      &:not(.no-border) {
+      &::after {
+        left: fluid(-35 + 20, $lg);
+        right: fluid(5 - 20, $lg);
+      }
+
+      &.no-border {
         &::after {
           display: none;
         }
@@ -205,6 +209,9 @@
     width: fluid(335, $sm);
     height: fluid(335, $sm);
     margin-bottom: fluid(26, $sm);
+
+    // hack to promote to it's own layer
+    will-change: transform;
 
     border-radius: 50%;
     background: #f6f6ee;

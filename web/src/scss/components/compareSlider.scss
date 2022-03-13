@@ -32,6 +32,9 @@
 
 .compare-slider--handle {
   touch-action: none;
+   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 
   width: fluid(100, $sm);

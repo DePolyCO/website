@@ -4,8 +4,8 @@ import { Tracker, smoothscroller, corescroller } from "../scroller";
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
     this.intersectionPoints = {
-      bottom: 0.33,
       ...intersectionPoints,
+      bottom: 0.4,
     };
 
     this.tracker = new Tracker({

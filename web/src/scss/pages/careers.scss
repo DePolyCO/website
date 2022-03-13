@@ -158,6 +158,9 @@
     border-radius: 50%;
     margin-bottom: fluid(40, $sm);
 
+    // hack to promote to it's own layer
+    will-change: transform;
+    
     img {
       transition: transform 2.5s $ease-out-expo;
     }
@@ -286,7 +289,7 @@
   }
 
   .position-item {
-    border-bottom: 1px solid $darkblue;
+    border-bottom: 1px solid $darkbeige;
 
     padding-bottom: fluid(40, $sm);
     margin-bottom: fluid(40, $sm);

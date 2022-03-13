@@ -69,7 +69,7 @@ export class GallerySlider {
   resize = () => {
     const { left, top, height, width } = bounds(this.handle);
     this.state.bounds.x = left + width / 2;
-    this.state.bounds.y = top + height / 2;
+    this.state.bounds.y = top + height;
   };
 
   destroy() {

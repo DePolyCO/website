@@ -134,6 +134,7 @@
   font-size: fluid(28, $sm);
   line-height: 110%;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 
   &:hover {
     .nav-link--inner::after {

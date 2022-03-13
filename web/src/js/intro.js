@@ -74,6 +74,7 @@ export const intro = new Intro({
         y: [0, -110],
         yu: "%",
       },
+      complete: () => loadProgress.remove(),
     });
 
     new Vau({
@@ -84,6 +85,7 @@ export const intro = new Intro({
         y: [0, -100],
         yu: "%",
       },
+      complete: () => loadEl.remove(),
     });
 
     // appWrapper.style.transform = `translateY(${window.innerHeight}px)`;

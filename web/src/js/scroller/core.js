@@ -152,42 +152,42 @@ export class CoreScroll extends Conductor {
   onScroll = (e) => {
     const evt = this.current;
 
-    evt.deltaX = window.scrollX - this.scroll.x;
-    evt.deltaY = -window.scrollY + this.scroll.y;
+    evt.deltaX = window.pageXOffset - this.scroll.x;
+    evt.deltaY = -window.pageYOffset + this.scroll.y;
 
-    this.scroll.x = window.scrollX;
-    this.scroll.y = window.scrollY;
+    this.scroll.x = window.pageXOffset;
+    this.scroll.y = window.pageYOffset;
 
     this.notify(e);
   };
 
-  // onTouchStart = (e) => {
-  //   const t = e.targetTouches ? e.targetTouches[0] : e;
-  //   this.touchStart.x = t.pageX;
-  //   this.touchStart.y = t.pageY;
-  // };
+  onTouchStart = (e) => {
+    const t = e.targetTouches ? e.targetTouches[0] : e;
+    this.touchStart.x = t.pageX;
+    this.touchStart.y = t.pageY;
+  };
 
-  // onTouchMove = (e) => {
-  //   const options = this.options;
-  //   // if (
-  //   //   options.preventTouch &&
-  //   //   !e.target.classList.contains(options.unpreventTouchClass)
-  //   // ) {
-  //   //   e.preventDefault();
-  //   // }
+  onTouchMove = (e) => {
+    const options = this.options;
+    // if (
+    //   options.preventTouch &&
+    //   !e.target.classList.contains(options.unpreventTouchClass)
+    // ) {
+    //   e.preventDefault();
+    // }
 
-  //   const evt = this.current;
+    const evt = this.current;
 
-  //   const t = e.targetTouches ? e.targetTouches[0] : e;
+    const t = e.targetTouches ? e.targetTouches[0] : e;
 
-  //   evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
-  //   evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
+    evt.deltaX = (t.pageX - this.touchStart.x) * options.touchMultiplier;
+    evt.deltaY = (t.pageY - this.touchStart.y) * options.touchMultiplier;
 
-  //   this.touchStart.x = t.pageX;
-  //   this.touchStart.y = t.pageY;
+    this.touchStart.x = t.pageX;
+    this.touchStart.y = t.pageY;
 
-  //   this.notify(e);
-  // };
+    this.notify(e);
+  };
 
   onKeyDown = (e) => {
     const evt = this.current;
@@ -240,12 +240,14 @@ export class CoreScroll extends Conductor {
       document.addEventListener("scroll", this.onScroll, {
         passive: true,
       });
-      // this.dom.addEventListener("touchstart", this.onTouchStart, {
-      //   passive: true,
-      // });
-      // this.dom.addEventListener("touchmove", this.onTouchMove, {
-      //   passive: true,
-      // });
+      if (Sniff.safari) {
+        this.dom.addEventListener("touchstart", this.onTouchStart, {
+          passive: true,
+        });
+        this.dom.addEventListener("touchmove", this.onTouchMove, {
+          passive: true,
+        });
+      }
     } else {
       this.dom.addEventListener("wheel", this.onWheel, { passive: true });
       document.addEventListener("keydown", this.onKeyDown);
@@ -271,9 +273,12 @@ export class CoreScroll extends Conductor {
     // }
 
     if (Sniff.touchDevice) {
-      // this.dom.removeEventListener("touchstart", this.onTouchStart);
-      // this.dom.removeEventListener("touchmove", this.onTouchMove);
       document.removeEventListener("scroll", this.onScroll);
+
+      if (Sniff.safari) {
+        this.dom.removeEventListener("touchstart", this.onTouchStart);
+        this.dom.removeEventListener("touchmove", this.onTouchMove);
+      }
     } else {
       this.dom.removeEventListener("wheel", this.onWheel);
       document.removeEventListener("keydown", this.onKeyDown);

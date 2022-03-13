@@ -1,13 +1,13 @@
 import { iris, qs, qsa } from "../../hermes";
 
-const regex = {
+export const regex = {
   email:
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   name: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
   url: /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi,
 };
 
-const validate = {
+export const validate = {
   empty: (str) => {
     return str.length === 0;
   },
@@ -44,6 +44,31 @@ const humanFileSize = (bytes, si = true, dp = 1) => {
   );
 
   return bytes.toFixed(dp) + " " + humanUnits[u];
+};
+
+export const Validator = (node, setError, removeError) => {
+  const { value, dataset, required } = node;
+  const { type } = dataset;
+  const parent = node.parentNode;
+
+  if (validate.empty(value)) {
+    if (required) {
+      setError(parent, "empty");
+      return false;
+    }
+  } else if (type === "email" && !validate.email(value)) {
+    setError(parent, "email");
+    return false;
+  } else if (type === "name" && !validate.name(value)) {
+    setError(parent, "name");
+    return false;
+  } else if (type === "url" && !validate.url(value)) {
+    setError(parent, "url");
+    return false;
+  }
+
+  removeError(parent);
+  return true;
 };
 
 export class FormManager {
@@ -96,12 +121,14 @@ export class FormManager {
       });
     });
 
-    iris.add(".form-wrapper summary", "pointerenter", (e) =>
-      e.target.parentNode.parentNode.classList.toggle("hover-toggle")
-    );
-    iris.add(".form-wrapper summary", "pointerleave", (e) =>
-      e.target.parentNode.parentNode.classList.toggle("hover-toggle")
-    );
+    if (this.forms.length === 3) {
+      this.hoveru1 = iris.add(".form-wrapper summary", "pointerenter", (e) =>
+        e.target.parentNode.parentNode.classList.toggle("hover-toggle")
+      );
+      this.hoveru2 = iris.add(".form-wrapper summary", "pointerleave", (e) =>
+        e.target.parentNode.parentNode.classList.toggle("hover-toggle")
+      );
+    }
   };
 
   handleSubmit = (e) => {
@@ -116,7 +143,7 @@ export class FormManager {
     let hasError = false;
     for (let i = 0; i < inputs.length; i++) {
       const input = inputs[i];
-      const isValid = this.validate(input);
+      const isValid = Validator(input, this.setError, this.removeError);
 
       if (!isValid) {
         hasError = true;
@@ -169,42 +196,15 @@ export class FormManager {
   };
 
   success = (form) => {
-    // console.log("submitted");
     this.setStatus("success", form);
   };
 
   failure = (form) => {
-    // console.log("failed");
     this.setStatus("failure", form);
   };
 
   handleValidate = (e) => {
-    this.validate(e.target);
-  };
-
-  validate = (node) => {
-    const { value, dataset, required } = node;
-    const { type } = dataset;
-    const parent = node.parentNode;
-
-    if (validate.empty(value)) {
-      if (required) {
-        this.setError(parent, "empty");
-        return false;
-      }
-    } else if (type === "email" && !validate.email(value)) {
-      this.setError(parent, "email");
-      return false;
-    } else if (type === "name" && !validate.name(value)) {
-      this.setError(parent, "name");
-      return false;
-    } else if (type === "url" && !validate.url(value)) {
-      this.setError(parent, "url");
-      return false;
-    }
-
-    this.removeError(parent);
-    return true;
+    Validator(e.target, this.setError, this.removeError);
   };
 
   hasError = (node) => {
@@ -258,5 +258,8 @@ export class FormManager {
     this.unlisten();
     this.unvalidate.forEach((e) => e());
     this.unfile.forEach((e) => e());
+
+    this.hoveru1 && this.hoveru1();
+    this.hoveru2 && this.hoveru2();
   };
 }

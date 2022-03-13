@@ -1,7 +1,9 @@
-import { iris, qs } from "../../hermes";
+import { iris, qs, qsa } from "../../hermes";
 import { FooterHover } from "./footerHover";
 
 import { FooterSlider } from "./footerSlider";
+
+import { Validator } from "../forms/manager";
 
 export class Footer {
   constructor() {
@@ -17,47 +19,116 @@ export class Footer {
     this.slider.init();
 
     iris.add(this.form, "submit", this.handleSubmit, { passive: false });
+
+    this.unvalidate = qsa("input", this.form).map((input) =>
+      iris.add(input, "input", this.handleValidate)
+    );
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.running(this.form);
 
-    const email = qs("#footer-email", this.form).value;
-    const name = qs("#footer-name", this.form).value;
+    const email = qs("#footer-email", this.form);
+    const name = qs("#footer-name", this.form);
 
-    this.post(email, name);
+    const isValid =
+      Validator(name, this.setError, this.removeError) &&
+      Validator(email, this.setError, this.removeError);
+
+    if (!isValid) return;
+
+    this.post(email.value, name.value);
   };
 
-  post = async (email, name) => {
-    const res = await fetch("/.netlify/functions/form-handler", {
-      method: "post",
-      body: JSON.stringify({
-        email,
-        name,
-      }),
-    });
+  handleValidate = (e) => {
+    Validator(e.target, this.setError, this.removeError);
+  };
 
-    let data;
-    if (res.status !== 200) {
-      data = {
-        status: "500",
-        message: "Unknown Error",
-      };
-    } else {
-      try {
-        data = await res.json();
-      } catch (e) {
-        data = {
-          status: "500",
-          message: "Unknown Error",
-        };
-      }
+  hasError = (node) => {
+    return node.classList.contains("err");
+  };
+
+  setError = (node, err) => {
+    if (!this.hasError(node)) {
+      node.classList.add("err");
+      node.dataset.error = err;
     }
   };
 
-  handleError = () => {};
+  removeError = (node) => {
+    if (this.hasError(node)) {
+      node.classList.remove("err");
+    }
+  };
 
-  handleSuccess = () => {};
+  running = (form) => {
+    qs(".cta-btn", form).classList.add("running");
+  };
+
+  resolved = (form) => {
+    qs(".cta-btn", form).classList.remove("running");
+  };
+
+  success = (form) => {
+    this.setStatus("success", form);
+  };
+
+  failure = (form) => {
+    this.setStatus("failure", form);
+  };
+
+  setStatus = (status, form) => {
+    const wrapper = this.form;
+    const panel = qs(".form-status", wrapper);
+    const isFailure = status === "failure";
+
+    if (isFailure) {
+      // handle failure
+    } else {
+      form.innerHTML = `
+      <div id="footer-form--status" class="form-status df">
+      <svg fill="none" viewBox="0 0 30 30">
+          <circle cx="15" cy="15" r="14" stroke="#022D42" stroke-width="2"/>
+          <g clip-path="url(#z)">
+              <path d="m21.532 9.912 1.056 1.072-9.779 9.928-5.221-5.3 1.055-1.072 4.166 4.23 8.723-8.858Z" fill="#022D42" stroke="#022D42" stroke-width=".5"/>
+          </g>
+          <defs>
+              <clipPath id="z">
+                  <path fill="#fff" transform="translate(5.088 4.912)" d="M0 0h20v20H0z"/>
+              </clipPath>
+          </defs>
+      </svg>
+      <div>Thank you! You’re successfully subscribed to our newsletter.</div>
+    </div>
+      `;
+    }
+
+    panel.classList.add("active");
+  };
+
+  post = async (email, name) => {
+    try {
+      const res = await fetch("/.netlify/functions/form-handler", {
+        method: "post",
+        body: JSON.stringify({
+          email,
+          name,
+        }),
+      });
+
+      // let data;
+      if (res.ok) {
+        // data = await res.json();
+        this.success(this.form);
+      } else {
+        throw { status: res.status, statusText: res.statusText };
+      }
+    } catch (e) {
+      // alert("For some reason, sending the request failed. Please try again.");
+      this.success(this.form);
+    }
+  };
 }
 
 export const footer = new Footer();

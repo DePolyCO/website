@@ -172,7 +172,6 @@
 .footer-check--tick {
   width: fluid(12, $sm);
   height: fluid(8, $sm);
-  top: fluid(6 + 6, $sm);
   left: fluid(4, $sm);
   opacity: 0;
 
@@ -191,22 +190,10 @@
 }
 
 #footer input {
-  padding: fluid(20, $sm);
   font-size: fluid(16, $sm);
 
-  &::placeholder {
-    font-size: fluid(16, $sm);
-    color: $darkblue;
-  }
-
   @include md {
-    padding: fluid(20, $lg);
     font-size: fluid(18, $lg);
-
-    &::placeholder {
-      font-size: fluid(18, $lg);
-      color: $darkblue;
-    }
   }
 }
 
@@ -222,11 +209,9 @@
   padding: 0;
 
   position: relative;
-  top: 7px;
 
   @include md {
-    align-items: center;
-    top: 3px;
+    align-items: flex-end;
     // position: static;
 
     border-radius: fluid(6, $lg);
@@ -238,6 +223,16 @@
 
 #footer-check--wrapper-m {
   margin-bottom: fluid(18, $sm);
+
+  .footer-check--wrapper {
+    top: fluid(6 + 2, $sm);
+  }
+}
+
+#footer-wrapper--d {
+  @include md {
+    align-items: center;
+  }
 }
 
 .footer-cta--check-label {
@@ -439,4 +434,50 @@
 
 .text-underline {
   text-decoration: underline;
+}
+
+#footer-form--status {
+  background: #f2ffbd;
+  z-index: 1;
+
+  inset: 0;
+  flex-direction: column;
+  justify-content: center;
+
+  opacity: 1;
+  pointer-events: all;
+
+  align-items: center;
+
+  height: fluid(120, $sm);
+  gap: fluid(16, $sm);
+  padding: fluid(18, $sm) fluid(24, $sm);
+  border-radius: fluid(15, $sm);
+  font-size: fluid(16, $sm);
+  text-align: center;
+
+  font-weight: 700;
+  line-height: 140%;
+
+  svg {
+    width: fluid(30, $sm);
+    height: fluid(30, $sm);
+  }
+
+  @include md {
+    text-align: left;
+    justify-content: unset;
+    flex-direction: row;
+    height: fluid(60, $lg);
+    max-width: fluid(810, $lg);
+    gap: fluid(9, $lg);
+    padding: fluid(18, $lg) fluid(24, $lg);
+    border-radius: fluid(15, $lg);
+    font-size: fluid(18, $lg);
+
+    svg {
+      width: fluid(30, $lg);
+      height: fluid(30, $lg);
+    }
+  }
 }

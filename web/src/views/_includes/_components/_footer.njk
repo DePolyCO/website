@@ -37,10 +37,12 @@
         <div class="df fc footer-col--xl">
             <div id="footer-cta--title">Our newsletters are a concentrated blast of all the latest insights from DePoly. </div>
             <div id="footer-cta--desc">No spam – Unsubscribe anytime.</div>
-            <form novalidate action="POST">
+            <form novalidate action="POST" class="pr">
                 <div class="df fc footer-cta--input">
                     <div class="field dark pr">
                         <input name="First Name" class="field-input first-name" id="footer-name" placeholder="First Name" required type="text" data-type="name">
+                        <label class="pen field-label pa" for="footer-name">First Name</label>
+                        <label class="pen field-label--active ttu pa" for="footer-name">First Name</label>
                         <div class="cp pa error-icon">
                             <svg>
                                 <use xlink:href="#err-icon"></use>
@@ -50,6 +52,8 @@
                     </div>
                     <div class="field dark pr">
                         <input name="Email ID" class="field-input" id="footer-email" placeholder="Email Address" required type="email" data-type="email">
+                        <label class="pen field-label pa" for="general-email">Email Address</label>
+                        <label class="pen field-label--active ttu pa" for="general-email">Email Address</label>
                         <div class="cp pa error-icon">
                             <svg>
                                 <use xlink:href="#err-icon"></use>
@@ -76,7 +80,7 @@
                         </div>
                     </button>
                 </div>
-                <div class="df aib m-hide">
+                <div class="df aib m-hide" id="footer-wrapper--d">
                     <div class="pr df aic footer-check--wrapper">
                         <input type="checkbox" id="footer-cta--check-d" class="cp footer-cta--check" name="footer-cta--check">
                         <div class="footer-check--tick pa pen">

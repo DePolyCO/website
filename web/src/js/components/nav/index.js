@@ -30,24 +30,25 @@ export class Nav {
 
     if (Sniff.touchDevice) {
       iris.add(this.btn, "click", this.toggle);
-      iris.add(this.linkItems, "click", this.toggle);
+      // iris.add(this.linkItems, "click", this.toggle);
 
       this.reveals = this.linkItems.map(
         (item) =>
           new Reveal({
             targets: qs(".nav-link--inner", item),
             from: 105,
-            char: true,
-            stagger: 25,
-            duration: 1250,
-            rotate: true,
+            // char: true,
+            // stagger: 25,
+            delay: 1 * 50,
+            duration: 1750,
+            // rotate: true,
           })
       );
 
       const grid = qs("#m-bg--grid");
       const right = qs("#nav-right");
 
-      right.style.transform = `translateY(20%)`;
+      // right.style.transform = `translateY(20%)`;
 
       this.bg = new Vau({
         targets: grid,
@@ -69,8 +70,8 @@ export class Nav {
         },
       });
 
-      this.bg.pause();
-      this.navt.pause();
+      // this.bg.pause();
+      // this.navt.pause();
 
       window.nav = this;
     }
@@ -165,11 +166,12 @@ export class Nav {
             to: 0,
             stagger: 25,
             delay: i * 100,
+            duration: 1750,
           })
         );
       } else {
         this.reveals.forEach((r, i) =>
-          r.playTo({ to: -110, stagger: 0, delay: 0 })
+          r.playTo({ to: -110, stagger: 0, delay: 0, duration: 500 })
         );
       }
     }

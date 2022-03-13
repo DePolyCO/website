@@ -1,6 +1,6 @@
 import { footer } from "../components/footer";
 import { nav } from "../components/nav";
-import { qs, qsa, iris, unique, lazyloader, ro } from "../hermes";
+import { qs, qsa, iris, unique, lazyloader, ro, Sniff } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Store } from "../store";
 import { asideController } from "../components/aside";
@@ -226,7 +226,7 @@ export class Hydra {
  * + Manage show/hide animations
  * + Manage app logic
  * + Change cursor style to show waiting
- * 
+ *
  * Todo:
  * ======
  * + Split into build and play phases
@@ -254,6 +254,12 @@ export class Controller {
       smoothscroller.init();
       footer.init();
       nav.show();
+
+      if (Sniff.touchDevice) {
+        if (nav.state.mobileOpen) {
+          nav.toggle();
+        }
+      }
 
       show({
         from,

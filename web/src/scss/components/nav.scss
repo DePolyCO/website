@@ -7,9 +7,7 @@
     height: 100%;
 
     #nav-right {
-      opacity: 1;
       pointer-events: all;
-      transition: opacity 1.25s $ease-out-expo;
     }
 
     .nav-item {
@@ -22,7 +20,7 @@
 
     #m-bg,
     #m-bg--grid {
-      transition: opacity 0.5s $ease-out-expo 0.2s;
+      transition: opacity 0.5s $ease-out-expo;
       opacity: 1;
     }
 
@@ -64,14 +62,13 @@
   padding: fluid(25, $sm) 1px;
   margin: 0 auto;
   pointer-events: none;
-  background-color: #ecece2;
 
   &::after {
     content: "";
     position: absolute;
     top: fluid(72, $sm);
-    left: 0;
-    right: 0;
+    left: fluid(20, $sm);
+    right: fluid(20, $sm);
     height: 1px;
     background-color: #dadaca;
     transition: opacity 0.75s;
@@ -130,7 +127,7 @@
   z-index: -1;
 
   pointer-events: none;
-  transition: opacity 1.25s $ease-out-expo;
+  // transition: opacity 1.25s $ease-out-expo;
 
   @include md {
     position: static;
@@ -334,7 +331,13 @@
 #m-bg {
   background-color: #ecece2;
   opacity: 0;
-  transition: opacity 1.25s $ease-out-expo;
+  transition: opacity 0.5s $ease-out-expo;
+}
+
+#m-bg--top {
+  background-color: #ecece2;
+  height: fluid(72, $sm);
+  top: 0;
 }
 
 // CTA button

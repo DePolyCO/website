@@ -91,7 +91,7 @@ title: About Us
                     {% for member in col %}
                         <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
                             <picture class="team-photo">
-                                <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                                <img loading="lazy" decoding="async" src="{{ member.img }}" alt="Photo of {{ member.name }}">
                             </picture>
                             <div class="team-name">{{ member.name }}</div>
                             <div class="team-role ttu">{{ member.role }}</div>
@@ -108,7 +108,7 @@ title: About Us
             <div class="team-col df fc aic">
                 <div class="team-item">
                     <picture class="team-photo">
-                        <img src="{{ team.advisors[0].img }}" alt="Photo of {{ team.advisors[0].name }}">
+                        <img loading="lazy" decoding="async" src="{{ team.advisors[0].img }}" alt="Photo of {{ team.advisors[0].name }}">
                     </picture>
                     <div class="team-name">{{ team.advisors[0].name }}</div>
                     <div class="team-role ttu">{{ team.advisors[0].role }}</div>
@@ -117,7 +117,7 @@ title: About Us
             <div class="team-col df fc aic no-border">
                 <div class="team-item">
                     <picture class="team-photo">
-                        <img src="{{ team.advisors[1].img }}" alt="Photo of {{ team.advisors[1].name }}">
+                        <img loading="lazy" decoding="async" src="{{ team.advisors[1].img }}" alt="Photo of {{ team.advisors[1].name }}">
                     </picture>
                     <div class="team-name">{{ team.advisors[1].name }}</div>
                     <div class="team-role ttu">{{ team.advisors[1].role }}</div>

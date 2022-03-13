@@ -53,7 +53,8 @@ class Sail {
 
   outM(done) {
     this.sail.style.pointerEvents = `all`;
-    this.tl.reverse({ complete: done });
+    done();
+    // this.tl.reverse({ complete: done });
   }
 }
 

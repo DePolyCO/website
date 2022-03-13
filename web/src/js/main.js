@@ -61,12 +61,12 @@ iris.add(
     footer.init();
     nav.init();
 
-    if (
-      "serviceWorker" in navigator &&
-      window.location.hostname !== "localhost"
-    ) {
-      navigator.serviceWorker.register("/sw.js");
-    }
+    // if (
+    //   "serviceWorker" in navigator &&
+    //   window.location.hostname !== "localhost"
+    // ) {
+    //   navigator.serviceWorker.register("/sw.js");
+    // }
   },
   {
     once: true,

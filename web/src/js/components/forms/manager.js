@@ -47,7 +47,7 @@ const humanFileSize = (bytes, si = true, dp = 1) => {
 };
 
 export class FormManager {
-  constructor() {
+  constructor({ root = "main" } = {}) {
     this.config = {
       // url: "https://depoly.netlify.app",
       url: "",
@@ -63,11 +63,11 @@ export class FormManager {
           bg: "#FF6666",
           icon: "#cross-icon",
           title: "Something went wrong",
-          desc: "For some reason, sending the message failed. Please <button class='retry link link-dark link-solid'> try again</button>.",
+          desc: "For some reason, sending the message failed. Please <button type='button' class='retry link link-dark link-solid'> try again</button>.",
         },
       },
     };
-    this.forms = qsa("form", qs("main"));
+    this.forms = qsa("form", qs(root));
     this.inputs = this.forms.map((form) => qsa("input", form));
     this.listen();
   }
@@ -96,8 +96,12 @@ export class FormManager {
       });
     });
 
-    iris.add(".form-wrapper summary", "pointerenter", (e) => e.target.parentNode.parentNode.classList.toggle("hover-toggle"));
-    iris.add(".form-wrapper summary", "pointerleave", (e) => e.target.parentNode.parentNode.classList.toggle("hover-toggle"));
+    iris.add(".form-wrapper summary", "pointerenter", (e) =>
+      e.target.parentNode.parentNode.classList.toggle("hover-toggle")
+    );
+    iris.add(".form-wrapper summary", "pointerleave", (e) =>
+      e.target.parentNode.parentNode.classList.toggle("hover-toggle")
+    );
   };
 
   handleSubmit = (e) => {

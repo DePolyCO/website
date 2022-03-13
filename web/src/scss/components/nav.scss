@@ -309,7 +309,8 @@
   width: calc(100% - #{fluid(40, $sm)});
 
   transform: translateY(#{fluid(14 + 60, $sm)});
-  transition: transform 1.75s $ease-out-expo;
+  transition: transform 1.75s $ease-out-expo,
+    background-color 0.75s cubic-bezier(0.19, 1, 0.22, 1);
 
   @include md {
     position: static;

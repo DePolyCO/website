@@ -175,8 +175,8 @@
   white-space: normal;
 
   @include md {
-  white-space: nowrap;
-  margin-bottom: fluid(69, $lg);
+    white-space: nowrap;
+    margin-bottom: fluid(69, $lg);
   }
 }
 
@@ -402,5 +402,38 @@
 #aside {
   .explain--picture {
     margin-bottom: fluid(20, $sm);
+  }
+}
+
+#cta-content {
+  .form-status {
+    inset: 0;
+    top: fluid(496, $sm);
+    background-color: #eaf5bd;
+
+    .form-status--tick {
+      position: absolute;
+      top: 0;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    @include md {
+      top: fluid(580, $lg);
+    }
+  }
+}
+
+#cta-status--picture {
+  width: fluid(295, $sm);
+  height: fluid(496, $sm);
+  top: fluid(-496, $sm);
+  left: 0;
+  z-index: 1;
+
+  @include md {
+    width: fluid(976, $lg);
+    height: fluid(580, $lg);
+    top: fluid(-580, $lg);
   }
 }

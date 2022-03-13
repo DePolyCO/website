@@ -2,6 +2,7 @@ import { iris, qs, qsa, Sniff, Vau } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 import { Select } from "../select";
 import { Reveal } from "../../reveal";
+import { FormManager } from "../forms/manager";
 
 export class Nav {
   constructor() {
@@ -24,6 +25,8 @@ export class Nav {
 
   init = () => {
     this.select = new Select({ callback: this.onLangSwitch });
+    this.form = new FormManager({ root: "#cta-panel" });
+    window.forms = this.form;
     this.setInitialLang();
 
     smoothscroller.add({ update: this.onScroll });

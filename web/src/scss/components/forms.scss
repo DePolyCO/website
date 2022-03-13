@@ -367,6 +367,14 @@ details[open] ~ .form-toggle {
   }
 }
 
+.form-status--nodetail {
+  &.active {
+    transition: opacity 0.75s $ease-out-expo;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
 .form-status--tick {
   width: fluid(75, $sm);
   height: fluid(75, $sm);

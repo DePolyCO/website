@@ -8,7 +8,6 @@ import {
   bounds,
   clamp,
   invlerp,
-  lerp,
   qsa,
   iris,
   Duration,

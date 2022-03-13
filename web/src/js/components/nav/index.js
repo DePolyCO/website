@@ -1,6 +1,7 @@
-import { iris, qs, qsa, Sniff } from "../../hermes";
+import { iris, qs, qsa, Sniff, Vau } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 import { Select } from "../select";
+import { Reveal } from "../../reveal";
 
 export class Nav {
   constructor() {
@@ -30,6 +31,40 @@ export class Nav {
     if (Sniff.touchDevice) {
       iris.add(this.btn, "click", this.toggle);
       iris.add(this.linkItems, "click", this.toggle);
+
+      this.reveals = this.linkItems.map(
+        (item) =>
+          new Reveal({
+            targets: qs(".nav-link--inner", item),
+            char: true,
+            stagger: 25,
+            duration: 1250,
+            rotate: true,
+          })
+      );
+
+      this.bg = new Vau({
+        targets: "#m-bg--grid",
+        duration: 2500,
+        opacity: [1, 0],
+        easing: "o6",
+        transform: {
+          y: [1, 50],
+          yu: "%",
+        },
+      });
+      this.navt = new Vau({
+        targets: "#nav-right",
+        duration: 1750,
+        easing: "o6",
+        transform: {
+          y: [0, 20],
+          yu: "%",
+        },
+      });
+      this.bg.pause();
+
+      window.nav = this;
     }
   };
 
@@ -108,6 +143,26 @@ export class Nav {
     this.dom.classList[action]("active");
     this.btn.classList[action]("active");
     document.body.classList[action]("oh");
+
+    if (Sniff.touchDevice) {
+      this.bg.reverse();
+      this.navt.reverse();
+
+      if (this.state.mobileOpen) {
+        this.reveals.forEach((r, i) =>
+          r.play({
+            from: -100,
+            to: 0,
+            stagger: 25,
+            delay: i * 100,
+          })
+        );
+      } else {
+        this.reveals.forEach((r, i) =>
+          r.playTo({ to: -110, stagger: 0, delay: 0 })
+        );
+      }
+    }
   };
 }
 

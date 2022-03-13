@@ -1,8 +1,7 @@
 #nav {
   transition: transform 1.25s $ease-out-expo;
   pointer-events: none;
-  height: auto;
-  background: #ecece2;
+  height: 100%;
 
   &.active {
     height: 100%;
@@ -10,16 +9,34 @@
     #nav-right {
       opacity: 1;
       pointer-events: all;
-      transition: opacity 0.75s $ease-out-expo;
+      transition: opacity 1.25s $ease-out-expo;
     }
 
     .nav-item {
       pointer-events: all;
     }
+
+    #nav-cta {
+      transform: none;
+    }
+
+    #m-bg {
+      transition: opacity 0.5s $ease-out-expo 0.2s;
+      opacity: 1;
+    }
+
+    .nav-link--inner::after {
+      transform: none;
+    }
   }
 
   &.hidden {
-    transform: translateY(-100%);
+    transition: transform 1.25s $ease-out-expo;
+    transform: translate3d(0, #{fluid(-80, $sm)}, 0);
+
+    @include md {
+      transform: translate3d(0, -100%, 0);
+    }
   }
 
   &.has-line {
@@ -33,21 +50,23 @@
   @include md {
     height: auto;
     pointer-events: all;
+    background-color: #ecece2;
   }
 }
 
 #nav-inner {
-  width: fluid(335, $sm);
-  padding: fluid(25, $sm) 0;
+  width: fluid(337, $sm);
+  padding: fluid(25, $sm) 1px;
   margin: 0 auto;
   pointer-events: none;
+  background-color: #ecece2;
 
   &::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: fluid(20, $sm);
-    right: fluid(20, $sm);
+    left: 0;
+    right: 0;
     height: 1px;
     background-color: #dadaca;
     transition: opacity 0.75s;
@@ -57,6 +76,7 @@
   @include md {
     width: fluid(1840, $lg);
     padding: fluid(40, $lg) 0;
+    background-color: unset;
 
     &::after {
       left: fluid(40, $lg);
@@ -99,11 +119,11 @@
 
   height: 100%;
   width: 100vw;
-  background-color: #ecece4;
+  // background-color: #ecece2;
   z-index: -1;
 
-  opacity: 0;
   pointer-events: none;
+  transition: opacity 1.25s $ease-out-expo;
 
   @include md {
     position: static;
@@ -115,7 +135,7 @@
 
 #nav-links {
   gap: fluid(47, $sm);
-  top: fluid(72 + 45, $sm);
+  top: fluid(72 + 55, $sm);
   position: relative;
 
   @include md {
@@ -132,7 +152,7 @@
 
   font-weight: 600;
   font-size: fluid(28, $sm);
-  line-height: 110%;
+  line-height: 85%;
   letter-spacing: 0.01em;
   white-space: nowrap;
 
@@ -143,6 +163,7 @@
   }
 
   @include md {
+    line-height: 110%;
     padding: fluid(20, $lg);
     font-size: fluid(16, $lg);
   }
@@ -172,6 +193,10 @@
   .nav-link--inner::after {
     background: $darkblue;
     opacity: 1;
+
+    @include md {
+      transform: none;
+    }
   }
 }
 
@@ -188,7 +213,9 @@
   border-radius: 50%;
   opacity: 0;
 
-  transition: all 0.6s $ease-out-expo;
+  transition: opacity 0.6s $ease-out-expo, transform 1.75s $ease-out-expo;
+
+  transform: scale(0);
 
   @include md {
     top: unset;
@@ -198,6 +225,7 @@
 
     height: fluid(5, $lg);
     width: fluid(5, $lg);
+    transform: none;
   }
 }
 
@@ -276,10 +304,14 @@
   left: fluid(20, $sm);
   width: calc(100% - #{fluid(40, $sm)});
 
+  transform: translateY(#{fluid(14 + 60, $sm)});
+  transition: transform 1.75s $ease-out-expo;
+
   @include md {
     position: static;
     width: -moz-fit-content;
     width: fit-content;
+    transform: none;
   }
 }
 
@@ -288,6 +320,12 @@
   right: fluid(20, $sm);
   top: fluid(72, $sm);
   bottom: fluid(88, $sm);
+}
+
+#m-bg {
+  background-color: #ecece2;
+  opacity: 0;
+  transition: opacity 1.25s $ease-out-expo;
 }
 
 // CTA button

@@ -310,3 +310,16 @@
     }
   }
 }
+
+#form-underlay {
+  background-color: $darkblue;
+  opacity: 0;
+  inset: 0px;
+  transition: opacity 0.2s;
+  pointer-events: none;
+
+  &.active {
+    opacity: 0.2;
+    pointer-events: all;
+  }
+}

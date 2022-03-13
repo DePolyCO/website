@@ -6,6 +6,7 @@ export class Select extends Conductor {
     options = "li",
     active = "#lang-active",
     callback,
+    toggle,
   } = {}) {
     super();
 
@@ -16,6 +17,7 @@ export class Select extends Conductor {
 
     this.isOpen = false;
     this.callback = callback;
+    this.toggleCallback = toggle;
 
     this.listen();
   }
@@ -28,6 +30,8 @@ export class Select extends Conductor {
   toggle = () => {
     this.isOpen = !this.isOpen;
     this.dom.classList.toggle("active");
+
+    this.toggleCallback && this.toggleCallback();
   };
 
   click = (e) => {

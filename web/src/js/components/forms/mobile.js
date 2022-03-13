@@ -10,6 +10,7 @@ export class MobileForms {
     });
     this.current = 0;
     this.forms = qsa(".form-details");
+    // this.underlay = qs("#form-underlay");
 
     this.build();
     this.onSelect(0);
@@ -22,7 +23,13 @@ export class MobileForms {
     });
   };
 
-  destroy = () => {};
+  destroy = () => {
+    this.select.destroy();
+  };
+
+  toggle = () => {
+    this.underlay.classList.toggle("active");
+  };
 
   onSelect = (value) => {
     value = parseInt(value);

@@ -1,14 +1,18 @@
 details {
   position: relative;
 
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+  }
+
   @include md {
     padding-left: fluid(40, $lg);
 
     // border bottom
     &::after {
-      content: "";
-      position: absolute;
-      bottom: fluid(0, $lg);
       left: fluid(40, $lg);
       right: 0;
       border-bottom: 1px solid #aab6b6;
@@ -20,13 +24,13 @@ details[open] {
   padding-bottom: fluid(60, $lg);
 
   .form-title {
-    margin-bottom: fluid(40, $sm);
+    padding-bottom: fluid(40, $sm);
 
     @include md {
-      margin-bottom: fluid(38, $lg);
+      padding-bottom: fluid(38, $lg);
 
       &.margin-sm {
-        margin-bottom: fluid(14, $lg);
+        padding-bottom: fluid(14, $lg);
       }
     }
   }
@@ -34,11 +38,8 @@ details[open] {
   @include md {
     // border left
     &::before {
-      content: "";
       border-left: 1px solid #022d42;
-      position: absolute;
       top: 0;
-      bottom: 0;
       left: -1px;
     }
 
@@ -60,13 +61,13 @@ details summary {
 
 .form-title {
   font-size: fluid(36, $sm);
-  margin-bottom: fluid(40, $sm);
+  padding-bottom: fluid(40, $sm);
   line-height: 130%;
   letter-spacing: -0.02em;
 
   @include md {
     font-size: fluid(50, $lg);
-    margin-bottom: fluid(60, $lg);
+    padding-bottom: fluid(60, $lg);
   }
 }
 

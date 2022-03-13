@@ -218,7 +218,7 @@
     margin-bottom: fluid(90, $sm);
 
     @include md {
-      margin-bottom: fluid(0, $lg);
+      margin-bottom: 0;
       width: fluid(772, $lg);
       height: fluid(680, $lg);
     }

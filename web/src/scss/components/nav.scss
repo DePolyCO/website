@@ -20,13 +20,18 @@
       transform: none;
     }
 
-    #m-bg {
+    #m-bg,
+    #m-bg--grid {
       transition: opacity 0.5s $ease-out-expo 0.2s;
       opacity: 1;
     }
 
     .nav-link--inner::after {
       transform: none;
+    }
+
+    #nav-inner::after {
+      opacity: 0 !important;
     }
   }
 
@@ -64,7 +69,7 @@
   &::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    top: fluid(72, $sm);
     left: 0;
     right: 0;
     height: 1px;
@@ -79,6 +84,8 @@
     background-color: unset;
 
     &::after {
+      top: unset;
+      bottom: 0;
       left: fluid(40, $lg);
       right: fluid(40, $lg);
     }
@@ -320,6 +327,8 @@
   right: fluid(20, $sm);
   top: fluid(72, $sm);
   bottom: fluid(88, $sm);
+  opacity: 0;
+  transition: opacity 1.25s $ease-out-expo;
 }
 
 #m-bg {

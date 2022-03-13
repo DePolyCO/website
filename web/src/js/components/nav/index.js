@@ -36,6 +36,7 @@ export class Nav {
         (item) =>
           new Reveal({
             targets: qs(".nav-link--inner", item),
+            from: 105,
             char: true,
             stagger: 25,
             duration: 1250,
@@ -43,10 +44,15 @@ export class Nav {
           })
       );
 
+      const grid = qs("#m-bg--grid");
+      const right = qs("#nav-right");
+
+      right.style.transform = `translateY(20%)`;
+
       this.bg = new Vau({
-        targets: "#m-bg--grid",
+        targets: grid,
         duration: 2500,
-        opacity: [1, 0],
+        // opacity: [1, 0],
         easing: "o6",
         transform: {
           y: [1, 50],
@@ -54,7 +60,7 @@ export class Nav {
         },
       });
       this.navt = new Vau({
-        targets: "#nav-right",
+        targets: right,
         duration: 1750,
         easing: "o6",
         transform: {
@@ -62,7 +68,9 @@ export class Nav {
           yu: "%",
         },
       });
+
       this.bg.pause();
+      this.navt.pause();
 
       window.nav = this;
     }
@@ -73,16 +81,18 @@ export class Nav {
 
     const hasScrolled = y < -15;
 
-    if (hasScrolled && !this.state.hasLine) {
-      this.addLine();
-    } else if (!hasScrolled && this.state.hasLine) {
-      this.removeLine();
-    }
-
     if (this.state.isVisible && deltaY > 0 && hasScrolled) {
       this.hide();
     } else if (!this.state.isVisible && deltaY < 0) {
       this.show();
+    }
+
+    if (this.state.isVisible) {
+      if (hasScrolled && !this.state.hasLine) {
+        this.addLine();
+      } else if (!hasScrolled && this.state.hasLine) {
+        this.removeLine();
+      }
     }
   };
 

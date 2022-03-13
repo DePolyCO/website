@@ -101,9 +101,7 @@ export const homeController = new Controller({
       Draw({
         targets: el,
         duration: 1750,
-        easing: Sniff.safari ? "i2" : "o6",
-        invert: Sniff.safari,
-        reverse: Sniff.safari,
+        easing: "o6",
       })
     );
     iconDraws.forEach((d) => d.pause());

@@ -62,7 +62,9 @@ export const Draw = ({
     el.style.strokeDashoffset = l;
     // if invert is truthy, run backwards
     // Note: This is different from reverse
-    invert ? vals.push([0, l]) : vals.push([-l, 0]);
+    // Animate to 2x value to fix safari issue
+    // https://stackoverflow.com/questions/37246113/svg-stroke-dashoffset-not-working-on-safari
+    invert ? vals.push([0, l]) : vals.push([l, 2 * l]);
   }
 
   begin && begin();

@@ -53,7 +53,13 @@ class Sail {
 
   outM(done) {
     this.sail.style.pointerEvents = `all`;
-    done();
+    this.tl = new Vau({
+      targets: this.sail,
+      easing: "o3",
+      opacity: [0, 1],
+      duration: 50,
+      complete: done,
+    });
     // this.tl.reverse({ complete: done });
   }
 }

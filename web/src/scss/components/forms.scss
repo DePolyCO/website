@@ -76,10 +76,17 @@ details summary {
   font-size: fluid(16, $sm);
   margin-bottom: fluid(40, $sm);
   line-height: 140%;
+  text-align: center;
+  gap: fluid(6, $sm);
 
   @include md {
+    flex-direction: row;
     font-size: fluid(18, $lg);
     margin-bottom: fluid(40, $lg);
+    align-items: baseline;
+    justify-content: unset;
+    text-align: left;
+    gap: 0;
   }
 }
 

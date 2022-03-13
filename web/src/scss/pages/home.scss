@@ -55,7 +55,7 @@
     @include md {
       font-weight: 300;
       font-size: fluid(120, $lg);
-      margin-bottom: fluid(25, $lg);
+      margin-bottom: fluid(15, $lg);
     }
   }
 
@@ -580,7 +580,6 @@
 
   &--visual {
     height: fluid(330, $sm);
-    background-color: #c7cdb9;
     margin-bottom: fluid(22, $sm);
     width: 100vw;
     position: relative;

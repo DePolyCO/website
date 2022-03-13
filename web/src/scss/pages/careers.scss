@@ -53,6 +53,7 @@
 
   .carousel-slider {
     overflow: hidden;
+    min-width: -moz-fit-content;
     min-width: fit-content;
     display: flex;
 
@@ -360,6 +361,7 @@
       margin-bottom: fluid(220, $lg);
 
       .cta-btn {
+        width: -moz-fit-content;
         width: fit-content;
       }
     }

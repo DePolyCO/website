@@ -162,6 +162,7 @@
   }
 
   @include md {
+    width: -moz-fit-content;
     width: fit-content;
     padding: fluid(21, $lg) fluid(50, $lg);
     height: fluid(60, $lg);
@@ -259,6 +260,7 @@
 }
 
 .fit {
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -301,6 +303,7 @@
 }
 
 #footer-logo {
+  min-width: -moz-fit-content;
   min-width: fit-content;
 
   @include md {
@@ -332,6 +335,7 @@
   line-height: 110%;
   letter-spacing: -0.04em;
   white-space: nowrap;
+  min-width: -moz-fit-content;
   min-width: fit-content;
 
   @include md {

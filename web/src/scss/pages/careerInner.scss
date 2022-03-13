@@ -75,8 +75,11 @@
     letter-spacing: 0.01em;
 
     background: #dadaca;
+    height: -moz-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     height: fit-content;
+    display: inline-block;
 
     font-size: fluid(14, $sm);
     padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);
@@ -206,6 +209,7 @@
   #see-more {
     top: calc(100% + #{fluid(28, $sm)});
     width: fluid(335, $sm);
+    height: -moz-fit-content;
     height: fit-content;
     align-items: baseline;
 

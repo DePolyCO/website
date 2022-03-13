@@ -39,7 +39,10 @@
   white-space: nowrap;
   padding-top: 1.5px;
   margin-bottom: fluid(40, $sm);
+  height: -moz-fit-content;
+  width: -moz-fit-content;
   height: fit-content;
+  width: fit-content;
 
   &::before {
     content: "";

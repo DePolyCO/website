@@ -316,6 +316,7 @@
     width: 100%;
 
     @include md {
+      width: -moz-fit-content;
       width: fit-content;
     }
   }

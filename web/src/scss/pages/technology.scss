@@ -322,7 +322,7 @@
   }
 
   #callout-icon {
-    width: fluid(140, $lg);
+    width: fluid(70, $sm);
     height: 1rem;
     display: inline-block;
 
@@ -331,10 +331,24 @@
 
     svg {
       position: absolute;
-      bottom: fluid(-30, $lg);
+      bottom: fluid(-15, $sm);
       left: 0;
+      width: fluid(70, $sm);
+      height: fluid(70, $sm);
+    }
+
+    @include md {
       width: fluid(140, $lg);
-      height: fluid(140, $lg);
+      height: 1rem;
+
+      transform: translate3d(-5%, 25%, 0);
+
+      svg {
+        bottom: fluid(-30, $lg);
+        left: 0;
+        width: fluid(140, $lg);
+        height: fluid(140, $lg);
+      }
     }
   }
 }

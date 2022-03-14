@@ -21,10 +21,10 @@
   width: fluid(335, $sm);
 
   line-height: 100%;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.05em;
 
   @include md {
-    width: fluid(1639, $lg);
+    // width: fluid(1639, $lg);
     font-size: fluid(120, $lg);
     padding-bottom: fluid(16, $lg);
   }

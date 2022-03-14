@@ -1,4 +1,4 @@
-import { iris, qs, qsa } from "../../hermes";
+import { iris, qs, qsa, Sniff } from "../../hermes";
 import { FooterHover } from "./footerHover";
 
 import { FooterSlider } from "./footerSlider";
@@ -35,12 +35,25 @@ export class Footer {
 
     const email = qs("#footer-email", this.form);
     const name = qs("#footer-name", this.form);
+    const check = qs(
+      Sniff.touchDevice ? "#footer-cta--check-m" : "#footer-cta--check-d",
+      this.form
+    );
 
     const isValid =
       Validator(name, this.setError, this.removeError) &&
       Validator(email, this.setError, this.removeError);
 
-    if (!isValid) return;
+    if (!isValid) {
+      this.resolved();
+      return;
+    }
+
+    if (Sniff.touchDevice && !check.checked) {
+      alert("Please agree to the Privacy Policy and Terms of Service");
+      this.resolved();
+      return;
+    }
 
     this.post(email.value, name.value);
   };
@@ -66,25 +79,23 @@ export class Footer {
     }
   };
 
-  running = (form) => {
+  running = (form = this.form) => {
     qs(".cta-btn", form).classList.add("running");
   };
 
-  resolved = (form) => {
+  resolved = (form = this.form) => {
     qs(".cta-btn", form).classList.remove("running");
   };
 
-  success = (form) => {
+  success = (form = this.form) => {
     this.setStatus("success", form);
   };
 
-  failure = (form) => {
+  failure = (form = this.form) => {
     this.setStatus("failure", form);
   };
 
   setStatus = (status, form) => {
-    const wrapper = this.form;
-    const panel = qs(".form-status", wrapper);
     const isFailure = status === "failure";
 
     if (isFailure) {
@@ -108,7 +119,7 @@ export class Footer {
       `;
     }
 
-    panel.classList.add("active");
+    qs(".form-status", form).classList.add("active");
   };
 
   post = async (email, name) => {

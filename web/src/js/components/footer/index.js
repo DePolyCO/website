@@ -49,7 +49,7 @@ export class Footer {
       return;
     }
 
-    if (Sniff.touchDevice && !check.checked) {
+    if (!check.checked) {
       alert("Please agree to the Privacy Policy and Terms of Service");
       this.resolved();
       return;

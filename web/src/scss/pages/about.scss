@@ -166,6 +166,7 @@
   .team-item {
     position: relative;
     padding-top: fluid(60, $sm);
+    order: var(--idx);
 
     &::after {
       content: "";
@@ -181,6 +182,7 @@
       width: fluid(400, $lg);
       padding-top: fluid(90, $lg);
       left: fluid(-20, $lg);
+      order: 0 !important;
 
       &::after {
         left: fluid(-35 + 20, $lg);
@@ -261,3 +263,5 @@
     margin-bottom: fluid(300, $lg);
   }
 }
+
+// 11 % 3 * 4 + (Math.floor(11 / 3))

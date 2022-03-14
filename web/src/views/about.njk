@@ -87,7 +87,7 @@ title: About Us
         <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Our Team</div>
         <div id="team-list" class="grid-list df fc">
             {% for col in team.members | batch(4) %}
-                <div class="team-col df fc aic">
+                <div class="team-col df fc aic m-hide">
                     {% for member in col %}
                         <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
                             <picture class="team-photo">
@@ -99,6 +99,19 @@ title: About Us
                     {% endfor %}
                 </div>
             {% endfor %}
+
+            <div class="team-col df fc aic d-hide">
+                {% for member in team.members %}
+                    <div class="team-item"  style="--idx: {{ loop.index0 % 4 * 3 + loop.index0 // 4 }}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
+                        <picture class="team-photo">
+                            <img loading="lazy" decoding="async" src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                        </picture>
+                        <div class="team-name">{{ member.name }}</div>
+                        <div class="team-role ttu">{{ member.role }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+
         </div>
     </section>
 

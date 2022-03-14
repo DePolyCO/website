@@ -105,7 +105,6 @@
 
     @include md {
       padding-left: fluid(121, $lg);
-      margin-bottom: fluid(125, $lg);
       width: fluid(430 * 3 + 40 * 2, $lg);
     }
   }
@@ -173,7 +172,6 @@
   #magic-visual {
     width: fluid(335, $sm);
     height: fluid(349, $sm);
-    background-color: $green;
     margin-bottom: fluid(90, $sm);
 
     @include md {

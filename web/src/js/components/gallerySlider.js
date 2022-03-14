@@ -31,7 +31,17 @@ export class GallerySlider {
 
   init = () => {
     this.tickID = ticker.add({ update: this.update });
-    // this.roID = ro.add({ update: this.resize });
+    this.roID = ro.add({ update: this.resize });
+
+    // const { top, left } = bounds(this.handle);
+    this.state.pos.x.cur = window.innerWidth / 2;
+    this.state.pos.y.cur = window.innerHeight / 2;
+
+    this.handle.style.transform = `translate3d(${window.innerWidth / 2}px, ${
+      window.innerHeight / 2
+    }px, 0)`;
+
+    this.update();
   };
 
   listen = () => {
@@ -70,6 +80,8 @@ export class GallerySlider {
     const { left, top, height, width } = bounds(this.handle);
     this.state.bounds.x = left + width / 2;
     this.state.bounds.y = top + height;
+
+    this.update();
   };
 
   destroy() {

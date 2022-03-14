@@ -23,7 +23,7 @@
     @include md {
       padding-left: fluid(40, $lg);
       padding-bottom: fluid(160, $lg);
-      flex-direction: column;
+      flex-direction: row;
     }
   }
 
@@ -75,8 +75,11 @@
     user-select: none;
     touch-action: none;
 
-    opacity: 0;
+    // opacity: 0;
     transition: opacity 0.5s $ease-out-expo;
+
+    top: 50%;
+    left: 50%;
   }
 
   .carousel-slide {

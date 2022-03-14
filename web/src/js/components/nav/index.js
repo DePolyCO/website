@@ -24,10 +24,13 @@ export class Nav {
   }
 
   init = () => {
-    this.select = new Select({ callback: this.onLangSwitch });
     this.form = new FormManager({ root: "#cta-panel" });
-    window.forms = this.form;
+    // this.select = new Select({ callback: this.onLangSwitch });
+
+    this.select = qs("#langs-select");
     this.setInitialLang();
+
+    iris.add(this.select, "change", this.onLangSwitch);
 
     smoothscroller.add({ update: this.onScroll });
 
@@ -108,7 +111,8 @@ export class Nav {
     this.dom.classList.add("hidden");
   };
 
-  onLangSwitch = (value) => {
+  onLangSwitch = (e) => {
+    const value = e.target.value;
     const newLocation =
       value === "ENG" ? "https://depoly.ch" : "https://fra.depoly.ch";
     // window.location.href = newLocation;
@@ -121,7 +125,7 @@ export class Nav {
     const currentSubdomain = currentLocation.host.split(".")[0];
     const lang = currentSubdomain === "fra" ? "FRA" : "ENG";
 
-    this.select.setActiveValue(lang);
+    this.select.value = lang;
   };
 
   setLinkActive = (pageName) => {

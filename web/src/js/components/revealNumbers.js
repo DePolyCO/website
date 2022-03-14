@@ -9,7 +9,6 @@ export class Numbers {
 
     this.init();
 
-    this.rev = this;
   }
 
   init = () => {

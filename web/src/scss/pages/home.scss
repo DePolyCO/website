@@ -329,7 +329,7 @@
         &:not(.active) {
           min-width: fluid(90, $lg);
           width: fluid(90, $lg);
-          cursor: pointer;
+          // cursor: pointer;
 
           .enhanced-picture {
             transition: transform 1.25s $ease-out-expo;

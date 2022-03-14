@@ -79,7 +79,7 @@
   position: fixed;
 
   border-radius: fluid(11, $sm);
-  padding: fluid(13, $sm) fluid(41, $sm);
+  padding: fluid(11, $sm) fluid(34, $sm);
 
   top: fluid(40, $sm);
   right: fluid(40, $sm);
@@ -242,16 +242,19 @@
 }
 
 .bio-profile--picture {
+  min-height: fluid(295, $sm);
   height: fluid(295, $sm);
   width: fluid(295, $sm);
 
   border-radius: 50%;
   background-color: $darkblue;
   margin-bottom: fluid(40, $sm);
-  overflow: initial;
+  transform: translateZ(0);
+  overflow: hidden;
 
   @include md {
-    overflow: hidden;
+    min-height: fluid(500, $lg);
+    height: fluid(500, $lg);
     height: fluid(500, $lg);
     width: fluid(500, $lg);
     margin-bottom: fluid(61, $lg);

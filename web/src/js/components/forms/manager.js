@@ -130,16 +130,21 @@ export class FormManager {
         e.target.parentNode.parentNode.classList.toggle("hover-toggle")
       );
 
-      const all_details = qsa("details");
-      let togglefromjs = false;
-      this.undetails = iris.add(all_details, "toggle", (e) => {
-        if (togglefromjs) {
-          togglefromjs = false;
-          return;
-        }
-        all_details.forEach((detail) => (detail.open = false));
-        e.target.open = true;
-        togglefromjs = true;
+      const allDetails = qsa("details");
+      this.undetails = [];
+
+      allDetails.forEach((details) => {
+        this.undetails.push(
+          iris.add(details, "toggle", (e) => {
+            if (details.open) {
+              allDetails.forEach((details) => {
+                if (details != e.target && details.open) {
+                  details.open = false;
+                }
+              });
+            }
+          })
+        );
       });
     }
   };
@@ -274,6 +279,6 @@ export class FormManager {
 
     this.hoveru1 && this.hoveru1();
     this.hoveru2 && this.hoveru2();
-    this.undetails && this.undetails();
+    this.undetails && this.undetails.forEach((u) => u());
   };
 }

@@ -131,10 +131,6 @@
         .quote-apo {
           opacity: 1;
         }
-
-        img {
-          filter: saturate(1);
-        }
       }
 
       &:hover {
@@ -150,6 +146,7 @@
     font-size: fluid(14, $sm);
     line-height: 110%;
     letter-spacing: 0.07em;
+    pointer-events: none;
 
     @include md {
       font-size: fluid(14, $lg);
@@ -166,8 +163,7 @@
     will-change: transform;
 
     img {
-      transition: all 2.5s $ease-out-expo;
-      filter: saturate(0);
+      transition: transform 2.5s $ease-out-expo;
     }
 
     @include md {
@@ -310,6 +306,7 @@
   .cta-btn {
     background: $darkbeige;
     white-space: nowrap;
+    width: fluid(188, $lg);
 
     .btn-inner::after {
       color: $darkbeige;
@@ -369,8 +366,7 @@
       margin-bottom: fluid(220, $lg);
 
       .cta-btn {
-        width: -moz-fit-content;
-        width: fit-content;
+        width: fluid(188, $lg);
       }
     }
   }

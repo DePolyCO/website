@@ -89,7 +89,7 @@ title: About Us
             {% for col in team.members | batch(4) %}
                 <div class="team-col df fc aic m-hide">
                     {% for member in col %}
-                        <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
+                        <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% else %} pen {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
                             <picture class="team-photo">
                                 <img loading="lazy" decoding="async" src="{{ member.img }}" alt="Photo of {{ member.name }}">
                             </picture>
@@ -119,7 +119,7 @@ title: About Us
         <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Advisors</div>
         <div id="advisor-list" class="grid-list df fc">
             <div class="team-col df fc aic">
-                <div class="team-item">
+                <div class="team-item pen">
                     <picture class="team-photo">
                         <img loading="lazy" decoding="async" src="{{ team.advisors[0].img }}" alt="Photo of {{ team.advisors[0].name }}">
                     </picture>
@@ -128,7 +128,7 @@ title: About Us
                 </div>
             </div>
             <div class="team-col df fc aic no-border">
-                <div class="team-item">
+                <div class="team-item pen">
                     <picture class="team-photo">
                         <img loading="lazy" decoding="async" src="{{ team.advisors[1].img }}" alt="Photo of {{ team.advisors[1].name }}">
                     </picture>

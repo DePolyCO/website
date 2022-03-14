@@ -16,6 +16,8 @@
 
     #nav-cta {
       transform: none;
+      opacity: 1;
+      pointer-events: all;
     }
 
     #m-bg,
@@ -189,6 +191,10 @@
   @include md {
     width: auto;
   }
+
+  .l-line {
+    padding-bottom: 0.075em;
+  }
 }
 
 .nav-item.active {
@@ -308,6 +314,9 @@
   left: fluid(20, $sm);
   width: calc(100% - #{fluid(40, $sm)});
 
+  opacity: 0;
+  pointer-events: none;
+
   transform: translateY(#{fluid(14 + 60, $sm)});
   transition: transform 1.75s $ease-out-expo,
     background-color 0.75s cubic-bezier(0.19, 1, 0.22, 1);
@@ -317,6 +326,9 @@
     width: -moz-fit-content;
     width: fit-content;
     transform: none;
+
+    opacity: 1;
+    pointer-events: all;
   }
 }
 

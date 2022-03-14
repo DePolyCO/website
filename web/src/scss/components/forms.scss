@@ -43,6 +43,7 @@ details[open] {
       left: -1px;
     }
 
+    // border bottom
     &::after {
       border-bottom: 1px solid $darkblue;
     }

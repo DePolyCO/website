@@ -101,9 +101,9 @@
     margin-bottom: fluid(13, $sm);
   }
 
-  // .stat-desc {
-  // margin-top: auto;
-  // }
+  .safari .stat-desc {
+    margin-top: auto;
+  }
 
   .stat-desc--title {
     font-size: fluid(36, $sm);

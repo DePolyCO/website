@@ -80,7 +80,7 @@ export const homeController = new Controller({
       speed: 0.75,
     });
 
-    if (!Sniff.touchDevice) {
+    if (!Sniff.touchDevice && !Sniff.safari) {
       c1 = new Collapse();
 
       ps = qsa(".stat-desc").map(

@@ -34,7 +34,7 @@ export class Parallax {
     ease = "io1",
     limitBounds = false,
   }) {
-    if (Sniff.safari) return;
+    // if (Sniff.safari) return;
 
     this.dom = select(dom)[0];
 

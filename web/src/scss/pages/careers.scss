@@ -17,6 +17,8 @@
   #meet {
     padding-left: fluid(20, $sm);
     padding-bottom: fluid(120, $sm);
+    max-width: 100vw;
+    overflow-x: hidden;
 
     @include md {
       padding-left: fluid(40, $lg);
@@ -306,7 +308,6 @@
   .cta-btn {
     background: $darkbeige;
     white-space: nowrap;
-    width: fluid(188, $lg);
 
     .btn-inner::after {
       color: $darkbeige;
@@ -314,6 +315,10 @@
 
     &:hover {
       background: $darkblue;
+    }
+
+    @include md {
+      width: fluid(188, $lg);
     }
   }
 

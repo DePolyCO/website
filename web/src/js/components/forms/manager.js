@@ -1,4 +1,4 @@
-import { iris, qs, qsa } from "../../hermes";
+import { iris, qs, qsa, Sniff } from "../../hermes";
 
 export const regex = {
   email:
@@ -121,13 +121,26 @@ export class FormManager {
       });
     });
 
-    if (this.forms.length === 3) {
+    // is contacts page
+    if (this.forms.length === 3 && !Sniff.touchDevice) {
       this.hoveru1 = iris.add(".form-wrapper summary", "pointerenter", (e) =>
         e.target.parentNode.parentNode.classList.toggle("hover-toggle")
       );
       this.hoveru2 = iris.add(".form-wrapper summary", "pointerleave", (e) =>
         e.target.parentNode.parentNode.classList.toggle("hover-toggle")
       );
+
+      const all_details = qsa("details");
+      let togglefromjs = false;
+      this.undetails = iris.add(all_details, "toggle", (e) => {
+        if (togglefromjs) {
+          togglefromjs = false;
+          return;
+        }
+        all_details.forEach((detail) => (detail.open = false));
+        e.target.open = true;
+        togglefromjs = true;
+      });
     }
   };
 
@@ -261,5 +274,6 @@ export class FormManager {
 
     this.hoveru1 && this.hoveru1();
     this.hoveru2 && this.hoveru2();
+    this.undetails && this.undetails();
   };
 }

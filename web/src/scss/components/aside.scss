@@ -12,7 +12,7 @@
   width: fluid(335, $sm);
   right: fluid(20, $sm);
   top: fluid(20, $sm);
-  height: calc(100vh - #{fluid(20, $sm)});
+  height: calc(100vh - #{fluid(40, $sm)});
   overscroll-behavior: contain;
   overflow: hidden;
 
@@ -26,7 +26,7 @@
 
 .aside-panel {
   width: fluid(335, $sm);
-  height: calc(100vh - #{fluid(20, $sm)});
+  height: calc(100vh - #{fluid(40, $sm)});
 
   position: absolute;
   right: 0;
@@ -427,9 +427,40 @@ strong {
   }
 }
 
-#aside {
+.explain-aside {
   .explain--picture {
     margin-bottom: fluid(20, $sm);
+    overflow: visible;
+
+    img {
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .bio-panel--inner {
+    padding-top: fluid(64, $sm);
+  }
+
+  .bio-left {
+    position: absolute;
+    top: fluid(410, $sm);
+    border-bottom: none;
+    max-width: fluid(271, $sm);
+  }
+
+  .bio-name {
+    font-weight: 400;
+  }
+
+  .explain-visual--circle {
+    top: fluid(125, $sm) !important;
+    left: fluid(73, $sm) !important;
+
+    width: fluid(190, $sm) !important;
+    height: fluid(190, $sm) !important;
   }
 }
 

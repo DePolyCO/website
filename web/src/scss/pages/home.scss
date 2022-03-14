@@ -82,7 +82,7 @@
       font-size: fluid(16, $lg);
       border-radius: fluid(8, $lg);
       padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
-      margin-bottom: fluid(3, $lg);
+      margin-bottom: fluid(10, $lg);
       line-height: 110%;
     }
   }
@@ -473,7 +473,6 @@
     min-width: fluid(403, $lg);
     width: fluid(470, $lg);
     height: fluid(388, $lg);
-    background: $green;
     transition: transform 1.25s $ease-out-expo;
   }
 

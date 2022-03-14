@@ -1,38 +1,47 @@
-import S from '@sanity/desk-tool/structure-builder'
-import { MdSettings } from "react-icons/md";
-import { MdPerson } from "react-icons/md";
+import S from "@sanity/desk-tool/structure-builder";
 
-const hiddenDocTypes = listItem =>
-  !['category', 'author', 'post', 'siteSettings'].includes(listItem.getId())
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
+import * as Structure from "@sanity/document-internationalization/lib/structure";
 
-export default () =>
-  S.list()
-    .title('Content')
+// For document-internationalization
+// export const getDefaultDocumentNode = (props) => {
+//   if (props.schemaType === "myschema") {
+//     return S.document().views(
+//       Structure.getDocumentNodeViewsForSchemaType(props.schemaType)
+//     );
+//   }
+//   return S.document();
+// };
+
+export default () => {
+  // const langStructure = Structure.getFilteredDocumentTypeListItems();
+
+  return S.list()
+    .id("__root__")
+    .title("Content")
     .items([
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "seo"
+      ),
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "post"
+      ),
+
       S.listItem()
-        .title('Settings')
-        .icon(MdSettings)
+        .title("Featured Article")
         .child(
-          S.editor()
-            .id('siteSettings')
-            .schemaType('siteSettings')
-            .documentId('siteSettings')
+          S.document()
+            .schemaType("featuredArticle")
+            .documentId("featuredArticle")
         ),
-      S.listItem()
-        .title('Blog posts')
-        .schemaType('post')
-        .child(S.documentTypeList('post').title('Blog posts')),
-      S.listItem()
-        .title('Authors')
-        .icon(MdPerson)
-        .schemaType('author')
-        .child(S.documentTypeList('author').title('Authors')),
-      S.listItem()
-        .title('Categories')
-        .schemaType('category')
-        .child(S.documentTypeList('category').title('Categories')),
-      // This returns an array of all the document types
-      // defined in schema.js. We filter out those that we have
-      // defined the structure above
-      ...S.documentTypeListItems().filter(hiddenDocTypes)
-    ])
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "category"
+      ),
+      // ...langStructure,
+
+      // orderableDocumentListDeskItem({
+      //   type: "post",
+      //   title: "Posts",
+      // }),
+    ]);
+};

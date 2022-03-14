@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 :root {
-  --brand-primary: #C1A38B;
-  --brand-secondary: #4E4E4E;
+  --brand-primary: #022d42;
+  --brand-secondary: #aab6b6;
   --font-family-base: "Inter";
 }

@@ -1,35 +1,39 @@
 {
   "root": true,
   "project": {
-    "name": "aurum"
+    "name": "depoly"
   },
   "api": {
-    "projectId": "[redacted]",
+    "projectId": "8quen0nd",
     "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
-    "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/dashboard",
     "@sanity/desk-tool",
-    "dashboard-widget-structure-menu",
-    "dashboard-widget-document-list",
-    "dashboard-widget-netlify"
+    "@sanity/orderable-document-list",
+    "@sanity/document-internationalization"
   ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema.js"
-    },
-    {
-      "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
+      "path": "./schemas/schema"
     },
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "styling/variables.css"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
     }
   ]
 }

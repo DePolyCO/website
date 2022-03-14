@@ -131,6 +131,10 @@
         .quote-apo {
           opacity: 1;
         }
+
+        img {
+          filter: saturate(1);
+        }
       }
 
       &:hover {
@@ -160,9 +164,10 @@
 
     // hack to promote to it's own layer
     will-change: transform;
-    
+
     img {
-      transition: transform 2.5s $ease-out-expo;
+      transition: all 2.5s $ease-out-expo;
+      filter: saturate(0);
     }
 
     @include md {

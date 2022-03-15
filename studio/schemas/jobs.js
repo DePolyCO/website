@@ -24,6 +24,17 @@ export default {
     },
 
     {
+      title: "Are you currently hiring for this role?",
+      description:
+        "Turning this off will remove the job listing from the website!",
+      name: "active",
+      type: "boolean",
+      options: {
+        layout: "checkbox",
+      },
+    },
+
+    {
       name: "level",
       title: "Level",
       type: "string",
@@ -105,4 +116,7 @@ export default {
       ],
     },
   ],
+  initialValue: {
+    active: true,
+  },
 };

@@ -7,7 +7,7 @@ import { IoCreateOutline } from "react-icons/io5";
 
 export default {
   name: "post",
-  title: "Post",
+  title: "Posts",
   type: "document",
   i18n: true,
   orderings: [orderRankOrdering],
@@ -19,16 +19,38 @@ export default {
       title: "Title",
       type: "string",
     },
+
     {
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-        maxLength: 96,
-        isUnique: () => true,
-      },
+      name: "settings",
+      title: "Settings",
+      type: "object",
+      fields: [
+        {
+          name: "slug",
+          title: "Slug",
+          type: "slug",
+          options: {
+            source: "title",
+            maxLength: 96,
+            isUnique: () => true,
+          },
+        },
+
+        {
+          name: "postCategory",
+          title: "Post Category",
+          type: "reference",
+          to: { type: "category" },
+        },
+
+        {
+          name: "publishedAt",
+          title: "Published at",
+          type: "datetime",
+        },
+      ],
     },
+
     {
       name: "mainImage",
       title: "Main image",
@@ -44,17 +66,13 @@ export default {
         },
       ],
     },
+
     {
-      name: "postCategory",
-      title: "Post Category",
-      type: "reference",
-      to: { type: "category" },
+      name: "intro",
+      title: "Short Intro",
+      type: "text",
     },
-    {
-      name: "publishedAt",
-      title: "Published at",
-      type: "datetime",
-    },
+
     {
       name: "body",
       title: "Body",

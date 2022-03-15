@@ -6,6 +6,7 @@ export default {
   title: "SEO Settings",
   i18n: true,
   icon: IoSettingsOutline,
+  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
   fields: [
     {
       name: "title",

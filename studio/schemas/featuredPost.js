@@ -1,10 +1,10 @@
 export default {
-  title: "Featured Article",
-  name: "featuredArticle",
+  title: "Featured Post",
+  name: "featuredPost",
   type: "object",
   fields: [
     {
-      title: "Featured Article",
+      title: "Featured Post",
       name: "featured",
       type: "reference",
       to: [{ type: "post" }],
@@ -18,7 +18,7 @@ export default {
       return Object.assign(
         {},
         {
-          title: "Featured Article",
+          title: "Featured Post",
         }
       );
     },

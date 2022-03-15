@@ -1,8 +1,11 @@
+import { IoSettingsOutline } from "react-icons/io5";
+
 export default {
   name: "seo",
   type: "document",
   title: "SEO Settings",
   i18n: true,
+  icon: IoSettingsOutline,
   fields: [
     {
       name: "title",

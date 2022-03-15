@@ -1,18 +1,16 @@
+import { IoDocumentsOutline } from "react-icons/io5";
+
 export default {
   name: "category",
-  title: "Category",
+  title: "Article Categories",
   type: "document",
   i18n: true,
+  icon: IoDocumentsOutline,
   fields: [
     {
       name: "title",
       title: "Title",
       type: "string",
-    },
-    {
-      name: "description",
-      title: "Description",
-      type: "text",
     },
   ],
 };

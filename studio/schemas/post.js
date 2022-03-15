@@ -3,12 +3,15 @@ import {
   orderRankOrdering,
 } from "@sanity/orderable-document-list";
 
+import { IoCreateOutline } from "react-icons/io5";
+
 export default {
   name: "post",
   title: "Post",
   type: "document",
   i18n: true,
   orderings: [orderRankOrdering],
+  icon: IoCreateOutline,
   fields: [
     orderRankField({ type: "post" }),
     {
@@ -30,15 +33,22 @@ export default {
       name: "mainImage",
       title: "Main image",
       type: "image",
-      options: {
-        hotspot: true,
-      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alt description",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
-      name: "categories",
-      title: "Categories",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
+      name: "postCategory",
+      title: "Post Category",
+      type: "reference",
+      to: { type: "category" },
     },
     {
       name: "publishedAt",

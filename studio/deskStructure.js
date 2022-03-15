@@ -3,6 +3,8 @@ import S from "@sanity/desk-tool/structure-builder";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import * as Structure from "@sanity/document-internationalization/lib/structure";
 
+import { IoPeopleOutline, IoSparklesOutline } from "react-icons/io5";
+
 // For document-internationalization
 // export const getDefaultDocumentNode = (props) => {
 //   if (props.schemaType === "myschema") {
@@ -23,20 +25,43 @@ export default () => {
       Structure.getFilteredDocumentTypeListItems().find(
         ({ id }) => id === "seo"
       ),
+      S.divider(),
+
       Structure.getFilteredDocumentTypeListItems().find(
         ({ id }) => id === "post"
       ),
-
       S.listItem()
-        .title("Featured Article")
+        .title("Featured Post")
+        .icon(IoSparklesOutline)
         .child(
-          S.document()
-            .schemaType("featuredArticle")
-            .documentId("featuredArticle")
+          S.document().schemaType("featuredPost").documentId("featuredPost")
         ),
       Structure.getFilteredDocumentTypeListItems().find(
         ({ id }) => id === "category"
       ),
+
+      S.divider(),
+
+      S.listItem()
+        .title("Team Members")
+        .icon(IoPeopleOutline)
+        .child(
+          S.document()
+            .schemaType("team")
+            .documentId("team")
+            .title("Team Members")
+        ),
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "person"
+      ),
+      S.divider(),
+
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "jobs"
+      ),
+
+      S.divider(),
+
       // ...langStructure,
 
       // orderableDocumentListDeskItem({

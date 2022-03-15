@@ -13,7 +13,9 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/orderable-document-list",
-    "@sanity/document-internationalization"
+    "@sanity/document-internationalization",
+    "@sanity/dashboard",
+    "media"
   ],
   "env": {
     "development": {
@@ -28,12 +30,16 @@
       "path": "./schemas/schema"
     },
     {
-      "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "styling/variables.css"
-    },
-    {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig.js"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "styling/variables.css"
     }
   ]
 }

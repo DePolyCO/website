@@ -8,8 +8,18 @@ export default {
   icon: IoPersonAddOutline,
   fields: [
     {
+      name: "img",
+      title: "Photo",
+      type: "image",
+    },
+    {
       name: "title",
       title: "Name",
+      type: "string",
+    },
+    {
+      name: "role",
+      title: "Role",
       type: "string",
     },
     {
@@ -19,28 +29,17 @@ export default {
     },
     {
       name: "social",
-      type: "array",
-      of: [
+      type: "object",
+      fields: [
         {
-          type: "object",
-          fields: [
-            {
-              name: "socialLink",
-              title: "URL",
-              type: "url",
-            },
-            {
-              name: "socialLabel",
-              title: "Name of platform",
-              type: "string",
-              options: {
-                list: [
-                  { title: "Linkedin", value: "li" },
-                  { title: "Twitter", value: "tw" },
-                ],
-              },
-            },
-          ],
+          name: "linkedin",
+          type: "url",
+          title: "Linkedin",
+        },
+        {
+          name: "twitter",
+          type: "url",
+          title: "Twitter",
         },
       ],
     },

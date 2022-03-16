@@ -1,10 +1,9 @@
-import { Timeline, qs, Sniff, Vau, ticker } from "../../hermes";
-import { smoothscroller } from "../../scroller";
+import { Timeline, qs, Sniff, Vau } from "../../hermes";
 
 class Sail {
   constructor() {
     this.sail = qs("#sail");
-    this.app = qs("#app");
+    this.app = qs("#app-wrapper");
 
     this.init();
   }

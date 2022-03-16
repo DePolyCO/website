@@ -12,10 +12,11 @@ import { Vau } from "../hermes";
  *
  */
 
-let r0;
+let r0, r1;
 export const privacyController = new Controller({
   hide: ({ done }) => {
     r0.destroy();
+    r1.destroy();
     sail.out(done);
   },
 
@@ -27,6 +28,12 @@ export const privacyController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    r1 = new Reveal({
+      targets: ".text-block--text",
+      stagger: 75,
+    });
+    r1.play();
 
     new Vau({
       targets: "#hero .hero-grid",

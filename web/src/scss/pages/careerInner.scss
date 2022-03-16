@@ -232,9 +232,12 @@
   width: -moz-fit-content;
   width: fit-content;
   height: fit-content;
-  display: inline-block;
 
   margin-bottom: 2px;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  display: inline;
 
   font-size: fluid(14, $sm);
   padding: fluid(3, $sm) fluid(8, $sm) fluid(2, $sm);

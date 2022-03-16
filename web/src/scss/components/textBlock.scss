@@ -43,6 +43,9 @@
   width: -moz-fit-content;
   height: fit-content;
   width: fit-content;
+  // box-decoration-break: clone;
+  // -webkit-box-decoration-break: clone;
+  // display: inline;
 
   &::before {
     content: "";

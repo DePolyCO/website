@@ -12,11 +12,12 @@ import { Vau } from "../hermes";
  *
  */
 
-let forms, r0;
+let forms, r0, r1;
 export const careerInnerController = new Controller({
   hide: ({ done }) => {
     forms.destroy();
     r0.destroy();
+    r1.destroy();
     monoShuffle.destroy();
 
     sail.out(done);
@@ -30,6 +31,12 @@ export const careerInnerController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    r1 = new Reveal({
+      targets: ".text-block--text",
+      stagger: 75,
+    });
+    r1.play();
 
     new Vau({
       targets: "#hero .hero-grid",

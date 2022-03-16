@@ -1,0 +1,328 @@
+#blog {
+  #blog-header {
+    margin-top: fluid(140, $lg);
+    padding-top: fluid(40, $lg);
+    margin-bottom: fluid(125, $lg);
+    border-top: 1px solid #022d42;
+  }
+
+  .article-card--tag {
+    &::before {
+      @include md {
+        width: fluid(15, $lg);
+        height: fluid(15, $lg);
+      }
+    }
+  }
+
+  #blog-filters {
+    padding-bottom: fluid(40, $lg);
+    padding-left: fluid(35, $lg);
+    border-left: 1px solid #022d42;
+  }
+
+  #filter-content {
+    border-bottom: 1px solid #022d42;
+    padding-bottom: fluid(33, $lg);
+
+    ul {
+      gap: fluid(35 - 16, $lg);
+    }
+  }
+
+  .filter-category {
+    font-weight: 500;
+    font-size: fluid(12, $lg);
+    line-height: 130%;
+    letter-spacing: 0.05em;
+    padding: fluid(1, $lg) fluid(8, $lg);
+    border-radius: fluid(8, $lg);
+    height: fluid(25, $lg);
+    display: grid;
+    place-items: center;
+    transition: background 0.4s, color 0.4s;
+    color: #aab6b6;
+
+    &:hover {
+      background: #dadaca;
+      color: $darkblue;
+    }
+
+    &.active {
+      background-color: $darkblue;
+      pointer-events: none;
+      color: white;
+    }
+  }
+
+  #search {
+    text-align: right;
+    padding: 0;
+    font-weight: 500;
+    font-size: fluid(14, $lg);
+    line-height: 130%;
+    letter-spacing: 0.01em;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+
+  #blog-featured {
+    width: fluid(885, $lg);
+    margin-right: fluid(35, $lg);
+    opacity: 0;
+
+    .article-card {
+      border-bottom: none;
+
+      &--link {
+        display: block;
+      }
+
+      &--thumbnail-featured {
+        width: 100%;
+        aspect-ratio: 885 / 480;
+        margin-bottom: fluid(68, $lg);
+      }
+
+      &--tag {
+        margin-bottom: fluid(24, $lg);
+      }
+
+      &--title {
+        font-size: fluid(50, $lg);
+        margin-bottom: fluid(28, $lg);
+      }
+
+      &--desc {
+        font-size: fluid(18, $lg);
+        margin-bottom: fluid(40, $lg);
+      }
+
+      &--cta {
+        font-size: fluid(16, $lg);
+        gap: fluid(12, $lg);
+      }
+    }
+  }
+
+  .article-card {
+    padding-bottom: fluid(40, $lg);
+    border-bottom: 1px solid #022d42;
+    opacity: 0;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    img {
+      transition: transform 2s $ease-out-expo;
+    }
+
+    &--hori {
+      gap: fluid(55, $lg);
+      width: fluid(885, $lg);
+    }
+
+    &--vert {
+      .article-card--thumbnail {
+        margin-bottom: fluid(40, $lg);
+      }
+
+      .article-card--desc {
+        margin-bottom: fluid(86, $lg);
+      }
+    }
+
+    &--link {
+      display: block;
+    }
+
+    &--thumbnail {
+      aspect-ratio: 1 / 1;
+    }
+
+    &--tag {
+      font-size: fluid(12, $lg);
+      margin-bottom: fluid(28, $lg);
+      padding-left: fluid(15 + 7, $lg);
+    }
+
+    &--title {
+      font-size: fluid(35, $lg);
+      line-height: 110%;
+      letter-spacing: -0.02em;
+      margin-bottom: fluid(16, $lg);
+    }
+
+    &--desc {
+      font-size: fluid(16, $lg);
+      line-height: 140%;
+    }
+
+    &--cta {
+      font-weight: 700;
+      font-size: fluid(16, $lg);
+      line-height: 110%;
+      letter-spacing: 0.01em;
+      gap: fluid(12, $lg);
+      margin-top: auto;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  #blog-categories {
+    opacity: 0;
+  }
+
+  #blog-category--list {
+    width: fluid(885 + 35, $lg);
+    padding-left: fluid(35, $lg);
+    border-left: fluid(1, $lg) solid #022d42;
+    gap: fluid(40, $lg);
+
+    li:last-of-type {
+      .article-card {
+        border-bottom: none;
+      }
+    }
+  }
+
+  #blog-two {
+    border-top: 1px solid #022d42;
+  }
+
+  #blog-filters--extended {
+    width: fluid(430, $lg);
+    margin-right: fluid(40, $lg);
+  }
+
+  #blog-article--list {
+    width: fluid(430 * 3 + 40 * 2, $lg);
+    margin-left: auto;
+    padding: 0 fluid(15, $lg);
+    padding-top: fluid(80, $lg);
+    margin-bottom: fluid(40, $lg);
+
+    li {
+      &:nth-of-type(4n),
+      &:first-of-type {
+        .article-card {
+          width: fluid(400 + 35, $lg);
+          padding-left: 0;
+
+          &::after {
+            left: fluid(-15, $lg);
+          }
+        }
+      }
+
+      &:nth-of-type(3n + 0) {
+        .article-card {
+          width: fluid(400 + 35, $lg);
+          padding-right: 0;
+          border-right: none;
+
+          &::after {
+            right: fluid(-15, $lg);
+          }
+        }
+      }
+
+      &:nth-child(1n + 4) {
+        .article-card {
+          padding-top: fluid(40, $lg);
+          top: -1px;
+
+          &::after {
+            content: none;
+          }
+        }
+      }
+    }
+
+    .article-card {
+      width: fluid(400 + 35 + 35, $lg);
+      border-bottom: none;
+      border-right: 1px solid $darkblue;
+      padding-left: fluid(35, $lg);
+      padding-right: fluid(35, $lg);
+
+      &::after {
+        bottom: 0;
+        left: fluid(20, $lg);
+        right: fluid(20, $lg);
+        height: 1px;
+        background: $darkblue;
+      }
+    }
+
+    .article-card--tag {
+      font-size: fluid(12, $lg);
+    }
+  }
+
+  #pagination {
+    border-top: 1px solid #022d42;
+    border-bottom: 1px solid #022d42;
+    margin-bottom: fluid(160, $lg);
+
+    font-weight: 700;
+    font-size: fluid(15, $lg);
+    line-height: 130%;
+    letter-spacing: 0.01em;
+  }
+
+  .pagination-item {
+    padding: fluid(30, $lg) fluid(55, $lg);
+    position: relative;
+    cursor: pointer;
+    color: #aab6b6;
+    transition: color 0.4s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      height: fluid(11, $lg);
+      width: 1px;
+      background-color: #aab6b6;
+      transform: translateY(-50%);
+    }
+
+    &:last-of-type {
+      &::before {
+        content: none;
+      }
+    }
+
+    &:hover {
+      color: $darkblue;
+    }
+
+    &.active {
+      color: #022d42;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        height: fluid(3, $lg);
+        width: fluid(30, $lg);
+        background: $darkblue;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

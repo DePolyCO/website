@@ -23,9 +23,9 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
-    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "@11ty/eleventy-fetch": "^3.0.0",
+    "@portabletext/to-html": "^1.0.3",
     "@sanity/asset-utils": "^1.2.3",
-    "@sanity/block-content-to-markdown": "0.0.5",
     "@sanity/client": "^3.0.6",
     "@sanity/image-url": "^1.0.1",
     "cssnano": "^5.0.17",

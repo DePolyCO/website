@@ -43,9 +43,44 @@ module.exports = (eleventyConfig) => {
     return content;
   });
 
-  eleventyConfig.addNunjucksShortcode("imageUrlFor", (image) => {
-    return urlFor(image).maxWidth(2500).fit("max").auto("format");
+  eleventyConfig.addShortcode("imageUrlFor", (image, width = "400") => {
+    return urlFor(image).width(width).auto("format");
   });
+  eleventyConfig.addShortcode("croppedUrlFor", (image, width, height) => {
+    return urlFor(image).width(width).height(height).auto("format");
+  });
+
+  eleventyConfig.addShortcode(
+    "responsiveImage",
+    (
+      image,
+      srcs = "300,600,1200,2000",
+      sizes = "100vw",
+      classList = "",
+      important = false
+    ) => {
+      const sizeArray = srcs.split(",");
+      const firstSize = sizeArray[0];
+      const lastSize = sizeArray[sizeArray.length - 1];
+      const srcSetContent = sizeArray
+        .map((size) => {
+          const url = urlFor(image).width(size).auto("format").url();
+
+          return `${url} ${size}w`;
+        })
+        .join(",");
+
+      return `<img 
+            src="${urlFor(image).width(firstSize)}"
+            ${classList ? "class='" + classList + "'" : ""}
+            srcset="${srcSetContent}"
+            sizes="${sizes}"
+            width="${lastSize.trim()}"
+            loading="${important ? "eager" : "lazy"}"
+            decoding="${important ? "sync" : "async"}"
+            >`;
+    }
+  );
 
   eleventyConfig.addNunjucksShortcode("fileUrlFor", (file) => {
     return buildFileUrl(file);

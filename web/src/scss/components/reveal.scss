@@ -1,6 +1,7 @@
 .l-wrapper {
   display: block;
   overflow: hidden;
+  overflow: clip;
   contain: content;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@
 .l-char--wrapper {
   display: inline-block;
   overflow: hidden;
+  overflow: clip;
   contain: content;
   padding-right: 0.1em;
   padding-bottom: 0.1em;

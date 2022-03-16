@@ -1,13 +1,10 @@
-const { AssetCache } = require("@11ty/eleventy-cache-assets");
+const { AssetCache } = require("@11ty/eleventy-fetch");
+
 require("dotenv").config();
 
 const useCache = process.env.PRODUCTION === "false";
 
-if (useCache) {
-  console.log(`[Building with cache]`);
-} else {
-  console.log(`[Not using cache]`);
-}
+console.log(useCache ? `[Building with cache]` : `[Not using cache]`);
 
 const withCache = async (fn, name, duration = "1d") => {
   const asset = new AssetCache(name);

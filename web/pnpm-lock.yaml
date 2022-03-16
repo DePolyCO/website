@@ -2,9 +2,9 @@ lockfileVersion: 5.3
 
 specifiers:
   '@11ty/eleventy': ^1.0.0
-  '@11ty/eleventy-cache-assets': ^2.3.0
+  '@11ty/eleventy-fetch': ^3.0.0
+  '@portabletext/to-html': ^1.0.3
   '@sanity/asset-utils': ^1.2.3
-  '@sanity/block-content-to-markdown': 0.0.5
   '@sanity/client': ^3.0.6
   '@sanity/image-url': ^1.0.1
   axios: ^0.26.1
@@ -32,9 +32,9 @@ dependencies:
 
 devDependencies:
   '@11ty/eleventy': 1.0.0
-  '@11ty/eleventy-cache-assets': 2.3.0
+  '@11ty/eleventy-fetch': 3.0.0
+  '@portabletext/to-html': 1.0.3
   '@sanity/asset-utils': 1.2.3
-  '@sanity/block-content-to-markdown': 0.0.5
   '@sanity/client': 3.0.6
   '@sanity/image-url': 1.0.1
   cssnano: 5.0.17_postcss@8.4.6
@@ -56,15 +56,14 @@ packages:
     resolution: {integrity: sha512-tYrGX3Tvccufy2jaYDkYpjBmVP1LeQq6b/d0r4GYThTXL4f3ZR7yMAl/0r8h9xvnsP+gkO53wfnV7s8cXcCtEg==}
     dev: true
 
-  /@11ty/eleventy-cache-assets/2.3.0:
-    resolution: {integrity: sha512-W8tvO00GlWaKt3ccpEStaUBoj9BE3EgzuD8uYChCfYbN2Q4HkEItkiapvIJT0zJwAwoMfnSq6VHPLScYlX2XCg==}
-    engines: {node: '>=10'}
+  /@11ty/eleventy-fetch/3.0.0:
+    resolution: {integrity: sha512-qJvfb331rYQAmlCS71Ygg0/XHUdB4/qXBOLsG0DJ1m61WL5JNha52OtKVeQq34u2J2Nfzim+X4TIL/+QyesB7Q==}
+    engines: {node: '>=12'}
     dependencies:
       debug: 4.3.3
       flat-cache: 3.0.4
       node-fetch: 2.6.7
       p-queue: 6.6.2
-      short-hash: 1.0.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1306,6 +1305,24 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
+  /@portabletext/to-html/1.0.3:
+    resolution: {integrity: sha512-pcMjM06LPuZZ2HNnLJBIVUMo9BXstKhELtzgkPwwEQzUBL7n9L+ttsOZPwPIhV+t9uSlbvMezbM+McJFS0OO8w==}
+    dependencies:
+      '@portabletext/toolkit': 1.0.5
+      '@portabletext/types': 1.0.3
+    dev: true
+
+  /@portabletext/toolkit/1.0.5:
+    resolution: {integrity: sha512-kwVOfVoquufDQNmzzhGxji9A+/T+dhLKKOHEHldM1kMUoNzY6wwrt5H/Plnw4xbdE780kkwqJqHxjxoSYr706A==}
+    dependencies:
+      '@portabletext/types': 1.0.3
+    dev: true
+
+  /@portabletext/types/1.0.3:
+    resolution: {integrity: sha512-SDDsdury2SaTI2D5Ea6o+Y39SSZMYHRMWJHxkxYl3yzFP0n/0EknOhoXcoaV+bxGr2dTTqZi2TOEj+uWYuavSw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: true
+
   /@rexxars/eventsource-polyfill/1.0.0:
     resolution: {integrity: sha512-YnrybIoM9WFqmeK1D8p/gutqjJnmXCVFWAU3ucka9M7Dzpen3f2Dy4KsC6k1wDHrCtHQuUHHwZovh3i5UPDaZw==}
     dev: true
@@ -1313,21 +1330,6 @@ packages:
   /@sanity/asset-utils/1.2.3:
     resolution: {integrity: sha512-0eOR0D6zcqd6nEmAGIJ93ibRGO6ocYzQ5aEuyYvngHy5MDDjUfC821UnF/YPIcxiMXg2DLDjWd4EPt9F8frKNQ==}
     engines: {node: '>=10'}
-    dev: true
-
-  /@sanity/block-content-to-hyperscript/2.0.10:
-    resolution: {integrity: sha512-xT3iEmZkK0fvO5PDFpn9GMWGfvOopvbrRCBU48XxpFoTxRrfsHhxbRy8J0eND1HGXHUENkIKv5jbohtGd1MiVg==}
-    dependencies:
-      '@sanity/generate-help-url': 0.140.0
-      '@sanity/image-url': 0.140.22
-      hyperscript: 2.0.2
-      object-assign: 4.1.1
-    dev: true
-
-  /@sanity/block-content-to-markdown/0.0.5:
-    resolution: {integrity: sha512-wnBfusG67TU2+MXcDSNDtEdE5MMYXQ9t5hHtU+0dQ2MUHPbF6FfX0nfX0IvjfNWGpMEniCOtmJR0k71maO9zYA==}
-    dependencies:
-      '@sanity/block-content-to-hyperscript': 2.0.10
     dev: true
 
   /@sanity/client/3.0.6:
@@ -1349,17 +1351,8 @@ packages:
       eventsource: 1.1.0
     dev: true
 
-  /@sanity/generate-help-url/0.140.0:
-    resolution: {integrity: sha512-H/G/WA9S22TXcXST52CIiTsHx3S2hH0gvK7LnI5w76vfKS0obnDPh8jrPg4xeNRYGPuV9MHYRlyERGpRGoo4Qw==}
-    dev: true
-
   /@sanity/generate-help-url/2.18.0:
     resolution: {integrity: sha512-If8Qkw32LWPes16UzqwUsTLgfxF5d4ACdUvCLMl6grJc/5G8LKPAGCQUuA/d1F4W16yCJVV7Zv31HDRDXJSJkg==}
-    dev: true
-
-  /@sanity/image-url/0.140.22:
-    resolution: {integrity: sha512-CAmQZnj+KM7FSEYiWlIGDit072syicYuAw0w7R2ctMzHiZ4p9mE/g6dBnYqrqFUrw2J+GpJgPt+RVspKP8vdqA==}
-    engines: {node: '>=10.0.0'}
     dev: true
 
   /@sanity/image-url/1.0.1:
@@ -1988,10 +1981,6 @@ packages:
     resolution: {integrity: sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=}
     dev: false
 
-  /browser-split/0.0.0:
-    resolution: {integrity: sha1-QUGcrvdpdVkp3VGJZ9PuwKYmJ3E=}
-    dev: true
-
   /browser-sync-client/2.27.7:
     resolution: {integrity: sha512-wKg9UP9a4sCIkBBAXUdbkdWFJzfSAQizGh+nC19W9y9zOo9s5jqeYRFUUbs7x5WKhjtspT+xetVp9AtBJ6BmWg==}
     engines: {node: '>=8.0.0'}
@@ -2306,12 +2295,6 @@ packages:
       inherits: 2.0.4
       safe-buffer: 5.2.1
     dev: false
-
-  /class-list/0.1.1:
-    resolution: {integrity: sha1-m5dFGSxBebXaCg12M2WOPHDXlss=}
-    dependencies:
-      indexof: 0.0.1
-    dev: true
 
   /class-utils/0.3.6:
     resolution: {integrity: sha512-qOhPa/Fj7s6TY8H8esGu5QNpMMQxz79h+urzrNYN6mn+9BnxlDGf5QZ+XeCDsxSjPqsSR56XOZOJmpeurnLMeg==}
@@ -3903,10 +3886,6 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /hash-string/1.0.0:
-    resolution: {integrity: sha1-w/oV8Hjd0WvBULQXb95wkWIPLH8=}
-    dev: true
-
   /hash.js/1.1.7:
     resolution: {integrity: sha512-taOaskGt4z4SOANNseOviYDvjEJinIkRgmp7LbKP2YTTmVxWBl87s/uzK9r+44BclBSp2X7K1hqeNfz9JbBeXA==}
     dependencies:
@@ -3929,13 +3908,6 @@ packages:
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
-    dev: true
-
-  /html-element/2.3.1:
-    resolution: {integrity: sha512-xnFt2ZkbFcjc+JoAtg3Hl89VeEZDjododu4VCPkRvFmBTHHA9U1Nt6hLUWfW2O+6Sl/rT1hHK/PivleX3PdBJQ==}
-    engines: {node: '>=4.2'}
-    dependencies:
-      class-list: 0.1.1
     dev: true
 
   /html-minifier/4.0.0:
@@ -3986,14 +3958,6 @@ packages:
   /https-browserify/1.0.0:
     resolution: {integrity: sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=}
     dev: false
-
-  /hyperscript/2.0.2:
-    resolution: {integrity: sha1-ODnLpFVUvf4nu4HCFC0WhPgTWvU=}
-    dependencies:
-      browser-split: 0.0.0
-      class-list: 0.1.1
-      html-element: 2.3.1
-    dev: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -6471,12 +6435,6 @@ packages:
 
   /shell-quote/1.7.3:
     resolution: {integrity: sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==}
-    dev: true
-
-  /short-hash/1.0.0:
-    resolution: {integrity: sha1-P0kdco/Md37GBbuvf4PyNxL0IFA=}
-    dependencies:
-      hash-string: 1.0.0
     dev: true
 
   /side-channel/1.0.4:

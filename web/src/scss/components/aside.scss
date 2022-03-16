@@ -15,6 +15,7 @@
   height: calc(100vh - #{fluid(40, $sm)});
   overscroll-behavior: contain;
   overflow: hidden;
+  overflow: clip;
 
   @include md {
     width: fluid(1070, $lg);
@@ -32,6 +33,7 @@
   right: 0;
   bottom: -100%;
   overflow: hidden;
+  overflow: clip;
   background-color: $lightbeige;
 
   transform: translate3d(0, 1%, 0);
@@ -251,6 +253,7 @@
   margin-bottom: fluid(40, $sm);
   transform: translateZ(0);
   overflow: hidden;
+  overflow: clip;
 
   @include md {
     min-height: fluid(500, $lg);

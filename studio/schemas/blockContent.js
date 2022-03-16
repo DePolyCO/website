@@ -42,6 +42,9 @@ export default {
     // as a block type.
     {
       type: "image",
+      options: {
+        hotspot: true,
+      },
       fields: [
         {
           name: "alt",

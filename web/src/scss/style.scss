@@ -127,8 +127,10 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.prevent-scroll {
-  overflow: hidden;
+:not(.safari) {
+  .oh {
+    overflow: clip;
+  }
 }
 
 @import "./pages/404.scss";
@@ -140,3 +142,4 @@ body {
 @import "./pages/contact.scss";
 @import "./pages/privacy.scss";
 @import "./pages/article.scss";
+@import "./pages/blog.scss";

@@ -9,6 +9,7 @@ $slide-gap: fluid(16, 1440);
 
 .carousel-container {
   overflow: hidden;
+  overflow: clip;
   width: 100%;
   padding: $container-padding math.div((100 - $slideWidth), 2);
   cursor: grab;
@@ -26,6 +27,7 @@ $slide-gap: fluid(16, 1440);
 
 .carousel-slide {
   overflow: hidden;
+  overflow: clip;
   display: block;
   height: math.div($slideWidth, $slideAspect);
   min-width: $slideWidth;
@@ -48,6 +50,7 @@ $slide-gap: fluid(16, 1440);
 
   .carousel-container {
     overflow: hidden;
+    overflow: clip;
     width: 100%;
     padding: $container-padding math.div((100 - $slideWidth), 2);
     cursor: grab;
@@ -60,6 +63,7 @@ $slide-gap: fluid(16, 1440);
 
   .carousel-slide {
     overflow: hidden;
+    overflow: clip;
     display: block;
     height: math.div($slideWidth, $slideAspect);
     min-width: $slideWidth;
@@ -82,6 +86,7 @@ $slide-gap: fluid(16, 1440);
 
   .carousel-container {
     overflow: hidden;
+    overflow: clip;
     width: 100%;
     padding: $container-padding math.div($slideWidth, 2);
     cursor: grab;
@@ -94,6 +99,7 @@ $slide-gap: fluid(16, 1440);
 
   .carousel-slide {
     overflow: hidden;
+    overflow: clip;
     display: block;
     height: math.div($slideWidth, $slideAspect);
     min-width: $slideWidth;

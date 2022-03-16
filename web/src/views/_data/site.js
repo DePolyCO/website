@@ -1,3 +1,3 @@
 module.exports = {
-  url: "https://aurum.netlify.app",
+  url: "https://depoly.netlify.app",
 };

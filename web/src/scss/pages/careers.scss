@@ -78,8 +78,13 @@
     // opacity: 0;
     transition: opacity 0.5s $ease-out-expo;
 
-    top: 50%;
+    top: 47%;
     left: 50%;
+
+    @include md {
+      top: 0;
+      left: 0;
+    }
   }
 
   .carousel-slide {

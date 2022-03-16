@@ -1,4 +1,13 @@
-import { bounds, iris, LerpController, qs, ticker, clamp, ro } from "../hermes";
+import {
+  bounds,
+  iris,
+  LerpController,
+  qs,
+  ticker,
+  ro,
+  getOffsetTop,
+  Sniff,
+} from "../hermes";
 import { Slider } from "./slider";
 import { smoothscroller } from "../scroller";
 
@@ -7,6 +16,21 @@ export class GallerySlider {
     this.dom = qs("#meet-slider");
     this.slider = new Slider({ container: this.dom });
     this.handle = qs("#meet-slider--handle", this.dom);
+
+    if (Sniff.touchDevice) {
+      iris.add(
+        this.dom,
+        iris.events.down,
+        () => {
+          this.handle.style.opacity = 0;
+          this.handle.style.pointerEvents = "none";
+        },
+        {
+          once: true,
+        }
+      );
+      return;
+    }
 
     this.state = {
       pos: {
@@ -17,6 +41,11 @@ export class GallerySlider {
         x: 0,
         y: 0,
       },
+      containerBounds: {
+        x: 0,
+        y: 0,
+      },
+      scroll: 0,
     };
 
     this.lerp = {
@@ -33,15 +62,11 @@ export class GallerySlider {
     this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
 
+    const { containerBounds, pos } = this.state;
+
     // const { top, left } = bounds(this.handle);
-    this.state.pos.x.cur = window.innerWidth / 2;
-    this.state.pos.y.cur = window.innerHeight / 2;
-
-    this.handle.style.transform = `translate3d(${window.innerWidth / 2}px, ${
-      window.innerHeight / 2
-    }px, 0)`;
-
-    this.update();
+    pos.x.cur = containerBounds.x + window.innerWidth / 2;
+    pos.y.cur = containerBounds.y + containerBounds.height / 2;
   };
 
   listen = () => {
@@ -51,11 +76,10 @@ export class GallerySlider {
 
   handleMove = (e) => {
     const { pos } = this.state;
-
     const { x, y } = iris.getXY(e);
 
     pos.x.cur = x;
-    pos.y.cur = y;
+    pos.y.cur = y - smoothscroller.state.scroll.y.target;
   };
 
   update = () => {
@@ -68,12 +92,14 @@ export class GallerySlider {
   };
 
   render = () => {
-    const { pos, bounds } = this.state;
+    const { pos, containerBounds } = this.state;
     const { x, y } = pos;
 
-    this.handle.style.transform = `translate3d(${x.target - bounds.x}px, ${
-      y.target - bounds.y - smoothscroller.state.scroll.y.target
-    }px, 0)`;
+    console.log("hit", x, y);
+
+    this.handle.style.transform = `translate3d(${
+      x.target - containerBounds.x
+    }px, ${y.target - containerBounds.y}px, 0)`;
   };
 
   resize = () => {
@@ -81,10 +107,15 @@ export class GallerySlider {
     this.state.bounds.x = left + width / 2;
     this.state.bounds.y = top + height;
 
-    this.update();
+    const containerBounds = bounds(this.dom);
+    this.state.containerBounds.x = containerBounds.x + width / 2;
+    this.state.containerBounds.y = getOffsetTop(this.dom) + height;
+    this.state.containerBounds.height = containerBounds.height;
   };
 
   destroy() {
+    if (Sniff.touchDevice) return;
+
     ticker.remove(this.tickID);
     ro.remove(this.roID);
 

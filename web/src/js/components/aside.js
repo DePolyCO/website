@@ -13,6 +13,8 @@ class AsideController {
 
     this.scroller = false;
 
+    this.dom.style.display = "none";
+
     // test
     // iris.add(document, "keydown", (e) => {
     //   if (e.key === "a") {
@@ -44,6 +46,8 @@ class AsideController {
 
   open = (panelId) => {
     if (!this.state.open) {
+      if (this.timout) clearTimeout(this.timout);
+      this.dom.style.display = "block";
       this.listen();
       this.state.open = true;
 
@@ -74,6 +78,10 @@ class AsideController {
       this.scroller && this.scroller.destroy();
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");
+
+      this.timout = setTimeout(() => {
+        this.dom.style.display = "none";
+      }, 1750);
     }
   };
 

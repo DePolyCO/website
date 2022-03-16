@@ -95,8 +95,6 @@ export class GallerySlider {
     const { pos, containerBounds } = this.state;
     const { x, y } = pos;
 
-    console.log("hit", x, y);
-
     this.handle.style.transform = `translate3d(${
       x.target - containerBounds.x
     }px, ${y.target - containerBounds.y}px, 0)`;

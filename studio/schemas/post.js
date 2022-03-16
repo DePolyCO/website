@@ -78,6 +78,21 @@ export default {
       title: "Body",
       type: "blockContent",
     },
+
+    {
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      description: "Add keywords that describes your article.",
+      of: [
+        {
+          type: "string",
+        },
+      ],
+      options: {
+        layout: "tags",
+      },
+    },
   ],
 
   preview: {

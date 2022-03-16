@@ -1,6 +1,6 @@
 import { Controller } from "../hydra";
 
-import { Draw, Observer, qsa, Sniff } from "../hermes";
+import { Draw, Observer, qsa, Sniff, Vau } from "../hermes";
 
 import { Parallax } from "../scroller";
 import { Reveal } from "../reveal";
@@ -40,16 +40,25 @@ export const homeController = new Controller({
   },
 
   show: ({ done }) => {
-    highlightFx = new TextHighlight({
-      targets: "[data-text-highlight",
-    });
-
     r0 = new Reveal({
       targets: "#hero-title",
       stagger: 150,
     });
 
-    r0.play();
+    new Vau({
+      targets: "#hero-picture img",
+      opacity: [0, 1],
+      transform: {
+        sx: [1.35, 1],
+        sy: [1.35, 1],
+      },
+      duration: 1750,
+      easing: "o6",
+    });
+
+    highlightFx = new TextHighlight({
+      targets: "[data-text-highlight",
+    });
 
     rst = new Reveal({
       targets: ".stat-title",
@@ -125,6 +134,8 @@ export const homeController = new Controller({
     o.observe(icons);
 
     monoShuffle.init();
+
+    r0.play();
 
     sail.in();
     done();

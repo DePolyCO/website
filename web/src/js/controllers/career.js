@@ -6,7 +6,7 @@ import { GallerySlider } from "../components/gallerySlider";
 import { CaptureReveal } from "../components/captureReveal";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
-import { Sniff } from "../hermes";
+import { Sniff, Vau } from "../hermes";
 
 /**
  *
@@ -27,6 +27,17 @@ export const careerController = new Controller({
 
   show: ({ done }) => {
     slider = new GallerySlider();
+
+    new Vau({
+      targets: "#hero-picture img",
+      opacity: [0, 1],
+      transform: {
+        sx: [1.35, 1],
+        sy: [1.35, 1],
+      },
+      duration: 1750,
+      easing: "o6",
+    });
 
     if (Sniff.touchDevice) {
     } else {

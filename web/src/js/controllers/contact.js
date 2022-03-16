@@ -5,7 +5,7 @@ import { nav } from "../components/nav";
 import { FormManager } from "../components/forms";
 import { MobileForms } from "../components/forms/mobile";
 
-import { iris, Sniff } from "../hermes";
+import { iris, Sniff, Vau } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
@@ -32,6 +32,17 @@ export const contactController = new Controller({
 
     undetail = iris.add("summary", "click", () => {
       setTimeout(smoothscroller.resize, 0);
+    });
+
+    new Vau({
+      targets: "#hero-picture img",
+      opacity: [0, 1],
+      transform: {
+        sx: [1.35, 1],
+        sy: [1.35, 1],
+      },
+      duration: 1750,
+      easing: "o6",
     });
 
     if (Sniff.touchDevice) {

@@ -7,7 +7,7 @@ import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
 import { Numbers } from "../components/revealNumbers";
 
-import { qsa, Sniff } from "../hermes";
+import { qsa, Sniff, Vau } from "../hermes";
 import { Reveal } from "../reveal";
 
 /**
@@ -33,6 +33,17 @@ export const aboutController = new Controller({
 
     highlightFx = new TextHighlight({
       targets: highlights,
+    });
+
+    new Vau({
+      targets: "#hero-picture img",
+      opacity: [0, 1],
+      transform: {
+        sx: [1.35, 1],
+        sy: [1.35, 1],
+      },
+      duration: 1750,
+      easing: "o6",
     });
 
     if (Sniff.mobile) {

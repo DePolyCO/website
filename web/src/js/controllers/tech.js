@@ -5,7 +5,7 @@ import { TextHighlight } from "../components/textHighlight";
 import { Compare } from "../components/compare";
 import { nav } from "../components/nav";
 
-import { qs, qsa, Sniff } from "../hermes";
+import { qs, qsa, Sniff, Vau } from "../hermes";
 import { Parallax } from "../scroller";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
@@ -37,6 +37,17 @@ export const techController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    new Vau({
+      targets: "#hero-picture img",
+      opacity: [0, 1],
+      transform: {
+        sx: [1.35, 1],
+        sy: [1.35, 1],
+      },
+      duration: 1750,
+      easing: "o6",
+    });
 
     const highlights = qsa("[data-text-highlight");
     highlightFx = new TextHighlight({

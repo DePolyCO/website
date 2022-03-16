@@ -1,8 +1,10 @@
 import { Timeline, qs, Sniff, Vau } from "../../hermes";
+import { smoothscroller } from "../../scroller";
 
 class Sail {
   constructor() {
     this.sail = qs("#sail");
+    this.app = qs("#app");
 
     this.init();
   }
@@ -21,22 +23,45 @@ class Sail {
     this.tl?.do("destroy");
     this.tl = new Timeline();
     this.tl.add({
+      targets: this.app,
+      transform: {
+        y: [100, 0],
+      },
+      duration: 1750,
+      easing: "o4",
+    });
+    this.tl.add({
       targets: this.sail,
       opacity: [1, 0],
-      duration: 150,
+      duration: 400,
+      easing: "o3",
     });
   }
 
   outD(done = false) {
-    this.tl.do("reverse", { complete: done });
+    // this.tl.do("reverse", { complete: done });
 
-    // this.tl = new Timeline();
-    // this.tl.add({
-    //   targets: this.sail,
-    //   opacity: [0, 1],
-    //   duration: 400,
-    //   complete: done,
-    // });
+    this.tl = new Timeline();
+    this.sail.style.transform = `translateY(100%)`;
+    this.sail.style.opacity = 1;
+    this.tl.add({
+      targets: this.app,
+      transform: {
+        y: [0, -100],
+      },
+      duration: 1000,
+      easing: "i4",
+    });
+    this.tl.add({
+      targets: this.sail,
+      transform: {
+        y: [100, 0],
+        yu: "%",
+      },
+      duration: 1000,
+      easing: "i4",
+      complete: done,
+    });
   }
 
   inM() {

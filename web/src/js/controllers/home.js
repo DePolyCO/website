@@ -21,10 +21,9 @@ let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o, r0, rst;
 export const homeController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
-    if (!Sniff.touchDevice) {
-      c1.destroy();
-      ps.forEach((p) => p.destroy());
-    }
+
+    c1 && c1.destroy();
+    ps && ps.length && ps.forEach((p) => p.destroy());
 
     p1.destroy();
     p2.destroy();
@@ -97,8 +96,6 @@ export const homeController = new Controller({
     });
 
     if (!Sniff.touchDevice && !Sniff.safari) {
-      c1 = new Collapse();
-
       ps = qsa(".stat-desc").map(
         (item) =>
           new Parallax({
@@ -108,6 +105,10 @@ export const homeController = new Controller({
             speed: 2,
           })
       );
+    }
+
+    if (!Sniff.touchDevice) {
+      c1 = new Collapse();
     }
 
     nav.setLinkActive("home");

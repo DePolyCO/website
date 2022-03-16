@@ -56,6 +56,13 @@ export const homeController = new Controller({
       easing: "o6",
     });
 
+    new Vau({
+      targets: "#hero .hero-grid",
+      opacity: [0, 1],
+      duration: 200,
+      easing: "o6",
+    });
+
     highlightFx = new TextHighlight({
       targets: "[data-text-highlight",
     });

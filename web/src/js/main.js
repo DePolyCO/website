@@ -9,7 +9,6 @@ import { aboutController } from "./controllers/about";
 import { techController } from "./controllers/tech";
 import { careerController } from "./controllers/career";
 import { careerInnerController } from "./controllers/careerInner";
-import { newsController } from "./controllers/news";
 import { contactController } from "./controllers/contact";
 import { privacyController } from "./controllers/privacy";
 import { blogController } from "./controllers/blog";
@@ -41,7 +40,6 @@ new Hydra({
     about: aboutController,
     tech: techController,
     career: careerController,
-    news: newsController,
     contact: contactController,
     careerInner: careerInnerController,
     privacy: privacyController,

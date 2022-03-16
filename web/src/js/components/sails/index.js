@@ -1,4 +1,4 @@
-import { Timeline, qs, Sniff, Vau } from "../../hermes";
+import { Timeline, qs, Sniff, Vau, ticker } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 
 class Sail {
@@ -22,20 +22,22 @@ class Sail {
   inD() {
     this.tl?.do("destroy");
     this.tl = new Timeline();
+    // ticker.pause();
     this.tl.add({
       targets: this.app,
       transform: {
-        y: [100, 0],
+        y: [150, 0],
       },
       duration: 1750,
       easing: "o4",
     });
-    this.tl.add({
-      targets: this.sail,
-      opacity: [1, 0],
-      duration: 400,
-      easing: "o3",
-    });
+    this.sail.style.opacity = 0;
+    // this.tl.add({
+    //   targets: this.sail,
+    //   opacity: [1, 0],
+    //   duration: 50,
+    //   easing: "o3",
+    // });
   }
 
   outD(done = false) {
@@ -47,7 +49,7 @@ class Sail {
     this.tl.add({
       targets: this.app,
       transform: {
-        y: [0, -100],
+        y: [0, -150],
       },
       duration: 1000,
       easing: "i4",

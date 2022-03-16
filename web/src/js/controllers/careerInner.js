@@ -4,6 +4,7 @@ import { sail } from "../components/sails";
 import { FormManager } from "../components/forms";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
+import { Vau } from "../hermes";
 
 /**
  *
@@ -29,6 +30,13 @@ export const careerInnerController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    new Vau({
+      targets: "#hero .hero-grid",
+      opacity: [0, 1],
+      duration: 200,
+      easing: "o6",
+    });
 
     monoShuffle.init();
 

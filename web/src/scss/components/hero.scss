@@ -53,6 +53,10 @@
   height: fluid(200, $sm);
   margin-bottom: fluid(80, $sm);
 
+  img {
+    opacity: 0;
+  }
+
   @include md {
     width: fluid(1840, $lg);
     height: fluid(700, $lg);
@@ -73,4 +77,8 @@
   @include md {
     background-size: fluid(74, $lg) fluid(48.4, $lg);
   }
+}
+
+#hero .hero-grid {
+  opacity: 0;
 }

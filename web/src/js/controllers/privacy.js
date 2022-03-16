@@ -4,6 +4,7 @@ import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 
 import { Reveal } from "../reveal";
+import { Vau } from "../hermes";
 
 /**
  *
@@ -26,6 +27,13 @@ export const privacyController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    new Vau({
+      targets: "#hero .hero-grid",
+      opacity: [0, 1],
+      duration: 200,
+      easing: "o6",
+    });
 
     sail.in();
     done();

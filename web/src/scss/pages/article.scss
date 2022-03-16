@@ -1,0 +1,114 @@
+#article {
+  #hero-picture {
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      margin-bottom: fluid(60, $lg);
+    }
+  }
+
+  #intro {
+    font-size: fluid(50, $lg);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    width: fluid(1840, $lg);
+    margin: 0 auto;
+    margin-bottom: fluid(105, $lg);
+  }
+
+  #body {
+    width: fluid(900, $lg);
+    margin: 0 auto;
+
+    font-size: fluid(22, $lg);
+    line-height: 160%;
+
+    section {
+      margin-bottom: fluid(40, $lg);
+    }
+
+    h2 {
+      font-size: fluid(50, $lg);
+      line-height: 130%;
+      letter-spacing: -0.02em;
+    }
+
+    ol {
+      list-style: decimal-leading-zero;
+      font-weight: 700;
+      font-size: fluid(18, $lg);
+      line-height: 110%;
+      letter-spacing: 0.04em;
+
+      li {
+        margin-bottom: fluid(24, $lg);
+      }
+    }
+
+    figcaption {
+      font-style: italic;
+      font-weight: 400;
+      font-size: fluid(16, $lg);
+      line-height: 140%;
+
+      right: fluid(-430 - 40, $lg);
+      width: fluid(430, $lg);
+      padding-top: fluid(40, $lg);
+      border-top: 1px solid #aab6b6;
+    }
+
+    img {
+      width: fluid(900, $lg);
+      aspect-ratio: var(--w) / var(--h);
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    blockquote {
+      border-left: 1px solid #aab6b6;
+      padding-left: fluid(80, $lg);
+      font-weight: 400;
+      font-size: fluid(68, $lg);
+      line-height: 115%;
+      letter-spacing: -0.02em;
+    }
+
+    .blockquote-tag {
+      margin-bottom: fluid(80, $lg);
+      gap: fluid(20, $lg);
+    }
+
+    .blockquote-icon {
+      width: fluid(77, $lg);
+      height: fluid(77, $lg);
+      background: #022d42;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+
+      svg {
+        width: fluid(24, $lg);
+        height: fluid(21, $lg);
+      }
+    }
+  }
+
+  .tweet-icon {
+    font-weight: 700;
+    font-size: fluid(12, $lg);
+    line-height: 130%;
+    letter-spacing: 0.05em;
+    gap: fluid(2, $lg);
+
+    background: #dadaca;
+    border-radius: fluid(8, $lg);
+    padding: 0 fluid(8, $lg) 0 fluid(3, $lg);
+
+    svg {
+      width: fluid(25, $lg);
+      height: fluid(25, $lg);
+    }
+  }
+}

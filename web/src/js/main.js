@@ -1,7 +1,7 @@
 import "./polyfills";
 
 import { Hydra } from "./hydra";
-import { iris, ro } from "./hermes";
+import { iris } from "./hermes";
 import { intro } from "./intro";
 
 import { homeController } from "./controllers/home";
@@ -12,12 +12,14 @@ import { careerInnerController } from "./controllers/careerInner";
 import { newsController } from "./controllers/news";
 import { contactController } from "./controllers/contact";
 import { privacyController } from "./controllers/privacy";
+import { blogController } from "./controllers/blog";
+import { articleController } from "./controllers/article";
 import { noController } from "./controllers/404";
 
 import { Grid } from "./grid";
-import { asideController } from "./components/aside";
+// import { asideController } from "./components/aside";
 
-import { smoothscroller } from "./scroller";
+// import { smoothscroller } from "./scroller";
 import { footer } from "./components/footer";
 import { nav } from "./components/nav";
 
@@ -43,6 +45,8 @@ new Hydra({
     contact: contactController,
     careerInner: careerInnerController,
     privacy: privacyController,
+    blog: blogController,
+    article: articleController,
     404: noController,
   },
 });

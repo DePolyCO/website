@@ -5,7 +5,7 @@ const handler = async (event) => {
     const search = event.queryStringParameters.term;
     if (!search) throw "Missing term query parameter";
 
-    const data = require("./article-index.json");
+    const data = require("../netlify/lambda/article-index.json");
     const index = createIndex(data);
 
     let results = index.search(search);

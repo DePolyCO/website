@@ -13,6 +13,7 @@ specifiers:
   esbuild: ^0.14.21
   groq: ^2.15.0
   html-minifier: ^4.0.0
+  lunr: ^2.3.9
   netlify-lambda: ^2.0.15
   npm-run-all: ^4.1.5
   ogl: ^0.0.86
@@ -42,6 +43,7 @@ devDependencies:
   esbuild: 0.14.21
   groq: 2.15.0
   html-minifier: 4.0.0
+  lunr: 2.3.9
   npm-run-all: 4.1.5
   postcss: 8.4.6
   postcss-cli: 9.1.0_postcss@8.4.6
@@ -4567,6 +4569,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: true
+
+  /lunr/2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
     dev: true
 
   /luxon/2.3.0:

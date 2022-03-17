@@ -11,6 +11,7 @@ import jobs from "./jobs";
 import featuredPost from "./featuredPost";
 import blockContent from "./blockContent";
 import bioContent from "./bioContent";
+import youtube from "./youtube";
 
 export default createSchema({
   name: "default",
@@ -27,5 +28,6 @@ export default createSchema({
     // Objects
     blockContent,
     bioContent,
+    youtube,
   ]),
 });

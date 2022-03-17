@@ -18,6 +18,7 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
 
     {
@@ -41,12 +42,14 @@ export default {
           title: "Post Category",
           type: "reference",
           to: { type: "category" },
+          validation: (Rule) => Rule.required(),
         },
 
         {
           name: "publishedAt",
           title: "Published at",
           type: "datetime",
+          validation: (Rule) => Rule.required(),
         },
       ],
     },
@@ -68,12 +71,14 @@ export default {
           },
         },
       ],
+      validation: (Rule) => Rule.required(),
     },
 
     {
       name: "intro",
       title: "Short Intro",
       type: "text",
+      validation: (Rule) => Rule.required().min(200).max(700),
     },
 
     {
@@ -95,6 +100,7 @@ export default {
       options: {
         layout: "tags",
       },
+      validation: (Rule) => Rule.required().min(3).max(7),
     },
   ],
 

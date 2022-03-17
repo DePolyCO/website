@@ -14,16 +14,19 @@ export default {
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "title",
       title: "Name",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "role",
       title: "Role",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "bio",

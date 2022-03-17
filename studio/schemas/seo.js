@@ -12,12 +12,14 @@ export default {
       name: "title",
       type: "string",
       title: "Title",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "description",
       type: "text",
       title: "Description",
       description: "Describe your site for search engines and social media.",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "keywords",
@@ -28,6 +30,12 @@ export default {
       options: {
         layout: "tags",
       },
+      validation: (Rule) => Rule.required(),
     },
   ],
+  initialValue: {
+    title: "DePoly",
+    description:
+      "Rethink — Recycling: Creating a Sustainable Circular Economy for Plastics",
+  },
 };

@@ -11,15 +11,19 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
+      description:
+        "An unique identifier for this role. Notifications to this role will mention this tag. Kindly ensure that this is unique!",
       options: {
         source: "title",
         maxLength: 96,
         isUnique: () => true,
+        validation: (Rule) => Rule.required(),
       },
     },
 
@@ -45,12 +49,14 @@ export default {
           { title: "Junior", value: "Junior" },
         ],
       },
+      validation: (Rule) => Rule.required(),
     },
 
     {
       name: "description",
       type: "text",
       title: "Description",
+      validation: (Rule) => Rule.required(),
     },
 
     {
@@ -60,6 +66,7 @@ export default {
       options: {
         list: [{ title: "Technology", value: "Technology" }],
       },
+      validation: (Rule) => Rule.required(),
     },
 
     {
@@ -69,18 +76,14 @@ export default {
       options: {
         list: [{ title: "Full-Time", value: "Full-Time" }],
       },
+      validation: (Rule) => Rule.required(),
     },
 
     {
       name: "location",
       title: "Location",
       type: "string",
-    },
-
-    {
-      name: "publishedAt",
-      title: "Published at",
-      type: "datetime",
+      validation: (Rule) => Rule.required(),
     },
 
     {
@@ -92,6 +95,7 @@ export default {
           type: "string",
         },
       ],
+      validation: (Rule) => Rule.required().min(1),
     },
 
     {
@@ -103,6 +107,7 @@ export default {
           type: "string",
         },
       ],
+      validation: (Rule) => Rule.required().min(1),
     },
 
     {
@@ -114,6 +119,7 @@ export default {
           type: "string",
         },
       ],
+      validation: (Rule) => Rule.required().min(1),
     },
   ],
   initialValue: {

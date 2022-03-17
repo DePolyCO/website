@@ -7,14 +7,18 @@ title: Article
 {% from '_macros/textBlock.njk' import textBlock %}
 
 <main data-hydra-content="article" id="article">
-    <header id="hero" class="restrict hero" data-scroll-section>
-        <ul id="article-tags" data-shuffle class="article-tag fv-mono df">
-            <li class="hero-tag">Item</li>
-            <li class="hero-tag">Item</li>
-            <li class="hero-tag">Item</li>
-        </ul>
-        <div id="article-breadcrumbs" data-shuffle class="article-breadcrumbs fv-mono">
-            <a href="/blog/">Blog</a> / <a href="/blog/categories/general">General</a> / 
+    <header id="hero" class="restrict hero pr" data-scroll-section>
+
+        <div class="df jcb">
+            <div id="article-breadcrumbs" class="article-breadcrumbs fv-mono">
+                <a class="link link-dark link-solid" href="/blog/">Blog</a> / <a class="link link-dark link-solid" href="/blog/categories/general">General</a> / 
+        </div>
+            <ul id="article-tags" class="article-tag fv-mono df">
+                <li class="hero-tag ttu">#Economy</li>
+                <li class="hero-tag ttu">#Recycling</li>
+                <li class="hero-tag ttu">#PTA</li>
+                <li class="hero-tag ttu">#MEG</li>
+            </ul>
         </div>
         <div id="hero-title--wrapper" class="pr z0 hero-title--wrapper oh">
             <h1 id="hero-title" class="hero-title z1">Beauty Tech for Good Challenge by L’Oreal</h1>
@@ -24,6 +28,13 @@ title: Article
             <img loading="eager" decoding="sync" src="/static/temp.jpg" alt=""/>
         </picture>
     </header>
+
+    <a target="blank" rel="noreferrer noopener" href="" id="share-btn" class="pa df z2 aic">
+        <svg>
+            <use xlink:href="#tweet-icon"></use>
+        </svg>
+        <div class="fv-mono ttu">Tweet this highlight</div>
+    </a>
 
     <section data-scroll-section id="intro">
         Is recycling as good as it seems? 
@@ -93,21 +104,21 @@ title: Article
         </section>
 
         <section data-scroll-section>
-            <blockquote>
+            <blockquote data-tweet-parent>
                 <div class="blockquote-tag df aic">
                     <div class="blockquote-icon">
                         <svg>
                             <use xlink:href="#apostrophe"></use>
                         </svg>
                     </div>
-                    <div class="tweet-icon df aic cp">
+                    <a data-tweet-trigger href="" target="blank" rel="noreferrer noopener" class="tweet-icon df aic cp">
                         <svg>
                             <use xlink:href="#tweet-icon"></use>
                         </svg>
                         <div class="fv-mono ttu">Tweet this quote</div>
-                    </div>
+                    </a>
                 </div>
-                <p>
+                <p data-tweet-target>
                 There are two solutions to these plastics that cannot be recycled and are now everywhere in our lives. The first is to just say no, the second is to use Zero Waste products. In order to not be a part of this pile of trash, you can avoid single-use plastics.
                 </p>
             </blockquote>

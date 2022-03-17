@@ -6,16 +6,19 @@ import { nav } from "../components/nav";
 import { Reveal } from "../reveal";
 import { Vau } from "../hermes";
 
+import { Tweeter } from "../components/highlightTweet";
+
 /**
  *
  * Article Prolicy page controller
  *
  */
 
-let r0;
+let r0, tw;
 export const articleController = new Controller({
   hide: ({ done }) => {
     r0.destroy();
+    tw.destroy();
     sail.out(done);
   },
 
@@ -27,6 +30,8 @@ export const articleController = new Controller({
       stagger: 150,
     });
     r0.play();
+
+    tw = new Tweeter();
 
     new Vau({
       targets: "#hero-picture img",

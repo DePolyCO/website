@@ -7,6 +7,20 @@
     }
   }
 
+  #article-tags {
+    gap: 10px;
+  }
+
+  .hero-tag {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 130%;
+    padding: 0 8px;
+
+    border: 1px solid #dadaca;
+    border-radius: 8px;
+  }
+
   #intro {
     font-size: fluid(50, $lg);
     line-height: 130%;
@@ -14,6 +28,28 @@
     width: fluid(1840, $lg);
     margin: 0 auto;
     margin-bottom: fluid(105, $lg);
+  }
+
+  #share-btn {
+    padding: 1px fluid(8, $lg) 0 fluid(3, $lg);
+    background: #dadaca;
+    border-radius: fluid(8, $lg);
+
+    font-weight: 700;
+    font-size: fluid(12, $lg);
+    line-height: 130%;
+    letter-spacing: 0.05em;
+
+    transition: opacity 0.35s;
+
+    svg {
+      width: fluid(25, $lg);
+      height: fluid(25, $lg);
+    }
+  }
+
+  *::selection {
+    background: #dadaca;
   }
 
   #body {
@@ -35,13 +71,15 @@
 
     ol {
       list-style: decimal-leading-zero;
-      font-weight: 700;
-      font-size: fluid(18, $lg);
-      line-height: 110%;
-      letter-spacing: 0.04em;
+      // list-style-position: inside;
+      padding-left: fluid(50, $lg);
 
       li {
         margin-bottom: fluid(24, $lg);
+        font-weight: 700;
+        font-size: fluid(18, $lg);
+        line-height: 110%;
+        letter-spacing: 0.04em;
       }
     }
 

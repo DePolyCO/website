@@ -1,9 +1,14 @@
 #blog {
   #blog-header {
-    margin-top: fluid(140, $lg);
-    padding-top: fluid(40, $lg);
-    margin-bottom: fluid(125, $lg);
+    margin-top: fluid(72, $sm);
+    padding-top: fluid(40, $sm);
     border-top: 1px solid #022d42;
+
+    @include md {
+      margin-top: fluid(140, $lg);
+      padding-top: fluid(40, $lg);
+      margin-bottom: fluid(125, $lg);
+    }
   }
 
   .article-card--tag {
@@ -29,21 +34,38 @@
       gap: fluid(35 - 16, $lg);
     }
   }
-
   .rarr-wrapper {
     display: grid;
     place-items: center;
-    padding: fluid(9, $lg) fluid(15, $lg);
-    border: fluid(1, $lg) solid #022d42;
-    border-radius: fluid(8, $lg);
+    padding: fluid(9, $sm) fluid(15, $sm);
+    border: fluid(1, $sm) solid #022d42;
+    border-radius: fluid(8, $sm);
     transition: background-color 0.4s;
+    background-color: $darkblue;
 
     svg {
-      width: fluid(13, $lg);
-      height: fluid(8, $lg);
+      width: fluid(13, $sm);
+      height: fluid(8, $sm);
 
       path {
+        fill: white;
         transition: fill 0.4s;
+      }
+    }
+
+    @include md {
+      padding: fluid(9, $lg) fluid(15, $lg);
+      border: fluid(1, $lg) solid #022d42;
+      border-radius: fluid(8, $lg);
+      background-color: transparent;
+
+      svg {
+        width: fluid(13, $lg);
+        height: fluid(8, $lg);
+
+        path {
+          fill: $darkblue;
+        }
       }
     }
   }
@@ -96,12 +118,21 @@
   }
 
   #blog-featured {
-    width: fluid(885, $lg);
-    margin-right: fluid(35, $lg);
     opacity: 0;
+
+    @include md {
+      width: fluid(885, $lg);
+      margin-right: fluid(35, $lg);
+    }
 
     .article-card {
       border-bottom: none;
+
+      @include md {
+        width: 100%;
+        padding: 0;
+        border-right: 0;
+      }
 
       &--link {
         display: block;
@@ -109,36 +140,67 @@
 
       &--thumbnail-featured {
         width: 100%;
-        aspect-ratio: 885 / 480;
-        margin-bottom: fluid(68, $lg);
+        aspect-ratio: 335 / 197;
+        margin-bottom: fluid(20, $sm);
+
+        @include md {
+          aspect-ratio: 885 / 480;
+          margin-bottom: fluid(68, $lg);
+        }
       }
 
       &--tag {
-        margin-bottom: fluid(24, $lg);
+        margin-bottom: fluid(24, $sm);
+
+        @include md {
+          margin-bottom: fluid(24, $lg);
+        }
       }
 
       &--title {
-        font-size: fluid(50, $lg);
-        margin-bottom: fluid(28, $lg);
+        font-size: fluid(36, $sm);
+        margin-bottom: fluid(16, $sm);
+
+        @include md {
+          font-size: fluid(50, $lg);
+          margin-bottom: fluid(28, $lg);
+        }
       }
 
       &--desc {
-        font-size: fluid(18, $lg);
-        margin-bottom: fluid(40, $lg);
+        font-size: fluid(16, $sm);
+        margin-bottom: fluid(40, $sm);
+
+        @include md {
+          font-size: fluid(18, $lg);
+          margin-bottom: fluid(40, $lg);
+        }
       }
 
       &--cta {
-        font-size: fluid(16, $lg);
-        gap: fluid(12, $lg);
+        font-size: fluid(16, $sm);
+        gap: fluid(12, $sm);
+
+        @include md {
+          font-size: fluid(16, $lg);
+          gap: fluid(12, $lg);
+        }
       }
     }
   }
 
   .article-card {
-    padding-bottom: fluid(40, $lg);
-    border-bottom: 1px solid #022d42;
-    opacity: 0;
     position: relative;
+    border-bottom: 1px solid $darkblue;
+    margin-bottom: fluid(28, $sm);
+
+    @include md {
+      width: fluid(400 + 35 + 35, $lg);
+      padding: 0 fluid(35, $lg);
+      border-right: 1px solid $darkblue;
+      border-bottom: none;
+      margin-bottom: 0;
+    }
 
     &::after {
       content: "";
@@ -152,15 +214,28 @@
     &--hori {
       gap: fluid(55, $lg);
       width: fluid(885, $lg);
+      padding: 0;
+      padding-bottom: fluid(40, $lg);
+      border-bottom: 1px solid $darkblue;
     }
 
     &--vert {
       .article-card--thumbnail {
-        margin-bottom: fluid(40, $lg);
+        margin-bottom: fluid(40, $sm);
       }
 
       .article-card--desc {
-        margin-bottom: fluid(86, $lg);
+        margin-bottom: fluid(64, $sm);
+      }
+
+      @include md {
+        .article-card--thumbnail {
+          margin-bottom: fluid(40, $lg);
+        }
+
+        .article-card--desc {
+          margin-bottom: fluid(86, $lg);
+        }
       }
     }
 
@@ -173,30 +248,52 @@
     }
 
     &--tag {
-      font-size: fluid(12, $lg);
-      margin-bottom: fluid(28, $lg);
-      padding-left: fluid(15 + 7, $lg);
+      font-size: fluid(12, $sm);
+      margin-bottom: fluid(28, $sm);
+      padding-left: fluid(15 + 7, $sm);
+
+      @include md {
+        font-size: fluid(12, $lg);
+        margin-bottom: fluid(28, $lg);
+        padding-left: fluid(15 + 7, $lg);
+      }
     }
 
     &--title {
-      font-size: fluid(35, $lg);
+      font-size: fluid(28, $sm);
+      margin-bottom: fluid(16, $sm);
       line-height: 110%;
       letter-spacing: -0.02em;
-      margin-bottom: fluid(16, $lg);
+
+      @include md {
+        font-size: fluid(35, $lg);
+        margin-bottom: fluid(16, $lg);
+      }
     }
 
     &--desc {
-      font-size: fluid(16, $lg);
+      font-size: fluid(16, $sm);
       line-height: 140%;
+
+      @include md {
+        font-size: fluid(16, $lg);
+      }
     }
 
     &--cta {
       font-weight: 700;
-      font-size: fluid(16, $lg);
+      font-size: fluid(16, $sm);
       line-height: 110%;
       letter-spacing: 0.01em;
-      gap: fluid(12, $lg);
+      gap: fluid(12, $sm);
       margin-top: auto;
+      margin-bottom: fluid(44, $sm);
+
+      @include md {
+        gap: fluid(12, $lg);
+        font-size: fluid(16, $lg);
+        margin-bottom: 0;
+      }
     }
 
     &:hover {
@@ -233,6 +330,10 @@
 
   #blog-two {
     border-top: 1px solid #022d42;
+
+    @include md {
+      flex-direction: row;
+    }
   }
 
   #blog-filters--extended {
@@ -241,56 +342,64 @@
   }
 
   #blog-article--list {
-    width: fluid(430 * 3 + 40 * 2, $lg);
-    margin-left: auto;
-    padding: 0 fluid(15, $lg);
-    padding-top: fluid(80, $lg);
-    margin-bottom: fluid(40, $lg);
+    padding-top: fluid(28, $sm);
+    margin-bottom: fluid(40, $sm);
 
-    li {
-      &:nth-of-type(4n),
-      &:first-of-type {
-        .article-card {
-          width: fluid(400 + 35, $lg);
-          padding-left: 0;
+    @include md {
+      flex-direction: row;
+      width: fluid(430 * 3 + 40 * 2, $lg);
+      margin-left: auto;
+      padding: 0 fluid(15, $lg);
+      padding-top: fluid(80, $lg);
+      margin-bottom: fluid(40, $lg);
 
-          &::after {
-            left: fluid(-15, $lg);
+      li {
+        &:nth-of-type(4n),
+        &:first-of-type {
+          .article-card {
+            width: fluid(400 + 35, $lg);
+            padding-left: 0;
+
+            &::after {
+              left: fluid(-15, $lg);
+            }
           }
         }
-      }
 
-      &:nth-of-type(3n + 0) {
-        .article-card {
-          width: fluid(400 + 35, $lg);
-          padding-right: 0;
-          border-right: none;
+        &:nth-of-type(3n + 0) {
+          .article-card {
+            width: fluid(400 + 35, $lg);
+            padding-right: 0;
+            border-right: none;
 
-          &::after {
-            right: fluid(-15, $lg);
+            &::after {
+              right: fluid(-15, $lg);
+            }
           }
         }
-      }
 
-      &:nth-child(1n + 4) {
-        .article-card {
-          padding-top: fluid(40, $lg);
-          padding-bottom: 0;
-          top: -1px;
+        &:nth-child(1n + 4) {
+          .article-card {
+            padding-top: fluid(40, $lg);
+            padding-bottom: 0;
+            top: -1px;
 
-          &::after {
-            content: none;
+            &::after {
+              content: none;
+            }
           }
         }
       }
     }
 
     .article-card {
-      width: fluid(400 + 35 + 35, $lg);
-      border-bottom: none;
-      border-right: 1px solid $darkblue;
-      padding-left: fluid(35, $lg);
-      padding-right: fluid(35, $lg);
+      @include md {
+        border-bottom: none;
+        border-right: 1px solid $darkblue;
+        padding: 0 fluid(35, $lg);
+        padding-bottom: fluid(40, $lg);
+        width: fluid(400 + 35 + 35, $lg);
+      }
 
       &::after {
         bottom: 0;
@@ -302,7 +411,11 @@
     }
 
     .article-card--tag {
-      font-size: fluid(12, $lg);
+      font-size: fluid(12, $sm);
+
+      @include md {
+        font-size: fluid(12, $lg);
+      }
     }
   }
 

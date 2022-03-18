@@ -34,6 +34,62 @@
       gap: fluid(35 - 16, $lg);
     }
   }
+
+  #search-top {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+
+    svg {
+      width: fluid(22, $lg);
+      height: fluid(22, $lg);
+      top: 50%;
+      right: 0;
+      left: unset;
+      transform: translate3d(#{fluid(-67, $lg)}, -50%, 0);
+      transition: transform 0.75s $ease-out-expo;
+    }
+
+    input {
+      text-align: right;
+      padding: 0;
+      font-weight: 500;
+      font-size: fluid(14, $lg);
+      line-height: 130%;
+      letter-spacing: 0.01em;
+      transition: transform 0.75s $ease-out-expo;
+
+      width: calc(100% - #{fluid(40, $lg)});
+      margin-left: auto;
+
+      &::placeholder {
+        color: #aab6b6;
+      }
+    }
+
+    &:focus-within {
+      svg {
+        transform: translate3d(0, -50%, 0);
+      }
+
+      input {
+        transform: translateX(#{fluid(-32, $lg)});
+
+        &::placeholder {
+          color: $darkblue;
+        }
+      }
+    }
+
+    input:not(:placeholder-shown) {
+      transform: translateX(#{fluid(-32, $lg)});
+
+      ~ svg {
+        transform: translate3d(0, -50%, 0);
+      }
+    }
+  }
+
   .rarr-wrapper {
     display: grid;
     place-items: center;
@@ -92,28 +148,6 @@
       background-color: $darkblue;
       pointer-events: none;
       color: white;
-    }
-  }
-
-  .search-field {
-    svg {
-      width: fluid(22, $lg);
-      height: fluid(22, $lg);
-      top: 50%;
-      transform: translate3d(calc(-100% - #{fluid(10, $lg)}), -50%, 0);
-    }
-
-    input {
-      text-align: right;
-      padding: 0;
-      font-weight: 500;
-      font-size: fluid(14, $lg);
-      line-height: 130%;
-      letter-spacing: 0.01em;
-
-      &::placeholder {
-        color: inherit;
-      }
     }
   }
 
@@ -193,6 +227,7 @@
     position: relative;
     border-bottom: 1px solid $darkblue;
     margin-bottom: fluid(28, $sm);
+    opacity: 0;
 
     @include md {
       width: fluid(400 + 35 + 35, $lg);
@@ -324,6 +359,7 @@
     li:last-of-type {
       .article-card {
         border-bottom: none;
+        padding-bottom: 0;
       }
     }
   }
@@ -337,8 +373,123 @@
   }
 
   #blog-filters--extended {
-    width: fluid(430, $lg);
-    margin-right: fluid(40, $lg);
+    @include md {
+      width: fluid(430, $lg);
+      margin-right: fluid(40, $lg);
+    }
+  }
+
+  #filters-extended {
+    padding: fluid(28, $sm) 0;
+    gap: fluid(10, $sm);
+
+    height: fluid(60, $sm);
+    overflow: hidden;
+    overflow: clip;
+
+    @include md {
+      padding: fluid(35, $lg) 0;
+      gap: fluid(29, $lg);
+
+      height: fluid(93, $lg);
+    }
+
+    &.active {
+      height: auto;
+      overflow: auto;
+    }
+  }
+
+  #filters-extended--btn {
+    border: 1px solid rgba(2, 45, 66, 0.1);
+    border-radius: fluid(9, $sm);
+    width: fluid(25, $sm);
+    height: fluid(25, $sm);
+    top: fluid(34, $sm);
+
+    svg {
+      width: fluid(12, $sm);
+      height: fluid(8, $sm);
+    }
+
+    @include md {
+      border-radius: fluid(9, $lg);
+      width: fluid(25, $lg);
+      height: fluid(25, $lg);
+      top: fluid(34, $lg);
+
+      svg {
+        width: fluid(12, $lg);
+        height: fluid(8, $lg);
+      }
+    }
+  }
+
+  .filter-tag {
+    font-weight: 700;
+    line-height: 130%;
+    font-size: fluid(12, $sm);
+    padding: fluid(3, $sm) fluid(8, $sm);
+    border-radius: fluid(8, $sm);
+    color: #aab6b6;
+    pointer-events: all;
+    cursor: pointer;
+    transition: color 0.4s $ease-out-expo;
+
+    @include md {
+      font-size: fluid(12, $lg);
+      padding: fluid(5, $lg) fluid(8, $lg);
+      border-radius: fluid(8, $lg);
+    }
+
+    &:hover {
+      color: $darkblue;
+    }
+
+    &.active {
+      background-color: $darkblue;
+      color: #fff;
+      pointer-events: none;
+    }
+  }
+
+  #search-extended {
+    width: 100%;
+    margin-top: fluid(30, $lg);
+    padding-bottom: fluid(29, $lg);
+    border-bottom: 1px solid #dadaca;
+    transition: border-bottom 0.4s $ease-out-expo;
+
+    svg {
+      width: fluid(22, $lg);
+      height: fluid(22, $lg);
+      top: 0;
+    }
+
+    input {
+      padding: 0;
+      padding-top: fluid(2, $lg);
+      font-weight: 500;
+      font-size: fluid(14, $lg);
+      line-height: 130%;
+      letter-spacing: 0.01em;
+      margin-left: fluid(32, $lg);
+
+      &::placeholder {
+        transition: color 0.4s $ease-out-expo;
+        color: #aab6b6;
+      }
+
+      &:focus-within {
+        &::placeholder {
+          color: $darkblue;
+        }
+      }
+    }
+
+    &:focus-within {
+      border-bottom: 1px solid $darkblue;
+    }
   }
 
   #blog-article--list {

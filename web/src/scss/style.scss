@@ -107,25 +107,25 @@ body {
 // }
 
 #loader {
-  background-color: $darkblue;
+  background-color: $lightbeige;
 }
 
-#loader-percent {
-  font-size: fluid(75, $sm);
-  line-height: 1;
-  color: $green;
+// #loader-percent {
+//   font-size: fluid(75, $sm);
+//   line-height: 1;
+//   color: $green;
 
-  @include md {
-    font-size: fluid(75, $lg);
-  }
-}
+//   @include md {
+//     font-size: fluid(75, $lg);
+//   }
+// }
 
-#load-percent--wrapper {
-  top: 50%;
-  left: 50%;
-  z-index: 10;
-  transform: translate(-50%, -50%);
-}
+// #load-percent--wrapper {
+//   top: 50%;
+//   left: 50%;
+//   z-index: 10;
+//   transform: translate(-50%, -50%);
+// }
 
 :not(.safari) {
   .oh {

@@ -16,6 +16,14 @@
     gap: fluid(10, $lg);
   }
 
+  #article-breadcrumbs {
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      margin-bottom: 0;
+    }
+  }
+
   .hero-tag {
     font-weight: 700;
     line-height: 130%;
@@ -193,15 +201,15 @@
         width: fluid(20, $sm);
         height: fluid(16, $sm);
       }
-    }
 
-    @include md {
-      width: fluid(77, $lg);
-      height: fluid(77, $lg);
+      @include md {
+        width: fluid(77, $lg);
+        height: fluid(77, $lg);
 
-      svg {
-        width: fluid(24, $lg);
-        height: fluid(21, $lg);
+        svg {
+          width: fluid(24, $lg);
+          height: fluid(21, $lg);
+        }
       }
     }
   }
@@ -385,12 +393,15 @@
         padding: fluid(9, $lg) fluid(15, $lg);
         border: fluid(1, $lg) solid #022d42;
         border-radius: fluid(8, $lg);
-        background-color: none;
+        background-color: transparent;
 
         svg {
           width: fluid(13, $lg);
           height: fluid(8, $lg);
-          fill: $darkblue;
+
+          path {
+            fill: $darkblue;
+          }
         }
       }
     }

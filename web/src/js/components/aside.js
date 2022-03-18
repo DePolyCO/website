@@ -33,9 +33,7 @@ class AsideController {
   listen = () => {
     this.unlistenClick = iris.add(".aside-close", "click", this.close);
     this.unlistenEsc = iris.add(document, "keydown", (e) => {
-      if (e.key === "Escape") {
-        this.close();
-      }
+      if (e.key === "Escape") this.close();
     });
   };
 
@@ -63,8 +61,11 @@ class AsideController {
         });
       }
 
-      this.dom.classList.add("active");
-      this.state.current.classList.add("active");
+      // allow display: none to take effect
+      requestAnimationFrame(() => {
+        this.dom.classList.add("active");
+        this.state.current.classList.add("active");
+      });
     }
   };
 

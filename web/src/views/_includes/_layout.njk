@@ -1,9 +1,6 @@
 {% include '_header.njk' %}
 
 <body class="sans">
-  <div class="oh pf pen" id="load-percent--wrapper">
-    <div id="loader-percent">0</div>
-  </div>
   <div id="loader" class="pf inset z9 df fc jcc aic"></div>
   <noscript id="no-js" class="pf inset z10 df jcc aic bg-white">
     <span>Please enable JS to view this site</span>
@@ -298,7 +295,7 @@
 
   {% include "_components/_nav.njk" %}
 
-  <div id="scroll-cover" class="pf inset z8 df fc jcc aic pen"></div>
+  <div id="scroll-cover" class="pf inset z8 df fc jcc aic pen m-hide"></div>
   <div id="sail" class="pf inset z7 df fc jcc aic pen"></div>
 
   <div data-scroll-content id="app-wrapper">
@@ -327,7 +324,7 @@
 
   <div id="img-preload" class="pf oh"></div>
 
-  <svg id="svg" class="pf" height="0" width="0">
+  <svg id="svg" class="pf m-hide d-hide" height="0" width="0">
     {# logo #}
     <symbol id="depoly-logo" fill="none" viewBox="0 0 201 32">
       <path d="M67.554 27.242c7.462 0 13.51-6.098 13.51-13.62C81.064 6.097 75.016 0 67.554 0S54.043 6.098 54.043 13.621c0 7.523 6.049 13.621 13.51 13.621ZM13.51 0C6.047 0 0 6.095 0 13.621l13.51 13.621c7.466 0 13.512-6.095 13.512-13.62C27.022 6.094 20.976 0 13.51 0Z" fill="#022D42"/>

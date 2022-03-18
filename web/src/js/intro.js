@@ -57,34 +57,16 @@ export class Intro {
  */
 
 const loadEl = qs("#loader");
-const loadProgress = qs("#loader-percent");
+// const loadProgress = qs("#loader-percent");
 // const appWrapper = qs("#app-wrapper");
 
 export const intro = new Intro({
-  begin: () => {},
-  update: (progress) => {
-    loadProgress.innerText = Math.floor(progress);
-  },
   complete: async () => {
     new Vau({
-      targets: loadProgress,
-      duration: 850,
-      easing: "i3",
-      transform: {
-        y: [0, -110],
-        yu: "%",
-      },
-      complete: () => loadProgress.remove(),
-    });
-
-    new Vau({
       targets: loadEl,
-      duration: 1000,
-      easing: "i4",
-      transform: {
-        y: [0, -100],
-        yu: "%",
-      },
+      duration: 400,
+      easing: "o3",
+      opacity: [1, 0],
       complete: () => loadEl.remove(),
     });
 
@@ -103,7 +85,7 @@ export const intro = new Intro({
     await new Promise(
       (resolve) =>
         new Duration({
-          duration: 800,
+          duration: 400,
           complete: resolve,
         })
     );

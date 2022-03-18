@@ -125,7 +125,9 @@ export class Parallax {
       } else {
         ypx = y * this.state.bounds.y;
       }
-      this.dom.style.transform = `translate3d(${x}%, ${ypx}px, 0) rotate(${r}deg)`;
+      this.dom.style.transform = `translate3d(${x}${
+        x ? "%" : ""
+      }, ${ypx}px, 0) ${r ? `rotate(${r}deg)` : ""}`;
     }
   };
 

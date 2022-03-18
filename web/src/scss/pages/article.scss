@@ -16,8 +16,13 @@
     gap: fluid(10, $lg);
   }
 
+  .article-tag {
+    opacity: 0;
+  }
+
   #article-breadcrumbs {
     margin-bottom: fluid(40, $sm);
+    opacity: 0;
 
     @include md {
       margin-bottom: 0;
@@ -28,14 +33,16 @@
     font-weight: 700;
     line-height: 130%;
     font-size: fluid(12, $sm);
-    padding: 0 fluid(8, $sm);
+    padding: fluid(3, $sm) fluid(8, $sm);
     border-radius: fluid(8, $sm);
     border: 1px solid #dadaca;
+    margin-bottom: 0;
 
     @include md {
       font-size: fluid(12, $lg);
-      padding: 0 fluid(8, $lg);
+      padding: fluid(3, $lg) fluid(8, $lg);
       border-radius: fluid(8, $lg);
+      margin-bottom: fluid(32, $lg);
     }
   }
 
@@ -391,7 +398,7 @@
 
       @include md {
         padding: fluid(9, $lg) fluid(15, $lg);
-        border: fluid(1, $lg) solid #022d42;
+        border: 1px solid #022d42;
         border-radius: fluid(8, $lg);
         background-color: transparent;
 
@@ -414,6 +421,8 @@
         margin-bottom: fluid(40, $lg);
         padding: 0 fluid(15, $lg);
         padding-bottom: fluid(40, $lg);
+        border-bottom: 1px solid #022d42;
+
       }
     }
   }

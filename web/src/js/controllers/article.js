@@ -51,6 +51,18 @@ export const articleController = new Controller({
       easing: "o6",
     });
 
+    new Vau({
+      targets: "#article-breadcrumbs",
+      opacity: [0, 1],
+      duration: 200,
+    });
+
+    new Vau({
+      targets: "#hero .article-tag",
+      opacity: [0, 1],
+      duration: 200,
+    });
+
     sail.in();
     done();
   },

@@ -99,8 +99,8 @@ export default {
     },
 
     {
-      name: "expectaions",
-      title: "Expectaions",
+      name: "expectations",
+      title: "Expectations",
       type: "array",
       of: [
         {
@@ -111,7 +111,7 @@ export default {
     },
 
     {
-      name: "Offering",
+      name: "offering",
       title: "What we offer",
       type: "array",
       of: [

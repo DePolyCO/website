@@ -7,14 +7,24 @@ export default {
     {
       name: "teamMembers",
       title: "Team Members",
-      type: "reference",
-      to: { type: "person" },
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "person" },
+        },
+      ],
     },
     {
       name: "teamAdvisors",
       title: "Advisors",
-      type: "reference",
-      to: { type: "person" },
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "person" },
+        },
+      ],
     },
   ],
   preview: {

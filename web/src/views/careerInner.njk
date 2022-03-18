@@ -2,12 +2,12 @@
 layout: _layout.njk
 title: Career Inner
 pagination:
-    data: careers.positions
+    data: jobs
     size: 1
     alias: position
-permalink: "careers/{{ position.slug | slugify }}/"
+permalink: "careers/{{ position.slug.current | slugify }}/"
 eleventyComputed:
-    title: "{{ position.role }}"
+    title: "{{ position.title }}"
 ---
 
 {% from '_macros/textBlock.njk' import textBlock %}
@@ -18,7 +18,7 @@ eleventyComputed:
         <div id="hero-title--wrapper" class="pr z0 hero-title--wrapper oh">
             <h1 id="hero-title" class="z1">
                 <div class="hero-title">We’re Hiring:</div>
-                <div class="hero-title">{{ position.role }}</div>
+                <div class="hero-title">{{ position.title }}</div>
             </h1>
             <div class="df pa inset zn1 hero-grid oh"></div>
         </div>
@@ -28,7 +28,7 @@ eleventyComputed:
         textBlock(
             "About position",
             [
-                position.brief
+                position.description
             ],
             "about-pos"
         ) 
@@ -63,7 +63,7 @@ eleventyComputed:
     <section id="skills" class="restrict-xtra mb-md" data-scroll-section>
         <div class="section-title">We expect you to have these skills:</div>
         <ul class="section-list df fc">
-            {% for item in position.skills %}
+            {% for item in position.expectations %}
                 <li class="section-list--item">{{ item }}</li>
             {% endfor %}
         </ul>
@@ -72,7 +72,7 @@ eleventyComputed:
     <section id="offer" class="restrict-xtra mb-md" data-scroll-section>
         <div class="section-title">Here's what we can offer:</div>
         <ul class="section-list df fc">
-            {% for item in position.offer %}
+            {% for item in position.offering %}
                 <li class="section-list--item">{{ item }}</li>
             {% endfor %}
         </ul>
@@ -138,7 +138,7 @@ eleventyComputed:
                                 <label class="pen field-label--active ttu pa" for="cv-message">Your Message</label>
                             </div>
                         </div>
-                        <input type="hidden" name="{{ position.slug }}" value="{{ position.slug }}">
+                        <input type="hidden" name="{{ position.slug.current }}" value="{{ position.slug.current }}">
                     </div>
                     <button class="cta-btn" id="cv-submit">
                         <div class="pr oh btn-wrapper">

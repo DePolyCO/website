@@ -17,7 +17,7 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "title",
+      name: "name",
       title: "Name",
       type: "string",
       validation: (Rule) => Rule.required(),
@@ -50,4 +50,16 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "name",
+      lang: "__i18n_lang",
+      media: "img",
+    },
+    prepare(selection) {
+      return Object.assign({}, selection, {
+        title: selection.title + " - " + selection.lang,
+      });
+    },
+  },
 };

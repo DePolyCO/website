@@ -15,14 +15,17 @@
       {# bio #}
       {% for member in team.members %}
         {% if member.bio %}
-          <div id="bio-panel--{{ member.id }}" class="aside-panel z1">
+          <div id="bio-panel--{{ member.name | slugify }}" class="aside-panel z1">
 
             <div class="bio-panel--header pf top right left z2"></div>
             <div class="bio-panel--title pf ttu fv-mono z3">BIOGRAPHY</div>
 
             <div class="df fc bio-panel--inner z1">
               <picture class="bio-profile--picture d-hide">
-                <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                {# <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}"> #}
+                {% responsiveImage member.img,
+                "300,600",
+                "100vw" %}
               </picture>
               <div class="pf df fc bio-left">
                 <div class="bio-name">{{ member.name }}</div>
@@ -30,23 +33,27 @@
                 <div>
                   <div class="bio-social--title">Social:</div>
                   <ul class=" df fw bio-social--list">
-                    {% for link in member.social %}
-                      <li class="bio-social--item fv-mono ttu">
-                        <a target="_blank" rel="noreferrer noopener" href="{{ link.url }}">{{ link.label }}</a>
-                      </li>
-                    {% endfor %}
+                    <li class="bio-social--item fv-mono ttu">
+                      <a target="_blank" rel="noreferrer noopener" href="{{ member.social.linkedin }}">LI</a>
+                    </li>
+                    <li class="bio-social--item fv-mono ttu">
+                      <a target="_blank" rel="noreferrer noopener" href="{{ member.social.twitter }}">TW</a>
+                    </li>
                   </ul>
                 </div>
               </div>
 
               <div class="bio-profile--content df fc" data-scroll-section>
                 <picture class="bio-profile--picture m-hide">
-                  <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                  {# <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}"> #}
+                  {% responsiveImage member.img,
+                  "600,1200,2000",
+                  "30vw" %}
                 </picture>
                 <div class="bio-profile--details">
-                  {% for item in member.bio %}
+                  {# {% for item in member.bio %}
                     {% if item.type === "text" %}
-                      <p class="bio-detail--para">{{ item.content }}</p>
+                      <p class="bio-detail--para">{{ item.bio }}</p>
                     {% endif %}
                     {% if item.type === "fact" %}
                       <div class="bio-detail--fact">
@@ -62,7 +69,7 @@
 
                       </div>
                     {% endif %}
-                  {% endfor %}
+                  {% endfor %} #}
                 </div>
               </div>
 

@@ -145,19 +145,21 @@ title: Careers
         </div>
         <div id="position-content">
             <ul class="df fc" id="position-list">
-                {% for position in careers.positions %}
-                    <li class="df fc jcb position-item">
-                        <div class="position-role">{{ position.role }}</div>
-                        <div class="position-location">{{ position.location }}</div>
-                        <div class="position-level">{{ position.level }}</div>
-                        <div class="position-cta">
-                            <a href="/careers/{{ position.slug }}/" class="cta-btn df">
-                                <div class="pr oh btn-wrapper">
-                                    <div class="btn-inner" data-content="Show Details">Show Details</div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                {% for job in jobs %}
+                    {% if job.active %}
+                        <li class="df fc jcb position-item">
+                            <div class="position-role">{{ job.title }}</div>
+                            <div class="position-location">{{ job.location }}</div>
+                            <div class="position-level">{{ job.level }}</div>
+                            <div class="position-cta">
+                                <a href="/careers/{{ job.slug.current }}/" class="cta-btn df">
+                                    <div class="pr oh btn-wrapper">
+                                        <div class="btn-inner" data-content="Show Details">Show Details</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
 

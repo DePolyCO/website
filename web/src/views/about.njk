@@ -89,9 +89,12 @@ title: About Us
             {% for col in team.members | batch(4) %}
                 <div class="team-col df fc aic m-hide">
                     {% for member in col %}
-                        <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% else %} pen {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
+                        <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% else %} pen {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                             <picture class="team-photo">
-                                <img loading="lazy" decoding="async" src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                                {# <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}"> #}
+                                {% responsiveImage member.img,
+                                "600,1200,2000",
+                                "30vw" %}
                             </picture>
                             <div class="team-name">{{ member.name }}</div>
                             <div class="team-role ttu">{{ member.role }}</div>
@@ -102,9 +105,12 @@ title: About Us
 
             <div class="team-col df fc aic d-hide">
                 {% for member in team.members %}
-                    <div class="team-item"  style="--idx: {{ loop.index0 % 4 * 3 + loop.index0 // 4 }}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.id }}" {% endif %}>
+                    <div class="team-item"  style="--idx: {{ loop.index0 % 4 * 3 + loop.index0 // 4 }}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                         <picture class="team-photo">
-                            <img loading="lazy" decoding="async" src="{{ member.img }}" alt="Photo of {{ member.name }}">
+                            {% responsiveImage member.img,
+                            "300,600",
+                            "100vw" %}
+                            {# <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}"> #}
                         </picture>
                         <div class="team-name">{{ member.name }}</div>
                         <div class="team-role ttu">{{ member.role }}</div>
@@ -118,24 +124,17 @@ title: About Us
     <section class="restrict" data-scroll-section>
         <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Advisors</div>
         <div id="advisor-list" class="grid-list df fc">
-            <div class="team-col df fc aic">
-                <div class="team-item pen">
-                    <picture class="team-photo">
-                        <img loading="lazy" decoding="async" src="{{ team.advisors[0].img }}" alt="Photo of {{ team.advisors[0].name }}">
-                    </picture>
-                    <div class="team-name">{{ team.advisors[0].name }}</div>
-                    <div class="team-role ttu">{{ team.advisors[0].role }}</div>
+            {% for member in team.advisors %}
+                <div class="team-col df fc aic">
+                    <div class="team-item pen">
+                        <picture class="team-photo">
+                            <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}">
+                        </picture>
+                        <div class="team-name">{{ member.name }}</div>
+                        <div class="team-role ttu">{{ member.role }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="team-col df fc aic no-border">
-                <div class="team-item pen">
-                    <picture class="team-photo">
-                        <img loading="lazy" decoding="async" src="{{ team.advisors[1].img }}" alt="Photo of {{ team.advisors[1].name }}">
-                    </picture>
-                    <div class="team-name">{{ team.advisors[1].name }}</div>
-                    <div class="team-role ttu">{{ team.advisors[1].role }}</div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 </main>

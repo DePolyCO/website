@@ -7,10 +7,10 @@ module.exports = withCache(
   async () => {
     const seo = await client.fetch(groq`*[_type == 'seo']{
       ...,
-    }[0]
+    }
     `);
 
-    return seo;
+    return seo.filter((item) => item.__i18n_lang === "en")[0];
   },
   "seo",
   "1d"

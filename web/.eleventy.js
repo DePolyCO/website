@@ -88,6 +88,7 @@ module.exports = (eleventyConfig) => {
       srcs = "300,600,1200,2000",
       sizes = "100vw",
       classList = "",
+      alt = "",
       important = false
     ) => {
       const sizeArray = srcs.split(",");
@@ -109,6 +110,7 @@ module.exports = (eleventyConfig) => {
             width="${lastSize.trim()}"
             loading="${important ? "eager" : "lazy"}"
             decoding="${important ? "sync" : "async"}"
+            alt="${alt ? alt : "Image alt"}"
             >`;
     }
   );

@@ -7,27 +7,44 @@
     }
   }
 
-  #article-tags {
-    gap: 10px;
+  #article-tags--m {
+    gap: fluid(10, $sm);
+    margin-bottom: fluid(10, $sm);
+  }
+
+  #article-tags--d {
+    gap: fluid(10, $lg);
   }
 
   .hero-tag {
     font-weight: 700;
-    font-size: 12px;
     line-height: 130%;
-    padding: 0 8px;
-
+    font-size: fluid(12, $sm);
+    padding: 0 fluid(8, $sm);
+    border-radius: fluid(8, $sm);
     border: 1px solid #dadaca;
-    border-radius: 8px;
+
+    @include md {
+      font-size: fluid(12, $lg);
+      padding: 0 fluid(8, $lg);
+      border-radius: fluid(8, $lg);
+    }
   }
 
   #intro {
-    font-size: fluid(50, $lg);
-    line-height: 130%;
     letter-spacing: -0.02em;
-    width: fluid(1840, $lg);
+    width: fluid(335, $sm);
+    font-size: fluid(36, $sm);
     margin: 0 auto;
-    margin-bottom: fluid(105, $lg);
+    margin-bottom: fluid(24, $sm);
+    line-height: 120%;
+
+    @include md {
+      font-size: fluid(50, $lg);
+      width: fluid(1840, $lg);
+      margin-bottom: fluid(105, $lg);
+      line-height: 130%;
+    }
   }
 
   #share-btn {
@@ -53,51 +70,88 @@
   }
 
   #body {
-    width: fluid(900, $lg);
+    width: fluid(335, $sm);
     margin: 0 auto;
 
-    font-size: fluid(22, $lg);
-    line-height: 160%;
+    font-size: fluid(16, $sm);
+    line-height: 155%;
+
+    @include md {
+      width: fluid(900, $lg);
+      font-size: fluid(22, $lg);
+    }
 
     section {
-      margin-bottom: fluid(40, $lg);
+      margin-bottom: fluid(20, $sm);
+
+      @include md {
+        margin-bottom: fluid(40, $lg);
+      }
     }
 
     h2 {
-      font-size: fluid(50, $lg);
-      line-height: 130%;
+      font-size: fluid(36, $sm);
+      line-height: 120%;
       letter-spacing: -0.02em;
+
+      @include md {
+        font-size: fluid(50, $lg);
+        line-height: 130%;
+      }
     }
 
     ol {
       list-style: decimal-leading-zero;
-      // list-style-position: inside;
-      padding-left: fluid(50, $lg);
+      padding-left: fluid(45, $sm);
 
       li {
-        margin-bottom: fluid(24, $lg);
+        margin-bottom: fluid(16, $sm);
         font-weight: 700;
-        font-size: fluid(18, $lg);
+        font-size: fluid(16, $sm);
         line-height: 110%;
         letter-spacing: 0.04em;
+      }
+
+      @include md {
+        padding-left: fluid(50, $lg);
+
+        li {
+          margin-bottom: fluid(24, $lg);
+          font-size: fluid(18, $lg);
+        }
       }
     }
 
     figcaption {
       font-style: italic;
-      font-weight: 400;
-      font-size: fluid(16, $lg);
-      line-height: 140%;
+      font-size: fluid(14, $sm);
+      // width: fluid(335, $sm);
+      padding-top: fluid(30, $sm);
+      padding-bottom: fluid(20, $sm);
+      border-bottom: 1px solid #aab6b6;
 
-      right: fluid(-430 - 40, $lg);
-      width: fluid(430, $lg);
-      padding-top: fluid(40, $lg);
-      border-top: 1px solid #aab6b6;
+      @include md {
+        position: absolute;
+        right: fluid(-430 - 40, $lg);
+        top: 0;
+        border-top: 1px solid #aab6b6;
+        border-bottom: none;
+
+        font-size: fluid(16, $lg);
+        line-height: 140%;
+
+        width: fluid(430, $lg);
+        padding-top: fluid(40, $lg);
+        padding-bottom: 0;
+      }
     }
 
-    img {
-      width: fluid(900, $lg);
+    picture {
       aspect-ratio: var(--w) / var(--h);
+
+      @include md {
+        width: fluid(900, $lg);
+      }
     }
 
     strong {
@@ -106,25 +160,44 @@
 
     blockquote {
       border-left: 1px solid #aab6b6;
-      padding-left: fluid(80, $lg);
-      font-weight: 400;
-      font-size: fluid(68, $lg);
+      padding-left: fluid(32, $sm);
+      font-size: fluid(40, $sm);
       line-height: 115%;
       letter-spacing: -0.02em;
+
+      @include md {
+        padding-left: fluid(80, $lg);
+        font-size: fluid(68, $lg);
+      }
     }
 
     .blockquote-tag {
-      margin-bottom: fluid(80, $lg);
-      gap: fluid(20, $lg);
+      margin-bottom: fluid(80, $sm);
+      gap: fluid(20, $sm);
+
+      @include md {
+        margin-bottom: fluid(80, $lg);
+        gap: fluid(20, $lg);
+      }
     }
 
     .blockquote-icon {
-      width: fluid(77, $lg);
-      height: fluid(77, $lg);
+      width: fluid(60, $sm);
+      height: fluid(60, $sm);
       background: #022d42;
       border-radius: 50%;
       display: grid;
       place-items: center;
+
+      svg {
+        width: fluid(20, $sm);
+        height: fluid(16, $sm);
+      }
+    }
+
+    @include md {
+      width: fluid(77, $lg);
+      height: fluid(77, $lg);
 
       svg {
         width: fluid(24, $lg);
@@ -134,32 +207,50 @@
   }
 
   #related {
-    padding-top: fluid(80, $lg);
-    margin-bottom: fluid(180, $lg);
+    padding-top: fluid(42, $sm);
+    margin-bottom: fluid(120, $sm);
     border-top: solid 1px $darkblue;
+
+    @include md {
+      flex-direction: row;
+      padding-top: fluid(80, $lg);
+      margin-bottom: fluid(180, $lg);
+    }
 
     .article-card {
       position: relative;
-      width: fluid(400 + 35 + 35, $lg);
-      padding: 0 fluid(35, $lg);
-      border-right: 1px solid $darkblue;
+      border-bottom: 1px solid $darkblue;
+      margin-bottom: fluid(28, $sm);
+
+      @include md {
+        width: fluid(400 + 35 + 35, $lg);
+        padding: 0 fluid(35, $lg);
+        border-right: 1px solid $darkblue;
+        border-bottom: none;
+        margin-bottom: 0;
+      }
 
       img {
         transition: transform 2s $ease-out-expo;
       }
 
-      &--hori {
-        gap: fluid(55, $lg);
-        width: fluid(885, $lg);
-      }
-
       &--vert {
         .article-card--thumbnail {
-          margin-bottom: fluid(40, $lg);
+          margin-bottom: fluid(40, $sm);
         }
 
         .article-card--desc {
-          margin-bottom: fluid(86, $lg);
+          margin-bottom: fluid(64, $sm);
+        }
+
+        @include md {
+          .article-card--thumbnail {
+            margin-bottom: fluid(40, $lg);
+          }
+
+          .article-card--desc {
+            margin-bottom: fluid(86, $lg);
+          }
         }
       }
 
@@ -172,37 +263,62 @@
       }
 
       &--tag {
-        font-size: fluid(12, $lg);
-        margin-bottom: fluid(28, $lg);
-        padding-left: fluid(15 + 7, $lg);
+        font-size: fluid(12, $sm);
+        margin-bottom: fluid(24, $sm);
+        padding-left: fluid(15 + 7, $sm);
 
         &::before {
+          width: fluid(15, $sm);
+          height: fluid(15, $sm);
+
           @include md {
             width: fluid(15, $lg);
             height: fluid(15, $lg);
           }
         }
+
+        @include md {
+          font-size: fluid(12, $lg);
+          margin-bottom: fluid(28, $lg);
+          padding-left: fluid(15 + 7, $lg);
+        }
       }
 
       &--title {
-        font-size: fluid(35, $lg);
+        font-size: fluid(28, $sm);
+        margin-bottom: fluid(16, $sm);
         line-height: 110%;
         letter-spacing: -0.02em;
-        margin-bottom: fluid(16, $lg);
+
+        @include md {
+          font-size: fluid(35, $lg);
+          margin-bottom: fluid(16, $lg);
+        }
       }
 
       &--desc {
-        font-size: fluid(16, $lg);
+        font-size: fluid(16, $sm);
         line-height: 140%;
+
+        @include md {
+          font-size: fluid(16, $lg);
+        }
       }
 
       &--cta {
         font-weight: 700;
-        font-size: fluid(16, $lg);
+        font-size: fluid(16, $sm);
         line-height: 110%;
         letter-spacing: 0.01em;
-        gap: fluid(12, $lg);
+        gap: fluid(12, $sm);
         margin-top: auto;
+        margin-bottom: fluid(44, $sm);
+
+        @include md {
+          gap: fluid(12, $lg);
+          font-size: fluid(16, $lg);
+          margin-bottom: 0;
+        }
       }
 
       &:hover {
@@ -220,25 +336,27 @@
       }
     }
 
-    .blog-article--item {
-      &:first-of-type {
-        .article-card {
-          width: fluid(400 + 35, $lg);
-          padding-left: 0;
+    @include md {
+      .blog-article--item {
+        &:first-of-type {
+          .article-card {
+            width: fluid(400 + 35, $lg);
+            padding-left: 0;
 
-          &::after {
-            left: fluid(-15, $lg);
+            &::after {
+              left: fluid(-15, $lg);
+            }
           }
         }
-      }
-      &:last-of-type {
-        .article-card {
-          width: fluid(400 + 35, $lg);
-          padding-right: 0;
-          border-right: none;
+        &:last-of-type {
+          .article-card {
+            width: fluid(400 + 35, $lg);
+            padding-right: 0;
+            border-right: none;
 
-          &::after {
-            right: fluid(-15, $lg);
+            &::after {
+              right: fluid(-15, $lg);
+            }
           }
         }
       }
@@ -247,41 +365,68 @@
     .rarr-wrapper {
       display: grid;
       place-items: center;
-      padding: fluid(9, $lg) fluid(15, $lg);
-      border: fluid(1, $lg) solid #022d42;
-      border-radius: fluid(8, $lg);
+      padding: fluid(9, $sm) fluid(15, $sm);
+      border: fluid(1, $sm) solid #022d42;
+      border-radius: fluid(8, $sm);
       transition: background-color 0.4s;
+      background-color: $darkblue;
 
       svg {
-        width: fluid(13, $lg);
-        height: fluid(8, $lg);
+        width: fluid(13, $sm);
+        height: fluid(8, $sm);
 
         path {
+          fill: white;
           transition: fill 0.4s;
+        }
+      }
+
+      @include md {
+        padding: fluid(9, $lg) fluid(15, $lg);
+        border: fluid(1, $lg) solid #022d42;
+        border-radius: fluid(8, $lg);
+        background-color: none;
+
+        svg {
+          width: fluid(13, $lg);
+          height: fluid(8, $lg);
+          fill: $darkblue;
         }
       }
     }
 
     .article-list--wrapper {
-      width: fluid(430 * 3 + 40 * 2, $lg);
-      margin-left: auto;
-      margin-bottom: fluid(40, $lg);
-      padding: 0 fluid(15, $lg);
-      padding-bottom: fluid(40, $lg);
-      border-bottom: solid 1px $darkblue;
-      // gap: fluid(35, $lg);
+      @include md {
+        flex-direction: row;
+        width: fluid(430 * 3 + 40 * 2, $lg);
+        margin-left: auto;
+        margin-bottom: fluid(40, $lg);
+        padding: 0 fluid(15, $lg);
+        padding-bottom: fluid(40, $lg);
+      }
     }
   }
 
   #article-end {
-    font-size: fluid(22, $lg);
+    font-size: fluid(16, $sm);
     line-height: 160%;
-    margin-bottom: fluid(110, $lg) !important;
-    padding-top: fluid(100, $lg);
+    margin-bottom: fluid(80, $sm) !important;
+    padding-top: fluid(100, $sm);
+    gap: fluid(20, $sm);
 
     div > span:first-of-type {
       font-weight: 700;
       margin-right: 0.35em;
+    }
+
+    @include md {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: fluid(22, $lg);
+      margin-bottom: fluid(110, $lg) !important;
+      padding-top: fluid(100, $lg);
+      gap: unset;
     }
   }
 
@@ -291,18 +436,31 @@
 
   .tweet-icon {
     font-weight: 700;
-    font-size: fluid(12, $lg);
+    font-size: fluid(12, $sm);
     line-height: 130%;
     letter-spacing: 0.05em;
-    gap: fluid(2, $lg);
+    gap: fluid(2, $sm);
 
     background: #dadaca;
-    border-radius: fluid(8, $lg);
-    padding: 0 fluid(8, $lg) 0 fluid(3, $lg);
+    border-radius: fluid(8, $sm);
+    padding: 0 fluid(8, $sm) 0 fluid(3, $sm);
 
     svg {
-      width: fluid(25, $lg);
-      height: fluid(25, $lg);
+      width: fluid(25, $sm);
+      height: fluid(25, $sm);
+    }
+
+    @include md {
+      font-size: fluid(12, $lg);
+      gap: fluid(2, $lg);
+
+      border-radius: fluid(8, $lg);
+      padding: 0 fluid(8, $lg) 0 fluid(3, $lg);
+
+      svg {
+        width: fluid(25, $lg);
+        height: fluid(25, $lg);
+      }
     }
   }
 }

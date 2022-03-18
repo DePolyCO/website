@@ -1,14 +1,19 @@
-import { bounds, iris, qs, qsa } from "../hermes";
+import { bounds, iris, qs, qsa, Sniff } from "../hermes";
 import { smoothscroller } from "../scroller";
 
 export class Tweeter {
   constructor() {
-    this.dom = qs("#share-btn");
-
-    this.active = false;
-
-    this.listen();
     this.init();
+
+    const dom = qs("#share-btn");
+    if (Sniff.touchDevice) {
+      dom.remove();
+      return;
+    }
+
+    this.dom = dom;
+    this.active = false;
+    this.listen();
   }
 
   init = () => {
@@ -125,6 +130,7 @@ export class Tweeter {
   };
 
   destroy = () => {
+    if (Sniff.touchDevice) return;
     this.unClick();
     this.unUp();
     smoothscroller.remove(this.scrollID);

@@ -65,6 +65,7 @@ export class Compare {
     this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
 
+    this.resize();
     this.listen();
   };
 

@@ -17,13 +17,14 @@ import { fx } from "../components/fxmanager";
  *
  */
 
-let highlightFx, compares, ps, r0, pt;
+let highlightFx, compares, ps, r0, pt, ph;
 export const techController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
     compares.forEach((compare) => compare.destroy());
     ps && ps.forEach((p) => p.destroy());
     pt && pt.destroy();
+    ph && ph.destroy();
     r0.destroy();
     fx.remove(".explain-visual--circle");
 
@@ -41,10 +42,6 @@ export const techController = new Controller({
     new Vau({
       targets: "#hero-picture img",
       opacity: [0, 1],
-      transform: {
-        sx: [1.35, 1],
-        sy: [1.35, 1],
-      },
       duration: 1750,
       easing: "o6",
     });
@@ -55,6 +52,21 @@ export const techController = new Controller({
       duration: 200,
       easing: "o6",
     });
+
+    if (!Sniff.touchDevice) {
+      ph = new Parallax({
+        dom: "#hero-picture img",
+        speed: 1,
+        down: true,
+        useOnlyOffset: true,
+        offset: {
+          start: 20,
+          end: -20,
+        },
+        scale: { x: { start: 1.1 } },
+        easing: "linear",
+      });
+    }
 
     const highlights = qsa("[data-text-highlight");
     highlightFx = new TextHighlight({

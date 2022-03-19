@@ -75,7 +75,7 @@
   letter-spacing: 0.05em;
   color: #ffffff;
   right: 0;
-  top: 50%;
+  top: calc(50% + 1px);
   background: $darkblue;
 
   transition: opacity 0.4s $ease-out-expo;

@@ -55,6 +55,7 @@
 
   img {
     opacity: 0;
+    transform: scale(1.2);
   }
 
   @include md {

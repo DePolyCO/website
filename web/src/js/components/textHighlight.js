@@ -1,5 +1,5 @@
-import { qsa, ro, select, Sniff, ticker } from "../hermes";
-import { Tracker, smoothscroller, corescroller } from "../scroller";
+import { ro, select, ticker } from "../hermes";
+import { Tracker, smoothscroller } from "../scroller";
 
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
@@ -17,6 +17,8 @@ export class TextHighlight {
       this.build(el);
     });
 
+    this.resize();
+
     this.scrollID = smoothscroller.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
     this.tickID = ticker.add({ update: this.render });
@@ -28,15 +30,8 @@ export class TextHighlight {
     children.forEach((item, i) => {
       item.classList.add("text-underlay");
       item.dataset.content = item.innerHTML;
-
-      //   skip first element
-      // if (i > 0) {
       this.tracker.add({ dom: item });
-      // }
     });
-
-    // first one is permanently active
-    // children[0].classList.add("text-underlay--always");
   };
 
   update = ({ x, y }) => {

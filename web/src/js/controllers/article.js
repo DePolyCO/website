@@ -7,6 +7,7 @@ import { Reveal } from "../reveal";
 import { Vau } from "../hermes";
 
 import { Tweeter } from "../components/highlightTweet";
+import { Parallax } from "../scroller";
 
 /**
  *
@@ -14,11 +15,13 @@ import { Tweeter } from "../components/highlightTweet";
  *
  */
 
-let r0, tw;
+let r0, tw, ph;
 export const articleController = new Controller({
   hide: ({ done }) => {
     r0.destroy();
     tw.destroy();
+    ph && ph.destroy();
+
     sail.out(done);
   },
 
@@ -36,13 +39,24 @@ export const articleController = new Controller({
     new Vau({
       targets: "#hero-picture img",
       opacity: [0, 1],
-      transform: {
-        sx: [1.35, 1],
-        sy: [1.35, 1],
-      },
       duration: 1750,
       easing: "o6",
     });
+
+    if (!Sniff.touchDevice) {
+      ph = new Parallax({
+        dom: "#hero-picture img",
+        speed: 1,
+        down: true,
+        useOnlyOffset: true,
+        offset: {
+          start: 20,
+          end: -20,
+        },
+        scale: { x: { start: 1.1 } },
+        easing: "linear",
+      });
+    }
 
     new Vau({
       targets: "#hero .hero-grid",

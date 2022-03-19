@@ -63,6 +63,14 @@
     }
   }
 
+  #special-line {
+    line-height: 1;
+
+    .l-char--wrapper:not(:first-of-type) {
+      margin-top: -0.5em;
+    }
+  }
+
   .stat-title--tag {
     font-weight: 500;
     font-size: fluid(14, $sm);

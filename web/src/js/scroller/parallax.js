@@ -33,6 +33,7 @@ export class Parallax {
     },
     ease = "io1",
     limitBounds = false,
+    useOnlyOffset = false,
   }) {
     // if (Sniff.safari) return;
 
@@ -48,6 +49,7 @@ export class Parallax {
       offset,
       range: (speed - 1) * 100,
       limitBounds,
+      useOnlyOffset,
     };
 
     this.state = {
@@ -57,35 +59,35 @@ export class Parallax {
       needs: {
         rotate: {
           x:
-            rotate.x.start !== rotate.x.end ||
-            rotate.x.start !== 0 ||
-            rotate.x.end !== 0,
+            rotate.x?.start !== rotate.x?.end ||
+            rotate.x?.start !== 0 ||
+            rotate.x?.end !== 0,
           y:
-            rotate.y.start !== rotate.y.end ||
-            rotate.y.start !== 0 ||
-            rotate.y.end !== 0,
+            rotate.y?.start !== rotate.y?.end ||
+            rotate.y?.start !== 0 ||
+            rotate.y?.end !== 0,
         },
 
         scale: {
           x:
-            scale.y.start !== scale.y.end ||
-            scale.y.start !== 0 ||
-            scale.y.end !== 0,
+            scale.x?.start !== scale.x?.end ||
+            scale.x?.start !== 0 ||
+            scale.x?.end !== 0,
           y:
-            scale.y.start !== scale.y.end ||
-            scale.y.start !== 0 ||
-            scale.y.end !== 0,
+            scale.y?.start !== scale.y?.end ||
+            scale.y?.start !== 0 ||
+            scale.y?.end !== 0,
         },
 
         translate: {
           x:
-            translate.x.start !== translate.x.end ||
-            translate.x.start !== 0 ||
-            translate.x.end !== 0,
+            translate.x?.start !== translate.x?.end ||
+            translate.x?.start !== 0 ||
+            translate.x?.end !== 0,
           y:
-            translate.y.start !== translate.y.end ||
-            translate.y.start !== 0 ||
-            translate.y.end !== 0,
+            translate.y?.start !== translate.y?.end ||
+            translate.y?.start !== 0 ||
+            translate.y?.end !== 0,
         },
       },
     };
@@ -119,15 +121,25 @@ export class Parallax {
       const progress = invlerp(boundRange[0], boundRange[1], scroll);
       const y = this.options.ease(this.options.down ? 1 - progress : progress); // 0 -> 1
 
-      let ypx;
-      if (this.options.limitBounds) {
-        ypx = lerp(0, this.state.bounds.maxRange, y);
+      let ypx, ypct;
+
+      if (this.options.useOnlyOffset) {
+        ypct = lerp(this.options.offset.start, this.options.offset.end, y);
       } else {
-        ypx = y * this.state.bounds.y;
+        if (this.options.limitBounds) {
+          ypx = lerp(0, this.state.bounds.maxRange, y);
+        } else {
+          ypx = y * this.state.bounds.y;
+        }
       }
-      this.dom.style.transform = `translate3d(${x}${
-        x ? "%" : ""
-      }, ${ypx}px, 0) ${r ? `rotate(${r}deg)` : ""}`;
+
+      this.dom.style.transform = `translate3d(${x}${x ? "%" : ""}, ${
+        this.options.useOnlyOffset ? `${ypct}%` : `${ypx}px`
+      }, 0) ${
+        this.options.scale?.x?.start
+          ? `scale(${this.options.scale?.x?.start})`
+          : ""
+      } ${r ? `rotate(${r}deg)` : ""}`;
     }
   };
 

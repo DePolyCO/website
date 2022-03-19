@@ -17,7 +17,7 @@ import { monoShuffle } from "../components/monoShuffle";
  *
  */
 
-let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o, r0, rst;
+let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o, r0, rst, ph;
 export const homeController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
@@ -29,6 +29,8 @@ export const homeController = new Controller({
     p2.destroy();
     p3.destroy();
     p4.destroy();
+
+    ph && ph.destroy();
 
     r0.destroy();
     rst.destroy();
@@ -47,13 +49,24 @@ export const homeController = new Controller({
     new Vau({
       targets: "#hero-picture img",
       opacity: [0, 1],
-      transform: {
-        sx: [1.35, 1],
-        sy: [1.35, 1],
-      },
       duration: 1750,
       easing: "o6",
     });
+
+    if (!Sniff.touchDevice) {
+      ph = new Parallax({
+        dom: "#hero-picture img",
+        speed: 1,
+        down: true,
+        useOnlyOffset: true,
+        offset: {
+          start: 20,
+          end: -20,
+        },
+        scale: { x: { start: 1.1 } },
+        easing: "linear",
+      });
+    }
 
     new Vau({
       targets: "#hero .hero-grid",

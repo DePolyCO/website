@@ -9,6 +9,7 @@ import { Numbers } from "../components/revealNumbers";
 
 import { qsa, Sniff, Vau } from "../hermes";
 import { Reveal } from "../reveal";
+import { Parallax } from "../scroller";
 
 /**
  *
@@ -16,13 +17,15 @@ import { Reveal } from "../reveal";
  *
  */
 
-let highlightFx, numbers, r0;
+let highlightFx, numbers, r0, ph, nrs;
 
 export const aboutController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
-    // numbers.destroy();
+    numbers && numbers.destroy();
+    nrs && nrs.destroy();
     r0.destroy();
+    ph && ph.destroy();
     monoShuffle.destroy();
 
     sail.out(done);
@@ -38,13 +41,24 @@ export const aboutController = new Controller({
     new Vau({
       targets: "#hero-picture img",
       opacity: [0, 1],
-      transform: {
-        sx: [1.35, 1],
-        sy: [1.35, 1],
-      },
       duration: 1750,
       easing: "o6",
     });
+
+    if (!Sniff.touchDevice) {
+      ph = new Parallax({
+        dom: "#hero-picture img",
+        speed: 1,
+        down: true,
+        useOnlyOffset: true,
+        offset: {
+          start: 20,
+          end: -20,
+        },
+        scale: { x: { start: 1.1 } },
+        easing: "linear",
+      });
+    }
 
     new Vau({
       targets: "#hero .hero-grid",
@@ -57,6 +71,11 @@ export const aboutController = new Controller({
       numbers = new Numbers();
     } else {
       numbers = new CaptureReveal();
+      new Reveal({
+        targets: ".number-no",
+        stagger: 75,
+        auto: true,
+      });
     }
 
     nav.setLinkActive("about");

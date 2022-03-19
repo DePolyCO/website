@@ -25,7 +25,7 @@ const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify(results),
       headers: {
-        "access-control-allow-origin": "*",
+        "Access-Control-Allow-Origin": "*",
       },
     };
   } catch (error) {
@@ -33,7 +33,7 @@ const handler = async (event) => {
       statusCode: 500,
       body: error.toString(),
       headers: {
-        "access-control-allow-origin": "*",
+        "Access-Control-Allow-Origin": "*",
       },
     };
   }

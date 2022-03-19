@@ -1,7 +1,15 @@
 ---
 layout: _layout.njk
 title: Article
-tags: articles
+pagination:
+    data: articles
+    size: 1
+    alias: article
+permalink: "article/{{ article.settings.slug.current | slugify }}/"
+eleventyComputed:
+    title: "{{ article.title }}"
+tags: 
+    - articles
 ---
 
 {% from '_macros/header.njk' import header %}
@@ -12,29 +20,31 @@ tags: articles
 
         <div class="df jcb">
             <div id="article-breadcrumbs" class="article-breadcrumbs fv-mono">
-                <a class="link link-dark link-solid" href="/blog/">Blog</a> / <a class="link link-dark link-solid" href="/blog/categories/general">General</a> / 
+                <a class="link link-dark link-solid" href="/blog/">Blog</a> / <a class="link link-dark link-solid" href="/blog/categories/{{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a> / 
             </div>
             <ul id="article-tags--d" class="article-tag fv-mono df m-hide">
-                <li class="hero-tag ttu">#Economy</li>
-                <li class="hero-tag ttu">#Recycling</li>
-                <li class="hero-tag ttu">#PTA</li>
-                <li class="hero-tag ttu">#MEG</li>
+                {% for tag in article.tags %}
+                    <li class="hero-tag ttu">#{{ tag }}</li>
+                {% endfor %}
             </ul>
         </div>
         <div id="hero-title--wrapper" class="pr z0 hero-title--wrapper oh">
-            <h1 id="hero-title" class="hero-title z1">Beauty Tech for Good Challenge by L’Oreal</h1>
+            <h1 id="hero-title" class="hero-title z1">{{ article.title }}</h1>
             <div class="df pa inset zn1 hero-grid oh"></div>
         </div>
         <ul id="article-tags--m" class="article-tag fv-mono df d-hide fw">
-            <li class="hero-tag ttu">#Economy</li>
-            <li class="hero-tag ttu">#Recycling</li>
-            <li class="hero-tag ttu">#PTA</li>
-            <li class="hero-tag ttu">#MEG</li>
-            <li class="hero-tag ttu">#PTA</li>
-            <li class="hero-tag ttu">#MEG</li>
+            {% for tag in article.tags %}
+                <li class="hero-tag ttu">#{{ tag }}</li>
+            {% endfor %}
         </ul>
         <picture id="hero-picture" class="hero-picture">
-            <img loading="eager" decoding="sync" src="/static/temp.jpg" alt=""/>
+            {% responsiveImage article.mainImage,
+            "300,600,1200,2000",
+            "100vw",
+            "",
+            "",
+            true
+ %}
         </picture>
     </header>
 
@@ -46,73 +56,22 @@ tags: articles
     </a>
 
     <section data-scroll-section id="intro">
-        Is recycling as good as it seems? 
-        If you think recycling is a sensible and useful solution for the 
-        planet, you might need to consider how costly and demanding the system
-        is, and how few recyclable plastics there are. I would like to point out
-        that only the 9% of the plastics produced so far can be recycled. 
-        It is not possible to equate plastic waste with waste such as glass, 
-        metal and paper.
+        {{ article.intro }}
     </section>
 
     <article id="body">
 
-        <section data-scroll-section>
-            <p>
-                I would like to point out that only the 9% of the plastics produced so far can be recycled. It is not possible to equate plastic waste with waste such as glass, metal and paper. While recycling or reusing non-plastic materials is easier and the rate is higher for non-plastic materials, recycling plastics is nothing but an empty promise.
-            </p>
-        </section>
+        {{ article.body | safe  }}
 
-        <section data-scroll-section>
+        {# <section data-scroll-section>
             <ol class="fv-mono">
                 <li>Pet Granules</li>
                 <li>Pet Granules</li>
                 <li>Pet Granules</li>
             </ol>
-        </section>
+        </section> #}
 
-        <section data-scroll-section>
-            <h2>
-                What makes plastic recycling plastics so difficult?
-            </h2>
-        </section>
-
-        <section data-scroll-section>
-            <p>
-                First, these plastics, whose production has increased rapidly in the last 20–30 years and doubled in the last 10 years, are low-cost materials that have more than one type identified by numbers. The best known are those up to number 7. Only the number 1 PETE bottles which are known as water, cola and mouthwash bottles; number 2 HDPE bottles namely detergent and milk bottles; 5 PP, namely honey, yoghurt pots and Tupperware are recyclable and active in the market. However, the rest are either not recyclable or not preferred because they are not profitable.
-            </p>
-        </section>
-
-        <section class="no-contain" data-scroll-section>
-            <figure class="pr">
-                <picture style="--w:900; --h:546">
-                    <img src="/static/temp.jpg" alt="">
-                </picture>
-                <figcaption>
-                    DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020!
-                </figcaption>
-            </figure>
-        </section>
-
-        <section data-scroll-section>
-            <h2>
-               Does the fact that plastics are recyclable  mean that they will be recycled?
-            </h2>
-        </section>
-
-        <section data-scroll-section>
-            <p>
-                First, these plastics, whose production has increased rapidly in the last 20–30 years and doubled in the last 10 years, are low-cost materials that have more than one type identified by numbers. The best known are those up to number 7. Only the number 1 PETE bottles which are known as water, cola and mouthwash bottles; number 2 HDPE bottles namely detergent and milk bottles; 5 PP, namely honey, yoghurt pots and Tupperware are recyclable and active in the market. However, the rest are either not recyclable or not preferred because they are not profitable.
-            </p>
-        </section>
-
-        <section data-scroll-section>
-            <p>
-                First, these plastics, whose production has increased rapidly in the last 20–30 years and doubled in the last 10 years, are low-cost materials that have more than one type identified by numbers. The best known are those up to number 7. Only the number 1 PETE bottles which are known as water, cola and mouthwash bottles; number 2 HDPE bottles namely detergent and milk bottles; 5 PP, namely honey, yoghurt pots and Tupperware are recyclable and active in the market. However, the rest are either not recyclable or not preferred because they are not profitable.
-            </p>
-        </section>
-
-        <section data-scroll-section>
+        {# <section data-scroll-section>
             <blockquote data-tweet-parent>
                 <div class="blockquote-tag df aic">
                     <div class="blockquote-icon">
@@ -131,30 +90,35 @@ tags: articles
                 There are two solutions to these plastics that cannot be recycled and are now everywhere in our lives. The first is to just say no, the second is to use Zero Waste products. In order to not be a part of this pile of trash, you can avoid single-use plastics.
                 </p>
             </blockquote>
-        </section>
+        </section> 
 
         <section data-scroll-section>
             <p>
-                First, <strong>these plastics,</strong>  whose production has increased rapidly in the last 20–30 years and doubled in the last 10 years, are low-cost materials that have more than one type identified by numbers. The best known are those up to number 7. Only the number 1 PETE bottles which are known as water, cola and mouthwash bottles; number 2 HDPE bottles namely detergent and milk bottles; 5 PP, namely honey, yoghurt pots and Tupperware are recyclable and active in the market. However, the rest are either not recyclable or not preferred because they are not profitable.
+                I would like to point out that only the 9% of the plastics produced so far can be recycled. It is not possible to equate plastic waste with waste such as glass, metal and paper. While recycling or reusing non-plastic materials is easier and the rate is higher for non-plastic materials, recycling plastics is nothing but an empty promise.
             </p>
+        </section> 
+        <section class="no-contain" data-scroll-section>
+            <figure class="pr">
+                <picture style="--w:900; --h:546">
+                    <img src="/static/temp.jpg" alt="">
+                </picture>
+                <figcaption>
+                    DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020!
+                </figcaption>
+            </figure>
         </section>
-
-        <section data-scroll-section>
-            <p>
-                First, these plastics, whose production has increased rapidly in the last 20–30 years and doubled in the last 10 years, are low-cost materials that have more than one type identified by numbers. The best known are those up to number 7. Only the number 1 PETE bottles which are known as water, cola and mouthwash bottles; number 2 HDPE bottles namely detergent and milk bottles; 5 PP, namely honey, yoghurt pots and Tupperware are recyclable and active in the market. However, the rest are either not recyclable or not preferred because they are not profitable.
-            </p>
-        </section>
+        #}
 
         <section data-scroll-section class="df fc" id="article-end">
             <div class="df aib">
                 <span>Category / </span>
                 <span>
-                    <a class="text-underline" href="/blog/">General</a>
+                    <a class="text-underline" href="/blog/">{{ article.settings.postCategory }}</a>
                 </span>
             </div>
             <div>
                 <span>Published / </span>
-                <span>Oct 30, 2022</span>
+                <span>{{ article.publishedAt }}</span>
             </div>
             <div class="df aib">
                 <span>Share / </span>

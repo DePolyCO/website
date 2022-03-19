@@ -49,12 +49,14 @@ export class Tweeter {
   };
 
   removeSelection = (e) => {
-    const text = this.getSelectedText();
-    if (text !== "") {
-      e.stopPropagation();
-    } else {
-      this.removeButton();
-    }
+    requestAnimationFrame(() => {
+      const text = this.getSelectedText();
+      if (text !== "") {
+        e.stopPropagation();
+      } else {
+        this.removeButton();
+      }
+    });
   };
 
   placeButton = (selection) => {

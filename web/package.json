@@ -43,9 +43,11 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "htm": "^3.1.0",
     "lunr": "^2.3.9",
     "netlify-lambda": "^2.0.15",
     "ogl": "^0.0.86",
-    "tweakpane": "^3.0.7"
+    "tweakpane": "^3.0.7",
+    "vhtml": "^2.2.0"
   }
 }

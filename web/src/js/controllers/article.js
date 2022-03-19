@@ -4,7 +4,7 @@ import { sail } from "../components/sails";
 import { nav } from "../components/nav";
 
 import { Reveal } from "../reveal";
-import { Vau } from "../hermes";
+import { Vau, Sniff } from "../hermes";
 
 import { Tweeter } from "../components/highlightTweet";
 import { Parallax } from "../scroller";

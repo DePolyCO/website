@@ -12,6 +12,7 @@ specifiers:
   dotenv: ^16.0.0
   esbuild: ^0.14.21
   groq: ^2.15.0
+  htm: ^3.1.0
   html-minifier: ^4.0.0
   lunr: ^2.3.9
   netlify-lambda: ^2.0.15
@@ -24,13 +25,16 @@ specifiers:
   sass: ^1.49.7
   string: ^3.3.3
   tweakpane: ^3.0.7
+  vhtml: ^2.2.0
 
 dependencies:
   axios: 0.26.1
+  htm: 3.1.0
   lunr: 2.3.9
   netlify-lambda: 2.0.15
   ogl: 0.0.86
   tweakpane: 3.0.7
+  vhtml: 2.2.0
 
 devDependencies:
   '@11ty/eleventy': 1.0.0
@@ -3912,6 +3916,10 @@ packages:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
     dev: true
 
+  /htm/3.1.0:
+    resolution: {integrity: sha512-L0s3Sid5r6YwrEvkig14SK3Emmc+kIjlfLhEGn2Vy3bk21JyDEes4MoDsbJk6luaPp8bugErnxPz86ZuAw6e5Q==}
+    dev: false
+
   /html-minifier/4.0.0:
     resolution: {integrity: sha512-aoGxanpFPLg7MkIl/DDFYtb0iWz7jMFGqFhvEDZga6/4QTjneiD8I/NXL1x5aaoCp7FSIT6h/OhykDdPsbtMig==}
     engines: {node: '>=6'}
@@ -7128,6 +7136,10 @@ packages:
   /vary/1.1.2:
     resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /vhtml/2.2.0:
+    resolution: {integrity: sha512-TPXrXrxBOslRUVnlVkiAqhoXneiertIg86bdvzionrUYhEuiROvyPZNiiP6GIIJ2Q7oPNVyEtIx8gMAZZE9lCQ==}
     dev: false
 
   /vm-browserify/1.1.2:

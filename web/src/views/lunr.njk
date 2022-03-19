@@ -5,6 +5,7 @@ permalinkBypassOutputDir: true
 
 [{% for article in collections.articles %}{
    "title":"{{ article.data.title }}",
+   "date":"{{ article.date }}",
    "url":"{{ article.url }}",
    "content":"{% excerpt article %}"
 }{% if forloop.last == false %},{% endif %}

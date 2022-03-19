@@ -20,12 +20,22 @@ const handler = async (event) => {
       delete r.ref;
     });
 
+    // TODO: Remove CORS
     return {
       statusCode: 200,
       body: JSON.stringify(results),
+      headers: {
+        "access-control-allow-origin": "*",
+      },
     };
   } catch (error) {
-    return { statusCode: 500, body: error.toString() };
+    return {
+      statusCode: 500,
+      body: error.toString(),
+      headers: {
+        "access-control-allow-origin": "*",
+      },
+    };
   }
 };
 

@@ -386,6 +386,7 @@
     height: fluid(60, $sm);
     overflow: hidden;
     overflow: clip;
+    border-bottom: 1px solid #dadaca;
 
     @include md {
       padding: fluid(35, $lg) 0;
@@ -409,7 +410,7 @@
 
     svg {
       width: fluid(12, $sm);
-      height: fluid(8, $sm);
+      height: fluid(9, $sm);
     }
 
     @include md {
@@ -420,7 +421,7 @@
 
       svg {
         width: fluid(12, $lg);
-        height: fluid(8, $lg);
+        height: fluid(9, $lg);
       }
     }
   }

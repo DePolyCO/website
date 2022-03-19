@@ -2,7 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
-import { qsa, Vau } from "../hermes";
+import { iris, qs, qsa, Vau } from "../hermes";
 
 /**
  *
@@ -10,8 +10,10 @@ import { qsa, Vau } from "../hermes";
  *
  */
 
+let ficl;
 export const blogController = new Controller({
   hide: ({ done }) => {
+    ficl && ficl();
     sail.out(done);
   },
 
@@ -41,6 +43,13 @@ export const blogController = new Controller({
           delay: i * 100,
         })
     );
+
+    const fi = qs("#filters-extended");
+    const btn = qs("#filters-extended--btn");
+    ficl = iris.add(btn, "click", (e) => {
+      fi.classList.toggle("active");
+      btn.classList.toggle("active");
+    });
 
     sail.in();
     done();

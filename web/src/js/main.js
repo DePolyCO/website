@@ -30,7 +30,7 @@ import { nav } from "./components/nav";
  *
  */
 
-new Hydra({
+export const app = new Hydra({
   loader: async (done, currentPage) => {
     await intro.init(currentPage);
     done();

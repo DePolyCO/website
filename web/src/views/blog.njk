@@ -44,7 +44,7 @@ title: Blog
                         {% endfor %}
                     </ul>
                     <div id="search-top" class="pr search-field fv-mono">
-                        <input id="search" type="text" placeholder="Search">
+                        <input id="search" type="text" placeholder="Search" enterKeyHint="search">
                         <svg class="pa left top pen">
                             <use xlink:href="#search-icon"></use>
                         </svg>
@@ -129,7 +129,7 @@ title: Blog
     <section id="blog-two" data-scroll-section class="restrict df fc">
         <div id="blog-filters--extended">
             <div id="search-extended" class="search-field df pr fv-mono">
-                <input id="search-extended--input" type="text" placeholder="Search">
+                <input id="search-extended--input" type="text" placeholder="Search" enterKeyHint="search">
                 <svg class="pa left top pen">
                     <use xlink:href="#search-icon"></use>
                 </svg>
@@ -180,28 +180,30 @@ title: Blog
                         </a>
                     </li>
                 {% endfor %}
-                <li class="blog-article--item">
-                    <a href="/blog/" class="article-card--link cp">
-                        <div class="article-card article-card--vert df fc">
-                            <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
+                <template id="blog-article--item">
+                    <li class="blog-article--item">
+                        <a href="/blog/" class="article-card--link cp">
+                            <div class="article-card article-card--vert df fc">
+                                <picture class="article-card--thumbnail">
+                                    <img src="/static/temp.jpg" alt="">
+                                </picture>
+                                <div class="article-content df fc">
+                                    <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
+                                    <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
+                                    <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
+                                    <div class="df article-card--cta aic">
+                                        <div>Read More</div>
+                                        <div class="rarr-wrapper">
+                                            <svg fill="none" viewBox="0 0 13 8">
+                                                <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                </template>
 
             </ul>
 

@@ -10,6 +10,6 @@ permalinkBypassOutputDir: true
    "content": "{% trim article.intro, 400 %}",
    "url":"{{ article.settings.slug.current | slugify }}",
    "postCategory":"{{ article.settings.postCategory }}",
-   "mainImage": {{ article.mainImage | dump | safe }}
+   "mainImage": "{% imageUrlFor article.mainImage, 800 %}"
 }{% if loop.last == false %},{% endif %}
 {% endfor %}]

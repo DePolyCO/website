@@ -2,6 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
+import { Search } from "../components/search";
 import { iris, qs, qsa, Vau } from "../hermes";
 
 /**
@@ -10,25 +11,23 @@ import { iris, qs, qsa, Vau } from "../hermes";
  *
  */
 
-let ficl;
+let ficl, s1;
 export const blogController = new Controller({
   hide: ({ done }) => {
     ficl && ficl();
+    s1.destroy();
     sail.out(done);
   },
 
   show: ({ done }) => {
     nav.setLinkActive("news");
 
-    qsa(".article-animate").map(
-      (item, i) =>
-        new Vau({
-          targets: item,
-          opacity: [0, 1],
-          easing: "o6",
-          duration: 1000,
-        })
-    );
+    new Vau({
+      targets: ".article-animate",
+      opacity: [0, 1],
+      easing: "o6",
+      duration: 1000,
+    });
 
     qsa(".article-card").map(
       (item, i) =>
@@ -49,6 +48,12 @@ export const blogController = new Controller({
     ficl = iris.add(btn, "click", (e) => {
       fi.classList.toggle("active");
       btn.classList.toggle("active");
+    });
+
+    s1 = new Search({
+      input: "#search-extended--input",
+      template: "#blog-article--item",
+      targetContainer: "#blog-article--list",
     });
 
     sail.in();

@@ -3,12 +3,6 @@ const groq = require("groq");
 
 const withCache = require("../../../utils/cache");
 
-const urlFor = require("../../../utils/imageUrl");
-
-// import htm from "htm";
-// import vhtml from "vhtml";
-// import { toHTML, uriLooksSafe } from "@portabletext/to-html";
-
 const htm = require("htm");
 const vhtml = require("vhtml");
 const { toHTML, uriLooksSafe } = require("@portabletext/to-html");
@@ -82,8 +76,6 @@ const postComponents = {
         </blockquote>
       </section>`,
   },
-
-  // hardBreak: false,
 };
 
 const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
@@ -113,7 +105,9 @@ module.exports = withCache(
         return {
           ...post,
           body: toHTML(post.body, { components: postComponents }),
-          publishedAt: dateTimeFormat.format(new Date(post.settings.publishedAt)),
+          publishedAt: dateTimeFormat.format(
+            new Date(post.settings.publishedAt)
+          ),
         };
       });
 

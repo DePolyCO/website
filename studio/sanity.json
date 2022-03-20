@@ -15,7 +15,8 @@
     "@sanity/orderable-document-list",
     "@sanity/document-internationalization",
     "@sanity/dashboard",
-    "media"
+    "media",
+    "dashboard-widget-netlify"
   ],
   "env": {
     "development": {

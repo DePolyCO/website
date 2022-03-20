@@ -105,7 +105,7 @@ title: About Us
 
             <div class="team-col df fc aic d-hide">
                 {% for member in team.members %}
-                    <div class="team-item"  style="--idx: {{ loop.index0 % 4 * 3 + loop.index0 // 4 }}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
+                    <div class="team-item" style="--idx: {{ loop.index0 % 4 * 3 + loop.index0 // 4 }}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                         <picture class="team-photo">
                             {% responsiveImage member.img,
                             "300,600",

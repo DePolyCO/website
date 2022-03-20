@@ -22,10 +22,11 @@
 
             <div class="df fc bio-panel--inner z1">
               <picture class="bio-profile--picture d-hide">
-                {# <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}"> #}
                 {% responsiveImage member.img,
                 "300,600",
-                "100vw" %}
+                "100vw",
+                "",
+                "Photo of" + member.name %}
               </picture>
               <div class="pf df fc bio-left">
                 <div class="bio-name">{{ member.name }}</div>
@@ -33,43 +34,30 @@
                 <div>
                   <div class="bio-social--title">Social:</div>
                   <ul class=" df fw bio-social--list">
-                    <li class="bio-social--item fv-mono ttu">
-                      <a target="_blank" rel="noreferrer noopener" href="{{ member.social.linkedin }}">LI</a>
-                    </li>
-                    <li class="bio-social--item fv-mono ttu">
-                      <a target="_blank" rel="noreferrer noopener" href="{{ member.social.twitter }}">TW</a>
-                    </li>
+                    {% if member.social.linkedin %}
+                      <li class="bio-social--item fv-mono ttu">
+                        <a target="_blank" rel="noreferrer noopener" href="{{ member.social.linkedin }}">LI</a>
+                      </li>
+                    {% endif %}
+                    {% if member.social.twitter %}
+                      <li class="bio-social--item fv-mono ttu">
+                        <a target="_blank" rel="noreferrer noopener" href="{{ member.social.twitter }}">TW</a>
+                      </li>
+                    {% endif %}
                   </ul>
                 </div>
               </div>
 
               <div class="bio-profile--content df fc" data-scroll-section>
                 <picture class="bio-profile--picture m-hide">
-                  {# <img data-lazy-src="{{ member.img }}" alt="Photo of {{ member.name }}"> #}
                   {% responsiveImage member.img,
                   "600,1200,2000",
-                  "30vw" %}
+                  "30vw",
+                  "",
+                  "Photo of" + member.name %}
                 </picture>
                 <div class="bio-profile--details">
-                  {# {% for item in member.bio %}
-                    {% if item.type === "text" %}
-                      <p class="bio-detail--para">{{ item.bio }}</p>
-                    {% endif %}
-                    {% if item.type === "fact" %}
-                      <div class="bio-detail--fact">
-                        <div class="fact-inner">
-                          <strong>Interesting fact</strong> - {{ item.content }}
-                        </div>
-
-                        <div class="fact-tags">
-                          {% for tag in item.tags %}
-                            <span class="chip ttu ">{{ tag }}</span>
-                          {% endfor %}
-                        </div>
-
-                      </div>
-                    {% endif %}
-                  {% endfor %} #}
+                  {{ member.bio | safe }}
                 </div>
               </div>
 

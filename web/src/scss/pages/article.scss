@@ -230,6 +230,10 @@
       flex-direction: row;
       padding-top: fluid(80, $lg);
       margin-bottom: fluid(180, $lg);
+
+      .article-content {
+        height: inherit;
+      }
     }
 
     .article-card {
@@ -259,6 +263,8 @@
         }
 
         @include md {
+          height: 100%;
+
           .article-card--thumbnail {
             margin-bottom: fluid(40, $lg);
           }
@@ -271,10 +277,20 @@
 
       &--link {
         display: block;
+
+        @include md {
+          height: 100%;
+        }
       }
 
       &--thumbnail {
         aspect-ratio: 1 / 1;
+
+        @include md {
+          width: fluid(400, $lg);
+          min-height: fluid(400, $lg);
+          height: fluid(400, $lg);
+        }
       }
 
       &--tag {
@@ -422,7 +438,6 @@
         padding: 0 fluid(15, $lg);
         padding-bottom: fluid(40, $lg);
         border-bottom: 1px solid #022d42;
-
       }
     }
   }

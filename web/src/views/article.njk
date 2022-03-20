@@ -2,7 +2,7 @@
 layout: _layout.njk
 title: Article
 pagination:
-    data: articles
+    data: articles.all
     size: 1
     alias: article
 permalink: "article/{{ article.settings.slug.current | slugify }}/"
@@ -124,13 +124,13 @@ tags:
                 <span>Share / </span>
                 <span class="df share-links">
                     <div>
-                        <a class="text-underline" rel="noreferrer noopener" target="_blank" href="">FB</a>
+                        <a class="text-underline" rel="noreferrer noopener" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}/{{ article.settings.slug.current | slugify }}">FB</a>
                     </div>
                     <div>
-                        <a class="text-underline" rel="noreferrer noopener" target="_blank" href="">TW</a>
+                        <a class="text-underline" rel="noreferrer noopener" target="_blank" href="https://twitter.com/intent/tweet?url={{ site.url }}/{{ article.settings.slug.current | slugify }}">TW</a>
                     </div>
                     <div>
-                        <a class="text-underline" rel="noreferrer noopener" target="_blank" href="">LN</a>
+                        <a class="text-underline" rel="noreferrer noopener" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}/{{ article.settings.slug.current | slugify }}">LN</a>
                     </div>
                 </span>
             </div>
@@ -141,7 +141,36 @@ tags:
     <section id="related" class="restrict df fc pr" data-scroll-section>
         <div class="tag ttu fv-mono" data-shuffle>Read More</div>
         <ul class="df fc article-list--wrapper">
-            <li class="blog-article--item">
+            {% for item in article.related %}
+
+                <li class="blog-article--item">
+                    <a href="/article/{{ item.settings.slug.current | slugify }}" class="article-card--link cp">
+                        <div class="article-card article-card--vert df fc">
+                            <picture class="article-card--thumbnail">
+                                {# <img src="/static/temp.jpg" alt=""> #}
+                                {% responsiveImage item.mainImage %}
+                            </picture>
+                            <div class="article-content df fc">
+                                <div class="article-card--tag tag ttu fv-mono">{{ item.settings.postCategory }}  / {{ item.settings.publishedAt | toHRDate }}</div>
+                                <div class="article-card--title">{% trim item.title,
+                                    40 %}</div>
+                                <p class="article-card--desc">{% trim item.intro %}</p>
+                                <div class="df article-card--cta aic">
+                                    <div>Read More</div>
+                                    <div class="rarr-wrapper">
+                                        <svg fill="none" viewBox="0 0 13 8">
+                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+            {% endfor %}
+
+            {# <li class="blog-article--item">
                 <a href="/article/" class="article-card--link cp">
                     <div class="article-card article-card--vert df fc">
                         <picture class="article-card--thumbnail">
@@ -162,51 +191,8 @@ tags:
                         </div>
                     </div>
                 </a>
-            </li>
-            <li class="blog-article--item">
-                <a href="/article/" class="article-card--link cp">
-                    <div class="article-card article-card--vert df fc">
-                        <picture class="article-card--thumbnail">
-                            <img src="/static/temp.jpg" alt="">
-                        </picture>
-                        <div class="article-content df fc">
-                            <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                            <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                            <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                            <div class="df article-card--cta aic">
-                                <div>Read More</div>
-                                <div class="rarr-wrapper">
-                                    <svg fill="none" viewBox="0 0 13 8">
-                                        <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="blog-article--item">
-                <a href="/article/" class="article-card--link cp">
-                    <div class="article-card article-card--vert df fc">
-                        <picture class="article-card--thumbnail">
-                            <img src="/static/temp.jpg" alt="">
-                        </picture>
-                        <div class="article-content df fc">
-                            <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                            <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                            <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                            <div class="df article-card--cta aic">
-                                <div>Read More</div>
-                                <div class="rarr-wrapper">
-                                    <svg fill="none" viewBox="0 0 13 8">
-                                        <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
+            </li> #}
+
         </ul>
     </section>
 

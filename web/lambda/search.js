@@ -1,5 +1,19 @@
 const lunrjs = require("lunr");
 
+const createIndex = (posts) => {
+  return lunrjs(() => {
+    this.ref("id");
+    this.field("title");
+    this.field("content");
+    this.field("date");
+
+    posts.forEach((p, idx) => {
+      p.id = idx;
+      this.add(p);
+    });
+  });
+};
+
 const handler = async (event) => {
   try {
     const search = event.queryStringParameters.term;
@@ -10,20 +24,25 @@ const handler = async (event) => {
 
     let results = index.search(search);
 
-    results.forEach((r) => {
-      r.title = data[r.ref].title;
-      r.content = truncate(data[r.ref].content, 400);
-      r.date = data[r.ref].date;
-      r.url = data[r.ref].url;
+    const finalData = results.map((r) => {
+      // r.title = data[r.ref].title;
+      // r.date = data[r.ref].date;
+      // r.content = data[r.ref].content;
+      // r.url = data[r.ref].url;
+      // r._id = data[r.ref]._id;
 
-      delete r.matchData;
-      delete r.ref;
+      return {
+        ...data[r.ref],
+      };
+
+      // delete r.matchData;
+      // delete r.ref;
     });
 
     // TODO: Remove CORS
     return {
       statusCode: 200,
-      body: JSON.stringify(results),
+      body: JSON.stringify(finalData),
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
@@ -38,26 +57,5 @@ const handler = async (event) => {
     };
   }
 };
-
-function createIndex(posts) {
-  return lunrjs(function () {
-    this.ref("id");
-    this.field("title");
-    this.field("content");
-    this.field("date");
-
-    posts.forEach((p, idx) => {
-      p.id = idx;
-      this.add(p);
-    });
-  });
-}
-
-function truncate(str, size) {
-  //first, remove HTML
-  str = str.replace(/<.*?>/g, "");
-  if (str.length < size) return str;
-  return str.substring(0, size - 3) + "...";
-}
 
 module.exports = { handler };

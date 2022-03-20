@@ -186,7 +186,7 @@
         background: #dadaca;
         font-size: fluid(12, $sm);
         border-radius: fluid(8, $sm);
-        padding: fluid(2, $sm) fluid(8, $sm);
+        padding: fluid(4, $sm) fluid(8, $sm) fluid(2, $sm);
         height: -moz-fit-content;
         height: fit-content;
         width: -moz-fit-content;
@@ -196,7 +196,7 @@
         @include md {
           font-size: fluid(12, $lg);
           border-radius: fluid(8, $lg);
-          padding: fluid(2, $lg) fluid(8, $lg);
+          padding: fluid(4, $lg) fluid(8, $lg) fluid(2, $lg);
           margin-bottom: 0;
         }
       }
@@ -554,7 +554,6 @@
     margin-bottom: fluid(40, $sm);
 
     @include md {
-      flex-direction: row;
       width: fluid(430 * 3 + 40 * 2, $lg);
       margin-left: auto;
       padding: 0 fluid(15, $lg);

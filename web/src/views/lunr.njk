@@ -3,10 +3,13 @@ permalink: netlify/lambda/article-index.json
 permalinkBypassOutputDir: true
 ---
 
-[{% for article in collections.articles %}{
-   "title":"{{ article.data.title }}",
-   "date":"{{ article.date }}",
-   "url":"{{ article.url }}",
-   "content":"{% excerpt article %}"
-}{% if forloop.last == false %},{% endif %}
+[{% for article in articles.all %}{
+   "_id":"{{ article._id }}",
+   "title":"{{ article.title }}",
+   "date":"{{ article.publishedAt }}",
+   "content": "{% trim article.intro, 400 %}",
+   "url":"{{ article.settings.slug.current | slugify }}",
+   "postCategory":"{{ article.settings.postCategory }}",
+   "mainImage": {{ article.mainImage | dump | safe }}
+}{% if loop.last == false %},{% endif %}
 {% endfor %}]

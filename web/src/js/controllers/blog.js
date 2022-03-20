@@ -18,7 +18,7 @@ export const blogController = new Controller({
   },
 
   show: ({ done }) => {
-    nav.unsetLinkActive();
+    nav.setLinkActive("news");
 
     qsa(".article-animate").map(
       (item, i) =>

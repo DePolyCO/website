@@ -37,6 +37,7 @@ title: Blog
             <div id="blog-filters">
                 <div id="filter-content" class="df jcb aic">
                     <ul class="fv-mono ttu df">
+                        <li class="filter-category cp active">All</li>
                         {% for category in categories %}
                             {# add active class if active #}
                             <li class="filter-category cp">{{ category.title }}</li>
@@ -135,7 +136,7 @@ title: Blog
             </div>
             <div class="pr" id="filters-extended--wrapper">
                 <ul id="filters-extended" class="df fw ttu fv-mono">
-                    {# <li class="filter-tag active">All</li> #}
+                    <li class="filter-tag active">All</li>
                     {% for category in categories %}
                         {# add active class if active #}
                         <li class="filter-tag">{{ category.title }}</li>
@@ -150,7 +151,7 @@ title: Blog
         </div>
         <div>
             <ul id="blog-article--list" class="df fc">
-                {% for article in articles %}
+                {% for article in articles.all %}
                     <li class="blog-article--item">
                         <a href="/article/{{ article.settings.slug.current | slugify }}"  class="article-card--link cp">
                             <div class="article-card article-card--vert df fc">

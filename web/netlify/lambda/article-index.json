@@ -1,8 +1,20 @@
 
 [{
+   "_id":"559cc8fd-4384-4cc7-8490-4cad93634a52",
    "title":"Beauty Tech for Good Challenge by L’Oreal",
-   "date":"Wed Feb 16 2022 10:37:05 GMT+0530 (India Standard Time)",
-   "url":"/article/beauty-tech-for-good-challenge-by-l-oreal/",
-   "content":"I would like to point out that only the 9% of the plastics produced so far can be recycled. It is not possible to equate plastic waste with waste such as glass, metal and paper. While recycling or reusing non-plastic materials is easier and the rate is higher for non-plastic materials, recycling plastics is nothing but an empty promise."
+   "date":"March 15, 2022",
+   "content": "Is recycling as good as it seems? If you think recycling is a sensible and useful solution for the planet, you might need to consider how costly and demanding the system is, and how few recyclable plastics there are. I would like to point out that only the 9% of the plastics produced so far can be recycled. It is not possible to equate plastic waste with waste such as glass, metal and paper.",
+   "url":"beauty-tech-for-good-challenge-by-l-oreal",
+   "postCategory":"General",
+   "mainImage": {"_type":"image","alt":"A flower against a black background","asset":{"_ref":"image-75df67f29c2900e73398423efe940dc0ac56093e-3888x2592-jpg","_type":"reference"}}
+},
+{
+   "_id":"6bd32234-2425-4d67-b6c0-8da4e0d6e1ec",
+   "title":"Example post 2",
+   "date":"March 15, 2022",
+   "content": "Lorem ipsum",
+   "url":"example-post-2",
+   "postCategory":"General",
+   "mainImage": {"_type":"image","alt":"DePoly team","asset":{"_ref":"image-627d266b708b3e9e27c3396e6fd4d32e88867651-1290x860-jpg","_type":"reference"}}
 }
 ]

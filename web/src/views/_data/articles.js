@@ -101,19 +101,30 @@ module.exports = withCache(
 
     const langPosts = articles
       .filter((item) => item.__i18n_lang === "en")
-      .map((post) => {
+      .map((post, idx, arr) => {
         return {
           ...post,
           body: toHTML(post.body, { components: postComponents }),
           publishedAt: dateTimeFormat.format(
             new Date(post.settings.publishedAt)
           ),
+          related: arr.filter((item) => item._id !== post._id).slice(0, 3),
         };
       });
 
     // console.log(langPosts);
 
-    return langPosts;
+    const buckets = { all: [] };
+    langPosts.forEach((post) => {
+      if (buckets[post.settings.postCategory]) {
+        buckets[post.settings.postCategory].push(post);
+      } else {
+        buckets[post.settings.postCategory] = [post];
+      }
+      buckets.all.push(post);
+    });
+
+    return buckets;
   },
   "articles",
   "1d"

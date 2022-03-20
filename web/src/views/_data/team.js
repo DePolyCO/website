@@ -385,8 +385,6 @@ module.exports = withCache(
       }),
     };
 
-    console.log(data);
-
     return data;
   },
   "team",

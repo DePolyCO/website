@@ -1,7 +1,7 @@
 import sanityClient from "part:@sanity/base/client";
 
 const query = `
-  *[ _type in ["sanity.imageAsset", "sanity.fileAsset", "post"] ]
+  *[ _type in ["sanity.imageAsset", "sanity.fileAsset"] ]
   {_id, "refs": count(*[ references(^._id) ])}
   [ refs == 0 ]
   ._id
@@ -14,7 +14,7 @@ const client = sanityClient.withConfig({ apiVersion: "2022-03-16" });
 // to as "orphaned" assets.
 //
 // Place this script somewhere and run it through
-// `sanity exec <script-filename.js> --with-user-token`
+// `sanity exec cleanUp.js --with-user-token`
 
 /* eslint-disable no-console */
 

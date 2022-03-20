@@ -7,13 +7,21 @@ title: Blog
     <header id="blog-header" class="df restrict" data-scroll-section>
         <div id="blog-featured" class="article-animate">
             <div class="article-card">
-                <a href="/blog/" class="article-card--link cp">
+                <a href="/article/{{ featuredArticle.settings.slug | slugify }}" class="article-card--link cp">
                     <picture class="article-card--thumbnail article-card--thumbnail-featured">
-                        <img src="/static/temp.jpg" alt="">
+                        {% responsiveImage featuredArticle.mainImage,
+                        "600,1200,2000",
+                        "30vw",
+                        "",
+                        featuredArticle.title %}
                     </picture>
-                    <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                    <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                    <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
+                    <div class="df jcb article-details">
+                        <div class="article-card--tag tag ttu fv-mono">{{ featuredArticle.settings.category }}  /  {{ featuredArticle.settings.publishedAt | toHRDate }}</div>
+                        <div class="article-card--highlight ttu fv-mono">Featured</div>
+                    </div>
+                    <div class="article-card--title">{% trim featuredArticle.title,
+                        80 %}</div>
+                    <p class="article-card--desc">{% trim featuredArticle.intro %}</p>
                     <div class="df article-card--cta aic">
                         <div>Read More</div>
                         <div class="rarr-wrapper">
@@ -29,11 +37,10 @@ title: Blog
             <div id="blog-filters">
                 <div id="filter-content" class="df jcb aic">
                     <ul class="fv-mono ttu df">
-                        <li class="filter-category cp active">All</li>
-                        <li class="filter-category cp">General</li>
-                        <li class="filter-category cp">Technology</li>
-                        <li class="filter-category cp">Awards</li>
-                        <li class="filter-category cp">News</li>
+                        {% for category in categories %}
+                            {# add active class if active #}
+                            <li class="filter-category cp">{{ category.title }}</li>
+                        {% endfor %}
                     </ul>
                     <div id="search-top" class="pr search-field fv-mono">
                         <input id="search" type="text" placeholder="Search">
@@ -128,13 +135,11 @@ title: Blog
             </div>
             <div class="pr" id="filters-extended--wrapper">
                 <ul id="filters-extended" class="df fw ttu fv-mono">
-                    <li class="filter-tag active">All</li>
-                    <li class="filter-tag">General</li>
-                    <li class="filter-tag">Technology</li>
-                    <li class="filter-tag">Awards</li>
-                    <li class="filter-tag">News</li>
-                    <li class="filter-tag">Nature</li>
-                    <li class="filter-tag">Results</li>
+                    {# <li class="filter-tag active">All</li> #}
+                    {% for category in categories %}
+                        {# add active class if active #}
+                        <li class="filter-tag">{{ category.title }}</li>
+                    {% endfor %}
                 </ul>
                 <button id="filters-extended--btn" type="button" class="pa top right df aic jcc">
                     <svg class="pen" fill="none" viewBox="0 0 12 9">
@@ -144,9 +149,38 @@ title: Blog
             </div>
         </div>
         <div>
-            <ul id="blog-article--list" class="df fc fw jcb">
+            <ul id="blog-article--list" class="df fc">
+                {% for article in articles %}
+                    <li class="blog-article--item">
+                        <a href="/article/{{ article.settings.slug.current | slugify }}"  class="article-card--link cp">
+                            <div class="article-card article-card--vert df fc">
+                                <picture class="article-card--thumbnail">
+                                    {% responsiveImage article.mainImage,
+                                    "600,1200",
+                                    "30vw",
+                                    "",
+                                    article.title %}
+                                </picture>
+                                <div class="article-content df fc">
+                                    <div class="article-card--tag tag ttu fv-mono">{{ article.settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
+                                    <div class="article-card--title">{% trim article.title,
+                                        40 %}</div>
+                                    <p class="article-card--desc">{% trim article.intro %}</p>
+                                    <div class="df article-card--cta aic">
+                                        <div>Read More</div>
+                                        <div class="rarr-wrapper">
+                                            <svg fill="none" viewBox="0 0 13 8">
+                                                <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
                 <li class="blog-article--item">
-                    <a href="/blog/"  class="article-card--link cp">
+                    <a href="/blog/" class="article-card--link cp">
                         <div class="article-card article-card--vert df fc">
                             <picture class="article-card--thumbnail">
                                 <img src="/static/temp.jpg" alt="">
@@ -167,119 +201,10 @@ title: Blog
                         </div>
                     </a>
                 </li>
-                <li class="blog-article--item">
-                    <a href="/blog/"  class="article-card--link cp">
-                        <div class="article-card article-card--vert df fc">
-                            <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="blog-article--item">
-                    <a href="/blog/"  class="article-card--link cp">
-                        <div class="article-card article-card--vert df fc">
-                            <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="blog-article--item">
-                    <a href="/blog/"  class="article-card--link cp">
-                        <div class="article-card article-card--vert df fc">
-                            <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="blog-article--item">
-                    <a href="/blog/"  class="article-card--link cp">
-                        <div class="article-card article-card--vert df fc">
-                            <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="blog-article--item">
-                    <a href="/blog/"  class="article-card--link cp">
-                        <div class="article-card article-card--vert df fc">
-                            <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
+
             </ul>
 
-            <nav id="pagination" class="df aic jcb">
+            <nav id="pagination" class="df aic jcb m-hide">
                 <div class="page-arr" id="navigation-before">&larr;</div>
                 <ol id="pagination-list" class="df fv-mono ttu">
                     {# {% for pageEntry in pagination.pages %}

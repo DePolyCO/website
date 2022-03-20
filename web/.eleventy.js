@@ -39,6 +39,22 @@ const extractExcerpt = (article) => {
   return excerpt;
 };
 
+const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const trimText = (text, charCount = 160, addEllipsis = false) => {
+  if (text.length > charCount) {
+    return addEllipsis
+      ? text.slice(0, charCount) + "..."
+      : text.slice(0, charCount);
+  } else {
+    return text;
+  }
+};
+
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("static");
 
@@ -115,9 +131,16 @@ module.exports = (eleventyConfig) => {
     }
   );
 
-  eleventyConfig.addNunjucksShortcode("fileUrlFor", (file) => {
+  eleventyConfig.addShortcode("fileUrlFor", (file) => {
     return buildFileUrl(file);
   });
+
+  eleventyConfig.addShortcode(
+    "trim",
+    (text, charCount = 160, addEllipsis = true) => {
+      return trimText(text, charCount, addEllipsis);
+    }
+  );
 
   eleventyConfig.addShortcode("excerpt", (article) => extractExcerpt(article));
 
@@ -126,6 +149,13 @@ module.exports = (eleventyConfig) => {
       return false;
     }
     return string(input).slugify().toString();
+  });
+
+  eleventyConfig.addFilter("toHRDate", (input) => {
+    if (!input) {
+      return false;
+    }
+    return dateTimeFormat.format(new Date(input));
   });
 
   eleventyConfig.addFilter("bust", (url) => {

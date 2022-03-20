@@ -162,11 +162,18 @@ export class Nav {
             stagger: 25,
             delay: i * 100,
             duration: 1750,
+            visible: true,
           })
         );
       } else {
         this.reveals.forEach((r, i) =>
-          r.playTo({ to: -110, stagger: 0, delay: 0, duration: 500 })
+          r.playTo({
+            to: -110,
+            stagger: 0,
+            delay: 0,
+            duration: 500,
+            visible: false,
+          })
         );
       }
     }

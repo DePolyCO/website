@@ -1,7 +1,7 @@
 const lunrjs = require("lunr");
 
-const createIndex = (posts) => {
-  return lunrjs(() => {
+function createIndex(posts) {
+  return lunrjs(function () {
     this.ref("id");
     this.field("title");
     this.field("content");
@@ -12,7 +12,7 @@ const createIndex = (posts) => {
       this.add(p);
     });
   });
-};
+}
 
 const handler = async (event) => {
   try {

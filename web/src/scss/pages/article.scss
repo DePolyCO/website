@@ -141,6 +141,10 @@
       list-style: decimal-leading-zero;
     }
 
+    ul {
+      list-style: disc;
+    }
+
     figcaption {
       font-style: italic;
       font-size: fluid(14, $sm);

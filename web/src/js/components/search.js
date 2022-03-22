@@ -2,12 +2,14 @@ import { iris, qs, qsa, Vau } from "../hermes";
 import { app } from "../main";
 
 export class Search {
-  constructor({ input, template, targetContainer }) {
+  constructor({ input, template, targetContainer, engine }) {
     this.input = qs(input);
     this.template = qs(template);
     this.targetContainer = qs(targetContainer);
+    this.engine = engine;
 
     this.api = "/.netlify/functions/search?term=";
+    // this.api = "https://depoly.netlify.app/.netlify/functions/search?term=";
 
     this.listen();
   }
@@ -21,6 +23,9 @@ export class Search {
     const val = e.target.value.trim();
     if (!val) return;
 
+    this.engine.params.set("search", val.toLowerCase());
+    this.engine.updateUrlState();
+
     try {
       this.query(val);
     } catch (e) {
@@ -28,15 +33,29 @@ export class Search {
     }
   };
 
+  clearInput = () => {
+    this.input.value = "";
+    this.engine.params.delete("search");
+    this.engine.updateUrlState();
+  };
+
   query = async (str) => {
     const searchRequest = await fetch(`${this.api}${str}`);
     const results = await searchRequest.json();
 
-    if (!results.length) {
-      console.log("No results!");
-      return;
+    if (results.length) {
+      // limit to 6 to prevent pagination
+      const filtered = this.engine.filter(
+        this.engine.state.filter.active,
+        results
+      );
+      const paged = this.engine.page(0, filtered);
+
+      this.engine.buildPage(paged);
+
+      this.build(paged);
     } else {
-      this.build(results);
+      console.log("No results!");
     }
   };
 
@@ -52,15 +71,26 @@ export class Search {
 
       frag.appendChild(clone);
     });
-    this.targetContainer.innerHTML = null;
-    this.targetContainer.appendChild(frag);
 
-    app.listeners();
+    this.engine.state.results.current = arr;
 
     new Vau({
       targets: qsa(".article-card", this.targetContainer),
-      opacity: [0, 1],
-      duration: 400,
+      opacity: [1, 0],
+      duration: 300,
+      easing: "i4",
+      complete: () => {
+        this.targetContainer.innerHTML = null;
+        this.targetContainer.appendChild(frag);
+        app.listeners();
+
+        new Vau({
+          targets: qsa(".article-card", this.targetContainer),
+          opacity: [0, 1],
+          duration: 1200,
+          easing: "o6",
+        });
+      },
     });
   };
 

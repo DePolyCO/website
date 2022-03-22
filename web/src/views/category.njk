@@ -3,18 +3,13 @@ layout: _layout.njk
 title: Blog
 ---
 
-{# pagination: 
-    data: articles.all
-    size: 6
-permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
-
 <main data-hydra-content="blog" id="blog">
     <header id="blog-header" class="df restrict" data-scroll-section>
         <div id="blog-featured" class="article-animate">
             <div class="article-card">
                 <a href="/article/{{ featuredArticle.settings.slug | slugify }}" class="article-card--link cp">
                     <picture class="article-card--thumbnail article-card--thumbnail-featured">
-                        {% lazyResponsiveImage featuredArticle.mainImage,
+                        {% responsiveImage featuredArticle.mainImage,
                         "600,1200,2000",
                         "30vw",
                         "",
@@ -141,7 +136,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
             </div>
             <div class="pr" id="filters-extended--wrapper">
                 <ul id="filters-extended" class="df fw ttu fv-mono">
-                    <li id="filters-extended--all" class="filter-tag">All</li>
+                    <li class="filter-tag active">All</li>
                     {% for category in categories %}
                         {# add active class if active #}
                         <li class="filter-tag">{{ category.title }}</li>
@@ -161,7 +156,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                         <a href="/article/{{ article.settings.slug.current | slugify }}"  class="article-card--link cp">
                             <div class="article-card article-card--vert df fc">
                                 <picture class="article-card--thumbnail">
-                                    {% lazyResponsiveImage article.mainImage,
+                                    {% responsiveImage article.mainImage,
                                     "600,1200",
                                     "30vw",
                                     "",
@@ -213,16 +208,92 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
             </ul>
 
             <nav id="pagination" class="df aic jcb m-hide">
-                <div class="page-arr" id="pagination-before">&larr;</div>
+                <div class="page-arr" id="navigation-before">&larr;</div>
                 <ol id="pagination-list" class="df fv-mono ttu">
-                    {# pagination list #}
+                    {# {% for pageEntry in pagination.pages %}
+                    {% if page.url == pagination.hrefs[loop.index0] %}
+                        {% set activeIndex = loop.index0 %}
+                        {% set numPages = loop.length %}
+                    {% endif %}
+                {% endfor %} #}
+
+                    {# first item is active #}
+                    {# {% if activeIndex == 0 %}
+                    {% for pageEntry in pagination
+                        .pages
+                        .slice(0, 3) %}
+                        <li class="pagination-item {% if page.url == pagination.hrefs[ loop.index0 ] %} active pen {% endif %}">
+                            <a 
+                        class="df aic jcc pagination-item--link" 
+                        href="{{ pagination.hrefs[ loop.index0 ] }}"
+                        {% if page.url == pagination.hrefs[ loop.index0 ] %} 
+                            aria-current="page"
+                        {% endif %}
+                    >
+                                {{ loop.index }}
+                            </a>
+                        </li>
+                    {% endfor %} #}
+
+                    {# last item is active #}
+                    {# {% elif activeIndex == numPages %}
+                    {% for pageEntry in pagination.pages.slice(numPages - 3, numPages) %}
+                        <li class="pagination-item {% if page.url == pagination.hrefs[ loop.index0 ] %} active pen {% endif %}">
+                            <a 
+                        class="df aic jcc pagination-item--link" 
+                        href="{{ pagination.hrefs[ loop.index0 ] }}"
+                        {% if page.url == pagination.hrefs[ loop.index0 ] %} 
+                            aria-current="page"
+                        {% endif %}
+                    >
+                                {{ loop.index }}
+                            </a>
+                        </li>
+                    {% endfor %} #}
+
+                    {# middle case #}
+                    {# {% elif activeIndex > 0 %}
+                    {% for pageEntry in pagination
+                    .pages
+                    .slice(activeIndex - 1, activeIndex + 1) %}
+                        <li class="pagination-item {% if page.url == pagination.hrefs[ loop.index0 ] %} active pen {% endif %}">
+                            <a 
+                        class="df aic jcc pagination-item--link" 
+                        href="{{ pagination.hrefs[ loop.index0 ] }}"
+                        {% if page.url == pagination.hrefs[ loop.index0 ] %} 
+                            aria-current="page"
+                        {% endif %}
+                    >
+                                {{ loop.index }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endif %} #}
+
+                    <li class="pagination-item active pen">
+                        <a class="df aic jcc pagination-item--link" aria-current="page">1</a>
+                    </li>
+
+                    <li class="pagination-item">
+                        <a class="df aic jcc pagination-item--link">2</a>
+                    </li>
+
+                    <li class="pagination-item">
+                        <a class="df aic jcc pagination-item--link">3</a>
+                    </li>
+
+                    <li class="pagination-item">
+                        <a class="df aic jcc pagination-item--link">4</a>
+                    </li>
+
+                    <li class="pagination-item">
+                        <a class="df aic jcc pagination-item--link">5</a>
+                    </li>
+
                 </ol>
-                <div class="page-arr" id="pagination-after">
+                <div class="page-arr" id="navigation-after">
                     &rarr;
                 </div>
-                <template id="page-template">
-                    <li class="df aic jcc pagination-item pen"></li>
-                </template>
             </nav>
         </div>
 

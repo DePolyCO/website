@@ -1,0 +1,20 @@
+
+[{
+   "_id":"559cc8fd-4384-4cc7-8490-4cad93634a52",
+   "title":"Beauty Tech for Good Challenge by L’Oreal",
+   "date":"March 15, 2022",
+   "content": "Is recycling as good as it seems? If you think recycling is a sensible and useful solution for the planet, you might need to consider how costly and demanding the system is, and how few recyclable plastics there are. I would like to point out that only the 9% of the plastics produced so far can be recycled. It is not possible to equate plastic waste with waste such as glass, metal and paper.",
+   "url":"beauty-tech-for-good-challenge-by-l-oreal",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/75df67f29c2900e73398423efe940dc0ac56093e-3888x2592.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"6bd32234-2425-4d67-b6c0-8da4e0d6e1ec",
+   "title":"Example post 2",
+   "date":"March 15, 2022",
+   "content": "Lorem ipsum",
+   "url":"example-post-2",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/627d266b708b3e9e27c3396e6fd4d32e88867651-1290x860.jpg?w=800&amp;auto=format"
+}
+]

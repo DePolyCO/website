@@ -20,7 +20,7 @@ tags:
 
         <div class="df jcb">
             <div id="article-breadcrumbs" class="article-breadcrumbs fv-mono">
-                <a class="link link-dark link-solid" href="/blog/">Blog</a> / <a class="link link-dark link-solid" href="/blog/categories/{{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a> / 
+                <a class="link link-dark link-solid" href="/blog/">Blog</a> / <a class="link link-dark link-solid" href="/blog/?filter={{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a> / 
             </div>
             <ul id="article-tags--d" class="article-tag fv-mono df m-hide">
                 {% for tag in article.tags %}
@@ -38,13 +38,11 @@ tags:
             {% endfor %}
         </ul>
         <picture id="hero-picture" class="hero-picture">
-            {% responsiveImage article.mainImage,
+            {% lazyResponsiveImage article.mainImage,
             "300,600,1200,2000",
             "100vw",
             "",
-            "",
-            true
- %}
+            ""%}
         </picture>
     </header>
 
@@ -113,7 +111,7 @@ tags:
             <div class="df aib">
                 <span>Category / </span>
                 <span>
-                    <a class="text-underline" href="/blog/">{{ article.settings.postCategory }}</a>
+                    <a class="text-underline" href="/blog/?filter={{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a>
                 </span>
             </div>
             <div>

@@ -131,6 +131,39 @@ module.exports = (eleventyConfig) => {
     }
   );
 
+  eleventyConfig.addShortcode(
+    "lazyResponsiveImage",
+    (
+      image,
+      srcs = "300,600,1200,2000",
+      sizes = "100vw",
+      classList = "",
+      alt = "",
+    ) => {
+      const sizeArray = srcs.split(",");
+      const firstSize = sizeArray[0];
+      const lastSize = sizeArray[sizeArray.length - 1];
+      const srcSetContent = sizeArray
+        .map((size) => {
+          const url = urlFor(image).width(size).auto("format").url();
+
+          return `${url} ${size}w`;
+        })
+        .join(",");
+
+      return `<img 
+            data-lazy-src="${urlFor(image).width(firstSize)}"
+            ${classList ? "class='" + classList + "'" : ""}
+            srcset="${srcSetContent}"
+            sizes="${sizes}"
+            width="${lastSize.trim()}"
+            loading="lazy"
+            decoding="async""
+            alt="${alt ? alt : "Image alt"}"
+            >`;
+    }
+  );
+
   eleventyConfig.addShortcode("fileUrlFor", (file) => {
     return buildFileUrl(file);
   });

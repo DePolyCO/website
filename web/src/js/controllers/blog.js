@@ -2,8 +2,8 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
-import { Search } from "../components/search";
 import { iris, qs, qsa, Vau } from "../hermes";
+import { Engine } from "../components/blogEngine";
 
 /**
  *
@@ -50,11 +50,7 @@ export const blogController = new Controller({
       btn.classList.toggle("active");
     });
 
-    s1 = new Search({
-      input: "#search-extended--input",
-      template: "#blog-article--item",
-      targetContainer: "#blog-article--list",
-    });
+    s1 = new Engine();
 
     sail.in();
     done();

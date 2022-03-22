@@ -125,6 +125,15 @@ export class Hydra {
         e.preventDefault();
 
         const newURL = location.href;
+
+        // prevent routing in cases where the pathname does not change
+        // for eg, when updating URLSearchParams
+        if (location.pathname === this.state.url) {
+          return;
+        } else {
+          console.log(location.pathname, this.state.url);
+        }
+
         this.goto(newURL, true);
       },
       {
@@ -173,9 +182,10 @@ export class Hydra {
     // parallel
     const [data, _] = await Promise.all([this.fetch(url), this.out(url)]);
 
-    this.in(data, node);
-
+    // route first, so that new url is available in next renderer
     !fromPop && this.route(url);
+
+    this.in(data, node);
   }
 
   route(url) {

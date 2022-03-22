@@ -9,6 +9,8 @@ const { toHTML, uriLooksSafe } = require("@portabletext/to-html");
 
 const html = htm.bind(vhtml);
 
+const youtubeID = require("../../../utils/get-video-id");
+
 const postComponents = {
   types: {
     image: ({ value }) => `<section class="no-contain" data-scroll-section>
@@ -21,6 +23,24 @@ const postComponents = {
         <figcaption>${value.alt}</figcaption>
       </figure>
     </section>`,
+
+    youtube: ({ value }) => {
+      const videoID = youtubeID(value.url);
+      return `
+      <section class="yt-video cp pr" data-scroll-section>
+      <iframe
+          id="_yt-${videoID}"
+          width="560" 
+          height="315" 
+          src="https://www.youtube-nocookie.com/embed/${videoID}?enablejsapi=1&amp;controls=0&amp;modestbranding=1;rel=0" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+      <div class="yt-video--overlay video-overlay pa pea top left right bottom"></div>
+  </section>
+      `;
+    },
   },
 
   marks: {

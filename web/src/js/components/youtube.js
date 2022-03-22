@@ -1,4 +1,4 @@
-import { qsa, qs, Sniff } from "../hermes";
+import { qsa, qs, Sniff, iris } from "../hermes";
 
 export class Youtube {
   constructor() {

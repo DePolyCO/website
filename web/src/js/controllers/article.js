@@ -2,6 +2,7 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
+import { Youtube } from "../components/youtube";
 
 import { Reveal } from "../reveal";
 import { Vau, Sniff } from "../hermes";
@@ -15,11 +16,12 @@ import { Parallax } from "../scroller";
  *
  */
 
-let r0, tw, ph;
+let r0, tw, ph, yt;
 export const articleController = new Controller({
   hide: ({ done }) => {
     r0.destroy();
     tw.destroy();
+    yt.destroy();
     ph && ph.destroy();
 
     sail.out(done);
@@ -35,6 +37,8 @@ export const articleController = new Controller({
     r0.play();
 
     tw = new Tweeter();
+
+    yt = new Youtube();
 
     new Vau({
       targets: "#hero-picture img",

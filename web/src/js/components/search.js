@@ -78,8 +78,8 @@ export class Search {
       const clone = this.template.content.cloneNode(true);
       qs("a", clone).href = `/article/${item.url}/`;
       qs("img", clone).src = item.mainImage;
-      qs(".article-card--title", clone).innerText = trimText(item.title, 40);
-      qs(".article-card--desc", clone).innerText = trimText(item.content, 160);
+      qs(".article-card--title", clone).innerHTML = trimText(item.title, 40);
+      qs(".article-card--desc", clone).innerHTML = trimText(item.content, 160);
       qs(
         ".article-card--tag",
         clone

@@ -49,7 +49,8 @@ const postComponents = {
 
       if (uriLooksSafe(href)) {
         const rel = href.startsWith("/") ? undefined : "noreferrer noopener";
-        return html`<a href="${href}" rel="${rel}">${children}</a>`;
+        const target = href.startsWith("/") ? undefined : "_blank";
+        return html`<a class="text-underline" href="${href}" rel="${rel}" target="${target}">${children}</a>`;
       }
 
       return children;

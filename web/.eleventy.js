@@ -45,7 +45,7 @@ const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
 });
 
-const trimText = (text, charCount = 160, addEllipsis = false) => {
+const trimText = (text, charCount = 160, addEllipsis = true) => {
   if (text.length > charCount) {
     return addEllipsis
       ? text.slice(0, charCount) + "..."

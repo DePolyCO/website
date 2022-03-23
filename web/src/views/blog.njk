@@ -24,8 +24,8 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                         <div class="article-card--tag tag ttu fv-mono">{{ featuredArticle.settings.category }}  /  {{ featuredArticle.settings.publishedAt | toHRDate }}</div>
                         <div class="article-card--highlight ttu fv-mono">Featured</div>
                     </div>
-                    <div class="article-card--title">{% trim featuredArticle.title, 80 %}</div>
-                    <p class="article-card--desc">{% trim featuredArticle.intro %}</p>
+                    <div class="article-card--title">{% trim featuredArticle.title, 80, true %}</div>
+                    <p class="article-card--desc">{% trim featuredArticle.intro, 160, true %}</p>
                     <div class="df article-card--cta aic">
                         <div>Read More</div>
                         <div class="rarr-wrapper">
@@ -169,8 +169,8 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                                 <div class="article-content df fc">
                                     <div class="article-card--tag tag ttu fv-mono">{{ article.settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
                                     <div class="article-card--title">{% trim article.title,
-                                        40 %}</div>
-                                    <p class="article-card--desc">{% trim article.intro %}</p>
+                                        40, true %}</div>
+                                    <p class="article-card--desc">{% trim article.intro, 160, true %}</p>
                                     <div class="df article-card--cta aic">
                                         <div>Read More</div>
                                         <div class="rarr-wrapper">

@@ -1,6 +1,16 @@
 import { iris, qs, qsa, Vau } from "../hermes";
 import { app } from "../main";
 
+const trimText = (text, charCount = 160, addEllipsis = true) => {
+  if (text.length > charCount) {
+    return addEllipsis
+      ? text.slice(0, charCount) + "..."
+      : text.slice(0, charCount);
+  } else {
+    return text;
+  }
+};
+
 export class Search {
   constructor({ input, template, targetContainer, engine }) {
     this.input = qs(input);
@@ -64,12 +74,12 @@ export class Search {
   build = (arr) => {
     if (!this.targetContainer) return;
     const frag = document.createDocumentFragment();
-    arr.map((item, idx) => {
+    arr.map((item) => {
       const clone = this.template.content.cloneNode(true);
       qs("a", clone).href = `/article/${item.url}/`;
       qs("img", clone).src = item.mainImage;
-      qs(".article-card--title", clone).innerText = item.title.slice(0, 40);
-      qs(".article-card--desc", clone).innerText = item.content.slice(0, 160);
+      qs(".article-card--title", clone).innerText = trimText(item.title, 40);
+      qs(".article-card--desc", clone).innerText = trimText(item.content, 160);
       qs(
         ".article-card--tag",
         clone

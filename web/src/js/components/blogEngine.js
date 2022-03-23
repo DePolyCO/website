@@ -208,7 +208,7 @@ export class Engine {
       this.state.results.current.length / this.settings.count
     );
 
-    if (idx === nPages + 1) {
+    if (idx === nPages) {
       this.settings.page.arrows?.next.classList.add("inactive");
     } else {
       this.settings.page.arrows?.next.classList.remove("inactive");

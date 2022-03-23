@@ -4,6 +4,7 @@ import { qs, qsa, iris, unique, lazyloader, ro, Sniff } from "../hermes";
 import { smoothscroller } from "../scroller";
 import { Store } from "../store";
 import { asideController } from "../components/aside";
+import { Reveal } from "../reveal";
 
 const PARSER = new DOMParser();
 
@@ -246,11 +247,13 @@ export class Hydra {
  *
  */
 
+let r0;
 export class Controller {
   constructor({ hide, show }) {
     this.hide = ({ done, to }) => {
       smoothscroller.lock();
       asideController.destroy();
+      r0 && r0.destroy();
 
       hide({
         done,
@@ -277,6 +280,13 @@ export class Controller {
           smoothscroller.resize();
           lazyloader.load();
           asideController.init();
+
+          r0 = new Reveal({
+            targets: ".rev",
+            stagger: 75,
+            auto: true,
+          });
+
           setTimeout(done, 0);
         },
       });

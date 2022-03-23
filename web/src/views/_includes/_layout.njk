@@ -31,21 +31,23 @@
               <div class="pf df fc bio-left">
                 <div class="bio-name">{{ member.name }}</div>
                 <div class="bio-role tag ttu fv-mono">{{ member.role }}</div>
-                <div>
-                  <div class="bio-social--title">Social:</div>
-                  <ul class=" df fw bio-social--list">
-                    {% if member.social.linkedin %}
-                      <li class="bio-social--item fv-mono ttu">
-                        <a target="_blank" rel="noreferrer noopener" href="{{ member.social.linkedin }}">LI</a>
-                      </li>
-                    {% endif %}
-                    {% if member.social.twitter %}
-                      <li class="bio-social--item fv-mono ttu">
-                        <a target="_blank" rel="noreferrer noopener" href="{{ member.social.twitter }}">TW</a>
-                      </li>
-                    {% endif %}
-                  </ul>
-                </div>
+                {% if member.social.linkedin or member.social.twitter %}
+                  <div>
+                    <div class="bio-social--title">Social:</div>
+                    <ul class=" df fw bio-social--list">
+                      {% if member.social.linkedin %}
+                        <li class="bio-social--item fv-mono ttu">
+                          <a target="_blank" rel="noreferrer noopener" href="{{ member.social.linkedin }}">LI</a>
+                        </li>
+                      {% endif %}
+                      {% if member.social.twitter %}
+                        <li class="bio-social--item fv-mono ttu">
+                          <a target="_blank" rel="noreferrer noopener" href="{{ member.social.twitter }}">TW</a>
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                {% endif %}
               </div>
 
               <div class="bio-profile--content df fc" data-scroll-section>

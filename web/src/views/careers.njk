@@ -22,7 +22,7 @@ title: Careers
             [
                 "We are a fast-growing company based in Switzerland. As a part of DePoly you will work in a multicultural atmosphere, whilst being part of an exciting new award-winning emerging company.",
                 "When you start working at DePoly, you’ll have a chance to be a part of a new fast growing green industry. Our employees are the very core of our unique and specialist technology and, as such, we value each and every member of our DePoly team.",
-                "Diversity is in the heart of DePoly's sustainable strategy. We are an international team coming from different corners of the world . Our social policy is simple, the 'human' comes first. We are continuously ensuring equal chances for everyone regardless of their race, gender, sexual orientation or disabilities. We believe that our uniqueness and differences define our strength.",
+                "Diversity is in the heart of DePoly's sustainable strategy. We are an international team coming from different corners of the world. Our social policy is simple, the 'human' comes first. We are continuously ensuring equal chances for everyone regardless of their race, gender, sexual orientation or disabilities. We believe that our uniqueness and differences define our strength.",
                 "We offer you a opportunity to shape a more sustainable and green future."
             ],
             "why-join"
@@ -32,7 +32,7 @@ title: Careers
     <section class="df fc" id="meet" data-scroll-section>
         <div class="tag fv-mono ttu" data-shuffle>Nice to meet you</div>
         <div id="meet-slider" class="carousel-container pr">
-            <ul class="carousel-slider ">
+            <ul class="carousel-slider fx fx-once">
                 <li class="carousel-slide">
                     <picture class="carousel-slide__content">
                         <img data-lazy-src="/static/careers/team/1.jpg" alt="team photo"/>
@@ -148,9 +148,9 @@ title: Careers
                 {% for job in jobs %}
                     {% if job.active %}
                         <li class="df fc jcb position-item">
-                            <div class="position-role">{{ job.title }}</div>
-                            <div class="position-location">{{ job.location }}</div>
-                            <div class="position-level">{{ job.level }}</div>
+                            <div class="pos-rev position-role">{{ job.title }}</div>
+                            <div class="pos-rev position-location">{{ job.location }}</div>
+                            <div class="pos-rev position-level">{{ job.level }}</div>
                             <div class="position-cta">
                                 <a href="/careers/{{ job.slug.current }}/" class="cta-btn df">
                                     <div class="pr oh btn-wrapper">
@@ -164,8 +164,8 @@ title: Careers
             </ul>
 
             <div id="not-found" class="df jcb fc">
-                <div id="not-found--title">Can’t find your position?</div>
-                <p id="not-found--desc">
+                <div id="not-found--title" class="pos-rev">Can’t find your position?</div>
+                <p id="not-found--desc" class="pos-rev">
                     We’re always looking for fresh talents to join us on journey of creating the better future for our next generations.
                 </p>
                 <div>

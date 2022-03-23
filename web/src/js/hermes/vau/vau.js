@@ -332,7 +332,7 @@ export class Vau {
 
     for (let i = 0, n = this.keys.length; i < n; i++) {
       const key = this.keys[i];
-      this.props[key] = round(cur[i]);
+      this.props[key] = cur[i];
     }
 
     if (this.flags.t) {

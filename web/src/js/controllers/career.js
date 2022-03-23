@@ -8,7 +8,7 @@ import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
 import { Sniff, Vau } from "../hermes";
 import { Parallax } from "../scroller";
-
+import { fx } from "../components/fxmanager";
 /**
  *
  * Career page controller
@@ -24,6 +24,7 @@ export const careerController = new Controller({
     ph && ph.destroy();
 
     monoShuffle.destroy();
+    fx.remove();
 
     sail.out(done);
   },
@@ -96,6 +97,15 @@ export const careerController = new Controller({
     r0.play();
     monoShuffle.init();
     nav.setLinkActive("careers");
+
+    fx.add();
+
+    new Reveal({
+      targets: ".pos-rev",
+      stagger: 50,
+      auto: true,
+      threshold: 1,
+    });
 
     sail.in();
     done();

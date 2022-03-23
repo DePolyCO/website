@@ -56,7 +56,10 @@ export class CaptureReveal {
 
   listen = () => {
     this.unlisteners = this.targets.map((item, i) =>
-      iris.add(item, "click", () => this.setActive(i))
+      iris.add(item, "click", () => {
+        if (i === this.current) return;
+        this.setActive(i);
+      })
     );
   };
 

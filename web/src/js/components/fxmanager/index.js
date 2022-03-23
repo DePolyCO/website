@@ -24,7 +24,7 @@ class FXManager {
     this.o.observe(target);
   }
 
-  remove(target) {
+  remove(target = ".fx") {
     this.o.unobserve(target);
   }
 

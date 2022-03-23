@@ -7,6 +7,8 @@ import {
   ro,
   getOffsetTop,
   Sniff,
+  Observer,
+  Tween,
 } from "../hermes";
 import { Slider } from "./slider";
 import { smoothscroller } from "../scroller";
@@ -61,6 +63,10 @@ export class GallerySlider {
   init = () => {
     this.tickID = ticker.add({ update: this.update });
     this.roID = ro.add({ update: this.resize });
+    this.observer = Observer().create({
+      callback: this.visible,
+    });
+    this.observer.observe(this.dom);
 
     const { containerBounds, pos } = this.state;
 
@@ -72,6 +78,20 @@ export class GallerySlider {
   listen = () => {
     const { move } = iris.events;
     this.unMove = iris.add(this.dom, move, this.handleMove);
+  };
+
+  visible = (node, isIntersecting) => {
+    if (!isIntersecting) return;
+    this.observer.disconnect();
+    const pos = this.slider.state.pos;
+    Tween({
+      val: [-window.innerWidth, 0],
+      duration: 2000,
+      easing: "o6",
+      update: ({ cur }) => {
+        pos.cx = cur;
+      },
+    });
   };
 
   handleMove = (e) => {

@@ -65,6 +65,8 @@ export class Slider {
     this.resize();
     this.listeners();
     this.init();
+
+    this.state.pos.cx = -window.innerWidth;
   }
 
   init = () => {

@@ -1,6 +1,9 @@
 import { qs, qsa, iris } from "../hermes";
 import { Reveal } from "../reveal";
 
+
+// NOTE: NOt used
+// Look at capture Reveal isntead
 export class CaptureQuotes {
   constructor() {
     this.dom = qs("#quotes-list");
@@ -14,12 +17,6 @@ export class CaptureQuotes {
     this.setActive(0);
   }
 
-  listen = () => {
-    this.unlisteners = this.targets.map((target, i) =>
-      iris.add(target, "click", () => this.setActive(i))
-    );
-  };
-
   init = () => {
     this.reveals = this.targets.map(
       (item) =>
@@ -28,6 +25,16 @@ export class CaptureQuotes {
           stagger: 50,
           delay: 150,
         })
+    );
+  };
+
+  listen = () => {
+    this.unlisteners = this.targets.map((target, i) =>
+      iris.add(target, "click", () => {
+        console.log(i, this.current);
+        if (i === this.current) return;
+        this.setActive(i);
+      })
     );
   };
 

@@ -24,8 +24,12 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                         <div class="article-card--tag tag ttu fv-mono">{{ featuredArticle.settings.category }}  /  {{ featuredArticle.settings.publishedAt | toHRDate }}</div>
                         <div class="article-card--highlight ttu fv-mono">Featured</div>
                     </div>
-                    <div class="article-card--title">{% trim featuredArticle.title, 80, true %}</div>
-                    <p class="article-card--desc">{% trim featuredArticle.intro, 160, true %}</p>
+                    <div class="article-card--title">{% trim featuredArticle.title,
+                        80,
+                        true %}</div>
+                    <p class="article-card--desc">{% trim featuredArticle.intro,
+                        160,
+                        true %}</p>
                     <div class="df article-card--cta aic">
                         <div>Read More</div>
                         <div class="rarr-wrapper">
@@ -61,12 +65,28 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                     <a href="/blog/" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
+                                {% lazyResponsiveImage articles
+                                    .all[0]
+                                    .mainImage,
+                                "600,1200",
+                                "30vw",
+                                "",
+                                articles
+                                    .all[0]
+                                    .title %}
                             </picture>
                             <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
+                                <div class="article-card--tag tag ttu fv-mono">{{  articles.all[0].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
+                                <div class="article-card--title">{% trim articles
+                                        .all[0]
+                                        .title,
+                                    40,
+                                    true %}</div>
+                                <p class="article-card--desc">{% trim articles
+                                        .all[0]
+                                        .intro,
+                                    160,
+                                    true %}</p>
                                 <div class="df article-card--cta aic">
                                     <div>Read More</div>
                                     <div class="rarr-wrapper">
@@ -84,12 +104,28 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                     <a href="/blog/" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
+                                {% lazyResponsiveImage articles
+                                    .all[1]
+                                    .mainImage,
+                                "600,1200",
+                                "30vw",
+                                "",
+                                articles
+                                    .all[1]
+                                    .title %}
                             </picture>
                             <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
+                                <div class="article-card--tag tag ttu fv-mono">{{  articles.all[1].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
+                                <div class="article-card--title">{% trim articles
+                                        .all[1]
+                                        .title,
+                                    40,
+                                    true %}</div>
+                                <p class="article-card--desc">{% trim articles
+                                        .all[1]
+                                        .intro,
+                                    160,
+                                    true %}</p>
                                 <div class="df article-card--cta aic">
                                     <div>Read More</div>
                                     <div class="rarr-wrapper">
@@ -107,12 +143,28 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                     <a href="/blog/" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
-                                <img src="/static/temp.jpg" alt="">
+                                {% lazyResponsiveImage articles
+                                    .all[2]
+                                    .mainImage,
+                                "600,1200",
+                                "30vw",
+                                "",
+                                articles
+                                    .all[2]
+                                    .title %}
                             </picture>
                             <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
+                                <div class="article-card--tag tag ttu fv-mono">{{  articles.all[2].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
+                                <div class="article-card--title">{% trim articles
+                                        .all[2]
+                                        .title,
+                                    40,
+                                    true %}</div>
+                                <p class="article-card--desc">{% trim articles
+                                        .all[2]
+                                        .intro,
+                                    160,
+                                    true %}</p>
                                 <div class="df article-card--cta aic">
                                     <div>Read More</div>
                                     <div class="rarr-wrapper">
@@ -169,8 +221,11 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                                 <div class="article-content df fc">
                                     <div class="article-card--tag tag ttu fv-mono">{{ article.settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
                                     <div class="article-card--title">{% trim article.title,
-                                        40, true %}</div>
-                                    <p class="article-card--desc">{% trim article.intro, 160, true %}</p>
+                                        40,
+                                        true %}</div>
+                                    <p class="article-card--desc">{% trim article.intro,
+                                        160,
+                                        true %}</p>
                                     <div class="df article-card--cta aic">
                                         <div>Read More</div>
                                         <div class="rarr-wrapper">

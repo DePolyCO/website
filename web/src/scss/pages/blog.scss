@@ -289,6 +289,12 @@
       border-bottom: 1px solid $darkblue;
 
       @include md {
+        gap: fluid(55, $lg);
+        width: fluid(885, $lg);
+        padding: 0;
+        padding-bottom: fluid(40, $lg);
+        border-bottom: 1px solid $darkblue;
+
         .article-card--thumbnail {
           min-width: fluid(400, $lg);
           width: fluid(400, $lg);

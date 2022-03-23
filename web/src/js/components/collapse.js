@@ -53,7 +53,7 @@ export class Collapse {
         (item) =>
           new Reveal({
             targets: item,
-            stagger: 50,
+            stagger: 125,
           })
       ),
     };
@@ -156,9 +156,9 @@ export class Collapse {
       r.play({
         from: 100,
         to: 0,
-        stagger: 50,
+        stagger: 75,
         delay: 250,
-        duration: 1750,
+        duration: 1500,
         easing: "o6",
         visible: true,
       });
@@ -166,7 +166,7 @@ export class Collapse {
       // briefly lock slide
       this.state.selfLock = true;
       new Duration({
-        duration: 1250,
+        duration: 1000,
         complete: () => {
           this.state.selfLock = false;
         },

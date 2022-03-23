@@ -1,5 +1,8 @@
 @use "sass:math";
 
+$enhanced-time: 1.33s;
+$enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
+
 #home {
   #plastic-problem,
   #solution-text {
@@ -344,7 +347,7 @@
           // cursor: pointer;
 
           .enhanced-picture {
-            transition: transform 1.25s $ease-out-expo;
+            transition: transform 1.33s $enhanced-ease;
             transform: scale(math.div(66, 403), math.div(60, 330))
               translate3d(#{fluid(-1201, $lg)}, #{fluid(757, $lg)}, 0);
           }
@@ -358,7 +361,7 @@
           }
 
           .enhanced-title--vert {
-            transition: opacity 1.25s $ease-out-expo;
+            transition: opacity 1.33s $enhanced-ease;
             opacity: 1;
             pointer-events: all;
           }
@@ -390,7 +393,7 @@
     overflow: hidden;
     overflow: clip;
 
-    transition: all 1.25s $ease-out-expo;
+    transition: all 1.33s cubic-bezier(0.71, 0, 0, 1);
 
     &:not(.active) {
       min-width: fluid(157, $lg);
@@ -398,7 +401,7 @@
       padding-left: fluid(24, $lg);
 
       .enhanced-picture {
-        transition: transform 1.25s $ease-out-expo;
+        transition: transform 1.33s $enhanced-ease;
         transform: scale(math.div(135, 470), math.div(139, 388))
           translate3d(#{fluid(-590, $lg)}, #{fluid(360, $lg)}, 0);
       }
@@ -440,7 +443,7 @@
     line-height: 150%;
     letter-spacing: 0.01em;
 
-    transition: opacity 0.5s $ease-out-expo 0.5s, transform 1.25s $ease-out-expo;
+    transition: opacity 0.5s $enhanced-ease 0.5s, transform 1.33s $enhanced-ease;
 
     > p {
       width: fluid(395, $lg);
@@ -453,13 +456,13 @@
     font-size: fluid(16, $lg);
     line-height: 110%;
 
-    transition: opacity 1.25s $ease-out-expo, margin-bottom 1.25s $ease-out-expo,
-      font-size 1.25s $ease-out-expo, transform 1.25s $ease-out-expo;
+    transition: opacity 1.33s $enhanced-ease, margin-bottom 1.33s $enhanced-ease,
+      font-size 1.33s $enhanced-ease, transform 1.33s $enhanced-ease;
   }
 
   .enhanced-title {
-    transition: opacity 1.25s $ease-out-expo, font-size 1.25s $ease-out-expo,
-      font-weight 1.25s $ease-out-expo;
+    transition: opacity 1.33s $enhanced-ease, font-size 1.33s $enhanced-ease,
+      font-weight 1.33s $enhanced-ease;
 
     font-weight: 400;
     font-size: fluid(50, $lg);
@@ -486,7 +489,7 @@
     min-width: fluid(403, $lg);
     width: fluid(470, $lg);
     height: fluid(388, $lg);
-    transition: transform 1.25s $ease-out-expo;
+    transition: transform 1.33s $enhanced-ease;
   }
 
   .enhanced-slide--content {
@@ -496,7 +499,7 @@
 
   .enhanced-title--vert {
     opacity: 0;
-    transition: opacity 0.5s $ease-out-expo;
+    transition: opacity 0.5s $enhanced-ease;
     pointer-events: none;
 
     bottom: fluid(155 + 54, $lg);
@@ -530,7 +533,7 @@
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity 0.5s $ease-out-expo;
+  transition: opacity 0.5s $enhanced-ease;
 
   .enhanced-title {
     margin-bottom: fluid(64, $lg);

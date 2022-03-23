@@ -217,6 +217,8 @@
 
     border-radius: 50%;
     background: #f6f6ee;
+    transition: opacity 2s $ease-out-expo;
+    opacity: 0;
 
     @include md {
       width: fluid(400, $lg);
@@ -226,6 +228,10 @@
 
     img {
       transition: transform 1s $ease-out-expo;
+    }
+
+    &.fx-on {
+      opacity: 1;
     }
   }
 

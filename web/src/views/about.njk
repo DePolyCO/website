@@ -90,14 +90,14 @@ title: About Us
                 <div class="team-col df fc aic m-hide">
                     {% for member in col %}
                         <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% else %} pen {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
-                            <picture class="team-photo">
+                            <picture class="team-photo fx fx-once">
                                 {# <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}"> #}
                                 {% responsiveImage member.img,
                                 "600,1200,2000",
                                 "30vw" %}
                             </picture>
-                            <div class="team-name">{{ member.name }}</div>
-                            <div class="team-role ttu">{{ member.role }}</div>
+                            <div class="team-name rev">{{ member.name }}</div>
+                            <div class="team-role rev ttu">{{ member.role }}</div>
                         </div>
                     {% endfor %}
                 </div>
@@ -106,7 +106,7 @@ title: About Us
             <div class="team-col df fc aic d-hide">
                 {% for member in team.members %}
                     <div class="team-item" style="--idx: {{ loop.index0 % 4 * 3 + loop.index0 // 4 }}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
-                        <picture class="team-photo">
+                        <picture class="team-photo fx fx-once">
                             {% responsiveImage member.img,
                             "300,600",
                             "100vw" %}
@@ -127,11 +127,11 @@ title: About Us
             {% for member in team.advisors %}
                 <div class="team-col df fc aic">
                     <div class="team-item pen">
-                        <picture class="team-photo">
+                        <picture class="team-photo fx fx-once">
                             <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}">
                         </picture>
-                        <div class="team-name">{{ member.name }}</div>
-                        <div class="team-role ttu">{{ member.role }}</div>
+                        <div class="team-name rev">{{ member.name }}</div>
+                        <div class="team-role rev ttu">{{ member.role }}</div>
                     </div>
                 </div>
             {% endfor %}

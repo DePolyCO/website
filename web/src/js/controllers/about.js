@@ -10,6 +10,7 @@ import { Numbers } from "../components/revealNumbers";
 import { qsa, Sniff, Vau } from "../hermes";
 import { Reveal } from "../reveal";
 import { Parallax } from "../scroller";
+import { fx } from "../components/fxmanager";
 
 /**
  *
@@ -27,6 +28,7 @@ export const aboutController = new Controller({
     r0.destroy();
     ph && ph.destroy();
     monoShuffle.destroy();
+    fx.remove();
 
     sail.out(done);
   },
@@ -87,6 +89,8 @@ export const aboutController = new Controller({
     r0.play();
 
     monoShuffle.init();
+
+    fx.add();
 
     sail.in();
     done();

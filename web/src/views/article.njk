@@ -8,6 +8,7 @@ pagination:
 permalink: "article/{{ article.settings.slug.current | slugify }}/"
 eleventyComputed:
     title: "{{ article.title }}"
+    seo.description: "{% trim article.intro %}"
 tags: 
     - articles
 ---

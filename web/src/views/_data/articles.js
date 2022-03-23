@@ -37,7 +37,7 @@ const postComponents = {
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen></iframe>
-      <div class="yt-video--overlay video-overlay pa pea top left right bottom"></div>
+      <div class="yt-video--overlay video-overlay pa pen top left right bottom"></div>
   </section>
       `;
     },

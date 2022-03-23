@@ -511,4 +511,10 @@
     width: 100%;
     aspect-ratio: 16 / 9;
   }
+
+  .yt-video--overlay {
+    @include md {
+      pointer-events: all;
+    }
+  }
 }

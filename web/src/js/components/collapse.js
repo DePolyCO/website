@@ -166,7 +166,7 @@ export class Collapse {
       // briefly lock slide
       this.state.selfLock = true;
       new Duration({
-        duration: 1000,
+        duration: 1300,
         complete: () => {
           this.state.selfLock = false;
         },

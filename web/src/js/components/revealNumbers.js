@@ -6,16 +6,15 @@ export class Numbers {
     this.dom = qs("#numbers-m");
     this.nos = qsa(".number-m--no", this.dom);
     this.slides = qsa(".number-m--detail", this.dom);
+    this.current = 0;
 
     this.init();
-
   }
 
   init = () => {
     this.build();
     this.listen();
 
-    this.current = 0;
     this.active(0);
   };
 
@@ -27,7 +26,10 @@ export class Numbers {
 
   listen = () => {
     this.unlisteners = this.nos.map((el, i) => {
-      return iris.add(el, "click", () => this.active(i));
+      return iris.add(el, "click", () => {
+        if (i === this.current) return;
+        this.active(i);
+      });
     });
   };
 

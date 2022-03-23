@@ -21,6 +21,8 @@ export class Nav {
       activeLink: false,
       mobileOpen: false,
     };
+
+    this.init();
   }
 
   init = () => {

@@ -1,7 +1,7 @@
 import sanityClient from "part:@sanity/base/client";
 
 const query = `
-  *[ _type in ["sanity.imageAsset", "sanity.fileAsset"] ]
+  *[ _type in ["sanity.imageAsset", "sanity.fileAsset", "drafts.featuredArticle"] ]
   {_id, "refs": count(*[ references(^._id) ])}
   [ refs == 0 ]
   ._id
@@ -26,7 +26,9 @@ client
       return true;
     }
 
-    console.log(`Deleting ${ids.length} assets`);
+    console.log(`Deleting ${ids.length} assets:`);
+    ids.forEach((id) => console.log(id));
+
     return ids
       .reduce((trx, id) => trx.delete(id), client.transaction())
       .commit()

@@ -16,7 +16,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                     <picture class="article-card--thumbnail article-card--thumbnail-featured">
                         {% lazyResponsiveImage featuredArticle.mainImage,
                         "600,1200,2000",
-                        "30vw",
+                        "100vw",
                         "",
                         featuredArticle.title %}
                     </picture>
@@ -24,8 +24,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                         <div class="article-card--tag tag ttu fv-mono">{{ featuredArticle.settings.category }}  /  {{ featuredArticle.settings.publishedAt | toHRDate }}</div>
                         <div class="article-card--highlight ttu fv-mono">Featured</div>
                     </div>
-                    <div class="article-card--title">{% trim featuredArticle.title,
-                        80 %}</div>
+                    <div class="article-card--title">{% trim featuredArticle.title, 80 %}</div>
                     <p class="article-card--desc">{% trim featuredArticle.intro %}</p>
                     <div class="df article-card--cta aic">
                         <div>Read More</div>
@@ -193,9 +192,9 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                                     <img src="/static/temp.jpg" alt="">
                                 </picture>
                                 <div class="article-content df fc">
-                                    <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                                    <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                                    <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
+                                    <div class="article-card--tag tag ttu fv-mono"></div>
+                                    <div class="article-card--title"></div>
+                                    <p class="article-card--desc"></p>
                                     <div class="df article-card--cta aic">
                                         <div>Read More</div>
                                         <div class="rarr-wrapper">
@@ -221,7 +220,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                     &rarr;
                 </div>
                 <template id="page-template">
-                    <li class="df aic jcc pagination-item pen"></li>
+                    <li class="df aic jcc pagination-item"></li>
                 </template>
             </nav>
         </div>

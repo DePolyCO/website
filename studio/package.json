@@ -25,15 +25,15 @@
     "@sanity/eslint-config-studio": "^2.0.0",
     "@sanity/orderable-document-list": "^0.0.4",
     "@sanity/vision": "^2.29.1",
-    "eslint": "^8.6.0",
+    "eslint": "^8.11.0",
     "get-youtube-id": "^1.0.1",
-    "prop-types": "^15.7",
+    "prop-types": "^15.8",
     "react": "^17.0",
     "react-dom": "^17.0",
     "react-icons": "^4.3.1",
     "sanity-plugin-dashboard-widget-netlify": "^1.2.1",
     "sanity-plugin-media": "^1.4.4",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {}
 }

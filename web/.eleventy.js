@@ -138,7 +138,7 @@ module.exports = (eleventyConfig) => {
       srcs = "300,600,1200,2000",
       sizes = "100vw",
       classList = "",
-      alt = "",
+      alt = ""
     ) => {
       const sizeArray = srcs.split(",");
       const firstSize = sizeArray[0];

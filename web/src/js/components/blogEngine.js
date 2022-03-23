@@ -55,6 +55,7 @@ export class Engine {
   }
 
   init = async () => {
+    this.unlisten = [];
     this.data = [];
     if (Store.articles) {
       this.data = Store.articles;
@@ -68,8 +69,8 @@ export class Engine {
 
     this.readInitialState();
 
-    this.buildPage();
     this.buildCategory();
+    this.buildPage();
     this.buildArrows();
   };
 
@@ -99,7 +100,8 @@ export class Engine {
   };
 
   page = (i, arr = this.data) => {
-    return arr.slice(i, i + this.settings.count);
+    const idx = (i - 1) * this.settings.count;
+    return arr.slice(idx, idx + this.settings.count);
   };
 
   filter = (category = "all", arr = this.data) => {
@@ -116,31 +118,41 @@ export class Engine {
   };
 
   buildArrows = () => {
-    iris.add(this.settings.page.arrows.prev, "click", () => {
+    if (!this.settings.page.arrows) {
+      return;
+    }
+
+    this.unlistenArr = [];
+
+    const up = iris.add(this.settings.page.arrows.prev, "click", () => {
       this.handlePageClick({
         target: this.state.page.items[this.state.page.active - 1],
       });
     });
 
-    iris.add(this.settings.page.arrows.next, "click", () => {
+    const un = iris.add(this.settings.page.arrows.next, "click", () => {
       this.handlePageClick({
         target: this.state.page.items[this.state.page.active + 1],
       });
     });
+
+    this.unlistenArr.push(up, un);
   };
 
-  buildPage = (arr = this.data) => {
+  buildPage = (arr = this.state.results.current) => {
     const nPages = Math.ceil(arr.length / this.settings.count);
     const template = this.settings.page.template;
 
     this.state.page.items = [];
     const frag = document.createDocumentFragment();
 
+    this.unlisten.forEach((u) => u());
+
     for (let i = 0; i < nPages; i++) {
       const clone = template.content.cloneNode(true);
       const item = qs(this.settings.page.item, clone);
       item.innerText = i + 1;
-      iris.add(item, "click", this.handlePageClick);
+      this.unlisten.push(iris.add(item, "click", this.handlePageClick));
 
       if (i === 0) {
         this.state.page.current = item;
@@ -171,7 +183,7 @@ export class Engine {
 
     this.setPage(e.target, val);
 
-    const results = this.page(val);
+    const results = this.page(val, this.state.results.current);
     this.search.build(results);
   };
 
@@ -228,8 +240,10 @@ export class Engine {
     this.search.clearInput();
 
     const filtered = this.filter(val);
+    this.state.results.current = filtered;
+
     this.buildPage(filtered);
-    const paged = this.page(0, filtered);
+    const paged = this.page(1, filtered);
 
     this.search.build(paged);
   };
@@ -242,5 +256,7 @@ export class Engine {
 
   destroy = () => {
     this.search.destroy();
+    this.unlisten.forEach((u) => u());
+    this.unlistenArr?.forEach((u) => u());
   };
 }

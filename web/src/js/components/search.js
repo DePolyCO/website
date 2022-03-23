@@ -8,8 +8,8 @@ export class Search {
     this.targetContainer = qs(targetContainer);
     this.engine = engine;
 
-    this.api = "/.netlify/functions/search?term=";
-    // this.api = "https://depoly.netlify.app/.netlify/functions/search?term=";
+    // this.api = "/.netlify/functions/search?term=";
+    this.api = "https://depoly.netlify.app/.netlify/functions/search?term=";
 
     this.listen();
   }
@@ -49,7 +49,9 @@ export class Search {
         this.engine.state.filter.active,
         results
       );
-      const paged = this.engine.page(0, filtered);
+      this.engine.state.results.current = filtered;
+
+      const paged = this.engine.page(1, filtered);
 
       this.engine.buildPage(paged);
 
@@ -62,17 +64,19 @@ export class Search {
   build = (arr) => {
     if (!this.targetContainer) return;
     const frag = document.createDocumentFragment();
-    arr.map((item) => {
+    arr.map((item, idx) => {
       const clone = this.template.content.cloneNode(true);
       qs("a", clone).href = `/article/${item.url}/`;
       qs("img", clone).src = item.mainImage;
       qs(".article-card--title", clone).innerText = item.title.slice(0, 40);
       qs(".article-card--desc", clone).innerText = item.content.slice(0, 160);
+      qs(
+        ".article-card--tag",
+        clone
+      ).innerText = `${item.postCategory} / ${item.date}`;
 
       frag.appendChild(clone);
     });
-
-    this.engine.state.results.current = arr;
 
     new Vau({
       targets: qsa(".article-card", this.targetContainer),

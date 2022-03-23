@@ -1,20 +1,128 @@
 
 [{
-   "_id":"559cc8fd-4384-4cc7-8490-4cad93634a52",
-   "title":"Beauty Tech for Good Challenge by L’Oreal",
-   "date":"March 15, 2022",
-   "content": "Is recycling as good as it seems? If you think recycling is a sensible and useful solution for the planet, you might need to consider how costly and demanding the system is, and how few recyclable plastics there are. I would like to point out that only the 9% of the plastics produced so far can be recycled. It is not possible to equate plastic waste with waste such as glass, metal and paper.",
-   "url":"beauty-tech-for-good-challenge-by-l-oreal",
+   "_id":"08a4f1b1-399e-4e6f-9f1c-b341ca8c3de6",
+   "title":"It&#39;s Time For The First Green Industrial Revolution",
+   "date":"May 1, 2020",
+   "content": "DePoly will be attending the World Economic Forum, presenting their vision for sustainable PET Plastic Recycling. - DePoly will be attending the World Economic Forum, presenting their vision for sustainable PET Plastic Recycling. ",
+   "url":"it-s-time-for-the-first-green-industrial-revolution",
    "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/75df67f29c2900e73398423efe940dc0ac56093e-3888x2592.jpg?w=800&amp;auto=format"
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/341bb5e6099b552e60639ba95734191c307e98e6-400x400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"6bd32234-2425-4d67-b6c0-8da4e0d6e1ec",
-   "title":"Example post 2",
-   "date":"March 15, 2022",
-   "content": "Lorem ipsum",
-   "url":"example-post-2",
+   "_id":"14673a48-3a87-4036-a0d5-20ecd3ffad91",
+   "title":"Stagars Start Up Documentary",
+   "date":"November 1, 2020",
+   "content": "The Manuel Stagars Start Up Documentary is now steaming online! The documentary observes early stage entrepreneurs in their labs and shines a light on innovation and entrepreneurship in deep tech without hype.  Manuel also interviewed our own Samantha Anderson and Bardiya Valizadeh about life in a Start Up! ",
+   "url":"stagars-start-up-documentary",
    "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/627d266b708b3e9e27c3396e6fd4d32e88867651-1290x860.jpg?w=800&amp;auto=format"
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/42decb48cc3f98fb9b64a14bb9d27563daf943ce-401x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"20cfd555-629d-4cbc-bc2d-c96cb9007209",
+   "title":"DePoly Announced in the Top 16 Start-Ups for 2020",
+   "date":"May 1, 2020",
+   "content": "DePoly is proud to be announced as one of the top 16 start-ups for the 2020 W.A. De Vigier Stiftung Award. DePoly is proud to be announced as one of the top 16 start-ups for the 2020 W.A. De Vigier Stiftung Award.",
+   "url":"depoly-announced-in-the-top-16-start-ups-for-2020",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/8e42e8e5db942022403b2b7c9728f7b7e6f443f1-401x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"2f2d27bf-b2d2-46ae-895c-47538b5ac39e",
+   "title":"TOP 100 Swiss Startups",
+   "date":"November 1, 2020",
+   "content": "DePoly was founded earlier this year, and we are proud to be among the TOP 100 Start Ups in Switzerland, and the youngest company to reach the Top 100. #TOP100SSU  - DePoly was founded earlier this year, and we are proud to be among the TOP 100 Start Ups in Switzerland, and the youngest company to reach the Top 100. #TOP100SSU  ",
+   "url":"top-100-swiss-startups",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/d733c23069e7973378300cb22124e4c74f4df78b-401x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"41357512-4a3e-4637-8541-110949c104e1",
+   "title":"DePoly through to VentureKick Stage 2!",
+   "date":"May 1, 2020",
+   "content": "Conventional PET plastic recycling systems suffer several challenges, as they require accepted PET plastic waste to be ideal -- uncontaminated by the presence of PVC (or other) plastics, food residue, or uncleaned containers. EPFL spin-off DePoly has developed a room-temperature process that depolymerizes PET and other ester-based plastics, without the need to sort or clean plastics first. This wi...",
+   "url":"depoly-through-to-venturekick-stage-2",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/01a716edaf02b250d04e69a15a8f779bc8b2c9a2-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"622cd718-a902-46e8-89d7-bba073bb62bd",
+   "title":"De Vigier Top 10",
+   "date":"November 1, 2020",
+   "content": "DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final!  -  DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final!  -  DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final!",
+   "url":"de-vigier-top-10",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/01a716edaf02b250d04e69a15a8f779bc8b2c9a2-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"652c9a5d-77f2-4dc9-a2eb-bc4ca4a03ccd",
+   "title":"Mass Challenge 2020:",
+   "date":"November 1, 2020",
+   "content": "DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking about DePoly and our technology. - DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking about DePoly and our technology. ",
+   "url":"mass-challenge-2020",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/8e42e8e5db942022403b2b7c9728f7b7e6f443f1-401x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"65a1cf4f-2418-4c20-9468-0c6bc844fce5",
+   "title":"DePoly Features In Stagars Start-Up Documentary",
+   "date":"May 1, 2020",
+   "content": "DePoly is proud to announce their participation in the “Start-Up” film buy Manuel Stagars. The film will premier in July 2020. - DePoly is proud to announce their participation in the “Start-Up” film buy Manuel Stagars. The film will premier in July 2020",
+   "url":"depoly-features-in-stagars-start-up-documentary",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/01a716edaf02b250d04e69a15a8f779bc8b2c9a2-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"69de6d54-c327-4132-81f4-eb468c91daa6",
+   "title":"SEIF Awards 2020",
+   "date":"November 1, 2020",
+   "content": "We are delighted to be part of the SEIF Awards Tech for Impact 2020, and win this year’s award in the category of “saleable solutions”. - We are delighted to be part of the SEIF Awards Tech for Impact 2020, and win this year’s award in the category of “saleable solutions”. ",
+   "url":"seif-awards-2020",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/e081af69f33a7092f7e1921dad0046f0a959e0dc-401x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"7c9f4bbc-eb05-4596-90e8-d354bcd0fd74",
+   "title":"Beauty Tech for Good Challenge by L’Oreal",
+   "date":"November 1, 2020",
+   "content": "We are delighted to be the winner of the Beauty Tech for Challenge by L’Oreal. -  We are delighted to be the winner of the Beauty Tech for Challenge by L’Oreal.  -  We are delighted to be the winner of the Beauty Tech for Challenge by L’Oreal.",
+   "url":"beauty-tech-for-good-challenge-by-l-oreal",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/341bb5e6099b552e60639ba95734191c307e98e6-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"7f0f424a-ea40-422e-aa7e-bf7b0c4c2b12",
+   "title":"EPFL Talk to DePoly CEO Sam Anderson",
+   "date":"May 1, 2020",
+   "content": "The EPFL Innovation Park have posted an interview with DePoly’s CEO Samantha Anderson. - The EPFL Innovation Park have posted an interview with DePoly’s CEO Samantha Anderson. - The EPFL Innovation Park have posted an interview with DePoly’s CEO Samantha Anderson.",
+   "url":"epfl-talk-to-depoly-ceo-sam-anderson",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/7c74630824027f4d3eef472815c595ace4d2468a-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"823fbe0d-6a1a-4fba-9172-dbc71d3bc8f4",
+   "title":"DePoly 2019 Grand Prize Winner",
+   "date":"April 30, 2020",
+   "content": "Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. Some short text should go here. ",
+   "url":"depoly-2019-grand-prize-winner",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/54ed69e1839547075fbceade57741909abf58483-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"b01ccc51-24b8-439d-90c4-8836c32f1d1d",
+   "title":"Sam Anderson is Interviewed About the Company",
+   "date":"April 30, 2020",
+   "content": "DePoly’s CEO Samantha Anderson has been interviewed about the company (article in French, video in English) - DePoly’s CEO Samantha Anderson has been interviewed about the company (article in French, video in English)",
+   "url":"sam-anderson-is-interviewed-about-the-company",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/7c74630824027f4d3eef472815c595ace4d2468a-400x400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"e82fa811-9907-41ef-a26a-d780d36758b0",
+   "title":"FIT – Fondation pour l’InovationTechnologique.",
+   "date":"November 1, 2020",
+   "content": "We are delighted to have been awarded a tech seed loan of CHF 100,000 to help takel the issues of plastic waste, pollution and reliance on oil.  - We are delighted to have been awarded a tech seed loan of CHF 100,000 to help takel the issues of plastic waste, pollution and reliance on oil. ",
+   "url":"fit-fondation-pour-l-inovationtechnologique",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/e081af69f33a7092f7e1921dad0046f0a959e0dc-401x400.jpg?w=800&amp;auto=format"
 }
 ]

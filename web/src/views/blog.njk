@@ -62,7 +62,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
 
             <ul class="df fc" id="blog-category--list">
                 <li class="">
-                    <a href="/blog/" class="article-card--link cp">
+                    <a href="/article/{{ articles.all[0].settings.slug.current | slugify }}" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
                                 {% lazyResponsiveImage articles
@@ -76,7 +76,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                                     .title %}
                             </picture>
                             <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">{{  articles.all[0].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
+                                <div class="article-card--tag tag ttu fv-mono">{{ articles.all[0].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
                                 <div class="article-card--title">{% trim articles
                                         .all[0]
                                         .title,
@@ -101,7 +101,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                 </li>
 
                 <li class="">
-                    <a href="/blog/" class="article-card--link cp">
+                    <a href="/article/{{ articles.all[0].settings.slug.current | slugify }}" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
                                 {% lazyResponsiveImage articles
@@ -140,7 +140,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                 </li>
 
                 <li class="">
-                    <a href="/blog/" class="article-card--link cp">
+                    <a href="/article/{{ articles.all[0].settings.slug.current | slugify }}" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
                                 {% lazyResponsiveImage articles

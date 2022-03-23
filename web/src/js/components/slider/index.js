@@ -66,6 +66,7 @@ export class Slider {
     this.listeners();
     this.init();
 
+    if (Sniff.touchDevice) return;
     this.state.pos.cx = -window.innerWidth;
   }
 

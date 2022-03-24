@@ -34,6 +34,7 @@ export class Parallax {
     ease = "io1",
     limitBounds = false,
     useOnlyOffset = false,
+    limitBoundsStart = 0,
   }) {
     // if (Sniff.safari) return;
 
@@ -49,6 +50,7 @@ export class Parallax {
       offset,
       range: (speed - 1) * 100,
       limitBounds,
+      limitBoundsStart,
       useOnlyOffset,
     };
 
@@ -127,7 +129,11 @@ export class Parallax {
         ypct = lerp(this.options.offset.start, this.options.offset.end, y);
       } else {
         if (this.options.limitBounds) {
-          ypx = lerp(0, this.state.bounds.maxRange, y);
+          ypx = lerp(
+            this.options.limitBoundsStart,
+            this.state.bounds.maxRange,
+            y
+          );
         } else {
           ypx = y * this.state.bounds.y;
         }

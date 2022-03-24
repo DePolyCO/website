@@ -1,7 +1,7 @@
 import { iris, qs, qsa, Vau } from "../hermes";
 import { app } from "../main";
 
-const trimText = (text, charCount = 160, addEllipsis = true) => {
+export const trimText = (text, charCount = 160, addEllipsis = true) => {
   if (text.length > charCount) {
     return addEllipsis
       ? text.slice(0, charCount) + "..."
@@ -12,10 +12,11 @@ const trimText = (text, charCount = 160, addEllipsis = true) => {
 };
 
 export class Search {
-  constructor({ input, template, targetContainer, engine }) {
+  constructor({ input, template, targetContainer, btn, engine }) {
     this.input = qs(input);
     this.template = qs(template);
     this.targetContainer = qs(targetContainer);
+    this.btn = qs(btn);
     this.engine = engine;
 
     // this.api = "/.netlify/functions/search?term=";
@@ -26,14 +27,16 @@ export class Search {
 
   listen = () => {
     this.unClick = iris.add(this.input, "keydown", this.handleInput);
+    this.unPress = iris.add(this.btn, "click", this.handleInput);
   };
 
   handleInput = (e) => {
-    if (e.key !== "Enter") return;
-    const val = e.target.value.trim();
-    if (!val) return;
+    if (e.type === "keydown" && e.key !== "Enter") return;
 
-    this.engine.params.set("search", val.toLowerCase());
+    const val = this.input.value.trim().toLowerCase();
+    if (!val || val === this.engine.params.get("search")) return;
+
+    this.engine.params.set("search", val);
     this.engine.updateUrlState();
 
     try {

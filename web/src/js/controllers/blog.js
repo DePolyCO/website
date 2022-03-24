@@ -2,8 +2,9 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
-import { iris, qs, qsa, Vau } from "../hermes";
+import { iris, qs, qsa, Sniff, Vau } from "../hermes";
 import { Engine } from "../components/blogEngine";
+import { Parallax } from "../scroller";
 
 /**
  *

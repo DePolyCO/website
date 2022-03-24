@@ -44,16 +44,22 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
         <div id="blog-categories" class="article-animate m-hide">
             <div id="blog-filters">
                 <div id="filter-content" class="df jcb aic">
-                    <ul class="fv-mono ttu df">
-                        <li class="filter-category cp active">All</li>
-                        {% for category in categories %}
-                            {# add active class if active #}
-                            <li class="filter-category cp">{{ category.title }}</li>
+                    <ul id="filters-container" class="fv-mono ttu df">
+                        <li id="filter-all" class="filter-category cp">All</li>
+                        {# limit to top 3 #}
+                        {% for category in categories | slice(3) %}
+                            {% for item in category %}
+                                {% if loop.index0 == 0 %}
+                                    {# add active class if active #}
+                                    <li class="filter-category cp">{{ item.title }}</li>
+                                {% endif %}
+                            {% endfor %}
+
                         {% endfor %}
                     </ul>
                     <div id="search-top" class="pr search-field fv-mono">
                         <input id="search" type="text" placeholder="Search" enterKeyHint="search">
-                        <svg class="pa left top pen">
+                        <svg id="search-btn" class="pa left top">
                             <use xlink:href="#search-icon"></use>
                         </svg>
                     </div>
@@ -61,122 +67,31 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
             </div>
 
             <ul class="df fc" id="blog-category--list">
-                <li class="">
-                    <a href="/article/{{ articles.all[0].settings.slug.current | slugify }}" class="article-card--link cp">
-                        <div class="article-card article-card--hori df">
-                            <picture class="article-card--thumbnail">
-                                {% lazyResponsiveImage articles
-                                    .all[0]
-                                    .mainImage,
-                                "600,1200",
-                                "30vw",
-                                "",
-                                articles
-                                    .all[0]
-                                    .title %}
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">{{ articles.all[0].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
-                                <div class="article-card--title">{% trim articles
-                                        .all[0]
-                                        .title,
-                                    40,
-                                    true %}</div>
-                                <p class="article-card--desc">{% trim articles
-                                        .all[0]
-                                        .intro,
-                                    160,
-                                    true %}</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
 
-                <li class="">
-                    <a href="/article/{{ articles.all[0].settings.slug.current | slugify }}" class="article-card--link cp">
-                        <div class="article-card article-card--hori df">
-                            <picture class="article-card--thumbnail">
-                                {% lazyResponsiveImage articles
-                                    .all[1]
-                                    .mainImage,
-                                "600,1200",
-                                "30vw",
-                                "",
-                                articles
-                                    .all[1]
-                                    .title %}
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">{{  articles.all[1].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
-                                <div class="article-card--title">{% trim articles
-                                        .all[1]
-                                        .title,
-                                    40,
-                                    true %}</div>
-                                <p class="article-card--desc">{% trim articles
-                                        .all[1]
-                                        .intro,
-                                    160,
-                                    true %}</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
+                <template id="blog-category--item">
+                    <li>
+                        <a href="" class="article-card--link cp">
+                            <div class="article-card article-card--hori df">
+                                <picture class="article-card--thumbnail">
+                                    <img src="" alt="">
+                                </picture>
+                                <div class="article-content df fc">
+                                    <div class="article-card--tag tag ttu fv-mono"></div>
+                                    <div class="article-card--title"></div>
+                                    <p class="article-card--desc"></p>
+                                    <div class="df article-card--cta aic">
+                                        <div>Read More</div>
+                                        <div class="rarr-wrapper">
+                                            <svg fill="none" viewBox="0 0 13 8">
+                                                <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="">
-                    <a href="/article/{{ articles.all[0].settings.slug.current | slugify }}" class="article-card--link cp">
-                        <div class="article-card article-card--hori df">
-                            <picture class="article-card--thumbnail">
-                                {% lazyResponsiveImage articles
-                                    .all[2]
-                                    .mainImage,
-                                "600,1200",
-                                "30vw",
-                                "",
-                                articles
-                                    .all[2]
-                                    .title %}
-                            </picture>
-                            <div class="article-content df fc">
-                                <div class="article-card--tag tag ttu fv-mono">{{  articles.all[2].settings.postCategory }}  /  {{ article.settings.publishedAt | toHRDate }}</div>
-                                <div class="article-card--title">{% trim articles
-                                        .all[2]
-                                        .title,
-                                    40,
-                                    true %}</div>
-                                <p class="article-card--desc">{% trim articles
-                                        .all[2]
-                                        .intro,
-                                    160,
-                                    true %}</p>
-                                <div class="df article-card--cta aic">
-                                    <div>Read More</div>
-                                    <div class="rarr-wrapper">
-                                        <svg fill="none" viewBox="0 0 13 8">
-                                            <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                </template>
 
             </ul>
         </div>
@@ -184,9 +99,9 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
 
     <section id="blog-two" data-scroll-section class="restrict df fc">
         <div id="blog-filters--extended">
-            <div id="search-extended" class="search-field df pr fv-mono">
-                <input id="search-extended--input" type="text" placeholder="Search" enterKeyHint="search">
-                <svg class="pa left top pen">
+            <div id="search-extended" class="search-field df pr fv-mono pen">
+                <input class="pea" id="search-extended--input" type="text" placeholder="Search" enterKeyHint="search">
+                <svg id="search-extended--btn" class="pa left top pea z1 cp">
                     <use xlink:href="#search-icon"></use>
                 </svg>
             </div>

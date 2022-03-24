@@ -1,6 +1,7 @@
-import { iris, qs, qsa } from "../hermes";
+import { iris, qs, qsa, Sniff } from "../hermes";
 import { Search } from "./search";
 import { Store } from "../store";
+import { MiniBlog } from "./blogTop";
 
 export class Engine {
   constructor() {
@@ -41,6 +42,7 @@ export class Engine {
         input: "#search-extended--input",
         template: "#blog-article--item",
         targetContainer: "#blog-article--list",
+        btn: "#search-extended--btn",
       },
     };
 
@@ -69,6 +71,10 @@ export class Engine {
 
     this.readInitialState();
 
+    if (!Sniff.touchDevice) {
+      this.mini = new MiniBlog({ data: this.data, engine: this });
+    }
+
     this.buildCategory();
     this.buildPage();
     this.buildArrows();
@@ -85,18 +91,25 @@ export class Engine {
       ? this.params.get("filter")
       : "all";
 
-    if (filter) {
-      this.state.filter.active = filter;
-      qsa(this.settings.filter.tag, this.settings.filter.container).forEach(
-        (item) => {
-          if (item.innerText.toLowerCase() === filter.toLowerCase()) {
-            item.classList.add("active");
-            this.state.filter.current = item;
-          }
+    this.state.filter.active = filter;
+    qsa(this.settings.filter.tag, this.settings.filter.container).forEach(
+      (item) => {
+        if (item.innerText.toLowerCase() === filter.toLowerCase()) {
+          item.classList.add("active");
+          this.state.filter.current = item;
         }
-      );
-      this.setFilter(filter);
-    }
+      }
+    );
+
+    this.search.clearInput();
+
+    const filtered = this.filter(filter);
+    this.state.results.current = filtered;
+
+    this.buildPage(filtered);
+    const paged = filtered.slice(3, 3 + 6);
+
+    this.search.build(paged);
   };
 
   page = (i, arr = this.data) => {
@@ -216,7 +229,7 @@ export class Engine {
   };
 
   buildCategory = () => {
-    iris.add(
+    this.unCategory = iris.add(
       qsa(this.settings.filter.tag, this.settings.filter.container),
       "click",
       this.handleFilterClick
@@ -258,5 +271,7 @@ export class Engine {
     this.search.destroy();
     this.unlisten.forEach((u) => u());
     this.unlistenArr?.forEach((u) => u());
+    this.unCategory && this.unCategory();
+    this.mini && this.mini.destroy();
   };
 }

@@ -42,6 +42,7 @@ export default {
     // as a block type.
     {
       type: "image",
+      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
       },
@@ -53,6 +54,7 @@ export default {
           options: {
             isHighlighted: true,
           },
+          validation: (Rule) => Rule.required(),
         },
       ],
     },

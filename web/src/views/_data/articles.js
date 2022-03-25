@@ -13,16 +13,24 @@ const youtubeID = require("../../../utils/get-video-id");
 
 const postComponents = {
   types: {
-    image: ({ value }) => `<section class="no-contain" data-scroll-section>
+    image: ({ value }) => {
+      if (!value.asset) return ``;
+
+      const { metadata = {}, url } = value.asset;
+      const { lqip = false, dimensions = { width: 1800, height: 1800 } } =
+        metadata;
+
+      return `<section class="no-contain" data-scroll-section>
       <figure class="pr">
         <picture
-          style="--w:${value.asset.metadata.dimensions.width}; --h:${value.asset.metadata.dimensions.height};">
-          <img src="${value.asset.metadata.lqip}" data-lazy-src="${value.asset.url}"
+          style="--w:${dimensions.width}; --h:${dimensions.height};">
+          <img src="${lqip ? lqip : ""}" data-lazy-src="${url}"
           alt="${value.alt}" />
         </picture>
         <figcaption>${value.alt}</figcaption>
       </figure>
-    </section>`,
+    </section>`;
+    },
 
     youtube: ({ value }) => {
       const videoID = youtubeID(value.url);
@@ -50,7 +58,13 @@ const postComponents = {
       if (uriLooksSafe(href)) {
         const rel = href.startsWith("/") ? undefined : "noreferrer noopener";
         const target = href.startsWith("/") ? undefined : "_blank";
-        return html`<a class="text-underline" href="${href}" rel="${rel}" target="${target}">${children}</a>`;
+        return html`<a
+          class="text-underline"
+          href="${href}"
+          rel="${rel}"
+          target="${target}"
+          >${children}</a
+        >`;
       }
 
       return children;

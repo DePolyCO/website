@@ -170,9 +170,12 @@
     }
 
     picture {
-      aspect-ratio: var(--w) / var(--h);
+      // default to square aspect ratio
+      aspect-ratio: var(--w, #{fluid(335, $sm)}) / var(--h, #{fluid(335, $sm)});
 
       @include md {
+        aspect-ratio: var(--w, #{fluid(900, $lg)}) /
+          var(--h, #{fluid(900, $lg)});
         width: fluid(900, $lg);
       }
     }

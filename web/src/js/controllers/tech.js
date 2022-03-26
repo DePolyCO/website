@@ -11,13 +11,15 @@ import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
 import { fx } from "../components/fxmanager";
 
+import { Looper } from "../components/looper";
+
 /**
  *
  * Tech page controller
  *
  */
 
-let highlightFx, compares, ps, r0, pt, ph;
+let highlightFx, compares, ps, r0, pt, ph, l0;
 export const techController = new Controller({
   hide: ({ done }) => {
     highlightFx.destroy();
@@ -26,6 +28,7 @@ export const techController = new Controller({
     pt && pt.destroy();
     ph && ph.destroy();
     r0.destroy();
+    l0.destroy();
     fx.remove(".explain-visual--circle");
 
     monoShuffle.destroy();
@@ -88,6 +91,12 @@ export const techController = new Controller({
     nav.setLinkActive("technology");
 
     fx.add(".explain-visual--circle");
+
+    l0 = new Looper({
+      dom: "#magic-visual",
+      intro: "/static/technology/liquid/intro.mp4",
+      loop: "/static/technology/liquid/loop.mp4",
+    });
 
     monoShuffle.init();
     sail.in();

@@ -157,9 +157,10 @@
 
         <div id="cta-content--wrapper" class="form-wrapper pr z0">
           <div id="cta-content" class="df fc" data-scroll-section>
-            <picture id="cta-picture">
-              <img data-lazy-src="/static/request-sample.jpg" alt="Request sample">
-            </picture>
+            <div id="cta-picture" class="oh">
+              {# <img data-lazy-src="/static/request-sample.jpg" alt="Request sample"> #}
+              <video preload="all" width="1280" height="720" muted autoplay playsinline src="/static/request-sample.mp4"></video>
+            </div>
             <div id="cta-info" class="df fc aic jcc">
               <svg id="cta-icon" fill="none" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z" fill="#022D42"/>

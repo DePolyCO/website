@@ -52,8 +52,8 @@ class AsideController {
       this.state.current = qs(panelId, this.dom);
 
       this.preventOverscroll();
-      if (Sniff.touchDevice) {
-      } else {
+
+      if (!Sniff.touchDevice) {
         this.scroller = new Smooth({
           dom: this.state.current,
           isWindow: false,
@@ -61,6 +61,12 @@ class AsideController {
         });
       }
 
+      if (panelId === "#cta-panel") {
+        // play video
+        const video = qs("video", this.state.current);
+        video.load();
+        video.play();
+      }
       // allow display: none to take effect
       requestAnimationFrame(() => {
         this.dom.classList.add("active");

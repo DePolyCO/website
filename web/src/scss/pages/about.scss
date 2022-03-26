@@ -151,20 +151,9 @@
     }
   }
 
-  // .team-col {
-  //   @include md {
-  //     width: fluid(430, $lg);
-
-  //     &:not(.no-border) {
-  //       &:not(:last-of-type) {
-  //         border-right: 1px solid rgba(2, 45, 66, 0.2);
-  //       }
-  //     }
-  //   }
-  // }
-
   .team-item {
     position: relative;
+    padding-top: fluid(60 - 40, $sm);
 
     &::after {
       content: "";
@@ -178,6 +167,7 @@
 
     @include md {
       width: fluid(400, $lg);
+      padding-top: 0;
 
       &::after {
         left: fluid(-35 + 20, $lg);

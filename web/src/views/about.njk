@@ -140,18 +140,27 @@ title: About Us
 
     <section class="restrict" data-scroll-section>
         <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Advisors</div>
-        <div id="advisor-list" class="grid-list df fc">
+        <div id="advisor-list" class="grid-list df fc fw pr jcb">
             {% for member in team.advisors %}
-                <div class="team-col df fc aic">
-                    <div class="team-item pen">
-                        <picture class="team-photo fx fx-once">
-                            <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}">
-                        </picture>
-                        <div class="team-name rev">{{ member.name }}</div>
-                        <div class="team-role rev ttu">{{ member.role }}</div>
-                    </div>
+                <div class="team-item pen">
+                    <picture class="team-photo fx fx-once">
+                        <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}">
+                    </picture>
+                    <div class="team-name rev">{{ member.name }}</div>
+                    <div class="team-role rev ttu">{{ member.role }}</div>
                 </div>
             {% endfor %}
+            {% if team.advisors.length < 3 %}
+                {% set diff =  team.advisors.length - 3 %}
+                {% if diff < 0 %}
+                    {% set diff = diff * -1 %}
+                {% endif %}
+                {% for i in range(0, diff) %}
+                    <div class="team-item pen m-hide no-border"></div>
+                {%- endfor %}
+            {% endif %}
+            <div class="hori-line hori-line--one pa top bottom m-hide"></div>
+            <div class="hori-line hori-line--two pa top bottom m-hide"></div>
         </div>
     </section>
 </main>

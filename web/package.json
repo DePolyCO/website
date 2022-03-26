@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
+    "clear-cache": "rimraf .cache",
     "build": "rimraf dist && run-p builds:* && npm run postcss",
     "dev": "run-p devs:*",
     "devs:esbuild": "esbuild src/js/main.js src/sw.js --outdir=dist --bundle --watch",

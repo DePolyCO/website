@@ -78,7 +78,7 @@ export default {
       name: "intro",
       title: "Short Intro",
       type: "text",
-      validation: (Rule) => Rule.required().min(200).max(700),
+      validation: (Rule) => Rule.required().max(700),
     },
 
     {

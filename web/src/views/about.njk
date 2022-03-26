@@ -83,7 +83,7 @@ title: About Us
         </ul>
     </section>
 
-    <section id="team" class="restrict df fc border-bottom" data-scroll-section>
+    {# <section id="team" class="restrict df fc border-bottom" data-scroll-section>
         <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Our Team</div>
         <div id="team-list" class="grid-list df fc">
             {% for col in team.members | batch(4) %}
@@ -91,7 +91,6 @@ title: About Us
                     {% for member in col %}
                         <div class="team-item {% if loop.index == 4 %} no-border {% endif %} {% if member.bio %} cp {% else %} pen {% endif %}" {% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                             <picture class="team-photo fx fx-once">
-                                {# <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}"> #}
                                 {% responsiveImage member.img,
                                 "600,1200,2000",
                                 "30vw" %}
@@ -110,7 +109,6 @@ title: About Us
                             {% responsiveImage member.img,
                             "300,600",
                             "100vw" %}
-                            {# <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}"> #}
                         </picture>
                         <div class="team-name">{{ member.name }}</div>
                         <div class="team-role ttu">{{ member.role }}</div>
@@ -118,6 +116,25 @@ title: About Us
                 {% endfor %}
             </div>
 
+        </div>
+    </section> #}
+
+    <section id="team" class="restrict df fc border-bottom" data-scroll-section>
+        <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Our Team</div>
+        <div id="team-list" class="grid-list pr df fc fw jcb" style="--count: {{ team.members.length }}">
+            {% for member in team.members %}
+                <div class="team-item {% if member.bio %} cp {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
+                    <picture class="team-photo fx fx-once">
+                        {% responsiveImage member.img,
+                        "300,600",
+                        "100vw" %}
+                    </picture>
+                    <div class="team-name">{{ member.name }}</div>
+                    <div class="team-role ttu">{{ member.role }}</div>
+                </div>
+            {% endfor %}
+            <div class="hori-line hori-line--one pa top bottom m-hide"></div>
+            <div class="hori-line hori-line--two pa top bottom m-hide {% if team.members.length % 3 == 1 %} sm {% endif %}"></div>
         </div>
     </section>
 

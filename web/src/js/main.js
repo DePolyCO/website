@@ -15,7 +15,7 @@ import { blogController } from "./controllers/blog";
 import { articleController } from "./controllers/article";
 import { noController } from "./controllers/404";
 
-// import { Grid } from "./grid";
+import { Grid } from "./grid";
 // import { asideController } from "./components/aside";
 
 // import { smoothscroller } from "./scroller";
@@ -56,9 +56,9 @@ iris.add(
     console.log("Design by: FiftySeven® — https://fiftyseven.co/");
     console.log("Dev by: Siddharth S. — https://siddharthsham.com");
 
-    // new Grid({
-    //   cols: 4,
-    // });
+    new Grid({
+      cols: 4,
+    });
 
     // footer.init();
     // nav.init();

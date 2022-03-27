@@ -7,7 +7,7 @@
     @include md {
       margin-top: fluid(140, $lg);
       padding-top: fluid(40, $lg);
-      margin-bottom: fluid(125, $lg);
+      margin-bottom: fluid(40, $lg);
     }
   }
 
@@ -436,26 +436,60 @@
   }
 
   #blog-filters--extended {
+    border-bottom: 1px solid #022d42;
+    margin-bottom: fluid(28, $sm);
+    height: fit-content;
+
+    position: sticky;
+    top: fluid(0, $sm);
+    z-index: 9;
+    background-color: #ecece2;
+    transition: top 1s $ease-out-expo;
+
     @include md {
+      border-bottom: none;
       width: fluid(430, $lg);
       margin-right: fluid(40, $lg);
+
+      position: unset;
+      z-index: 1;
+      transition: none;
     }
   }
 
   #filters-extended {
     padding: fluid(28, $sm) 0;
     gap: fluid(10, $sm);
+    overflow: auto;
 
-    height: fluid(60, $sm);
-    overflow: hidden;
-    overflow: clip;
     border-bottom: 1px solid #dadaca;
+    background-color: #ecece2;
+    margin-left: fluid(20 + 32, $sm);
+    padding-left: fluid(20, $sm);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: fluid(20 + 32, $sm);
+      top: fluid(24, $sm);
+      opacity: 0.1;
+      border: 1px solid #022d42;
+      width: 1px;
+      height: fluid(32, $sm);
+    }
 
     @include md {
       padding: fluid(35, $lg) 0;
       gap: fluid(29, $lg);
+      overflow: hidden;
+      overflow: clip;
 
       height: fluid(93, $lg);
+      margin-left: 0;
+
+      &::before {
+        content: none;
+      }
     }
 
     &.active {
@@ -465,22 +499,14 @@
   }
 
   #filters-extended--btn {
-    border: 1px solid rgba(2, 45, 66, 0.1);
-    border-radius: fluid(9, $sm);
-    width: fluid(25, $sm);
-    height: fluid(25, $sm);
-    top: fluid(34, $sm);
-
-    svg {
-      width: fluid(12, $sm);
-      height: fluid(9, $sm);
-    }
+    display: none;
 
     @include md {
       border-radius: fluid(9, $lg);
       width: fluid(25, $lg);
       height: fluid(25, $lg);
       top: fluid(34, $lg);
+      display: unset;
 
       svg {
         width: fluid(12, $lg);
@@ -496,7 +522,6 @@
     padding: fluid(3, $sm) fluid(8, $sm);
     border-radius: fluid(8, $sm);
     color: #aab6b6;
-    pointer-events: all;
     cursor: pointer;
     transition: color 0.4s $ease-out-expo;
 
@@ -518,26 +543,30 @@
   }
 
   #search-extended {
+    position: absolute;
+    z-index: -1;
+
     width: 100%;
-    margin-top: fluid(30, $lg);
-    padding-bottom: fluid(29, $lg);
-    border-bottom: 1px solid #dadaca;
+    margin-top: fluid(26, $sm);
+    padding-bottom: fluid(28, $sm);
     transition: border-bottom 0.4s $ease-out-expo;
+    background-color: #ecece2;
 
     svg {
-      width: fluid(22, $lg);
-      height: fluid(22, $lg);
+      width: fluid(32, $sm);
+      height: fluid(32, $sm);
       top: 0;
     }
 
     input {
       padding: 0;
-      padding-top: fluid(2, $lg);
+      padding-top: fluid(2, $sm);
       font-weight: 500;
-      font-size: fluid(14, $lg);
+      font-size: fluid(18, $sm);
       line-height: 130%;
       letter-spacing: 0.01em;
-      margin-left: fluid(32, $lg);
+      margin-left: fluid(32, $sm);
+      padding-left: fluid(20 + 20, $sm);
 
       &::placeholder {
         transition: color 0.4s $ease-out-expo;
@@ -553,6 +582,32 @@
 
     &:focus-within {
       border-bottom: 1px solid $darkblue;
+    }
+
+    @include md {
+      margin-top: fluid(30, $lg);
+      padding-bottom: fluid(29, $lg);
+      border-bottom: 1px solid #dadaca;
+      position: relative;
+
+      svg {
+        width: fluid(22, $lg);
+        height: fluid(22, $lg);
+      }
+
+      input {
+        padding: 0;
+        padding-top: fluid(2, $lg);
+        font-weight: 500;
+        font-size: fluid(14, $lg);
+        line-height: 130%;
+        letter-spacing: 0.01em;
+        margin-left: fluid(32, $lg);
+
+        &::placeholder {
+          color: #aab6b6;
+        }
+      }
     }
   }
 
@@ -719,4 +774,9 @@
   #pagination-after {
     padding-left: fluid(30, $lg);
   }
+}
+
+.has-nav #blog #blog-filters--extended {
+  top: fluid(71, $sm);
+  transition: top 2s $ease-out-expo;
 }

@@ -106,11 +106,13 @@ export class Nav {
   show = () => {
     this.state.isVisible = true;
     this.dom.classList.remove("hidden");
+    document.body.classList.add("has-nav");
   };
 
   hide = () => {
     this.state.isVisible = false;
     this.dom.classList.add("hidden");
+    document.body.classList.remove("has-nav");
   };
 
   onLangSwitch = (e) => {

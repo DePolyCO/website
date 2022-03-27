@@ -1,4 +1,4 @@
-import { Duration, map, Observer, qsa, Tween } from "../hermes";
+import { Duration, map, Observer, qsa } from "../hermes";
 
 class MonoShuffle {
   constructor() {
@@ -56,6 +56,7 @@ class MonoShuffle {
           }
         },
       });
+
       unobserve(node);
     }
   };

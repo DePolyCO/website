@@ -1,4 +1,4 @@
-import { iris, qs, qsa, Vau } from "../hermes";
+import { iris, qs, qsa, Sniff, Vau } from "../hermes";
 import { app } from "../main";
 
 export const trimText = (text, charCount = 160, addEllipsis = true) => {
@@ -27,7 +27,12 @@ export class Search {
 
   listen = () => {
     this.unClick = iris.add(this.input, "keydown", this.handleInput);
-    this.unPress = iris.add(this.btn, "click", this.handleInput);
+
+    if (Sniff.touchDevice) {
+      this.unPress = iris.add(this.btn, "click", this.handleMobile);
+    } else {
+      this.unPress = iris.add(this.btn, "click", this.handleInput);
+    }
   };
 
   handleInput = (e) => {
@@ -46,6 +51,16 @@ export class Search {
     }
   };
 
+  handleMobile = (e) => {
+    // hide filters layer
+    const filters = qs("#filters-extended");
+    filters.style.pointerEvents = "none";
+    filters.style.opacity = 0;
+
+    this.input.focus();
+    // set search active
+  };
+
   clearInput = () => {
     this.input.value = "";
     this.engine.params.delete("search");
@@ -62,6 +77,12 @@ export class Search {
         this.engine.state.filter.active,
         results
       );
+
+      if (!filtered.length) {
+        console.log("No filtered results!");
+        return;
+      }
+
       this.engine.state.results.current = filtered;
 
       const paged = this.engine.page(1, filtered);
@@ -71,6 +92,12 @@ export class Search {
       this.build(paged);
     } else {
       console.log("No results!");
+    }
+
+    if (Sniff.touchDevice) {
+      const filters = qs("#filters-extended");
+      filters.style.pointerEvents = "all";
+      filters.style.opacity = 1;
     }
   };
 
@@ -114,4 +141,6 @@ export class Search {
   destroy = () => {
     this.unClick && this.unClick();
   };
+
+  noResults = () => {};
 }

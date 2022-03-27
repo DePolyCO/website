@@ -64,16 +64,15 @@ export class Engine {
     } else {
       const res = await fetch("/static/article-data.json");
       const data = await res.json();
-      // this.data = [...data, ...data, ...data, ...data];
       this.data = data;
       Store.articles = data;
     }
 
     this.readInitialState();
 
-    if (!Sniff.touchDevice) {
-      this.mini = new MiniBlog({ data: this.data, engine: this });
-    }
+    // if (!Sniff.touchDevice) {
+    // this.mini = new MiniBlog({ data: this.data, engine: this });
+    // }
 
     this.buildCategory();
     this.buildPage();
@@ -107,7 +106,7 @@ export class Engine {
     this.state.results.current = filtered;
 
     this.buildPage(filtered);
-    const paged = filtered.slice(3, 3 + 6);
+    const paged = filtered.slice(0, 6);
 
     this.search.build(paged);
   };

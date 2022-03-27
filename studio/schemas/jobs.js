@@ -41,14 +41,24 @@ export default {
     {
       name: "level",
       title: "Level",
-      type: "string",
-      options: {
-        list: [
-          { title: "Senior", value: "Senior" },
-          { title: "Midior", value: "Midior" },
-          { title: "Junior", value: "Junior" },
-        ],
-      },
+      type: "object",
+      fields: [
+        {
+          name: "Junior",
+          type: "boolean",
+          initialValue: false,
+        },
+        {
+          name: "Medior",
+          type: "boolean",
+          initialValue: false,
+        },
+        {
+          name: "Senior",
+          type: "boolean",
+          initialValue: false,
+        },
+      ],
       validation: (Rule) => Rule.required(),
     },
 

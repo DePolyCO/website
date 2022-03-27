@@ -10,7 +10,17 @@ module.exports = withCache(
     }
     `);
 
-    return jobs.filter((item) => item.__i18n_lang === "en");
+    const filtered = jobs
+      .filter((item) => item.__i18n_lang === "en")
+      .map((item) => {
+        item.levels = Object.keys(item.level)
+          .filter((key) => item.level[key])
+          .join("/");
+
+        return item;
+      });
+
+    return filtered;
   },
   "jobs",
   "1d"

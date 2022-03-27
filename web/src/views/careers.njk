@@ -150,7 +150,9 @@ title: Careers
                         <li class="df fc jcb position-item">
                             <div class="pos-rev position-role">{{ job.title }}</div>
                             <div class="pos-rev position-location">{{ job.location }}</div>
-                            <div class="pos-rev position-level">{{ job.level }}</div>
+                            <div class="pos-rev position-level">
+                                {{ job.levels }}
+                            </div>
                             <div class="position-cta">
                                 <a href="/careers/{{ job.slug.current }}/" class="cta-btn df">
                                     <div class="pr oh btn-wrapper">

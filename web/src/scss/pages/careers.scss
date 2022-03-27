@@ -342,6 +342,7 @@
     @include md {
       margin-bottom: 0;
       font-size: fluid(30, $lg);
+      width: fluid(430, $lg);
     }
   }
 
@@ -357,6 +358,7 @@
       margin-bottom: 0;
       padding-left: fluid(24, $lg);
       font-size: fluid(18, $lg);
+      width: fluid(430, $lg);
     }
   }
 

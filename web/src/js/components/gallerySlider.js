@@ -87,12 +87,16 @@ export class GallerySlider {
     if (!isIntersecting) return;
     this.observer.disconnect();
     const pos = this.slider.state.pos;
+    this.slider.state.locked = true;
     Tween({
       val: [-window.innerWidth, 0],
       duration: 2000,
       easing: "o6",
       update: ({ cur }) => {
         pos.cx = cur;
+      },
+      complete: () => {
+        this.slider.state.locked = false;
       },
     });
   };

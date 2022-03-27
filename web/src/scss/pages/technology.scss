@@ -34,6 +34,7 @@
     height: fluid(2600, $lg);
     min-width: fluid(430 * 3 + 40 * 2, $lg);
     border-right: 1px solid rgba(2, 45, 66, 0.2);
+    object-fit: contain;
   }
 
   .explain-visual--plus {

@@ -60,6 +60,7 @@ export class Slider {
       },
       dragging: false,
       direction: 1, // +ve is right
+      locked: false,
     };
 
     this.resize();
@@ -90,7 +91,8 @@ export class Slider {
   };
 
   handleDown = (e) => {
-    const { pos } = this.state;
+    const { pos, locked } = this.state;
+    if (locked) return;
 
     this.container.classList.add("active");
     this.state.dragging = true;
@@ -102,7 +104,8 @@ export class Slider {
   };
 
   handleWheel = (e) => {
-    const { pos } = this.state;
+    const { pos, locked } = this.state;
+    if (locked) return;
     const delta = e.deltaX;
 
     this.state.direction = delta > 0 ? 1 : -1;
@@ -112,7 +115,8 @@ export class Slider {
   };
 
   handleMove = (e) => {
-    const { pos } = this.state;
+    const { pos, locked } = this.state;
+    if (locked) return;
     if (!this.state.dragging) return;
 
     const delta = pos.sx - iris.getXY(e).x;

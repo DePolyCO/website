@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,4 +20,6 @@
         <meta name="keywords" content="{{ seo.keywords }}">
         <meta name="theme-color" content="#000">
         <meta name="robots" content="all"/>
+
+        {% jsonLdScript meta, type, tags %}
     </head>

@@ -6,6 +6,8 @@ const buildFileUrl = require("./utils/fileUrl");
 const string = require("string");
 const fs = require("fs");
 
+const schema = require("@quasibit/eleventy-plugin-schema");
+
 require("dotenv").config();
 
 const extractExcerpt = (article) => {
@@ -176,6 +178,8 @@ module.exports = (eleventyConfig) => {
   );
 
   eleventyConfig.addShortcode("excerpt", (article) => extractExcerpt(article));
+
+  eleventyConfig.addPlugin(schema);
 
   eleventyConfig.addFilter("slugify", (input) => {
     if (!input) {

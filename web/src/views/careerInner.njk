@@ -8,6 +8,19 @@ pagination:
 permalink: "careers/{{ position.slug.current | slugify }}/"
 eleventyComputed:
     title: "{{ position.title }}"
+    type: page
+    meta:
+        site:
+            name: DePoly
+            description: ""
+            url: https://depoly.com
+            logo:
+                src: https://depoly.com/static/meta/logo.png
+                width: 1200
+                height: 630
+                language: en-US
+        image:
+            src: https://depoly.com/images/page.png
 ---
 
 {% from '_macros/textBlock.njk' import textBlock %}

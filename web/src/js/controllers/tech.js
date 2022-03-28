@@ -61,10 +61,10 @@ export const techController = new Controller({
         down: true,
         useOnlyOffset: true,
         offset: {
-          start: 20,
-          end: -20,
+          start: 17,
+          end: -17,
         },
-        scale: { x: { start: 1.1 } },
+        scale: { x: { start: 1.05 } },
         easing: "linear",
       });
     }

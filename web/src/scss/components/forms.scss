@@ -329,8 +329,13 @@ label {
 }
 
 .hover-toggle {
-  details[open] ~ .form-toggle > svg {
-    transform: rotate(-90deg) !important;
+  details[open] ~ .form-toggle {
+    background-color: $darkblue;
+
+    > svg {
+      transform: rotate(-90deg) !important;
+      filter: invert(1);
+    }
   }
 }
 

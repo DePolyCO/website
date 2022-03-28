@@ -141,13 +141,12 @@
 
       &.active {
         .quote-apo {
-          opacity: 1;
           transform: none;
         }
       }
 
       &:hover {
-        img {
+        .quote-picture.fx-on img {
           transform: scale(1.05, 1.05);
         }
       }
@@ -174,9 +173,19 @@
 
     // hack to promote to it's own layer
     will-change: transform;
+    transition: opacity 1.75s $ease-out-expo;
 
     img {
+      transform: scale(1.25);
+      opacity: 0;
       transition: transform 2.5s $ease-out-expo, opacity 1.75s $ease-out-expo;
+    }
+
+    &.fx-on {
+      img {
+        transform: none;
+        opacity: 1;
+      }
     }
 
     @include md {
@@ -215,7 +224,6 @@
       height: fluid(77, $lg);
       left: fluid(319, $lg);
       right: unset;
-      opacity: 0;
       transform: scale(0);
       transition: opacity 0.8s, transform 1.25s $ease-out-expo;
 

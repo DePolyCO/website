@@ -60,7 +60,7 @@ export class Collapse {
 
     this.init();
 
-    window.collapse = this;
+    // window.collapse = this;
   }
 
   init = () => {
@@ -227,9 +227,9 @@ export class Collapse {
     const top = getOffsetTop(this.dom);
     const { slides, page, boundRange } = this.state;
     page.offset = window.innerHeight;
-    page.width = page.offset * (slides.no - 1) - bounds(this.window).width;
+    page.width = page.offset * slides.no - bounds(this.window).width;
 
-    const stickyPoint = window.innerHeight * 0.25; // 20vh from top
+    const stickyPoint = window.innerHeight * 0.25; // 25vh from top
 
     boundRange[0] = top - stickyPoint;
     boundRange[1] = top - stickyPoint + page.width;

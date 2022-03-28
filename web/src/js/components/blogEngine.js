@@ -53,7 +53,7 @@ export class Engine {
 
     this.init();
 
-    window.blog = this;
+    // window.blog = this;
   }
 
   init = async () => {

@@ -1,10 +1,18 @@
 #career-inner {
   #hero-title {
-    padding-bottom: fluid(4, $lg);
+    padding-bottom: fluid(4, $sm);
+
+    @include md {
+      padding-bottom: fluid(4, $lg);
+    }
   }
 
   header {
-    margin-bottom: fluid(137 - 26, $lg);
+    margin-bottom: fluid(94, $sm);
+
+    @include md {
+      margin-bottom: fluid(55, $lg);
+    }
   }
 
   .restrict-xtra {

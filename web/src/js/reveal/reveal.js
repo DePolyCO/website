@@ -43,6 +43,7 @@ export class Reveal {
     skipGuarantee = false, // guarantee that the text will always be one line
     rotate = false,
     insert = [],
+    autoCallback,
   }) {
     Object.assign(this, {
       targets: select(targets),
@@ -60,6 +61,7 @@ export class Reveal {
       char,
       skipGuarantee,
       rotate,
+      autoCallback,
     });
 
     // cache texts because it will be overwritten
@@ -431,6 +433,7 @@ export class Reveal {
         if (isIntersecting) {
           this.play({ targets: this.getTargets(node), from: this.from });
           unobserve(node);
+          !this.triggered && this.autoCallback && this.autoCallback();
           this.triggered = true;
         }
       },

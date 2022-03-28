@@ -1,11 +1,34 @@
-// #aside {
-// }
+#aside.active {
+  pointer-events: all;
+
+  #aside-overlay {
+    opacity: 0.3;
+    pointer-events: all;
+
+    @include md {
+      transition: opacity 1.5s $ease-out-expo;
+    }
+  }
+
+  #aside-close {
+    transform: translate3d(0, 0, 0);
+
+    @include md {
+      transition: transform 1.5s $ease-out-expo, opacity 1.5s $ease-out-expo,
+        background-color 1s $ease-out-expo;
+    }
+  }
+}
 
 #aside-overlay {
   background: #022d42;
   opacity: 0;
   pointer-events: none;
   transition: opacity 1s $ease-out-expo;
+
+  @include md {
+    transition: opacity 1.5s $ease-in-out-quint;
+  }
 }
 
 #aside-inner {
@@ -50,19 +73,7 @@
     height: -moz-fit-content;
     height: fit-content;
     transform: translate3d(1%, 0, 0);
-  }
-}
-
-#aside.active {
-  pointer-events: all;
-
-  #aside-overlay {
-    opacity: 0.3;
-    pointer-events: all;
-  }
-
-  #aside-close {
-    transform: translate3d(0, 0, 0);
+    transition: transform 1.5s $ease-in-out-quint;
   }
 }
 
@@ -72,6 +83,7 @@
   pointer-events: all;
 
   @include md {
+    transition: transform 1.5s $ease-out-expo;
     transform: translate3d(#{fluid(-1070, $lg)}, 0, 0);
   }
 }
@@ -86,7 +98,8 @@
   top: fluid(40, $sm);
   right: fluid(40, $sm);
 
-  transition: transform 1.5s $ease-out-expo, opacity 1.5s $ease-out-expo;
+  transition: transform 1.5s $ease-out-expo, opacity 1.5s $ease-out-expo,
+    background-color 1s $ease-out-expo;
   transform: translate3d(0, calc(100vh + #{fluid(40, $sm)}), 0);
 
   svg {
@@ -96,8 +109,11 @@
   }
 
   &:hover {
+    background-color: $darkblue;
+
     svg {
       transform: rotate(90deg);
+      filter: invert(1);
     }
   }
 
@@ -109,6 +125,8 @@
     right: fluid(40, $lg);
 
     transform: translate3d(#{fluid(1070, $lg)}, 0, 0);
+    transition: transform 1.5s $ease-in-out-quint, opacity 1.5s $ease-out-expo,
+      background-color 1s $ease-out-expo;
 
     svg {
       width: fluid(12, $lg);

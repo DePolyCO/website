@@ -18,6 +18,7 @@ export class CaptureReveal {
         duration: 1750,
       },
       hide: {
+        from: 0,
         to: -110,
         stagger: 0,
         delay: 0,
@@ -38,7 +39,7 @@ export class CaptureReveal {
     this.build();
     this.listen();
 
-    this.setActive(0);
+    window.r = this;
   }
 
   build = () => {
@@ -50,8 +51,18 @@ export class CaptureReveal {
             : this.revealTargets[i],
           stagger: 50,
           delay: 150,
+          auto: i === 0,
+          autoCallback:
+            i === 0
+              ? () => {
+                  this.reveals[0].observer.disconnect();
+                  this.reveals[0].play({ to: 0 });
+                }
+              : false,
         })
     );
+
+    this.targets[this.current].classList.add("active");
   };
 
   listen = () => {

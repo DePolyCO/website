@@ -133,6 +133,19 @@ body {
   }
 }
 
+picture.fx {
+  img {
+    opacity: 0;
+    transition: opacity 1.75s $ease-out-expo;
+  }
+
+  &.fx-on {
+    img {
+      opacity: 1;
+    }
+  }
+}
+
 @import "./pages/404.scss";
 @import "./pages/home.scss";
 @import "./pages/technology.scss";

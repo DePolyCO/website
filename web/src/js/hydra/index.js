@@ -5,6 +5,7 @@ import { smoothscroller } from "../scroller";
 import { Store } from "../store";
 import { asideController } from "../components/aside";
 import { Reveal } from "../reveal";
+import { fx } from "../components/fxmanager";
 
 const PARSER = new DOMParser();
 
@@ -268,6 +269,8 @@ export class Controller {
       footer.init();
       nav.show();
 
+      fx.destroy()
+
       if (Sniff.touchDevice) {
         if (nav.state.mobileOpen) {
           nav.toggle();
@@ -286,6 +289,8 @@ export class Controller {
             stagger: 75,
             auto: true,
           });
+
+          fx.add();
 
           setTimeout(done, 0);
         },

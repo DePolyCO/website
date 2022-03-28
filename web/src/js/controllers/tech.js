@@ -9,7 +9,6 @@ import { qs, qsa, Sniff, Vau } from "../hermes";
 import { Parallax } from "../scroller";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
-import { fx } from "../components/fxmanager";
 
 import { Looper } from "../components/looper";
 
@@ -29,7 +28,6 @@ export const techController = new Controller({
     ph && ph.destroy();
     r0.destroy();
     l0.destroy();
-    fx.remove(".explain-visual--circle");
 
     monoShuffle.destroy();
     sail.out(done);
@@ -89,8 +87,6 @@ export const techController = new Controller({
     }
 
     nav.setLinkActive("technology");
-
-    fx.add(".explain-visual--circle");
 
     l0 = new Looper({
       dom: "#magic-visual",

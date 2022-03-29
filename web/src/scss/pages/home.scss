@@ -670,6 +670,10 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 // }
 // }
 
+.text-underlay {
+  content: content;
+}
+
 .text-underlay--active,
 .text-underlay--always {
   color: $darkblue;

@@ -1,4 +1,4 @@
-import { iris, qs, qsa, Sniff } from "../hermes";
+import { Duration, iris, qs, qsa, Sniff } from "../hermes";
 import { Smooth, smoothscroller } from "../scroller";
 
 class AsideController {
@@ -66,6 +66,13 @@ class AsideController {
         const video = qs("video", this.state.current);
         video.load();
         video.play();
+        this.video = video;
+        this.requestDuration = new Duration({
+          duration: 1500,
+          complete: () => {
+            video.pause();
+          },
+        });
       }
       // allow display: none to take effect
       requestAnimationFrame(() => {
@@ -85,6 +92,13 @@ class AsideController {
       this.scroller && this.scroller.destroy();
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");
+
+      if (this.video) {
+        // play video
+        this.requestDuration.destroy();
+        this.video.play();
+        this.video = null;
+      }
 
       this.timout = setTimeout(() => {
         this.dom.style.display = "none";

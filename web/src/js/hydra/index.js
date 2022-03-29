@@ -215,6 +215,16 @@ export class Hydra {
         // scroller.scrollByAnchor(node, true);
       },
     });
+
+    // Handle GA Analytics
+    if (Store.cookie) {
+      try {
+        gtag("set", "page", data.url);
+        gtag("send", "pageview");
+      } catch (e) {
+        // console.warn("[HYDRA]:", e);
+      }
+    }
   }
 
   async out(url) {
@@ -269,7 +279,7 @@ export class Controller {
       footer.init();
       nav.show();
 
-      fx.destroy()
+      fx.destroy();
 
       if (Sniff.touchDevice) {
         if (nav.state.mobileOpen) {

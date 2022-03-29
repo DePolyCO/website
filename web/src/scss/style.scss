@@ -110,23 +110,6 @@ body {
   background-color: $lightbeige;
 }
 
-// #loader-percent {
-//   font-size: fluid(75, $sm);
-//   line-height: 1;
-//   color: $green;
-
-//   @include md {
-//     font-size: fluid(75, $lg);
-//   }
-// }
-
-// #load-percent--wrapper {
-//   top: 50%;
-//   left: 50%;
-//   z-index: 10;
-//   transform: translate(-50%, -50%);
-// }
-
 :not(.safari) {
   .oh {
     overflow: clip;
@@ -144,6 +127,78 @@ picture.fx {
     img {
       opacity: 1;
       transform: none;
+    }
+  }
+}
+
+#cookie-banner {
+  bottom: fluid(20, $sm);
+  right: fluid(20, $sm);
+  border-radius: fluid(22, $sm);
+  padding: fluid(20, $sm);
+  border: 1px solid #dadaca;
+  background: #ecece2;
+
+  transform: translateY(calc(100% + #{fluid(30, $sm)}));
+  transition: transform 2s $ease-out-expo;
+
+  @include md {
+    bottom: fluid(30, $lg);
+    right: fluid(40, $lg);
+    border-radius: fluid(22, $lg);
+    padding: fluid(40, $lg);
+    transform: translateY(calc(100% + #{fluid(30, $lg)}));
+  }
+
+  &.on {
+    transform: none;
+  }
+
+  p {
+    line-height: 140%;
+    text-align: center;
+    width: fluid(325 - 30, $sm);
+    margin-bottom: fluid(24, $sm);
+    font-size: fluid(18, $sm);
+
+    @include md {
+      width: fluid(275, $lg);
+      margin-bottom: fluid(24, $lg);
+      font-size: fluid(18, $lg);
+    }
+  }
+
+  svg {
+    width: fluid(24, $sm);
+    height: fluid(24, $sm);
+    margin-bottom: fluid(20, $sm);
+
+    @include md {
+      width: fluid(24, $lg);
+      height: fluid(24, $lg);
+      margin-bottom: fluid(20, $lg);
+    }
+  }
+
+  .cta-btn {
+    @include md {
+      width: fluid(128, $lg);
+    }
+  }
+
+  > .df.jcb {
+    gap: fluid(8, $sm);
+
+    @include md {
+      gap: fluid(16, $lg);
+    }
+  }
+
+  #cookie-decline {
+    background-color: #dadaca;
+
+    &:hover {
+      background-color: $darkblue;
     }
   }
 }

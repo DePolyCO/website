@@ -16,6 +16,7 @@ import { articleController } from "./controllers/article";
 import { noController } from "./controllers/404";
 
 import { Grid } from "./grid";
+import { Cookie } from "./cookie";
 // import { asideController } from "./components/aside";
 
 // import { smoothscroller } from "./scroller";
@@ -69,6 +70,10 @@ iris.add(
     // ) {
     //   navigator.serviceWorker.register("/sw.js");
     // }
+
+    idly(() => {
+      new Cookie();
+    });
   },
   {
     once: true,

@@ -68,7 +68,7 @@
         {% endif %}
       {% endfor %}
 
-            {# bio #}
+      {# bio #}
       {% for member in team.advisors %}
         {% if member.bio %}
           <div id="bio-panel--{{ member.name | slugify }}" class="aside-panel z1">
@@ -363,6 +363,27 @@
   </aside>
 
   {% include "_components/_nav.njk" %}
+
+  <aside id="cookie-banner" class="df fc aic jcc z8 pf">
+    <div class="info-icon">
+      <svg>
+        <use xlink:href="#info-icon--filled"></use>
+      </svg>
+    </div>
+    <p>DePoly website is using <span class="text-underline">cookies</span> to make your experience better.</p>
+    <div class="df jcb">
+      <button class="cta-btn" id="cookie-decline">
+        <div class="pr oh btn-wrapper">
+          <div class="btn-inner" data-content="Decline">Decline</div>
+        </div>
+      </button>
+      <button class="cta-btn" id="cookie-accept">
+        <div class="pr oh btn-wrapper">
+          <div class="btn-inner" data-content="Accept">Accept</div>
+        </div>
+      </button>
+    </div>
+  </aside>
 
   <div id="scroll-cover" class="pf inset z8 df fc jcc aic pen m-hide"></div>
   <div id="sail" class="pf inset z7 df fc jcc aic pen"></div>

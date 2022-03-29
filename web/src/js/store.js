@@ -1,5 +1,6 @@
 export const Store = {
   images: {},
-  textures: {},
+  // textures: {},
   dom: false,
+  cookie: true,
 };

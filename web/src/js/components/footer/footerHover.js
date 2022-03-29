@@ -3,7 +3,7 @@ import { iris, qs, qsa } from "../../hermes";
 export class FooterHover {
   constructor({ dom }) {
     this.dom = dom;
-    this.targets = qsa("[data-footer-hover]").map((item, i) => {
+    this.targets = qsa("[data-footer-hover]", dom).map((item) => {
       const wrapper = qs(".tag-wrapper", item);
       const tag = qs(".footer-tag", wrapper);
       const hover = qs(".hover-item", item);
@@ -19,13 +19,18 @@ export class FooterHover {
   }
 
   listen = () => {
+    this.unlisteners = [];
     this.targets.forEach((item, i) => {
       if (!item.hover) return;
-      iris.add(item.hover, "pointerenter", () => this.in(i));
-      iris.add(item.hover, "pointerleave", () => this.out(i));
+      const u0 = iris.add(item.hover, "pointerenter", () => this.in(i));
+      const u1 = iris.add(item.hover, "pointerleave", () => this.out(i));
+      let u2;
       if (!item.hover.dataset.noCopy) {
-        iris.add(item.hover, "click", () => this.click(i));
+        u2 = iris.add(item.hover, "click", () => this.click(i));
       }
+
+      this.unlisteners.push(u0, u1);
+      u2 && this.unlisteners.push(u2);
     });
   };
 
@@ -47,5 +52,9 @@ export class FooterHover {
       },
       () => {}
     );
+  };
+
+  destroy = () => {
+    this.unlisteners.forEach((u) => u());
   };
 }

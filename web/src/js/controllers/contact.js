@@ -5,10 +5,11 @@ import { nav } from "../components/nav";
 import { FormManager } from "../components/forms";
 import { MobileForms } from "../components/forms/mobile";
 
-import { iris, Sniff, Vau } from "../hermes";
+import { iris, qs, Sniff, Vau } from "../hermes";
 import { smoothscroller, Parallax } from "../scroller";
 import { Reveal } from "../reveal";
 import { monoShuffle } from "../components/monoShuffle";
+import { FooterHover } from "../components/footer/footerHover";
 
 /**
  *
@@ -16,7 +17,7 @@ import { monoShuffle } from "../components/monoShuffle";
  *
  */
 
-let undetail, forms, ph;
+let undetail, forms, ph, fh;
 export const contactController = new Controller({
   hide: ({ done }) => {
     undetail();
@@ -24,6 +25,7 @@ export const contactController = new Controller({
     r0.destroy();
     ph && ph.destroy();
     monoShuffle.destroy();
+    fh && fh.destroy();
 
     sail.out(done);
   },
@@ -68,6 +70,10 @@ export const contactController = new Controller({
       forms = new MobileForms();
     } else {
       forms = new FormManager();
+      fh = new FooterHover({
+        dom: qs("#contact-list"),
+      });
+      window.h = fh;
     }
 
     r0 = new Reveal({

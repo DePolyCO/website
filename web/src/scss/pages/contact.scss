@@ -54,6 +54,15 @@
     }
   }
 
+  .contact-item {
+    .footer-tag {
+      left: 0;
+      top: -150%;
+      right: unset;
+      transform: none;
+    }
+  }
+
   .contact-item:not(:last-of-type) {
     margin-bottom: fluid(32 - 5, $sm);
 

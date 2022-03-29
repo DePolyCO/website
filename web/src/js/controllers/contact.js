@@ -17,12 +17,13 @@ import { FooterHover } from "../components/footer/footerHover";
  *
  */
 
-let undetail, forms, ph, fh;
+let undetail, forms, ph, fh, r0, r1;
 export const contactController = new Controller({
   hide: ({ done }) => {
     undetail();
     forms.destroy();
     r0.destroy();
+    r1.destroy();
     ph && ph.destroy();
     monoShuffle.destroy();
     fh && fh.destroy();
@@ -73,7 +74,6 @@ export const contactController = new Controller({
       fh = new FooterHover({
         dom: qs("#contact-list"),
       });
-      window.h = fh;
     }
 
     r0 = new Reveal({
@@ -82,6 +82,13 @@ export const contactController = new Controller({
     });
     r0.play();
     monoShuffle.init();
+
+    r1 = new Reveal({
+      targets: "#map-overlay--text",
+      stagger: 75,
+      auto: true,
+      threshold: 0.99,
+    });
 
     sail.in();
     done();

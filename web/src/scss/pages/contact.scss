@@ -247,6 +247,14 @@
       bottom: fluid(60, $lg);
       left: fluid(60, $lg);
       padding: fluid(50, $lg);
+      opacity: 0;
+      transform: translateY(25%);
+
+      &.fx-on {
+        opacity: 1;
+        transform: none;
+        transition: transform 2s $ease-out-expo, opacity 1.5s $ease-out-expo;
+      }
     }
   }
 

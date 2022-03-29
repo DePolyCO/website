@@ -180,6 +180,10 @@
     height: fluid(349, $sm);
     margin-bottom: fluid(90, $sm);
 
+    video {
+      object-fit: contain;
+    }
+
     @include md {
       margin-bottom: 0;
       width: fluid(772, $lg);
@@ -308,6 +312,11 @@
       width: fluid(70, $sm);
       height: fluid(70, $sm);
       animation: rotator 3s forwards $ease-in-out-quint infinite;
+    }
+
+    #callout-icon--inner {
+      top: fluid(-12, $sm);
+      left: fluid(1, $sm);
     }
 
     @include md {

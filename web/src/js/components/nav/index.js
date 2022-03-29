@@ -46,6 +46,7 @@ export class Nav {
             from: 105,
             delay: 1 * 50,
             duration: 1750,
+            skipGuarantee: true,
           })
       );
 

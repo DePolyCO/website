@@ -150,7 +150,7 @@ meta:
         <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Advisors</div>
         <div id="advisor-list" class="grid-list df fc fw pr jcb">
             {% for member in team.advisors %}
-                <div class="team-item pen">
+                <div class="team-item {% if member.bio %} cp {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                     <picture class="team-photo fx fx-once">
                         <img loading="lazy" decoding="async" src="{% imageUrlFor member.img %}" alt="Photo of {{ member.name }}">
                     </picture>

@@ -35,24 +35,28 @@ class MonoShuffle {
       let idx = 0,
         curIdx = -1,
         curText = "";
-      const duration = textL * 75;
+      const duration = textL * 100;
 
       new Duration({
         duration,
         update: ({ progress }) => {
-          idx = Math.floor(map(progress, 0, 1, 0, textL));
           if (curText === finalValue) return;
-          if (curIdx === idx) {
-            //   change letter
-            node.innerText = curText + this.getRandomChar();
-            // for (let i = 0; i <= idx; i++) {
-            //   const element = array[i];
-            // }
+
+          if (progress < 0.5) {
+            // random phase
+            idx = Math.floor(map(progress, 0, 0.5, 0, textL));
+            const r = this.getRandomStr(idx);
+            curText = r;
+            node.innerText = r;
           } else {
-            //   add letter
-            curText += finalValue[idx];
+            // correct phase
+            idx = Math.floor(map(progress, 0.5, 1, 0, textL));
+            if (idx === curIdx) return;
             curIdx = idx;
-            node.innerText = curText;
+            const r =
+              finalValue.slice(0, idx) + this.getRandomStr(textL).slice(idx);
+            curText = r;
+            node.innerText = r;
           }
         },
       });
@@ -63,6 +67,14 @@ class MonoShuffle {
 
   getRandomChar = () => {
     return this.chars[Math.floor(Math.random() * this.charsL)];
+  };
+
+  getRandomStr = (len) => {
+    let s = "";
+    for (let i = 0; i < len; i++) {
+      s += this.getRandomChar();
+    }
+    return s;
   };
 
   destroy = () => {

@@ -330,11 +330,10 @@ label {
 
 .hover-toggle {
   details[open] ~ .form-toggle {
-    background-color: $darkblue;
+    background-color: $darkbeige;
 
     > svg {
       transform: rotate(-90deg) !important;
-      filter: invert(1);
     }
   }
 }

@@ -39,7 +39,7 @@ export class CaptureReveal {
     this.build();
     this.listen();
 
-    window.r = this;
+    // window.r = this;
   }
 
   build = () => {

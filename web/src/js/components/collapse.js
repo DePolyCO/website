@@ -227,7 +227,7 @@ export class Collapse {
     const top = getOffsetTop(this.dom);
     const { slides, page, boundRange } = this.state;
     page.offset = window.innerHeight;
-    page.width = page.offset * slides.no - bounds(this.window).width;
+    page.width = page.offset * slides.no;
 
     const stickyPoint = window.innerHeight * 0.25; // 25vh from top
 

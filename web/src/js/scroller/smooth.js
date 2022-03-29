@@ -52,7 +52,7 @@ export class Smooth extends Conductor {
     this.ro = new ResizeObserver(this.resize);
     this.ro.observe(this.scrollContent);
 
-    window.smooth = this;
+    // window.smooth = this;
   }
 
   init() {

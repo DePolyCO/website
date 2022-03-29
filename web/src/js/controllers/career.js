@@ -105,7 +105,7 @@ export const careerController = new Controller({
       targets: ".pos-rev",
       stagger: 50,
       auto: true,
-      threshold: 1,
+      threshold: 0.5,
     });
 
     sail.in();

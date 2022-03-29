@@ -11,7 +11,7 @@ class MonoShuffle {
     this.charsL = this.chars.length - 1;
     this.o = Observer().create({
       callback: this.reveal,
-      threshold: 1,
+      threshold: 0,
     });
   };
 

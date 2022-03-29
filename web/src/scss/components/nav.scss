@@ -213,7 +213,7 @@
 }
 
 .nav-link--inner {
-  width: 100%;
+  width: fluid(320, $sm);
 
   @include md {
     width: auto;

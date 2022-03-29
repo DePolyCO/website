@@ -57,7 +57,7 @@ export class Nav {
         duration: 2500,
         easing: "o6",
         transform: {
-          y: [1, 50],
+          y: [0, 50],
           yu: "%",
         },
       });

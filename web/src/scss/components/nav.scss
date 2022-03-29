@@ -146,8 +146,8 @@
 }
 
 #nav-links {
-  gap: fluid(47, $sm);
-  top: fluid(72 + 55, $sm);
+  gap: fluid(52, $sm);
+  top: fluid(72 + 48, $sm);
   position: relative;
 
   @include md {

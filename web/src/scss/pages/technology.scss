@@ -284,6 +284,15 @@
     }
   }
 
+  @keyframes rotator {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   #callout-icon {
     width: fluid(70, $sm);
     height: 1rem;
@@ -292,25 +301,32 @@
     transform: translate3d(-5%, 25%, 0);
     position: relative;
 
-    svg {
+    #callout-icon--outer {
       position: absolute;
       bottom: fluid(-15, $sm);
       left: 0;
       width: fluid(70, $sm);
       height: fluid(70, $sm);
+      animation: rotator 3s forwards $ease-in-out-quint infinite;
     }
 
     @include md {
       width: fluid(140, $lg);
-      height: 1rem;
+      height: 1.5rem;
 
       transform: translate3d(-5%, 25%, 0);
 
-      svg {
+      #callout-icon--outer {
         bottom: fluid(-30, $lg);
         left: 0;
         width: fluid(140, $lg);
         height: fluid(140, $lg);
+      }
+
+      #callout-icon--inner {
+        height: 2rem;
+        top: fluid(-30, $lg);
+        left: fluid(2, $lg);
       }
     }
   }

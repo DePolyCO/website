@@ -457,6 +457,9 @@ strong {
   .explain--picture {
     margin-bottom: fluid(20, $sm);
     overflow: visible;
+    width: fluid(335, $sm);
+    position: relative;
+    left: fluid(-20, $sm);
 
     img {
       width: 100%;

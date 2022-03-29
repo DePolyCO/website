@@ -8,7 +8,7 @@
 
 .hero-title--wrapper {
   margin-bottom: fluid(26, $sm);
-  padding-top: fluid(12, $sm);
+  padding-top: fluid(6, $sm);
 
   @include md {
     margin-bottom: fluid(43, $lg);
@@ -23,14 +23,14 @@
   line-height: 100%;
   letter-spacing: -0.05em;
 
+  .l-line {
+    padding-bottom: 0.03em;
+  }
+
   @include md {
     // width: fluid(1639, $lg);
     font-size: fluid(120, $lg);
     padding-bottom: fluid(16, $lg);
-  }
-
-  .l-line {
-    padding-bottom: 0.1em;
   }
 }
 

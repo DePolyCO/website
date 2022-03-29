@@ -136,7 +136,7 @@ body {
 picture.fx {
   img {
     opacity: 0;
-    transition: opacity 1.75s $ease-out-expo;
+    transition: opacity 2.75s $ease-out-expo;
   }
 
   &.fx-on {

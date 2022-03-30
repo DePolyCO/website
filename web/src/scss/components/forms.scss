@@ -11,6 +11,10 @@ details {
   @include md {
     padding-left: fluid(40, $lg);
 
+    .form-title {
+      border-bottom: 1px solid #aab6b6;
+    }
+
     // border bottom
     &::after {
       left: fluid(40, $lg);
@@ -28,6 +32,7 @@ details[open] {
 
     @include md {
       padding-bottom: fluid(38, $lg);
+      border-bottom: none;
 
       &.margin-sm {
         padding-bottom: fluid(14, $lg);

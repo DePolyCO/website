@@ -12,11 +12,12 @@ export const trimText = (text, charCount = 160, addEllipsis = true) => {
 };
 
 export class Search {
-  constructor({ input, template, targetContainer, btn, engine }) {
+  constructor({ input, template, targetContainer, btn, noResults, engine }) {
     this.input = qs(input);
     this.template = qs(template);
     this.targetContainer = qs(targetContainer);
     this.btn = qs(btn);
+    this.noResult = qs(noResults);
     this.engine = engine;
 
     // this.api = "/.netlify/functions/search?term=";
@@ -91,6 +92,7 @@ export class Search {
 
       this.build(paged);
     } else {
+      this.noResults();
       console.log("No results!");
     }
 
@@ -108,6 +110,7 @@ export class Search {
       const clone = this.template.content.cloneNode(true);
       qs("a", clone).href = `/article/${item.url}/`;
       qs("img", clone).src = item.mainImage;
+      qs("img", clone).alt = trimText(item.title, 40);
       qs(".article-card--title", clone).innerHTML = trimText(item.title, 40);
       qs(".article-card--desc", clone).innerHTML = trimText(item.content, 160);
       qs(
@@ -117,6 +120,11 @@ export class Search {
 
       frag.appendChild(clone);
     });
+
+    this.targetContainer.style.display = "grid";
+    this.noResult.style.position = "absolute";
+    this.noResult.style.opacity = 0;
+    this.noResult.style.pointerEvents = "none";
 
     new Vau({
       targets: qsa(".article-card", this.targetContainer),
@@ -138,9 +146,17 @@ export class Search {
     });
   };
 
+  noResults = () => {
+    this.targetContainer.style.display = "none";
+    app.listeners();
+
+    this.noResult.style.position = "static";
+    this.noResult.style.opacity = 1;
+    this.noResult.style.pointerEvents = "all";
+    this.engine.buildPage([]);
+  };
+
   destroy = () => {
     this.unClick && this.unClick();
   };
-
-  noResults = () => {};
 }

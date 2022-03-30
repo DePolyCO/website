@@ -792,6 +792,54 @@
   #pagination-after {
     padding-left: fluid(30, $lg);
   }
+
+  // no results
+
+  #no-results {
+    background-color: #ecece2;
+    text-align: center;
+    transition: opacity 0.4s;
+    opacity: 0;
+    pointer-events: none;
+    margin-bottom: fluid(40, $sm);
+
+    @include md {
+      margin-bottom: fluid(40, $lg);
+    }
+
+    picture {
+      width: fluid(325, $sm);
+      height: fluid(325, $sm);
+
+      @include md {
+        width: fluid(466, $lg);
+        height: fluid(466, $lg);
+      }
+    }
+
+    .no-results--title {
+      font-size: fluid(36, $sm);
+      margin-bottom: fluid(12, $sm);
+      line-height: 100%;
+      letter-spacing: -0.02em;
+
+      @include md {
+        font-size: fluid(50, $lg);
+        margin-bottom: fluid(12, $lg);
+      }
+    }
+
+    p {
+      width: fluid(325, $sm);
+      font-size: fluid(18, $sm);
+      line-height: 140%;
+
+      @include md {
+        width: fluid(441, $lg);
+        font-size: fluid(22, $lg);
+      }
+    }
+  }
 }
 
 .has-nav #blog #blog-filters--extended {

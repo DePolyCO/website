@@ -25,7 +25,7 @@ class Sail {
     this.tl.add({
       targets: this.app,
       transform: {
-        y: [150, 0],
+        y: [105, 0],
       },
       duration: 1750,
       easing: "o4",

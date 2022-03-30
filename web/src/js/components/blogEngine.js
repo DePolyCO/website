@@ -43,6 +43,7 @@ export class Engine {
         template: "#blog-article--item",
         targetContainer: "#blog-article--list",
         btn: "#search-extended--btn",
+        noResults: "#no-results",
       },
     };
 
@@ -53,7 +54,7 @@ export class Engine {
 
     this.init();
 
-    // window.blog = this;
+    window.blog = this;
   }
 
   init = async () => {

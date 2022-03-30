@@ -166,7 +166,7 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
         </div>
 
         <div>
-            <ul id="blog-article--list" class="df fc">
+            <ul id="blog-article--list">
                 {# {% for article in articles.all %}
                     <li class="blog-article--item">
                         <a href="/article/{{ article.settings.slug.current | slugify }}"  class="article-card--link cp">
@@ -199,37 +199,48 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                         </a>
                     </li>
                 {% endfor %} #}
-                <template id="blog-article--item">
-                    <li class="blog-article--item">
-                        <a href="/blog/" class="article-card--link cp">
-                            <div class="article-card article-card--vert df fc">
-                                <picture class="article-card--thumbnail">
-                                    <img src="/static/temp.jpg" alt="">
-                                </picture>
-                                <div class="article-content df fc">
-                                    <div class="article-card--tag tag ttu fv-mono"></div>
-                                    <div class="article-card--title"></div>
-                                    <p class="article-card--desc"></p>
-                                    <div class="df article-card--cta aic">
-                                        <div>Read More</div>
-                                        <div class="rarr-wrapper">
-                                            <div class="oh pr">
-                                                <svg fill="none" viewBox="0 0 13 8">
-                                                    <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                                </svg>
-                                                <svg class="pa" fill="none" viewBox="0 0 13 8">
-                                                    <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                                </svg>
-                                            </div>
+
+            </ul>
+
+            <template id="blog-article--item">
+                <li class="blog-article--item">
+                    <a href="/blog/" class="article-card--link cp">
+                        <div class="article-card article-card--vert df fc">
+                            <picture class="article-card--thumbnail">
+                                <img src="" alt="">
+                            </picture>
+                            <div class="article-content df fc">
+                                <div class="article-card--tag tag ttu fv-mono"></div>
+                                <div class="article-card--title"></div>
+                                <p class="article-card--desc"></p>
+                                <div class="df article-card--cta aic">
+                                    <div>Read More</div>
+                                    <div class="rarr-wrapper">
+                                        <div class="oh pr">
+                                            <svg fill="none" viewBox="0 0 13 8">
+                                                <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
+                                            </svg>
+                                            <svg class="pa" fill="none" viewBox="0 0 13 8">
+                                                <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                    </li>
-                </template>
+                        </div>
+                    </a>
+                </li>
+            </template>
 
-            </ul>
+            <div class="pa df fc aic" id="no-results">
+                <picture>
+                    <img src="/static/blog/no-results.jpg" alt="No results">
+                </picture>
+                <div class="no-results--title ttu">
+                    No Results :(
+                </div>
+                <p>Looks like there’s no result that fits your search criteria. Try again!</p>
+            </div>
 
             <nav id="pagination" class="df aic jcb m-hide">
                 <div class="page-arr" id="pagination-before">&larr;</div>

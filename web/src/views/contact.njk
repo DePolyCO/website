@@ -22,8 +22,8 @@ meta:
 <main data-hydra-content="contact" id="contact">
     {{ 
         header(
-            'Contact Us', 
-            "We're always happy to host and talk to with you", 
+            'Nous contacter', 
+            "Nous sommes toujours heureux de vous parler!", 
             "/static/contact/hero.jpg", 
             "hero img"
         ) 
@@ -31,11 +31,11 @@ meta:
 
     <section id="form" class="restrict df fc border-bottom" data-scroll-section>
         <div id="prefer-mail" class="df fc jcb">
-            <div id="prefer-mail--title" class="rev">Prefer sending a direct email over contact forms?</div>
+            <div id="prefer-mail--title" class="rev">Vous souhaitez envoyer un email au lieu de remplir un formulaire?</div>
             <ul id="contact-list" class="df fc">
                 <li class="contact-item df fc" data-footer-hover="contact@depoly.ch">
                     <div class="pr fit tag-wrapper">
-                        <div class="contact-title ttu">General</div>
+                        <div class="contact-title ttu">Général</div>
                         <div class="pa ttu footer-tag">Copy to clipboard</div>
                     </div>
                     <div>
@@ -44,7 +44,7 @@ meta:
                 </li>
                 <li class="contact-item df fc" data-footer-hover="careers@depoly.ch">
                     <div class="pr fit tag-wrapper">
-                        <div class="contact-title ttu">Submit your CV</div>
+                        <div class="contact-title ttu">Envoyer votre CV</div>
                         <div class="pa ttu footer-tag">Copy to clipboard</div>
                     </div>
                     <div>
@@ -53,7 +53,7 @@ meta:
                 </li>
                 <li class="contact-item df fc" data-footer-hover="sales@depoly.ch">
                     <div class="pr fit tag-wrapper">
-                        <div class="contact-title ttu">Curious about a sample?</div>
+                        <div class="contact-title ttu">Curieux d'un échantillon?</div>
                         <div class="pa ttu footer-tag">Copy to clipboard</div>
                     </div>
                     <div>
@@ -66,7 +66,7 @@ meta:
 
             <div id="dropdown-m--wrapper" class="pr top left right d-hide z1">
                 <div id="dropdown-m--active" class="z1 pr">
-                    <div data-value="0">General Info</div>
+                    <div data-value="0">Informations Générales</div>
                     <svg class="pa top right" id="dropdown-m--chevron" viewBox="0 0 13 8" fill="none">
                         <path d="M2.41.84 7 5.42 11.59.84 13 2.25l-6 6-6-6L2.41.84Z" fill="#022D42" stroke="#ECECE2" stroke-width=".3"/>
                     </svg>
@@ -83,14 +83,14 @@ meta:
             {# General Information #}
             <div class="pr form-wrapper z0" id="general-form--wrapper">
                 <details class="form-details pr" id="general-form" open>
-                    <summary class="form-title m-hide">General Information</summary>
+                    <summary class="form-title m-hide">Informations Générales</summary>
                     <form novalidate data-netlify="true" name="General Information" method="POST" class="form-content">
                         <div class="df fc form-inner">
                             <div class="df fc field-col">
                                 <div class="field pr">
-                                    <input name="First Name" class="field-input first-name" id="general-firstname" placeholder="First Name" required type="text" data-type="name">
-                                    <label class="pen field-label pa" for="general-firstname">First Name</label>
-                                    <label class="pen field-label--active ttu pa" for="general-firstname">First Name</label>
+                                    <input name="First Name" class="field-input first-name" id="general-firstname" placeholder="Prénom" required type="text" data-type="name">
+                                    <label class="pen field-label pa" for="general-firstname">Prénom</label>
+                                    <label class="pen field-label--active ttu pa" for="general-firstname">Prénom</label>
                                     <div class="cp pa error-icon">
                                         <svg>
                                             <use xlink:href="#err-icon"></use>
@@ -99,9 +99,9 @@ meta:
                                     </div>
                                 </div>
                                 <div class="field pr">
-                                    <input name="Last Name" class="field-input" id="general-lastname" placeholder="Last Name" required type="text" data-type="name">
-                                    <label class="pen field-label pa" for="general-lastname">Last Name</label>
-                                    <label class="pen field-label--active ttu pa" for="general-lastname">Last Name</label>
+                                    <input name="Last Name" class="field-input" id="general-lastname" placeholder="Nom" required type="text" data-type="name">
+                                    <label class="pen field-label pa" for="general-lastname">Nom</label>
+                                    <label class="pen field-label--active ttu pa" for="general-lastname">Nom</label>
                                     <div class="cp pa error-icon">
                                         <svg>
                                             <use xlink:href="#err-icon"></use>
@@ -110,9 +110,9 @@ meta:
                                     </div>
                                 </div>
                                 <div class="field pr">
-                                    <input name="Email ID" class="field-input" id="general-email" placeholder="Email Address" required type="email" data-type="email">
-                                    <label class="pen field-label pa" for="general-email">Email Address</label>
-                                    <label class="pen field-label--active ttu pa" for="general-email">Email Address</label>
+                                    <input name="Email ID" class="field-input" id="general-email" placeholder="Adresse électronique " required type="email" data-type="email">
+                                    <label class="pen field-label pa" for="general-email">Adresse électronique </label>
+                                    <label class="pen field-label--active ttu pa" for="general-email">Adresse électronique </label>
                                     <div class="cp pa error-icon">
                                         <svg>
                                             <use xlink:href="#err-icon"></use>
@@ -123,9 +123,9 @@ meta:
                             </div>
                             <div class="df">
                                 <div class="field pr textarea">
-                                    <textarea class="field-input field-input--textarea" placeholder="Your Message" name="Message" id="general-message" cols="30" rows="10"></textarea>
-                                    <label class="pen field-label pa" for="general-message">Your Message</label>
-                                    <label class="pen field-label--active ttu pa" for="general-message">Your Message</label>
+                                    <textarea class="field-input field-input--textarea" placeholder="Votre message" name="Message" id="general-message" cols="30" rows="10"></textarea>
+                                    <label class="pen field-label pa" for="general-message">Votre message</label>
+                                    <label class="pen field-label--active ttu pa" for="general-message">Votre message</label>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +155,7 @@ meta:
             {# Submit CV #}
             <div class="pr form-wrapper">
                 <details class="form-details pr" id="cv-form">
-                    <summary class="form-title m-hide">Submit your CV</summary>
+                    <summary class="form-title m-hide">Envoyer votre CV</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Submit CV" method="POST" class="form-content">
                         <div class="df fc form-inner">
                             <div class="df fc field-col">
@@ -256,7 +256,7 @@ meta:
             {# Sample & Quote #}
             <div class="pr form-wrapper">
                 <details class="form-details pr" id="sample-form">
-                    <summary class="form-title margin-sm m-hide">Sample & Quote</summary>
+                    <summary class="form-title margin-sm m-hide">Echantillon et Devis</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Sample & Quote" method="POST" class="form-content">
                         <div class="form-subtitle df fc aic jcc">
                             <div class="info-icon">
@@ -264,7 +264,7 @@ meta:
                                     <use xlink:href="#info-icon--filled"></use>
                                 </svg>
                             </div>
-                            <div>Only registered laboratories can order a sample.</div>
+                            <div>Seulement les laboratoires enregistrés peuvent commander un échantillon.</div>
                         </div>
                         <div class="df fc form-inner">
                             <div class="df fc field-col">
@@ -302,9 +302,9 @@ meta:
                                     </div>
                                 </div>
                                 <div class="field pr">
-                                    <input name="Company Name" class="field-input" id="sample-company" placeholder="Company Name" required type="text">
-                                    <label class="pen field-label pa" for="sample-company">Company Name</label>
-                                    <label class="pen field-label--active ttu pa" for="sample-company">Company Name</label>
+                                    <input name="Company Name" class="field-input" id="sample-company" placeholder="Nom de l'entreprise " required type="text">
+                                    <label class="pen field-label pa" for="sample-company">Nom de l'entreprise </label>
+                                    <label class="pen field-label--active ttu pa" for="sample-company">Nom de l'entreprise </label>
                                     <div class="cp pa error-icon">
                                         <svg>
                                             <use xlink:href="#err-icon"></use>
@@ -314,7 +314,7 @@ meta:
                                 </div>
                                 <div class="field pr">
                                     <select class="field-input" name="Industry" id="sample-industry">
-                                        <option value="placeholder">Industry</option>
+                                        <option value="placeholder">Industrie</option>
                                         <option value="Medical">Medical</option>
                                         <option value="Biotechnology">Biotechnology</option>
                                         <option value="Ecology">Ecology</option>
@@ -328,7 +328,7 @@ meta:
                                 </div>
                                 <div class="field pr">
                                     <select class="field-input" name="Purpose" id="sample-purpose">
-                                        <option value="placeholder">Purpose</option>
+                                        <option value="placeholder">But de l'utilisation </option>
                                         <option value="Medical">Medical</option>
                                         <option value="Biotechnology">Biotechnology</option>
                                         <option value="Ecology">Ecology</option>
@@ -351,7 +351,7 @@ meta:
                         </div>
                         <button class="cta-btn" id="sample-submit">
                             <div class="pr oh btn-wrapper">
-                                <div class="btn-inner" data-content="Request Sample">Request Sample</div>
+                                <div class="btn-inner" data-content="Demander un échantillon">Demander un échantillon</div>
                             </div>
                         </button>
                     </form>

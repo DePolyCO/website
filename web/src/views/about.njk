@@ -17,8 +17,8 @@ meta:
 <main data-hydra-content="about" id="about">
     {{ 
         header(
-            'Nice to meet you', 
-            "Rethinking Recycling From the Ground Up", 
+            'Enchanté de vous rencontrer', 
+            "Reconsidérer le recyclage à partir de zéro", 
             "/static/about/hero.jpg", 
             "hero img"
         ) 
@@ -26,10 +26,10 @@ meta:
 
     {{ 
         textBlock(
-            "Who is DePoly?",
+            "Qui est DEPOLY?",
             [
-                "'Swiss technology from the heart of Valais' – DePoly SA was developed and founded in 2020 with a goal to create a cleaner world for future generations.",
-                "Our ambitious and dedicated team is made up of people looking to change the world, and leave it a cleaner place for the next generations."
+                "'La technologie suisse du cœur du Valais' - Depoly SA a été développée et fondée en 2020 dans le but de créer un monde plus propre pour les générations futures.",
+                "Notre équipe ambitieuse et dévouée est composée de personnes qui cherchent à changer le monde et à le garder plus propre pour les prochaines générations"
             ],
             "who"
         ) 
@@ -40,24 +40,24 @@ meta:
         <ul id="numbers-content" class="df fc pr">
             <li class="number-item pr df cp">
                 <div class="number-no cp">10</div>
-                <div class="pa number-detail">Employees</div>
+                <div class="pa number-detail">Employés</div>
             </li>
             <li class="number-item pr df cp">
                 <div class="number-no cp">6</div>
-                <div class="pa number-detail">Different Nationalities</div>
+                <div class="pa number-detail">Nationalités Différentes</div>
             </li>
             <li class="number-item pr df cp">
                 <div class="number-no cp">~50%</div>
-                <div class="pa number-detail">Gender Split</div>
+                <div class="pa number-detail">homme / femme</div>
             </li>
             <li class="number-item pr df cp">
                 <div class="number-no cp">10</div>
-                <div class="pa number-detail">Languages</div>
+                <div class="pa number-detail">Langues</div>
             </li>
             <li class="number-item pr df cp">
                 <div class="number-no cp">>50</div>
                 <div class="pa number-detail bottom">
-                    Years in Academia, R&D and Industry
+                    ans R&D en industrie et académie
                 </div>
             </li>
         </ul>
@@ -74,19 +74,19 @@ meta:
         </ul>
         <ul id="numbers-m--content" class="df pr">
             <li class="number-m--item pa">
-                <div class="number-m--detail">Employees</div>
+                <div class="number-m--detail">Employés</div>
             </li>
             <li class="number-m--item pa">
-                <div class="number-m--detail">Different Nationalities</div>
+                <div class="number-m--detail">Nationalités Différentes</div>
             </li>
             <li class="number-m--item pa">
-                <div class="number-m--detail">Gender Split</div>
+                <div class="number-m--detail">homme / femme</div>
             </li>
             <li class="number-m--item pa">
-                <div class="number-m--detail">Languages</div>
+                <div class="number-m--detail">Langues</div>
             </li>
             <li class="number-m--item pr">
-                <div class="number-m--detail bottom">Years in Academia, R&D and Industry</div>
+                <div class="number-m--detail bottom">ans R&D en industrie et académie</div>
             </li>
         </ul>
     </section>
@@ -128,7 +128,7 @@ meta:
     </section> #}
 
     <section id="team" class="restrict df fc border-bottom" data-scroll-section>
-        <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Our Team</div>
+        <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Notre équipe</div>
         <div id="team-list" class="grid-list pr df fc fw jcb" style="--count: {{ team.members.length }}">
             {% for member in team.members %}
                 <div class="team-item {% if member.bio %} cp {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
@@ -147,7 +147,7 @@ meta:
     </section>
 
     <section class="restrict" data-scroll-section>
-        <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Advisors</div>
+        <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Conseillers</div>
         <div id="advisor-list" class="grid-list df fc fw pr jcb">
             {% for member in team.advisors %}
                 <div class="team-item {% if member.bio %} cp {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>

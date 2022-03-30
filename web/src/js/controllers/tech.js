@@ -80,10 +80,19 @@ export const techController = new Controller({
 
     if (!Sniff.touchDevice) {
       ps = qsa(".explain-item").map(
-        (item) => new Parallax({ dom: item, ease: "io2" })
+        (item) =>
+          new Parallax({
+            dom: item,
+            ease: "io2",
+            speed: document.body.classList.contains("fra") ? 10 : 1,
+          })
       );
 
-      pt = new Parallax({ dom: qs("#magic-content--inner"), ease: "io2" });
+      pt = new Parallax({
+        dom: qs("#magic-content--inner"),
+        ease: "io2",
+        speed: document.body.classList.contains("fra") ? 10 : 1,
+      });
     }
 
     nav.setLinkActive("technology");

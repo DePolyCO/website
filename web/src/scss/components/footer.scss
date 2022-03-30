@@ -368,6 +368,8 @@
 .footer-terms {
   font-size: fluid(16, $sm);
   line-height: 140%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 
   @include md {
     font-size: fluid(16, $lg);

@@ -11,12 +11,11 @@ import { Engine } from "../components/blogEngine";
  *
  */
 
-let ficl, s1, o;
+let ficl, s1;
 export const blogController = new Controller({
   hide: ({ done }) => {
     ficl && ficl();
     s1.destroy();
-    o.disconnect();
     sail.out(done);
   },
 

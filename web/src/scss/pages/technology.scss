@@ -1,5 +1,6 @@
 #technology {
   background-color: #ebece3;
+
   #pta,
   #results,
   #granules,
@@ -79,15 +80,27 @@
   .explain-item {
     &:nth-of-type(1) {
       margin-bottom: fluid(298, $lg);
+
+      body.fra & {
+        margin-bottom: fluid(298 * 0.1, $lg);
+      }
     }
 
     &:nth-of-type(2) {
       padding-top: fluid(100, $lg);
       margin-bottom: fluid(463, $lg);
+
+      body.fra & {
+        margin-bottom: fluid(463 * 0.75, $lg);
+      }
     }
 
     &:nth-of-type(3) {
       margin-bottom: fluid(249, $lg);
+
+      body.fra & {
+        margin-bottom: fluid(249 * 1, $lg);
+      }
     }
   }
 

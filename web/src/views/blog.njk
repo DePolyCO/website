@@ -61,9 +61,16 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
         </div>
         <div id="blog-categories" class="article-animate m-hide">
 
+            {% set idx = 0 %}
             <ul class="df fc" id="blog-category--list">
                 <li>
-                    {% set article = articles.all[0] %}
+                    {% if articles
+                        .all[idx]
+                        ._id == featuredArticle
+                        ._id %}
+                        {% set idx = idx + 1 %}
+                    {% endif %}
+                    {% set article = articles.all[idx] %}
                     <a href="/article/{{ article.settings.slug.current }}" class="article-card--link cp">
                         <div class="article-card article-card--hori df">
                             <picture class="article-card--thumbnail">
@@ -100,7 +107,14 @@ permalink: "blog/{{ pagination.pageNumber + 1 }}/" #}
                     </a>
                 </li>
 
+                {% set idx = idx + 1 %}
                 <li>
+                    {% if articles
+                        .all[idx]
+                        ._id == featuredArticle
+                        ._id %}
+                        {% set idx = idx + 1 %}
+                    {% endif %}
                     {% set article = articles.all[1] %}
                     <a href="/article/{{ article.settings.slug.current }}" class="article-card--link cp">
                         <div class="article-card article-card--hori df">

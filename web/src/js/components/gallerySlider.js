@@ -72,7 +72,7 @@ export class GallerySlider {
 
     if (Sniff.touchDevice) return;
 
-    this.observer = Observer().create({
+    this.observer = Observer.create({
       callback: this.visible,
     });
     this.observer.observe(this.dom);

@@ -14,7 +14,7 @@ export class Looper {
       loop: null,
     };
 
-    this.observer = Observer().create({
+    this.observer = Observer.create({
       callback: this.play,
     });
     this.observer.observe(this.dom);

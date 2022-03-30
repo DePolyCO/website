@@ -2,7 +2,7 @@ import { Observer } from "../../hermes";
 
 class FXManager {
   constructor() {
-    this.o = Observer().create({
+    this.o = Observer.create({
       callback: this.change,
     });
   }

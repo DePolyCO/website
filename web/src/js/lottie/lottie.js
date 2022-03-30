@@ -76,7 +76,7 @@ export class Lottie {
   }
 
   observe() {
-    this.o = Observer().create({
+    this.o = Observer.create({
       callback: this.change,
     });
     this.o.observe(this.target);

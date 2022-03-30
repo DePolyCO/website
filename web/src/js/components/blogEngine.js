@@ -1,4 +1,4 @@
-import { iris, qs, qsa, Sniff } from "../hermes";
+import { iris, Observer, qs, qsa, Sniff, Vau } from "../hermes";
 import { Search } from "./search";
 import { Store } from "../store";
 import { MiniBlog } from "./blogTop";

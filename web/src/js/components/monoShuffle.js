@@ -9,7 +9,7 @@ class MonoShuffle {
     this.chars =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=[];',./<>?";
     this.charsL = this.chars.length - 1;
-    this.o = Observer().create({
+    this.o = Observer.create({
       callback: this.reveal,
       threshold: 0,
     });

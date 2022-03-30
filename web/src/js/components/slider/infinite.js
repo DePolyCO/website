@@ -22,7 +22,7 @@ export class InfiniteSlider {
 
     bindAll(this, ["update", "resize", "change"]);
 
-    this.o = Observer().create({
+    this.o = Observer.create({
       callback: this.change,
     });
     this.o.observe(this.container);

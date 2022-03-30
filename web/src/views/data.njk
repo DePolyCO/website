@@ -2,4 +2,4 @@
 permalink: /static/article-data.json
 ---
 
-[{% for article in articles.all %}{% if loop.index0 > 1 %}{"title":"{{ article.title }}","date":"{{ article.publishedAt }}","content": "{% trim article.intro, 400 %}","url":"{{ article.settings.slug.current | slugify }}","postCategory":"{{ article.settings.postCategory }}","mainImage":"{% imageUrlFor article.mainImage,800 %}"}{% if loop.last == false %},{% endif %}{% endif %}{% endfor %}]
+[{% for article in articles.all %}{% if loop.index0 > 1 and article._id != featuredArticle._id %}{"title":"{{ article.title }}","date":"{{ article.publishedAt }}","content": "{% trim article.intro, 400 %}","url":"{{ article.settings.slug.current | slugify }}","postCategory":"{{ article.settings.postCategory }}","mainImage":"{% imageUrlFor article.mainImage,800 %}"}{% if loop.last == false %},{% endif %}{% endif %}{% endfor %}]

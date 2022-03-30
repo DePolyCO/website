@@ -2,9 +2,8 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
-import { iris, qs, qsa, Sniff, Vau } from "../hermes";
+import { iris, qs, qsa, Vau } from "../hermes";
 import { Engine } from "../components/blogEngine";
-import { Parallax } from "../scroller";
 
 /**
  *
@@ -12,11 +11,12 @@ import { Parallax } from "../scroller";
  *
  */
 
-let ficl, s1;
+let ficl, s1, o;
 export const blogController = new Controller({
   hide: ({ done }) => {
     ficl && ficl();
     s1.destroy();
+    o.disconnect();
     sail.out(done);
   },
 
@@ -24,25 +24,27 @@ export const blogController = new Controller({
     nav.setLinkActive("news");
 
     new Vau({
-      targets: ".article-animate",
+      targets: qsa(".article-animate"),
       opacity: [0, 1],
       easing: "o6",
       duration: 1000,
     });
 
-    qsa(".article-card").map(
-      (item, i) =>
-        new Vau({
-          targets: item,
-          transform: {
-            y: [150, 0],
-          },
-          opacity: [0, 1],
-          easing: "o6",
-          duration: 1750,
-          delay: i * 100,
-        })
-    );
+    qsa(".article-card")
+      .slice(0, 3)
+      .map(
+        (item, i) =>
+          new Vau({
+            targets: item,
+            transform: {
+              y: [150, 0],
+            },
+            opacity: [0, 1],
+            easing: "o6",
+            duration: 1750,
+            delay: i * 100,
+          })
+      );
 
     const fi = qs("#filters-extended");
     const btn = qs("#filters-extended--btn");

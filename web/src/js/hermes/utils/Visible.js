@@ -6,7 +6,7 @@ export class Visible extends Conductor {
   constructor() {
     super();
 
-    this.o = Observer().create({});
+    this.o = Observer.create({});
     bindAll(this, ["change"]);
   }
 

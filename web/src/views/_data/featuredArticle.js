@@ -15,6 +15,7 @@ module.exports = withCache(
           title,
           mainImage,
           intro,
+          _id
         }
       }[0].featured
     `);

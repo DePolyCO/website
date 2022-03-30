@@ -97,7 +97,7 @@
     display: grid;
     place-items: center;
     padding: fluid(9, $sm) fluid(15, $sm);
-    border: fluid(1, $sm) solid #022d42;
+    border: 1px solid #022d42;
     border-radius: fluid(8, $sm);
     transition: background-color 0.4s;
     background-color: $darkblue;
@@ -122,7 +122,7 @@
 
     @include md {
       padding: fluid(9, $lg) fluid(15, $lg);
-      border: fluid(1, $lg) solid #022d42;
+      border: 1px solid #022d42;
       border-radius: fluid(8, $lg);
       background-color: transparent;
 
@@ -142,7 +142,7 @@
     font-size: fluid(12, $lg);
     line-height: 130%;
     letter-spacing: 0.05em;
-    padding: fluid(1, $lg) fluid(8, $lg);
+    padding: 1px fluid(8, $lg);
     border-radius: fluid(8, $lg);
     height: fluid(25, $lg);
     display: grid;
@@ -200,6 +200,8 @@
         width: -moz-fit-content;
         width: fit-content;
         margin-bottom: fluid(24, $sm);
+        transition: color 0.4s $ease-out-expo,
+          background-color 0.4s $ease-out-expo;
 
         @include md {
           font-size: fluid(12, $lg);
@@ -353,6 +355,7 @@
       font-size: fluid(12, $sm);
       margin-bottom: fluid(28, $sm);
       padding-left: fluid(15 + 7, $sm);
+      padding-bottom: 1px;
 
       @include md {
         font-size: fluid(12, $lg);
@@ -420,6 +423,11 @@
           transform: translateX(8px);
         }
       }
+
+      .article-card--highlight {
+        background-color: $darkblue !important;
+        color: white;
+      }
     }
   }
 
@@ -430,7 +438,7 @@
   #blog-category--list {
     width: fluid(885 + 35, $lg);
     padding-left: fluid(35, $lg);
-    border-left: fluid(1, $lg) solid #022d42;
+    border-left: 1px solid #022d42;
     gap: fluid(40, $lg);
 
     li:last-of-type {
@@ -480,7 +488,7 @@
     gap: fluid(10, $sm);
     overflow: auto;
 
-    border-bottom: 1px solid #dadaca;
+    border-bottom: 1px solid $darkblue;
     background-color: #ecece2;
     margin-left: fluid(20 + 32, $sm);
     padding-left: fluid(20, $sm);
@@ -497,12 +505,12 @@
     }
 
     @include md {
-      padding: fluid(35, $lg) 0;
+      padding: fluid(35 - 6.5, $lg) 0;
       gap: fluid(29, $lg);
       overflow: hidden;
       overflow: clip;
 
-      height: fluid(93, $lg);
+      height: fluid(80, $lg);
       margin-left: 0;
 
       &::before {
@@ -523,7 +531,7 @@
       border-radius: fluid(9, $lg);
       width: fluid(25, $lg);
       height: fluid(25, $lg);
-      top: fluid(34, $lg);
+      top: fluid(25, $lg);
       display: unset;
 
       svg {
@@ -537,20 +545,23 @@
     font-weight: 700;
     line-height: 130%;
     font-size: fluid(12, $sm);
-    padding: fluid(3, $sm) fluid(8, $sm);
+    padding: fluid(3, $sm) fluid(8, $sm) fluid(4, $sm);
     border-radius: fluid(8, $sm);
     color: #aab6b6;
     cursor: pointer;
-    transition: color 0.4s $ease-out-expo;
+    transition: color 0.4s $ease-out-expo, background-color 0.4s $ease-out-expo;
+    height: -moz-fit-content;
+    height: fit-content;
 
     @include md {
       font-size: fluid(12, $lg);
-      padding: fluid(5, $lg) fluid(8, $lg);
+      padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
       border-radius: fluid(8, $lg);
     }
 
     &:hover {
       color: $darkblue;
+      background-color: $darkbeige;
     }
 
     &.active {
@@ -605,7 +616,7 @@
     @include md {
       margin-top: fluid(30, $lg);
       padding-bottom: fluid(29, $lg);
-      border-bottom: 1px solid #dadaca;
+      border-bottom: 1px solid $darkblue;
       position: relative;
 
       svg {
@@ -644,7 +655,7 @@
       width: fluid(430 * 3 + 40 * 2, $lg);
       margin-left: auto;
       padding: 0 fluid(15, $lg);
-      padding-top: fluid(80, $lg);
+      padding-top: fluid(40, $lg);
       margin-bottom: fluid(40, $lg);
 
       display: grid;

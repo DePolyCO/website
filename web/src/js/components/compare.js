@@ -18,7 +18,7 @@ export class Compare {
     this.clip = qs("[data-clip]", this.dom);
     this.line = qs(".compare-slider--line", this.dom);
     this.handle = qs(".compare-slider--handle", this.dom);
-    this.observer = Observer().create({
+    this.observer = Observer.create({
       callback: this.observerChange,
     });
 

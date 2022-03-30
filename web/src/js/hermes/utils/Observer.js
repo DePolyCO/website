@@ -3,29 +3,24 @@ import { select } from "./Dom";
 /**
  * Usage:
  * ======
- *     
- * const callback = (node, isIntersecting, unobserve) => {
-      if (isIntersecting) {
-        if (this.once) {
-          unobserve(node);
-        }
-        console.log(node, "is visible")
-      } else if (!this.once) {
-        console.log(node, "was hidden")
-      }
-    };
-
-    const o = Observer().create({
-      callback,
-      offset: `-5px`,
-      threshold: 0.1,
-    });
-
-    o.observe(wrapperSelector);
  * 
- */
+ * 
+const o = Observer.create({
+  callback: (node, isIntersecting, unobserve) => {
+    if (isIntersecting) {
+      unobserve(node);
+      console.log(node, "is visible");
+    } 
+  },
+  offset: `-5px`,
+  threshold: 0.1,
+});
 
-export const Observer = () => {
+o.observe(wrapperSelector);
+  *
+  */
+
+const ObserverFactory = () => {
   const create = (options) => {
     const change = (entries, observer) => {
       const unobserve = (node) => observer.unobserve(node);
@@ -64,3 +59,5 @@ export const Observer = () => {
     create,
   };
 };
+
+export const Observer = ObserverFactory();

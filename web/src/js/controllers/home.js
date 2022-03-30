@@ -136,7 +136,7 @@ export const homeController = new Controller({
     );
     iconDraws.forEach((d) => d.pause());
 
-    o = Observer().create({
+    o = Observer.create({
       callback: (node, isIntersecting, unobserve) => {
         if (isIntersecting) {
           for (let i = 0, n = icons.length; i < n; i++) {

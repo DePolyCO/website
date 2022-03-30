@@ -428,7 +428,7 @@ export class Reveal {
   observe = () => {
     //   create observer
     this.observer?.disconnect();
-    this.observer = Observer().create({
+    this.observer = Observer.create({
       callback: (node, isIntersecting, unobserve) => {
         if (isIntersecting) {
           this.play({ targets: this.getTargets(node), from: this.from });

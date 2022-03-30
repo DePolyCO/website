@@ -1,59 +1,5 @@
 
 [{
-   "_id":"08a4f1b1-399e-4e6f-9f1c-b341ca8c3de6",
-   "title":"It&#39;s Time For The First Green Industrial Revolution",
-   "date":"May 1, 2020",
-   "content": "DePoly will be attending the World Economic Forum, presenting their vision for sustainable PET Plastic Recycling. ",
-   "url":"it-s-time-for-the-first-green-industrial-revolution",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/457e4e1c6535212cd79ffe5c2930d0776503312e-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"14673a48-3a87-4036-a0d5-20ecd3ffad91",
-   "title":"Stagars Start Up Documentary",
-   "date":"November 1, 2020",
-   "content": "The Manuel Stagars Start Up Documentary is now streaming online! The documentary observes early stage entrepreneurs in their labs and shines a light on innovation and entrepreneurship in deep tech without hype. Manuel also interviewed our own Samantha Anderson and Bardiya Valizadeh about life in a Start Up! ",
-   "url":"stagars-start-up-documentary",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/59cfcc4bf20928e2823d31fe2d2373f14b19ea42-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"20cfd555-629d-4cbc-bc2d-c96cb9007209",
-   "title":"DePoly Announced in the Top 16 Start-Ups for 2020",
-   "date":"May 1, 2020",
-   "content": "DePoly is proud to be announced as one of the top 16 start-ups for the 2020 W.A. De Vigier Stiftung Award.",
-   "url":"depoly-announced-in-the-top-16-start-ups-for-2020",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3bc8c1fd6c2a94903c3befe9690c55b9d693ec2b-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"2f2d27bf-b2d2-46ae-895c-47538b5ac39e",
-   "title":"TOP 100 Swiss Startups",
-   "date":"November 1, 2020",
-   "content": "DePoly was founded earlier this year, and we are proud to be among the TOP 100 Start-Ups in Switzerland, and the youngest company to reach the Top 100. #TOP100SSU  ",
-   "url":"top-100-swiss-startups",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/18c1489b7557f81b1ceacd31119379de95fda58b-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"41357512-4a3e-4637-8541-110949c104e1",
-   "title":"DePoly through to VentureKick Stage 2!",
-   "date":"May 1, 2020",
-   "content": "DePoly: closing the loop on PET recycling.",
-   "url":"depoly-through-to-venturekick-stage-2",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/f413bc7d17fc1b490e7d3c54c32e105ec037c2a5-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"622cd718-a902-46e8-89d7-bba073bb62bd",
-   "title":"De Vigier Top 10",
-   "date":"November 1, 2020",
-   "content": "DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final! ",
-   "url":"de-vigier-top-10",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/e6072ce16083ffba545c5bf90f90d3f805f0ce31-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
    "_id":"652c9a5d-77f2-4dc9-a2eb-bc4ca4a03ccd",
    "title":"Mass Challenge 2020:",
    "date":"November 1, 2020",
@@ -61,24 +7,6 @@
    "url":"mass-challenge-2020",
    "postCategory":"Awards",
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/c738aa3b813e37981add44985a4d1904fe038c1d-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"65a1cf4f-2418-4c20-9468-0c6bc844fce5",
-   "title":"DePoly Features In Stagars Start-Up Documentary",
-   "date":"May 1, 2020",
-   "content": "DePoly is proud to announce their participation in the “Start-Up” film buy Manuel Stagars. The film will premier in July 2020",
-   "url":"depoly-features-in-stagars-start-up-documentary",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3b24d0df7516ab9c82f98c7f98f2c432742de65f-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"69de6d54-c327-4132-81f4-eb468c91daa6",
-   "title":"SEIF Awards 2020",
-   "date":"November 1, 2020",
-   "content": "We are delighted to be part of the SEIF Awards Tech for Impact 2020, and win this year’s award in the category of “saleable solutions”. ",
-   "url":"seif-awards-2020",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/cfb774737d7b080c685df0e24488b413f54b726c-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
    "_id":"7c9f4bbc-eb05-4596-90e8-d354bcd0fd74",
@@ -90,6 +18,51 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3453f96050e3edfbbe35859e47377943d8edb8f5-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
+   "_id":"2f2d27bf-b2d2-46ae-895c-47538b5ac39e",
+   "title":"TOP 100 Swiss Startups",
+   "date":"November 1, 2020",
+   "content": "DePoly was founded earlier this year, and we are proud to be among the TOP 100 Start-Ups in Switzerland, and the youngest company to reach the Top 100. #TOP100SSU  ",
+   "url":"top-100-swiss-startups",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/18c1489b7557f81b1ceacd31119379de95fda58b-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"14673a48-3a87-4036-a0d5-20ecd3ffad91",
+   "title":"Stagars Start Up Documentary",
+   "date":"November 1, 2020",
+   "content": "The Manuel Stagars Start Up Documentary is now streaming online! The documentary observes early stage entrepreneurs in their labs and shines a light on innovation and entrepreneurship in deep tech without hype. Manuel also interviewed our own Samantha Anderson and Bardiya Valizadeh about life in a Start Up! ",
+   "url":"stagars-start-up-documentary",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/59cfcc4bf20928e2823d31fe2d2373f14b19ea42-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"69de6d54-c327-4132-81f4-eb468c91daa6",
+   "title":"SEIF Awards 2020",
+   "date":"November 1, 2020",
+   "content": "We are delighted to be part of the SEIF Awards Tech for Impact 2020, and win this year’s award in the category of “saleable solutions”. ",
+   "url":"seif-awards-2020",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/cfb774737d7b080c685df0e24488b413f54b726c-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"622cd718-a902-46e8-89d7-bba073bb62bd",
+   "title":"De Vigier Top 10",
+   "date":"November 1, 2020",
+   "content": "DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final! ",
+   "url":"de-vigier-top-10",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/e6072ce16083ffba545c5bf90f90d3f805f0ce31-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"e82fa811-9907-41ef-a26a-d780d36758b0",
+   "title":"FIT – Fondation pour l’InovationTechnologique.",
+   "date":"November 1, 2020",
+   "content": "We are delighted to have been awarded a tech seed loan of CHF 100,000 to help takel the issues of plastic waste, pollution and reliance on oil. ",
+   "url":"fit-fondation-pour-l-inovationtechnologique",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/540e8e51ed91ea218ab784d16a668096a6915c91-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
    "_id":"7f0f424a-ea40-422e-aa7e-bf7b0c4c2b12",
    "title":"EPFL Talk to DePoly CEO Sam Anderson",
    "date":"May 1, 2020",
@@ -99,13 +72,40 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/6a6735fbe197f7fa3d68f6c5f20960604ed3e7e6-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"823fbe0d-6a1a-4fba-9172-dbc71d3bc8f4",
-   "title":"DePoly 2019 Grand Prize Winner",
-   "date":"April 30, 2020",
-   "content": "Watch the whole video below.",
-   "url":"depoly-2019-grand-prize-winner",
+   "_id":"65a1cf4f-2418-4c20-9468-0c6bc844fce5",
+   "title":"DePoly Features In Stagars Start-Up Documentary",
+   "date":"May 1, 2020",
+   "content": "DePoly is proud to announce their participation in the “Start-Up” film buy Manuel Stagars. The film will premier in July 2020",
+   "url":"depoly-features-in-stagars-start-up-documentary",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3b24d0df7516ab9c82f98c7f98f2c432742de65f-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"20cfd555-629d-4cbc-bc2d-c96cb9007209",
+   "title":"DePoly Announced in the Top 16 Start-Ups for 2020",
+   "date":"May 1, 2020",
+   "content": "DePoly is proud to be announced as one of the top 16 start-ups for the 2020 W.A. De Vigier Stiftung Award.",
+   "url":"depoly-announced-in-the-top-16-start-ups-for-2020",
    "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/daf6941ca9adc8eeb87c4f58727c80dfa370b8ca-3680x1400.jpg?w=800&amp;auto=format"
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3bc8c1fd6c2a94903c3befe9690c55b9d693ec2b-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"41357512-4a3e-4637-8541-110949c104e1",
+   "title":"DePoly through to VentureKick Stage 2!",
+   "date":"May 1, 2020",
+   "content": "DePoly: closing the loop on PET recycling.",
+   "url":"depoly-through-to-venturekick-stage-2",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/f413bc7d17fc1b490e7d3c54c32e105ec037c2a5-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"08a4f1b1-399e-4e6f-9f1c-b341ca8c3de6",
+   "title":"It&#39;s Time For The First Green Industrial Revolution",
+   "date":"May 1, 2020",
+   "content": "DePoly will be attending the World Economic Forum, presenting their vision for sustainable PET Plastic Recycling. ",
+   "url":"it-s-time-for-the-first-green-industrial-revolution",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/457e4e1c6535212cd79ffe5c2930d0776503312e-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
    "_id":"b01ccc51-24b8-439d-90c4-8836c32f1d1d",
@@ -117,12 +117,12 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/eac9cbb15bf0954a714014116caf57ca269f756c-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"e82fa811-9907-41ef-a26a-d780d36758b0",
-   "title":"FIT – Fondation pour l’InovationTechnologique.",
-   "date":"November 1, 2020",
-   "content": "We are delighted to have been awarded a tech seed loan of CHF 100,000 to help takel the issues of plastic waste, pollution and reliance on oil. ",
-   "url":"fit-fondation-pour-l-inovationtechnologique",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/540e8e51ed91ea218ab784d16a668096a6915c91-3680x1400.jpg?w=800&amp;auto=format"
+   "_id":"823fbe0d-6a1a-4fba-9172-dbc71d3bc8f4",
+   "title":"DePoly 2019 Grand Prize Winner",
+   "date":"April 30, 2020",
+   "content": "Watch the whole video below.",
+   "url":"depoly-2019-grand-prize-winner",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/daf6941ca9adc8eeb87c4f58727c80dfa370b8ca-3680x1400.jpg?w=800&amp;auto=format"
 }
 ]

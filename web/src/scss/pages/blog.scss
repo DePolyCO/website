@@ -105,10 +105,18 @@
     svg {
       width: fluid(13, $sm);
       height: fluid(8, $sm);
+      display: block;
+      transition: transform 1.25s $ease-out-expo;
 
       path {
         fill: white;
         transition: fill 0.4s;
+      }
+
+      &:nth-of-type(2) {
+        transform: translateX(-100%);
+        top: 0;
+        left: -8px;
       }
     }
 
@@ -400,6 +408,16 @@
 
         path {
           fill: white;
+        }
+      }
+
+      svg {
+        &:nth-of-type(1) {
+          transform: translateX(100%);
+        }
+
+        &:nth-of-type(2) {
+          transform: translateX(8px);
         }
       }
     }

@@ -172,7 +172,7 @@
     margin-bottom: fluid(120, $sm);
 
     @include md {
-      margin-bottom: fluid(50, $lg);
+      margin-bottom: fluid(20, $lg);
     }
   }
 
@@ -207,7 +207,7 @@
 
     @include md {
       width: fluid(430 + 40, $lg);
-      height: fluid(831, $lg);
+      height: fluid(700, $lg);
       border-left: fluid(1, $lg) solid rgba(2, 45, 66, 0.2);
       padding-left: fluid(40, $lg);
     }

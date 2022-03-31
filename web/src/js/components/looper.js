@@ -10,8 +10,8 @@ export class Looper {
     };
 
     this.video = {
-      intro: null,
-      loop: null,
+      intro: qs("#visual-intro", this.dom),
+      loop: qs("#visual-loop", this.dom),
     };
 
     this.observer = Observer.create({
@@ -23,43 +23,12 @@ export class Looper {
   }
 
   build = () => {
-    const frag = document.createDocumentFragment();
-
-    this.video.intro = document.createElement("video");
-    this.video.loop = document.createElement("video");
-
     const { intro, loop } = this.video;
-
-    intro.width = 1800;
-    intro.height = 1080;
-    intro.muted = true;
-    intro.autoplay = true;
-    intro.playsinline = true;
-    intro.preload = "auto";
-
-    loop.width = 1800;
-    loop.height = 1080;
-    loop.muted = true;
-    loop.autoplay = true;
-    loop.playsinline = true;
-    loop.preload = "auto";
-    loop.loop = true;
-
-    intro.src = this.src.intro;
-    loop.src = this.src.loop;
-
-    intro.classList.add("pa", "inset");
-    loop.classList.add("pa", "inset");
 
     loop.style.opacity = 0;
 
     intro.pause();
     loop.pause();
-
-    frag.appendChild(intro);
-    frag.appendChild(loop);
-
-    this.dom.appendChild(frag);
   };
 
   play = (node, isIntersecting) => {

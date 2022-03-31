@@ -73,9 +73,6 @@ export default {
       name: "dept",
       title: "Department",
       type: "string",
-      options: {
-        list: [{ title: "Technology", value: "Technology" }],
-      },
       validation: (Rule) => Rule.required(),
     },
 
@@ -84,7 +81,10 @@ export default {
       title: "Hours",
       type: "string",
       options: {
-        list: [{ title: "Full-Time", value: "Full-Time" }],
+        list: [
+          { title: "Full-Time", value: "Full-Time" },
+          { title: "Part-Time", value: "Part-Time" },
+        ],
       },
       validation: (Rule) => Rule.required(),
     },

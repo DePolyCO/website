@@ -87,7 +87,7 @@
     input:not(:placeholder-shown) {
       transform: translateX(#{fluid(-32, $lg)});
 
-      ~ svg {
+      ~svg {
         transform: translate3d(0, -50%, 0);
       }
     }
@@ -106,7 +106,7 @@
       width: fluid(13, $sm);
       height: fluid(8, $sm);
       display: block;
-      transition: transform 1.25s $ease-out-expo;
+      transition: transform 1s $ease-out-expo;
 
       path {
         fill: white;
@@ -116,7 +116,7 @@
       &:nth-of-type(2) {
         transform: translateX(-100%);
         top: 0;
-        left: -8px;
+        left: fluid(-16, $sm);
       }
     }
 
@@ -231,6 +231,7 @@
 
         @include md {
           margin-bottom: fluid(24, $lg);
+          margin-top: fluid(3, $lg);
         }
       }
 
@@ -416,11 +417,11 @@
 
       svg {
         &:nth-of-type(1) {
-          transform: translateX(100%);
+          transform: translateX(calc(100% + #{fluid(3, $sm)}));
         }
 
         &:nth-of-type(2) {
-          transform: translateX(8px);
+          transform: translateX(#{fluid(16, $sm)});
         }
       }
 
@@ -509,6 +510,7 @@
       gap: fluid(29, $lg);
       overflow: hidden;
       overflow: clip;
+      flex-wrap: wrap;
 
       height: fluid(80, $lg);
       margin-left: 0;
@@ -663,6 +665,7 @@
       grid-template-columns: repeat(3, 1fr);
 
       li {
+
         &:nth-of-type(4n),
         &:first-of-type {
           .article-card {

@@ -8,11 +8,9 @@
 
 .hero-title--wrapper {
   margin-bottom: fluid(26, $sm);
-  padding-top: fluid(6, $sm);
 
   @include md {
     margin-bottom: fluid(43, $lg);
-    padding-top: fluid(12, $lg);
   }
 }
 

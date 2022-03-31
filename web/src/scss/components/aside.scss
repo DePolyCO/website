@@ -312,6 +312,7 @@
   gap: 2px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 strong {
@@ -420,6 +421,7 @@ strong {
   .bio-panel--header {
     background-color: #f2ffbd;
   }
+
   .field {
     min-width: fluid(478, $lg);
   }
@@ -444,7 +446,7 @@ strong {
     }
 
     &:hover {
-      background: $darkbeige;
+      background: #dfefb3;
     }
   }
 }

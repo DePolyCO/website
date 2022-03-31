@@ -312,6 +312,7 @@
   gap: 2px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 strong {
@@ -444,7 +445,7 @@ strong {
     }
 
     &:hover {
-      background: $darkbeige;
+      background: #dfefb3;
     }
   }
 }

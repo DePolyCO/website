@@ -121,7 +121,7 @@ const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
 
 module.exports = withCache(
   async () => {
-    const articles = await client.fetch(groq`*[_type == 'post' && settings.publishedAt < now()]{
+    const articles = await client.fetch(groq`*[_type == 'post' && _id != *[_type == 'featuredPost'][0].featured->_id &&  settings.publishedAt < now()]{
       ...,
       body[]{
         ...,

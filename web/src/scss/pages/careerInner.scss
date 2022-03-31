@@ -35,6 +35,12 @@
     }
   }
 
+  #offer {
+    @include md {
+      margin-bottom: fluid(160 + 80, $lg);
+    }
+  }
+
   #details-inner {
     @include md {
       flex-direction: row;
@@ -144,7 +150,7 @@
       contain: content;
       flex-direction: row;
 
-      padding-top: fluid(125, $lg);
+      padding-top: fluid(62, $lg);
       padding-bottom: 0;
 
       border-bottom: none;

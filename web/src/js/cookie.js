@@ -30,7 +30,7 @@ export class Cookie {
       window.dataLayer.push(arguments);
     }
     gtag("js", new Date());
-    gtag("config", "GA_MEASUREMENT_ID");
+    gtag("config", "G-6G46PSYF8Z");
 
     Store.cookie = true;
 
@@ -45,5 +45,6 @@ export class Cookie {
   destroy = () => {
     this.unAccept();
     this.unDecline();
+    this.dom = null;
   };
 }

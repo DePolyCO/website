@@ -30,7 +30,7 @@ export class Cookie {
       window.dataLayer.push(arguments);
     }
     gtag("js", new Date());
-    gtag("config", "G-6G46PSYF8Z");
+    gtag("config", "G-9KSCSKLDB5");
 
     Store.cookie = true;
 

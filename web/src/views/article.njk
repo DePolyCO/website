@@ -128,17 +128,17 @@ tags:
 
         <section data-scroll-section class="df fc" id="article-end">
             <div class="df aib">
-                <span>Category / </span>
+                <span>Catégorie / </span>
                 <span>
                     <a class="text-underline" href="/blog/?filter={{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a>
                 </span>
             </div>
             <div>
-                <span>Published / </span>
+                <span>Publié / </span>
                 <span>{{ article.publishedAt }}</span>
             </div>
             <div class="df aib">
-                <span>Share / </span>
+                <span>Partager / </span>
                 <span class="df share-links">
                     <div>
                         <a class="text-underline" rel="noreferrer noopener" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}/{{ article.settings.slug.current | slugify }}">FB</a>
@@ -156,7 +156,7 @@ tags:
     </article>
 
     <section id="related" class="restrict df fc pr" data-scroll-section>
-        <div class="tag ttu fv-mono" data-shuffle>Read More</div>
+        <div class="tag ttu fv-mono" data-shuffle>En savoir plus</div>
         <ul class="df fc article-list--wrapper">
             {% for item in article.related %}
 

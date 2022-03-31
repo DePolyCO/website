@@ -30,7 +30,7 @@ eleventyComputed:
         <div id="hero-welcome" class="hero-tag fv-mono" data-shuffle>{{ position.levels }} /</div>
         <div id="hero-title--wrapper" class="pr z0 hero-title--wrapper oh">
             <h1 id="hero-title" class="z1">
-                <div class="hero-title">We’re Hiring:</div>
+                <div class="hero-title">Nous recrutons:</div>
                 <div class="hero-title">{{ position.title }}</div>
             </h1>
             <div class="df pa inset zn1 hero-grid oh"></div>
@@ -39,7 +39,7 @@ eleventyComputed:
 
     {{ 
         textBlock(
-            "About position",
+            "à propos de ce poste ",
             [
                 position.description
             ],
@@ -51,21 +51,21 @@ eleventyComputed:
         <div class="df fc" id="details-inner">
             <div class="detail-dept detail-item df fc">
                 <div class="detail-value">{{ position.dept }}</div>
-                <div class="detail-title chip ttu">Department</div>
+                <div class="detail-title chip ttu">Département</div>
             </div>
             <div class="detail-hours detail-item df fc">
                 <div class="detail-value">{{ position.hours }}</div>
-                <div class="detail-title chip ttu">Hours</div>
+                <div class="detail-title chip ttu">Heures</div>
             </div>
             <div class="detail-location detail-item df fc">
                 <div class="detail-value">{{ position.location }}</div>
-                <div class="detail-title chip ttu">Location</div>
+                <div class="detail-title chip ttu">Lieu</div>
             </div>
         </div>
     </section>
 
     <section id="responsibility" class="restrict-xtra mb-md" data-scroll-section>
-        <div class="section-title">Responsibilities you'll be handling: </div>
+        <div class="section-title">Vos responsabilités seront:</div>
         <ul class="section-list df fc">
             {% for item in position.responsibilities %}
                 <li class="section-list--item">{{ item }}</li>
@@ -74,7 +74,7 @@ eleventyComputed:
     </section>
 
     <section id="skills" class="restrict-xtra mb-md" data-scroll-section>
-        <div class="section-title">We expect you to have these skills:</div>
+        <div class="section-title">Ce que nous voudrions que vous ayez: </div>
         <ul class="section-list df fc">
             {% for item in position.expectations %}
                 <li class="section-list--item">{{ item }}</li>
@@ -83,7 +83,7 @@ eleventyComputed:
     </section>
 
     <section id="offer" class="restrict-xtra mb-md" data-scroll-section>
-        <div class="section-title">Here's what we can offer:</div>
+        <div class="section-title">Voici ce que nous vous offrons: </div>
         <ul class="section-list df fc">
             {% for item in position.offering %}
                 <li class="section-list--item">{{ item }}</li>
@@ -93,69 +93,69 @@ eleventyComputed:
 
     <section id="apply" class="restrict df fc pr mb-md no-contain" data-scroll-section>
         <div class="df fc">
-            <div class="tag ttu fv-mono" data-shuffle>Apply for this position</div>
+            <div class="tag ttu fv-mono" data-shuffle>Postuler à cette offre</div>
             <div class="pa bottom left df jcb" id="see-more">
-                <div id="see-more--title">Want to see more?</div>
-                <a href="/careers/" class="chip ttu" id="see-more--back">Back to careers</a>
+                <div id="see-more--title">Continuer à lire?</div>
+                <a href="/careers/" class="chip ttu" id="see-more--back">Revenir à Carrière</a>
             </div>
         </div>
         <div class="pr form-wrapper">
             <div class="form-details pr" id="cv-form">
-                <div class="form-title">Submit your CV</div>
+                <div class="form-title">Envoyer votre CV</div>
                 <form novalidate enctype="multipart/form-data" data-netlify="true" name="Submit CV from Role" method="POST" class="form-content">
                     <div class="df fc form-inner">
                         <div class="df fc field-col">
                             <div class="field pr">
-                                <input name="First Name" class="field-input first-name" id="cv-firstname" placeholder="First Name" required type="text" data-type="name">
-                                <label class="pen field-label pa" for="cv-firstname">First Name</label>
-                                <label class="pen field-label--active ttu pa" for="cv-firstname">First Name</label>
+                                <input name="First Name" class="field-input first-name" id="cv-firstname" placeholder="Prénom" required type="text" data-type="name">
+                                <label class="pen field-label pa" for="cv-firstname">Prénom</label>
+                                <label class="pen field-label--active ttu pa" for="cv-firstname">Prénom</label>
                             </div>
                             <div class="field pr">
-                                <input name="Last Name" class="field-input" id="cv-lastname" placeholder="Last Name" required type="text" data-type="name">
-                                <label class="pen field-label pa" for="cv-lastname">Last Name</label>
-                                <label class="pen field-label--active ttu pa" for="cv-lastname">Last Name</label>
+                                <input name="Last Name" class="field-input" id="cv-lastname" placeholder="Nom" required type="text" data-type="name">
+                                <label class="pen field-label pa" for="cv-lastname">Nom</label>
+                                <label class="pen field-label--active ttu pa" for="cv-lastname">Nom</label>
                             </div>
                             <div class="field pr">
-                                <input name="Email ID" class="field-input" id="cv-email" placeholder="Email Address" required type="email" data-type="email">
-                                <label class="pen field-label pa" for="cv-email">Email Address</label>
-                                <label class="pen field-label--active ttu pa" for="cv-email">Email Address</label>
+                                <input name="Email ID" class="field-input" id="cv-email" placeholder="Adresse électronique " required type="email" data-type="email">
+                                <label class="pen field-label pa" for="cv-email">Adresse électronique </label>
+                                <label class="pen field-label--active ttu pa" for="cv-email">Adresse électronique </label>
                             </div>
                             <div class="field pr">
-                                <input name="Linkedin Profile" class="field-input" id="cv-linkedin" placeholder="Linkedin Profile (Optional)" type="url" data-type="url">
-                                <label class="pen field-label pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
-                                <label class="pen field-label--active ttu pa" for="cv-linkedin">Linkedin Profile (Optional)</label>
+                                <input name="Linkedin Profile" class="field-input" id="cv-linkedin" placeholder="Profil LinkedIn (Optionnel) " type="url" data-type="url">
+                                <label class="pen field-label pa" for="cv-linkedin">Profil LinkedIn (Optionnel) </label>
+                                <label class="pen field-label--active ttu pa" for="cv-linkedin">Profil LinkedIn (Optionnel) </label>
                             </div>
                             <div class="field field-dash pr">
-                                <input name="CV File" class="cp field-input--file" id="cv-cvfile" placeholder="Upload your CV" required type="file">
+                                <input name="CV File" class="cp field-input--file" id="cv-cvfile" placeholder="Télécharger votre CV" required type="file">
                                 <label class="field-label field-label--file-inner pen pa df aic">
                                     <svg>
                                         <use xlink:href="#file-icon"></use>
                                     </svg>
-                                    <div class="field-label--filename">Upload your CV</div>
+                                    <div class="field-label--filename">Télécharger votre CV</div>
                                 </label>
                             </div>
                             <div class="field field-dash pr">
-                                <input name="Cover Letter File" class="cp field-input--file" id="cv-coverletterfile" placeholder="Upload your Cover Letter" required type="file">
+                                <input name="Cover Letter File" class="cp field-input--file" id="cv-coverletterfile" placeholder="Télécharger votre lettre de motivation" required type="file">
                                 <label class="field-label field-label--file-inner pen pa df aic">
                                     <svg>
                                         <use xlink:href="#file-icon"></use>
                                     </svg>
-                                    <div class="field-label--filename">Upload your Cover Letter</div>
+                                    <div class="field-label--filename">Télécharger votre lettre de motivation</div>
                                 </label>
                             </div>
                         </div>
                         <div class="df">
                             <div class="field pr textarea">
-                                <textarea class="field-input field-input--textarea" placeholder="Your Message" name="Message" id="cv-message" cols="30" rows="10"></textarea>
-                                <label class="pen field-label pa" for="cv-message">Your Message</label>
-                                <label class="pen field-label--active ttu pa" for="cv-message">Your Message</label>
+                                <textarea class="field-input field-input--textarea" placeholder="Votre message" name="Message" id="cv-message" cols="30" rows="10"></textarea>
+                                <label class="pen field-label pa" for="cv-message">Votre message</label>
+                                <label class="pen field-label--active ttu pa" for="cv-message">Votre message</label>
                             </div>
                         </div>
                         <input type="hidden" name="{{ position.slug.current }}" value="{{ position.slug.current }}">
                     </div>
                     <button class="cta-btn" id="cv-submit">
                         <div class="pr oh btn-wrapper">
-                            <div class="btn-inner" data-content="Apply for this position">Apply for this position</div>
+                            <div class="btn-inner" data-content="Postuler à cette offre ">Postuler à cette offre </div>
                         </div>
                     </button>
                 </form>
@@ -166,7 +166,7 @@ eleventyComputed:
                         <use xlink:href="#tick-icon"></use>
                     </svg>
                 </div>
-                <div class="form-status--thank ttu">Thank you, </div>
+                <div class="form-status--thank ttu">Merci,</div>
                 <p class="form-status--desc">Your message is sent sucessfully and it will be answered soon</p>
             </div>
         </div>

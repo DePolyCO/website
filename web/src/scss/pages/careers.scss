@@ -347,6 +347,8 @@
 
     @include md {
       width: fluid(188, $lg);
+      min-width: -moz-fit-content;
+      min-width: fit-content;
     }
   }
 

@@ -347,9 +347,13 @@ const bioComponents = {
 
 module.exports = withCache(
   async () => {
+    const people = await client.fetch(groq`*[_type == 'person']{
+      ...
+     }`);
+
     const team = await client.fetch(groq`*[_type == 'team']{
-      __i18n_lang,
       "members":teamMembers[]->{
+        ...,
       name,
       img,
       role,
@@ -357,6 +361,7 @@ module.exports = withCache(
       social
     },
       "advisors":teamAdvisors[]->{
+        ...,
       name,
       img,
       role,
@@ -366,8 +371,26 @@ module.exports = withCache(
     }[0]
     `);
 
+    const members = team.members.map((item) => {
+      if (item.__i18n_refs && item.__i18n_refs[0]) {
+        return people.filter(
+          (member) => member._id === item.__i18n_refs[0]._ref
+        )[0];
+      }
+      return item;
+    });
+
+    const advisors = team.advisors.map((item) => {
+      if (item.__i18n_refs && item.__i18n_refs[0]) {
+        return people.filter(
+          (advisor) => advisor._id === item.__i18n_refs[0]._ref
+        )[0];
+      }
+      return item;
+    });
+
     const data = {
-      advisors: team.advisors.map((advisor) => {
+      advisors: advisors.map((advisor) => {
         return {
           ...advisor,
           bio: advisor.bio
@@ -375,7 +398,7 @@ module.exports = withCache(
             : advisor.bio,
         };
       }),
-      members: team.members.map((member) => {
+      members: members.map((member) => {
         return {
           ...member,
           bio: member.bio

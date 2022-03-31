@@ -10,7 +10,7 @@ module.exports = withCache(
     }
     `);
 
-    return seo.filter((item) => item.__i18n_lang === "en")[0];
+    return seo.filter((item) => item.__i18n_lang === "fr")[0];
   },
   "seo",
   "1d"

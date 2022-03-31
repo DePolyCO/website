@@ -119,9 +119,19 @@ const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
 });
 
+const articleDataToItem = (post, arr) => {
+  return {
+    ...post,
+    body: toHTML(post.body, { components: postComponents }),
+    publishedAt: dateTimeFormat.format(new Date(post.settings.publishedAt)),
+    related: arr.filter((item) => item._id !== post._id).slice(0, 3),
+  };
+};
+
 module.exports = withCache(
   async () => {
-    const articles = await client.fetch(groq`*[_type == 'post' && settings.publishedAt < now()]{
+    const articles =
+      await client.fetch(groq`*[_type == 'post' && _id != *[_type == 'featuredPost'][0].featured->_id &&  settings.publishedAt < now()]{
       ...,
       body[]{
         ...,
@@ -137,17 +147,15 @@ module.exports = withCache(
     const langPosts = articles
       .filter((item) => item.__i18n_lang === "en")
       .map((post, idx, arr) => {
-        return {
-          ...post,
-          body: toHTML(post.body, { components: postComponents }),
-          publishedAt: dateTimeFormat.format(
-            new Date(post.settings.publishedAt)
-          ),
-          related: arr.filter((item) => item._id !== post._id).slice(0, 3),
-        };
+        // translation exists
+        if (post.__i18n_refs && post.__i18n_refs[0]) {
+          const translation = articles.filter(
+            (item) => item._id === post.__i18n_refs[0]._ref
+          );
+          return articleDataToItem(translation[0], arr);
+        }
+        return articleDataToItem(post, arr);
       });
-
-    // console.log(langPosts);
 
     const buckets = { all: [] };
     langPosts.forEach((post) => {

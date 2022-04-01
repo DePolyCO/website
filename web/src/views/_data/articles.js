@@ -144,6 +144,21 @@ module.exports = withCache(
     } | order(settings.publishedAt desc)
     `);
 
+    const featured = await client.fetch(groq`*[_type == 'featuredPost']{
+      featured->{
+        ...,
+        body[]{
+          ...,
+          asset->{..., url}
+        },
+        settings {
+          ...,
+          "postCategory":postCategory->title
+        }
+      }
+    }[0].featured
+  `);
+
     const langPosts = articles
       .filter((item) => item.__i18n_lang === "en")
       .map((post, idx, arr) => {
@@ -157,7 +172,7 @@ module.exports = withCache(
         return articleDataToItem(post, arr);
       });
 
-    const buckets = { all: [] };
+    const buckets = { all: [featured] };
     langPosts.forEach((post) => {
       if (buckets[post.settings.postCategory]) {
         buckets[post.settings.postCategory].push(post);

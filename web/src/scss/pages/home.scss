@@ -436,7 +436,9 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
   .enhanced-desc {
     width: fluid(395, $lg);
-    max-height: fluid(400, $lg);
+    max-height: fluid(450, $lg);
+    min-height: -moz-fit-content;
+    min-height: fit-content;
     font-size: fluid(22, $lg);
     line-height: 150%;
     letter-spacing: 0.01em;

@@ -192,7 +192,6 @@
   white-space: normal;
 
   @include md {
-    white-space: nowrap;
     margin-bottom: fluid(69, $lg);
   }
 }
@@ -309,10 +308,13 @@
 }
 
 .fact-tags {
-  gap: 2px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  overflow: auto;
+
+  .chip {
+    display: inline;
+    margin-right: 3px;
+    margin-bottom: 3px;
+  }
 }
 
 strong {
@@ -421,6 +423,7 @@ strong {
   .bio-panel--header {
     background-color: #f2ffbd;
   }
+
   .field {
     min-width: fluid(478, $lg);
   }

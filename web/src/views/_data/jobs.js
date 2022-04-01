@@ -27,6 +27,6 @@ module.exports = withCache(
 
     return filtered;
   },
-  "jobs",
+  "jobs-fra",
   "1d"
 );

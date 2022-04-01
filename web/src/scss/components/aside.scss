@@ -308,10 +308,12 @@
 }
 
 .fact-tags {
-  gap: 2px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  overflow: auto;
+
+  .chip {
+    margin-right: 3px;
+    display: inline;
+  }
 }
 
 strong {

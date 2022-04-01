@@ -22,6 +22,6 @@ module.exports = withCache(
         return item;
       });
   },
-  "categories",
+  "categories-fra",
   "1d"
 );

@@ -21,11 +21,7 @@ module.exports = withCache(
     `);
 
     return featured;
-
-    // TODO:
-    // You can get the french version through the __i18n_refs property
-    // Just construct a different query
   },
-  "featured",
+  "featured-fra",
   "1d"
 );

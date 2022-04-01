@@ -12,13 +12,6 @@ module.exports = withCache(
 
     return seo.filter((item) => item.__i18n_lang === "fr")[0];
   },
-  "seo",
+  "seo-fra",
   "1d"
 );
-
-// module.exports = {
-//   title: "DePoly",
-//   description: "Placeholder",
-//   keywords: "",
-//   baseURL: "",
-// };

@@ -169,6 +169,6 @@ module.exports = withCache(
 
     return buckets;
   },
-  "articles",
+  "articles-fra",
   "1d"
 );

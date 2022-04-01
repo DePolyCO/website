@@ -193,7 +193,8 @@
     height: fluid(349, $sm);
     margin-bottom: fluid(90, $sm);
 
-    video {
+    video,
+    img {
       object-fit: contain;
     }
 

@@ -4,14 +4,25 @@ export class Looper {
   constructor({ dom, intro, loop }) {
     this.dom = qs(dom);
 
-    this.src = {
-      intro,
-      loop,
-    };
-
     this.video = {
       intro: qs("#visual-intro", this.dom),
       loop: qs("#visual-loop", this.dom),
+    };
+
+    // check support
+    const support = this.video.intro.canPlayType("video/webm");
+    // empty string is retruned for failure
+    if (!support.length) {
+      this.video.intro.remove();
+      this.video.loop.remove();
+      return;
+    } else {
+      qs("#visual-poster", this.dom).remove();
+    }
+
+    this.src = {
+      intro,
+      loop,
     };
 
     this.observer = Observer.create({

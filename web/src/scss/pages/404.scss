@@ -1,32 +1,66 @@
 #err {
-  min-height: 100vh;
-  padding-top: fluid(257, $lg);
+  padding-top: fluid(170, $sm);
+
+  @include md {
+    padding-top: fluid(257, $lg);
+  }
+
+  header {
+    margin-bottom: fluid(60, $sm);
+
+    @include md {
+      margin-bottom: fluid(235, $lg);
+    }
+  }
 
   .hero-title--wrapper {
-    width: fluid($lg - 40, $lg);
-    margin-bottom: fluid(73, $lg);
-    padding-left: fluid(40, $lg);
+    width: fluid($sm - 40, $sm);
+    margin-bottom: fluid(20, $sm);
+    padding-left: fluid(20, $sm);
+
+    @include md {
+      width: fluid($lg - 40, $lg);
+      margin-bottom: fluid(73, $lg);
+      padding-left: fluid(40, $lg);
+
+    }
   }
 
   h1 {
     font-weight: 300;
-    font-size: fluid(300, $lg);
+    font-size: fluid(80, $sm);
     line-height: 85%;
     letter-spacing: -0.05em;
-    white-space: nowrap;
-    width: fluid(2227, $lg);
+    width: fluid(335, $sm);
+
+    @include md {
+      white-space: nowrap;
+      width: fluid(2227, $lg);
+      font-size: fluid(300, $lg);
+    }
   }
 
   #err-content {
-    margin-left: fluid(980, $lg);
+    margin-left: fluid(20, $sm);
+
+    @include md {
+      margin-left: fluid(980, $lg);
+    }
   }
 
   p {
-    width: fluid(430, $lg);
-    font-size: fluid(50, $lg);
-    line-height: 130%;
+    width: fluid(310, $sm);
+    font-size: fluid(36, $sm);
+    margin-bottom: fluid(40, $sm);
+    line-height: 110%;
     letter-spacing: -0.02em;
-    margin-bottom: fluid(70, $lg);
+
+    @include md {
+      width: fluid(430, $lg);
+      font-size: fluid(50, $lg);
+      margin-bottom: fluid(70, $lg);
+      line-height: 130%;
+    }
   }
 
   .close {

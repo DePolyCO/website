@@ -181,6 +181,8 @@ picture.fx {
   }
 
   .cta-btn {
+    min-width: -moz-fit-content;
+    min-width: fit-content;
     width: fluid(138, $sm);
 
     @include md {

@@ -119,10 +119,8 @@ export class Nav {
   onLangSwitch = (e) => {
     const value = e.target.value;
     const newLocation =
-      value === "ENG" ? "https://depoly.ch" : "https://fra.depoly.ch";
-    // window.location.href = newLocation;
-    console.log("lang switched to:", value);
-    console.log("Point to:", newLocation);
+      value === "ENG" ? "https://depoly.co" : "https://fra.depoly.co";
+    window.location.href = newLocation;
   };
 
   setInitialLang = () => {

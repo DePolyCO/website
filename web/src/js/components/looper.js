@@ -10,7 +10,7 @@ export class Looper {
     };
 
     // check support
-    const support = this.video.intro.canPlayType("video/webm");
+    const support = this.video.intro.canPlayType('video/webm; codecs="vp9"');
     // empty string is retruned for failure
     if (!support.length) {
       this.video.intro.remove();

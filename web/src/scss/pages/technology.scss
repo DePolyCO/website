@@ -193,14 +193,16 @@
     height: fluid(349, $sm);
     margin-bottom: fluid(90, $sm);
 
-    video {
+    video,
+    img {
       object-fit: contain;
     }
 
     @include md {
       margin-bottom: 0;
-      width: fluid(772, $lg);
-      height: fluid(680, $lg);
+      width: fluid(945, $lg);
+      height: fluid(723, $lg);
+      left: fluid(-45, $lg);
     }
   }
 

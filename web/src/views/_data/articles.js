@@ -159,7 +159,7 @@ module.exports = withCache(
     }[0].featured
   `);
 
-    const langPosts = articles
+    const langPosts = [...articles, featured]
       .filter((item) => item.__i18n_lang === "en")
       .map((post, idx, arr) => {
         // translation exists
@@ -172,7 +172,7 @@ module.exports = withCache(
         return articleDataToItem(post, arr);
       });
 
-    const buckets = { all: [featured] };
+    const buckets = { all: [] };
     langPosts.forEach((post) => {
       if (buckets[post.settings.postCategory]) {
         buckets[post.settings.postCategory].push(post);

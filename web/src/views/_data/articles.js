@@ -121,7 +121,8 @@ const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
 
 module.exports = withCache(
   async () => {
-    const articles = await client.fetch(groq`*[_type == 'post' && _id != *[_type == 'featuredPost'][0].featured->_id &&  settings.publishedAt < now()]{
+    const articles =
+      await client.fetch(groq`*[_type == 'post' && _id != *[_type == 'featuredPost'][0].featured->_id &&  settings.publishedAt < now()]{
       ...,
       body[]{
         ...,
@@ -133,6 +134,21 @@ module.exports = withCache(
       }
     } | order(settings.publishedAt desc)
     `);
+
+    const featured = await client.fetch(groq`*[_type == 'featuredPost']{
+      featured->{
+        ...,
+        body[]{
+          ...,
+          asset->{..., url}
+        },
+        settings {
+          ...,
+          "postCategory":postCategory->title
+        }
+      }
+    }[0].featured
+  `);
 
     const langPosts = articles
       .filter((item) => item.__i18n_lang === "en")
@@ -149,7 +165,7 @@ module.exports = withCache(
 
     // console.log(langPosts);
 
-    const buckets = { all: [] };
+    const buckets = { all: [featured] };
     langPosts.forEach((post) => {
       if (buckets[post.settings.postCategory]) {
         buckets[post.settings.postCategory].push(post);

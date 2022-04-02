@@ -87,7 +87,7 @@
     input:not(:placeholder-shown) {
       transform: translateX(#{fluid(-32, $lg)});
 
-      ~ svg {
+      ~svg {
         transform: translate3d(0, -50%, 0);
       }
     }
@@ -489,7 +489,6 @@
     gap: fluid(10, $sm);
     overflow: auto;
 
-    border-bottom: 1px solid $darkblue;
     background-color: #ecece2;
     margin-left: fluid(20 + 32, $sm);
     padding-left: fluid(20, $sm);
@@ -506,6 +505,7 @@
     }
 
     @include md {
+      border-bottom: 1px solid $darkblue;
       padding: fluid(35 - 6.5, $lg) 0;
       gap: fluid(29, $lg);
       overflow: hidden;
@@ -554,6 +554,7 @@
     transition: color 0.4s $ease-out-expo, background-color 0.4s $ease-out-expo;
     height: -moz-fit-content;
     height: fit-content;
+    white-space: nowrap;
 
     @include md {
       font-size: fluid(12, $lg);
@@ -665,6 +666,7 @@
       grid-template-columns: repeat(3, 1fr);
 
       li {
+
         &:nth-of-type(4n),
         &:first-of-type {
           .article-card {

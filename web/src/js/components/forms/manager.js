@@ -95,8 +95,6 @@ export class FormManager {
     this.forms = qsa("form", qs(root));
     this.inputs = this.forms.map((form) => qsa("input", form));
     this.listen();
-
-    window.form = this;
   }
 
   listen = () => {

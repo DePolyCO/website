@@ -132,8 +132,6 @@ export class Hydra {
         // for eg, when updating URLSearchParams
         if (location.pathname === this.state.url) {
           return;
-        } else {
-          console.log(location.pathname, this.state.url);
         }
 
         this.goto(newURL, true);

@@ -4,6 +4,7 @@ $enhanced-time: 1.33s;
 $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
 #home {
+
   #plastic-problem,
   #solution-text {
     padding-bottom: fluid(125, $lg);
@@ -338,6 +339,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     // summary-mode
     &.summary {
       .enhanced-slide {
+
         // inactive slides
         &:not(.active) {
           min-width: fluid(90, $lg);
@@ -346,8 +348,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
           .enhanced-picture {
             transition: transform 1.33s $enhanced-ease;
-            transform: scale(math.div(66, 403), math.div(60, 330))
-              translate3d(#{fluid(-1201, $lg)}, #{fluid(757, $lg)}, 0);
+            transform: scale(math.div(66, 403), math.div(60, 330)) translate3d(#{fluid(-1201, $lg)}, #{fluid(757, $lg)}, 0);
           }
 
           .enhanced-title {
@@ -400,8 +401,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
       .enhanced-picture {
         transition: transform 1.33s $enhanced-ease;
-        transform: scale(math.div(135, 470), math.div(139, 388))
-          translate3d(#{fluid(-590, $lg)}, #{fluid(360, $lg)}, 0);
+        transform: scale(math.div(135, 470), math.div(139, 388)) translate3d(#{fluid(-590, $lg)}, #{fluid(360, $lg)}, 0);
       }
 
       .enhanced-sno {
@@ -443,7 +443,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
     transition: opacity 0.5s $enhanced-ease 0.5s, transform 1.33s $enhanced-ease;
 
-    > p {
+    >p {
       width: fluid(395, $lg);
     }
   }
@@ -467,7 +467,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     line-height: 100%;
     letter-spacing: -0.02em;
 
-    > div:nth-child(1) {
+    >div:nth-child(1) {
       font-weight: 700;
       font-size: fluid(20, $lg);
       line-height: 100%;
@@ -475,7 +475,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
       margin-bottom: fluid(4, $lg);
     }
 
-    > div:nth-child(2) {
+    >div:nth-child(2) {
       font-weight: 400;
       font-size: fluid(50, $lg);
       line-height: 100%;
@@ -503,7 +503,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     bottom: fluid(155 + 54, $lg);
     left: fluid(33, $lg);
 
-    > div {
+    >div {
       font-weight: bold;
       font-size: fluid(14, $lg);
       line-height: 110%;
@@ -608,6 +608,49 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     padding-bottom: fluid(40, $sm);
     margin-bottom: fluid(40, $sm);
     border-bottom: 1px solid rgba(2, 45, 66, 0.1);
+  }
+}
+
+.summary-m {
+  width: fluid($sm - 20, $sm);
+  position: relative;
+
+  &:hover {
+    #summary-slider--handle {
+      opacity: 0;
+    }
+  }
+
+  .enhanced-m--title {
+    font-weight: 400;
+    font-size: fluid(28, $sm);
+    line-height: 130%;
+    letter-spacing: -0.02em;
+
+    div:nth-of-type(1) {
+      line-height: 100%;
+      font-size: fluid(12, $sm);
+    }
+  }
+
+  .summary-visual--container {
+    overflow-x: auto;
+  }
+
+  picture {
+    width: fluid(631, $sm);
+    height: fluid(301, $sm);
+  }
+
+  img {
+    object-fit: contain;
+  }
+
+  #summary-slider--handle {
+    top: fluid(125, $sm);
+    left: fluid(149, $sm);
+    transition: opacity 0.4s $ease-out-expo;
+    pointer-events: none;
   }
 }
 

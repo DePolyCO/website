@@ -50,16 +50,16 @@ eleventyComputed:
     <section id="details" class="restrict-xtra" data-scroll-section>
         <div class="df fc" id="details-inner">
             <div class="detail-dept detail-item df fc">
-                <div class="detail-value">{{ position.dept }}</div>
-                <div class="detail-title chip ttu">Département</div>
+                <div class="detail-value rev">{{ position.dept }}</div>
+                <div class="detail-title rev chip ttu">Département</div>
             </div>
             <div class="detail-hours detail-item df fc">
-                <div class="detail-value">{{ position.hours }}</div>
-                <div class="detail-title chip ttu">Heures</div>
+                <div class="detail-value rev">{{ position.hours }}</div>
+                <div class="detail-title rev chip ttu">Heures</div>
             </div>
             <div class="detail-location detail-item df fc">
-                <div class="detail-value">{{ position.location }}</div>
-                <div class="detail-title chip ttu">Lieu</div>
+                <div class="detail-value rev">{{ position.location }}</div>
+                <div class="detail-title rev chip ttu">Lieu</div>
             </div>
         </div>
     </section>
@@ -68,7 +68,7 @@ eleventyComputed:
         <div class="section-title">Vos responsabilités seront:</div>
         <ul class="section-list df fc">
             {% for item in position.responsibilities %}
-                <li class="section-list--item">{{ item }}</li>
+                <li class="section-list--item rev">{{ item }}</li>
             {% endfor %}
         </ul>
     </section>
@@ -77,7 +77,7 @@ eleventyComputed:
         <div class="section-title">Ce que nous voudrions que vous ayez: </div>
         <ul class="section-list df fc">
             {% for item in position.expectations %}
-                <li class="section-list--item">{{ item }}</li>
+                <li class="section-list--item rev">{{ item }}</li>
             {% endfor %}
         </ul>
     </section>
@@ -86,7 +86,7 @@ eleventyComputed:
         <div class="section-title">Voici ce que nous vous offrons: </div>
         <ul class="section-list df fc">
             {% for item in position.offering %}
-                <li class="section-list--item">{{ item }}</li>
+                <li class="section-list--item rev">{{ item }}</li>
             {% endfor %}
         </ul>
     </section>

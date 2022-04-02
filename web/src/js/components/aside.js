@@ -12,15 +12,11 @@ class AsideController {
     };
 
     this.scroller = false;
-
     this.dom.style.display = "none";
 
-    // test
-    // iris.add(document, "keydown", (e) => {
-    //   if (e.key === "a") {
-    //     this.open("#cta-panel");
-    //   }
-    // });
+    this.video = qs("#cta-picture video");
+    this.video.load();
+    this.video.pause();
   }
 
   init = () => {
@@ -42,7 +38,7 @@ class AsideController {
     this.unlistenEsc();
   };
 
-  open = (panelId) => {
+  open = async (panelId) => {
     if (!this.state.open) {
       if (this.timout) clearTimeout(this.timout);
       this.dom.style.display = "block";
@@ -61,24 +57,26 @@ class AsideController {
         });
       }
 
-      if (panelId === "#cta-panel") {
-        // play video
-        const video = qs("video", this.state.current);
-        video.currentTime = 0;
-        video.play();
-        this.video = video;
-        this.requestDuration = new Duration({
-          duration: 1500,
-          complete: () => {
-            video.pause();
-          },
-        });
-      }
       // allow display: none to take effect
       requestAnimationFrame(() => {
         this.dom.classList.add("active");
         this.state.current.classList.add("active");
       });
+
+      if (panelId === "#cta-panel") {
+        // play video
+        this.video.currentTime = 0;
+        if (this.video.paused) {
+          await this.video.play();
+        }
+
+        this.requestDuration = new Duration({
+          duration: 1500,
+          complete: () => {
+            this.video.pause();
+          },
+        });
+      }
     }
   };
 
@@ -93,11 +91,11 @@ class AsideController {
       this.dom.classList.remove("active");
       this.state.current.classList.remove("active");
 
-      if (this.video) {
+      if (this.requestDuration) {
         // play video
         this.requestDuration.destroy();
         this.video.play();
-        this.video = null;
+        this.requestDuration = null;
       }
 
       this.timout = setTimeout(() => {

@@ -238,17 +238,7 @@
                       <div class="error-overlay ttu pa">Please enter valid name</div>
                     </div>
                   </div>
-                  <div class="field pr">
-                    <input name="Last Name" class="field-input" id="cta-sample-lastname" placeholder="Last Name" required type="text" data-type="name">
-                    <label class="pen field-label pa" for="sample-lastname">Last Name</label>
-                    <label class="pen field-label--active ttu pa" for="sample-lastname">Last Name</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Please enter valid name</div>
-                    </div>
-                  </div>
+
                   <div class="field pr">
                     <input name="Email ID" class="field-input" id="cta-sample-email" placeholder="Email Address" required type="email" data-type="email">
                     <label class="pen field-label pa" for="sample-email">Email Address</label>
@@ -260,9 +250,7 @@
                       <div class="error-overlay ttu pa">Please enter valid email address</div>
                     </div>
                   </div>
-                </div>
 
-                <div class="df fc field-col">
                   <div class="field pr">
                     <input name="Company Name" class="field-input" id="cta-sample-company" placeholder="Company Name" required type="text">
                     <label class="pen field-label pa" for="sample-company">Company Name</label>
@@ -274,6 +262,7 @@
                       <div class="error-overlay ttu pa">Please enter valid company name</div>
                     </div>
                   </div>
+
                   <div class="field pr">
                     <select class="field-input" name="Industry" id="cta-sample-industry">
                       <option value="placeholder">Industry</option>
@@ -293,6 +282,7 @@
                       <option value="R&D Laboratory/institution">R&D Laboratory/Institution</option>
                       <option value="University/educational institution">University/educational Institution</option>
                       <option value="Recycling">Government body</option>
+                      <option value="other">Other</option>
                     </select>
                     <div class="select-dropdown pa pen">
                       <svg>
@@ -300,6 +290,59 @@
                       </svg>
                     </div>
                   </div>
+
+                  {# Conditional input #}
+                  <div class="field pr" style="display:none;">
+                    <input name="other-industry" class="field-input" id="cta-sample-other-industry" placeholder="Specify Industry" type="text" data-ref="cta-sample-industry">
+                    <label class="pen field-label pa" for="sample-other-industry">Specify Industry</label>
+                    <label class="pen field-label--active ttu pa" for="sample-other-industry">Specify Industry</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid Specify Industry</div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="df fc field-col">
+                  <div class="field pr">
+                    <input name="Last Name" class="field-input" id="cta-sample-lastname" placeholder="Last Name" required type="text" data-type="name">
+                    <label class="pen field-label pa" for="sample-lastname">Last Name</label>
+                    <label class="pen field-label--active ttu pa" for="sample-lastname">Last Name</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid name</div>
+                    </div>
+                  </div>
+
+                  <div class="field pr">
+                    <input name="position" class="field-input" id="cta-sample-position" placeholder="Position" required type="text">
+                    <label class="pen field-label pa" for="sample-position">Position</label>
+                    <label class="pen field-label--active ttu pa" for="sample-position">Position</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid position</div>
+                    </div>
+                  </div>
+
+                  <div class="field pr">
+                    <input name="Company address" class="field-input" id="cta-sample-company" placeholder="Company Adress" required>
+                    <label class="pen field-label pa" for="sample-company">Company Address</label>
+                    <label class="pen field-label--active ttu pa" for="sample-company">Company Address</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid company address</div>
+                    </div>
+                  </div>
+
                   <div class="field pr">
                     <select class="field-input" name="Purpose" id="cta-sample-purpose">
                       <option value="placeholder">Purpose</option>
@@ -310,6 +353,7 @@
                       <option value="Production test"> Production test </option>
                       <option value="Laboratory analysis"> Laboratory analysis </option>
                       <option value="Educational reasons"> Educational reasons </option>
+                      <option value="other">Other</option>
                     </select>
                     <div class="select-dropdown pa pen">
                       <svg>
@@ -317,8 +361,21 @@
                       </svg>
                     </div>
                   </div>
-                </div>
 
+                  {# Conditional input #}
+                  <div class="field pr" style="display:none;">
+                    <input name="other-purpose" class="field-input" id="cta-sample-other-purpose" placeholder="Specify Purpose" type="text" data-ref="cta-sample-purpose">
+                    <label class="pen field-label pa" for="sample-other-purpose">Specify Purpose</label>
+                    <label class="pen field-label--active ttu pa" for="sample-other-purpose">Specify Purpose</label>
+                    <div class="cp pa error-icon">
+                      <svg>
+                        <use xlink:href="#err-icon"></use>
+                      </svg>
+                      <div class="error-overlay ttu pa">Please enter valid Specify Purpose</div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               <div class="df">

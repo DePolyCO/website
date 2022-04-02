@@ -95,6 +95,8 @@ export class FormManager {
     this.forms = qsa("form", qs(root));
     this.inputs = this.forms.map((form) => qsa("input", form));
     this.listen();
+
+    window.form = this;
   }
 
   listen = () => {
@@ -104,6 +106,7 @@ export class FormManager {
 
     this.unvalidate = [];
     this.unfile = [];
+    this.unref = [];
 
     this.inputs.map((inputs) => {
       inputs.forEach((input) => {
@@ -117,6 +120,22 @@ export class FormManager {
       inputs.forEach((input) => {
         if (input.type === "file") {
           this.unfile.push(iris.add(input, "change", this.handleFile));
+        }
+      });
+    });
+
+    this.inputs.map((inputs) => {
+      inputs.forEach((input) => {
+        if (input.dataset?.ref?.length) {
+          this.unref.push(
+            iris.add(qs(`#${input.dataset.ref}`), "change", (e) => {
+              if (e.target.value !== "other") {
+                input.parentNode.style.display = `none`;
+                return;
+              }
+              input.parentNode.style.display = `block`;
+            })
+          );
         }
       });
     });
@@ -276,6 +295,7 @@ export class FormManager {
     this.unlisten();
     this.unvalidate.forEach((e) => e());
     this.unfile.forEach((e) => e());
+    this.unref.forEach((e) => e());
 
     this.hoveru1 && this.hoveru1();
     this.hoveru2 && this.hoveru2();

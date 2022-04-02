@@ -271,6 +271,7 @@
 
       img {
         transition: transform 2s $ease-out-expo;
+        object-fit: cover;
       }
 
       &--vert {

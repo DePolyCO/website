@@ -64,7 +64,7 @@ class AsideController {
       if (panelId === "#cta-panel") {
         // play video
         const video = qs("video", this.state.current);
-        video.load();
+        video.currentTime = 0;
         video.play();
         this.video = video;
         this.requestDuration = new Duration({

@@ -39,7 +39,11 @@ tags:
 
         <div class="df jcb">
             <div id="article-breadcrumbs" class="article-breadcrumbs fv-mono">
-                <a class="link link-dark link-solid" href="/blog/">Blog</a> / <a class="link link-dark link-solid" href="/blog/?filter={{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a> / 
+                <a class="text-underline" href="/blog/">Blog</a> / <a class="text-underline" href="/blog/?filter={{ article.settings.postCategory | slugify }}">{{ article.settings.postCategory }}</a> / 
+                <svg id="blog-arr--down" fill="none" viewBox="0 0 12 13">
+                    <path d="m10.415 8.402-2.108 2.137V0H7.5l-.8 1.5v9.04L4.585 8.401 3.5 9.499 6.957 13h1.086L11.5 9.499l-1.085-1.097Z" fill="#022D42"/>
+                    <path d="M0 1.5h8V0H0v1.5Z" fill="#022D42"/>
+                </svg>
             </div>
             <ul id="article-tags--d" class="article-tag fv-mono df m-hide">
                 {% for tag in article.tags %}

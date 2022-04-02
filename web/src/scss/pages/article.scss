@@ -7,6 +7,16 @@
     }
   }
 
+  #blog-arr--down {
+    width: fluid(12, $sm);
+    height: fluid(13, $sm);
+
+    @include md {
+      width: fluid(12, $lg);
+      height: fluid(13, $lg);
+    }
+  }
+
   #article-tags--m {
     gap: fluid(10, $sm);
     margin-bottom: fluid(10, $sm);
@@ -174,8 +184,7 @@
       aspect-ratio: var(--w, #{fluid(335, $sm)}) / var(--h, #{fluid(335, $sm)});
 
       @include md {
-        aspect-ratio: var(--w, #{fluid(900, $lg)}) /
-          var(--h, #{fluid(900, $lg)});
+        aspect-ratio: var(--w, #{fluid(900, $lg)}) / var(--h, #{fluid(900, $lg)});
         width: fluid(900, $lg);
       }
     }
@@ -390,6 +399,7 @@
             }
           }
         }
+
         &:last-of-type {
           .article-card {
             width: fluid(400 + 35, $lg);
@@ -460,7 +470,7 @@
     padding-top: fluid(100, $sm);
     gap: fluid(20, $sm);
 
-    div > span:first-of-type {
+    div>span:first-of-type {
       font-weight: 700;
       margin-right: 0.35em;
     }

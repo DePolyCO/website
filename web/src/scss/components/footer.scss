@@ -366,7 +366,7 @@
 }
 
 .footer-terms {
-  font-size: fluid(16, $sm);
+  font-size: fluid(12, $sm);
   line-height: 140%;
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -396,7 +396,7 @@
 }
 
 #footer-terms--col {
-  gap: fluid(25, $sm);
+  gap: fluid(20, $sm);
   margin-bottom: fluid(15, $sm);
 
   @include md {

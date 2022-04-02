@@ -652,7 +652,6 @@
 
   #blog-article--list {
     padding-top: fluid(28, $sm);
-    margin-bottom: fluid(40, $sm);
 
     @include md {
       width: fluid(430 * 3 + 40 * 2, $lg);
@@ -734,32 +733,48 @@
   }
 
   #pagination {
-    border-top: 1px solid #022d42;
     border-bottom: 1px solid #022d42;
-    margin-bottom: fluid(160, $lg);
 
     font-weight: 700;
-    font-size: fluid(15, $lg);
+    font-size: fluid(15, $sm);
     line-height: 130%;
     letter-spacing: 0.01em;
+    margin-bottom: fluid(40, $sm);
+
+    position: relative;
+    top: fluid(-10, $sm);
+
+    @include md {
+      margin-bottom: fluid(160, $lg);
+      font-size: fluid(15, $lg);
+      border-top: 1px solid #022d42;
+    }
   }
 
   .pagination-item {
-    padding: fluid(30, $lg) fluid(55, $lg);
+    padding: 0 fluid(24, $sm) fluid(18, $sm);
     position: relative;
     cursor: pointer;
     color: #aab6b6;
     transition: color 0.4s;
+
+    @include md {
+      padding: fluid(30, $lg) fluid(55, $lg);
+    }
 
     &::before {
       content: "";
       position: absolute;
       right: 0;
       top: 50%;
-      height: fluid(11, $lg);
+      height: fluid(20, $sm);
       width: 1px;
       background-color: #aab6b6;
-      transform: translateY(-50%);
+      transform: translateY(-90%);
+
+      @include md {
+        height: fluid(11, $lg);
+      }
     }
 
     &:last-of-type {
@@ -782,17 +797,26 @@
         bottom: 0;
         left: 50%;
         right: 0;
-        height: fluid(3, $lg);
-        width: fluid(30, $lg);
+        height: fluid(3, $sm);
+        width: fluid(30, $sm);
         background: $darkblue;
         transform: translateX(-50%);
+
+        @include md {
+          height: fluid(3, $lg);
+          width: fluid(30, $lg);
+        }
       }
     }
   }
 
   .page-arr {
-    padding: fluid(30, $lg) 0;
+    padding: 0 0 fluid(18, $sm) 0;
     cursor: pointer;
+
+    @include md {
+      padding: fluid(30, $lg) 0;
+    }
 
     &.inactive {
       pointer-events: none;
@@ -801,11 +825,19 @@
   }
 
   #pagination-before {
-    padding-right: fluid(30, $lg);
+    padding-right: fluid(30, $sm);
+
+    @include md {
+      padding-right: fluid(30, $lg);
+    }
   }
 
   #pagination-after {
-    padding-left: fluid(30, $lg);
+    padding-left: fluid(30, $sm);
+
+    @include md {
+      padding-left: fluid(30, $lg);
+    }
   }
 
   // no results

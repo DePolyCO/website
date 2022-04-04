@@ -133,7 +133,7 @@ picture.fx {
 
 #cookie-banner {
   bottom: fluid(20, $sm);
-  right: fluid(25, $sm);
+  right: fluid(20, $sm);
   border-radius: fluid(22, $sm);
   padding: fluid(20, $sm);
   border: 1px solid #dadaca;
@@ -157,7 +157,7 @@ picture.fx {
   p {
     line-height: 140%;
     text-align: center;
-    width: fluid(325 - 40, $sm);
+    width: fluid(325 - 30, $sm);
     margin-bottom: fluid(24, $sm);
     font-size: fluid(18, $sm);
 

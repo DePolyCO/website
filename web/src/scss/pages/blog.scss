@@ -570,10 +570,18 @@
     height: fit-content;
     white-space: nowrap;
 
+    .safari & {
+      padding: fluid(4, $sm) fluid(8, $sm) fluid(1, $sm);
+    }
+
     @include md {
       font-size: fluid(12, $lg);
       padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
       border-radius: fluid(8, $lg);
+
+      .safari & {
+        padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
+      }
     }
 
     &:hover {

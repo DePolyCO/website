@@ -637,6 +637,9 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
   .summary-visual--container {
     overflow-x: auto;
+    position: relative;
+    left: fluid(-20, $sm);
+    width: fluid(375, $sm);
   }
 
   picture {

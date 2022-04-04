@@ -569,7 +569,8 @@
     height: -moz-fit-content;
     height: fit-content;
     white-space: nowrap;
-
+    letter-spacing: 0.05em;
+    
     .safari & {
       padding: fluid(4, $sm) fluid(8, $sm) fluid(1, $sm);
     }

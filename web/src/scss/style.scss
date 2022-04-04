@@ -206,6 +206,10 @@ picture.fx {
   }
 }
 
+.restrict-height {
+  height: 100vh;
+}
+
 @import "./pages/404.scss";
 @import "./pages/home.scss";
 @import "./pages/technology.scss";

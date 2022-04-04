@@ -309,12 +309,12 @@
 }
 
 .fact-tags {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
 
   .chip {
     display: inline;
     margin-right: 3px;
-    margin-bottom: 3px;
   }
 }
 

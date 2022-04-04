@@ -80,7 +80,7 @@ export class Search {
       );
 
       if (!filtered.length) {
-        console.log("No filtered results!");
+        this.noResults();
         return;
       }
 
@@ -93,7 +93,6 @@ export class Search {
       this.build(paged);
     } else {
       this.noResults();
-      console.log("No results!");
     }
 
     if (Sniff.touchDevice) {
@@ -105,6 +104,12 @@ export class Search {
 
   build = (arr) => {
     if (!this.targetContainer) return;
+
+    if (!arr.length) {
+      this.noResults();
+      return;
+    }
+
     const frag = document.createDocumentFragment();
     arr.map((item) => {
       const clone = this.template.content.cloneNode(true);

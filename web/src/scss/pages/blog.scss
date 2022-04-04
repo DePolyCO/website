@@ -485,10 +485,12 @@
     z-index: 9;
     background-color: #ecece2;
     transition: top 1s $ease-out-expo;
+    border-bottom: 1px solid $darkblue;
 
     @include md {
       width: fluid(430, $lg);
       margin-right: fluid(40, $lg);
+      border-bottom: none;
 
       position: unset;
       z-index: 1;
@@ -595,7 +597,10 @@
     padding-bottom: fluid(28, $sm);
     transition: border-bottom 0.4s $ease-out-expo;
     background-color: #ecece2;
-    border-bottom: 1px solid $darkblue;
+
+    .safari & {
+      border-bottom: 1px solid $darkblue;
+    }
 
     svg {
       width: fluid(32, $sm);

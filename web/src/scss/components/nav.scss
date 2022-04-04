@@ -2,6 +2,7 @@
   transition: transform 1.85s $ease-out-expo;
   pointer-events: none;
   height: 100%;
+  backface-visibility: hidden;
 
   &.active {
     height: 100%;

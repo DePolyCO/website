@@ -477,7 +477,6 @@
   }
 
   #blog-filters--extended {
-    border-bottom: 1px solid #022d42;
     margin-bottom: fluid(28, $sm);
     height: fit-content;
 
@@ -597,6 +596,7 @@
     padding-bottom: fluid(28, $sm);
     transition: border-bottom 0.4s $ease-out-expo;
     background-color: #ecece2;
+    border-bottom: 1px solid $darkblue;
 
     svg {
       width: fluid(32, $sm);
@@ -633,7 +633,6 @@
     @include md {
       margin-top: fluid(30, $lg);
       padding-bottom: fluid(29, $lg);
-      border-bottom: 1px solid $darkblue;
       position: relative;
 
       svg {

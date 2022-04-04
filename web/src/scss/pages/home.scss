@@ -108,6 +108,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
     @include md {
       padding-bottom: fluid(60, $lg);
+      position: relative;
     }
   }
 

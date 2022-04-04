@@ -158,7 +158,7 @@ export class Parallax {
     if (this.options.limitBounds) {
       const parentRect = bounds(this.dom.parentNode);
       this.state.bounds.maxRange =
-        parentRect.height - height - this.dom.offsetTop / 2; // hack /2 to increase rangez
+        parentRect.height - height - this.dom.offsetTop;
     }
 
     this.state.bounds.y = height;

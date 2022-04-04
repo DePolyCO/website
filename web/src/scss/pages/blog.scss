@@ -513,7 +513,7 @@
       left: fluid(20 + 32, $sm);
       top: fluid(24, $sm);
       opacity: 0.1;
-      border: 1px solid #022d42;
+      border-right: 2px solid #022d42;
       width: 1px;
       height: fluid(32, $sm);
     }

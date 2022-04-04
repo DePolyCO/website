@@ -309,7 +309,8 @@
 }
 
 .fact-tags {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
 
   .chip {
     margin-right: 3px;

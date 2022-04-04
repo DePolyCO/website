@@ -578,6 +578,10 @@
       font-size: fluid(12, $lg);
       padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
       border-radius: fluid(8, $lg);
+
+      .safari & {
+        padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
+      }
     }
 
     &:hover {

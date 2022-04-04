@@ -313,6 +313,28 @@ meta:
                                     </div>
                                 </div>
                                 <div class="field pr">
+                                    <input name="Position" class="field-input" id="sample-position" placeholder="Position" required type="text">
+                                    <label class="pen field-label pa" for="sample-position">Position</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-position">Position</label>
+                                    <div class="cp pa error-icon">
+                                        <svg>
+                                            <use xlink:href="#err-icon"></use>
+                                        </svg>
+                                        <div class="error-overlay ttu pa">Please enter valid position</div>
+                                    </div>
+                                </div>
+                                <div class="field pr">
+                                    <input name="Company Address" class="field-input" id="sample-address" placeholder="Company Address" required>
+                                    <label class="pen field-label pa" for="sample-address">Company Address</label>
+                                    <label class="pen field-label--active ttu pa" for="sample-address">Company Address</label>
+                                    <div class="cp pa error-icon">
+                                        <svg>
+                                            <use xlink:href="#err-icon"></use>
+                                        </svg>
+                                        <div class="error-overlay ttu pa">Please enter valid company address</div>
+                                    </div>
+                                </div>
+                                <div class="field pr">
                                     <select class="field-input" name="Industry" id="sample-industry">
                                         <option value="placeholder">Industry</option>
                                         <option value="Automotive industry">Automotive industry</option>
@@ -342,7 +364,7 @@ meta:
 
                                 {# Conditional input #}
                                 <div class="field pr" style="display:none;">
-                                    <input name="other-industry" class="field-input" id="sample-other-industry" placeholder="Specify Industry" type="text" data-ref="sample-industry">
+                                    <input name="Industry Other" class="field-input" id="sample-other-industry" placeholder="Specify Industry" type="text" data-ref="sample-industry">
                                     <label class="pen field-label pa" for="sample-other-industry">Specify Industry</label>
                                     <label class="pen field-label--active ttu pa" for="sample-other-industry">Specify Industry</label>
                                     <div class="cp pa error-icon">
@@ -374,7 +396,7 @@ meta:
 
                                 {# Conditional input #}
                                 <div class="field pr" style="display:none;">
-                                    <input name="other-purpose" class="field-input" id="sample-other-purpose" placeholder="Specify Purpose" type="text" data-ref="sample-purpose">
+                                    <input name="Purpose Other" class="field-input" id="sample-other-purpose" placeholder="Specify Purpose" type="text" data-ref="sample-purpose">
                                     <label class="pen field-label pa" for="sample-other-purpose">Specify Purpose</label>
                                     <label class="pen field-label--active ttu pa" for="sample-other-purpose">Specify Purpose</label>
                                     <div class="cp pa error-icon">

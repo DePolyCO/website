@@ -454,13 +454,11 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     font-size: fluid(16, $lg);
     line-height: 110%;
 
-    transition: opacity 1.33s $enhanced-ease, margin-bottom 1.33s $enhanced-ease,
-      font-size 1.33s $enhanced-ease, transform 1.33s $enhanced-ease;
+    transition: all 1.33s $enhanced-ease;
   }
 
   .enhanced-title {
-    transition: opacity 1.33s $enhanced-ease, font-size 1.33s $enhanced-ease,
-      font-weight 1.33s $enhanced-ease;
+    transition: all 1.33s $enhanced-ease;
 
     font-weight: 400;
     font-size: fluid(50, $lg);

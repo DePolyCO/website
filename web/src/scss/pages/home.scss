@@ -115,6 +115,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     flex-direction: column;
 
     @include md {
+      position: relative;
       padding-bottom: fluid(60, $lg);
     }
   }

@@ -31,6 +31,11 @@ export class Search {
 
     if (Sniff.touchDevice) {
       this.unPress = iris.add(this.btn, "click", this.handleMobile);
+      this.unBlur = iris.add(
+        "#search-extended--close",
+        "click",
+        this.handleMobileClose
+      );
     } else {
       this.unPress = iris.add(this.btn, "click", this.handleInput);
     }
@@ -48,7 +53,7 @@ export class Search {
     try {
       this.query(val);
     } catch (e) {
-      console.log(e);
+      this.noResults();
     }
   };
 
@@ -60,6 +65,14 @@ export class Search {
 
     this.input.focus();
     // set search active
+  };
+
+  handleMobileClose = () => {
+    this.input.blur();
+
+    const filters = qs("#filters-extended");
+    filters.style.pointerEvents = "all";
+    filters.style.opacity = 1;
   };
 
   clearInput = () => {
@@ -93,12 +106,6 @@ export class Search {
       this.build(paged);
     } else {
       this.noResults();
-    }
-
-    if (Sniff.touchDevice) {
-      const filters = qs("#filters-extended");
-      filters.style.pointerEvents = "all";
-      filters.style.opacity = 1;
     }
   };
 
@@ -163,5 +170,7 @@ export class Search {
 
   destroy = () => {
     this.unClick && this.unClick();
+    this.unPress && this.unPress();
+    this.unBlur && this.unBlur();
   };
 }

@@ -272,6 +272,11 @@
       img {
         transition: transform 2s $ease-out-expo;
         object-fit: cover;
+        min-height: fluid(335, $sm);
+
+        @include md {
+          min-height: fluid(400, $lg);
+        }
       }
 
       &--vert {

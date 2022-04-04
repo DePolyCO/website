@@ -220,6 +220,14 @@
         aspect-ratio: 335 / 197;
         margin-bottom: fluid(20, $sm);
 
+        img {
+          min-height: fluid(197, $sm);
+
+          @include md {
+            min-height: fluid(480, $lg);
+          }
+        }
+
         @include md {
           aspect-ratio: 885 / 480;
           margin-bottom: fluid(32, $lg);
@@ -291,6 +299,11 @@
     img {
       transition: transform 2s $ease-out-expo;
       object-fit: cover;
+      min-height: fluid(335, $sm);
+
+      @include md {
+        min-height: fluid(400, $lg);
+      }
     }
 
     &--hori {

@@ -631,6 +631,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     div:nth-of-type(1) {
       line-height: 100%;
       font-size: fluid(12, $sm);
+      font-weight: 700;
     }
   }
 

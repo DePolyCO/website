@@ -108,7 +108,7 @@ export const homeController = new Controller({
       speed: 0.75,
     });
 
-    if (!Sniff.touchDevice && !Sniff.safari) {
+    if (!Sniff.touchDevice) {
       ps = qsa(".stat-desc").map(
         (item) =>
           new Parallax({
@@ -118,9 +118,6 @@ export const homeController = new Controller({
             speed: 2,
           })
       );
-    }
-
-    if (!Sniff.touchDevice) {
       c1 = new Collapse();
     }
 

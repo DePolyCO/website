@@ -177,7 +177,7 @@ export class Parallax {
   };
 
   destroy = () => {
-    if (Sniff.safari) return;
+    // if (Sniff.safari) return;
 
     smoothscroller.remove(this.scrollID);
     ro.remove(this.roID);

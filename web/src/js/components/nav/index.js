@@ -154,7 +154,6 @@ export class Nav {
 
     if (Sniff.touchDevice) {
       document.documentElement.classList[action]("oh");
-      document.documentElement.classList[action]("restrict-height");
 
       this.bg.reverse();
       this.navt.reverse();

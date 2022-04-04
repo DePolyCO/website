@@ -319,6 +319,7 @@
         padding: 0;
         padding-bottom: fluid(40, $lg);
         border-bottom: 1px solid $darkblue;
+        border-right: none;
 
         .article-card--thumbnail {
           min-width: fluid(400, $lg);

@@ -106,7 +106,7 @@ class AsideController {
 
   preventOverscroll = () => {
     if (Sniff.touchDevice) {
-      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       smoothscroller.lock("aside");
     }
@@ -114,7 +114,7 @@ class AsideController {
 
   allowOverscroll = () => {
     if (Sniff.touchDevice) {
-      document.body.style.overflow = null;
+      document.documentElement.style.overflow = null;
     } else {
       smoothscroller.unlock("aside");
     }

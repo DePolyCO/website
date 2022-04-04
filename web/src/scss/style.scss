@@ -207,7 +207,7 @@ picture.fx {
 }
 
 .restrict-height {
-  height: 100vh;
+  overflow: hidden;
 }
 
 @import "./pages/404.scss";

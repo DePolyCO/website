@@ -151,12 +151,11 @@ export class Nav {
     const action = this.state.mobileOpen ? "add" : "remove";
     this.dom.classList[action]("active");
     this.btn.classList[action]("active");
-    if (Sniff.touchDevice) {
-      document.body.classList[action]("oh");
-      document.body.classList[action]("restrict-height");
-    }
 
     if (Sniff.touchDevice) {
+      document.documentElement.classList[action]("oh");
+      document.documentElement.classList[action]("restrict-height");
+
       this.bg.reverse();
       this.navt.reverse();
 

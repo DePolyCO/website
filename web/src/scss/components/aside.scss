@@ -153,6 +153,7 @@
 .bio-panel--inner {
   padding: fluid(113, $sm) fluid(20, $sm) 0;
   overflow-y: auto;
+  overflow-x: hidden;
   min-height: 100%;
   height: 100%;
 
@@ -322,11 +323,10 @@ strong {
 
 .bio-panel--header {
   height: fluid(73, $sm);
-  width: fluid(295, $sm);
-  left: fluid(20, $sm);
+  width: fluid(295 + 40, $sm);
+  left: 0;
   top: 0;
   background-color: $lightbeige;
-  border-bottom: 1px solid $darkblue;
   transform: translateZ(0);
 
   @include md {
@@ -334,7 +334,21 @@ strong {
     width: fluid(976, $lg);
     left: fluid(54, $lg);
     top: 0;
-    border-bottom: 1px solid $darkblue;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: fluid(20, $sm);
+    right: fluid(20, $sm);
+    height: 1px;
+    background-color: $darkblue;
+
+    @include md {
+      left: 0;
+      right: 0;
+    }
   }
 }
 

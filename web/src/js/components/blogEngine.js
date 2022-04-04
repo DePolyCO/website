@@ -153,6 +153,11 @@ export class Engine {
   };
 
   buildPage = (arr = this.state.results.current) => {
+    if (!arr.length) {
+      this.settings.page.wrapper.style.display = `none`;
+    } else {
+      this.settings.page.wrapper.style.display = `flex`;
+    }
     const nPages = Math.ceil(arr.length / this.settings.count);
     const template = this.settings.page.template;
 

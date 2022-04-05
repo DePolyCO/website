@@ -96,7 +96,7 @@
   .number-m {
     &--no {
       font-weight: 400;
-      font-size: 62px;
+      font-size: fluid(62, $sm);
       line-height: 100%;
       letter-spacing: -0.05em;
       color: #fff;
@@ -110,7 +110,7 @@
 
     &--detail {
       font-weight: 400;
-      font-size: 62px;
+      font-size: fluid(62, $sm);
       line-height: 100%;
       letter-spacing: -0.05em;
     }

@@ -73,8 +73,6 @@
 
   #numbers-m {
     padding-bottom: fluid(100, $sm);
-    margin-bottom: fluid(42, $sm);
-    border-bottom: 1px solid $darkblue;
 
     &--snos {
       gap: fluid(25, $sm);
@@ -113,7 +111,7 @@
     &--detail {
       font-weight: 400;
       font-size: 62px;
-      line-height: 100%;
+      line-height: 110%;
       letter-spacing: -0.05em;
     }
   }
@@ -121,11 +119,15 @@
   #team {
     margin-bottom: fluid(42, $sm);
     border-bottom: 1px solid rgba(2, 45, 66, 0.2);
+    border-top: 1px solid $darkblue;
+    padding-top: fluid(42, $sm);
 
     @include md {
       flex-direction: row;
       padding-bottom: fluid(75, $lg);
       margin-bottom: fluid(125, $lg);
+      padding-top: 0;
+      border-top: none;
     }
   }
 

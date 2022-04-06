@@ -144,7 +144,7 @@ export class Smooth extends Conductor {
 
       this.tracker.setScroll(x.target, -y.target);
 
-      this.sail();
+      // this.sail();
       this.render();
     } else {
       x.target = x.cur;

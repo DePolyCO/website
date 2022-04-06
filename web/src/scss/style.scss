@@ -200,6 +200,10 @@ picture.fx {
   #cookie-decline {
     background-color: #dadaca;
 
+    .btn-inner::after {
+      color: $darkbeige;
+    }
+
     &:hover {
       background-color: $darkblue;
     }

@@ -11,9 +11,12 @@ module.exports = withCache(
     `);
 
     jobs.forEach((item) => {
-      item.levels = Object.keys(item.level)
-        .filter((key) => item.level[key])
-        .join("/");
+      const levels = Object.keys(item.level).filter((key) => item.level[key]);
+      if (levels.length < 3) {
+        item.levels = levels.join("/");
+      } else {
+        item.levels = "All levels";
+      }
     });
 
     const filtered = jobs

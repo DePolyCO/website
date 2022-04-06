@@ -899,6 +899,7 @@
 
     @include md {
       margin-bottom: fluid(40, $lg);
+      width: fluid(430 * 3 + 40 * 2, $lg);
     }
 
     picture {

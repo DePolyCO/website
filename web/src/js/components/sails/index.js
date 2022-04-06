@@ -1,4 +1,4 @@
-import { Timeline, qs, Sniff, Vau } from "../../hermes";
+import { Timeline, qs, Sniff, Vau, Duration } from "../../hermes";
 
 class Sail {
   constructor() {

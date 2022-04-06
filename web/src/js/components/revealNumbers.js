@@ -22,6 +22,16 @@ export class Numbers {
     this.reveals = this.slides.map(
       (el) => new Reveal({ targets: el, stagger: 75 })
     );
+    this.reveals.forEach((r) => {
+      r.play({
+        from: 0,
+        to: -110,
+        visible: false,
+        delay: 0,
+        stagger: 0,
+        duration: 1,
+      });
+    });
   };
 
   listen = () => {

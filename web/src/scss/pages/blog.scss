@@ -206,19 +206,31 @@
         @include md {
           font-size: fluid(12, $lg);
           border-radius: fluid(8, $lg);
-          padding: fluid(4, $lg) fluid(8, $lg) fluid(2, $lg);
+          padding: fluid(7, $lg) fluid(8, $lg) fluid(4, $lg);
           margin-bottom: 0;
+          position: relative;
+          top: -4px;
         }
       }
 
       &--link {
-        display: block;
+        display: flex;
+        flex-direction: column;
+
+        @include md {
+          height: fluid(880, $lg);
+        }
       }
 
       &--thumbnail-featured {
         width: 100%;
         aspect-ratio: 335 / 197;
         margin-bottom: fluid(20, $sm);
+        height: fluid(197, $sm);
+
+        @include md {
+          height: fluid(480, $lg);
+        }
 
         img {
           min-height: fluid(197, $sm);
@@ -270,6 +282,7 @@
         @include md {
           font-size: fluid(16, $lg);
           gap: fluid(12, $lg);
+          margin-top: auto;
         }
       }
     }
@@ -520,15 +533,17 @@
     }
 
     @include md {
+      border-top: 1px solid $darkblue;
       border-bottom: 1px solid $darkblue;
       padding: fluid(35 - 6.5, $lg) 0;
       gap: fluid(29, $lg);
       overflow: hidden;
       overflow: clip;
 
-      height: fluid(80, $lg);
+      height: fluid(93, $lg);
       margin-left: 0;
       flex-wrap: wrap;
+      align-items: center;
 
       &::before {
         content: none;

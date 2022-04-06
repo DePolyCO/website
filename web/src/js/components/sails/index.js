@@ -41,6 +41,7 @@ class Sail {
   outD(done = false) {
     // this.tl.do("reverse", { complete: done });
 
+    this.tl?.do("destroy");
     this.tl = new Timeline();
     this.sail.style.transform = `translateY(100%)`;
     this.sail.style.opacity = 1;

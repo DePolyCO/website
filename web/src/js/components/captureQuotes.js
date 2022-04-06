@@ -31,7 +31,6 @@ export class CaptureQuotes {
   listen = () => {
     this.unlisteners = this.targets.map((target, i) =>
       iris.add(target, "click", () => {
-        console.log(i, this.current);
         if (i === this.current) return;
         this.setActive(i);
       })

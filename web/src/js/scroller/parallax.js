@@ -18,6 +18,7 @@ export class Parallax {
     scale = {
       x: { start: 0, end: 0 },
       y: { start: 0, end: 0 },
+      z: { start: 0, end: 0 },
     },
     rotate = {
       x: { start: 0, end: 0 },
@@ -68,6 +69,10 @@ export class Parallax {
             rotate.y?.start !== rotate.y?.end ||
             rotate.y?.start !== 0 ||
             rotate.y?.end !== 0,
+          z:
+            rotate.z?.start !== rotate.z?.end ||
+            rotate.z?.start !== 0 ||
+            rotate.z?.end !== 0,
         },
 
         scale: {
@@ -123,6 +128,10 @@ export class Parallax {
       const progress = invlerp(boundRange[0], boundRange[1], scroll);
       const y = this.options.ease(this.options.down ? 1 - progress : progress); // 0 -> 1
 
+      if (needs.rotate.z) {
+        r = lerp(this.options.rotate?.z?.start, this.options.rotate?.z?.end, y);
+      }
+
       let ypx, ypct;
 
       if (this.options.useOnlyOffset) {
@@ -177,8 +186,6 @@ export class Parallax {
   };
 
   destroy = () => {
-    if (Sniff.safari) return;
-
     smoothscroller.remove(this.scrollID);
     ro.remove(this.roID);
   };

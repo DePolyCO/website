@@ -165,8 +165,8 @@
 
       position: absolute;
       bottom: 0;
-      left: fluid(-35 + 20, $sm);
-      right: fluid(5 - 20, $sm);
+      left: 0;
+      right: 0;
     }
 
     @include md {

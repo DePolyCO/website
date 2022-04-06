@@ -30,13 +30,12 @@ class Sail {
       duration: 1750,
       easing: "o4",
     });
-    this.sail.style.opacity = 0;
-    // this.tl.add({
-    //   targets: this.sail,
-    //   opacity: [1, 0],
-    //   duration: 50,
-    //   easing: "o3",
-    // });
+    new Duration({
+      duration: 50,
+      complete: () => {
+        this.sail.style.opacity = 0;
+      },
+    });
   }
 
   outD(done = false) {

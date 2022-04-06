@@ -536,4 +536,12 @@
       pointer-events: all;
     }
   }
+
+  #see-more {
+    top: calc(100% + #{fluid(-30, $sm)});
+
+    @include md {
+      top: unset;
+    }
+  }
 }

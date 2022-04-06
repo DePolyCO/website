@@ -429,7 +429,8 @@ strong {
 
   @include md {
     font-size: fluid(18, $lg);
-    width: fluid(241, $lg);
+    min-width: fluid(300, $lg);
+    width: fluid(300, $lg);
   }
 }
 

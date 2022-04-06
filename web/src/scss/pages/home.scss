@@ -405,6 +405,10 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
         transform: scale(math.div(135, 470), math.div(139, 388)) translate3d(#{fluid(-590, $lg)}, #{fluid(360, $lg)}, 0);
       }
 
+      .enhanced-desc {
+        width: 0;
+      }
+
       .enhanced-sno {
         font-size: fluid(14, $lg);
         margin-bottom: 0;
@@ -442,7 +446,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     line-height: 150%;
     letter-spacing: 0.01em;
 
-    transition: opacity 0.5s $enhanced-ease 0.5s, transform 1.33s $enhanced-ease;
+    transition: opacity 0.5s $enhanced-ease 0.5s, transform 1.33s $enhanced-ease, width 1.33s $enhanced-ease;
 
     >p {
       width: fluid(395, $lg);

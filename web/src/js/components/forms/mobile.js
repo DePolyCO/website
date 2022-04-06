@@ -1,4 +1,4 @@
-import { qs, qsa } from "../../hermes";
+import { qs, qsa, iris } from "../../hermes";
 import { Select } from "../select";
 
 export class MobileForms {
@@ -10,9 +10,9 @@ export class MobileForms {
     });
     this.current = 0;
     this.forms = qsa(".form-details");
-    // this.underlay = qs("#form-underlay");
 
     this.build();
+    this.listen();
     this.onSelect(0);
   }
 
@@ -23,8 +23,30 @@ export class MobileForms {
     });
   };
 
+  listen = () => {
+    const inputs = this.forms.map((form) => qsa("input", form));
+    this.unref = [];
+
+    inputs.map((inputs) => {
+      inputs.forEach((input) => {
+        if (input.dataset?.ref?.length) {
+          this.unref.push(
+            iris.add(qs(`#${input.dataset.ref}`), "change", (e) => {
+              if (e.target.value !== "other") {
+                input.parentNode.style.display = `none`;
+                return;
+              }
+              input.parentNode.style.display = `block`;
+            })
+          );
+        }
+      });
+    });
+  };
+
   destroy = () => {
     this.select.destroy();
+    this.unref.forEach((e) => e());
   };
 
   toggle = () => {

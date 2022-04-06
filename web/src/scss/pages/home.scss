@@ -546,9 +546,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
   transition: opacity 0.5s $enhanced-ease;
 
-  top: 50%;
-  transform: translateY(-50%);
-  min-height: fit-content;
+  transform: translateY(-25%);
 
   .enhanced-title {
     margin-bottom: fluid(64, $lg);

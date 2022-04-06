@@ -75,32 +75,25 @@
   #explain-content {
     padding-left: fluid(40, $lg);
     position: relative;
+    min-width: fluid(395 + 40, $lg);
+    width: fluid(395 + 40, $lg);
   }
 
   .explain-item {
-    &:nth-of-type(1) {
-      margin-bottom: fluid(298, $lg);
+    position: relative;
+    top: fluid(-100, $lg);
 
-      body.fra & {
-        margin-bottom: fluid(298 * 0.1, $lg);
-      }
+    &:nth-of-type(1) {
+      margin-bottom: fluid(298 * 0.1, $lg);
     }
 
     &:nth-of-type(2) {
       padding-top: fluid(100, $lg);
-      margin-bottom: fluid(463, $lg);
-
-      body.fra & {
-        margin-bottom: fluid(463 * 0.75, $lg);
-      }
+      margin-bottom: fluid(463 * 0.75, $lg);
     }
 
     &:nth-of-type(3) {
-      margin-bottom: fluid(249, $lg);
-
-      body.fra & {
-        margin-bottom: fluid(249 * 1, $lg);
-      }
+      margin-bottom: fluid(249 * 1, $lg);
     }
   }
 

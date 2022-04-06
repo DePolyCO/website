@@ -485,7 +485,7 @@ option[value="placeholder"] {
   }
 
   @include md {
-    top: fluid(19, $lg);
+    top: fluid(16, $lg);
     right: fluid(19, $lg);
 
     svg {

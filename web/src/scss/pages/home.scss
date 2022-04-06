@@ -543,6 +543,8 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
   .enhanced-title {
     margin-bottom: fluid(64, $lg);
     max-width: fluid(433, $lg);
+    font-size: fluid(30, $lg) !important;
+    font-weight: 500 !important;
   }
 
   p {

@@ -83,14 +83,7 @@
     }
   }
 
-  #see-more--back {
-    transition: all 0.75s $ease-out-expo;
 
-    &:hover {
-      color: #dadaca;
-      background-color: $darkblue;
-    }
-  }
 
   .mb-md {
     margin-bottom: fluid(100, $sm);
@@ -197,33 +190,6 @@
     height: fluid(430, $lg);
   }
 
-  #see-more {
-    top: calc(100% + #{fluid(28, $sm)});
-    width: fluid(335, $sm);
-    height: -moz-fit-content;
-    height: fit-content;
-    align-items: baseline;
-
-    @include md {
-      top: unset;
-      width: auto;
-      display: block;
-    }
-  }
-
-  #see-more--title {
-    font-size: fluid(16, $sm);
-    line-height: 110%;
-    letter-spacing: 0.01em;
-    margin-bottom: fluid(10, $sm);
-    font-weight: 500;
-
-    @include md {
-      margin-bottom: fluid(10, $lg);
-      font-size: fluid(22, $lg);
-    }
-  }
-
   .form-status {
     inset: fluid(80, $lg) 0 0 fluid(40, $lg);
     // opacity: 1;
@@ -233,6 +199,43 @@
       opacity: 1;
       pointer-events: all;
     }
+  }
+}
+
+
+#see-more {
+  top: calc(100% + #{fluid(28, $sm)});
+  width: fluid(335, $sm);
+  height: -moz-fit-content;
+  height: fit-content;
+  align-items: baseline;
+
+  @include md {
+    top: unset;
+    width: auto;
+    display: block;
+  }
+}
+
+#see-more--title {
+  font-size: fluid(16, $sm);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  margin-bottom: fluid(10, $sm);
+  font-weight: 500;
+
+  @include md {
+    margin-bottom: fluid(10, $lg);
+    font-size: fluid(22, $lg);
+  }
+}
+
+#see-more--back {
+  transition: all 0.75s $ease-out-expo;
+
+  &:hover {
+    color: #dadaca;
+    background-color: $darkblue;
   }
 }
 

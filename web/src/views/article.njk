@@ -161,6 +161,10 @@ tags:
 
     <section id="related" class="restrict df fc pr" data-scroll-section>
         <div class="tag ttu fv-mono" data-shuffle>En savoir plus</div>
+        <div class="pa bottom left df jcb" id="see-more">
+            <div id="see-more--title">Continuer à lire?</div>
+            <a href="/news/" class="chip ttu" id="see-more--back">Revenir à actualites</a>
+        </div>
         <ul class="df fc article-list--wrapper">
             {% for item in article.related %}
 
@@ -190,30 +194,6 @@ tags:
                 </li>
 
             {% endfor %}
-
-            {# <li class="blog-article--item">
-                <a href="/article/" class="article-card--link cp">
-                    <div class="article-card article-card--vert df fc">
-                        <picture class="article-card--thumbnail">
-                            <img src="/static/temp.jpg" alt="">
-                        </picture>
-                        <div class="article-content df fc">
-                            <div class="article-card--tag tag ttu fv-mono">General  /  Oct 31, 2020</div>
-                            <div class="article-card--title">WEF 2022 (summer) and Veuve Clicquot Bold Future Award 2022...</div>
-                            <p class="article-card--desc">DePoly is among the Top 12 finalists of Mass Challenge Switzerland 2020! We are honoured and excited! See are CEO Samantha Anderson talking...</p>
-                            <div class="df article-card--cta aic">
-                                <div>Read More</div>
-                                <div class="rarr-wrapper">
-                                    <svg fill="none" viewBox="0 0 13 8">
-                                        <path d="m8.402 1.085 2.137 2.108H0V4.8h10.54L8.401 6.915 9.499 8 13 4.543V3.457L9.499 0 8.402 1.085Z" fill="#022D42"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li> #}
-
         </ul>
     </section>
 

@@ -245,11 +245,13 @@
     padding-top: fluid(42, $sm);
     margin-bottom: fluid(120, $sm);
     border-top: solid 1px $darkblue;
+    padding-bottom: fluid(60, $sm);
 
     @include md {
       flex-direction: row;
       padding-top: fluid(80, $lg);
       margin-bottom: fluid(180, $lg);
+      padding-bottom: 0;
 
       .article-content {
         height: inherit;
@@ -461,7 +463,6 @@
         flex-direction: row;
         width: fluid(430 * 3 + 40 * 2, $lg);
         margin-left: auto;
-        margin-bottom: fluid(40, $lg);
         padding: 0 fluid(15, $lg);
         padding-bottom: fluid(40, $lg);
         border-bottom: 1px solid #022d42;
@@ -534,6 +535,14 @@
   .yt-video--overlay {
     @include md {
       pointer-events: all;
+    }
+  }
+
+  #see-more {
+    top: calc(100% + #{fluid(-30, $sm)});
+
+    @include md {
+      top: unset;
     }
   }
 }

@@ -92,24 +92,24 @@ export const homeController = new Controller({
     p1 = new Parallax({
       dom: prlx[0],
       speed: 0.1,
-      rotate: { z: { start: 20, end: 0 } },
+      rotate: { z: { start: 10, end: 0 } },
     });
     p2 = new Parallax({
       dom: prlx[1],
       speed: 0.2,
       down: true,
-      rotate: { z: { start: 20, end: 0 } },
+      rotate: { z: { start: 10, end: 0 } },
     });
     p3 = new Parallax({
       dom: prlx[2],
       speed: 0.5,
-      rotate: { z: { start: 20, end: 0 } },
+      rotate: { z: { start: 10, end: 0 } },
     });
     p4 = new Parallax({
       dom: prlx[3],
       down: true,
       speed: 0.75,
-      rotate: { z: { start: 20, end: 0 } },
+      rotate: { z: { start: 10, end: 0 } },
     });
 
     if (!Sniff.touchDevice) {

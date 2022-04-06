@@ -349,7 +349,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
           .enhanced-picture {
             transition: transform 1.33s $enhanced-ease;
-            transform: scale(math.div(66, 403), math.div(60, 330)) translate3d(#{fluid(-1201, $lg)}, #{fluid(757, $lg)}, 0);
+            transform: scale(math.div(66, 403), math.div(60, 330)) translate3d(#{fluid(-1201, $lg)}, #{fluid(757 + 125, $lg)}, 0);
           }
 
           .enhanced-title {

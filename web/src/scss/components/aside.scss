@@ -328,7 +328,6 @@ strong {
   left: 0;
   top: 0;
   background-color: $lightbeige;
-  // border-bottom: 1px solid $darkblue;
   transform: translateZ(0);
 
   @include md {
@@ -336,7 +335,6 @@ strong {
     width: fluid(976, $lg);
     left: fluid(54, $lg);
     top: 0;
-    border-bottom: 1px solid $darkblue;
   }
 
   &::after {

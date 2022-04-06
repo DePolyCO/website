@@ -41,6 +41,10 @@ export const aboutController = new Controller({
     new Vau({
       targets: "#hero-picture img",
       opacity: [0, 1],
+      transform: {
+        sx: [1.5, 1.05],
+        sy: [1.5, 1.05],
+      },
       duration: 1750,
       easing: "o6",
     });

@@ -536,8 +536,8 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
 
   transition: opacity 0.5s $enhanced-ease;
 
-  top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-25%);
+  min-height: -moz-fit-content;
   min-height: fit-content;
 
   .enhanced-title {

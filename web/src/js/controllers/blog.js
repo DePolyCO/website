@@ -36,7 +36,7 @@ export const blogController = new Controller({
           new Vau({
             targets: item,
             transform: {
-              y: [75, 0],
+              y: [60, 0],
             },
             opacity: [0, 1],
             easing: "o6",

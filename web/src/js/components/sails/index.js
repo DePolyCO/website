@@ -1,4 +1,4 @@
-import { Timeline, qs, Sniff, Vau } from "../../hermes";
+import { Timeline, qs, Sniff, Vau, Duration } from "../../hermes";
 
 class Sail {
   constructor() {
@@ -30,7 +30,12 @@ class Sail {
       duration: 1750,
       easing: "o4",
     });
-    this.sail.style.opacity = 0;
+    new Duration({
+      duration: 50,
+      complete: () => {
+        this.sail.style.opacity = 0;
+      },
+    });
     // this.tl.add({
     //   targets: this.sail,
     //   opacity: [1, 0],

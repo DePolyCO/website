@@ -153,8 +153,8 @@
 }
 
 #nav-links {
-  gap: fluid(52, $sm);
-  top: fluid(72 + 48, $sm);
+  gap: fluid(37, 667, 1vh);
+  top: max(#{fluid(72 + 12, $sm)}, #{fluid(72 + 24, 667, 1vh)});
   position: relative;
 
   @include md {
@@ -170,7 +170,7 @@
   display: flex;
 
   font-weight: 600;
-  font-size: fluid(28, $sm);
+  font-size: fluid(28, 667, 1vh);
   line-height: 85%;
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -476,6 +476,7 @@
   &::before {
     transform: translate3d(-50%, -150%, 0);
   }
+
   &::after {
     transform: translate3d(-50%, 150%, 0);
   }
@@ -484,6 +485,7 @@
     &::before {
       transform: translate3d(-50%, 0%, 0) rotate(45deg);
     }
+
     &::after {
       transform: translate3d(-50%, 0%, 0) rotate(-45deg);
     }

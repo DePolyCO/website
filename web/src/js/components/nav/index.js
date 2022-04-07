@@ -23,8 +23,6 @@ export class Nav {
     };
 
     this.init();
-
-    window.nav = this;
   }
 
   init = () => {
@@ -67,6 +65,9 @@ export class Nav {
 
     const grid = qs("#m-bg--grid");
     const right = qs("#nav-right");
+
+    this.grid = grid;
+    this.right = right;
 
     this.bg = new Vau({
       targets: grid,
@@ -202,6 +203,11 @@ export class Nav {
       this.enableMobile();
     } else {
       // destroy mobile
+      if (this.state.mobileOpen) {
+        const action = "remove";
+        this.dom.classList[action]("active");
+        this.btn.classList[action]("active");
+      }
       this.reveals?.forEach((r) => {
         r.play({
           from: 100,
@@ -211,7 +217,8 @@ export class Nav {
         });
       });
       this.unBtn && this.unBtn();
-      this.navt?.reverse();
+      this.right.style.transform = "none";
+      this.grid.style.transform = "none";
     }
   };
 }

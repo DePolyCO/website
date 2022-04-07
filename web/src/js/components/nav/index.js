@@ -217,8 +217,8 @@ export class Nav {
         });
       });
       this.unBtn && this.unBtn();
-      this.right.style.transform = "none";
-      this.grid.style.transform = "none";
+      this.right && (this.right.style.transform = "none");
+      this.grid && (this.grid.style.transform = "none");
     }
   };
 }

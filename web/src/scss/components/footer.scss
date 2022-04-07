@@ -251,7 +251,7 @@
   }
 }
 
-.footer-cta--check:checked + .footer-check--tick {
+.footer-cta--check:checked+.footer-check--tick {
   opacity: 1;
 }
 
@@ -432,6 +432,15 @@
   margin-left: fluid(17, $lg);
 
   background-color: $darkblue;
+
+  display: inline-block;
+  top: fluid(-17, $sm);
+  position: relative;
+
+  @include md {
+    position: static;
+    display: block;
+  }
 }
 
 .text-underline {

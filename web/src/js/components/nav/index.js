@@ -211,6 +211,7 @@ export class Nav {
         });
       });
       this.unBtn && this.unBtn();
+      this.navt?.reverse();
     }
   };
 }

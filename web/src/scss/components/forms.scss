@@ -41,6 +41,7 @@ details[open] {
   }
 
   @include md {
+
     // border left
     &::before {
       border-left: 1px solid #022d42;
@@ -202,11 +203,11 @@ label {
 // focus exists
 .field-input {
   &:focus {
-    + .field-label {
+    +.field-label {
       opacity: 0;
     }
 
-    ~ .field-label--active {
+    ~.field-label--active {
       opacity: 0.3;
     }
   }
@@ -214,11 +215,11 @@ label {
 
 // content exists
 .field-input:not(:placeholder-shown) {
-  + .field-label {
+  +.field-label {
     opacity: 0;
   }
 
-  ~ .field-label--active {
+  ~.field-label--active {
     opacity: 0.3;
   }
 }
@@ -336,16 +337,16 @@ label {
 }
 
 .hover-toggle {
-  details[open] ~ .form-toggle {
+  details[open]~.form-toggle {
     background-color: $darkbeige;
 
-    > svg {
+    >svg {
       transform: rotate(-90deg) !important;
     }
   }
 }
 
-details[open] ~ .form-toggle {
+details[open]~.form-toggle {
   svg {
     transform: none;
   }
@@ -359,8 +360,9 @@ details[open] ~ .form-toggle {
 
 .form-wrapper {
   &:hover {
-    details:not([open]) ~ .form-toggle {
+    details:not([open])~.form-toggle {
       background-color: #dadaca;
+
       svg {
         transform: rotate(45deg);
       }
@@ -375,7 +377,7 @@ details[open] ~ .form-toggle {
   opacity: 0;
   pointer-events: none;
 
-  details[open] ~ &.active {
+  details[open]~&.active {
     transition: opacity 0.75s $ease-out-expo;
     opacity: 1;
     pointer-events: all;
@@ -452,10 +454,11 @@ select {
   appearance: none;
   background: #ecece2;
   padding: fluid(20, $sm);
+  padding-bottom: fluid(15, $sm);
   border-radius: fluid(15, $sm);
   font-size: fluid(16, $sm);
 
-  &:focus-within:hover ~ .select-dropdown {
+  &:focus-within:hover~.select-dropdown {
     svg {
       transform: rotate(180deg);
     }
@@ -473,7 +476,8 @@ option[value="placeholder"] {
 }
 
 .select-dropdown {
-  top: fluid(20, $sm);
+  top: 50%;
+  transform: translateY(-50%);
   right: fluid(20, $sm);
 
   svg {
@@ -483,7 +487,6 @@ option[value="placeholder"] {
   }
 
   @include md {
-    top: fluid(16, $lg);
     right: fluid(19, $lg);
 
     svg {

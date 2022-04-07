@@ -1,4 +1,4 @@
-import { iris, qs, qsa, Sniff, Vau } from "../../hermes";
+import { iris, qs, qsa, Sniff, Vau, ro } from "../../hermes";
 import { smoothscroller } from "../../scroller";
 import { Select } from "../select";
 import { Reveal } from "../../reveal";
@@ -23,6 +23,8 @@ export class Nav {
     };
 
     this.init();
+
+    window.nav = this;
   }
 
   init = () => {
@@ -35,43 +37,55 @@ export class Nav {
     iris.add(this.select, "change", this.onLangSwitch);
 
     smoothscroller.add({ update: this.onScroll });
+    ro.add({ update: this.resize });
 
-    if (Sniff.touchDevice) {
-      iris.add(this.btn, "click", this.toggle);
+    this.reveals = this.linkItems.map(
+      (item) =>
+        new Reveal({
+          targets: qs(".nav-link--inner", item),
+          from: 105,
+          delay: 1 * 50,
+          duration: 1750,
+          skipGuarantee: true,
+        })
+    );
 
-      this.reveals = this.linkItems.map(
-        (item) =>
-          new Reveal({
-            targets: qs(".nav-link--inner", item),
-            from: 105,
-            delay: 1 * 50,
-            duration: 1750,
-            skipGuarantee: true,
-          })
-      );
+    this.resize();
+  };
 
-      const grid = qs("#m-bg--grid");
-      const right = qs("#nav-right");
+  enableMobile = () => {
+    this.unBtn = iris.add(this.btn, "click", this.toggle);
 
-      this.bg = new Vau({
-        targets: grid,
-        duration: 2500,
-        easing: "o6",
-        transform: {
-          y: [0, 50],
-          yu: "%",
-        },
+    this.reveals.forEach((r) => {
+      r.play({
+        from: 0,
+        to: 110,
+        duration: 1,
+        visible: false,
       });
-      this.navt = new Vau({
-        targets: right,
-        duration: 1750,
-        easing: "o6",
-        transform: {
-          y: [0, 20],
-          yu: "%",
-        },
-      });
-    }
+    });
+
+    const grid = qs("#m-bg--grid");
+    const right = qs("#nav-right");
+
+    this.bg = new Vau({
+      targets: grid,
+      duration: 2500,
+      easing: "o6",
+      transform: {
+        y: [0, 50],
+        yu: "%",
+      },
+    });
+    this.navt = new Vau({
+      targets: right,
+      duration: 1750,
+      easing: "o6",
+      transform: {
+        y: [0, 20],
+        yu: "%",
+      },
+    });
   };
 
   onScroll = ({ deltaY, y }) => {
@@ -152,7 +166,7 @@ export class Nav {
     this.dom.classList[action]("active");
     this.btn.classList[action]("active");
 
-    if (Sniff.touchDevice) {
+    if (window.innerWidth < 850) {
       document.documentElement.classList[action]("oh");
 
       this.bg.reverse();
@@ -180,6 +194,23 @@ export class Nav {
           })
         );
       }
+    }
+  };
+
+  resize = () => {
+    if (window.innerWidth < 850) {
+      this.enableMobile();
+    } else {
+      // destroy mobile
+      this.reveals?.forEach((r) => {
+        r.play({
+          from: 100,
+          to: 0,
+          duration: 1,
+          visible: true,
+        });
+      });
+      this.unBtn && this.unBtn();
     }
   };
 }

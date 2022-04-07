@@ -454,6 +454,7 @@ select {
   appearance: none;
   background: #ecece2;
   padding: fluid(20, $sm);
+  padding-bottom: fluid(15, $sm);
   border-radius: fluid(15, $sm);
   font-size: fluid(16, $sm);
 
@@ -475,7 +476,8 @@ option[value="placeholder"] {
 }
 
 .select-dropdown {
-  top: fluid(20, $sm);
+  top: 50%;
+  transform: translateY(-50%);
   right: fluid(20, $sm);
 
   svg {
@@ -485,7 +487,6 @@ option[value="placeholder"] {
   }
 
   @include md {
-    top: fluid(16, $lg);
     right: fluid(19, $lg);
 
     svg {

@@ -80,6 +80,10 @@
     position: relative;
     top: fluid(-20, $lg);
 
+    .safari & {
+      top: fluid(-40, $lg);
+    }
+
     &:nth-of-type(1) {
       margin-bottom: fluid(298, $lg);
     }

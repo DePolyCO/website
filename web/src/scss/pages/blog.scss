@@ -218,7 +218,7 @@
         flex-direction: column;
 
         @include md {
-          height: fluid(880, $lg);
+          height: fluid(880 - 50, $lg);
         }
       }
 
@@ -337,7 +337,7 @@
         .article-card--thumbnail {
           min-width: fluid(400, $lg);
           width: fluid(400, $lg);
-          height: fluid(400, $lg);
+          height: fluid(375, $lg);
         }
       }
     }

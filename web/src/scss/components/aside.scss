@@ -441,6 +441,10 @@ strong {
 
   .field {
     min-width: fluid(478, $lg);
+
+    @include md {
+      width: fluid(478, $lg);
+    }
   }
 
   select {
@@ -464,6 +468,12 @@ strong {
 
     &:hover {
       background: #dfefb3;
+    }
+  }
+
+  .textarea-wrapper {
+    .field {
+      width: 100%;
     }
   }
 }

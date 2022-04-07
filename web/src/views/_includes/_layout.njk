@@ -225,162 +225,156 @@
               <div id="cta-desc">Seuls les laboratoires reconnus peuvent commander un échantillon.</div>
             </div>
             <form action="POST" data-netlify="true" novalidate name="Request Sample">
-              <div class="df fc form-inner">
+              <div class="df fc fw jcb form-inner">
 
-                <div class="df fc field-col">
-                  <div class="field pr">
-                    <input name="First Name" class="field-input first-name" id="cta-sample-firstname" placeholder="Prénom" required type="text" data-type="name">
-                    <label class="pen field-label pa" for="sample-firstname">Prénom</label>
-                    <label class="pen field-label--active ttu pa" for="sample-firstname">Prénom</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Merci de fournir une prénom valable</div>
-                    </div>
+                <div class="field pr">
+                  <input name="First Name" class="field-input first-name" id="cta-sample-firstname" placeholder="Prénom" required type="text" data-type="name">
+                  <label class="pen field-label pa" for="sample-firstname">Prénom</label>
+                  <label class="pen field-label--active ttu pa" for="sample-firstname">Prénom</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Merci de fournir une prénom valable</div>
                   </div>
-
-                  <div class="field pr">
-                    <input name="Email ID" class="field-input" id="cta-sample-email" placeholder="Adresse mail" required type="email" data-type="email">
-                    <label class="pen field-label pa" for="sample-email">Adresse mail</label>
-                    <label class="pen field-label--active ttu pa" for="sample-email">Adresse mail</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Merci de fournir une adresse mail valable</div>
-                    </div>
-                  </div>
-
-                  <div class="field pr">
-                    <input name="Company Name" class="field-input" id="cta-sample-company" placeholder="Nom de l'entreprise " required type="text">
-                    <label class="pen field-label pa" for="sample-company">Nom de l'entreprise </label>
-                    <label class="pen field-label--active ttu pa" for="sample-company">Nom de l'entreprise </label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Merci de fournir valid nom de l'entreprise valable</div>
-                    </div>
-                  </div>
-
-                  <div class="field pr">
-                    <select class="field-input" name="Industry" id="cta-sample-industry">
-                      <option value="placeholder">Industrie</option>
-                      <option value="Automotive industry">Automotive industry</option>
-                      <option value="Biotechnology">Biotechnology</option>
-                      <option value="Cosmetics">Cosmetics</option>
-                      <option value="Chemical Technology / Industry">Chemical Technology / Industry</option>
-                      <option value="Ecology">Ecology</option>
-                      <option value="Fashion">Fashion</option>
-                      <option value="Household goods">Household goods</option>
-                      <option value="Medical">Medical</option>
-                      <option value="Pharmaceutical">Pharmaceutical</option>
-                      <option value="Packaging">Packaging</option>
-                      <option value="Petroleum ">Petroleum </option>
-                      <option value="Plastic production">Plastic production</option>
-                      <option value="Recycling">Government body</option>
-                      <option value="R&D Laboratory/institution">R&D Laboratory/Institution</option>
-                      <option value="University/educational institution">University/educational Institution</option>
-                      <option value="Waste management">Waste management</option>
-                      <option value="other">Other</option>
-                    </select>
-                    <div class="select-dropdown pa pen">
-                      <svg>
-                        <use xlink:href="#dropdown-arr"></use>
-                      </svg>
-                    </div>
-                  </div>
-
-                  {# Conditional input #}
-                  <div class="field pr" style="display:none;">
-                    <input name="Industry Other" class="field-input" id="cta-sample-other-industry" placeholder="Specify Industry" type="text" data-ref="cta-sample-industry">
-                    <label class="pen field-label pa" for="sample-other-industry">Specify Industry</label>
-                    <label class="pen field-label--active ttu pa" for="sample-other-industry">Specify Industry</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Please enter valid Specify Industry</div>
-                    </div>
-                  </div>
-
                 </div>
 
-                <div class="df fc field-col">
-                  <div class="field pr">
-                    <input name="Last Name" class="field-input" id="cta-sample-lastname" placeholder="Nom" required type="text" data-type="name">
-                    <label class="pen field-label pa" for="sample-lastname">Nom</label>
-                    <label class="pen field-label--active ttu pa" for="sample-lastname">Nom</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Merci de fournir une nom valable</div>
-                    </div>
+                <div class="field pr">
+                  <input name="Last Name" class="field-input" id="cta-sample-lastname" placeholder="Nom" required type="text" data-type="name">
+                  <label class="pen field-label pa" for="sample-lastname">Nom</label>
+                  <label class="pen field-label--active ttu pa" for="sample-lastname">Nom</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Merci de fournir une nom valable</div>
                   </div>
+                </div>
 
-                  <div class="field pr">
-                    <input name="position" class="field-input" id="cta-sample-position" placeholder="Position" required type="text">
-                    <label class="pen field-label pa" for="sample-position">Position</label>
-                    <label class="pen field-label--active ttu pa" for="sample-position">Position</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Please enter valid position</div>
-                    </div>
+                <div class="field pr">
+                  <input name="Email ID" class="field-input" id="cta-sample-email" placeholder="Adresse mail" required type="email" data-type="email">
+                  <label class="pen field-label pa" for="sample-email">Adresse mail</label>
+                  <label class="pen field-label--active ttu pa" for="sample-email">Adresse mail</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Merci de fournir une adresse mail valable</div>
                   </div>
+                </div>
 
-                  <div class="field pr">
-                    <input name="Company address" class="field-input" id="cta-sample-company" placeholder="Company Adress" required>
-                    <label class="pen field-label pa" for="sample-company">Company Address</label>
-                    <label class="pen field-label--active ttu pa" for="sample-company">Company Address</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Please enter valid company address</div>
-                    </div>
+                <div class="field pr">
+                  <input name="Company Name" class="field-input" id="cta-sample-company" placeholder="Nom de l'entreprise " required type="text">
+                  <label class="pen field-label pa" for="sample-company">Nom de l'entreprise </label>
+                  <label class="pen field-label--active ttu pa" for="sample-company">Nom de l'entreprise </label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Merci de fournir valid nom de l'entreprise valable</div>
                   </div>
+                </div>
 
-                  <div class="field pr">
-                    <select class="field-input" name="Purpose" id="cta-sample-purpose">
-                      <option value="placeholder">But de l'utilisation </option>
-                      <option value="Biotechnology">Biotechnology</option>
-                      <option value="Ecology">Ecology</option>
-                      <option value="Educational reasons"> Educational reasons </option>
-                      <option value="Laboratory analysis"> Laboratory analysis </option>
-                      <option value="Medical">Medical</option>
-                      <option value="Production test"> Production test </option>
-                      <option value="Recycling">Recycling</option>
-                      <option value="other">Other</option>
-                    </select>
-                    <div class="select-dropdown pa pen">
-                      <svg>
-                        <use xlink:href="#dropdown-arr"></use>
-                      </svg>
-                    </div>
+                <div class="field pr">
+                  <input name="position" class="field-input" id="cta-sample-position" placeholder="Position" required type="text">
+                  <label class="pen field-label pa" for="sample-position">Position</label>
+                  <label class="pen field-label--active ttu pa" for="sample-position">Position</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Please enter valid position</div>
                   </div>
+                </div>
 
-                  {# Conditional input #}
-                  <div class="field pr" style="display:none;">
-                    <input name="Purpose Other" class="field-input" id="cta-sample-other-purpose" placeholder="Specify purpose" type="text" data-ref="cta-sample-purpose">
-                    <label class="pen field-label pa" for="sample-other-purpose">Specify purpose</label>
-                    <label class="pen field-label--active ttu pa" for="sample-other-purpose">Specify purpose</label>
-                    <div class="cp pa error-icon">
-                      <svg>
-                        <use xlink:href="#err-icon"></use>
-                      </svg>
-                      <div class="error-overlay ttu pa">Please enter valid Specify purpose</div>
-                    </div>
+                <div class="field pr">
+                  <input name="Company address" class="field-input" id="cta-sample-company" placeholder="Company Adress" required>
+                  <label class="pen field-label pa" for="sample-company">Company Address</label>
+                  <label class="pen field-label--active ttu pa" for="sample-company">Company Address</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Please enter valid company address</div>
                   </div>
+                </div>
 
+                <div class="field pr">
+                  <select class="field-input" name="Industry" id="cta-sample-industry">
+                    <option value="placeholder">Industrie</option>
+                    <option value="Automotive industry">Automotive industry</option>
+                    <option value="Biotechnology">Biotechnology</option>
+                    <option value="Cosmetics">Cosmetics</option>
+                    <option value="Chemical Technology / Industry">Chemical Technology / Industry</option>
+                    <option value="Ecology">Ecology</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Household goods">Household goods</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Pharmaceutical">Pharmaceutical</option>
+                    <option value="Packaging">Packaging</option>
+                    <option value="Petroleum ">Petroleum </option>
+                    <option value="Plastic production">Plastic production</option>
+                    <option value="Recycling">Government body</option>
+                    <option value="R&D Laboratory/institution">R&D Laboratory/Institution</option>
+                    <option value="University/educational institution">University/educational Institution</option>
+                    <option value="Waste management">Waste management</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="select-dropdown pa pen">
+                    <svg>
+                      <use xlink:href="#dropdown-arr"></use>
+                    </svg>
+                  </div>
+                </div>
+
+                {# Conditional input #}
+                <div class="field pr" style="display:none;">
+                  <input name="Industry Other" class="field-input" id="cta-sample-other-industry" placeholder="Specify Industry" type="text" data-ref="cta-sample-industry">
+                  <label class="pen field-label pa" for="sample-other-industry">Specify Industry</label>
+                  <label class="pen field-label--active ttu pa" for="sample-other-industry">Specify Industry</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Please enter valid Specify Industry</div>
+                  </div>
+                </div>
+
+                <div class="field pr">
+                  <select class="field-input" name="Purpose" id="cta-sample-purpose">
+                    <option value="placeholder">But de l'utilisation </option>
+                    <option value="Biotechnology">Biotechnology</option>
+                    <option value="Ecology">Ecology</option>
+                    <option value="Educational reasons"> Educational reasons </option>
+                    <option value="Laboratory analysis"> Laboratory analysis </option>
+                    <option value="Medical">Medical</option>
+                    <option value="Production test"> Production test </option>
+                    <option value="Recycling">Recycling</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="select-dropdown pa pen">
+                    <svg>
+                      <use xlink:href="#dropdown-arr"></use>
+                    </svg>
+                  </div>
+                </div>
+
+                {# Conditional input #}
+                <div class="field pr" style="display:none;">
+                  <input name="Purpose Other" class="field-input" id="cta-sample-other-purpose" placeholder="Specify purpose" type="text" data-ref="cta-sample-purpose">
+                  <label class="pen field-label pa" for="sample-other-purpose">Specify purpose</label>
+                  <label class="pen field-label--active ttu pa" for="sample-other-purpose">Specify purpose</label>
+                  <div class="cp pa error-icon">
+                    <svg>
+                      <use xlink:href="#err-icon"></use>
+                    </svg>
+                    <div class="error-overlay ttu pa">Please enter valid Specify purpose</div>
+                  </div>
                 </div>
 
               </div>
 
-              <div class="df">
+              <div class="df textarea-wrapper">
                 <div class="field pr textarea">
                   <textarea class="field-input field-input--textarea" placeholder="Votre message" name="Message" id="cta-sample-message" cols="30" rows="10"></textarea>
                   <label class="pen field-label pa" for="sample-message">Votre message</label>

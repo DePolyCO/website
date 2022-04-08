@@ -67,7 +67,7 @@ export const aboutController = new Controller({
       easing: "o6",
     });
 
-    if (Sniff.mobile) {
+    if (Sniff.touchDevice) {
       numbers = new Numbers();
     } else {
       numbers = new CaptureReveal();

@@ -1,3 +1,3 @@
 module.exports = {
-  url: "https://depoly.netlify.app",
+  url: "https://fra.depoly.co",
 };

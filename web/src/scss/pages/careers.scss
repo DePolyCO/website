@@ -125,7 +125,6 @@
 
     @include md {
       padding-top: fluid(125, $lg);
-      padding-bottom: fluid(160, $lg);
       margin-bottom: fluid(70, $lg);
       border-bottom: 1px solid $darkblue;
     }
@@ -136,6 +135,7 @@
       width: fluid(430 * 3 + 40 * 2, $lg);
       margin-left: auto;
       min-height: fluid(400 * 3, $lg);
+      margin-bottom: fluid(160, $lg);
     }
   }
 

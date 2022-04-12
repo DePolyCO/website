@@ -24,12 +24,14 @@ export default {
           name: "gist",
           title: "Gist of fact",
           type: "string",
+          validation: (Rule) => Rule.required(),
         },
         {
           name: "tags",
           title: "Tags",
           type: "array",
           of: [{ type: "string" }],
+          validation: (Rule) => Rule.required().min(1),
           options: {
             layout: "tags",
           },

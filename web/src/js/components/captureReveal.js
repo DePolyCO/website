@@ -55,8 +55,10 @@ export class CaptureReveal {
           autoCallback:
             i === 0
               ? () => {
-                  this.reveals[0].observer.disconnect();
-                  this.reveals[0].play({ to: 0 });
+                  const r = this.reveals[0];
+                  r.observer.disconnect();
+                  r.play({ to: 0 });
+                  r.auto = false;
                 }
               : false,
         })

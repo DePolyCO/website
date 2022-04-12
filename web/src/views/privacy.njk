@@ -22,58 +22,32 @@ meta:
 <main data-hydra-content="privacy" id="privacy">
     <header id="hero" class="restrict hero" data-scroll-section>
         <div id="hero-title--wrapper" class="pr z0 hero-title--wrapper oh">
-           <h1 id="hero-title" class="hero-title z1">Privacy Policy</h1>
+            <h1 id="hero-title" class="hero-title z1">Terms and Conditions of depoly.co</h1>
             <div class="df pa inset zn1 hero-grid oh"></div>
         </div>
     </header>
 
     {{ 
         textBlock(
-            "Text",
+            "Terms and conditions",
             [
-               "As a Process Engineer, you will be responsible for the Process design and development and optimisation of chemical recycling systems from inception through to start up, designing, running, testing and upscaling systems and processes, and upscaling the newly developed DePoly pilot plant."
+               "These Terms govern
+                the use of this Application, and
+                any other related Agreement or legal relationship with the Owner in a legally binding way. Capitalized words are defined in the relevant dedicated section of this document.
+
+                The User must read this document carefully."
             ],
             "privacy-gist"
         ) 
     }}
 
-    <section id="privacy-content" class="restrict df fc" data-scroll-section>
-        <p>
-            First, these plastics, whose production has increased rapidly in the last 20–30 years and doubled in the last 10 years, 
-            are low-cost materials that have more than one type identified by numbers. The best known are those up to number 7. 
-            Only the number 1 PETE bottles which are known as water, cola and mouthwash bottles; number 2 HDPE bottles namely detergent and milk bottles; 5 PP, 
-            namely honey, yoghurt pots and Tupperware are recyclable and active in the market. However, the rest are either not recyclable or not preferred because they are not profitable.
-        </p>
-        <p>
-            No, of course it does not. As I mentioned earlier, recycling is a costly and demanding activity, 
-            and the water and energy used in recycling plastics does additional harm to our planet. 
-            Well, if recycling is not a solution and incineration is very costly due to the filtering system, 
-            what are governments doing in this difficult environment? Nothing, except try to save their own country. 
-            Only those countries that can afford it can do so by exporting their waste.
-        </p>
-        <p>
-            China, which initially had a very good recycling infrastructure, stopped buying garbage due to air pollution caused by burning plastics. 
-            This situation puts our country Turkey at the 1st place in garbage exports, and I am sorry to say that the amount of garbage we have imported in the last 15 years is now 173 times higher today. 
-            We get this garbage because we get paid for it and burn it without using any filtration system.
-        </p>
-        <p>
-            There are two solutions to these plastics that cannot be recycled and are now everywhere in our lives. The first is to just say no, the second is to use Zero Waste products.
-            In order to not be a part of this pile of trash, you can avoid single-use plastics. By reusing all the types of plastics, you have and by recycling them, 
-            you can take a step towards a better planet and better human health. By choosing products that do not create waste, dissolve easily in nature, and do not leave harmful microplastics in the environment, 
-            you can stop paying the petrochemical industry to poison nature and everything in it.
-        </p>
-        <p>
-            Recycling our plastic is a huge step in the right direction, and will not only reduce the amount of plastic that we throw out — but also limit the amount of new plastic we create.
-        </p>
-        <p>
-            It’s not as easy as just throwing it in a melting pot and turning it into new products, though.
-        </p>
-        <p>
-            Forward-thinking fashion brands are a great example, as they’ve found a way to reuse discarded plastic bottles by making them into recycled polyester.
-            The bottles are shredded, melted, turned into pellets, and then spun and pulled like taffy to turn it into yarn.
-        </p>
-        <p>
-            This means that not only are the plastic bottles not ending up in a landfill, they’re also not creating more plastic for your winter wear that would also eventually end up in the trash.
-        </p>
+    <section id="privacy-content" class="restrict df fc block-content">
+        {{ privacy.body | safe  }}
+
+        <div id="privacy-end" class="df jcb" data-scroll-section>
+            <div id="priv-end--update">Latest update: {{ privacy._updatedAt }}</div>
+            <div id="priv-end--host">Hosted on: <a class="text-underline" href="https://www.iubenda.com/terms-and-conditions/77738884" rel="noreferrer noopener" target="_blank">iubenda</a></div>
+        </div>
     </section>
+
 </main>

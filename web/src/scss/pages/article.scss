@@ -106,79 +106,6 @@
       font-size: fluid(22, $lg);
     }
 
-    section {
-      margin-bottom: fluid(20, $sm);
-
-      @include md {
-        margin-bottom: fluid(40, $lg);
-      }
-    }
-
-    h2 {
-      font-size: fluid(36, $sm);
-      line-height: 120%;
-      letter-spacing: -0.02em;
-
-      @include md {
-        font-size: fluid(50, $lg);
-        line-height: 130%;
-      }
-    }
-
-    ol,
-    ul {
-      padding-left: fluid(45, $sm);
-
-      li {
-        margin-bottom: fluid(16, $sm);
-        font-weight: 700;
-        font-size: fluid(16, $sm);
-        line-height: 110%;
-        letter-spacing: 0.04em;
-      }
-
-      @include md {
-        padding-left: fluid(50, $lg);
-
-        li {
-          margin-bottom: fluid(24, $lg);
-          font-size: fluid(18, $lg);
-        }
-      }
-    }
-
-    ol {
-      list-style: decimal-leading-zero;
-    }
-
-    ul {
-      list-style: disc;
-    }
-
-    figcaption {
-      font-style: italic;
-      font-size: fluid(14, $sm);
-      // width: fluid(335, $sm);
-      padding-top: fluid(30, $sm);
-      padding-bottom: fluid(20, $sm);
-      border-bottom: 1px solid #aab6b6;
-
-      @include md {
-        position: absolute;
-        right: fluid(-430 - 40, $lg);
-        top: 0;
-        border-top: 1px solid #aab6b6;
-        border-bottom: none;
-
-        font-size: fluid(16, $lg);
-        line-height: 140%;
-
-        width: fluid(430, $lg);
-        padding-top: fluid(40, $lg);
-        padding-bottom: 0;
-      }
-    }
-
     picture {
       // default to square aspect ratio
       aspect-ratio: var(--w, #{fluid(335, $sm)}) / var(--h, #{fluid(335, $sm)});
@@ -189,9 +116,6 @@
       }
     }
 
-    strong {
-      font-weight: 700;
-    }
 
     blockquote {
       border-left: 1px solid #aab6b6;
@@ -544,5 +468,89 @@
     @include md {
       top: unset;
     }
+  }
+}
+
+.block-content {
+  section {
+    margin-bottom: fluid(20, $sm);
+
+    @include md {
+      margin-bottom: fluid(40, $lg);
+    }
+  }
+
+  h2 {
+    font-size: fluid(36, $sm);
+    line-height: 120%;
+    letter-spacing: -0.02em;
+
+    @include md {
+      font-size: fluid(50, $lg);
+      line-height: 130%;
+    }
+  }
+
+  ol,
+  ul {
+    padding-left: fluid(45, $sm);
+
+    li {
+      margin-bottom: fluid(16, $sm);
+      font-weight: 700;
+      font-size: fluid(16, $sm);
+      line-height: 110%;
+      letter-spacing: 0.04em;
+    }
+
+    @include md {
+      padding-left: fluid(50, $lg);
+
+      li {
+        margin-bottom: fluid(24, $lg);
+        font-size: fluid(18, $lg);
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal-leading-zero;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  figcaption {
+    font-style: italic;
+    font-size: fluid(14, $sm);
+    // width: fluid(335, $sm);
+    padding-top: fluid(30, $sm);
+    padding-bottom: fluid(20, $sm);
+    border-bottom: 1px solid #aab6b6;
+
+    @include md {
+      position: absolute;
+      right: fluid(-430 - 40, $lg);
+      top: 0;
+      border-top: 1px solid #aab6b6;
+      border-bottom: none;
+
+      font-size: fluid(16, $lg);
+      line-height: 140%;
+
+      width: fluid(430, $lg);
+      padding-top: fluid(40, $lg);
+      padding-bottom: 0;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  hr {
+    background: #022D42;
+    opacity: 0.3;
   }
 }

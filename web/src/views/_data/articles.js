@@ -83,7 +83,7 @@ const postComponents = {
       if (!children.length) return `<br />`;
       return `<section data-scroll-section><p>${children}</p></section>`;
     },
-    h4: ({ children }) =>
+    h2: ({ children }) =>
       html`<section data-scroll-section><h2>${children}</h2></section>`,
     blockquote: ({ children }) =>
       html`<section data-scroll-section>

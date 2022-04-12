@@ -1,7 +1,7 @@
-import {
-  orderRankField,
-  orderRankOrdering,
-} from "@sanity/orderable-document-list";
+// import {
+//   orderRankField,
+//   orderRankOrdering,
+// } from "@sanity/orderable-document-list";
 
 import { IoCreateOutline } from "react-icons/io5";
 
@@ -10,10 +10,10 @@ export default {
   title: "Posts",
   type: "document",
   i18n: true,
-  orderings: [orderRankOrdering],
+  // orderings: [orderRankOrdering],
   icon: IoCreateOutline,
   fields: [
-    orderRankField({ type: "post" }),
+    // orderRankField({ type: "post" }),
     {
       name: "title",
       title: "Title",

@@ -1,4 +1,4 @@
-import { iris, qs, qsa } from "../../hermes";
+import { iris, qs, qsa, isUndefined } from "../../hermes";
 
 export class FooterHover {
   constructor({ dom }) {
@@ -25,7 +25,7 @@ export class FooterHover {
       const u0 = iris.add(item.hover, "pointerenter", () => this.in(i));
       const u1 = iris.add(item.hover, "pointerleave", () => this.out(i));
       let u2;
-      if (!item.hover.dataset.noCopy) {
+      if (isUndefined(item.hover.dataset.noCopy)) {
         u2 = iris.add(item.hover, "click", () => this.click(i));
       }
 

@@ -134,14 +134,14 @@ export class Nav {
   onLangSwitch = (e) => {
     const value = e.target.value;
     const newLocation =
-      value === "ENG" ? "https://depoly.co" : "https://fra.depoly.co";
+      value === "ENG" ? "https://depoly.co" : "https://fr.depoly.co";
     window.location.href = newLocation;
   };
 
   setInitialLang = () => {
     const currentLocation = window.location;
     const currentSubdomain = currentLocation.host.split(".")[0];
-    const lang = currentSubdomain === "fra" ? "FRA" : "ENG";
+    const lang = currentSubdomain === "fr" ? "FR" : "ENG";
 
     this.select.value = lang;
   };

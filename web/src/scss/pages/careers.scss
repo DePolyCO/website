@@ -135,6 +135,7 @@
     @include md {
       width: fluid(430 * 3 + 40 * 2, $lg);
       margin-left: auto;
+      min-height: fluid(400 * 3, $lg);
     }
   }
 
@@ -157,6 +158,18 @@
         .quote-picture.fx-on img {
           transform: scale(1.05, 1.05);
         }
+      }
+
+      &:nth-of-type(n+2) {
+        position: absolute;
+      }
+
+      &:nth-of-type(2) {
+        top: fluid(400, $lg);
+      }
+
+      &:nth-of-type(3) {
+        top: fluid(800, $lg);
       }
     }
   }

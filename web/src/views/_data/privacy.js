@@ -38,9 +38,9 @@ const postComponents = {
 
   list: {
     number: ({ children }) =>
-      `<section data-scroll-section><ol class="fv-mono">${children}</ol></section>`,
+      `<section data-scroll-section><ol>${children}</ol></section>`,
     bullet: ({ children }) =>
-      `<section data-scroll-section><ul class="fv-mono">${children}</ul></section>`,
+      `<section data-scroll-section><ul>${children}</ul></section>`,
   },
 
   block: {

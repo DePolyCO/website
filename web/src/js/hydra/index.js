@@ -279,10 +279,8 @@ export class Controller {
 
       fx.destroy();
 
-      if (Sniff.touchDevice) {
-        if (nav.state.mobileOpen) {
-          nav.toggle();
-        }
+      if (Sniff.touchDevice && nav.state.mobileOpen) {
+        nav.toggle();
       }
 
       show({

@@ -31,18 +31,16 @@ export class Nav {
 
     this.select = qs("#langs-select");
     this.setInitialLang();
-
     iris.add(this.select, "change", this.onLangSwitch);
 
     smoothscroller.add({ update: this.onScroll });
     ro.add({ update: this.resize });
 
     this.reveals = this.linkItems.map(
-      (item) =>
+      (item, i) =>
         new Reveal({
           targets: qs(".nav-link--inner", item),
-          from: 105,
-          delay: 1 * 50,
+          from: 110,
           duration: 1750,
           skipGuarantee: true,
         })
@@ -58,7 +56,7 @@ export class Nav {
       r.play({
         from: 0,
         to: 110,
-        duration: 1,
+        duration: 10,
         visible: false,
       });
     });

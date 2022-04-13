@@ -30,6 +30,19 @@
       width: fluid(900, $lg);
       margin-left: auto;
     }
+
+    ul,
+    ol {
+      li {
+        font-weight: 400;
+        font-size: fluid(16, $sm);
+        line-height: 160%;
+
+        @include md {
+          font-size: fluid(22, $lg);
+        }
+      }
+    }
   }
 
   #priv-end--host {

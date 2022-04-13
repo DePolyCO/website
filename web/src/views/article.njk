@@ -5,6 +5,7 @@ pagination:
     data: articles.all
     size: 1
     alias: article
+    addAllPagesToCollections: true
 permalink: "article/{{ article.settings.slug.current | slugify }}/"
 eleventyComputed:
     title: "{{ article.title }}"

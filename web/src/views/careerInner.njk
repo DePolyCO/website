@@ -5,6 +5,7 @@ pagination:
     data: jobs
     size: 1
     alias: position
+    addAllPagesToCollections: true
 permalink: "careers/{{ position.slug.current | slugify }}/"
 eleventyComputed:
     title: "{{ position.title }}"

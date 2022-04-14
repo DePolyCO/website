@@ -333,9 +333,7 @@
 
     @include md {
       width: fluid(140, $lg);
-      height: 1.5rem;
-
-      transform: translate3d(-5%, 25%, 0);
+      height: fluid(32, $lg);
 
       #callout-icon--outer {
         bottom: fluid(-30, $lg);
@@ -345,8 +343,8 @@
       }
 
       #callout-icon--inner {
-        height: 2rem;
-        top: fluid(-30, $lg);
+        height: fluid(32, $lg);
+        top: fluid(-24, $lg);
         left: fluid(2, $lg);
       }
     }

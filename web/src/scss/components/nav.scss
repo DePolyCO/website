@@ -353,7 +353,7 @@
 
   transform: translateY(#{fluid(14 + 60, $sm)});
   transition: transform 1.75s $ease-out-expo,
-    background-color 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 
   @include md {
     position: static;
@@ -364,7 +364,7 @@
     opacity: 1;
     pointer-events: all;
     transition: transform 1.25s $ease-out-expo 0.3s, opacity 1.25s $ease-out-expo 0.3s,
-      background-color 1s $ease-out-expo;
+      background-color 0.5s $ease-out-expo;
   }
 }
 
@@ -408,7 +408,7 @@
   line-height: 110%;
   letter-spacing: 0.01em;
 
-  transition: background-color 0.75s $ease-out-expo;
+  transition: background-color 0.5s $ease-out-expo;
 
   @include md {
     border-radius: fluid(15, $lg);

@@ -81,7 +81,7 @@
     top: fluid(-20, $lg);
 
     .safari & {
-      top: fluid(-40, $lg);
+      top: fluid(-50, $lg);
     }
 
     &:nth-of-type(1) {
@@ -180,7 +180,7 @@
     margin-bottom: fluid(120, $sm);
 
     @include md {
-      margin-bottom: fluid(40, $lg);
+      margin-bottom: fluid(125, $lg);
     }
   }
 

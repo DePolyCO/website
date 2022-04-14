@@ -119,7 +119,7 @@ body {
 picture.fx {
   img {
     opacity: 0;
-    transform: scale(1.5);
+    transform: scale(1.2);
     transition: opacity 2.75s $ease-out-expo, transform 1.75s $ease-out-expo;
   }
 

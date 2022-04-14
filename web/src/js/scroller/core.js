@@ -78,27 +78,27 @@ export class CoreScroll extends Conductor {
     // this.testMode();
   }
 
-  testMode = () => {
-    config
-      .addInput(
-        {
-          mouseMultiplier: this.options.mouseMultiplier,
-        },
-        "mouseMultiplier",
-        { min: 0.1, max: 2, step: 0.1 }
-      )
-      .on("change", (e) => (this.options.mouseMultiplier = e.value));
+  // testMode = () => {
+  //   config
+  //     .addInput(
+  //       {
+  //         mouseMultiplier: this.options.mouseMultiplier,
+  //       },
+  //       "mouseMultiplier",
+  //       { min: 0.1, max: 2, step: 0.1 }
+  //     )
+  //     .on("change", (e) => (this.options.mouseMultiplier = e.value));
 
-    config
-      .addInput(
-        {
-          firefoxMultiplier: this.options.firefoxMultiplier,
-        },
-        "firefoxMultiplier",
-        { min: 0.1, max: 100, step: 1 }
-      )
-      .on("change", (e) => (this.options.firefoxMultiplier = e.value));
-  };
+  //   config
+  //     .addInput(
+  //       {
+  //         firefoxMultiplier: this.options.firefoxMultiplier,
+  //       },
+  //       "firefoxMultiplier",
+  //       { min: 0.1, max: 100, step: 1 }
+  //     )
+  //     .on("change", (e) => (this.options.firefoxMultiplier = e.value));
+  // };
 
   notify = (e) => {
     const evt = this.current;

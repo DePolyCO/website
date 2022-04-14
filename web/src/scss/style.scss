@@ -209,6 +209,10 @@ picture.fx {
   }
 }
 
+*::selection {
+  background: #dadaca;
+}
+
 @import "./pages/404.scss";
 @import "./pages/home.scss";
 @import "./pages/technology.scss";

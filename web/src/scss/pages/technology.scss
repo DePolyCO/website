@@ -38,6 +38,10 @@
     object-fit: contain;
   }
 
+  #explain-visual--picture img {
+    transition: opacity 1.75s;
+  }
+
   .explain-visual--plus {
     background: #f2ffbd;
     border-radius: fluid(11, $sm);

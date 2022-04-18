@@ -21,7 +21,7 @@ import { Cookie } from "./cookie";
 
 // import { smoothscroller } from "./scroller";
 // import { footer } from "./components/footer";
-// import { nav } from "./components/nav";
+import { nav } from "./components/nav";
 
 /**
  *
@@ -62,7 +62,7 @@ iris.add(
     // });
 
     // footer.init();
-    // nav.init();
+    nav.resize();
 
     // if (
     //   "serviceWorker" in navigator &&

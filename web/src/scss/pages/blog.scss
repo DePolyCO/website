@@ -898,17 +898,22 @@
     margin-bottom: fluid(40, $sm);
 
     @include md {
-      margin-bottom: fluid(40, $lg);
+      margin-top: fluid(80, $lg);
+      margin-bottom: fluid(95, $lg);
       width: fluid(430 * 3 + 40 * 2, $lg);
+      border-left: 1px solid $darkblue;
+      border-right: 1px solid $darkblue;
     }
 
     picture {
       width: fluid(325, $sm);
       height: fluid(325, $sm);
+      margin-bottom: fluid(40, $sm);
 
       @include md {
         width: fluid(466, $lg);
         height: fluid(466, $lg);
+        margin-bottom: fluid(40, $lg);
       }
     }
 

@@ -44,7 +44,7 @@ export class CoreScroll extends Conductor {
 
     this.options = {
       // mouseMultiplier: Sniff.windows ? 1 : 0.4,
-      mouseMultiplier: 1,
+      mouseMultiplier: !Sniff.windows ? 1 : 0.4,
       touchMultiplier: 1,
       firefoxMultiplier: 50,
       keyStep: 120,

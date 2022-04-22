@@ -31,7 +31,7 @@ export class Reveal {
     stagger = 0,
     delay = 0,
     auto = false,
-    threshold = 0.5,
+    threshold = 0.25,
     easing = "o6",
     duration = 1750,
     indent = 0, // in viewportWidth units

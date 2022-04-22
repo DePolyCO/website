@@ -1,5 +1,23 @@
 
 [{
+   "_id":"69de6d54-c327-4132-81f4-eb468c91daa6",
+   "title":"SEIF Awards 2020",
+   "date":"November 24, 2020",
+   "content": "We are delighted to be part of the SEIF Awards Tech for Impact 2020, and win this year’s award in the category of “saleable solutions”. ",
+   "url":"seif-awards-2020",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/cfb774737d7b080c685df0e24488b413f54b726c-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"622cd718-a902-46e8-89d7-bba073bb62bd",
+   "title":"De Vigier Top 10",
+   "date":"November 16, 2020",
+   "content": "DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final! ",
+   "url":"de-vigier-top-10",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/e6072ce16083ffba545c5bf90f90d3f805f0ce31-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
    "_id":"652c9a5d-77f2-4dc9-a2eb-bc4ca4a03ccd",
    "title":"Mass Challenge 2020:",
    "date":"November 1, 2020",
@@ -18,33 +36,6 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/18c1489b7557f81b1ceacd31119379de95fda58b-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"14673a48-3a87-4036-a0d5-20ecd3ffad91",
-   "title":"Stagars Start Up Documentary",
-   "date":"November 1, 2020",
-   "content": "The Manuel Stagars Start Up Documentary is now streaming online! The documentary observes early stage entrepreneurs in their labs and shines a light on innovation and entrepreneurship in deep tech without hype. Manuel also interviewed our own Samantha Anderson and Bardiya Valizadeh about life in a Start Up! ",
-   "url":"stagars-start-up-documentary",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/59cfcc4bf20928e2823d31fe2d2373f14b19ea42-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"69de6d54-c327-4132-81f4-eb468c91daa6",
-   "title":"SEIF Awards 2020",
-   "date":"November 1, 2020",
-   "content": "We are delighted to be part of the SEIF Awards Tech for Impact 2020, and win this year’s award in the category of “saleable solutions”. ",
-   "url":"seif-awards-2020",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/cfb774737d7b080c685df0e24488b413f54b726c-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"622cd718-a902-46e8-89d7-bba073bb62bd",
-   "title":"De Vigier Top 10",
-   "date":"November 1, 2020",
-   "content": "DePoly is proud to be part of A.A De Vigier Stiftung in 2020, and make it to the final! ",
-   "url":"de-vigier-top-10",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/e6072ce16083ffba545c5bf90f90d3f805f0ce31-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
    "_id":"e82fa811-9907-41ef-a26a-d780d36758b0",
    "title":"FIT – Fondation pour l’InovationTechnologique.",
    "date":"November 1, 2020",
@@ -54,13 +45,31 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/540e8e51ed91ea218ab784d16a668096a6915c91-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"7f0f424a-ea40-422e-aa7e-bf7b0c4c2b12",
-   "title":"EPFL Talk to DePoly CEO Sam Anderson",
-   "date":"May 1, 2020",
-   "content": "The EPFL Innovation Park have posted an interview with DePoly’s CEO Samantha Anderson.",
-   "url":"epfl-talk-to-depoly-ceo-sam-anderson",
+   "_id":"823fbe0d-6a1a-4fba-9172-dbc71d3bc8f4",
+   "title":"DePoly 2019 Grand Prize Winner",
+   "date":"July 10, 2020",
+   "content": "Watch the whole video below.",
+   "url":"depoly-2019-grand-prize-winner",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/daf6941ca9adc8eeb87c4f58727c80dfa370b8ca-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"20cfd555-629d-4cbc-bc2d-c96cb9007209",
+   "title":"DePoly Announced in the Top 16 Start-Ups for 2020",
+   "date":"June 23, 2020",
+   "content": "DePoly is proud to be announced as one of the top 16 start-ups for the 2020 W.A. De Vigier Stiftung Award.",
+   "url":"depoly-announced-in-the-top-16-start-ups-for-2020",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3bc8c1fd6c2a94903c3befe9690c55b9d693ec2b-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
+   "_id":"14673a48-3a87-4036-a0d5-20ecd3ffad91",
+   "title":"Stagars Start Up Documentary",
+   "date":"May 21, 2020",
+   "content": "The Manuel Stagars Start Up Documentary is now streaming online! The documentary observes early stage entrepreneurs in their labs and shines a light on innovation and entrepreneurship in deep tech without hype. Manuel also interviewed our own Samantha Anderson and Bardiya Valizadeh about life in a Start Up! ",
+   "url":"stagars-start-up-documentary",
    "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/6a6735fbe197f7fa3d68f6c5f20960604ed3e7e6-3680x1400.jpg?w=800&amp;auto=format"
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/59cfcc4bf20928e2823d31fe2d2373f14b19ea42-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
    "_id":"65a1cf4f-2418-4c20-9468-0c6bc844fce5",
@@ -70,15 +79,6 @@
    "url":"depoly-features-in-stagars-start-up-documentary",
    "postCategory":"General",
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3b24d0df7516ab9c82f98c7f98f2c432742de65f-3680x1400.jpg?w=800&amp;auto=format"
-},
-{
-   "_id":"20cfd555-629d-4cbc-bc2d-c96cb9007209",
-   "title":"DePoly Announced in the Top 16 Start-Ups for 2020",
-   "date":"May 1, 2020",
-   "content": "DePoly is proud to be announced as one of the top 16 start-ups for the 2020 W.A. De Vigier Stiftung Award.",
-   "url":"depoly-announced-in-the-top-16-start-ups-for-2020",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3bc8c1fd6c2a94903c3befe9690c55b9d693ec2b-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
    "_id":"41357512-4a3e-4637-8541-110949c104e1",
@@ -108,13 +108,13 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/eac9cbb15bf0954a714014116caf57ca269f756c-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"823fbe0d-6a1a-4fba-9172-dbc71d3bc8f4",
-   "title":"DePoly 2019 Grand Prize Winner",
-   "date":"April 30, 2020",
-   "content": "Watch the whole video below.",
-   "url":"depoly-2019-grand-prize-winner",
-   "postCategory":"Awards",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/daf6941ca9adc8eeb87c4f58727c80dfa370b8ca-3680x1400.jpg?w=800&amp;auto=format"
+   "_id":"7f0f424a-ea40-422e-aa7e-bf7b0c4c2b12",
+   "title":"EPFL Talk to DePoly CEO Sam Anderson",
+   "date":"April 19, 2020",
+   "content": "The EPFL Innovation Park have posted an interview with DePoly’s CEO Samantha Anderson.",
+   "url":"epfl-talk-to-depoly-ceo-sam-anderson",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/6a6735fbe197f7fa3d68f6c5f20960604ed3e7e6-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
    "_id":"7c9f4bbc-eb05-4596-90e8-d354bcd0fd74",

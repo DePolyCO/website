@@ -297,7 +297,7 @@
     @include md {
       width: fluid(400 + 35 + 35, $lg);
       padding: 0 fluid(35, $lg);
-      border-right: 0.5px solid $darkblue;
+      border-right: 1px solid $darkblue;
       border-bottom: none;
       margin-bottom: 0;
     }
@@ -753,7 +753,7 @@
     .article-card {
       @include md {
         border-bottom: none;
-        border-right: 0.5px solid $darkblue;
+        border-right: 1px solid $darkblue;
         padding: 0 fluid(35, $lg);
         padding-bottom: fluid(40, $lg);
         width: fluid(400 + 35 + 35, $lg);
@@ -764,8 +764,8 @@
         bottom: 0;
         left: fluid(35, $lg);
         right: fluid(35, $lg);
-        height: 0.5px;
-        background: $darkblue;
+        height: 1px;
+        border-bottom: 1px solid $darkblue;
       }
     }
 

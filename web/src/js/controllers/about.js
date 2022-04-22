@@ -7,7 +7,7 @@ import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
 import { Numbers } from "../components/revealNumbers";
 
-import { qsa, Sniff, Vau } from "../hermes";
+import { qs, qsa, Sniff, Vau } from "../hermes";
 import { Reveal } from "../reveal";
 import { Parallax } from "../scroller";
 
@@ -87,6 +87,18 @@ export const aboutController = new Controller({
     r0.play();
 
     monoShuffle.init();
+
+    if (!Sniff.mobile) {
+      [qs("#team-list"), qs("#advisor-list")].forEach((group) => {
+        const members = qsa(".team-item", group);
+        const membersL = members.length;
+        const itemsToRemove = membersL % 3 === 0 ? 3 : membersL % 3;
+        for (let i = itemsToRemove; i > 0; i--) {
+          const item = members[membersL - i];
+          item.classList.add("no-border");
+        }
+      });
+    }
 
     sail.in();
     done();

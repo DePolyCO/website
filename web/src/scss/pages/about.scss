@@ -169,6 +169,12 @@
       right: 0;
     }
 
+    &.no-border {
+      &::after {
+        display: none;
+      }
+    }
+
     @include md {
       width: fluid(400, $lg);
       padding-top: 0;
@@ -180,12 +186,6 @@
 
       &:nth-child(n + 4) {
         padding-top: fluid(86 - 40, $lg);
-      }
-    }
-
-    &.no-border {
-      &::after {
-        display: none;
       }
     }
 

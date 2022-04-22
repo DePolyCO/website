@@ -175,6 +175,28 @@
       }
     }
 
+    &.info-icon {
+      svg {
+        width: fluid(40, $sm);
+        height: fluid(40, $sm);
+        top: fluid(295, $sm);
+        right: fluid(53, $sm);
+
+        @include md {
+          width: fluid(47, $lg);
+          height: fluid(47, $lg);
+          top: fluid(348, $lg);
+          right: fluid(71, $lg);
+        }
+      }
+    }
+
+    &:not(.info-icon) {
+      svg {
+        display: none;
+      }
+    }
+
     @include md {
       width: fluid(400, $lg);
       padding-top: 0;
@@ -186,6 +208,12 @@
 
       &:nth-child(n + 4) {
         padding-top: fluid(86 - 40, $lg);
+
+        &.info-icon {
+          svg {
+            top: fluid(348 + 46, $lg);
+          }
+        }
       }
     }
 

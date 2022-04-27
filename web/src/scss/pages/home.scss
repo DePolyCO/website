@@ -94,7 +94,7 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     display: inline;
 
     opacity: 0;
-    transition: opacity 1.25s $ease-out-expo;
+    transition: opacity 1.25s $ease-out-expo 0.5s;
 
     @include md {
       font-size: fluid(16, $lg);

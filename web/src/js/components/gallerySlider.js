@@ -89,7 +89,7 @@ export class GallerySlider {
     const pos = this.slider.state.pos;
     this.slider.state.locked = true;
     Tween({
-      val: [-window.innerWidth, 0],
+      val: [-ro.bounds.vw, 0],
       duration: 2000,
       easing: "o6",
       update: ({ cur }) => {
@@ -97,6 +97,15 @@ export class GallerySlider {
       },
       complete: () => {
         this.slider.state.locked = false;
+      },
+    });
+
+    Tween({
+      val: [2 * ro.bounds.vw, this.state.pos.x.cur],
+      duration: 2000,
+      easing: "o6",
+      update: ({ cur }) => {
+        this.state.pos.x.cur = cur;
       },
     });
   };

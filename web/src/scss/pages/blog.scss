@@ -210,6 +210,10 @@
           margin-bottom: 0;
           position: relative;
           top: -4px;
+
+          .safari & {
+            padding: fluid(6, $lg) fluid(8, $lg) fluid(4, $lg);
+          }
         }
       }
 

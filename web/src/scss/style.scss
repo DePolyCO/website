@@ -118,7 +118,7 @@ body {
 picture.fx {
   img {
     opacity: 0;
-    transform: translateY(#{fluid(100, $lg)});
+    transform: scale(1.1);
     transition: opacity 2.75s $ease-out-expo, transform 1.75s $ease-out-expo;
   }
 

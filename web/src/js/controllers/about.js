@@ -7,7 +7,7 @@ import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
 import { Numbers } from "../components/revealNumbers";
 
-import { qs, qsa, Sniff, Vau } from "../hermes";
+import { qs, qsa, ro, Sniff, Vau } from "../hermes";
 import { Reveal } from "../reveal";
 import { Parallax } from "../scroller";
 
@@ -67,7 +67,7 @@ export const aboutController = new Controller({
       easing: "o6",
     });
 
-    if (Sniff.touchDevice) {
+    if (Sniff.touchDevice && ro.bounds.vw < 850) {
       numbers = new Numbers();
     } else {
       numbers = new CaptureReveal();

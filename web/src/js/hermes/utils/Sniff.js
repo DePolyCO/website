@@ -37,8 +37,6 @@ class Sniffer {
       this.ios ||
       ("MacIntel" === navigator.platform && 1 < navigator.maxTouchPoints);
 
-    this.touchDevice = "ontouchstart" in window || window.innerWidth < 850;
-
     this.mutationObserver = "MutationObserver" in window;
 
     if (this.safari) {
@@ -52,6 +50,10 @@ class Sniffer {
     if (this.mac) {
       document.body.classList.add("mac");
     }
+  }
+
+  get touchDevice() {
+    return "ontouchstart" in window || window.innerWidth < 850;
   }
 }
 

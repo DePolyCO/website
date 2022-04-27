@@ -153,7 +153,7 @@
 }
 
 #nav-links {
-  gap: fluid(37, 667, 1vh);
+  gap: fluid(37.75, 667, 1vh);
   top: max(#{fluid(72 + 12, $sm)}, #{fluid(72 + 24, 667, 1vh)});
   position: relative;
 
@@ -278,7 +278,7 @@
   background: #ecece2;
   border: 1px solid rgba(2, 45, 66, 0.1);
   border-radius: fluid(9, $sm);
-  padding: fluid(4, $sm) fluid(28, $sm) 0 fluid(8, $sm);
+  padding: fluid(4, $sm) fluid(28, $sm) fluid(1, $sm) fluid(8, $sm);
 
   font-weight: 500;
   font-size: fluid(16, $sm);
@@ -344,7 +344,7 @@
 
 #nav-cta {
   position: absolute;
-  bottom: fluid(14, $sm);
+  bottom: fluid(20, $sm);
   left: fluid(20, $sm);
   width: calc(100% - #{fluid(40, $sm)});
 
@@ -372,7 +372,7 @@
   left: fluid(20, $sm);
   right: fluid(20, $sm);
   top: fluid(72, $sm);
-  bottom: fluid(88, $sm);
+  bottom: fluid(100, $sm);
   opacity: 0;
   transition: opacity 1.25s $ease-out-expo;
 }
@@ -466,7 +466,7 @@
     display: block;
     height: fluid(2.5, $sm);
     width: fluid(24, $sm);
-    background: #454545;
+    background: $darkblue;
     position: absolute;
     top: 50%;
     left: 50%;

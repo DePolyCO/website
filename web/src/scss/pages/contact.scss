@@ -104,6 +104,15 @@
     }
   }
 
+  .form-wrapper.fx {
+    opacity: 0;
+    transition: opacity 1.75s $ease-out-expo 0.25s;
+
+    &.fx-on {
+      opacity: 1;
+    }
+  }
+
   #dropdown-m--wrapper {
     // margin-bottom: fluid(40, $sm);
     padding-bottom: fluid(40, $sm);

@@ -49,7 +49,7 @@ export default {
           initialValue: false,
         },
         {
-          name: "Medior",
+          name: "Mid",
           type: "boolean",
           initialValue: false,
         },

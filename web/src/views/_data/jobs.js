@@ -13,14 +13,16 @@ module.exports = withCache(
     const filtered = jobs
       .filter((item) => item.__i18n_lang === "en")
       .map((item) => {
-        const levels = Object.keys(item.level).filter((key) => {
-          if (item.level[key]) {
-            if (key === "Medior") {
+        const levels = Object.keys(item.level)
+          .filter((key) => item.level[key])
+          .map((level) => {
+            if (level === "Medior") {
               return "Mid-Level";
             }
-            return key;
-          }
-        });
+
+            return level;
+          });
+
         if (levels.length < 3) {
           item.levels = levels.join("/");
         } else {

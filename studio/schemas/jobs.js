@@ -45,16 +45,19 @@ export default {
       fields: [
         {
           name: "Junior",
+          title: "Junior",
           type: "boolean",
           initialValue: false,
         },
         {
-          name: "Mid-level",
+          name: "Medior",
+          title: "Mid-Level",
           type: "boolean",
           initialValue: false,
         },
         {
           name: "Senior",
+          title: "Senior",
           type: "boolean",
           initialValue: false,
         },

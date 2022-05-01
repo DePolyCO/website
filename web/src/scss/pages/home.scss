@@ -101,12 +101,19 @@ $enhanced-ease: cubic-bezier(0.71, 0, 0, 1);
     -webkit-box-decoration-break: clone;
     display: inline;
 
+    opacity: 0;
+    transition: opacity 1.25s $ease-out-expo 0.5s;
+
     @include md {
       font-size: fluid(16, $lg);
       border-radius: fluid(8, $lg);
       padding: fluid(3, $lg) fluid(8, $lg) fluid(2, $lg);
       margin-bottom: fluid(5, $lg);
       line-height: 110%;
+    }
+
+    &.fx-on {
+      opacity: 1;
     }
   }
 

@@ -23,7 +23,6 @@ export class Smooth extends Conductor {
     dom = document.documentElement,
     isWindow = true,
     window,
-    sections = `[data-scroll-section]`,
   } = {}) {
     super();
 
@@ -32,7 +31,6 @@ export class Smooth extends Conductor {
       dom,
       isWindow,
       window,
-      sections,
     };
 
     this.common();
@@ -60,7 +58,7 @@ export class Smooth extends Conductor {
   init() {
     this.clearState();
 
-    this.scrollSections = qsa(this.sections, this.scrollContent);
+    this.scrollSections = qsa(`[data-scroll-section]`, this.scrollContent);
     this.scrollSections =
       this.scrollSections.length === 0
         ? [this.scrollContent]

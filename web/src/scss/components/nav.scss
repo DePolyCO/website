@@ -440,7 +440,7 @@
 }
 
 .btn-inner {
-  transition: transform 1.25s $ease-out-expo;
+  transition: transform 1.125s $ease-out-expo;
   width: -moz-fit-content;
   width: fit-content;
 
@@ -449,7 +449,7 @@
     position: absolute;
     bottom: -120%;
     left: 0;
-    transition: transform 1.25s $ease-out-expo;
+    transition: transform 1.125s $ease-out-expo;
   }
 }
 

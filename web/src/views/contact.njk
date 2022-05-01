@@ -81,7 +81,7 @@ meta:
             <div id="form-underlay" class="pa inset d-hide pen"></div>
 
             {# General Information #}
-            <div class="pr form-wrapper z0" id="general-form--wrapper">
+            <div class="pr form-wrapper z0 fx fx-once" id="general-form--wrapper">
                 <details class="form-details pr" id="general-form" open>
                     <summary class="form-title m-hide">Informations Générales</summary>
                     <form novalidate data-netlify="true" name="General Information" method="POST" class="form-content">
@@ -131,7 +131,7 @@ meta:
                         </div>
                         <button class="cta-btn" id="general-submit">
                             <div class="pr oh btn-wrapper">
-                                <div class="btn-inner" data-content="envoyer le message">envoyer le message</div>
+                                <div class="btn-inner" data-content="Envoyer le message">Envoyer le message</div>
                             </div>
                         </button>
                     </form>
@@ -153,7 +153,7 @@ meta:
             </div>
 
             {# Submit CV #}
-            <div class="pr form-wrapper">
+            <div class="pr form-wrapper fx fx-once">
                 <details class="form-details pr" id="cv-form">
                     <summary class="form-title m-hide">Envoyer votre CV</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Submit CV" method="POST" class="form-content">
@@ -254,7 +254,7 @@ meta:
             </div>
 
             {# Sample & Quote #}
-            <div class="pr form-wrapper">
+            <div class="pr form-wrapper fx fx-once">
                 <details class="form-details pr" id="sample-form">
                     <summary class="form-title margin-sm m-hide">Echantillon et Devis</summary>
                     <form novalidate enctype="multipart/form-data" data-netlify="true" name="Sample & Quote" method="POST" class="form-content">

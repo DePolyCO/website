@@ -1,6 +1,6 @@
 import { Controller } from "../hydra";
 
-import { Draw, Observer, qsa, Sniff, Vau } from "../hermes";
+import { Draw, Observer, qsa, Sniff, Vau, iris, qs } from "../hermes";
 
 import { Parallax } from "../scroller";
 import { Reveal } from "../reveal";
@@ -158,6 +158,20 @@ export const homeController = new Controller({
     monoShuffle.init();
 
     r0.play();
+
+    if (!Sniff.mobile) {
+      const wrapper = qs(".summary-m");
+      const dom = qs("#summary-slider--handle");
+      iris.add(
+        wrapper,
+        iris.events.down,
+        () => {
+          dom.style.opacity = 0;
+          dom.style.pointerEvents = "none";
+        },
+        { once: true }
+      );
+    }
 
     sail.in();
     done();

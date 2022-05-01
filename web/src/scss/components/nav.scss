@@ -369,6 +369,7 @@
 }
 
 #m-bg--grid {
+  display: none;
   left: fluid(20, $sm);
   right: fluid(20, $sm);
   top: fluid(72, $sm);

@@ -20,6 +20,8 @@ export class Search {
     this.noResult = qs(noResults);
     this.engine = engine;
 
+    this.active = false;
+
     // this.api = "/.netlify/functions/search?term=";
     this.api = "https://depoly.netlify.app/.netlify/functions/search?term=";
 
@@ -59,11 +61,17 @@ export class Search {
 
   handleMobile = (e) => {
     // hide filters layer
+    if (this.active) {
+      // simulate enter keydown to trigger query
+      this.handleInput({ key: "Enter" });
+    }
+
     const filters = qs("#filters-extended");
     filters.style.pointerEvents = "none";
     filters.style.opacity = 0;
 
     this.input.focus();
+    this.active = true;
     // set search active
   };
 
@@ -73,6 +81,7 @@ export class Search {
     const filters = qs("#filters-extended");
     filters.style.pointerEvents = "all";
     filters.style.opacity = 1;
+    this.active = false;
   };
 
   clearInput = () => {

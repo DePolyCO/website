@@ -20,6 +20,8 @@ export class Search {
     this.noResult = qs(noResults);
     this.engine = engine;
 
+    this.active = false;
+
     // this.api = "/.netlify/functions/search?term=";
     this.api = "https://depoly.netlify.app/.netlify/functions/search?term=";
 
@@ -31,7 +33,11 @@ export class Search {
 
     if (Sniff.touchDevice) {
       this.unPress = iris.add(this.btn, "click", this.handleMobile);
-      this.unBlur = iris.add("#search-extended--close", "click", this.handleMobileClose);
+      this.unBlur = iris.add(
+        "#search-extended--close",
+        "click",
+        this.handleMobileClose
+      );
     } else {
       this.unPress = iris.add(this.btn, "click", this.handleInput);
     }
@@ -55,12 +61,17 @@ export class Search {
 
   handleMobile = (e) => {
     // hide filters layer
+    if (this.active) {
+      this.handleInput({ key: "Enter" });
+      return;
+    }
     const filters = qs("#filters-extended");
     filters.style.pointerEvents = "none";
     filters.style.opacity = 0;
 
     this.input.focus();
     // set search active
+    this.active = true;
   };
 
   handleMobileClose = () => {
@@ -69,6 +80,8 @@ export class Search {
     const filters = qs("#filters-extended");
     filters.style.pointerEvents = "all";
     filters.style.opacity = 1;
+
+    this.active = false;
   };
 
   clearInput = () => {

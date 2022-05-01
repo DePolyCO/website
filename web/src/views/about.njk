@@ -131,7 +131,7 @@ meta:
         <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Notre équipe</div>
         <div id="team-list" class="grid-list pr df fc fw jcb" style="--count: {{ team.members.length }}">
             {% for member in team.members %}
-                <div class="team-item {% if member.bio %} cp {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
+                <div class="team-item {% if member.bio %} cp info-icon {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                     <picture class="team-photo fx fx-once">
                         {% responsiveImage member.img,
                         "300,600",
@@ -139,6 +139,9 @@ meta:
                     </picture>
                     <div class="team-name rev">{{ member.name }}</div>
                     <div class="team-role rev ttu">{{ member.role }}</div>
+                    <svg class="pa top right">
+                        <use xlink:href="#info-icon--full"></use>
+                    </svg>
                 </div>
             {% endfor %}
             <div class="hori-line hori-line--one pa top bottom m-hide"></div>

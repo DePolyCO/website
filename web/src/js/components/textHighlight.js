@@ -1,4 +1,4 @@
-import { ro, select, ticker } from "../hermes";
+import { ro, select, ticker, Sniff } from "../hermes";
 import { Tracker, smoothscroller } from "../scroller";
 
 export class TextHighlight {

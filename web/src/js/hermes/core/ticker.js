@@ -22,10 +22,10 @@ class Ticker extends Conductor {
     this.delta = this.targetDelta;
     this.maxDelta = this.targetDelta * 2;
 
-    this.listeners();
-    this.paused = true;
+    // this.listeners();
+    // this.paused = true;
 
-    this.play();
+    this.run();
   }
 
   run = (elapsedTime = 0) => {
@@ -40,28 +40,28 @@ class Ticker extends Conductor {
     }
   };
 
-  pause() {
-    if (this.paused) return;
-    if (!this.instance) return;
-    cancelAnimationFrame(this.instance.nextFrame);
-    this.instance.nextFrame = null;
-    this.paused = true;
-  }
+  // pause() {
+  //   if (this.paused) return;
+  //   if (!this.instance) return;
+  //   cancelAnimationFrame(this.instance.nextFrame);
+  //   this.instance.nextFrame = null;
+  //   this.paused = true;
+  // }
 
-  play() {
-    if (!this.paused) return;
-    this.paused = false;
-    this.instance.lastFrameTime = performance.now();
-    this.instance.nextFrame = requestAnimationFrame(this.run);
-  }
+  // play() {
+  //   if (!this.paused) return;
+  //   this.paused = false;
+  //   this.instance.lastFrameTime = performance.now();
+  //   this.instance.nextFrame = requestAnimationFrame(this.run);
+  // }
 
-  listeners() {
-    iris.add(document, "visibilitychange", () => {
-      document.visibilityState === "hidden" ? this.pause() : this.play();
-    });
+  // listeners() {
+  //   iris.add(document, "visibilitychange", () => {
+  //     document.visibilityState === "hidden" ? this.pause() : this.play();
+  //   });
 
-    !Sniff.safari && iris.add(window, "pagehide", this.pause);
-  }
+  //   !Sniff.safari && iris.add(window, "pagehide", this.pause);
+  // }
 }
 
 // Global ticker

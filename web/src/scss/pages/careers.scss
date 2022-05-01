@@ -350,12 +350,19 @@
     background: $darkbeige;
     white-space: nowrap;
 
+    opacity: 0;
+    transition: opacity 1.25s $ease-out-expo .25s, background-color 1.25s $ease-out-expo;
+
     .btn-inner::after {
       color: $darkbeige;
     }
 
     &:hover {
       background: $darkblue;
+    }
+
+    &.fx-on {
+      opacity: 1;
     }
 
     @include md {

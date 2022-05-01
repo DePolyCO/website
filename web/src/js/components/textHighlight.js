@@ -1,11 +1,11 @@
-import { ro, select, ticker } from "../hermes";
+import { ro, select, Sniff, ticker } from "../hermes";
 import { Tracker, smoothscroller } from "../scroller";
 
 export class TextHighlight {
   constructor({ targets, intersectionPoints = {} }) {
     this.intersectionPoints = {
       ...intersectionPoints,
-      bottom: 0.4,
+      bottom: Sniff.touchDevice ? 0.5 : 0.4,
     };
 
     this.tracker = new Tracker({

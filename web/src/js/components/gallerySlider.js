@@ -67,7 +67,7 @@ export class GallerySlider {
     const { containerBounds, pos } = this.state;
 
     // const { top, left } = bounds(this.handle);
-    pos.x.cur = containerBounds.x + window.innerWidth / 2;
+    pos.x.cur = containerBounds.x * 2;
     pos.y.cur = containerBounds.y + containerBounds.height / 2;
 
     if (Sniff.touchDevice) return;

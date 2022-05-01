@@ -66,8 +66,7 @@ export class GallerySlider {
 
     const { containerBounds, pos } = this.state;
 
-    // const { top, left } = bounds(this.handle);
-    pos.x.cur = containerBounds.x + window.innerWidth / 2;
+    pos.x.cur = containerBounds.x * 2;
     pos.y.cur = containerBounds.y + containerBounds.height / 2;
 
     if (Sniff.touchDevice) return;
@@ -89,7 +88,7 @@ export class GallerySlider {
     const pos = this.slider.state.pos;
     this.slider.state.locked = true;
     Tween({
-      val: [-window.innerWidth, 0],
+      val: [-ro.bounds.vw, 0],
       duration: 2000,
       easing: "o6",
       update: ({ cur }) => {
@@ -97,6 +96,15 @@ export class GallerySlider {
       },
       complete: () => {
         this.slider.state.locked = false;
+      },
+    });
+
+    Tween({
+      val: [2 * ro.bounds.vw, this.state.pos.x.cur],
+      duration: 2000,
+      easing: "o6",
+      update: ({ cur }) => {
+        this.state.pos.x.cur = cur;
       },
     });
   };

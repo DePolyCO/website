@@ -544,7 +544,7 @@
       overflow: hidden;
       overflow: clip;
 
-      height: fluid(93, $lg);
+      height: fluid(80, $lg);
       margin-left: 0;
       flex-wrap: wrap;
       align-items: center;
@@ -567,12 +567,18 @@
       border-radius: fluid(9, $lg);
       width: fluid(25, $lg);
       height: fluid(25, $lg);
-      top: fluid(25, $lg);
+      top: fluid(30, $lg);
       display: unset;
+      transition: transform 1.25s $ease-out-expo;
+      transform: rotate(180deg);
 
       svg {
         width: fluid(12, $lg);
         height: fluid(9, $lg);
+      }
+
+      &.active {
+        transform: none;
       }
     }
   }

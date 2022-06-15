@@ -1,5 +1,41 @@
 
 [{
+   "_id":"7cb745c3-dbc2-4743-bb02-acbbe49dd21f",
+   "title":"Tech4Impact - Showcase 2030 ",
+   "date":"June 14, 2022",
+   "content": "DePoly presented among leading actors of the sustainable innovation ecosystem in Switzerland!",
+   "url":"tech4impact-showcase-2030",
+   "postCategory":"Events",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/ffac808c71a75a42dec0fa9ed34fa85667d77e03-4032x3024.jpg?rect=206,0,3818,3024&amp;w=800&amp;auto=format"
+},
+{
+   "_id":"4a93484e-be56-450b-8f0c-08f70739c603",
+   "title":"D&amp;I are in our DNA",
+   "date":"June 10, 2022",
+   "content": "When we say that Diversity and inclusions are the pillars of DePoly culture, we really mean it.",
+   "url":"diversity-inclusion-pride-month",
+   "postCategory":"Team",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/f1b8eac7abe1d588086cf88c2debd9abe369ce47-1500x1500.png?w=800&amp;auto=format"
+},
+{
+   "_id":"245d80c5-e0e5-459a-b5ed-a2acb3f2d6be",
+   "title":"Early stage to startups to watch in DACH by Sifted",
+   "date":"June 3, 2022",
+   "content": "Sifted places DePoly on their list of leading startups in DACH region!",
+   "url":"early-stage-to-startups-to-watch-in-dach-by-sifted",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/9f3b9d16e4e0bfaefad1daae1501fef6510e47f0-1200x627.jpg?rect=370,0,830,627&amp;w=800&amp;auto=format"
+},
+{
+   "_id":"35ed2747-4871-488d-80a2-a22e12ce1079",
+   "title":"Summer Internship for Chemical Engineering students ",
+   "date":"May 31, 2022",
+   "content": "Discover the opportunity of a summer internship at DePoly!",
+   "url":"summer-internship-for-chemical-engineering-students",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/58cd57d3e0ac838d5c236b998585680704525d0d-2160x2160.png?w=800&amp;auto=format"
+},
+{
    "_id":"69de6d54-c327-4132-81f4-eb468c91daa6",
    "title":"SEIF Awards 2020",
    "date":"November 24, 2020",
@@ -27,10 +63,19 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/c738aa3b813e37981add44985a4d1904fe038c1d-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
+   "_id":"7c9f4bbc-eb05-4596-90e8-d354bcd0fd74",
+   "title":"Beauty Tech for Good Challenge by L’Oreal",
+   "date":"November 1, 2020",
+   "content": "We are delighted to be the winner of the Beauty Tech for Challenge by L’Oreal. We are really excited to work with L’Oreal and be part of their StartUp campus at Station F in Paris. ",
+   "url":"beauty-tech-for-good-challenge-by-l-oreal",
+   "postCategory":"General",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3453f96050e3edfbbe35859e47377943d8edb8f5-3680x1400.jpg?w=800&amp;auto=format"
+},
+{
    "_id":"2f2d27bf-b2d2-46ae-895c-47538b5ac39e",
    "title":"TOP 100 Swiss Startups",
    "date":"November 1, 2020",
-   "content": "DePoly was founded earlier this year, and we are proud to be among the TOP 100 Start-Ups in Switzerland, and the youngest company to reach the Top 100. #TOP100SSU. Learn more by clicking here.",
+   "content": "DePoly was founded earlier this year, and we are proud to be among the TOP 100 Start-Ups in Switzerland, and the youngest company to reach the Top 100. #TOP100SSU. ",
    "url":"top-100-swiss-startups",
    "postCategory":"Awards",
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/18c1489b7557f81b1ceacd31119379de95fda58b-3680x1400.jpg?w=800&amp;auto=format"
@@ -117,12 +162,12 @@
    "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/6a6735fbe197f7fa3d68f6c5f20960604ed3e7e6-3680x1400.jpg?w=800&amp;auto=format"
 },
 {
-   "_id":"7c9f4bbc-eb05-4596-90e8-d354bcd0fd74",
-   "title":"Beauty Tech for Good Challenge by L’Oreal",
-   "date":"November 1, 2020",
-   "content": "We are delighted to be the winner of the Beauty Tech for Challenge by L’Oreal. We are really excited to work with L’Oreal and be part of their StartUp campus at Station F in Paris. ",
-   "url":"beauty-tech-for-good-challenge-by-l-oreal",
-   "postCategory":"General",
-   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/3453f96050e3edfbbe35859e47377943d8edb8f5-3680x1400.jpg?w=800&amp;auto=format"
+   "_id":"036fc529-2442-482e-b9e4-efa696dee7ec",
+   "title":"Vote for DePoly: TOP 100 Swiss Start-Ups 2022",
+   "date":"May 16, 2022",
+   "content": "Public voting for TOP 100 Swiss Star-Ups 2022 is open!",
+   "url":"top-100-swiss-startups-2022",
+   "postCategory":"Awards",
+   "mainImage": "https://cdn.sanity.io/images/8quen0nd/production/18c1489b7557f81b1ceacd31119379de95fda58b-3680x1400.jpg?w=800&amp;auto=format"
 }
 ]

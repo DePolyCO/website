@@ -115,6 +115,15 @@
     }
   }
 
+  .carousel-slide--constrained {
+    min-width: 57.3333333333vw;
+
+    @include md {
+      min-width: 0;
+      width: fsize(600);
+    }
+  }
+
   #quotes {
     border-top: 1px solid $darkblue;
     padding-top: fluid(42, $sm);

@@ -1,7 +1,6 @@
-import { iris, Observer, qs, qsa, Sniff, Vau } from "../hermes";
-import { Search } from "./search";
+import { iris, qs, qsa, Sniff } from "../hermes";
 import { Store } from "../store";
-import { MiniBlog } from "./blogTop";
+import { Search } from "./search";
 
 export class Engine {
   constructor() {
@@ -122,7 +121,10 @@ export class Engine {
     this.updateUrlState();
 
     if (category === "all" || category === "ALL") {
-      return arr;
+      if (Sniff.mobile) {
+        return arr;
+      }
+      return arr.slice(2);
     } else {
       return arr.filter(
         (item) => item.postCategory.toLowerCase() === category.toLowerCase()

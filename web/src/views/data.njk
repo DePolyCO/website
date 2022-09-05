@@ -2,5 +2,16 @@
 permalink: /static/article-data.json
 eleventyExcludeFromCollections: true
 ---
-
-[{% for article in articles.all %}{% if loop.index0 > 1 and article._id != featuredArticle._id %}{"title":"{{ article.title | safe }}","date":"{{ article.publishedAt }}","content": "{% trim article.intro,400 %}","url":"{{ article.settings.slug.current | slugify }}","postCategory":"{{ article.settings.postCategory }}","mainImage":"{% imageUrlFor article.mainImage,800 %}"}{% if loop.revindex0 != 1 %},{% endif %}{% endif %}{% endfor %}]
+{% set comma = joiner() %}
+[{% for article in articles.all %}
+  {% if article._id != featuredArticle._id %}
+    {{ comma() }} {
+      "title":"{{ article.title | safe }}",
+      "date":"{{ article.publishedAt }}",
+      "content": "{% trim article.intro,400 %}",
+      "url":"{{ article.settings.slug.current | slugify }}",
+      "postCategory":"{{ article.settings.postCategory }}",
+      "mainImage":"{% imageUrlFor article.mainImage,800 %}"
+    }
+  {% endif %}
+{% endfor %}]

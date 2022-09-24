@@ -129,7 +129,7 @@ meta:
 
     <section id="team" class="restrict df fc border-bottom" data-scroll-section>
         <div id="team-tag" class="tag fv-mono ttu" data-shuffle>Notre équipe</div>
-        <div id="team-list" class="grid-list pr df fc fw jcb" style="--count: {{ team.members.length }}">
+        <div id="team-list" class="grid-list pr df fc fw" style="--count: {{ team.members.length }}">
             {% for member in team.members %}
                 <div class="team-item {% if member.bio %} cp info-icon {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                     <picture class="team-photo fx fx-once">
@@ -151,7 +151,7 @@ meta:
 
     <section class="restrict" data-scroll-section>
         <div id="advisor-tag" class="tag ttu fv-mono" data-shuffle>Conseillers</div>
-        <div id="advisor-list" class="grid-list df fc fw pr jcb">
+        <div id="advisor-list" class="grid-list df fc fw pr">
             {% for member in team.advisors %}
                 <div class="team-item {% if member.bio %} cp {% else %} pen {% endif %}"{% if member.bio %} data-trigger-aside="#bio-panel--{{ member.name | slugify }}" {% endif %}>
                     <picture class="team-photo fx fx-once">

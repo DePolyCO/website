@@ -102,7 +102,7 @@ export class Footer {
       // handle failure
     } else {
       form.innerHTML = `
-      <div id="footer-form--status" class="form-status df">
+      <div id="footer-form--status" class="form-status df" style="flex-wrap: wrap; height: auto;">
       <svg fill="none" viewBox="0 0 30 30">
           <circle cx="15" cy="15" r="14" stroke="#022D42" stroke-width="2"/>
           <g clip-path="url(#z)">
@@ -114,7 +114,10 @@ export class Footer {
               </clipPath>
           </defs>
       </svg>
-      <div>Thank you! You’re successfully subscribed to our newsletter.</div>
+      <div>Please check your inbox to confirm your subscription.</div>
+      <small style="font-size: 12px; margin-top: 10px; line-height: 1.2;">
+        In order to complete the subscription process, simply check your inbox and click on the link in the email we have just sent you. If it is not there, please check your junk mail folder and if it is in the junk mail folder, remember to mark the email as 'not junk'.
+      </small>
     </div>
       `;
     }

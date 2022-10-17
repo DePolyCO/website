@@ -102,7 +102,7 @@ export class Footer {
       // handle failure
     } else {
       form.innerHTML = `
-      <div id="footer-form--status" class="form-status df">
+      <div id="footer-form--status" class="form-status df" style="flex-wrap: wrap; height: auto;">
       <svg fill="none" viewBox="0 0 30 30">
           <circle cx="15" cy="15" r="14" stroke="#022D42" stroke-width="2"/>
           <g clip-path="url(#z)">
@@ -114,7 +114,10 @@ export class Footer {
               </clipPath>
           </defs>
       </svg>
-      <div>Thank you! You’re successfully subscribed to our newsletter.</div>
+      <div>Veuillez vérifier votre boîte de réception pour confirmer votre abonnement.</div>
+      <small style="font-size: 12px; margin-top: 10px; line-height: 1.2;">
+      Pour terminer le processus d'abonnement, il vous suffit de vérifier votre boîte de réception et de cliquer sur le lien figurant dans l'e-mail que nous venons de vous envoyer. S'il n'y figure pas, vérifiez votre dossier de courrier indésirable et, s'il s'y trouve, n'oubliez pas de marquer l'e-mail comme "non indésirable".
+      </small>
     </div>
       `;
     }

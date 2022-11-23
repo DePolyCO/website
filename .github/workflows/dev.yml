@@ -1,7 +1,9 @@
 on:
-  push:
-    branches:
-      - dev
+  workflow_dispatch:
+    inputs:
+      git-ref:
+        description: Git Ref (Optional)
+        required: false
 
 jobs:
   build_and_deploy:
@@ -11,8 +13,15 @@ jobs:
         working-directory: ./web
 
     steps:
-      - name: Checkout
+      - name: Clone Repository (Latest)
         uses: actions/checkout@v3
+        if: github.event.inputs.git-ref == ''
+      
+      - name: Clone Repository (Custom Ref)
+        uses: actions/checkout@v2
+        if: github.event.inputs.git-ref != ''
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
 
       - name: Install Node.js
         uses: actions/setup-node@v3

@@ -54,8 +54,6 @@ jobs:
 
       - run: pnpm run build
 
-      - run: ls -R dist/
-
       - name: Copy
         uses: appleboy/scp-action@master
         with:

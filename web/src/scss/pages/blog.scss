@@ -561,16 +561,17 @@
   }
 
   #filters-extended--btn {
-    display: none;
+    display: flex;
 
     @include md {
       border-radius: fluid(9, $lg);
       width: fluid(25, $lg);
       height: fluid(25, $lg);
       top: fluid(30, $lg);
-      display: unset;
-      transition: transform 1.25s $ease-out-expo;
+      // display: unset;
+      // transition: transform 1.25s $ease-out-expo;
       transform: rotate(180deg);
+      border: 1px solid rgba(2, 45, 66, 0.1);
 
       svg {
         width: fluid(12, $lg);

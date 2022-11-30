@@ -560,9 +560,10 @@
     }
   }
 
-  #filters-extended--btn {
-    display: flex;
-
+  .filters-extended--btn {
+    flex-shrink: 0;
+    flex-grow: 0;
+    
     @include md {
       border-radius: fluid(9, $lg);
       width: fluid(25, $lg);
@@ -645,7 +646,7 @@
     }
 
     #search-extended--close {
-      padding: fluid(8, $sm);
+      // padding: fluid(8, $sm);
     }
 
     input {

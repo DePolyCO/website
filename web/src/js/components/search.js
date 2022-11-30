@@ -1,5 +1,6 @@
 import { iris, qs, qsa, Sniff, Vau } from "../hermes";
 import { app } from "../main";
+import { Engine } from "./blogEngine";
 
 export const trimText = (text, charCount = 160, addEllipsis = true) => {
   if (text.length > charCount) {
@@ -18,7 +19,12 @@ export class Search {
     this.targetContainer = qs(targetContainer);
     this.btn = qs(btn);
     this.noResult = qs(noResults);
+
+    /** @type {Engine} */
     this.engine = engine;
+
+    /** @type {HTMLInputElement} */
+    this.clearBtn = qs("#search-extended--close");
 
     this.active = false;
 
@@ -30,9 +36,12 @@ export class Search {
 
   listen = () => {
     this.unClick = iris.add(this.input, "keydown", this.handleInput);
+    this.unInputChange = iris.add(this.input, "input", this.handleInputChange);
+    this.unClear = iris.add(this.clearBtn, "click", this.handleClear);
 
     if (Sniff.touchDevice) {
       this.unPress = iris.add(this.btn, "click", this.handleMobile);
+
       this.unBlur = iris.add(
         "#search-extended--close",
         "click",
@@ -43,11 +52,40 @@ export class Search {
     }
   };
 
+  handleInputChange = (e) => {
+    const hasValue = e.target.value.length > 0;
+    
+    if (
+      (hasValue && !this.clearBtn.classList.contains("vh"))
+      || (!hasValue && this.clearBtn.classList.contains("vh"))
+    ) {
+      return;
+    }
+
+    const call = hasValue ? "remove" : "add";
+    this.clearBtn.classList[call]("vh");
+
+  }
+
+  handleClear = () => {
+    if (this.engine.params.get("search") !== null) {
+      this.engine.readInitialState();
+    }
+    else {
+      this.clearInput();
+    }
+
+    const ev = new InputEvent("input");
+    this.input.dispatchEvent(ev);
+  }
+
   handleInput = (e) => {
     if (e.type === "keydown" && e.key !== "Enter") return;
 
     const val = this.input.value.trim().toLowerCase();
-    if (!val || val === this.engine.params.get("search")) return;
+    if (!val || val === this.engine.params.get("search")) {
+      return
+    };
 
     this.engine.params.set("search", val);
     this.engine.updateUrlState();

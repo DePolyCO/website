@@ -561,6 +561,7 @@
   }
 
   .filters-extended--btn {
+    display: none;
     flex-shrink: 0;
     flex-grow: 0;
     
@@ -569,7 +570,7 @@
       width: fluid(25, $lg);
       height: fluid(25, $lg);
       top: fluid(30, $lg);
-      // display: unset;
+      display: flex;
       // transition: transform 1.25s $ease-out-expo;
       transform: rotate(180deg);
       border: 1px solid rgba(2, 45, 66, 0.1);
@@ -643,10 +644,21 @@
       width: fluid(32, $sm);
       height: fluid(32, $sm);
       top: 0;
+      fill: #AAB6B6;
+    }
+
+    &.active {
+      svg {
+        fill: $darkblue;
+      }
     }
 
     #search-extended--close {
-      // padding: fluid(8, $sm);
+      @media (max-width: #{$m - 1}) {
+        padding: fluid(9, $sm);
+        border-radius: fluid(9, $sm);
+        border: 1px solid rgba(2, 45, 66, 0.1);
+      }
     }
 
     input {
@@ -681,8 +693,8 @@
       position: relative;
 
       svg {
-        width: fluid(22, $lg);
-        height: fluid(22, $lg);
+        width: fluid(26, $lg);
+        height: fluid(26, $lg);
       }
 
       input {
@@ -692,7 +704,7 @@
         font-size: fluid(14, $lg);
         line-height: 130%;
         letter-spacing: 0.01em;
-        margin-left: fluid(32, $lg);
+        margin-left: fluid(10, $lg);
 
         &::placeholder {
           color: #aab6b6;

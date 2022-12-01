@@ -20,11 +20,11 @@ export class Search {
     this.btn = qs(btn);
     this.noResult = qs(noResults);
 
+     /** @type {HTMLInputElement} */
+     this.clearBtn = qs("#search-extended--close");
+    
     /** @type {Engine} */
     this.engine = engine;
-
-    /** @type {HTMLInputElement} */
-    this.clearBtn = qs("#search-extended--close");
 
     this.active = false;
 
@@ -50,13 +50,17 @@ export class Search {
     } else {
       this.unPress = iris.add(this.btn, "click", this.handleInput);
     }
+
+    this.onInputFocus = iris.add(this.input, "focus", this.handleInputFocus);
+    this.onInputBlur = iris.add(this.input, "blur", this.handleInputBlur);
   };
 
   handleInputChange = (e) => {
     const hasValue = e.target.value.length > 0;
     
     if (
-      (hasValue && !this.clearBtn.classList.contains("vh"))
+      Sniff.touchDevice
+      || (hasValue && !this.clearBtn.classList.contains("vh"))
       || (!hasValue && this.clearBtn.classList.contains("vh"))
     ) {
       return;
@@ -65,6 +69,14 @@ export class Search {
     const call = hasValue ? "remove" : "add";
     this.clearBtn.classList[call]("vh");
 
+  }
+
+  handleInputFocus = (e) => {
+    e.target.parentNode.classList.add("active");
+  }
+
+  handleInputBlur = (e) => {
+    e.target.parentNode.classList.remove("active");
   }
 
   handleClear = () => {

@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
     {{ comma() }} {
       "title":"{{ article.title | safe }}",
       "date":"{{ article.publishedAt }}",
-      "content": "{% trim article.intro,400 %}",
+      "content": "{{ article.intro | replace('\n', '') | trim | truncate(400) }}",
       "url":"{{ article.settings.slug.current | slugify }}",
       "postCategory":"{{ article.settings.postCategory }}",
       "mainImage":"{% imageUrlFor article.mainImage,800 %}"

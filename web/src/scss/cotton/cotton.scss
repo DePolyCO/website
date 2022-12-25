@@ -195,6 +195,13 @@ $cotton: (
       "10": "10",
     ),
   ),
+  "visibility": (
+    prefix: "v",
+    values: (
+      "h": "hidden",
+      "v": "visible",
+    ),
+  ),
 );
 
 // mobile classes generation

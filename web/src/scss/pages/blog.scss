@@ -176,7 +176,7 @@
       @include md {
         width: 100%;
         padding: 0;
-        border-right: 0;
+        border-right: none;
       }
 
       .article-details {
@@ -210,6 +210,10 @@
           margin-bottom: 0;
           position: relative;
           top: -4px;
+
+          .safari & {
+            padding: fluid(6, $lg) fluid(8, $lg) fluid(4, $lg);
+          }
         }
       }
 
@@ -218,7 +222,7 @@
         flex-direction: column;
 
         @include md {
-          height: fluid(880, $lg);
+          height: fluid(880 - 50, $lg);
         }
       }
 
@@ -234,15 +238,15 @@
 
         img {
           min-height: fluid(197, $sm);
-
-          @include md {
-            min-height: fluid(480, $lg);
-          }
         }
 
         @include md {
           aspect-ratio: 885 / 480;
           margin-bottom: fluid(32, $lg);
+
+          img {
+            min-height: fluid(480, $lg);
+          }
         }
       }
 
@@ -271,7 +275,7 @@
 
         @include md {
           font-size: fluid(18, $lg);
-          margin-bottom: 0;
+          margin-bottom: fluid(40, $lg);
         }
       }
 
@@ -337,7 +341,7 @@
         .article-card--thumbnail {
           min-width: fluid(400, $lg);
           width: fluid(400, $lg);
-          height: fluid(400, $lg);
+          height: fluid(375, $lg);
         }
       }
     }
@@ -502,9 +506,9 @@
     border-bottom: 1px solid $darkblue;
 
     @include md {
+      border-bottom: none;
       width: fluid(430, $lg);
       margin-right: fluid(40, $lg);
-      border-bottom: none;
 
       position: unset;
       z-index: 1;
@@ -533,16 +537,17 @@
     }
 
     @include md {
-      border-bottom: 1px solid $darkblue;
       border-top: 1px solid $darkblue;
+      border-bottom: 1px solid $darkblue;
       padding: fluid(35 - 6.5, $lg) 0;
       gap: fluid(29, $lg);
       overflow: hidden;
       overflow: clip;
-      flex-wrap: wrap;
 
-      height: fluid(93, $lg);
+      height: fluid(80, $lg);
       margin-left: 0;
+      flex-wrap: wrap;
+      align-items: center;
 
       &::before {
         content: none;
@@ -555,26 +560,35 @@
     }
   }
 
-  #filters-extended--btn {
+  .filters-extended--btn {
     display: none;
-
+    flex-shrink: 0;
+    flex-grow: 0;
+    
     @include md {
       border-radius: fluid(9, $lg);
       width: fluid(25, $lg);
       height: fluid(25, $lg);
-      top: fluid(25, $lg);
-      display: unset;
+      top: fluid(30, $lg);
+      display: flex;
+      // transition: transform 1.25s $ease-out-expo;
+      transform: rotate(180deg);
+      border: 1px solid rgba(2, 45, 66, 0.1);
 
       svg {
         width: fluid(12, $lg);
         height: fluid(9, $lg);
+      }
+
+      &.active {
+        transform: none;
       }
     }
   }
 
   .filter-tag {
     font-weight: 700;
-    line-height: 130%;
+    line-height: 140%;
     font-size: fluid(12, $sm);
     padding: fluid(4, $sm) fluid(8, $sm) fluid(4, $sm);
     border-radius: fluid(8, $sm);
@@ -594,6 +608,7 @@
       font-size: fluid(12, $lg);
       padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
       border-radius: fluid(8, $lg);
+      line-height: 130%;
 
       .safari & {
         padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
@@ -629,11 +644,23 @@
     svg {
       width: fluid(32, $sm);
       height: fluid(32, $sm);
-      top: 0;
+      top: -2px;
+      fill: #AAB6B6;
+    }
+
+    &.active {
+      svg {
+        fill: $darkblue;
+      }
     }
 
     #search-extended--close {
-      padding: fluid(8, $sm);
+      @media (max-width: #{$m - 1}) {
+        padding: fluid(9, $sm);
+        border-radius: fluid(9, $sm);
+        border: 1px solid rgba(2, 45, 66, 0.1);
+        top: -4px;
+      }
     }
 
     input {
@@ -644,6 +671,7 @@
       line-height: 130%;
       letter-spacing: 0.01em;
       margin-left: fluid(32, $sm);
+      padding-right: fluid(60, $sm);
       padding-left: fluid(20 + 20, $sm);
 
       &::placeholder {
@@ -658,9 +686,9 @@
       }
     }
 
-    &:focus-within {
-      border-bottom: 1px solid $darkblue;
-    }
+    // &:focus-within {
+    //   border-bottom: 1px solid $darkblue;
+    // }
 
     @include md {
       margin-top: fluid(30, $lg);
@@ -668,8 +696,8 @@
       position: relative;
 
       svg {
-        width: fluid(22, $lg);
-        height: fluid(22, $lg);
+        width: fluid(26, $lg);
+        height: fluid(26, $lg);
       }
 
       input {
@@ -679,7 +707,7 @@
         font-size: fluid(14, $lg);
         line-height: 130%;
         letter-spacing: 0.01em;
-        margin-left: fluid(32, $lg);
+        margin-left: fluid(10, $lg);
 
         &::placeholder {
           color: #aab6b6;
@@ -763,8 +791,8 @@
         bottom: 0;
         left: fluid(35, $lg);
         right: fluid(35, $lg);
-        height: 0.5px;
-        background: $darkblue;
+        height: 1px;
+        border-bottom: 1px solid $darkblue;
       }
     }
 
@@ -779,26 +807,26 @@
 
   #pagination {
     border-bottom: 1px solid #022d42;
-    margin-bottom: fluid(40, $sm);
 
     font-weight: 700;
     font-size: fluid(15, $sm);
     line-height: 130%;
     letter-spacing: 0.01em;
+    margin-bottom: fluid(40, $sm);
 
     position: relative;
     top: fluid(-10, $sm);
 
     @include md {
+      margin-bottom: fluid(160, $lg);
+      font-size: fluid(15, $lg);
       border-top: 1px solid #022d42;
       position: static;
-      font-size: fluid(15, $lg);
-      margin-bottom: fluid(160, $lg);
     }
   }
 
   .pagination-item {
-    padding: 0 fluid(55, $sm) fluid(24, $sm);
+    padding: 0 fluid(24, $sm) fluid(18, $sm);
     position: relative;
     cursor: pointer;
     color: #aab6b6;
@@ -813,7 +841,7 @@
       position: absolute;
       right: 0;
       top: 50%;
-      height: fluid(24, $sm);
+      height: fluid(20, $sm);
       width: 1px;
       background-color: #aab6b6;
       transform: translateY(-90%);
@@ -857,7 +885,7 @@
   }
 
   .page-arr {
-    padding: 0 0 fluid(24, $sm);
+    padding: 0 0 fluid(18, $sm) 0;
     cursor: pointer;
 
     @include md {
@@ -871,15 +899,22 @@
   }
 
   #pagination-before {
-    padding-right: fluid(30, $lg);
+    padding-right: fluid(30, $sm);
+
+    @include md {
+      padding-right: fluid(30, $lg);
+    }
   }
 
   #pagination-after {
-    padding-left: fluid(30, $lg);
+    padding-left: fluid(30, $sm);
+
+    @include md {
+      padding-left: fluid(30, $lg);
+    }
   }
 
   // no results
-
 
   #no-results {
     background-color: #ecece2;

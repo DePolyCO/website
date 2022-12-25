@@ -121,7 +121,7 @@ export class Engine {
     this.updateUrlState();
 
     if (category === "all" || category === "ALL") {
-      if (Sniff.mobile) {
+      if (Sniff.mobile || this.params.get('search') !== null) {
         return arr;
       }
       return arr.slice(2);

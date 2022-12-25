@@ -2,8 +2,40 @@ import { Controller } from "../hydra";
 
 import { sail } from "../components/sails";
 import { nav } from "../components/nav";
-import { iris, qs, qsa, Vau } from "../hermes";
+import { iris, qs, qsa, Sniff, Vau } from "../hermes";
 import { Engine } from "../components/blogEngine";
+
+function fragmentFromString(strHTML) {
+  return document.createRange().createContextualFragment(strHTML);
+}
+
+
+const tplSearchDesktop = `
+<div id="search-extended" class="search-field df aic pr fv-mono pen">
+    <svg id="search-extended--btn" class="pea z1 cp">
+        <use xlink:href="#search-icon"></use>
+    </svg>
+    <input class="pea" id="search-extended--input" type="text" placeholder="Search" enterKeyHint="search">
+    <button id="search-extended--close" class="filters-extended--btn df jcc aic pea z1 vh">
+        <svg class="pen" viewBox="0 0 9 4">
+            <use xlink:href="#cross-icon"></use>
+        </svg>
+    </button>
+</div>
+`;
+
+const tplSearchMobile = `
+<div id="search-extended" class="search-field df pr fv-mono pen">
+    <input class="pea" id="search-extended--input" type="text" placeholder="Search" enterKeyHint="search">
+    <svg id="search-extended--btn" class="pa left top pea z1 cp">
+        <use xlink:href="#search-icon"></use>
+    </svg>
+    <svg id="search-extended--close" class="pa right top pea z1 d-hide">
+        <use xlink:href="#cross-icon"></use>
+    </svg>
+</div>
+`;
+
 
 /**
  *
@@ -21,6 +53,11 @@ export const blogController = new Controller({
 
   show: ({ done }) => {
     nav.setLinkActive("news");
+
+    const el = qs('#blog-filters--extended');
+    el.prepend(fragmentFromString(
+      Sniff.touchDevice ? tplSearchMobile : tplSearchDesktop
+    ));
 
     new Vau({
       targets: qsa(".article-animate"),

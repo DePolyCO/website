@@ -588,7 +588,7 @@
 
   .filter-tag {
     font-weight: 700;
-    line-height: 130%;
+    line-height: 140%;
     font-size: fluid(12, $sm);
     padding: fluid(4, $sm) fluid(8, $sm) fluid(4, $sm);
     border-radius: fluid(8, $sm);
@@ -608,6 +608,7 @@
       font-size: fluid(12, $lg);
       padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
       border-radius: fluid(8, $lg);
+      line-height: 130%;
 
       .safari & {
         padding: fluid(5, $lg) fluid(8, $lg) fluid(5, $lg);
@@ -643,7 +644,7 @@
     svg {
       width: fluid(32, $sm);
       height: fluid(32, $sm);
-      top: 0;
+      top: -2px;
       fill: #AAB6B6;
     }
 
@@ -658,6 +659,7 @@
         padding: fluid(9, $sm);
         border-radius: fluid(9, $sm);
         border: 1px solid rgba(2, 45, 66, 0.1);
+        top: -4px;
       }
     }
 
@@ -669,6 +671,7 @@
       line-height: 130%;
       letter-spacing: 0.01em;
       margin-left: fluid(32, $sm);
+      padding-right: fluid(60, $sm);
       padding-left: fluid(20 + 20, $sm);
 
       &::placeholder {
@@ -683,9 +686,9 @@
       }
     }
 
-    &:focus-within {
-      border-bottom: 1px solid $darkblue;
-    }
+    // &:focus-within {
+    //   border-bottom: 1px solid $darkblue;
+    // }
 
     @include md {
       margin-top: fluid(30, $lg);

@@ -1,5 +1,4 @@
 import { Vau } from "../hermes";
-import { Reveal } from "../reveal";
 import MediaQueryListener from "./mediaQueryListener";
 
 class Banner {
@@ -9,6 +8,9 @@ class Banner {
   /** @type {HTMLElement} */
   parent = null;
 
+  /** @type {HTMLElement} */
+  main = null;
+
   /**
    * @param {object} options
    * @param {HTMLElement} options.dom
@@ -16,6 +18,7 @@ class Banner {
   constructor({ dom }) {
     this.dom = dom;
     this.parent = this.dom.parentElement;
+    this.isMobile = false;
     
     this.bindEvents();
 
@@ -23,6 +26,8 @@ class Banner {
       [
         "(min-width: 850px)",
         (/** @type {MediaQueryListEvent} */ e) => {
+          this.isMobile = !e.matches;
+
           if (e.matches) {
             this.dom.removeAttribute('data-mobile');
           }
@@ -31,13 +36,6 @@ class Banner {
           }
 
           this.show();
-
-          // if (e.matches) {
-          //   this.parent.appendChild(this.dom);
-          //   this.show();
-          // } else {
-          //   this.parent.removeChild(this.dom);
-          // }
         },
         { immediate: true },
       ],
@@ -65,7 +63,10 @@ class Banner {
     new Vau({
       targets: this.dom.firstElementChild,
       transform: {
-        y: [100, 0],
+        y: [
+          this.isMobile ? -100 : 100,
+          0
+        ],
         yu: "%",
       },
       delay: 1600,
@@ -78,7 +79,10 @@ class Banner {
     new Vau({
       targets: this.dom.firstElementChild,
       transform: {
-        y: [0, 100],
+        y: [
+          0,
+          this.isMobile ? -100 : 100
+        ],
         yu: "%",
       },
       duration: 800,

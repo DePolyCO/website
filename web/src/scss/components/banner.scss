@@ -1,3 +1,27 @@
+  /* !important is needed sometimes */
+  ::-webkit-scrollbar {
+    width: 12px !important;
+ }
+
+ /* Track */
+::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+   -webkit-border-radius: 10px !important;
+   border-radius: 10px !important;
+ }
+
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   -webkit-border-radius: 10px !important;
+   border-radius: 10px !important;
+   background: #41617D !important; 
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important; 
+
+ }
+ ::-webkit-scrollbar-thumb:window-inactive {
+   background: #41617D !important; 
+ }
+
 .banner {
   $text-size: 18;
   $highlight-gap-size: 60;
@@ -9,10 +33,11 @@
     right: 0;
     left: 0;
     overflow: hidden;
+    pointer-events: all;
 
     &[data-mobile] {
       position: fixed;
-      top: 20vw;
+      top: 24vw;
       z-index: 9;
     }
   }
@@ -53,21 +78,31 @@
   }
 
   &__highlights {
-    flex-grow: 1;
-    gap: fluid($highlight-gap-size, $lg);
-    margin-left: fluid(25, $lg);
-
+    margin-right: auto;
+    
     @at-root [data-mobile] & {
-      gap: fluid($highlight-gap-size, $sm);
+      margin-right: 0;
+      overflow: auto;
       margin: fluid(40, $sm) 0 fluid(80, $sm);
     }
 
-    &-separator {
-      gap: fluid($highlight-gap-size-separator, $lg);
-      margin-left: 0;
+    &-scroller {
+      flex-grow: 1;
+      gap: fluid($highlight-gap-size, $lg);
+      margin-left: fluid(25, $lg);
 
       @at-root [data-mobile] & {
-        gap: fluid($highlight-gap-size-separator, $sm);
+        flex-wrap: nowrap;
+        gap: fluid($highlight-gap-size, $sm);
+      }
+
+      &-separator {
+        gap: fluid($highlight-gap-size-separator, $lg);
+        margin-left: 0;
+
+        @at-root [data-mobile] & {
+          gap: fluid($highlight-gap-size-separator, $sm);
+        }
       }
     }
   }
@@ -165,7 +200,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: transform 1s cubic-bezier(.19,1,.22,1);
+          transition: transform 1s cubic-bezier(.19, 1, .22, 1);
         }
 
         &:before {

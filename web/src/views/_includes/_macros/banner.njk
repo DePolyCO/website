@@ -12,35 +12,37 @@
       </div>
       {% endif %}
 
-      <div class="banner__highlights df aic jcs fw {{ 'banner__highlights-separator' if data.withSeparator }}">
-        {% for item in data.highlights %}
-        {%  set isLogo = true if item.logo else false %}
-        {% set typeClass = 'logo' if item.logo else 'text' %}
-        <div class="banner-highlight banner-highlight-{{ typeClass }} df aic">
-          <a
-            href="{{ item.link }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="df aic"
-          >
-            {% if item.logo %}
-              <img src="{{ item.logo }}" alt="{{ item.link }}" />
-            {% else %}
-              {% if loop.last and not loop.first and not isLogo and data.withSeparator %}
-                <div>and</div>&nbsp;&nbsp;
+      <div class="banner__highlights">
+        <div class="banner__highlights-scroller df aic jcs fw {{ 'banner__highlights-separator' if data.withSeparator }}">
+          {% for item in data.highlights %}
+          {%  set isLogo = true if item.logo else false %}
+          {% set typeClass = 'logo' if item.logo else 'text' %}
+          <div class="banner-highlight banner-highlight-{{ typeClass }} df aic">
+            <a
+              href="{{ item.link }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="df aic"
+            >
+              {% if item.logo %}
+                <img src="{{ item.logo }}" alt="{{ item.link }}" />
+              {% else %}
+                {% if loop.last and not loop.first and not isLogo and data.withSeparator %}
+                  <div>and</div>&nbsp;&nbsp;
+                {% endif %}
+                
+                <div class="link link-dark link-solid">
+                  {{ item.linkText }}
+                </div>
               {% endif %}
-              
-              <div class="link link-dark link-solid">
-                {{ item.linkText }}
-              </div>
+            </a>
+            
+            {% if data.withSeparator and not loop.last %}
+              <div class="banner-highlight-separator"> / </div>
             {% endif %}
-          </a>
-          
-          {% if data.withSeparator and not loop.last %}
-            <div class="banner-highlight-separator"> / </div>
-          {% endif %}
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
 
       <div class="banner__actions df aic">

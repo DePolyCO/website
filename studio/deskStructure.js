@@ -44,6 +44,19 @@ export default () => {
         ({ id }) => id === "category"
       ),
 
+      S.listItem()
+        .title("Active Banner")
+        .icon(IoSparklesOutline)
+        .child(S.document().schemaType("activeBanner").documentId("activeBanner")),
+
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "banner"
+      ),
+
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "highlight"
+      ),
+
       S.divider(),
 
       S.listItem()

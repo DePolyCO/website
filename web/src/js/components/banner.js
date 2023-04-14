@@ -24,11 +24,20 @@ class Banner {
         "(min-width: 850px)",
         (/** @type {MediaQueryListEvent} */ e) => {
           if (e.matches) {
-            this.parent.appendChild(this.dom);
-            this.show();
-          } else {
-            this.parent.removeChild(this.dom);
+            this.dom.removeAttribute('data-mobile');
           }
+          else {
+            this.dom.setAttribute('data-mobile', '');
+          }
+
+          this.show();
+
+          // if (e.matches) {
+          //   this.parent.appendChild(this.dom);
+          //   this.show();
+          // } else {
+          //   this.parent.removeChild(this.dom);
+          // }
         },
         { immediate: true },
       ],

@@ -69,7 +69,7 @@
 
       @at-root [data-mobile] & {
         flex-wrap: nowrap;
-        gap: fluid($highlight-gap-size, $sm);
+        gap: fluid(16, $sm);
         margin-left: 0;
       }
     }
@@ -112,7 +112,7 @@
       width: auto;
 
       @at-root [data-mobile] & {
-        height: fluid(25, $sm);
+        height: fluid(38, $sm);
       }
     }
   }

@@ -70,6 +70,7 @@
       @at-root [data-mobile] & {
         flex-wrap: nowrap;
         gap: fluid($highlight-gap-size, $sm);
+        margin-left: 0;
       }
     }
 

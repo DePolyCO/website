@@ -58,7 +58,9 @@ class Banner {
   };
 
   show = () => {
-    this.dom.firstElementChild.style.transform = "translateY(-100%)";
+    const yPos = this.isMobile ? -100 : 100;
+    this.dom.style.visibility = '';
+    this.dom.firstElementChild.style.transform = `translateY(${yPos}%)`;
 
     new Vau({
       targets: this.dom.firstElementChild,

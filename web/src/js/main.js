@@ -1,7 +1,7 @@
 import "./polyfills";
 
 import { Hydra } from "./hydra";
-import { iris } from "./hermes";
+import { Vau, iris, qsa } from "./hermes";
 import { intro } from "./intro";
 
 import { homeController } from "./controllers/home";
@@ -22,6 +22,7 @@ import { Cookie } from "./cookie";
 // import { smoothscroller } from "./scroller";
 // import { footer } from "./components/footer";
 import { nav } from "./components/nav";
+import Banner from "./components/banner";
 
 /**
  *
@@ -70,6 +71,10 @@ iris.add(
     // ) {
     //   navigator.serviceWorker.register("/sw.js");
     // }
+
+    qsa("[data-banner]").map((/** @type {HTMLElement} */ dom) => (
+      new Banner({ dom })
+    ));
 
     idly(() => {
       new Cookie();

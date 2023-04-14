@@ -1,0 +1,157 @@
+.banner {
+  $text-size: 18;
+  $highlight-gap-size: 60;
+  $highlight-gap-size-separator: 20;
+
+  &__wrapper {
+    position: absolute;
+    top: 8vw;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  &__root {
+    gap: fluid(45, $lg);
+    padding: fluid(40, $lg) fluid(36, $lg);
+    color: #022D42;
+    background-color: #dadaca;
+    border-radius: fluid(22, $lg);
+  }
+
+  &__prefix {
+    padding: fluid(6, $lg) fluid(8, $lg) fluid(4, $lg);
+    background-color: #ECECE2;
+    border-radius: fluid(8, $lg);
+    font-size: fluid(13, $lg);
+    font-weight: 500;
+    font-family: "fkmono";
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__highlights {
+    flex-grow: 1;
+    gap: fluid($highlight-gap-size, $lg);
+    margin-left: fluid(25, $lg);
+
+    &-separator {
+      gap: fluid($highlight-gap-size-separator, $lg);
+      margin-left: 0;
+    }
+  }
+
+  &-highlight {
+    @at-root .banner__highlights-separator & {
+      gap: fluid($highlight-gap-size-separator, $lg);
+      font-size: fluid($text-size, $lg);
+      line-height: 1.4;
+      font-family: "fkvar";
+    }
+
+    &-text {
+      a {
+        cursor: default;
+      }
+    }
+
+    img {
+      max-height: fluid(25, $lg);
+    }
+  }
+
+  &__actions {
+    gap: fluid(24, $lg);
+  }
+
+  &-action {
+    &-link {
+      $root: &;
+
+      color: inherit;
+      font-size: fluid(16, $lg);
+      font-weight: 700;
+      line-height: 1.1;
+      gap: fluid(12, $lg);
+
+      &__icon {
+        width: fluid(42, $lg);
+        height: fluid(26, $lg);
+        border: 1px solid #022d42;
+        border-radius: fluid(8, $lg);
+        background-color: transparent;
+        font-size: fluid(14, $lg);
+        font-weight: bold;
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        transition: background-color 0.4s;
+        overflow: hidden;
+        color: transparent;
+      }
+
+      &-symbol {
+        position: relative;
+        overflow: hidden;
+
+        &:before,
+        &:after {
+          content: "↗";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 1s cubic-bezier(.19,1,.22,1);
+        }
+
+        &:before {
+          color: #022d42;
+          transform: translateX(0);
+
+          @at-root #{$root}:hover & {
+            transform: translateX(200%);
+          }
+        }
+
+        &:after {
+          color: #fff;
+          transform: translateX(-200%);
+
+          @at-root #{$root}:hover & {
+            transform: translateX(0);
+          }
+        }
+      }
+
+      &:hover &__icon {
+        background-color: #022d42;
+      }
+    }
+
+    &-divider {
+      align-self: stretch;
+      width: 1px;
+      background-color: #022D42;
+    }
+
+    &-close {
+      cursor: pointer;
+
+      svg {
+        width: fluid(12, $lg);
+        height: fluid(12, $lg);
+        transition: transform 0.75s $ease-out-expo;
+      }
+
+      &:hover {
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}

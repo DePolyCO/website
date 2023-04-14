@@ -120,7 +120,7 @@ const dateTimeFormat = new Intl.DateTimeFormat("en-US", {
 });
 
 module.exports = withCache(
-  async () => {
+  async () => {    
     const articles =
       await client.fetch(groq`*[_type == 'post' && _id != *[_type == 'featuredPost'][0].featured->_id &&  settings.publishedAt < now()]{
       ...,

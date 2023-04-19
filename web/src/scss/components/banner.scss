@@ -62,6 +62,10 @@
       margin: fluid(40, $sm) 0 fluid(80, $sm);
     }
 
+    @at-root [data-mobile][data-mobile][data-banner-tile] & {
+      overflow: visible;
+    }
+
     &-scroller {
       flex-grow: 1;
       gap: fluid($highlight-gap-size, $lg);
@@ -71,6 +75,10 @@
         flex-wrap: nowrap;
         gap: fluid(16, $sm);
         margin-left: 0;
+      }
+
+      @at-root [data-mobile][data-banner-tile] & {
+        flex-wrap: wrap;
       }
     }
 

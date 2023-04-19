@@ -47,9 +47,16 @@ export default {
       type: "boolean",
       description: "Show sperators between the highlights.",
     },
+    {
+      title: "Tile on Mobile",
+      name: "tileOnMobile",
+      type: "boolean",
+      description: "Show the banner as a tile on mobile."
+    }
   ],
   initialValue: {
     prefix: "We have been higlighted in",
     withSeparator: true,
+    tileOnMobile: true
   },
 };

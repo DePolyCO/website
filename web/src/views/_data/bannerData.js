@@ -16,6 +16,7 @@ module.exports = withCache(async () => {
           link,
           prefix,
           withSeparator,
+          tileOnMobile,
           "id": _id
         }
       }

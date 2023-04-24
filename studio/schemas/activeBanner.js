@@ -14,4 +14,12 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      title: "banner.title",
+    },
+    prepare: ({ title }) => ({
+      title: title ?? "Active Banner",
+    })
+  }
 };

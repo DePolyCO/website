@@ -9,6 +9,18 @@ export default {
   icon: IoTicketOutline,
   fields: [
     {
+      title: "Banner Type",
+      name: "type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Text", value: "text" },
+          { title: "Image", value: "image" }
+        ],
+      },
+      validation: (Rule) => Rule.required()
+    },
+    {
       title: "Title",
       name: "title",
       type: "string",
@@ -33,30 +45,17 @@ export default {
           },
         },
       ],
-      validation: (Rule) => Rule.unique(),
+      validation: (Rule) => Rule.unique()
     },
     {
       title: "Link",
       name: "link",
       type: "url",
       description: "Read more link.",
-    },
-    {
-      title: "With Seperator",
-      name: "withSeparator",
-      type: "boolean",
-      description: "Show sperators between the highlights.",
-    },
-    {
-      title: "Tile on Mobile",
-      name: "tileOnMobile",
-      type: "boolean",
-      description: "Show the banner as a tile on mobile."
     }
   ],
   initialValue: {
     prefix: "We have been higlighted in",
-    withSeparator: true,
-    tileOnMobile: true
+    type: "text"
   },
 };

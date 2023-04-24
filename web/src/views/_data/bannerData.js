@@ -9,14 +9,14 @@ module.exports = withCache(async () => {
       *[_type == "activeBanner"][0] {
         "banner": *[_type == "banner" && _id in path(^.banner._ref)][0] {
           highlights[]-> {
-            "logo": logo.asset->url,
+            "image": image.asset->url,
             link,
-            linkText
+            text
           },
           link,
           prefix,
-          withSeparator,
-          tileOnMobile,
+          "withSeparator": type == "text",
+          "tileOnMobile": type == "text",
           "id": _id
         }
       }

@@ -1,7 +1,7 @@
 .banner {
   $text-size: 18;
   $highlight-gap-size: 60;
-  $highlight-gap-size-separator: 30;
+  $highlight-gap-size-text: 30;
 
   &__wrapper {
     position: absolute;
@@ -80,38 +80,44 @@
       @at-root [data-mobile][data-banner-tile] & {
         flex-wrap: wrap;
       }
-    }
 
-    &-separator {
-      gap: fluid($highlight-gap-size-separator, $lg);
-      margin-left: 0;
+      @at-root [data-banner-type="text"] & {
+        gap: fluid($highlight-gap-size-text, $lg);
+        margin-left: 0;
+      }
 
-      @at-root [data-mobile] & {
-        gap: fluid($highlight-gap-size-separator, $sm);
+      @at-root [data-banner-type="text"][data-mobile] & {
+        gap: fluid($highlight-gap-size-text, $sm);
       }
     }
   }
 
   &-highlight {
-    @at-root .banner__highlights-separator & {
-      gap: fluid($highlight-gap-size-separator, $lg);
+    &-text {
       font-size: fluid($text-size, $lg);
       line-height: 1.4;
       font-family: "fkvar";
+      gap: fluid($highlight-gap-size-text, $lg);
+      word-break: break-all;
 
       @at-root [data-mobile] & {
-        gap: fluid($highlight-gap-size-separator, $sm);
-        font-size: fluid($text-size, $sm);
+        font-size: fluid(22, $sm);
+        gap: fluid($highlight-gap-size-text, $sm);
       }
-    }
-
-    @at-root [data-mobile] .banner__highlights-separator & {
-      font-size: fluid(22, $sm);
-    }
-
-    &-text {
+      
       a {
         cursor: default;
+      }
+
+      @at-root [data-mobile] & {
+        .link-solid {
+          text-decoration: underline;
+          
+          &:before,
+          &:after {
+            content: none;
+          }
+        }
       }
     }
 

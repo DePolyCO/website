@@ -13,6 +13,7 @@ module.exports = withCache(async () => {
             link,
             text
           },
+          type,
           link,
           prefix,
           "withSeparator": type == "text",

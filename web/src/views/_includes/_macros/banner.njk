@@ -3,7 +3,8 @@
   <div 
     class="banner__wrapper"
     data-banner
-    data-banner-id={{ data.id }}
+    data-banner-id="{{ data.id }}"
+    data-banner-type="{{ data.type }}"
     style="visibility: hidden;"
     {{ 'data-banner-tile' if data.tileOnMobile }}
   >
@@ -15,7 +16,7 @@
       {% endif %}
 
       <div class="banner__highlights">
-        <div class="banner__highlights-scroller df aic jcs fw {{ 'banner__highlights-separator' if data.withSeparator }}">
+        <div class="banner__highlights-scroller df aic jcs fw">
           {% for item in data.highlights %}
           {%  set isLogo = true if item.image else false %}
           {% set typeClass = 'logo' if item.logo else 'text' %}

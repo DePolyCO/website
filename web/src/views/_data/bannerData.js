@@ -11,7 +11,8 @@ module.exports = withCache(async () => {
           highlights[]-> {
             "image": image.asset->url,
             link,
-            text
+            text,
+            type
           },
           type,
           link,

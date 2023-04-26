@@ -250,3 +250,21 @@
     }
   }
 }
+
+@keyframes bannerCallout {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate--banner-callout {
+  animation: var(--banner-callout-animation-duration) cubic-bezier(0.76, 0, 0.24, 1) 0s bannerCallout;
+}

@@ -1,4 +1,4 @@
-import { Vau, ticker } from "../hermes";
+import { Vau } from "../hermes";
 import MediaQueryListener from "./mediaQueryListener";
 
 class Banner {
@@ -68,11 +68,9 @@ class Banner {
 
   show = () => {
     const yPos = this.isMobile ? -110 : 110;
-    const animationDuration = this.$scrollable.scrollWidth / this.$scrollable.offsetWidth * 1.5;
 
     this.$dom.style.visibility = '';
     this.$dom.firstElementChild.style.transform = `translateY(${yPos}%)`;
-    this.$dom.style.setProperty('--banner-callout-animation-duration', `${animationDuration}s`);
 
     new Vau({
       targets: this.$dom.firstElementChild,
@@ -80,7 +78,7 @@ class Banner {
         y: [yPos, 0],
         yu: "%",
       },
-      delay: 1200,
+      delay: !this.isMobile ? 1200 : 800,
       duration: 1000,
       easing: "o2",
       complete: () => {
@@ -89,6 +87,11 @@ class Banner {
         }
 
         if (this.$scrollable.scrollWidth > this.$scrollable.offsetWidth) {
+          const animationDuration = this.$scrollable.scrollWidth / this.$scrollable.offsetWidth * 1.5;
+          const animationDistance = this.$scrollable.scrollWidth - this.$scrollable.offsetWidth;
+
+          this.$dom.style.setProperty('--banner-callout-animation-duration', `${animationDuration}s`);
+          this.$dom.style.setProperty('--banner-callout-animation-distance', `${animationDistance * -1}px`);
           this.$scrollable.firstElementChild.classList.add('animate--banner-callout');
         }
       }

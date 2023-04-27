@@ -73,7 +73,7 @@
 
       @at-root [data-mobile] & {
         flex-wrap: nowrap;
-        gap: fluid(16, $sm);
+        gap: fluid(32, $sm);
         margin-left: 0;
       }
 
@@ -257,7 +257,7 @@
   }
 
   50% {
-    transform: translateX(-100%);
+    transform: translateX(var(--banner-callout-animation-distance));
   }
 
   100% {

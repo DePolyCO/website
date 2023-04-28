@@ -27,30 +27,6 @@ class Banner {
     this.type = this.$dom.getAttribute('data-banner-type');
 
     this.initialize();
-
-    // this.bindEvents();
-
-
-    // this.mediaQueryListener = new MediaQueryListener([
-    //   [
-    //     "(min-width: 850px)",
-    //     (/** @type {MediaQueryListEvent} */ e) => {
-    //       this.isMobile = !e.matches;
-
-    //       this.$scrollable.firstElementChild.classList.remove('animate--banner-callout');
-
-    //       if (e.matches) {
-    //         this.$dom.removeAttribute('data-mobile');
-    //       }
-    //       else {
-    //         this.$dom.setAttribute('data-mobile', '');
-    //       }
-
-    //       this.show();
-    //     },
-    //     { immediate: true },
-    //   ],
-    // ]);
   }
 
   initialize = () => {

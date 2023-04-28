@@ -1,4 +1,4 @@
-import { Vau } from "../hermes";
+import { ImageLoader, Vau } from "../hermes";
 import MediaQueryListener from "./mediaQueryListener";
 
 class Banner {
@@ -26,28 +26,72 @@ class Banner {
     this.isMobile = false;
     this.type = this.$dom.getAttribute('data-banner-type');
 
-    this.bindEvents();
+    this.initialize();
 
-    this.mediaQueryListener = new MediaQueryListener([
-      [
-        "(min-width: 850px)",
-        (/** @type {MediaQueryListEvent} */ e) => {
-          this.isMobile = !e.matches;
+    // this.bindEvents();
 
-          this.$scrollable.firstElementChild.classList.remove('animate--banner-callout');
 
-          if (e.matches) {
-            this.$dom.removeAttribute('data-mobile');
-          }
-          else {
-            this.$dom.setAttribute('data-mobile', '');
-          }
+    // this.mediaQueryListener = new MediaQueryListener([
+    //   [
+    //     "(min-width: 850px)",
+    //     (/** @type {MediaQueryListEvent} */ e) => {
+    //       this.isMobile = !e.matches;
 
-          this.show();
-        },
-        { immediate: true },
-      ],
-    ]);
+    //       this.$scrollable.firstElementChild.classList.remove('animate--banner-callout');
+
+    //       if (e.matches) {
+    //         this.$dom.removeAttribute('data-mobile');
+    //       }
+    //       else {
+    //         this.$dom.setAttribute('data-mobile', '');
+    //       }
+
+    //       this.show();
+    //     },
+    //     { immediate: true },
+    //   ],
+    // ]);
+  }
+
+  initialize = () => {
+    this.preloadImages()
+      .finally(() => {
+        this.bindEvents();
+
+        this.mediaQueryListener = new MediaQueryListener([
+          [
+            "(min-width: 850px)",
+            (/** @type {MediaQueryListEvent} */ e) => {
+              this.isMobile = !e.matches;
+
+              this.$scrollable.firstElementChild.classList.remove('animate--banner-callout');
+
+              if (e.matches) {
+                this.$dom.removeAttribute('data-mobile');
+              }
+              else {
+                this.$dom.setAttribute('data-mobile', '');
+              }
+
+              this.show();
+            },
+            { immediate: true },
+          ],
+        ]);
+      });
+  }
+
+  preloadImages = async () => {
+    const images = Array.from(this.$dom.querySelectorAll('img')).map((img) => (
+      img.getAttribute('src')
+    ));
+
+    return new Promise((resolve) => {
+      ImageLoader({
+        arr: images,
+        complete: resolve
+      });
+    });
   }
 
   destroy = () => {

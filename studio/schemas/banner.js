@@ -12,6 +12,7 @@ export default {
       title: "Banner Type",
       name: "type",
       type: "string",
+      description: "Type of banner. Text or Image.",
       options: {
         list: [
           { title: "Text", value: "text" },

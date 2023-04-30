@@ -14,6 +14,7 @@ export default {
       title: "Type",
       name: "type",
       type: "string",
+      description: "Type of highlight. Text or Image.",
       options: {
         list: [
           { title: "Text", value: "text" },
@@ -32,13 +33,14 @@ export default {
       title: "Link",
       name: "link",
       type: "url",
+      description: "Link to the page that will be opened when the highlight is clicked.",
       validation: (Rule) => Rule.required(),
     },
     {
       title: "Text",
       name: "text",
       type: "string",
-      description: "Text shown on the link.",
+      description: "Text of the highlight.",
       hidden: ({ document }) => document.type === "image",
       validation: (Rule) => Rule.custom((value, { document }) => {
         if (document.type === "image") {
@@ -63,7 +65,7 @@ export default {
       options: {
         hotspot: true,
       },
-      description: "Logo of the highlight. If not provided, the Link Text will be used instead.",
+      description: "Image of the highlight.",
     },
   ],
 };

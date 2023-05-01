@@ -6,9 +6,6 @@ export default {
   title: "Highlights",
   type: "document",
   icon: IoStarOutline,
-  initialValue: {
-    type: "text"
-  },
   fields: [
     {
       title: "Type",

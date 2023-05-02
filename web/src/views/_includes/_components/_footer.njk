@@ -144,7 +144,7 @@
         </div>
     </div>
     <div id="footer-copy" class="footer-row restrict df fc aic">
-        <div class="footer-col--xl" id="footer-copy--logo">DePoly © 2022</div>
+        <div class="footer-col--xl" id="footer-copy--logo"></div>
         <div class="df aic footer-col" id="footer-terms--col">
             <a href="/privacy/" class="link link-dark link-solid footer-terms">Terms of Service</a>
             <div id="footer-sep"></div>
@@ -156,4 +156,12 @@
             <span id="footer-copy--studio">FiftySeven®</span>
         </a>
     </div>
+    <script>
+        ;(function (document) {
+            const dateEl = document.getElementById('footer-copy--logo');
+            if (dateEl instanceof HTMLElement) {
+                dateEl.innerText = `DePoly © ${new Date().getFullYear()}`;
+            }
+        })(document)
+    </script
 </footer>

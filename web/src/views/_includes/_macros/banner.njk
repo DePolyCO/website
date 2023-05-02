@@ -1,0 +1,78 @@
+{% macro banner(data) %}
+  {% if data %}
+  <div 
+    class="banner__wrapper"
+    data-banner
+    data-banner-id="{{ data.id }}"
+    data-banner-type="{{ data.type }}"
+    style="visibility: hidden;"
+    {{ 'data-banner-tile' if data.tileOnMobile }}
+  >
+    <div class="banner__root restrict df aic">
+      {% if data.prefix %}
+      <div class="banner__prefix">
+        {{ data.prefix }}
+      </div>
+      {% endif %}
+
+      <div class="banner__highlights">
+        <div class="banner__highlights-scroller df aic jcs fw">
+          {% for item in data.highlights %}
+          {%  set isLogo = true if item.image else false %}
+          <div class="banner-highlight banner-highlight-{{ item.type }} df aic">
+            <a
+              href="{{ item.link }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="df aic"
+            >
+              {% if item.image %}
+                <img src="{{ item.image }}" alt="{{ item.link }}" />
+              {% else %}
+                {% if loop.last and not loop.first and not isLogo and data.withSeparator %}
+                  <div>and</div>&nbsp;&nbsp;
+                {% endif %}
+                
+                <div class="link link-dark link-solid">
+                  {{ item.text }}
+                </div>
+              {% endif %}
+            </a>
+            
+            {% if data.withSeparator and not loop.last %}
+              <div class="banner-highlight-separator"> / </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="banner__actions df aic">
+        {% if data.link %}
+          <a
+            class="banner-action-link df aic"
+            href="{{ data.link }}"
+            rel="noopener noreferrer"
+          >
+            <div class="banner-action-link__text">
+              En Savoir Plus
+            </div>
+
+            <div class="banner-action-link__icon df aic jcc">
+              <div class="banner-action-link-symbol"><span class="visiblity: hidden;">↗</span></div>
+            </div>
+          </a>
+
+          <div class="banner-action-divider"></div>
+        {% endif %}
+
+        <button class="banner-action-close df jcc aic" data-banner-close>
+          <svg fill="none" viewBox="0 0 14 14">
+            <path d="M13 2.213 11.787 1 7 5.787 2.213 1 1 2.213 5.787 7 1 11.787 2.213 13 7 8.213 11.787 13 13 11.787 8.213 7 13 2.213Z" fill="#022D42" stroke="#022D42" stroke-width=".5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endmacro %}

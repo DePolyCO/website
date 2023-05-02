@@ -161,6 +161,20 @@
 
 @supports (font-variation-settings: normal) {
   @font-face {
+    font-family: "fk";
+    src: url("/static/fonts/FKGrotesk-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "fkmono";
+    src: url("/static/fonts/FKGroteskMono-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
     font-family: "fkvar";
     src: url("/static/fonts/FKGrotesk-Variable.woff2")
         format("woff2 supports variations"),

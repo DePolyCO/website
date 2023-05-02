@@ -3,7 +3,11 @@ import S from "@sanity/desk-tool/structure-builder";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import * as Structure from "@sanity/document-internationalization/lib/structure";
 
-import { IoPeopleOutline, IoSparklesOutline } from "react-icons/io5";
+import {
+  IoPeopleOutline,
+  IoSparklesOutline,
+  IoDocumentTextOutline,
+} from "react-icons/io5";
 
 // For document-internationalization
 // export const getDefaultDocumentNode = (props) => {
@@ -40,6 +44,19 @@ export default () => {
         ({ id }) => id === "category"
       ),
 
+      S.listItem()
+        .title("Active Banner")
+        .icon(IoSparklesOutline)
+        .child(S.document().schemaType("activeBanner").documentId("activeBanner")),
+
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "banner"
+      ),
+
+      Structure.getFilteredDocumentTypeListItems().find(
+        ({ id }) => id === "highlight"
+      ),
+
       S.divider(),
 
       S.listItem()
@@ -61,6 +78,16 @@ export default () => {
       ),
 
       S.divider(),
+
+      S.listItem()
+        .title("Privacy Policy")
+        .icon(IoDocumentTextOutline)
+        .child(
+          S.document()
+            .schemaType("privacy")
+            .documentId("privacy")
+            .title("Privacy Policy")
+        ),
 
       // ...langStructure,
 

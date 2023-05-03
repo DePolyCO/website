@@ -10,6 +10,7 @@ import { TextHighlight } from "../components/textHighlight";
 import { Collapse } from "../components/collapse";
 import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
+import Banner from "../components/banner";
 
 /**
  *
@@ -37,6 +38,8 @@ export const homeController = new Controller({
     o.disconnect();
     iconDraws.forEach((d) => d.destroy());
     monoShuffle.destroy();
+    console.log(banner);
+    banner?.destroy();
     sail.out(done);
   },
 
@@ -172,6 +175,10 @@ export const homeController = new Controller({
         { once: true }
       );
     }
+
+    qsa("[data-banner]").map((/** @type {HTMLElement} */ dom) => (
+      new Banner({ dom })
+    ));
 
     sail.in();
     done();

@@ -38,8 +38,6 @@ export const homeController = new Controller({
     o.disconnect();
     iconDraws.forEach((d) => d.destroy());
     monoShuffle.destroy();
-    console.log(banner);
-    banner?.destroy();
     sail.out(done);
   },
 

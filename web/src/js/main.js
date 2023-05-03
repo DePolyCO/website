@@ -1,19 +1,19 @@
 import "./polyfills";
 
+import { iris } from "./hermes";
 import { Hydra } from "./hydra";
-import { Vau, iris, qsa } from "./hermes";
 import { intro } from "./intro";
 
-import { homeController } from "./controllers/home";
+import { noController } from "./controllers/404";
 import { aboutController } from "./controllers/about";
-import { techController } from "./controllers/tech";
+import { articleController } from "./controllers/article";
+import { blogController } from "./controllers/blog";
 import { careerController } from "./controllers/career";
 import { careerInnerController } from "./controllers/careerInner";
 import { contactController } from "./controllers/contact";
+import { homeController } from "./controllers/home";
 import { privacyController } from "./controllers/privacy";
-import { blogController } from "./controllers/blog";
-import { articleController } from "./controllers/article";
-import { noController } from "./controllers/404";
+import { techController } from "./controllers/tech";
 
 // import { Grid } from "./grid";
 import { Cookie } from "./cookie";
@@ -22,7 +22,6 @@ import { Cookie } from "./cookie";
 // import { smoothscroller } from "./scroller";
 // import { footer } from "./components/footer";
 import { nav } from "./components/nav";
-import Banner from "./components/banner";
 
 /**
  *
@@ -71,10 +70,6 @@ iris.add(
     // ) {
     //   navigator.serviceWorker.register("/sw.js");
     // }
-
-    qsa("[data-banner]").map((/** @type {HTMLElement} */ dom) => (
-      new Banner({ dom })
-    ));
 
     idly(() => {
       new Cookie();

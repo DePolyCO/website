@@ -98,7 +98,6 @@
       line-height: 1.4;
       font-family: "fkvar";
       gap: fluid($highlight-gap-size-text, $lg);
-      word-break: break-all;
 
       @at-root [data-mobile] & {
         font-size: fluid(22, $sm);

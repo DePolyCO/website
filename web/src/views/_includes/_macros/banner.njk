@@ -18,14 +18,18 @@
       <div class="banner__highlights">
         <div class="banner__highlights-scroller df aic jcs fw">
           {% for item in data.highlights %}
-          {%  set isLogo = true if item.image else false %}
+          {% set isLogo = true if item.image else false %}
+          {% set isLink = true if item.link else false %}
+
           <div class="banner-highlight banner-highlight-{{ item.type }} df aic">
+            {% if isLink %}
             <a
               href="{{ item.link }}"
               target="_blank"
               rel="noopener noreferrer"
               class="df aic"
             >
+            {% endif %}
               {% if item.image %}
                 <img src="{{ item.image }}" alt="{{ item.link }}" />
               {% else %}
@@ -33,11 +37,17 @@
                   <div>and</div>&nbsp;&nbsp;
                 {% endif %}
                 
+                {% if isLink %}
                 <div class="link link-dark link-solid">
+                {% endif %}
                   {{ item.text }}
+                {% if isLink %}
                 </div>
+                {% endif %}
               {% endif %}
+            {% if isLink %}
             </a>
+            {% endif %}
             
             {% if data.withSeparator and not loop.last %}
               <div class="banner-highlight-separator"> / </div>

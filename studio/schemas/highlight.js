@@ -31,7 +31,6 @@ export default {
       name: "link",
       type: "url",
       description: "Link to the page that will be opened when the highlight is clicked.",
-      validation: (Rule) => Rule.required(),
     },
     {
       title: "Text",

@@ -265,6 +265,7 @@ export class Controller {
       r0 && r0.destroy();
 
       hide({
+        context: this,
         done,
         to,
       });
@@ -284,6 +285,7 @@ export class Controller {
       }
 
       show({
+        context: this,
         from,
         done: () => {
           smoothscroller.resize();

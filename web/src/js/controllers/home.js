@@ -12,15 +12,25 @@ import { nav } from "../components/nav";
 import { monoShuffle } from "../components/monoShuffle";
 import Banner from "../components/banner";
 
-/**
- *
- * Home page controller
- *
- */
+class HomeController extends Controller {
+
+  /** @type {Banner} */
+  banner = null;
+
+  constructor(...args) {
+    super(...args);
+
+    this.banner = new Banner({ dom: qs("[data-banner]") });
+  }
+
+}
 
 let highlightFx, p1, p2, p3, p4, c1, ps, iconDraws, o, r0, rst, ph;
-export const homeController = new Controller({
-  hide: ({ done }) => {
+export const homeController = new HomeController({
+  /**
+   * @param {{ context: HomeController }} param0 
+   */
+  hide: ({ context, done }) => {
     highlightFx.destroy();
 
     c1 && c1.destroy();
@@ -38,10 +48,16 @@ export const homeController = new Controller({
     o.disconnect();
     iconDraws.forEach((d) => d.destroy());
     monoShuffle.destroy();
+
+    context.banner.hide();
+
     sail.out(done);
   },
 
-  show: ({ done }) => {
+  /**
+   * @param {{ context: HomeController }} param0 
+   */
+  show: ({ context, done }) => {
     r0 = new Reveal({
       targets: "#hero-title",
       stagger: 150,
@@ -174,9 +190,7 @@ export const homeController = new Controller({
       );
     }
 
-    qsa("[data-banner]").map((/** @type {HTMLElement} */ dom) => (
-      new Banner({ dom })
-    ));
+    context.banner.show();
 
     sail.in();
     done();

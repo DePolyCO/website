@@ -26,13 +26,17 @@ class Banner {
     this.$parent = this.$dom.parentElement;
     this.$scrollable = this.$dom.querySelector('.banner__highlights');
 
-    this.isMobile = false;
+    this.isMobile = !MediaQueryListener.matches('(min-width: 850px)');
     this.type = this.$dom.getAttribute('data-banner-type');
 
     this.initialize();
   }
 
   initialize = () => {
+    if (this.isMobile) {
+      this.$dom.setAttribute('data-mobile', '');
+    }
+
     this.preloadImages()
       .finally(() => {
         this.bindEvents();

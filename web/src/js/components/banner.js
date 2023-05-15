@@ -14,6 +14,9 @@ class Banner {
   /** @type {'text'|'image'} */
   type = null;
 
+  /** @type {boolean} */
+  destroyed = false;
+
   /**
    * @param {object} options
    * @param {HTMLElement} options.dom
@@ -51,7 +54,7 @@ class Banner {
 
               this.show();
             },
-            { immediate: true },
+            { immediate: false },
           ],
         ]);
       });
@@ -79,14 +82,19 @@ class Banner {
     this.$dom = null;
     this.$parent = null;
     this.$scrollable = null;
+    this.destroyed = true;
   };
 
   bindEvents = () => {
     const close = this.$dom.querySelector("[data-banner-close]");
-    close.addEventListener("click", this.close, { once: true });
+    close.addEventListener("click", this.hide.bind(this, { destroy: true }), { once: true });
   };
 
   show = () => {
+    if (this.destroyed) {
+      return;
+    }
+
     const yPos = this.isMobile ? -110 : 110;
 
     this.$dom.style.visibility = '';
@@ -118,7 +126,11 @@ class Banner {
     });
   };
 
-  close = () => {
+  hide = ({ destroy } = { destroy: false }) => {
+    if (this.destroyed) {
+      return;
+    }
+
     new Vau({
       targets: this.$dom.firstElementChild,
       transform: {
@@ -131,8 +143,10 @@ class Banner {
       duration: 800,
       easing: "io2",
       complete: () => {
-        this.destroy();
-      },
+        if (destroy) {
+          this.destroy();
+        }
+      }
     });
   };
 

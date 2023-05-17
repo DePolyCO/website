@@ -95,7 +95,6 @@ class Banner {
   };
 
   show = () => {
-    console.log(this.destroyed);
     if (this.destroyed) {
       return;
     }

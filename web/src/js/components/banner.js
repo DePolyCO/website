@@ -14,6 +14,9 @@ class Banner {
   /** @type {'text'|'image'} */
   type = null;
 
+  /** @type {boolean} */
+  destroyed = false;
+
   /**
    * @param {object} options
    * @param {HTMLElement} options.dom
@@ -23,13 +26,17 @@ class Banner {
     this.$parent = this.$dom.parentElement;
     this.$scrollable = this.$dom.querySelector('.banner__highlights');
 
-    this.isMobile = false;
+    this.isMobile = !MediaQueryListener.matches('(min-width: 850px)');
     this.type = this.$dom.getAttribute('data-banner-type');
 
     this.initialize();
   }
 
   initialize = () => {
+    if (this.isMobile) {
+      this.$dom.setAttribute('data-mobile', '');
+    }
+
     this.preloadImages()
       .finally(() => {
         this.bindEvents();
@@ -51,7 +58,7 @@ class Banner {
 
               this.show();
             },
-            { immediate: true },
+            { immediate: false },
           ],
         ]);
       });
@@ -79,24 +86,32 @@ class Banner {
     this.$dom = null;
     this.$parent = null;
     this.$scrollable = null;
+    this.destroyed = true;
   };
 
   bindEvents = () => {
     const close = this.$dom.querySelector("[data-banner-close]");
-    close.addEventListener("click", this.close, { once: true });
+    close.addEventListener("click", this.hide.bind(this, { destroy: true }), { once: true });
   };
 
   show = () => {
-    const yPos = this.isMobile ? -110 : 110;
+    console.log(this.destroyed);
+    if (this.destroyed) {
+      return;
+    }
+
+    const rect = this.$dom.getBoundingClientRect();
+    const yStart = rect.height / window.innerWidth * 100 * -1;
+    const yEnd = this.isMobile ? 24 : 8;
 
     this.$dom.style.visibility = '';
-    this.$dom.firstElementChild.style.transform = `translateY(${yPos}%)`;
+    this.$dom.style.transform = `translateY(${yStart}vw)`;
 
     new Vau({
-      targets: this.$dom.firstElementChild,
+      targets: this.$dom,
       transform: {
-        y: [yPos, 0],
-        yu: "%",
+        y: [yStart, yEnd],
+        yu: "vw",
       },
       delay: !this.isMobile ? 1200 : 800,
       duration: 1000,
@@ -118,21 +133,28 @@ class Banner {
     });
   };
 
-  close = () => {
+  hide = ({ destroy } = { destroy: false }) => {
+    if (this.destroyed) {
+      return;
+    }
+
+    const rect = this.$dom.getBoundingClientRect();
+    const yStart = this.isMobile ? 24 : 8;
+    const yEnd = rect.height / window.innerWidth * 100 * -1;
+
     new Vau({
-      targets: this.$dom.firstElementChild,
+      targets: this.$dom,
       transform: {
-        y: [
-          0,
-          this.isMobile ? -110 : 110
-        ],
-        yu: "%",
+        y: [yStart, yEnd],
+        yu: "vw",
       },
       duration: 800,
       easing: "io2",
       complete: () => {
-        this.destroy();
-      },
+        if (destroy) {
+          this.destroy();
+        }
+      }
     });
   };
 

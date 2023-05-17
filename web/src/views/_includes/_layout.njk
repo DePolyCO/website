@@ -1,3 +1,5 @@
+{% from '_macros/banner.njk' import banner %}
+
 {% include '_header.njk' %}
 
 <body class="sans">
@@ -415,6 +417,8 @@
   </aside>
 
   {% include "_components/_nav.njk" %}
+
+  {{ banner(bannerData) }}
 
   <aside id="cookie-banner" class="df fc aic jcc z8 pf">
     <div class="info-icon">

@@ -1,3 +1,5 @@
+{% from '../_macros/banner.njk' import banner %}
+
 <nav id="nav" class="nav z8 pf top left right hidden">
     <div id="nav-inner" class="df jcb aic">
         {# visible #}
@@ -70,4 +72,6 @@
         <div id="m-bg" class="oh inset pa zn3 d-hide"></div>
         <div id="m-bg--top" class="oh inset pa zn3 d-hide"></div>
     </div>
+
+    {{ banner(bannerData) }}
 </nav>

@@ -113,8 +113,8 @@ class Banner {
         yu: "vw",
       },
       delay: !this.isMobile ? 1200 : 800,
-      duration: 1000,
-      easing: "o2",
+      duration: 2500,
+      easing: "o6",
       complete: () => {
         if (this.type !== 'image' || !this.isMobile) {
           return;

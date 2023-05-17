@@ -95,20 +95,23 @@ class Banner {
   };
 
   show = () => {
+    console.log(this.destroyed);
     if (this.destroyed) {
       return;
     }
 
-    const yPos = this.isMobile ? -110 : 110;
+    const rect = this.$dom.getBoundingClientRect();
+    const yStart = rect.height / window.innerWidth * 100 * -1;
+    const yEnd = this.isMobile ? 24 : 8;
 
     this.$dom.style.visibility = '';
-    this.$dom.firstElementChild.style.transform = `translateY(${yPos}%)`;
+    this.$dom.style.transform = `translateY(${yStart}vw)`;
 
     new Vau({
-      targets: this.$dom.firstElementChild,
+      targets: this.$dom,
       transform: {
-        y: [yPos, 0],
-        yu: "%",
+        y: [yStart, yEnd],
+        yu: "vw",
       },
       delay: !this.isMobile ? 1200 : 800,
       duration: 1000,
@@ -135,14 +138,15 @@ class Banner {
       return;
     }
 
+    const rect = this.$dom.getBoundingClientRect();
+    const yStart = this.isMobile ? 24 : 8;
+    const yEnd = rect.height / window.innerWidth * 100 * -1;
+
     new Vau({
-      targets: this.$dom.firstElementChild,
+      targets: this.$dom,
       transform: {
-        y: [
-          0,
-          this.isMobile ? -110 : 110
-        ],
-        yu: "%",
+        y: [yStart, yEnd],
+        yu: "vw",
       },
       duration: 800,
       easing: "io2",

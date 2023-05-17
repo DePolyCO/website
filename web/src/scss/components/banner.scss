@@ -4,18 +4,12 @@
   $highlight-gap-size-text: 30;
 
   &__wrapper {
-    position: absolute;
-    top: 8vw;
+    top: 0;
     right: 0;
     left: 0;
     overflow: hidden;
     pointer-events: all;
-
-    &[data-mobile] {
-      position: fixed;
-      top: 24vw;
-      z-index: 9;
-    }
+    z-index: 9;
   }
 
   &__root {

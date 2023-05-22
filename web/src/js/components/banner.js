@@ -22,6 +22,11 @@ class Banner {
    * @param {HTMLElement} options.dom
    */
   constructor({ dom }) {
+    if (!(dom instanceof HTMLElement)) {
+      this.destroyed = true;
+      return;
+    }
+
     this.$dom = dom;
     this.$parent = this.$dom.parentElement;
     this.$scrollable = this.$dom.querySelector('.banner__highlights');

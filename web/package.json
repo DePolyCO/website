@@ -50,6 +50,7 @@
     "netlify-lambda": "^2.0.15",
     "ogl": "^0.0.86",
     "tweakpane": "^3.0.7",
-    "vhtml": "^2.2.0"
+    "vhtml": "^2.2.0",
+    "html-entities": "2.3.5"
   }
 }

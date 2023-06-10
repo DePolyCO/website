@@ -11,6 +11,8 @@ const html = htm.bind(vhtml);
 
 const youtubeID = require("../../../utils/get-video-id");
 
+const htmlEntities = require("html-entities");
+
 const postComponents = {
   types: {
     image: ({ value }) => {
@@ -63,7 +65,7 @@ const postComponents = {
           href="${href}"
           rel="${rel}"
           target="${target}"
-          >${children}</a
+          >${htmlEntities.decode(children)}</a
         >`;
       }
 

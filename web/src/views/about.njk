@@ -39,23 +39,23 @@ meta:
         <div id="numbers-tag" class="tag fv-mono ttu" data-shuffle>DePoly en chiffres</div>
         <ul id="numbers-content" class="df fc pr">
             <li class="number-item pr df cp">
-                <div class="number-no cp">14</div>
+                <div class="number-no cp">{{ depolyInNumbers.employees }}</div>
                 <div class="pa number-detail">Employés</div>
             </li>
             <li class="number-item pr df cp">
-                <div class="number-no cp">12</div>
+                <div class="number-no cp">{{ depolyInNumbers.nationalities }}</div>
                 <div class="pa number-detail">Nationalités Différentes</div>
             </li>
             <li class="number-item pr df cp">
-                <div class="number-no cp">~50%</div>
+                <div class="number-no cp">~{{ depolyInNumbers.genderRatio }}%</div>
                 <div class="pa number-detail">Homme / Femme</div>
             </li>
             <li class="number-item pr df cp">
-                <div class="number-no cp">11</div>
+                <div class="number-no cp">{{ depolyInNumbers.languages }}</div>
                 <div class="pa number-detail">Langues</div>
             </li>
             <li class="number-item pr df cp">
-                <div class="number-no cp">>50</div>
+                <div class="number-no cp">&gt;{{ depolyInNumbers.yearsOfExperience }}</div>
                 <div class="pa number-detail bottom">
                     Ans R&D en industrie et académie
                 </div>
@@ -66,11 +66,11 @@ meta:
     <section id="numbers-m" class="d-hide oh">
         <div id="numbers-m--tag" class="tag fv-mono ttu" data-shuffle>DePoly en chiffres</div>
         <ul id="numbers-m--snos" class="df">
-            <li class="number-m--no">14</li>
-            <li class="number-m--no">12</li>
-            <li class="number-m--no">~50%</li>
-            <li class="number-m--no">11</li>
-            <li class="number-m--no">&gt;50</li>
+            <li class="number-m--no">{{ depolyInNumbers.employees }}</li>
+            <li class="number-m--no">{{ depolyInNumbers.nationalities }}</li>
+            <li class="number-m--no">~{{ depolyInNumbers.genderRatio }}%</li>
+            <li class="number-m--no">{{ depolyInNumbers.languages }}</li>
+            <li class="number-m--no">&gt;{{ depolyInNumbers.yearsOfExperience }}</li>
         </ul>
         <ul id="numbers-m--content" class="df pr">
             <li class="number-m--item pa">

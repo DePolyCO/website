@@ -7,6 +7,7 @@ import {
   IoPeopleOutline,
   IoSparklesOutline,
   IoDocumentTextOutline,
+  IoStatsChartOutline,
 } from "react-icons/io5";
 
 // For document-internationalization
@@ -29,11 +30,13 @@ export default () => {
       Structure.getFilteredDocumentTypeListItems().find(
         ({ id }) => id === "seo"
       ),
+
       S.divider(),
 
       Structure.getFilteredDocumentTypeListItems().find(
         ({ id }) => id === "post"
       ),
+
       S.listItem()
         .title("Featured Post")
         .icon(IoSparklesOutline)
@@ -68,9 +71,21 @@ export default () => {
             .documentId("team")
             .title("Team Members")
         ),
+
       Structure.getFilteredDocumentTypeListItems().find(
         ({ id }) => id === "person"
       ),
+
+      S.listItem()
+        .title("DePoly in Numbers")
+        .icon(IoStatsChartOutline)
+        .child(
+          S.document()
+            .schemaType("depolyInNumbers")
+            .documentId("depolyInNumbers")
+            .title("DePoly in Numbers")
+        ),
+
       S.divider(),
 
       Structure.getFilteredDocumentTypeListItems().find(

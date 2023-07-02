@@ -14,6 +14,10 @@ export class Tweeter {
     this.dom = dom;
     this.active = false;
     this.listen();
+
+    iris.add(window, "resize", () => {
+      this.handleSelection();
+    });
   }
 
   init = () => {

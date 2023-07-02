@@ -14,10 +14,6 @@ export class Tweeter {
     this.dom = dom;
     this.active = false;
     this.listen();
-
-    this.unResize = iris.add(window, "resize", () => {
-      this.removeButton();
-    });
   }
 
   init = () => {
@@ -30,15 +26,20 @@ export class Tweeter {
       });
   };
 
+  clear = () => {
+    this.clearSelection();
+    this.removeButton();
+    this.active = false;
+  };
+
   listen = () => {
     this.unUp = iris.add(document, iris.events.up, this.handleSelection);
     this.unClick = iris.add(document, "click", this.removeSelection);
+    this.unResize = iris.add(window, "resize", this.clear);
     this.scrollID = smoothscroller.add({
       update: ({ deltaY }) => {
-        if (this.active && deltaY > 15) {
-          this.clearSelection();
-          this.removeButton();
-          this.active = false;
+        if (this.active && (deltaY > 15 || deltaY < -15)) {
+          this.clear();
         }
       },
     });

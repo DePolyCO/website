@@ -15,7 +15,7 @@ export class Tweeter {
     this.active = false;
     this.listen();
 
-    iris.add(window, "resize", () => {
+    this.unResize = iris.add(window, "resize", () => {
       this.removeButton();
     });
   }
@@ -139,6 +139,7 @@ export class Tweeter {
     if (Sniff.touchDevice) return;
     this.unClick();
     this.unUp();
+    this.unResize();
     smoothscroller.remove(this.scrollID);
   };
 }

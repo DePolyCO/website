@@ -75,18 +75,18 @@ const postComponents = {
 
   list: {
     number: ({ children }) =>
-      `<section data-scroll-section><ol class="fv-mono">${children}</ol></section>`,
+      `<section data-scroll-section><ol class="fv-mono">${htmlEntities.decode(children)}</ol></section>`,
     bullet: ({ children }) =>
-      `<section data-scroll-section><ul class="fv-mono">${children}</ul></section>`,
+      `<section data-scroll-section><ul class="fv-mono">${htmlEntities.decode(children)}</ul></section>`,
   },
 
   block: {
     normal: ({ children }) => {
       if (!children.length) return `<br />`;
-      return `<section data-scroll-section><p>${children}</p></section>`;
+      return `<section data-scroll-section><p>${htmlEntities.decode(children)}</p></section>`;
     },
     h2: ({ children }) =>
-      html`<section data-scroll-section><h2>${children}</h2></section>`,
+      html`<section data-scroll-section><h2>${htmlEntities.decode(children)}</h2></section>`,
     blockquote: ({ children }) =>
       html`<section data-scroll-section>
         <blockquote data-tweet-parent>
@@ -109,7 +109,7 @@ const postComponents = {
               <div class="fv-mono ttu">Tweet this quote</div>
             </a>
           </div>
-          <p data-tweet-target>${children}</p>
+          <p data-tweet-target>${htmlEntities.decode(children)}</p>
         </blockquote>
       </section>`,
   },

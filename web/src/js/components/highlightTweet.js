@@ -16,7 +16,7 @@ export class Tweeter {
     this.listen();
 
     iris.add(window, "resize", () => {
-      this.handleSelection();
+      this.removeButton();
     });
   }
 

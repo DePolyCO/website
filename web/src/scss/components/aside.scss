@@ -354,13 +354,18 @@ strong {
 }
 
 .bio-panel--title {
+  width: 100%;
+  max-width: 65%;
+  text-align: left;
   font-weight: bold;
   line-height: 110%;
-  font-size: fluid(14, $sm);
+  font-size: fluid(10, $sm);
   top: fluid(29, $sm);
   left: fluid(20, $sm);
 
   @include md {
+    text-align: center;
+    max-width: 82.4%;
     font-size: fluid(16, $lg);
     top: fluid(50, $lg);
     left: fluid(54, $lg);
@@ -425,12 +430,12 @@ strong {
   font-size: fluid(16, $sm);
   line-height: 140%;
   text-align: center;
-  width: fluid(217, $sm);
+  width: fluid(290, $sm);
 
   @include md {
     font-size: fluid(18, $lg);
     min-width: fluid(300, $lg);
-    width: fluid(300, $lg);
+    width: fluid(320, $lg);
   }
 }
 
